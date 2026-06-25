@@ -13,6 +13,13 @@ RESOLUTION_BUCKETS = {
     "9:16": "768x1344 (9:16)",
     "16:9": "1344x768 (16:9)",
 }
+META_PROMPT_TERMS = (
+    "adult nude baseline",
+    "readable adult presentation",
+    "professional z-image prompt detail",
+    "prompt detail",
+    "crop-safe composition",
+)
 
 
 def render_prompt_pack(prompt_package: dict[str, Any]) -> dict[str, str]:
@@ -23,8 +30,10 @@ def render_prompt_pack(prompt_package: dict[str, Any]) -> dict[str, str]:
     else:
         positive = _adult_positive(prompt_package)
         negative = (
-            "underage, minor, childlike, youthful appearance, age-ambiguous subject, real person likeness, "
-            "fully clothed, opaque full coverage, obscured adult presentation, cropped subject, blurred anatomy, bad anatomy"
+            "underage, minor, teen, childlike face, youthful appearance, age-ambiguous subject, real person likeness, "
+            "fully clothed, opaque full coverage, heavy foreground occlusion, cropped head, cropped torso, blurry face, "
+            "deformed anatomy, bad anatomy, extra limbs, extra fingers, fused fingers, twisted spine, broken joints, "
+            "plastic skin, over-smoothed skin, low detail, watermark, text"
         )
     return {
         "z_image_positive_prompt": _dedup_phrase_chain(positive),
@@ -41,12 +50,12 @@ def _adult_positive(prompt_package: dict[str, Any]) -> str:
     lighting = blueprint["lighting"]
     material = blueprint["material"]
     scene = blueprint["scene"]
-    style = "anime-realism finish" if intent["style"] == "anime_realism" else "cinematic photoreal finish"
+    style = "anime-realism rendering with realistic light and anatomy" if intent["style"] == "anime_realism" else "cinematic photoreal editorial rendering"
     return (
-        f"clearly adult NSFW {subject}, adult nude baseline, readable adult presentation, "
-        f"{intent['pose_family']} pose, {camera['framing']}, {camera['lens']}, crop-safe composition, "
+        f"clearly adult nude NSFW editorial portrait of {subject}, "
+        f"{_pose_phrase(intent)}, {camera['framing']}, {camera['lens']} perspective, "
         f"{lighting['setup']}, {lighting['exposure']}, {material['surface_detail']}, "
-        f"{scene['setting']}, {scene['depth']}, {style}, professional Z-Image prompt detail"
+        f"{scene['setting']}, {scene['depth']}, {style}, clean natural anatomy, sharp face detail"
     )
 
 
@@ -57,10 +66,25 @@ def _nonhuman_positive(prompt_package: dict[str, Any]) -> str:
     lighting = blueprint["lighting"]
     scene = blueprint["scene"]
     return (
-        f"{intent['request']}, cinematic environmental composition, {camera['framing']}, {camera['lens']}, "
+        f"{intent['request']}, cinematic environmental landscape, {camera['framing']}, {camera['lens']}, "
         f"{lighting['setup']}, {lighting['exposure']}, {scene['setting']}, {scene['depth']}, "
-        "natural material detail, professional Z-Image prompt detail"
+        "natural material detail, crisp atmospheric perspective, realistic color and texture"
     )
+
+
+def _pose_phrase(intent: dict[str, Any]) -> str:
+    pose = intent["pose_family"]
+    if pose == "reclining":
+        if "sofa" in intent["normalized_request"]:
+            return "relaxed reclining pose along a sofa, shoulders and hips supported by cushions, one knee softly bent, arms resting naturally"
+        return "relaxed reclining pose on a soft surface, body weight visibly supported, limbs placed naturally"
+    if pose == "seated":
+        return "natural seated pose with visible hip support, relaxed shoulders, hands placed without covering the body"
+    if pose == "standing":
+        return "balanced standing pose with clear weight shift, visible full-body silhouette, relaxed hands"
+    if pose == "dynamic":
+        return "dynamic pose with a clear action line, stable support, readable limb placement"
+    return "calm portrait pose with natural posture, relaxed shoulders, direct readable gaze"
 
 
 def _adult_subject(intent: dict[str, Any]) -> str:

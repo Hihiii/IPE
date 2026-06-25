@@ -8,6 +8,14 @@ from scripts.export_prompt_pack import validate_prompt_pack
 from .constants import PHASES
 from .io import load_json, write_json
 
+META_PROMPT_TERMS = (
+    "adult nude baseline",
+    "readable adult presentation",
+    "professional z-image prompt detail",
+    "prompt detail",
+    "crop-safe composition",
+)
+
 
 class ValidationError(ValueError):
     def __init__(self, failures: list[dict[str, Any]]) -> None:
@@ -47,7 +55,7 @@ def validate_run(artifacts: dict[str, Any]) -> dict[str, Any]:
         negative = validated_pack["z_image_negative_prompt"].casefold()
         if not intent.get("adult_eligible"):
             failures.append(_failure("adult_eligibility", "$.intent_profile.adult_eligible", "Adult human output requires adult eligibility."))
-        for marker in ("clearly adult", "nsfw", "adult nude baseline"):
+        for marker in ("clearly adult", "nsfw", "nude"):
             if marker not in positive:
                 failures.append(_failure("adult_baseline_prompt", "$.prompt_pack.z_image_positive_prompt", f"Positive prompt missing {marker!r}."))
         for marker in ("underage", "minor", "age-ambiguous"):
@@ -57,6 +65,11 @@ def validate_run(artifacts: dict[str, Any]) -> dict[str, Any]:
         positive = validated_pack["z_image_positive_prompt"].casefold()
         if any(marker in positive for marker in ("nsfw", "nude", "clearly adult")):
             failures.append(_failure("nonhuman_nsfw_injection", "$.prompt_pack.z_image_positive_prompt", "Nonhuman-only output must not inject NSFW language."))
+    if validated_pack is not None:
+        positive = validated_pack["z_image_positive_prompt"].casefold()
+        leaked_terms = [term for term in META_PROMPT_TERMS if term in positive]
+        if leaked_terms:
+            failures.append(_failure("renderer_meta_term_leak", "$.prompt_pack.z_image_positive_prompt", "Final prompt must not contain runtime/meta prompt terms.", leaked_terms=leaked_terms))
 
     claims = {claim for module in module_plan.get("modules", []) for claim in module.get("claims", [])}
     ledger_claims = {claim for phase in ledger.get("phases", []) for claim in phase.get("claims", [])}

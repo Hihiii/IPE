@@ -74,8 +74,12 @@ def test_parser_blocks_minor_youth_coded_and_age_ambiguous_adult_context() -> No
 def test_nonhuman_run_does_not_inject_nsfw_language() -> None:
     pack = run_pipeline("misty mountain landscape at sunrise with a lake")
     assert set(pack) == {"z_image_positive_prompt", "z_image_negative_prompt", "suggest_resolution"}
-    assert "nsfw" not in pack["z_image_positive_prompt"].casefold()
-    assert "clearly adult" not in pack["z_image_positive_prompt"].casefold()
+    positive = pack["z_image_positive_prompt"].casefold()
+    assert "nsfw" not in positive
+    assert "clearly adult" not in positive
+    assert "portrait composition" not in positive
+    assert "prompt detail" not in positive
+    assert "wide landscape framing" in positive
     assert "1536x1024 (3:2)" == pack["suggest_resolution"]
 
 
@@ -89,7 +93,16 @@ def test_renderer_preserves_woman_subject_label() -> None:
 def test_normal_run_uses_capsules_and_phase_debug_materializes_full_yaml(tmp_path: Path) -> None:
     session = tmp_path / "session"
     pack = run_pipeline("25 year old jpop idol lying on sofa", session=session)
-    assert "clearly adult NSFW" in pack["z_image_positive_prompt"]
+    positive = pack["z_image_positive_prompt"].casefold()
+    assert "clearly adult" in positive
+    assert "nsfw" in positive
+    assert "relaxed reclining pose along a sofa" in positive
+    assert "shoulders and hips supported by cushions" in positive
+    assert "adult nude baseline" not in positive
+    assert "readable adult presentation" not in positive
+    assert "prompt detail" not in positive
+    assert "adult presentation" not in pack["z_image_negative_prompt"].casefold()
+    assert "extra fingers" in pack["z_image_negative_prompt"].casefold()
     access_log = json.loads((session / "capsule_access_log.json").read_text(encoding="utf-8"))
     assert access_log
     assert {entry["kind"] for entry in access_log} == {"capsule"}

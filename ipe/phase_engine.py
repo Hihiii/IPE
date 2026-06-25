@@ -145,30 +145,41 @@ def _complete_phase(ledger: dict[str, Any], module_plan: dict[str, Any], phase_i
 
 
 def _composition(intent: dict[str, Any]) -> dict[str, Any]:
+    if intent["subject_kind"] == "nonhuman":
+        return {
+            "visual_focus": "environmental depth and atmosphere",
+            "camera": {"framing": "wide landscape framing", "lens": "wide-angle landscape lens", "camera_height": "eye level"},
+            "lighting": {"setup": "soft atmospheric natural light with visible depth separation", "exposure": "balanced exposure preserving mist, highlights, and terrain detail"},
+            "color": {"palette": "natural dawn color harmony", "grade": intent["style"]},
+            "crop_safety": "landscape horizon, foreground, and background layers remain in frame",
+        }
     pose = intent["pose_family"]
     framing = {
-        "reclining": "medium reclining sofa composition",
-        "seated": "medium seated composition",
-        "standing": "full-body crop-safe composition",
-        "dynamic": "medium dynamic action composition",
-        "portrait": "medium portrait composition",
+        "reclining": "medium shot from head to upper thighs",
+        "seated": "medium seated three-quarter framing",
+        "standing": "full-body framing with head and feet visible",
+        "dynamic": "medium action framing with a clear body silhouette",
+        "portrait": "medium portrait framing",
     }.get(pose, "medium composition")
     return {
         "visual_focus": "adult subject readability" if intent["adult_eligible"] else "environmental depth and atmosphere",
         "camera": {"framing": framing, "lens": "normal-to-short-telephoto lens", "camera_height": "eye level"},
-        "lighting": {"setup": "soft warm key light with gentle rim separation", "exposure": "middle-key exposure with readable shadows"},
+        "lighting": {"setup": "large soft warm side key light with a subtle rim light", "exposure": "middle-key exposure with open, readable shadows"},
         "color": {"palette": "warm amber and deep teal", "grade": intent["style"]},
-        "crop_safety": "subject and hard-lock elements remain in frame",
+        "crop_safety": "head, torso, pose support, and requested setting remain visible",
     }
 
 
 def _scene_blueprint(intent: dict[str, Any], composition: dict[str, Any]) -> dict[str, Any]:
-    material_detail = "natural skin texture and responsive fabric/skin highlights" if intent["adult_eligible"] else "natural terrain and atmosphere texture"
+    material_detail = "natural skin texture with soft highlight rolloff" if intent["adult_eligible"] else "natural terrain texture with mist and water detail"
     if "wet_material" in intent["features"]:
         material_detail += ", moisture-aware sheen and gravity-consistent wetness"
+    depth = "foreground sofa edge, subject plane, and softly blurred lounge background" if "sofa" in intent["normalized_request"] else "layered foreground, subject plane, and soft background separation"
+    if intent["subject_kind"] == "nonhuman":
+        depth = "foreground shoreline, midground lake surface, distant mountains, and atmospheric dawn haze"
     return {
         "subject": {"kind": intent["subject_kind"], "pose_family": intent["pose_family"], "count": intent["subject_count"]},
-        "scene": {"setting": intent["setting"], "depth": "layered foreground, subject plane, and soft background separation"},
+        "scene": {"setting": intent["setting"], "depth": depth},
         "camera": composition["camera"],
         "lighting": composition["lighting"],
         "material": {"surface_detail": material_detail},
