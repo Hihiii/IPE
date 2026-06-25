@@ -1,0 +1,6 @@
+schema_version: "1.0.0"
+module_id: camera_composition_system
+summary: Resolve camera relationship, lens, shot scale, crop safety, depth of field, and frame layout.
+phase_focus: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
+prompt_rules:
+  - Camera and crop must preserve hard locks and keep the subject readable.

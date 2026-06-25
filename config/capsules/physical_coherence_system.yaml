@@ -1,0 +1,6 @@
+schema_version: "1.0.0"
+module_id: physical_coherence_system
+summary: Resolve gravity, contact, collision, compression, support, and material-environment physical coherence.
+phase_focus: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+prompt_rules:
+  - Body, clothing, props, and surfaces must share consistent contact and force logic.

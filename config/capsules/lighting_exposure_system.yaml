@@ -1,0 +1,6 @@
+schema_version: "1.0.0"
+module_id: lighting_exposure_system
+summary: Resolve lighting setup, exposure, highlight policy, shadow policy, and readable night controls.
+phase_focus: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
+prompt_rules:
+  - Lighting must reveal the subject and support material readability.

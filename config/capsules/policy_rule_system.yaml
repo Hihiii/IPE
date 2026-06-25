@@ -1,0 +1,7 @@
+schema_version: "1.0.0"
+module_id: policy_rule_system
+summary: Enforce adult eligibility, youth-coded rejection, real-person blocking, always-NSFW baseline, and cleanup rules.
+phase_focus: [phase_0_config_resolution, phase_1_intent_analysis, phase_4_self_review]
+prompt_rules:
+  - Adult policy gates execution before any visual rendering.
+  - Nonhuman-only prompts are not forced into NSFW output.

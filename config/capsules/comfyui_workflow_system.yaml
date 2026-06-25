@@ -1,0 +1,6 @@
+schema_version: "1.0.0"
+module_id: comfyui_workflow_system
+summary: Placeholder module for ComfyUI-aligned prompt fields. API calls and workflow injection are disabled in this rebuild.
+phase_focus: [phase_4_3_delivery_package, phase_5_final_output]
+prompt_rules:
+  - Prompt-only output is the supported ComfyUI integration boundary.

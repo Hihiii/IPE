@@ -1,0 +1,6 @@
+schema_version: "1.0.0"
+module_id: scene_dna_system
+summary: Resolve scene type, location markers, props, background role, and forbidden scene drift.
+phase_focus: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint]
+prompt_rules:
+  - Scene detail should support the subject and not overtake the main visual hierarchy.

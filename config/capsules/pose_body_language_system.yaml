@@ -1,0 +1,6 @@
+schema_version: "1.0.0"
+module_id: pose_body_language_system
+summary: Resolve pose family, support points, body line, hand intent, and pose-specific anatomy guards.
+phase_focus: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+prompt_rules:
+  - Reclining, seated, standing, and dynamic poses need visible support and crop-safe anatomy.

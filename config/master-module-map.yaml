@@ -1,0 +1,198 @@
+schema_version: "1.0.0"
+name: agentic-visual-prompt-rag-module-map
+description: >
+  Declarative module map for the prompt-only Agentic Visual Prompt RAG runtime.
+  Runtime routing uses these triggers and capsule paths instead of scattered
+  hard-coded feature tables.
+phases:
+  - phase_0_config_resolution
+  - phase_1_intent_analysis
+  - phase_2_composition_and_cinematography
+  - phase_3_scene_blueprint
+  - phase_3_1_prompt_package
+  - phase_4_self_review
+  - phase_4_1_cleanup
+  - phase_4_2_z_image_renderer
+  - phase_4_3_delivery_package
+  - phase_5_final_output
+modules:
+  - id: subject_intent_parser
+    system: subject-intent-parser
+    triggers: [always]
+    phases: [phase_0_config_resolution, phase_1_intent_analysis]
+    capsule_path: config/capsules/subject_intent_parser.yaml
+    full_yaml_paths: [config/prompt-core/task-profiles.yaml, config/prompt-core/prompt-assembly-schema.yaml, config/core-knowledge.yaml]
+    claims: [task_type, primary_subject, visual_priority, active_modules, retrieval_plan]
+    dependencies: []
+    excludes: []
+  - id: human_character_system
+    system: human-character-system
+    triggers: [adult_human]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint]
+    capsule_path: config/capsules/human_character_system.yaml
+    full_yaml_paths: [config/character-identity/human-anatomy-guardrails.yaml, config/character-identity/identity-character-consistency.yaml]
+    claims: [adult_maturity, body_description, identity_markers, anatomy_guards]
+    dependencies: [subject_intent_parser, policy_rule_system]
+    excludes: [nonhuman_only]
+  - id: skin_rendering_system
+    system: skin-rendering-system
+    triggers: [adult_human, wet_material, portrait]
+    phases: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
+    capsule_path: config/capsules/skin_rendering_system.yaml
+    full_yaml_paths: [config/character-identity/skin-hair-makeup-rendering.yaml, config/visual-cinematography/material-rendering-library.yaml]
+    claims: [skin_texture, skin_highlight, skin_negative_guards]
+    dependencies: [human_character_system]
+    excludes: [nonhuman_only]
+  - id: hair_physics_system
+    system: hair-physics-system
+    triggers: [adult_human, dynamic_action, wet_material]
+    phases: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
+    capsule_path: config/capsules/hair_physics_system.yaml
+    full_yaml_paths: [config/character-identity/skin-hair-makeup-rendering.yaml, config/visual-cinematography/motion-capture.yaml]
+    claims: [hair_identity, hair_motion, wet_hair_behavior]
+    dependencies: [human_character_system]
+    excludes: [nonhuman_only]
+  - id: emotion_expression_system
+    system: emotion-expression-system
+    triggers: [adult_human, portrait, narrative]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint]
+    capsule_path: config/capsules/emotion_expression_system.yaml
+    full_yaml_paths: [config/character-identity/face-expression-gaze-system.yaml, config/character-identity/pose-gesture-body-language.yaml]
+    claims: [expression, gaze_style, facial_tension, emotion_body_language]
+    dependencies: [human_character_system]
+    excludes: [nonhuman_only]
+  - id: pose_body_language_system
+    system: pose-body-language-system
+    triggers: [adult_human, standing_pose, seated_pose, reclining_pose, dynamic_action]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+    capsule_path: config/capsules/pose_body_language_system.yaml
+    full_yaml_paths: [config/character-identity/pose-gesture-body-language.yaml, config/character-identity/adult-reclining-pose-system.yaml, config/character-identity/adult-seated-pose-system.yaml, config/character-identity/adult-standing-pose-system.yaml]
+    claims: [pose_intent, body_line, support_points, hand_intent, anatomy_guards]
+    dependencies: [human_character_system]
+    excludes: [nonhuman_only]
+  - id: wardrobe_material_system
+    system: wardrobe-material-system
+    triggers: [adult_human, wardrobe, wet_material]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
+    capsule_path: config/capsules/wardrobe_material_system.yaml
+    full_yaml_paths: [config/character-identity/explicit-wardrobe-policy.yaml, config/character-identity/fabric-opacity-translucency-logic.yaml, config/nsfw-outfit-library/index.yaml]
+    claims: [wardrobe_slots, explicit_items, material_description, wardrobe_negative_guards]
+    dependencies: [policy_rule_system]
+    excludes: [nonhuman_only]
+  - id: physical_coherence_system
+    system: physical-coherence-system
+    triggers: [adult_human, dynamic_action, scene_context, wet_material]
+    phases: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+    capsule_path: config/capsules/physical_coherence_system.yaml
+    full_yaml_paths: [config/scene-environment/physical-collision-guardrails.yaml, config/scene-environment/soft-surface-contact-physics.yaml]
+    claims: [gravity_logic, contact_logic, collision_guards, physics_negative_guards]
+    dependencies: [pose_body_language_system]
+    excludes: []
+  - id: microclimate_atmosphere_system
+    system: microclimate-atmosphere-system
+    triggers: [scene_context, wet_material, night_scene]
+    phases: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
+    capsule_path: config/capsules/microclimate_atmosphere_system.yaml
+    full_yaml_paths: [config/scene-environment/environment-atmosphere-library.yaml, config/visual-cinematography/readable-night-exposure-guardrails.yaml]
+    claims: [weather_state, humidity_response, atmosphere_density, environmental_effects]
+    dependencies: [scene_dna_system]
+    excludes: []
+  - id: lighting_exposure_system
+    system: lighting-exposure-system
+    triggers: [always, lighting, night_scene, portrait]
+    phases: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
+    capsule_path: config/capsules/lighting_exposure_system.yaml
+    full_yaml_paths: [config/visual-cinematography/lighting-diagrams.yaml, config/visual-cinematography/exposure-strategies.yaml, config/visual-cinematography/exposure-decision-engine.yaml]
+    claims: [lighting_setup, exposure_priority, highlight_policy, shadow_policy]
+    dependencies: [subject_intent_parser]
+    excludes: []
+  - id: camera_composition_system
+    system: camera-composition-system
+    triggers: [always, camera, portrait, dynamic_action]
+    phases: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
+    capsule_path: config/capsules/camera_composition_system.yaml
+    full_yaml_paths: [config/visual-cinematography/camera-lens-library.yaml, config/visual-cinematography/shot-taxonomy.yaml, config/visual-cinematography/crop-safety-rules.yaml]
+    claims: [composition_layout, camera_angle, camera_distance, lens_choice, dof_strategy, crop_guards]
+    dependencies: [subject_intent_parser]
+    excludes: []
+  - id: color_science_system
+    system: color-science-system
+    triggers: [always, style, lighting]
+    phases: [phase_2_composition_and_cinematography, phase_3_1_prompt_package]
+    capsule_path: config/capsules/color_science_system.yaml
+    full_yaml_paths: [config/visual-cinematography/color-palette-schemes.yaml, config/visual-cinematography/tonal-foundation-system.yaml, config/visual-cinematography/visual-mood-library.yaml]
+    claims: [color_palette, color_temperature, skin_tone_protection, grade_style]
+    dependencies: [lighting_exposure_system]
+    excludes: []
+  - id: scene_dna_system
+    system: scene-dna-system
+    triggers: [always, scene_context, nonhuman_only]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint]
+    capsule_path: config/capsules/scene_dna_system.yaml
+    full_yaml_paths: [config/scene-environment/scene-worldbuilding-library.yaml, config/scene-environment/environment-props-library.yaml, config/scene-environment/location-semantics-lock.yaml]
+    claims: [scene_type, primary_scene_markers, environment_props, background_role]
+    dependencies: [subject_intent_parser]
+    excludes: []
+  - id: visual_narrative_system
+    system: visual-narrative-system
+    triggers: [adult_human, narrative, scene_context, dynamic_action]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint]
+    capsule_path: config/capsules/visual_narrative_system.yaml
+    full_yaml_paths: [config/visual-cinematography/cinematography-grammar.yaml, config/visual-cinematography/visual-mood-library.yaml]
+    claims: [narrative_moment, story_role, action_reason, emotional_context]
+    dependencies: [scene_dna_system]
+    excludes: []
+  - id: sensory_detail_system
+    system: sensory-detail-system
+    triggers: [adult_human, wet_material, portrait, scene_context]
+    phases: [phase_2_composition_and_cinematography, phase_3_1_prompt_package]
+    capsule_path: config/capsules/sensory_detail_system.yaml
+    full_yaml_paths: [config/visual-cinematography/micro-detail-priority-system.yaml, config/visual-cinematography/material-rendering-library.yaml]
+    claims: [sensory_cues, tactile_visuals, atmosphere_feel, material_sensation]
+    dependencies: [skin_rendering_system]
+    excludes: [nonhuman_only]
+  - id: character_ip_database
+    system: character-ip-database
+    triggers: [named_character]
+    phases: [phase_1_intent_analysis, phase_3_scene_blueprint, phase_4_self_review]
+    capsule_path: config/capsules/character_ip_database.yaml
+    full_yaml_paths: [config/adult-character-whitelist/index.yaml]
+    claims: [character_identity_capsule, appearance_capsule, character_negative_guards]
+    dependencies: [policy_rule_system]
+    excludes: [nonhuman_only]
+  - id: policy_rule_system
+    system: policy-rule-system
+    triggers: [always]
+    phases: [phase_0_config_resolution, phase_1_intent_analysis, phase_4_self_review]
+    capsule_path: config/capsules/policy_rule_system.yaml
+    full_yaml_paths: [config/adult-content-policy.yaml, config/nsfw-baseline-resolver.yaml, config/nsfw-visible-exposure-contract.yaml]
+    claims: [active_policies, hard_guards, cleanup_rules, warning_messages]
+    dependencies: [subject_intent_parser]
+    excludes: []
+  - id: prompt_renderer_system
+    system: prompt-renderer-system
+    triggers: [always]
+    phases: [phase_3_1_prompt_package, phase_4_1_cleanup, phase_4_2_z_image_renderer, phase_4_3_delivery_package, phase_5_final_output]
+    capsule_path: config/capsules/prompt_renderer_system.yaml
+    full_yaml_paths: [config/comfyui-prompt-pack.yaml, config/prompt-core/prompt-renderer.yaml, config/prompt-core/prompt-renderer-modes.yaml]
+    claims: [final_positive_prompt, final_negative_prompt, compact_positive_prompt, detected_intent, debug_json]
+    dependencies: [subject_intent_parser]
+    excludes: []
+  - id: quality_failure_validation_system
+    system: quality-failure-validation-system
+    triggers: [always]
+    phases: [phase_4_self_review, phase_4_1_cleanup, phase_5_final_output]
+    capsule_path: config/capsules/quality_failure_validation_system.yaml
+    full_yaml_paths: [config/prompt-core/quality-rubric.yaml, config/prompt-core/failure-taxonomy.yaml, config/quality-contract.yaml]
+    claims: [quality_score, failure_list, repair_plan, final_cleanup_prompt]
+    dependencies: [prompt_renderer_system]
+    excludes: []
+  - id: comfyui_workflow_system
+    system: comfyui-workflow-system
+    triggers: [always]
+    phases: [phase_4_3_delivery_package, phase_5_final_output]
+    capsule_path: config/capsules/comfyui_workflow_system.yaml
+    full_yaml_paths: [config/comfyui-prompt-pack.yaml]
+    claims: [prompt_only_output_contract, workflow_api_disabled]
+    dependencies: [prompt_renderer_system]
+    excludes: []

@@ -1,0 +1,6 @@
+schema_version: "1.0.0"
+module_id: visual_narrative_system
+summary: Resolve narrative moment, story role, action reason, prop function, and emotional context.
+phase_focus: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint]
+prompt_rules:
+  - Narrative cues should remain visual and concise enough for prompt rendering.

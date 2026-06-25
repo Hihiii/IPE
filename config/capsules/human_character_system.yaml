@@ -1,0 +1,7 @@
+schema_version: "1.0.0"
+module_id: human_character_system
+summary: Maintain adult human/humanoid identity, maturity, anatomy plausibility, and character consistency.
+phase_focus: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint]
+prompt_rules:
+  - Eligible human/humanoid subjects must remain clearly adult.
+  - Anatomy and pose choices must support readable composition.

@@ -1,0 +1,6 @@
+schema_version: "1.0.0"
+module_id: microclimate_atmosphere_system
+summary: Resolve weather, humidity, steam, rain, atmosphere density, and environment responses.
+phase_focus: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
+prompt_rules:
+  - Atmosphere must remain readable and not hide required adult or subject detail.

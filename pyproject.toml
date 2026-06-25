@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nsfw-comfyui-zimage-prompt-enhancer"
-version = "3.6.0"
+version = "4.0.0"
 description = "Adult-only fictional/original character prompt enhancement rules for ComfyUI Z-Image."
 requires-python = ">=3.11"
 dependencies = ["PyYAML>=6.0", "jsonschema>=4.0"]
@@ -13,6 +13,7 @@ dependencies = ["PyYAML>=6.0", "jsonschema>=4.0"]
 dev = ["pytest>=8.0"]
 
 [project.scripts]
+ipe = "ipe.cli:main"
 nsfw-compile-execution = "scripts.compile_execution_packet:main"
 nsfw-materialize-execution-phase = "scripts.materialize_execution_phase:main"
 nsfw-validate-execution = "scripts.validate_execution_record:main"
@@ -22,7 +23,7 @@ nsfw-validate-quality = "scripts.validate_quality_gate:main"
 nsfw-benchmark-execution = "scripts.benchmark_execution_packets:main"
 
 [tool.setuptools]
-packages = ["scripts"]
+packages = ["scripts", "ipe"]
 
 [tool.pytest.ini_options]
 minversion = "8.0"
