@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.pytest_cache/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project
+knowledge/full/character-ip/games/
+knowledge/full/character-ip/anime/
+knowledge/full/character-ip/manga/
+knowledge/full/character-ip/mixed-media/
