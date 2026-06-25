@@ -1,0 +1,56 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_x--characters--lulu
+  display_name: Lulu
+  aliases:
+  - Lulu
+  - 露露
+  - 露露 (Final Fantasy X)
+  source_title: Final Fantasy X
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy X default appearance
+  identity_summary: Tall black mage with very long black hair in a thick braided ponytail, red-violet
+    eyes, pale skin, a black low-cut sleeveless dress with multiple leather belts across the waist and
+    bodice, white fur stole, long slit skirt, black heeled boots, and a Moogle doll carried in hand.
+  visual_anchors:
+  - very long black braided ponytail
+  - black low-cut belted dress
+  - white fur stole
+  - multiple silver-buckled belts
+  - Moogle doll
+  - red-violet eyes
+  - full lips with dark lipstick
+  - very long black braided hair
+  - deep black
+  - smooth crown with side-swept volume
+  - side-swept angled fringe
+  - mature striking face, defined cheekbones, oval proportion
+  - tall hourglass figure, mature curvy build, elegant posture
+  outfit_anchors:
+  - very long black braided ponytail
+  - black low-cut belted dress
+  - white fur stole
+  - multiple leather belts with silver buckles
+  - Moogle doll
+  - red-violet eyes
+  - Tall black mage with very long black hair in a thick braided ponytail, red-violet eyes, pale skin,
+    a black low-cut sleeveless dress with multiple leather belts across the waist and bodice, white fur
+    stole, long slit skirt, black heeled boots, and a Moogle doll carried in hand.
+  style_anchors:
+  - cool detached, unamused
+  - direct observant gaze, slightly down-turned
+  drift_guards:
+  - short hair or non-black hair
+  - smiling or cheerful expression
+  - bright eye color instead of red-violet
+  - young girlish appearance
+  - overly friendly demeanor
+  - missing black dress
+  - missing white fur stole
+  - missing multiple belts
+  - single belt instead of multiple
+  - modern casual clothing
+  - armor or combat gear
+  - pants instead of long skirt
+  - generic body-type drift
+  - petite or childish build

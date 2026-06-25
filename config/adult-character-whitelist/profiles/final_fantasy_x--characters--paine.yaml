@@ -1,0 +1,63 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_x--characters--paine
+  display_name: Paine
+  aliases:
+  - Paine
+  - 派茵
+  - 派茵 (Final Fantasy X-2)
+  source_title: Final Fantasy X-2
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy X-2 default appearance
+  identity_summary: Tall lean athletic woman with sharp angular face, piercing blue-purple eyes, dark
+    purple-black chin-length blunt bob haircut with side-swept bangs, pale skin, wearing a form-fitting
+    black leather/vinyl outfit with red trim, asymmetrical cut with detached sleeve on one arm, black
+    tight pants, short heeled combat boots, silver chain belt, carrying a longsword at her hip.
+  visual_anchors:
+  - dark purple-black blunt bob
+  - sharp angular face
+  - pale skin
+  - black leather/vinyl outfit with red trim
+  - asymmetrical detached sleeve
+  - longsword at hip
+  - piercing blue-purple eyes
+  - sharp angular jawline
+  - dark purple-black
+  - flat sleek crown
+  - side-swept, covers one eye partially
+  - piercing blue-purple
+  - tall lean athletic build
+  outfit_anchors:
+  - dark purple-black blunt bob
+  - black form-fitting outfit with red trim
+  - asymmetrical detached sleeve
+  - black tight pants
+  - short heeled combat boots
+  - longsword at hip
+  - Form-fitting black leather/vinyl outfit with red trim, asymmetrical cut with detached sleeve on one
+    arm, black tight pants, short heeled combat boots, silver chain belt, metal accessories.
+  style_anchors:
+  - detached cool
+  - cool level stare
+  drift_guards:
+  - cheerful expression
+  - pastel colors
+  - frilly outfit
+  - long hair
+  - exposed midriff
+  - warm or bright demeanor
+  - wrong hair color
+  - wrong eye color
+  - frilly or lacy clothing
+  - skirt or dress
+  - pastel colored outfit
+  - loose or baggy clothing
+  - full armor
+  - missing red trim
+  - missing asymmetrical sleeve
+  - curly hair
+  - ponytail
+  - bright unnatural colors
+  - bangs covering both eyes
+  - fragile passive pose
+  - cheerful bouncy posture

@@ -1,0 +1,46 @@
+version: 1
+purpose: "Translate focal-length knowledge into practical subject distance, perspective, and prompt-safe lens choices."
+
+lens_practical_profiles:
+  ultra_wide:
+    range: "16-24mm"
+    shooting_distance: close
+    perspective_behavior: "expansive depth and strong leading lines"
+    best_subjects: [architecture, large_scale_subject, immersive_action]
+    failure_risks: [warped_face, stretched_limbs, edge_distortion]
+    correction_prompt: "keep faces and limbs away from frame edges"
+  wide_environmental:
+    range: "28-35mm"
+    shooting_distance: medium
+    perspective_behavior: "natural context with clear spatial relationships"
+    best_subjects: [environmental_portrait, room_story, vehicle_and_model, stage]
+    failure_risks: [tight_closeup_distortion]
+  normal:
+    range: "50mm"
+    shooting_distance: medium
+    perspective_behavior: "balanced perspective and natural facial proportions"
+    best_subjects: [editorial, portrait, half_body, narrative_scene]
+  short_telephoto:
+    range: "70-105mm"
+    shooting_distance: medium_to_far
+    perspective_behavior: "flattering proportions and gentle compression"
+    best_subjects: [beauty, portrait, fashion, product_hero]
+    failure_risks: [lost_room_context]
+  telephoto:
+    range: "135mm_plus"
+    shooting_distance: far
+    perspective_behavior: "strong background compression and isolated layers"
+    best_subjects: [compressed_fashion, distant_action, layered_landscape]
+    failure_risks: [flattened_space, hidden_room_relationship]
+  macro:
+    range: "90-105mm macro"
+    shooting_distance: close
+    perspective_behavior: "extreme detail with a narrow focus plane"
+    best_subjects: [jewelry, texture, product_detail]
+
+decision_rules:
+  - "Environment story or room relationship: prefer 28-35mm."
+  - "Face beauty priority: prefer 50-85mm."
+  - "Large scale architecture or mecha: prefer 24-28mm with edge safety."
+  - "Vehicle editorial: choose 35mm for context, 70-135mm for compression."
+  - "Avoid ultra-wide close face portraits and telephoto when room context is required."

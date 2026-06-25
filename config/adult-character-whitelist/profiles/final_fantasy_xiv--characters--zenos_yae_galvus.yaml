@@ -1,0 +1,61 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xiv--characters--zenos_yae_galvus
+  display_name: Zenos yae Galvus
+  aliases:
+  - Zenos yae Galvus
+  - 芝諾斯·耶·加爾烏斯
+  - 芝諾斯·耶·加爾烏斯 (Final Fantasy XIV)
+  source_title: Final Fantasy XIV
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XIV default appearance (Stormblood/Endwalker era)
+  identity_summary: Garlean crown prince obsessed with battle, with long golden-blond hair in a low ponytail,
+    cold lifeless blue eyes, a pale expressionless face, wearing a dark red and black Garlean military
+    greatcoat with wide black fur collar at the shoulders, silver epaulets, a black military uniform beneath
+    with gold buttons, black fitted pants, black leather boots, and black gloves, carrying an enormous
+    nodachi katana Zantetsuken.
+  visual_anchors:
+  - long golden-blond hair in low ponytail
+  - cold lifeless blue eyes
+  - dark red and black Garlean military greatcoat with fur collar
+  - Zantetsuken enormous nodachi katana
+  - bored expressionless face
+  - perpetual bored expression
+  - golden-blond
+  - smooth crown volume transitioning to ponytail
+  - loose strands swept to sides
+  - cold lifeless blue
+  - sharp aristocratic face with high cheekbones
+  - tall lean athletic build
+  outfit_anchors:
+  - long golden-blond hair in low ponytail
+  - cold blue eyes
+  - dark red and black Garlean greatcoat with fur collar
+  - Zantetsuken nodachi katana
+  - Garlean crown prince wearing a dark red and black military greatcoat with wide black fur collar draped
+    over the shoulders, silver epaulets with rank insignia, a black military uniform tunic with gold buttons,
+    black fitted trousers, black knee-high leather boots with silver buckles, and black leather gloves.
+  style_anchors:
+  - bored detached
+  - bored detached, lifeless unfocused gaze
+  drift_guards:
+  - short hair
+  - missing long ponytail
+  - missing golden-blond hair color
+  - missing cold blue eyes
+  - missing Zantetsuken
+  - warm friendly expression
+  - generic attractive person replacement
+  - missing dark red Garlean greatcoat
+  - missing fur collar on coat
+  - missing silver epaulets
+  - missing black military tunic
+  - light colored outfit
+  - random outfit redesign
+  - missing black gloves
+  - missing ponytail
+  - different hair color
+  - elaborate hairstyle
+  - hunched passive posture
+  - overweight build
+  - nervous fidgeting movement

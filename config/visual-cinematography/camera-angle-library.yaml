@@ -1,0 +1,1267 @@
+# =============================================================================
+# CAMERA ANGLE LIBRARY — Enhanced for autorevise-style prompt enhancement
+# Purpose:
+#   Control camera height, view direction, psychological effect, perspective risk,
+#   and generator-visible angle language.
+#
+# Design principle:
+#   Camera angle is not only a camera term. It affects perceived power,
+#   vulnerability, product geometry, architectural accuracy, UI readability,
+#   and character identity. Final prompts should describe the visible result
+#   of the angle, not only the technical label.
+# =============================================================================
+
+# =============================================================================
+# CAMERA ANGLE LIBRARY — vertical camera positions and their psychological
+# impact on the subject's perceived power and vulnerability.
+# =============================================================================
+
+camera_angles:
+  low_angle:
+    visual_effect:
+      - "heroic"
+      - "dominant"
+      - "monumental"
+      - "powerful"
+    best_for:
+      - hero_poster
+      - sports_portrait
+      - luxury_car
+      - mythic_character
+    add_positive:
+      - "low-angle shot"
+      - "heroic upward perspective"
+      - "monumental presence"
+    risks:
+      - "may distort face or hands if too close"
+    add_negative:
+      - "unflattering facial distortion"
+      - "oversized hands"
+
+  high_angle:
+    visual_effect:
+      - "delicate"
+      - "observational"
+      - "vulnerable"
+      - "editorial"
+    best_for:
+      - bedroom_editorial
+      - fashion_portrait
+      - quiet_emotional_scene
+    add_positive:
+      - "slightly high-angle portrait"
+      - "camera looking down gently"
+
+  eye_level:
+    visual_effect:
+      - "natural"
+      - "honest"
+      - "relatable"
+    best_for:
+      - realistic_portrait
+      - documentary_scene
+      - architectural_interior
+    add_positive:
+      - "eye-level camera angle"
+      - "natural human perspective"
+
+
+# =============================================================================
+# AUTOREVISE CAMERA ANGLE SYSTEM
+# =============================================================================
+
+autorevise_camera_angle_system:
+  purpose:
+    - "Select camera angle based on subject, task profile, shot size, composition, and output format."
+    - "Translate camera-angle psychology into generator-visible spatial language."
+    - "Prevent angle choices from causing face distortion, product deformation, architecture warp, or UI readability loss."
+    - "Route camera-angle failures back to shot-taxonomy, camera-lens-library, composition-library, subject-rules, and output-specs."
+
+  phase_usage:
+    phase_1_intent_analysis:
+      extract:
+        - requested_angle
+        - implied_angle
+        - subject_vulnerability_or_power_intent
+        - geometry_accuracy_needs
+        - readability_needs
+        - angle_risk_flags
+    phase_2_cinematic_enrichment:
+      select:
+        - angle_category
+        - view_direction
+        - angle_strength
+        - perspective_risk
+        - corrective_terms
+    phase_3_scene_blueprint:
+      store:
+        - camera_height
+        - camera_pitch
+        - view_axis
+        - subject_to_camera_relationship
+    phase_3_5_prompt_package:
+      compile_into:
+        - composition
+        - style_and_lighting.lens
+        - subject
+    phase_4_self_review:
+      detect:
+        - unflattering distortion
+        - wrong perceived power
+        - architecture warp
+        - product geometry errors
+        - UI readability failures
+        - angle conflicts with shot size
+    phase_4_5_compression:
+      compress_angle_language_into:
+        - "eye-level natural perspective"
+        - "heroic low-angle composition"
+        - "slightly high-angle editorial portrait"
+        - "top-down gameplay-readable view"
+        - "controlled three-quarter product view"
+
+# =============================================================================
+# EXPANDED CAMERA ANGLE TAXONOMY
+# =============================================================================
+
+expanded_camera_angles:
+  eye_level:
+    category: "vertical_position"
+    psychological_effect:
+      - "neutral"
+      - "honest"
+      - "human"
+      - "relatable"
+    generator_prompt: "eye-level natural human perspective, subject viewed at normal standing height, realistic proportions"
+    best_for:
+      - realistic_portrait
+      - documentary_scene
+      - lifestyle_photography
+      - product_with_human_context
+      - architecture_interior
+    risks:
+      - "can feel flat if no composition or lighting hierarchy is added"
+    corrective_terms:
+      - "clear subject-first hierarchy"
+      - "natural proportions"
+      - "subtle depth layering"
+    compression_phrase: "eye-level natural perspective"
+
+  slightly_low_angle:
+    category: "vertical_position"
+    psychological_effect:
+      - "confident"
+      - "premium"
+      - "subtly powerful"
+      - "aspirational"
+    generator_prompt: "slightly low-angle perspective, subject appears confident and elevated without exaggerated distortion"
+    best_for:
+      - fashion_editorial
+      - luxury_portrait
+      - product_hero
+      - vehicle_hero
+      - character_poster
+    risks:
+      - "can enlarge chin, hands, or feet if too close"
+      - "can exaggerate torso proportions in portraits"
+    corrective_terms:
+      - "natural facial proportions"
+      - "hands not enlarged"
+      - "subtle upward perspective only"
+    compression_phrase: "subtle low-angle confidence"
+
+  low_angle:
+    category: "vertical_position"
+    psychological_effect:
+      - "heroic"
+      - "dominant"
+      - "monumental"
+      - "powerful"
+    generator_prompt: "low-angle heroic upward perspective, subject towers slightly above camera, strong silhouette and monumental presence"
+    best_for:
+      - hero_poster
+      - sports_portrait
+      - mythic_character
+      - luxury_car
+      - skyscraper_exterior
+      - dramatic_product_hero
+    risks:
+      - "face, hands, shoes, or vehicle front may become oversized"
+      - "vertical architecture may lean if perspective is uncontrolled"
+      - "can become campy if overused for luxury minimal images"
+    corrective_terms:
+      - "controlled perspective"
+      - "natural anatomy despite upward angle"
+      - "straight vertical lines where architectural elements appear"
+      - "face kept away from extreme frame edge"
+    add_negative:
+      - "unflattering facial distortion"
+      - "oversized hands"
+      - "fisheye warp"
+    compression_phrase: "heroic low-angle perspective"
+
+  extreme_low_angle_worms_eye:
+    category: "vertical_position"
+    psychological_effect:
+      - "surreal"
+      - "mythic"
+      - "overwhelming"
+      - "larger-than-life"
+    generator_prompt: "extreme worm's-eye view from near ground level, dramatic upward perspective, towering scale, strong vertical energy"
+    best_for:
+      - skyscraper
+      - superhero_reveal
+      - mythic_godlike_character
+      - futuristic_product_from_below
+      - dynamic_sports_action
+    risks:
+      - "high risk of distorted anatomy"
+      - "faces may become unreadable"
+      - "feet or foreground objects may dominate"
+      - "architecture may warp unless straight verticals are requested"
+    corrective_terms:
+      - "controlled worm's-eye perspective"
+      - "clear readable face"
+      - "natural anatomy despite extreme angle"
+      - "straight architectural verticals if buildings are present"
+    add_negative:
+      - "fisheye distortion"
+      - "giant feet"
+      - "unreadable face"
+    compression_phrase: "controlled worm's-eye hero angle"
+
+  slightly_high_angle:
+    category: "vertical_position"
+    psychological_effect:
+      - "editorial"
+      - "delicate"
+      - "observational"
+      - "intimate"
+    generator_prompt: "slightly high-angle perspective looking down gently, elegant editorial viewpoint, face and upper body remain flattering"
+    best_for:
+      - beauty_portrait
+      - bedroom_editorial
+      - fashion_portrait
+      - food_tabletop
+      - product_flat_context
+      - quiet_emotional_scene
+    risks:
+      - "may make subject appear smaller or less powerful"
+      - "may compress body unnaturally if combined with wide lens"
+    corrective_terms:
+      - "gentle high angle"
+      - "flattering facial proportions"
+      - "clear eye contact"
+      - "body proportions remain natural"
+    compression_phrase: "slightly high-angle editorial view"
+
+  high_angle:
+    category: "vertical_position"
+    psychological_effect:
+      - "vulnerable"
+      - "observed"
+      - "graphic"
+      - "quiet"
+    generator_prompt: "high-angle view looking down, subject appears smaller within the frame, environment context visible"
+    best_for:
+      - emotional_portrait
+      - fashion_editorial
+      - table_scene
+      - bed_scene
+      - product_arrangement
+      - crowd_or_environmental_scene
+    risks:
+      - "can reduce subject power"
+      - "can hide facial structure"
+      - "can make full-body proportions look compressed"
+    corrective_terms:
+      - "face remains visible"
+      - "natural body proportions"
+      - "environment supports the subject without overwhelming it"
+    compression_phrase: "high-angle observational view"
+
+  overhead_top_down:
+    category: "vertical_position"
+    psychological_effect:
+      - "graphic"
+      - "organized"
+      - "map-like"
+      - "objective"
+      - "gameplay-readable"
+    generator_prompt: "top-down overhead view, clear layout, objects arranged as readable shapes, no perspective distortion"
+    best_for:
+      - flat_lay
+      - food_spread
+      - educational_game_ui
+      - hidden_object_scene
+      - board_game_layout
+      - architectural_plan_style
+      - infographic
+    risks:
+      - "faces may be unreadable"
+      - "standing human subjects may look awkward"
+      - "cinematic depth may be lost"
+    corrective_terms:
+      - "clear object silhouettes"
+      - "readable spatial layout"
+      - "deep focus"
+      - "no perspective confusion"
+    compression_phrase: "top-down readable layout"
+
+  birds_eye:
+    category: "vertical_position"
+    psychological_effect:
+      - "large-scale"
+      - "detached"
+      - "strategic"
+      - "environmental"
+    generator_prompt: "bird's-eye view from high above, large environment visible, subject positioned clearly within the overall scene"
+    best_for:
+      - city_scene
+      - landscape
+      - architectural_site
+      - crowd_scene
+      - fantasy_world_map
+      - hidden_object_city
+    risks:
+      - "main subject may become too small"
+      - "important character features may disappear"
+    corrective_terms:
+      - "main subject remains identifiable"
+      - "clear visual zones"
+      - "readable scale relationships"
+    compression_phrase: "bird's-eye environmental view"
+
+  dutch_angle:
+    category: "horizon_orientation"
+    psychological_effect:
+      - "unstable"
+      - "chaotic"
+      - "tense"
+      - "energetic"
+    generator_prompt: "subtle Dutch angle with tilted horizon, dynamic tension, composition still readable"
+    best_for:
+      - action_scene
+      - thriller
+      - cyberpunk
+      - battle_scene
+      - psychological_poster
+      - racing_or_chase_scene
+    risks:
+      - "can look accidental or amateurish"
+      - "bad for architecture, product accuracy, UI, or educational material"
+      - "can cause warped horizon and confusing composition"
+    corrective_terms:
+      - "intentional subtle tilt"
+      - "readable subject silhouette"
+      - "not excessive"
+    add_negative:
+      - "accidental crooked framing"
+      - "unreadable tilted layout"
+    compression_phrase: "subtle Dutch-angle tension"
+
+# =============================================================================
+# VIEW DIRECTION TAXONOMY
+# =============================================================================
+
+view_directions:
+  front_view:
+    purpose: "Show symmetry, face, label, logo, interface, or facade directly."
+    generator_prompt: "front-facing view, subject oriented directly toward the camera, key details clearly visible"
+    best_for:
+      - portrait
+      - product_label
+      - logo_poster
+      - architecture_facade
+      - character_design_sheet
+    risks:
+      - "can feel static"
+      - "may flatten depth"
+    corrective_terms:
+      - "clear symmetry"
+      - "subtle depth from lighting"
+      - "key details facing camera"
+    compression_phrase: "front-facing view"
+
+  three_quarter_view:
+    purpose: "Show form, depth, and silhouette while keeping important details visible."
+    generator_prompt: "three-quarter view showing front and side planes, strong sense of depth and volume"
+    best_for:
+      - product_design_render
+      - vehicle_hero
+      - full_body_character
+      - fashion_editorial
+      - architecture_exterior
+      - cosplay_poster
+    risks:
+      - "label or face may become less readable if turned too far"
+    corrective_terms:
+      - "front detail still readable"
+      - "clear side contour"
+      - "balanced perspective"
+    compression_phrase: "three-quarter depth view"
+
+  side_profile:
+    purpose: "Create graphic silhouette, elegance, or psychological distance."
+    generator_prompt: "clean side-profile view, strong silhouette, face or product outline readable"
+    best_for:
+      - fashion_portrait
+      - character_poster
+      - luxury_vehicle
+      - product_silhouette
+      - psychological_scene
+    risks:
+      - "facial identity may reduce"
+      - "product label may disappear"
+    corrective_terms:
+      - "recognizable profile silhouette"
+      - "important design cues remain visible"
+    compression_phrase: "clean side-profile view"
+
+  rear_view:
+    purpose: "Show back design, departure, mystery, or environmental story."
+    generator_prompt: "rear view, subject seen from behind, silhouette and back design clearly visible, environment ahead supports the story"
+    best_for:
+      - fashion_back_detail
+      - character_departure
+      - landscape_contemplation
+      - vehicle_rear_design
+    risks:
+      - "identity and facial expression lost"
+      - "not suitable when face or label is required"
+    corrective_terms:
+      - "back design is the hero detail"
+      - "clear silhouette"
+      - "environmental story visible"
+    compression_phrase: "rear-view storytelling angle"
+
+  over_the_shoulder_view:
+    purpose: "Create intimacy, perspective, or conversational staging."
+    generator_prompt: "over-the-shoulder view with softly blurred foreground shoulder, main subject unobstructed and clearly visible"
+    best_for:
+      - conversation_scene
+      - mirror_scene
+      - cinematic_film_still
+      - viewer_pov
+    risks:
+      - "foreground shoulder may cover the subject"
+      - "extra body parts may appear"
+    corrective_terms:
+      - "foreground softly blurred"
+      - "main subject unobstructed"
+      - "clean body silhouette"
+    compression_phrase: "over-the-shoulder cinematic view"
+
+  point_of_view:
+    purpose: "Make viewer feel inside the scene."
+    generator_prompt: "first-person point-of-view perspective, viewer positioned naturally within the scene, hands or foreground elements only if requested"
+    best_for:
+      - immersive_scene
+      - game_view
+      - action_moment
+      - product_use_context
+    risks:
+      - "unwanted hands may appear"
+      - "subject may be too close"
+    corrective_terms:
+      - "no unwanted hands unless specified"
+      - "clear subject distance"
+      - "natural viewer perspective"
+    compression_phrase: "immersive POV perspective"
+
+# =============================================================================
+# GENERATOR-VISIBLE CAMERA ANGLE TRANSLATION
+# =============================================================================
+
+generator_visible_camera_angle_translation:
+  principle:
+    - "Do not rely only on camera-angle labels. Describe the visible spatial relationship."
+    - "Combine vertical angle with view direction when needed: e.g. low-angle three-quarter view."
+    - "For faces, add distortion protection when using low or wide angles."
+    - "For architecture, add straight verticals and controlled perspective."
+    - "For products, keep geometry and labels readable."
+
+  weak_to_strong_examples:
+    low_angle:
+      weak: "low angle"
+      strong: "heroic low-angle upward perspective with controlled proportions and strong silhouette"
+    high_angle:
+      weak: "high angle"
+      strong: "slightly high-angle editorial view looking down gently, face remains flattering and readable"
+    top_down:
+      weak: "top-down"
+      strong: "top-down overhead layout with clear object silhouettes and readable spatial organization"
+    dutch_angle:
+      weak: "Dutch angle"
+      strong: "subtle intentional Dutch angle creating tension while keeping the subject silhouette readable"
+    three_quarter:
+      weak: "3/4 view"
+      strong: "three-quarter view showing front and side planes with clear depth and readable key details"
+
+# =============================================================================
+# CAMERA ANGLE INTENT SELECTOR
+# =============================================================================
+
+camera_angle_intent_selector:
+  beauty_portrait:
+    preferred_angles:
+      - eye_level
+      - slightly_high_angle
+    preferred_view_directions:
+      - front_view
+      - three_quarter_view
+    final_prompt_effect: "flattering eye-level or slightly high-angle beauty perspective, sharp eyes, natural facial proportions"
+    avoid:
+      - "extreme low angle"
+      - "wide-angle close-up distortion"
+
+  fashion_editorial:
+    preferred_angles:
+      - slightly_low_angle
+      - eye_level
+      - slightly_high_angle
+    preferred_view_directions:
+      - three_quarter_view
+      - side_profile
+    final_prompt_effect: "editorial fashion perspective with readable pose silhouette and garment shape"
+    avoid:
+      - "cropped feet in full-body shots"
+      - "unflattering lens distortion"
+
+  luxury_fashion_editorial:
+    description: "Ultra-premium fashion editorial. Angle is chosen to maximize garment silhouette, create aspirational distance, and project brand authority."
+    preferred_angles:
+      - slightly_low_angle
+      - eye_level
+    preferred_view_directions:
+      - three_quarter_view
+      - side_profile
+      - front_view
+    angle_strength: "premium_subtle"
+    final_prompt_effect: "controlled luxury editorial angle, garment silhouette dominant, confident posture, aspirational perspective, clean line from head to hem"
+    protect:
+      - "full-body silhouette"
+      - "garment hem and shoes"
+      - "natural proportions"
+      - "face readable but garment remains hero"
+    avoid:
+      - "extreme angle distorting garment shape"
+      - "cropped garment edge"
+      - "unflattering body proportion"
+      - "angle that hides fabric texture"
+
+  full_body_character_design:
+    preferred_angles:
+      - eye_level
+      - slightly_low_angle
+    preferred_view_directions:
+      - front_view
+      - three_quarter_view
+    final_prompt_effect: "full-body character angle with complete silhouette, readable costume, and natural proportions"
+    avoid:
+      - "extreme high angle"
+      - "giant feet or hands"
+      - "cropped weapon or footwear"
+
+  photorealistic_cosplay_editorial:
+    preferred_angles:
+      - eye_level
+      - slightly_low_angle
+      - slightly_high_angle
+    preferred_view_directions:
+      - three_quarter_view
+      - front_view
+    final_prompt_effect: "real camera cosplay editorial perspective, character-inspired design cues visible, natural body proportions"
+    avoid:
+      - "anime drawing angle exaggeration"
+      - "fisheye distortion unless requested"
+
+  anime_realism_character:
+    preferred_angles:
+      - slightly_low_angle
+      - eye_level
+      - low_angle
+    preferred_view_directions:
+      - three_quarter_view
+      - front_view
+      - side_profile
+    final_prompt_effect: "anime-realism character angle with heroic silhouette and readable stylized design"
+    avoid:
+      - "chibi exaggeration"
+      - "unreadable face from extreme angle"
+
+  product_ad:
+    preferred_angles:
+      - eye_level
+      - slightly_low_angle
+      - slightly_high_angle
+    preferred_view_directions:
+      - front_view
+      - three_quarter_view
+    final_prompt_effect: "controlled commercial product view, geometry accurate, label readable, material finish visible"
+    avoid:
+      - "extreme perspective distortion"
+      - "label turned away"
+      - "cropped product edges"
+
+  product_design_render:
+    preferred_angles:
+      - eye_level
+      - slightly_high_angle
+    preferred_view_directions:
+      - three_quarter_view
+      - front_view
+      - orthographic_view
+    final_prompt_effect: "precise product design view with clear planes, clean edges, and accurate proportions"
+    avoid:
+      - "dramatic lens warping"
+      - "unreadable interface"
+
+  architecture_interior:
+    preferred_angles:
+      - eye_level
+      - slightly_low_angle
+    preferred_view_directions:
+      - one_point_perspective
+      - two_point_perspective
+    final_prompt_effect: "controlled architectural perspective, straight vertical lines, readable room scale"
+    avoid:
+      - "Dutch angle"
+      - "fisheye distortion"
+      - "tilted vertical walls"
+
+  architecture_exterior:
+    preferred_angles:
+      - eye_level
+      - slightly_low_angle
+      - low_angle
+      - birds_eye
+    preferred_view_directions:
+      - three_quarter_view
+      - front_view
+      - two_point_perspective
+    final_prompt_effect: "architectural view with straight verticals, consistent facade grid, and believable scale"
+    avoid:
+      - "curved building edges"
+      - "leaning facade unless intentionally dramatic"
+
+  vehicle_hero:
+    preferred_angles:
+      - low_angle
+      - slightly_low_angle
+    preferred_view_directions:
+      - three_quarter_view
+      - side_profile
+      - rear_view
+    final_prompt_effect: "low three-quarter vehicle hero angle, strong stance, wheels fully visible, body lines emphasized"
+    avoid:
+      - "warped wheels"
+      - "oversized front end unless intentionally wide"
+      - "cropped tires"
+
+  educational_game_ui:
+    preferred_angles:
+      - overhead_top_down
+      - eye_level
+      - isometric_three_quarter
+    preferred_view_directions:
+      - front_view
+      - top_down
+    final_prompt_effect: "gameplay-readable camera angle with large clear objects and low cognitive load"
+    avoid:
+      - "dramatic Dutch angle"
+      - "extreme cinematic depth"
+      - "hard-to-read perspective"
+
+  hidden_object_scene:
+    preferred_angles:
+      - overhead_top_down
+      - birds_eye
+      - isometric_three_quarter
+      - eye_level
+    preferred_view_directions:
+      - wide_environmental_view
+    final_prompt_effect: "dense but organized wide angle with readable zones and deep-focus object visibility"
+    avoid:
+      - "shallow bokeh"
+      - "extreme close-up"
+      - "random tilted horizon"
+
+  movie_poster:
+    preferred_angles:
+      - low_angle
+      - slightly_low_angle
+      - eye_level
+      - dutch_angle
+    preferred_view_directions:
+      - three_quarter_view
+      - front_view
+      - side_profile
+    final_prompt_effect: "poster-grade camera angle with clear hero hierarchy and title-safe composition"
+    avoid:
+      - "angle that hides the hero identity"
+      - "unreadable dark silhouette"
+
+# =============================================================================
+# ANGLE STRENGTH CONTROL
+# =============================================================================
+
+angle_strength_control:
+  premium_subtle:
+    usage: "Use for ultra-premium fashion and luxury editorial. The angle is barely noticeable but creates a distinct feeling of confidence, exclusivity, and refined power."
+    prompt_style:
+      - "barely perceptible low-angle confidence"
+      - "controlled slightly-low fashion perspective"
+      - "subtle upward angle with natural proportions"
+      - "editorial eye-level with intentional power dynamic"
+    best_for:
+      - luxury_fashion_editorial
+      - haute_couture
+      - premium_portrait
+      - luxury_brand_campaign
+      - high_end_beauty
+    guardrails:
+      - "face remains natural"
+      - "no aggression or camp"
+      - "garment silhouette dominant over angle effect"
+      - "body proportions preserved"
+
+  subtle:
+    usage: "Use when angle should enhance the image without drawing attention to itself."
+    prompt_style:
+      - "slightly low-angle"
+      - "slightly high-angle"
+      - "natural eye-level"
+    best_for:
+      - luxury
+      - beauty
+      - product_ad
+      - interior_design
+
+  balanced:
+    usage: "Use when angle is clearly part of the visual language but does not dominate."
+    prompt_style:
+      - "low-angle hero perspective"
+      - "high-angle editorial view"
+      - "three-quarter product view"
+    best_for:
+      - fashion_editorial
+      - vehicle_hero
+      - character_poster
+      - architecture_exterior
+
+  strong:
+    usage: "Use when angle is a major storytelling device."
+    prompt_style:
+      - "dramatic worm's-eye view"
+      - "bird's-eye environmental view"
+      - "subtle Dutch angle tension"
+    best_for:
+      - movie_poster
+      - action_scene
+      - mythic_character
+      - cyberpunk_scene
+
+  locked:
+    usage: "Use when user explicitly specifies angle; do not override."
+    prompt_style: "preserve exact requested camera angle"
+    rule: "User-specified camera angle becomes a hard lock unless it conflicts with safety or impossible output constraints."
+
+# =============================================================================
+# SUBJECT-SPECIFIC CAMERA ANGLE GUARDRAILS
+# =============================================================================
+
+subject_specific_camera_angle_guardrails:
+  human_face:
+    risks:
+      - "low angle can enlarge chin or nostrils"
+      - "wide close perspective can distort face"
+      - "high angle can shrink jaw and compress features"
+    positive_guardrails:
+      - "natural facial proportions"
+      - "eyes remain the first read"
+      - "face kept away from frame edges"
+      - "flattering perspective"
+    avoid:
+      - "unflattering facial distortion"
+      - "oversized nose or chin"
+      - "wide-angle face warp"
+
+  human_full_body:
+    risks:
+      - "low angle can enlarge feet"
+      - "high angle can compress legs"
+      - "Dutch angle can make pose hard to read"
+    positive_guardrails:
+      - "natural full-body proportions"
+      - "complete silhouette visible"
+      - "feet and hands remain correctly scaled"
+      - "pose remains readable"
+    avoid:
+      - "giant feet"
+      - "tiny head"
+      - "cropped footwear"
+
+  product_packaging:
+    risks:
+      - "angle can hide label"
+      - "low angle can distort bottle or box geometry"
+      - "high angle can obscure brand front"
+    positive_guardrails:
+      - "label faces camera and remains readable"
+      - "accurate product geometry"
+      - "clean silhouette"
+      - "controlled perspective"
+    avoid:
+      - "warped label"
+      - "tilted product geometry"
+      - "cropped packaging"
+
+  architecture:
+    risks:
+      - "low angle can create leaning verticals"
+      - "Dutch angle usually looks like a mistake"
+      - "ultra-wide angle can curve walls"
+    positive_guardrails:
+      - "straight vertical lines"
+      - "controlled architectural perspective"
+      - "realistic scale"
+      - "consistent facade or interior grid"
+    avoid:
+      - "fisheye distortion"
+      - "leaning walls"
+      - "curved building edges"
+      - "accidental tilted horizon"
+
+  vehicle:
+    risks:
+      - "low angle can warp front grille"
+      - "wide three-quarter can distort wheels"
+      - "cropped wheels reduce hero stance"
+    positive_guardrails:
+      - "full vehicle stance visible"
+      - "wheels correctly shaped and fully inside frame"
+      - "controlled three-quarter perspective"
+      - "body lines remain accurate"
+    avoid:
+      - "oval wheels"
+      - "cropped tires"
+      - "warped grille"
+
+  game_ui:
+    risks:
+      - "cinematic angle may reduce gameplay readability"
+      - "steep perspective may make UI objects hard to understand"
+    positive_guardrails:
+      - "readable gameplay layout"
+      - "large clear interactive objects"
+      - "minimal perspective confusion"
+      - "front or top-down clarity"
+    avoid:
+      - "unreadable tilted interface"
+      - "tiny UI elements"
+      - "dramatic dark angle"
+
+  hidden_object_scene:
+    risks:
+      - "low angle hides objects"
+      - "strong bokeh makes details unreadable"
+      - "Dutch angle creates chaotic scanning path"
+    positive_guardrails:
+      - "deep-focus wide view"
+      - "organized visual zones"
+      - "readable small objects"
+      - "clear scanning paths"
+    avoid:
+      - "random tilted horizon"
+      - "objects hidden by perspective"
+      - "foreground blocking hidden details"
+
+# =============================================================================
+# CAMERA ANGLE CONFLICT RESOLUTION
+# =============================================================================
+
+camera_angle_conflict_resolution:
+  low_angle_vs_flattering_face:
+    conflict: "Heroic low angle requested, but face beauty or realistic portrait accuracy is important."
+    resolution: "Use a slightly low angle instead of extreme low angle; preserve natural facial proportions."
+    final_phrase: "subtle low-angle confidence with flattering facial proportions"
+
+  worm_eye_vs_full_body_design:
+    conflict: "Extreme low angle requested, but full costume or character design must remain readable."
+    resolution: "Use controlled low-angle full-body framing; avoid giant feet and cropped props."
+    final_phrase: "controlled low-angle full-body framing with readable costume silhouette"
+
+  dutch_angle_vs_architecture_accuracy:
+    conflict: "Dutch angle requested for drama, but architecture needs straight verticals and accurate scale."
+    resolution: "Avoid Dutch angle; use dramatic lighting or composition instead."
+    final_phrase: "dramatic architectural view with straight verticals and controlled perspective"
+
+  high_angle_vs_powerful_subject:
+    conflict: "High angle weakens subject, but user wants heroic or dominant impression."
+    resolution: "Switch to eye-level or slightly low-angle unless high angle was explicitly locked."
+    final_phrase: "eye-level to slightly low-angle heroic perspective"
+
+  top_down_vs_human_expression:
+    conflict: "Top-down view requested, but facial expression or eye contact is important."
+    resolution: "Use slightly high-angle instead of full overhead, or make expression secondary."
+    final_phrase: "slightly high-angle view with face and expression still readable"
+
+  product_three_quarter_vs_label_readability:
+    conflict: "Three-quarter product view creates depth but hides label."
+    resolution: "Use shallow three-quarter angle with label still facing camera."
+    final_phrase: "controlled three-quarter product view with readable front label"
+
+  cinematic_angle_vs_game_ui_readability:
+    conflict: "Cinematic camera angle reduces educational game or UI clarity."
+    resolution: "Prioritize front, top-down, or isometric readability; cinematic mood can come from color and lighting."
+    final_phrase: "gameplay-readable top-down or isometric view with mild cinematic polish"
+
+  social_vertical_vs_low_angle:
+    conflict: "9:16 vertical framing plus low angle may crop head or feet."
+    resolution: "Add headroom and footroom guardrails."
+    final_phrase: "vertical low-angle composition with safe headroom and footroom"
+
+# =============================================================================
+# CAMERA ANGLE FAILURE TAXONOMY
+# =============================================================================
+
+camera_angle_failure_taxonomy:
+  unflattering_face_distortion:
+    severity: critical
+    symptoms:
+      - "face stretched by extreme low or wide angle"
+      - "chin, nose, forehead, or hands unnaturally large"
+    likely_causes:
+      - "low angle applied too strongly"
+      - "wide lens close to face"
+      - "no facial proportion guardrail"
+    fix:
+      - "reduce to slightly low or eye-level angle"
+      - "add natural facial proportions"
+      - "keep face away from frame edges"
+    add_positive:
+      - "flattering natural facial proportions"
+      - "subtle camera angle"
+    add_negative:
+      - "wide-angle face distortion"
+      - "oversized nose or chin"
+    config_sources:
+      - camera-angle-library
+      - camera-lens-library
+      - subject-rules
+
+  architecture_tilt_or_warp:
+    severity: critical
+    symptoms:
+      - "walls lean"
+      - "building edges curve"
+      - "horizon feels accidentally tilted"
+    likely_causes:
+      - "Dutch angle used on architecture"
+      - "extreme low or wide angle without perspective control"
+    fix:
+      - "add straight vertical lines"
+      - "use controlled one-point or two-point perspective"
+      - "remove Dutch angle unless explicitly requested"
+    add_positive:
+      - "straight vertical lines"
+      - "controlled architectural perspective"
+    add_negative:
+      - "fisheye distortion"
+      - "leaning walls"
+    config_sources:
+      - camera-angle-library
+      - composition-library
+      - camera-lens-library
+      - subject-rules
+
+  product_label_hidden_by_angle:
+    severity: critical
+    symptoms:
+      - "product label unreadable"
+      - "brand front turned away"
+      - "product geometry warped"
+    likely_causes:
+      - "three-quarter angle too strong"
+      - "low angle hides label"
+      - "composition prioritizes drama over commercial readability"
+    fix:
+      - "use front or controlled shallow three-quarter view"
+      - "keep label facing camera"
+      - "add accurate product geometry"
+    add_positive:
+      - "label faces camera"
+      - "controlled product perspective"
+    add_negative:
+      - "warped label"
+      - "label turned away"
+    config_sources:
+      - camera-angle-library
+      - subject-rules
+      - material-rendering-library
+      - exposure-strategies
+
+  wrong_power_psychology:
+    severity: major
+    symptoms:
+      - "hero subject feels weak"
+      - "delicate subject feels too aggressive"
+      - "luxury image feels campy or exaggerated"
+    likely_causes:
+      - "angle psychology mismatched to task"
+      - "low/high angle applied by default"
+    fix:
+      - "select angle based on mood and subject role"
+      - "use subtle strength for luxury and beauty"
+    add_positive:
+      - "camera angle matches subject role"
+      - "subtle perspective enhancement"
+    config_sources:
+      - camera-angle-library
+      - visual-mood-library
+      - task-profiles
+
+  unreadable_ui_or_game_angle:
+    severity: critical
+    symptoms:
+      - "interactive objects hard to read"
+      - "UI appears tilted, tiny, or blocked"
+      - "gameplay goal unclear"
+    likely_causes:
+      - "cinematic angle used for UI task"
+      - "low angle or Dutch angle over-applied"
+    fix:
+      - "use front, top-down, or isometric view"
+      - "prioritize gameplay readability"
+    add_positive:
+      - "gameplay-readable camera angle"
+      - "large clear interactive objects"
+    add_negative:
+      - "unreadable tilted interface"
+      - "tiny UI elements"
+    config_sources:
+      - camera-angle-library
+      - composition-library
+      - task-profiles
+      - subject-rules
+
+  accidental_dutch_angle:
+    severity: major
+    symptoms:
+      - "image looks accidentally crooked"
+      - "horizon tilt does not support story"
+    likely_causes:
+      - "Dutch angle applied as generic cinematic detail"
+      - "no intentional tension context"
+    fix:
+      - "remove Dutch angle or make it subtle and story-motivated"
+    add_positive:
+      - "intentional subtle Dutch angle tension"
+    add_negative:
+      - "accidental crooked framing"
+    config_sources:
+      - camera-angle-library
+      - cinematography-grammar
+      - composition-library
+
+# =============================================================================
+# CAMERA ANGLE COMPRESSION RULES
+# =============================================================================
+
+camera_angle_compression_rules:
+  purpose: "Compress repeated camera angle descriptions into one clear phrase for final prompts."
+
+  clusters:
+    heroic_low_angle:
+      redundant_terms:
+        - "low angle"
+        - "upward perspective"
+        - "heroic view"
+        - "monumental camera angle"
+      compressed_as: "heroic low-angle perspective"
+
+    natural_eye_level:
+      redundant_terms:
+        - "eye level"
+        - "natural perspective"
+        - "human viewpoint"
+        - "neutral camera height"
+      compressed_as: "eye-level natural perspective"
+
+    high_angle_editorial:
+      redundant_terms:
+        - "high angle"
+        - "looking down"
+        - "editorial top perspective"
+        - "slightly above subject"
+      compressed_as: "slightly high-angle editorial view"
+
+    top_down_readable:
+      redundant_terms:
+        - "top-down"
+        - "overhead"
+        - "bird view"
+        - "flat layout"
+        - "map-like"
+      compressed_as: "top-down readable layout"
+
+    product_three_quarter:
+      redundant_terms:
+        - "three-quarter product view"
+        - "front and side visible"
+        - "product depth"
+        - "angled product"
+      compressed_as: "controlled three-quarter product view"
+
+  preserve_when_critical:
+    - "face remains flattering"
+    - "label faces camera"
+    - "straight vertical lines"
+    - "feet and hands correctly scaled"
+    - "gameplay-readable layout"
+
+# =============================================================================
+# MODEL OUTPUT MODE CAMERA ANGLE STYLE
+# =============================================================================
+
+model_output_mode_camera_angle_style:
+  chatgpt_image:
+    style: "natural-language angle description"
+    example: "A slightly low-angle fashion portrait with natural facial proportions and a clear full-body silhouette."
+    avoid:
+      - "overly technical tilt degrees unless user asks"
+
+  stable_diffusion:
+    style: "compact angle tags plus corrective negative prompt"
+    example_positive: "low angle, heroic perspective, natural anatomy, controlled perspective"
+    example_negative: "fisheye distortion, oversized hands, warped face, tilted walls"
+
+  midjourney:
+    style: "short aesthetic phrase"
+    example: "heroic low-angle editorial portrait, controlled proportions"
+
+  flux:
+    style: "clear semantic ordering"
+    example: "The subject is shown from a controlled low angle; the face remains natural and the full silhouette stays readable."
+
+  image_edit:
+    style: "preserve original angle unless user explicitly requests angle change"
+    example: "Keep the original camera angle and framing; only adjust the requested attribute."
+
+  video_prompt:
+    style: "angle + implied camera movement"
+    example: "Eye-level tracking perspective, subject remains centered and readable as the background moves gently."
+
+# =============================================================================
+# CAMERA ANGLE QUALITY RUBRIC
+# =============================================================================
+
+camera_angle_quality_rubric:
+  score_5:
+    description: "Angle strongly supports subject role, mood, task readability, and geometry accuracy."
+    signs:
+      - "camera height feels intentional"
+      - "view direction shows important details"
+      - "no distortion harms subject"
+      - "angle works with shot size and aspect ratio"
+
+  score_3:
+    description: "Angle is acceptable but generic or slightly mismatched."
+    signs:
+      - "subject remains readable"
+      - "minor tension between mood and camera position"
+      - "some missed opportunity for stronger visual hierarchy"
+
+  score_1:
+    description: "Angle actively damages the task."
+    signs:
+      - "face or product distorted"
+      - "architecture warped"
+      - "UI unreadable"
+      - "full-body subject cropped or badly scaled"
+      - "angle contradicts requested mood"
+
+# =============================================================================
+# PROMPT ASSEMBLY HOOKS
+# =============================================================================
+
+prompt_assembly_hooks:
+  camera_angle_position:
+    insert_after:
+      - shot_size
+      - composition
+    insert_before:
+      - lens_and_depth_of_field
+      - lighting
+    reason: "Camera angle affects perspective and subject geometry before lens and lighting language are interpreted."
+
+  final_prompt_rules:
+    - "Use one primary camera angle phrase unless a complex scene needs multiple viewpoints."
+    - "If angle risks distortion, add one corrective phrase immediately after the angle."
+    - "For architecture, always pair dramatic angle with straight verticals or controlled perspective."
+    - "For products, always pair angled view with label/readability requirements."
+    - "For game UI and hidden-object scenes, prioritize readable view over cinematic angle."
+    - "For image edits, preserve existing camera angle unless the user explicitly asks to change it."
+
+  avoid_list_hooks:
+    add_when_relevant:
+      human_low_angle:
+        - "wide-angle face distortion"
+        - "oversized hands"
+      architecture_angle:
+        - "fisheye distortion"
+        - "leaning walls"
+      product_angle:
+        - "warped label"
+        - "cropped product"
+      ui_angle:
+        - "unreadable tilted interface"
+      dutch_angle:
+        - "accidental crooked framing"
+
+composition_use_layer:
+  purpose: "Select camera angle by composition goal, power relationship, anatomy risk, and background readability."
+  angle_decision_fields:
+    emotional_effect: []
+    power_relationship: ""
+    best_use_cases: []
+    common_failure_cases: []
+    anatomy_distortion_risk: ""
+    prompt_phrasing_examples: []
+  low_angle:
+    emotional_effect: ["power", "dominance", "heroism", "scale"]
+    power_relationship: "subject feels larger and more dominant than viewer"
+    best_use_cases: ["mecha", "large vehicles", "hero posters", "performance stage shots", "sports action", "architecture scale"]
+    common_failure_cases: ["oversized feet or hands", "stretched legs", "distorted jawline", "nostril-heavy face angle"]
+    anatomy_distortion_risk: "high when close to human body with wide lens"
+    prompt_phrasing_examples:
+      - "subtle low-angle heroic perspective, natural body proportions preserved"
+      - "low camera height emphasizing scale without distorting hands or face"
+  high_angle:
+    emotional_effect: ["delicate", "intimate", "observational", "vulnerable", "editorial"]
+    power_relationship: "viewer observes subject from above; subject can feel softer or more intimate"
+    best_use_cases: ["fashion editorial", "reclining pose", "tabletop product", "pool edge portrait", "mirror/counter support scenes"]
+    common_failure_cases: ["compressed torso", "oversized head", "hidden lower body structure", "hands cropped at frame bottom"]
+    anatomy_distortion_risk: "medium, especially for full body or body-conscious framing"
+    prompt_phrasing_examples:
+      - "slightly high editorial camera angle with natural torso proportions"
+      - "camera looks down gently while hands and support surface remain visible"
+  eye_level:
+    emotional_effect: ["natural", "honest", "relatable", "documentary"]
+    power_relationship: "viewer and subject feel equal"
+    best_use_cases: ["realistic portraits", "lifestyle scenes", "product with human context", "screen watching"]
+    common_failure_cases: ["flat composition", "weak hierarchy", "background competition"]
+    anatomy_distortion_risk: "low"
+    prompt_phrasing_examples:
+      - "eye-level natural human perspective with clear subject-first hierarchy"
+      - "honest eye-level camera, readable background kept secondary"
+  top_down:
+    emotional_effect: ["graphic", "organized", "layout-focused", "object clarity"]
+    power_relationship: "viewer reads scene as design or map"
+    best_use_cases: ["flat lay", "food/table composition", "product arrangement", "game/UI readable layout"]
+    common_failure_cases: ["loss of face identity", "flattened body anatomy", "unclear object scale"]
+    anatomy_distortion_risk: "high for human glamour unless intentionally graphic"
+    prompt_phrasing_examples:
+      - "top-down graphic composition with all objects clearly separated"
+      - "overhead layout, no accidental body distortion"

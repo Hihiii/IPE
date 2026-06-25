@@ -1,0 +1,62 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xv--characters--gladiolus_amicitia
+  display_name: Gladiolus Amicitia
+  aliases:
+  - Gladiolus Amicitia
+  - 格拉迪歐藍斯·艾米提亞
+  - 格拉迪歐藍斯·艾米提亞 (Final Fantasy XV)
+  source_title: Final Fantasy XV
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XV default appearance
+  identity_summary: Royal Shield of Lucis with long brown hair in a low ponytail, amber eyes, a scar across
+    his nose, tan muscular build, wearing a brown leather vest worn open over his bare chest, black trousers,
+    a large fur pauldron on his left shoulder with leather straps, leather wristbands or arm guards, and
+    black combat boots, carrying a massive greatsword on his back.
+  visual_anchors:
+  - long brown hair in low ponytail
+  - scar across bridge of nose
+  - brown leather vest open over bare chest
+  - large fur pauldron on left shoulder
+  - massive greatsword on back
+  - extremely muscular build
+  - trimmed goatee and beard
+  - amber or gold-brown eyes
+  - brown hair
+  - smooth swept-back crown
+  - swept back off forehead
+  - amber or gold-brown
+  - rugged defined face
+  - extremely muscular, broad-shouldered, imposing
+  outfit_anchors:
+  - long brown hair in low ponytail reaching mid-back
+  - scar across bridge of nose
+  - brown leather vest open over bare chest
+  - large fur pauldron on left shoulder
+  - massive greatsword on back
+  - extremely muscular build
+  - Royal Shield of Lucis with long brown hair in a low ponytail, amber eyes, a scar across his nose,
+    tan muscular build, wearing a brown leather vest worn open over his bare chest, black trousers, a
+    large fur pauldron on his left shoulder with leather straps, leather wristbands or arm guards, and
+    black combat boots, carrying a massive greatsword on his back.
+  style_anchors:
+  - confident smirk
+  - confident direct smirk
+  drift_guards:
+  - short hair
+  - missing nose scar
+  - wrong eye color
+  - slight or lean build
+  - generic attractive person
+  - missing goatee or beard
+  - different hair color
+  - missing fur pauldron
+  - wearing a shirt under the vest
+  - vest closed or buttoned
+  - missing greatsword
+  - wrong vest color
+  - missing leather wristbands
+  - missing ponytail
+  - bright-colored outfit
+  - loose hair not tied back
+  - short stature

@@ -1,0 +1,233 @@
+# ============================================================
+# scene-worldbuilding-library.yaml
+# Scene enrichment, background worldbuilding, and environmental storytelling controller
+# Version: 1.0.0
+# ============================================================
+
+schema_version: "1.0.0"
+name: "scene-worldbuilding-library"
+description: >
+  A scene enrichment module that expands prompts beyond the hero subject.
+  It infers suitable environment types, background density, depth layering,
+  environmental storytelling, subject-background interaction, and style-consistent
+  worldbuilding so outputs feel like complete scenes rather than isolated subjects.
+
+core_principle: >
+  A strong image prompt should define not only the hero subject but also the
+  world around it: what place it belongs in, what environmental details support
+  the mood, how depth is layered, and how background elements interact with
+  the subject, lighting, and style.
+
+global_rules:
+  - "Do not leave the background undefined when the task benefits from a full scene."
+  - "Infer a suitable scene type from the subject, task, and mood if the user did not specify one."
+  - "Build scenes with readable foreground, midground, background, and far-background layers when appropriate."
+  - "Use environmental storytelling details that support the subject rather than distract from it."
+  - "Control background density so the scene is rich but not cluttered."
+  - "Keep background rendering style consistent with the subject and task profile."
+  - "Leave negative space when the task requires typography, hero focus, or clean commercial layout."
+  - "Scene depth layering and secondary detail selection must follow config/visual-cinematography/visual-richness-narrative-depth.yaml (P85). Do not add elements that have no narrative or contextual basis."
+
+scene_enrichment_schema:
+  scene_type: ""
+  scene_subtype: ""
+  background_density: "sparse | balanced | rich | cinematic_dense"
+  depth_layers:
+    foreground: []
+    midground: []
+    background: []
+    far_background: []
+  environmental_storytelling: []
+  subject_background_interaction: []
+  style_consistency_rules: []
+  negative_space_required: false
+  typography_reserve_zones: []
+  renderer_guardrails:
+    positive: []
+    negative: []
+
+scene_type_inference:
+  car_editorial:
+    candidate_scenes:
+      - "sunlit city street"
+      - "modern parking structure"
+      - "coastal road overlook"
+      - "mountain pass turnout"
+      - "luxury showroom"
+      - "night urban boulevard"
+    preferred_density: "balanced"
+
+  fashion_editorial:
+    candidate_scenes:
+      - "editorial studio set"
+      - "luxury hotel corridor"
+      - "rooftop lounge"
+      - "sunlit apartment interior"
+      - "modern city street"
+      - "minimal architectural plaza"
+    preferred_density: "balanced"
+
+  glamour_portrait:
+    candidate_scenes:
+      - "luxury dressing room"
+      - "soft daylight bedroom"
+      - "resort terrace"
+      - "private lounge"
+      - "elegant bathroom interior"
+    preferred_density: "balanced"
+
+  swimsuit_or_summer_fashion:
+    candidate_scenes:
+      - "poolside resort"
+      - "sunlit beach"
+      - "ocean rocks"
+      - "coastal boardwalk"
+      - "tropical deck"
+    preferred_density: "rich"
+
+  product_advertising:
+    candidate_scenes:
+      - "clean tabletop studio"
+      - "minimal architectural backdrop"
+      - "premium retail environment"
+      - "lifestyle interior scene"
+      - "hero pedestal set"
+    preferred_density: "sparse"
+
+  cinematic_character_scene:
+    candidate_scenes:
+      - "dramatic alleyway"
+      - "cathedral interior"
+      - "rainy rooftop"
+      - "futuristic city edge"
+      - "mystical forest clearing"
+      - "industrial corridor"
+    preferred_density: "cinematic_dense"
+
+  lifestyle_interior:
+    candidate_scenes:
+      - "warm modern living room"
+      - "minimal bedroom"
+      - "sunlit kitchen"
+      - "creative studio"
+      - "office workspace"
+    preferred_density: "balanced"
+
+depth_layering_rules:
+  sparse:
+    use_layers:
+      - "midground subject zone"
+      - "simple background plane"
+  balanced:
+    use_layers:
+      - "light foreground accent"
+      - "midground subject zone"
+      - "background architecture or room elements"
+      - "far-depth soft atmospheric layer"
+  rich:
+    use_layers:
+      - "foreground framing accents"
+      - "midground subject zone"
+      - "background architecture/environment details"
+      - "far-depth context"
+  cinematic_dense:
+    use_layers:
+      - "foreground depth or framing object"
+      - "complex midground action zone"
+      - "descriptive background environment"
+      - "far-depth atmosphere or skyline"
+
+environmental_storytelling_patterns:
+  luxury:
+    - "refined finishes"
+    - "controlled lighting"
+    - "minimal but premium props"
+    - "clean surfaces"
+  urban_editorial:
+    - "glass reflections"
+    - "curb lines"
+    - "street markings"
+    - "subtle storefront rhythm"
+    - "controlled city depth"
+  intimate_interior:
+    - "soft fabric textures"
+    - "lived-in but tidy atmosphere"
+    - "bedside or tabletop details"
+    - "quiet natural light"
+  resort:
+    - "sunlit relaxation cues"
+    - "water reflections"
+    - "palm or tropical greenery"
+    - "vacation-luxury atmosphere"
+  cinematic:
+    - "narrative prop hints"
+    - "atmospheric haze or mist"
+    - "directional practical lights"
+    - "visually meaningful negative space"
+
+background_density_control:
+  sparse:
+    goal: "clean, premium, focused, minimal distraction"
+  balanced:
+    goal: "complete but controlled"
+  rich:
+    goal: "immersive place identity"
+  cinematic_dense:
+    goal: "story-heavy and atmospheric"
+
+subject_background_interaction_rules:
+  vehicle_scene:
+    - "the vehicle reflects nearby architecture or sky"
+    - "the road, curb, or environment grounds the vehicle"
+    - "background lines support the vehicle stance"
+  portrait_scene:
+    - "background light direction should support facial and body lighting"
+    - "depth-of-field separates the subject from the environment"
+    - "environmental props reinforce mood and status"
+  product_scene:
+    - "product material response should match the environment"
+    - "contact shadow should anchor the product"
+    - "background props must support the brand story without stealing focus"
+  fashion_scene:
+    - "outfit and background palette should feel coordinated"
+    - "environment should support the clothing identity and mood"
+    - "architecture or set lines should help composition"
+
+style_consistency_rules:
+  - "Keep background rendering style aligned with the subject style."
+  - "If the subject is semi-realistic anime, the environment should follow the same semi-realistic anime rendering logic."
+  - "If the subject is photorealistic editorial, the background should also feel editorial and physically coherent."
+  - "Do not mix a flat stock-like background with a cinematic subject unless intentionally requested."
+
+prompt_recipes:
+  automotive_cover_scene:
+    positive:
+      - "sunlit city street background"
+      - "layered urban depth"
+      - "subtle foreground reflections"
+      - "midground curb and vehicle zone"
+      - "background modern buildings and traffic-light rhythm"
+      - "soft far-depth urban haze"
+      - "balanced background density with reserved negative space for typography"
+  editorial_bedroom_scene:
+    positive:
+      - "soft daylight bedroom"
+      - "glowing sheer curtains"
+      - "rumpled bedding"
+      - "subtle bedside details"
+      - "quiet intimate atmosphere"
+      - "layered depth and soft natural light"
+  product_hero_scene:
+    positive:
+      - "clean premium environment"
+      - "controlled sparse background"
+      - "subtle supporting props"
+      - "contact shadow anchoring the product"
+      - "material-specific light response"
+
+quality_review_hooks:
+  - "Does the subject feel placed in a real scene rather than pasted onto a blank backdrop?"
+  - "Is the background density appropriate for the task?"
+  - "Are foreground, midground, background, and far-depth used appropriately?"
+  - "Do background elements support the subject and mood?"
+  - "Is there enough worldbuilding to feel complete without becoming cluttered?"

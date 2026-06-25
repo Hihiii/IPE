@@ -1,0 +1,351 @@
+version: 1
+purpose: "Default strategy by image task type."
+
+profile_completeness_contract:
+  required_directly_or_by_inheritance:
+    - composition_preset
+    - lens_recommendation
+    - depth_of_field_recommendation
+    - exposure_and_tonal_recommendation
+    - failure_guards
+  default_inheritance:
+    composition_preset: "subject-first layout, background role defined, safe crop"
+    lens_recommendation: "defer to camera-technical-router after composition and camera relationship"
+    depth_of_field_recommendation: "background readability controls shallow, moderate, or deep focus"
+    exposure_and_tonal_recommendation: "protect critical subject readability before atmosphere"
+    failure_guards: "apply failure-taxonomy and technical-conflict cleanup"
+  rule: "Task profiles set defaults; explicit user intent and the visual decision order override them."
+
+profiles:
+  product_ad:
+    goal: "Accurate hero product image for commercial placement."
+    required_passes:
+      - material
+      - lighting
+      - composition
+      - title_area
+    default_camera: "70mm product photography, three-quarter hero angle"
+    default_lighting: "large softbox key light, controlled rim light, clean reflections"
+    default_lens_strategy:
+      focal_length: "85-105mm"
+      aperture: "f/5.6-f/8"
+      working_distance: "moderate"
+      compression: "moderate"
+    default_lighting_diagram:
+      pattern: "cinematic_three_point"
+      key_modifier: "octabox_90cm"
+      fill_modifier: "V-flat bounce"
+      rim_modifier: "strip_softbox_30x120"
+    default_color_script:
+      palette_type: "complementary"
+      saturation_strategy: "selective_saturation"
+      color_grading_intent: "neutral_pro"
+    default_exposure:
+      strategy: "middle_key"
+      contrast_ratio: "3:1"
+    composition_preset:
+      framing: "centered_hero or three-quarter product hero"
+      subject_position: "center_or_left_third"
+      negative_space: "copy-safe space opposite product"
+      background_readability: "product_support"
+      crop_policy: "full product silhouette and label inside frame"
+    avoid:
+      - "busy background"
+      - "fake text or logo artifacts"
+      - "overly shallow depth of field hiding product shape"
+
+  food_photography:
+    goal: "Appetizing commercial food image with strong texture and freshness."
+    required_passes:
+      - material
+      - lighting
+      - appetite_detail
+    default_camera: "close commercial food photography, natural perspective"
+    default_lighting: "warm soft directional side light, controlled highlights"
+    default_lens_strategy:
+      focal_length: "85-100mm"
+      aperture: "f/4-f/5.6"
+      working_distance: "close_to_moderate"
+      compression: "moderate"
+    default_lighting_diagram:
+      pattern: "natural_window"
+      key_modifier: "octabox_90cm_with_diffusion"
+      fill_modifier: "white_reflector"
+      rim_modifier: "none"
+    default_color_script:
+      palette_type: "analogous"
+      saturation_strategy: "vibrant_warm"
+      color_grading_intent: "golden_hour"
+    default_exposure:
+      strategy: "middle_key"
+      contrast_ratio: "2:1"
+    avoid:
+      - "dev model for final output"
+      - "dry texture"
+      - "excessive steam or fake gloss"
+
+  portrait:
+    goal: "Human portrait with usable face, eyes, skin, and identity tone."
+    required_passes:
+      - character
+      - anatomy
+      - lighting
+      - face_priority
+    default_camera: "85mm portrait lens, natural 3/4 view"
+    default_lighting: "soft key light with catchlights, gentle rim separation"
+    default_lens_strategy:
+      focal_length: "85mm"
+      aperture: "f/2.0-f/2.8"
+      working_distance: "moderate"
+      compression: "moderate"
+    default_lighting_diagram:
+      pattern: "loop"
+      key_modifier: "octabox_90cm"
+      fill_modifier: "beauty_dish_white"
+      rim_modifier: "strip_softbox_30x120"
+    default_color_script:
+      palette_type: "analogous"
+      saturation_strategy: "muted_warm"
+      color_grading_intent: "vintage_warm"
+    default_exposure:
+      strategy: "middle_key"
+      contrast_ratio: "3:1"
+    composition_preset:
+      framing: "medium_close_up or half_body"
+      subject_position: "center_or_left_third"
+      visual_hierarchy: "face and eyes first"
+      background_readability: "readable_secondary"
+      crop_policy: "avoid cutting hands, top of head, or identity markers accidentally"
+    avoid:
+      - "complex hand poses"
+      - "plastic skin"
+      - "over-retouched face"
+
+  social_cover:
+    goal: "High-readability social image with one-second visual impact."
+    required_passes:
+      - subject_priority
+      - negative_space
+      - channel_crop
+    default_camera: "clear hero framing with strong focal path"
+    default_lighting: "high contrast but controlled commercial lighting"
+    default_lens_strategy:
+      focal_length: "50-85mm"
+      aperture: "f/2.8-f/4"
+      working_distance: "moderate"
+      compression: "moderate"
+    default_lighting_diagram:
+      pattern: "clam_shell"
+      key_modifier: "octabox_90cm"
+      fill_modifier: "white_reflector_below"
+      rim_modifier: "none"
+    default_color_script:
+      palette_type: "complementary"
+      saturation_strategy: "vibrant"
+      color_grading_intent: "teal_orange"
+    default_exposure:
+      strategy: "high_key"
+      contrast_ratio: "2:1"
+    composition_preset:
+      framing: "strong one-second hero read"
+      subject_position: "center_or_left_third"
+      negative_space: "channel-safe title/copy area"
+      background_readability: "low_to_medium"
+      crop_policy: "safe for platform crop"
+    avoid:
+      - "small focal subject"
+      - "busy title area"
+      - "thin details near crop edges"
+
+  editorial_scene:
+    goal: "Narrative image with atmosphere while preserving a clear subject."
+    required_passes:
+      - story
+      - composition
+      - lighting
+      - atmosphere
+    default_camera: "cinematic still, intentional foreground-midground-background layering"
+    default_lighting: "motivated cinematic lighting with coherent shadow direction"
+    default_lens_strategy:
+      focal_length: "35-50mm"
+      aperture: "f/2.8-f/4"
+      working_distance: "moderate"
+      compression: "neutral_to_slight_expansive"
+    default_lighting_diagram:
+      pattern: "motified_dramatic"
+      key_modifier: "fresnel"
+      fill_modifier: "softbox_60x60"
+      rim_modifier: "strip_softbox_30x120"
+    default_color_script:
+      palette_type: "split_complementary"
+      saturation_strategy: "selective"
+      color_grading_intent: "bleach_bypass"
+    default_exposure:
+      strategy: "chiaroscuro"
+      contrast_ratio: "4:1"
+    composition_preset:
+      framing: "cinematic layered scene"
+      subject_position: "rule_of_thirds or diagonal path"
+      depth_layers: "foreground support, midground subject, readable background"
+      background_readability: "worldbuilding_support"
+      crop_policy: "story-safe crop; action target visible"
+    avoid:
+      - "random props"
+      - "style words that override the story"
+
+  architecture_interior:
+    goal: "Spatially coherent room or building image."
+    required_passes:
+      - geometry
+      - lighting
+      - material
+      - perspective
+    default_camera: "24mm architectural photography, level verticals"
+    default_lighting: "natural window light plus subtle interior practicals"
+    default_lens_strategy:
+      focal_length: "16-24mm"
+      aperture: "f/8-f/11"
+      working_distance: "close_to_moderate"
+      compression: "expansive"
+    default_lighting_diagram:
+      pattern: "natural_window"
+      key_modifier: "available_window_light"
+      fill_modifier: "white_reflector"
+      rim_modifier: "none"
+    default_color_script:
+      palette_type: "analogous"
+      saturation_strategy: "muted_neutral"
+      color_grading_intent: "desaturated_cool"
+    default_exposure:
+      strategy: "middle_key"
+      contrast_ratio: "2:1"
+    composition_preset:
+      framing: "wide or symmetrical architecture"
+      subject_position: "center_axis or scale cue"
+      depth_layers: "deep readable structure"
+      background_readability: "architectural_landmark"
+      crop_policy: "preserve verticals, doorways, windows, and structural edges"
+    avoid:
+      - "warped walls"
+      - "impossible stairs or windows"
+      - "fisheye distortion unless requested"
+
+  pet_animal:
+    goal: "Animal or pet image with accurate anatomy, fur texture, and natural expression."
+    required_passes:
+      - anatomy
+      - lighting
+      - motion
+      - fur_or_feather_detail
+    default_camera: "70-200mm telephoto, animal eye-level, natural environment"
+    default_lighting: "natural outdoor sunlight or soft window light, catchlights in eyes"
+    default_lens_strategy:
+      focal_length: "70-200mm"
+      aperture: "f/2.8-f/4"
+      working_distance: "moderate_to_far"
+      compression: "moderate_to_strong"
+    default_lighting_diagram:
+      pattern: "single_source_soft"
+      key_modifier: "available_window_light"
+      fill_modifier: "none"
+      rim_modifier: "none"
+    default_color_script:
+      palette_type: "analogous"
+      saturation_strategy: "vibrant_natural"
+      color_grading_intent: "golden_hour"
+    default_exposure:
+      strategy: "expose_for_shadows"
+      contrast_ratio: "2:1"
+    avoid:
+      - "human-like facial expression"
+      - "anatomy errors (extra legs, missing tail)"
+      - "unnatural fur texture or color"
+      - "distracting collar or leash unless specified"
+
+
+# ------------------------------------------------------------
+# Screen Viewing / Object Attention Task Profiles
+# ------------------------------------------------------------
+
+screen_viewing_task_profiles:
+  watching_tv_lifestyle:
+    screen_attention_priority: "high"
+    face_expression_gaze_priority: "high"
+    pose_body_language_priority: "high"
+    environment_atmosphere_priority: "medium"
+    rules:
+      - "The television is the attention anchor."
+      - "The subject's eyes should look toward the TV screen, not the viewer."
+      - "Head angle, torso orientation, and lounging pose should support watching TV."
+      - "Use visible TV, off-frame TV direction, screen glow, or remote control cues."
+      - "Avoid generic sofa portrait drift."
+
+  off_frame_screen_viewing:
+    screen_attention_priority: "high"
+    composition_priority: "medium_high"
+    rules:
+      - "If the screen is off-frame, the gaze direction and light feedback must clearly imply it."
+      - "Leave visual space or directional lighting toward the screen side."
+
+camera_technical_presets:
+  character_portrait:
+    lens_practical_profile: "normal or short_telephoto"
+    aperture_dof_profile: "portrait_shallow or moderate"
+    exposure_strategy: portrait
+    iso_noise_profile: "clean_low_iso or natural_iso"
+    tonal_profile: "normal_key or low_key"
+  fashion_editorial:
+    lens_practical_profile: "wide_environmental, normal, or short_telephoto"
+    aperture_dof_profile: "moderate or portrait_shallow"
+    exposure_strategy: portrait
+    iso_noise_profile: clean_low_iso
+    tonal_profile: "normal_key or low_key"
+  architecture:
+    lens_practical_profile: ultra_wide
+    aperture_dof_profile: deep_focus
+    exposure_strategy: product
+    iso_noise_profile: clean_low_iso
+    tonal_profile: normal_key
+  night_cyberpunk:
+    lens_practical_profile: "ultra_wide, wide_environmental, or normal"
+    aperture_dof_profile: moderate
+    exposure_strategy: night_scene
+    iso_noise_profile: "natural_iso or high_iso_documentary"
+    tonal_profile: readable_night
+  motion_action:
+    lens_practical_profile: wide_environmental
+    aperture_dof_profile: moderate
+    shutter_motion_profile: freeze_motion
+    iso_noise_profile: natural_iso
+    tonal_profile: normal_key
+
+selfie_task_profiles:
+  selfie_perspective:
+    semantic_layer: camera_relationship
+    composition:
+      framing: close_handheld
+      distance: near_camera
+      lens_feel: controlled_front_camera_wide_angle
+      phone_visible: false
+      mirror_required: false
+      device_position: completely_beyond_crop
+      foreground_arm: required_toward_lens
+      default_subject_scale: close_half_body_or_three_quarter
+      selfie_stick_visible: false
+    gaze: { default: looking_into_lens }
+    negative_guards: [visible_smartphone, mobile_phone, holding_phone, selfie_stick, mirror_selfie, phone_covering_face, external_observer_full_body_view]
+  phone_selfie:
+    semantic_layer: prop_action
+    composition: { phone_visible: true, one_arm_extended: optional, hand_phone_contact: required }
+    gaze: { default: looking_at_phone_camera_or_screen }
+    negative_guards: [phone_floating, phone_fused_with_hand, phone_covering_entire_face]
+  mirror_selfie:
+    semantic_layer: reflection_composition
+    composition: { mirror_visible: true, phone_visible: true, reflection_logic: required }
+    gaze: { default: looking_at_mirror_reflection_or_phone_screen }
+    negative_guards: [broken_reflection_logic, impossible_mirror_angle, subject_reflection_mismatch]
+  selfie_stick_shot:
+    semantic_layer: prop_action
+    composition: { selfie_stick_visible: true, action_camera_perspective: true, hand_stick_contact: required }
+    gaze: { default: looking_into_extended_camera }
+    negative_guards: [floating_selfie_stick, stick_fused_with_hand, unrequested_mirror]

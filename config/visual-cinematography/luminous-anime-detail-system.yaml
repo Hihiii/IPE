@@ -1,0 +1,361 @@
+# ============================================================
+# luminous-anime-detail-system.yaml
+# Luminous anime-realism detail, festival atmosphere, and rich visual polish
+# Version: 1.0.0
+# Purpose:
+#   Strengthen anime-realism prompts toward ChatGPT Image 2.0-like richness:
+#   luminous filtered light, translucent costume materials, refined color roles,
+#   layered foreground/midground/background detail, believable wet surfaces,
+#   hand-object contact, and clean atmospheric density.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "luminous-anime-detail-system"
+description: >
+  A high-detail anime-realism enrichment module for prompt enhancement. It turns
+  short anime, character, festival, garden, wet-surface, translucent-clothing, or
+  delicate-prop prompts into coherent visual briefs with motivated light, garment
+  construction, color harmony, scene richness, and physical contact logic.
+
+core_principle: >
+  Rich anime-realism quality comes from organized visual cause-and-effect. Every
+  decorative element should have a job: shape the silhouette, catch light, support
+  the story, reinforce color harmony, clarify action, or add depth.
+
+primary_goal: >
+  Produce luminous, detailed, clean anime-realism prompts that preserve readable
+  character identity, delicate face structure, believable clothing/material physics,
+  rich but controlled backgrounds, and ChatGPT Image 2.0-like polish.
+
+activate_when:
+  style_or_quality_cues:
+    - "anime realism"
+    - "anime-realism"
+    - "high-end anime"
+    - "premium anime illustration"
+    - "ChatGPT Image 2.0 quality"
+    - "luminous anime"
+    - "delicate anime face"
+    - "dreamy anime scene"
+    - "rich details"
+    - "overall richness"
+  scene_or_material_cues:
+    - "festival"
+    - "Dragon Boat Festival"
+    - "bamboo"
+    - "garden"
+    - "wet floor"
+    - "water reflections"
+    - "translucent dress"
+    - "chiffon"
+    - "sheer fabric"
+    - "flower ornaments"
+    - "hair ornaments"
+    - "egg"
+    - "small prop"
+    - "kneeling"
+    - "looking down"
+
+phase_routing:
+  phase_1_intent_analysis:
+    add_fields:
+      - luminous_anime_mode
+      - light_transmission_plan
+      - garment_translucency_plan
+      - color_role_plan
+      - depth_richness_plan
+      - small_prop_contact_plan
+    action: >
+      Detect anime-realism detail scenes, luminous backlight, translucent clothing,
+      delicate accessories, festival props, wet surfaces, and small object contact.
+  phase_2_cinematic_enrichment:
+    action: >
+      Convert aesthetic requests into visible decisions: filtered light direction,
+      rim highlights, face fill, garment structure, wet reflection, color accents,
+      foreground/midground/background layering, and prop contact shadows.
+  phase_3_scene_blueprint:
+    action: >
+      Specify light source, foreground framing elements, character action plane,
+      background atmosphere, prop positions, wet surface response, and readable
+      text/ornament placement.
+  phase_3_5_prompt_package:
+    action: >
+      Store luminous-anime details under style, lighting, wardrobe, material,
+      composition, scene, prop-contact, expression, and avoid categories.
+  phase_4_self_review:
+    checks:
+      - "Does the light source explain rim light, face fill, fabric glow, and wet reflections?"
+      - "Does translucent clothing have seam structure, anchor points, opacity variation, and believable folds?"
+      - "Do foreground, midground, and background details each support the subject instead of cluttering it?"
+      - "Are color roles clear: hero color, support colors, warm contrast, small accents, natural greens?"
+      - "Do hands, knees, props, water, and floor show contact shadows and weight?"
+      - "Does the face keep a delicate anime structure with natural gaze and expression?"
+      - "Are small readable text elements protected from fake dense lettering?"
+  phase_4_5_cleanup:
+    action: >
+      Preserve light-transmission, garment-construction, color-role, prop-contact,
+      and depth-layer details. Remove repeated mood adjectives before removing
+      physical or layout details.
+  phase_4_6_renderer_selection:
+    action: >
+      For ChatGPT Image use natural descriptive paragraphs. For Z Image Base/Turbo
+      use concrete visual-result phrases and concise negatives. For Flux sketch
+      focus on composition, silhouette, light direction, and prop placement.
+  phase_5_final_prompt:
+    action: >
+      Include only the detail systems relevant to the requested scene, but keep
+      enough complete visual cause-and-effect to avoid generic anime gloss.
+
+light_transmission_and_reflection:
+  purpose: >
+    Build luminous light without blowing out the image or hiding the face.
+  rules:
+    - "Name the light direction and filtering object, such as bamboo leaves, window glass, foliage, paper lanterns, or mist."
+    - "Use rim light on hair strands, translucent fabric edges, ornaments, and water droplets."
+    - "Use reflected fill from wet stone, water, pale fabric, or nearby walls to keep the face readable."
+    - "Wet floor reflections should sparkle while preserving stone texture and object contact."
+    - "Avoid pure white overexposure that destroys hair, face, cloth, or prop edges."
+  positive_language:
+    - "soft golden light filtered through bamboo leaves from the upper left"
+    - "translucent rim light along hair strands, flower ornaments, and chiffon edges"
+    - "gentle reflected fill on the face from the wet stone floor"
+    - "sparkling wet-floor reflections with preserved stone texture"
+    - "small water droplets catching backlight without hiding the character"
+  negative_language:
+    - "overexposed white glow"
+    - "face lost in backlight"
+    - "flat lighting"
+    - "random lens flare"
+    - "wet reflections without texture"
+
+translucent_festival_wardrobe:
+  purpose: >
+    Make delicate anime outfits feel designed, wearable, and physically plausible.
+  construction_fields:
+    - "base garment shape"
+    - "neckline and shoulder straps"
+    - "seam and panel structure"
+    - "layer count"
+    - "opacity variation"
+    - "damp contact zones"
+    - "ornament integration"
+    - "edge highlights"
+  rules:
+    - "Semi-transparent clothing needs a garment structure first: seams, straps, panels, waistline, and layered folds."
+    - "Thin fabric can glow at edges, but thicker folded areas stay more opaque."
+    - "Wet or damp contact areas may cling gently; do not make all fabric uniformly transparent."
+    - "Accessories should match the outfit's motif and attach to hair, straps, fabric seams, or jewelry points."
+    - "Avoid random ornaments that look pasted on top of the character."
+  positive_language:
+    - "layered translucent blue-white chiffon dress with visible seam structure"
+    - "delicate shoulder straps and panel lines that define the outfit construction"
+    - "light wet cling only at skin-contact areas, with denser folds staying more opaque"
+    - "pearl highlights, small star charms, pale flower ornaments, and fine bead details integrated into the outfit"
+    - "fabric edges glowing softly in the backlight"
+  negative_language:
+    - "plastic transparent fabric"
+    - "uniform see-through clothing"
+    - "random accessories"
+    - "ornaments floating on hair"
+    - "missing seam structure"
+    - "painted-on dress"
+
+color_role_harmony:
+  purpose: >
+    Keep rich anime color palettes controlled rather than one-note or noisy.
+  default_palette_roles:
+    hero_color: "aqua, turquoise, cyan-blue, or the character's signature color"
+    support_colors:
+      - "pearl white"
+      - "pale lavender"
+      - "soft silver"
+      - "mist blue"
+    warm_contrast:
+      - "golden sunlight"
+      - "small orange prop accents"
+      - "warm skin bounce"
+    natural_context:
+      - "bamboo green"
+      - "leaf shadow green"
+      - "wet stone gray"
+    micro_highlights:
+      - "water sparkle"
+      - "pearl shine"
+      - "silver charm glints"
+  rules:
+    - "Assign each major color a role instead of adding many unrelated colors."
+    - "Use warm contrast sparingly to keep the cool hero color luminous."
+    - "Let small prop colors, such as egg yolk orange or festival tag beige, become controlled accents."
+    - "Keep skin tones protected from heavy blue/green color contamination."
+  positive_language:
+    - "aqua blue as the hero color, pearl white and pale lavender as soft supporting accents"
+    - "warm golden sunlight and small orange prop accents balancing the cool palette"
+    - "natural bamboo green and wet stone gray grounding the scene"
+    - "skin tones kept warm and readable under the cool hair and fabric colors"
+  negative_language:
+    - "one-note blue palette"
+    - "random rainbow accessories"
+    - "oversaturated cyan skin"
+    - "muddy color grading"
+    - "uncontrolled neon colors"
+
+depth_richness_and_scene_story:
+  purpose: >
+    Add richness through organized depth planes rather than clutter.
+  depth_planes:
+    foreground:
+      role: "soft frame and tactile context"
+      examples:
+        - "blurred bamboo leaves"
+        - "festival wrapping leaves"
+        - "soft flowers"
+        - "water sparkle"
+        - "partial prop edge"
+    midground:
+      role: "main character action"
+      examples:
+        - "kneeling character"
+        - "hands interacting with egg or prop"
+        - "wet stone floor"
+        - "dress folds and hair"
+    background:
+      role: "environment and atmosphere"
+      examples:
+        - "bamboo garden"
+        - "hanging festival ornaments"
+        - "soft paper tag"
+        - "foliage bokeh"
+        - "mist and sun haze"
+  rules:
+    - "Foreground blur should frame the subject, not hide hands, face, or important props."
+    - "Midground must keep the character action and contact points sharp."
+    - "Background ornaments should be readable enough to support story, but not compete with the face."
+    - "Atmospheric particles, water sparkle, and bokeh should follow the backlight direction."
+  positive_language:
+    - "layered foreground leaves and festival props framing the scene"
+    - "clear midground character action with hands, egg, hair, and dress details in focus"
+    - "soft bamboo garden background with hanging ornaments and gentle depth falloff"
+    - "tiny dust, mist, and water sparkle visible only in the backlight"
+  negative_language:
+    - "cluttered background"
+    - "foreground blocking the hand action"
+    - "flat single-layer scene"
+    - "random decoration density"
+    - "busy bokeh over the face"
+
+small_prop_contact_and_wet_surface_physics:
+  purpose: >
+    Keep small objects, hands, knees, hair, and wet surfaces physically connected.
+  rules:
+    - "Small props need visible contact points, finger pressure, cast shadows, and scale clarity."
+    - "Knees and palms on wet stone should show pressure, reflected color, and contact shadows."
+    - "Broken eggs, droplets, or liquid should spread under gravity with thickness and glossy edges."
+    - "Long hair should fall around shoulders, arms, and floor with readable front/back layering."
+    - "Do not let props, hair, or clothing clip through hands, legs, or the floor."
+  positive_language:
+    - "fingers gently steadying the egg with a small contact shadow"
+    - "knees and palm pressing naturally into the wet stone floor"
+    - "egg yolk spreading with glossy thickness and soft reflected highlights"
+    - "wet floor reflections anchored under the hands, knees, egg, and fabric"
+    - "long twin tails falling with gravity around the shoulders and floor without clipping"
+  negative_language:
+    - "floating egg"
+    - "unclear hand contact"
+    - "flat wet floor"
+    - "egg yolk pasted on surface"
+    - "hair clipping through body"
+    - "hands not touching the floor"
+
+anime_face_expression_and_gaze:
+  purpose: >
+    Preserve delicate anime face appeal while making expression and attention
+    contextually believable.
+  rules:
+    - "Define where the eyes look: prop, camera, another character, or off-frame event."
+    - "Use coordinated brows, eyelids, mouth, and head tilt rather than one generic expression word."
+    - "Keep face readable under luminous backlight with gentle fill."
+    - "Avoid oversexualized or vacant expression drift when the intended mood is curious, focused, tender, or ceremonial."
+  positive_language:
+    - "focused curious expression with eyes looking down toward the egg"
+    - "subtle inward brows, relaxed mouth, and slight forward head tilt"
+    - "delicate anime face structure preserved by soft facial fill light"
+    - "clear blue eyes with small catchlights matching the filtered sunlight"
+  negative_language:
+    - "vacant stare"
+    - "wrong gaze target"
+    - "overdone smile"
+    - "face too dark under backlight"
+    - "uncanny doll face"
+
+festival_text_and_small_signs:
+  purpose: >
+    Handle small vertical tags, festival labels, hanging paper, and decorative text
+    without creating noisy fake typography.
+  rules:
+    - "If user provides exact festival text, quote it and keep it short."
+    - "Small signs should be placed away from the face and not steal the hierarchy."
+    - "If exact text is not required, describe it as a simple decorative vertical paper tag, not dense readable copy."
+    - "Use no-extra-text negatives, not broad no-text, when tags or ornaments are part of the scene."
+  positive_language:
+    - "small vertical festival tag hanging in the background, clean and unobtrusive"
+    - "simple readable tag if exact text is specified"
+    - "paper tag catches warm backlight but remains secondary to the face"
+  negative_language:
+    - "fake dense text"
+    - "random lettering"
+    - "text covering the face"
+    - "misspelled exact tag"
+    - "busy sign clutter"
+
+model_specific_rendering:
+  chatgpt_image:
+    positive_template: >
+      Use a natural-language luminous anime-realism brief: subject and action
+      first, then filtered light, translucent garment construction, controlled
+      color roles, layered depth, small prop contact, wet-surface reflections,
+      face expression, and concise avoid terms.
+    avoid_template: >
+      Avoid overexposed glow, plastic translucent fabric, random ornaments,
+      cluttered background, floating props, unclear hand contact, hair clipping,
+      fake dense text, flat wet floor, and one-note color.
+  z_image_base:
+    positive_template: >
+      luminous anime realism, soft filtered backlight, rim-lit hair strands,
+      gentle face fill, layered translucent chiffon with seam structure, controlled
+      aqua pearl lavender gold palette, layered foreground midground background,
+      natural hand-prop contact, wet stone reflections, delicate focused anime face
+    negative_template: >
+      overexposed glow, plastic fabric, uniform transparency, random accessories,
+      cluttered background, floating prop, unclear hand contact, hair clipping,
+      fake text, flat wet floor, oversaturated cyan skin
+  z_image_turbo:
+    positive_template: >
+      luminous anime realism, filtered backlight, rim-lit hair and chiffon,
+      structured translucent outfit, controlled aqua-pearl-gold palette, layered
+      depth, natural prop contact, wet reflections, delicate focused face
+    negative_template: >
+      overexposed, plastic fabric, random ornaments, clutter, floating prop, bad
+      hand contact, hair clipping, fake text, flat floor, one-note blue
+  flux:
+    positive_template: >
+      composition sketch for luminous anime scene: clear kneeling character action,
+      foreground leaves, midground hands and prop, bamboo background, upper-left
+      filtered light, readable outfit silhouette, and controlled color blocks.
+    negative_template: >
+      unclear action, flat scene, cluttered background, missing light direction,
+      unreadable silhouette, random props.
+
+quality_rubric_hooks:
+  hard_fail_if:
+    - "the scene is only pretty but lacks clear subject action"
+    - "light is bright but does not explain face fill, rim light, fabric glow, and floor reflections"
+    - "translucent garment has no seam, strap, panel, opacity, or fold logic"
+    - "decorations are random and do not support silhouette, color, or story"
+    - "hands, knees, prop, egg, liquid, or wet floor lack contact shadows"
+    - "background richness hides the face, hands, or action"
+    - "the color palette becomes one-note cyan or uncontrolled neon"
+  pass_conditions:
+    - "subject action, light, garment, color, props, and environment form one coherent event"
+    - "the image has rich detail across depth planes without clutter"
+    - "materials are readable: hair, chiffon, water, wet stone, flowers, charms, and paper"
+    - "the final prompt preserves physical detail instead of collapsing into generic beautiful anime wording"

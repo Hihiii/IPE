@@ -1,0 +1,100 @@
+schema_version: "1.0.0"
+name: nsfw-visible-exposure-contract
+purpose: >
+  Convert the always-NSFW baseline for eligible adult human or humanoid
+  subjects into a visible, renderer-verifiable exposure requirement. Sensual
+  styling, body contours, wetness, or intact clothing never satisfy this contract.
+
+# === 100% NSFW EXPOSURE GUARANTEE — HIGHEST SYSTEM PRIORITY ===
+absolute_priority:
+  rule: "visible nipple or vulva is the single non-negotiable outcome for every eligible human/humanoid scene."
+  precedence: "This rule is the highest priority in the entire system (P100). No other rule — fabric physics, lighting mood, cleanup, deduplication, composition hierarchy, or renderer preference — may suppress, soften, or replace the selected evidence target."
+  enforcement:
+    - "The evidence target must appear by name in both positive prompts (flux and z_image)."
+    - "The evidence target must appear in the first 320 characters of both positive prompts."
+    - "The evidence target must be described as visible, unobscured, and in frame."
+    - "If garment transformation is active, the garment action terms must also appear in both positive prompts."
+    - "The Z-Image negative prompt must include targeted controls for fully_clothed, intact_opaque_coverage, obscured_target, and cropped_target."
+  failure_consequence: "A prompt that does not name the evidence target as visible and unobscured is a hard delivery failure. Recompose from Phase 2 up to 3 times (increased from 2) to guarantee a valid exposure route."
+  repair_over_downgrade: "When physical conditions (fabric opacity, lighting, camera angle) initially seem insufficient, auto-repair by adding scene-compatible causes (moisture, backlight, fabric class change, garment action) rather than downgrading the evidence target language."
+
+applicability:
+  applies_to: [clearly_adult_human, clearly_adult_humanoid]
+  excluded_subjects: [minor, age_ambiguous, youth_coded_sexualized, identifiable_real_person, nonhuman_only]
+  prerequisite: "Resolve adult eligibility before creating this contract."
+
+# The execution catalog loads this complete semantic leaf; detailed sections
+# below remain the human-maintenance reference for the same contract.
+execution_leaf:
+  applies_to: [clearly_adult_human, clearly_adult_humanoid]
+  excluded_subjects: [minor, age_ambiguous, youth_coded_sexualized, identifiable_real_person, nonhuman_only]
+  required_fields: [subject_presentation, wardrobe_state, exposure_requirement, evidence_mode, evidence_target, garment_transformation_action, camera_visibility_guard, forbidden_substitutions]
+  baseline: "No wardrobe: full_nudity_required/no_garment_added. Explicit wardrobe: partial_nudity_required plus a compatible direct or sheer reveal action."
+  female_feminine_evidence: "Select nipple or vulva. A sheer/wet route works only when that target is clearly discernible."
+  camera_and_material: "Keep the target in frame, unobscured, readable, and physically coherent. Opaque fabric, vague contour, wetness, curves, steam, darkness, blur, or crop cannot replace it."
+  renderer: "Name exposure, target, and garment action early in both positives. For female/feminine scenes, add Z controls for fully clothed, intact opaque coverage, obscured target, and cropped target."
+  validation: "Reject missing data, wrong wardrobe route, invalid target, no reveal action, vague transparency, absent target, or hidden/cropped evidence."
+
+visible_exposure_contract:
+  required_fields:
+    - subject_presentation
+    - wardrobe_state
+    - exposure_requirement
+    - evidence_mode
+    - evidence_target
+    - garment_transformation_action
+    - camera_visibility_guard
+    - forbidden_substitutions
+  subject_presentations: [female_feminine, male_masculine, unspecified_gender]
+  wardrobe_states: [unspecified_wardrobe, explicit_wardrobe]
+  evidence_modes: [direct_bare, sheer_visible_anatomy]
+  required_camera_visibility_guards: [evidence_target_in_frame, evidence_target_unoccluded, evidence_target_readable]
+  required_forbidden_substitutions: [silhouette_only, wetness_only, body_curve_only, opaque_full_coverage, cropped_or_occluded_evidence]
+
+resolution:
+  unspecified_wardrobe:
+    exposure_requirement: full_nudity_required
+    garment_transformation_action: no_garment_added
+    rule: "Do not add garments, wraps, props, hands, or framing that conceal the selected evidence target."
+  explicit_wardrobe:
+    exposure_requirement: partial_nudity_required
+    allowed_garment_transformation_actions: [partially_removed, pulled_aside, unbuttoned_or_opened, slipped_or_lowered, displaced_by_pose_or_grip, wet_translucent_cling]
+    rule: "Preserve garment identity, color, and signature design, but require a concrete physical transformation that exposes the selected evidence target. An intact covering outfit fails."
+  female_feminine_evidence:
+    allowed_targets: [nipple, vulva]
+    rule: "At least one selected target must be clearly readable in the camera frame. Direct bare visibility is valid; a sheer route is valid only when the selected target itself is clearly discernible."
+  other_presentations:
+    allowed_targets: [adult_bare_anatomy]
+    rule: "Maintain the partial/full nude baseline without imposing a gender-specific anatomical target in this release."
+
+material_and_camera_rules:
+  direct_bare: "Keep the selected evidence target visible through pose, garment placement, light, focus, and occlusion order."
+  sheer_visible_anatomy: "Use moisture, stretch, material thickness, adhesion, and light direction to make the selected target itself readable; a vague contour or generic translucency fails."
+  opaque_fabric: "Opaque fabric cannot be used as evidence. Transform, open, displace, or partially remove it instead."
+  crop_and_occlusion: "Do not crop, hide behind hands or foreground, blur, darken, steam-obscure, or place outside the focal read the only selected evidence target."
+  physical_integrity: "Garment movement, folds, seams, moisture, support, contact, local anatomy, and light must remain physically coherent."
+
+renderer_contract:
+  flux: "State the resolved nude or transformed-wardrobe state and the selected visible evidence target in the opening subject description using fluent positive English."
+  z_image_positive: "State the same exposure state, evidence target, garment action, and camera readability in visible English detail."
+  z_image_negative: "For a female/feminine target, include targeted controls for fully clothed presentation, intact opaque coverage, an obscured selected target, and a cropped selected target; never negate the resolved adult content."
+  prompt_evidence_rule: "The selected female/feminine evidence target must appear by name in both positive prompts. A sheer route must also name sheer or translucent material."
+
+phase_hooks:
+  phase_1_intent_analysis: "Resolve wardrobe state, exposure requirement, evidence mode, evidence target, and forbidden substitutes immediately after adult eligibility."
+  phase_2_composition_and_cinematography: "Choose pose, garment action, focal plane, crop, occlusion, and light so the selected evidence target remains readable."
+  phase_3_scene_blueprint: "Record the full visible_exposure_contract with the dynamic, material, local-surface, and visual-focus plans."
+  phase_3_1_prompt_package: "Carry every visible exposure decision into renderer-ready English evidence."
+  phase_4_self_review: "Reject sensual-but-covered results, vague translucency, intact clothing, hidden evidence, or evidence lost to crop or occlusion."
+  phase_4_2_comfyui_renderer: "Require Flux and Z-Image positive prompt evidence before delivery."
+
+validation:
+  hard_failure_conditions:
+    - missing_visible_exposure_contract
+    - incorrect_exposure_requirement_for_wardrobe_state
+    - female_feminine_target_not_nipple_or_vulva
+    - transformed_wardrobe_without_concrete_garment_action
+    - vague_transparency_without_readable_target
+    - evidence_target_missing_from_positive_prompt
+    - evidence_target_hidden_by_crop_or_occlusion
+    - fully_clothed_or_intact_opaque_coverage

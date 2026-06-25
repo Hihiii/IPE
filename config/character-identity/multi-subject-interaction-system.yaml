@@ -1,0 +1,491 @@
+# ============================================================
+# multi-subject-interaction-system.yaml
+# Multi-subject, group composition, and character interaction controller
+# Version: 1.0.0
+# Purpose:
+#   Improve prompts involving multiple people, characters, animals, products, teams,
+#   or interacting subjects by managing identity separation, spatial roles, gaze,
+#   pose interaction, occlusion, collision, and group composition.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "multi-subject-interaction-system"
+description: >
+  A multi-subject interaction module for prompt enhancement. It defines subject counting,
+  individual identity locks, spatial roles, pose relationships, gaze direction, emotional dynamics,
+  group composition, character differentiation, occlusion order, physical contact, and collision avoidance.
+
+core_principle: >
+  Multi-subject scenes fail when subjects are treated as a single merged object. The prompt
+  must assign each subject a clear role, position, appearance, pose, gaze, interaction, and
+  separation boundary, while keeping group rhythm and visual hierarchy coherent.
+
+global_rules:
+  - "Count subjects explicitly."
+  - "Assign each subject a role, position, pose, gaze, and distinguishing traits."
+  - "For premium ensemble images, assign a compact character card to each key subject: hair, face shape, color accent, outfit silhouette, material, accessory, expression, pose, and depth position."
+  - "Unify the group with one shared lighting, location, color script, and camera language so different characters still belong to the same image."
+  - "For action group scenes, define one shared event center and which subject causes the action."
+  - "When an effect crosses multiple subjects, state each subject's reaction, gaze target, and hand/foot role instead of letting all subjects perform the same gesture."
+  - "Keep subjects visually separated unless intentional physical contact is requested."
+  - "Multi-subject depth layering must follow config/visual-cinematography/visual-richness-narrative-depth.yaml (P85). Foreground/midground/background roles must respect each subject's spatial position and hierarchy. Do not add atmospheric or foreground elements that merge or obscure individual subjects."
+  - "Define who is in foreground, midground, background, left, center, and right."
+  - "Specify interaction logic: looking at camera, looking at each other, touching, holding, competing, dancing, walking, or posing together."
+  - "Prevent merged limbs, duplicate faces, fused bodies, swapped clothing, and identity drift."
+  - "Use physical-collision guardrails for close contact, group posing, sports, fights, dance, and crowded scenes."
+  - "Use composition hierarchy so the viewer knows which subject is primary."
+
+multi_subject_schema:
+  subject_count: 1
+  subject_type: "human | character | animal | product | mixed"
+  primary_subject: ""
+  secondary_subjects: []
+  subject_list:
+    - id: "subject_A"
+      role: "primary | secondary | background | prop-like"
+      position: "left | center | right | foreground | midground | background"
+      appearance_lock: []
+      wardrobe_lock: []
+      color_accent: ""
+      signature_materials: []
+      signature_accessories: []
+      pose: ""
+      gaze: "camera | another_subject | off_camera | object | downward | upward"
+      expression: ""
+      interaction_target: ""
+      contact_type: "none | near | touching | holding | leaning | embracing | fighting | dancing | carrying"
+      occlusion_priority: "front | middle | behind"
+      camera_distance: "closest | near | mid | back"
+  group_composition:
+    formation: "lineup | triangle | diagonal | circle | layered_depth | two_teams | crowd_cluster | split_screen"
+    spacing: "wide | natural | close | crowded"
+    hierarchy: "single_hero | dual_hero | ensemble_equal | team_vs_team | crowd_with_hero"
+    overlap_allowed: false
+  interaction_logic: []
+  shared_event_center:
+    source_subject: ""
+    action_cause: ""
+    effect_origin: ""
+    effect_direction: ""
+    reaction_targets: []
+    timing_relationship: "simultaneous | source_then_reaction | staged_pose | custom"
+  collision_risk: "low | medium | high | critical"
+  identity_separation_required: true
+  renderer_guardrails:
+    positive: []
+    negative: []
+
+character_design_matrix:
+  purpose: >
+    Create visually rich ensemble prompts where each person has a different look
+    without fragmenting the image into unrelated character sheets.
+  required_for:
+    - "cosplay ensemble"
+    - "idol group"
+    - "fantasy party group"
+    - "multi-character selfie"
+    - "team portrait with unique styling"
+    - "fashion/editorial group with different outfits"
+  per_subject_fields:
+    - "position and depth layer"
+    - "hair color, length, and silhouette"
+    - "face shape or expression anchor"
+    - "wardrobe silhouette and main fabric"
+    - "one color accent"
+    - "one or two signature accessories"
+    - "hand gesture or body angle"
+    - "gaze target"
+  differentiation_rules:
+    - "Give each key subject one dominant hair/wardrobe/color signature."
+    - "Do not reuse the same face, hairstyle, necklace, sleeve, or costume silhouette for adjacent subjects."
+    - "Keep repeated group motifs small and consistent, such as shared foam, wet skin, leather straps, metal trims, or festival lighting."
+    - "Limit each subject to 2-3 distinguishing details so the prompt stays renderable."
+  shared_unifiers:
+    - "same environment"
+    - "same lighting direction and color script"
+    - "same wetness/foam physics"
+    - "same camera perspective"
+    - "same material quality level"
+
+interaction_types:
+  side_by_side_portrait:
+    requirements:
+      - "clear left/right placement"
+      - "distinct faces and outfits"
+      - "natural spacing between shoulders and arms"
+      - "consistent lighting across subjects"
+    positive:
+      - "two distinct subjects standing side by side"
+      - "clear separation between bodies"
+      - "balanced dual portrait composition"
+    negative:
+      - "merged faces"
+      - "fused shoulders"
+      - "shared limbs"
+
+  group_selfie:
+    requirements:
+      - "subjects close to camera but individually readable"
+      - "faces not overlapping incorrectly"
+      - "arms and hands do not merge"
+      - "wide-angle distortion controlled"
+      - "selfie means close front-camera perspective by default; do not add a visible phone unless explicitly requested"
+    positive:
+      - "each person has a distinct face and pose"
+      - "natural group selfie spacing"
+      - "clear front/back layering"
+      - "close handheld selfie perspective with phone off-frame unless explicitly requested"
+    negative:
+      - "extra faces"
+      - "merged people"
+      - "unreadable crowd"
+      - "floating hands"
+      - "unrequested visible phone"
+      - "phone covering face"
+
+  ensemble_character_selfie:
+    requirements:
+      - "five or fewer key subjects are described with compact individual character cards"
+      - "close camera relationship is implied; a foreground arm is optional and does not add a visible phone unless explicitly requested"
+      - "faces form a triangular or diamond cluster with staggered heights"
+      - "wide-angle perspective is controlled so faces remain attractive and not warped"
+      - "each subject has a distinct hair silhouette, outfit palette, accessory set, and expression"
+      - "shared lighting, wetness, foam, and environment unify the group"
+      - "background is rich but lower contrast than the faces"
+    positive:
+      - "premium wide-angle ensemble selfie with five distinct adult characters"
+      - "faces arranged in a tight triangular cluster with staggered heights and readable spacing"
+      - "one optional foreground arm near the camera, cropped naturally, with the phone remaining off-frame unless explicitly requested"
+      - "each person has a different hair color, hairstyle, costume silhouette, accessory motif, and expression"
+      - "coherent group lighting, wet hair strands, skin droplets, foam texture, and polished costume materials"
+      - "night pool party background with neon, palm trees, bokeh lights, and layered depth behind the faces"
+    negative:
+      - "same face repeated"
+      - "cloned hairstyle"
+      - "identical outfits"
+      - "warped wide-angle face"
+      - "merged shoulders"
+      - "unreadable accessories"
+      - "foreground arm covering faces"
+      - "unrequested visible phone"
+      - "unrequested selfie stick"
+
+  team_vs_team:
+    requirements:
+      - "team positions are clear"
+      - "opposing sides are separated by field/net/space"
+      - "main action subject is readable"
+      - "background players do not merge"
+    positive:
+      - "clear team formation"
+      - "readable action hierarchy"
+      - "separate players with physically plausible spacing"
+    negative:
+      - "players merged together"
+      - "wrong team positions"
+      - "unreadable sports action"
+
+  dance_duet:
+    requirements:
+      - "contact points are defined"
+      - "weight transfer is plausible"
+      - "limbs remain readable"
+      - "gaze and movement relationship are clear"
+    positive:
+      - "physically plausible dance contact"
+      - "clear partner spacing and limb separation"
+      - "coordinated movement line"
+    negative:
+      - "intersecting limbs"
+      - "impossible lift"
+      - "merged dancers"
+
+  fight_or_action_scene:
+    requirements:
+      - "attacker and defender roles are clear"
+      - "motion direction is readable"
+      - "contact/near-contact is physically plausible"
+      - "weapons or props are held correctly"
+    positive:
+      - "clear attacker and defender roles"
+      - "readable action line"
+      - "physically plausible spacing"
+    negative:
+      - "confused action"
+      - "merged bodies"
+      - "weapon clipping through hands"
+
+  group_water_play:
+    requirements:
+      - "subject count and left-to-right positions are explicit"
+      - "one or two subjects are named as the splash source"
+      - "hand direction, splash origin, and splash travel direction are consistent"
+      - "other subjects react to the same water action with varied expressions and gaze"
+      - "feet, ankles, and support surfaces match the same water depth"
+      - "water occludes legs consistently from front to back"
+      - "wet swimsuit, wet hair, and skin droplets match the pool-play context"
+    positive:
+      - "four distinct adult friends in a pool, arranged left to right with readable spacing"
+      - "the center-left subject scoops water upward with both hands, creating the central splash"
+      - "water splash starts at hand height and travels upward before falling under gravity"
+      - "the other subjects laugh and look toward the splash with varied natural reactions"
+      - "hands remain readable around the splash, palms and fingers not fused"
+      - "all feet and ankles share the same shallow-water depth and visible support logic"
+      - "waterline, ripples, contact foam, and leg occlusion are consistent across the group"
+      - "swimwear is wet with subtle cling, darker damp zones, and highlights from sunlit water"
+    negative:
+      - "source-less splash"
+      - "water overlay"
+      - "identical laughing expressions"
+      - "hands hidden by random splash"
+      - "fused fingers"
+      - "floating feet"
+      - "inconsistent water depth"
+      - "dry swimwear in pool"
+
+  family_or_ensemble_portrait:
+    requirements:
+      - "age/height hierarchy is clear when relevant"
+      - "faces remain distinct"
+      - "hands and arms do not merge"
+      - "emotional relationship is visible"
+    positive:
+      - "clear ensemble arrangement"
+      - "distinct individual faces"
+      - "warm group interaction"
+    negative:
+      - "duplicated faces"
+      - "same face repeated"
+      - "merged arms"
+
+subject_count_rules:
+  two_subjects:
+    strategy:
+      - "assign left/right or foreground/background positions"
+      - "describe each subject separately"
+      - "define relationship and gaze"
+  three_to_five_subjects:
+    strategy:
+      - "use formation: triangle, diagonal, arc, or lineup"
+      - "define primary subject and supporting subjects"
+      - "avoid over-describing all outfits unless necessary"
+  six_plus_subjects:
+    strategy:
+      - "treat as crowd or team with one or two hero subjects"
+      - "avoid demanding detailed faces for every person"
+      - "use group rhythm and readable hierarchy"
+
+identity_separation_rules:
+  positive:
+    - "each subject has a distinct face and silhouette"
+    - "clear separation between bodies"
+    - "individual wardrobe and pose remain consistent"
+    - "no shared limbs or fused anatomy"
+  negative:
+    - "merged faces"
+    - "same face repeated"
+    - "fused bodies"
+    - "shared limbs"
+    - "extra arms"
+    - "unreadable group"
+    - "identity drift"
+
+spatial_formation_profiles:
+  lineup:
+    use_for:
+      - "team portrait"
+      - "cast poster"
+      - "group fashion editorial"
+    rules:
+      - "use clear left-to-right spacing"
+      - "vary height and pose subtly"
+  triangle:
+    use_for:
+      - "three-subject editorial"
+      - "hero plus two supporting subjects"
+    rules:
+      - "primary subject at apex or foreground"
+      - "secondary subjects support composition"
+  diagonal:
+    use_for:
+      - "action group"
+      - "fashion spread"
+      - "dynamic ensemble"
+    rules:
+      - "arrange subjects along a readable diagonal"
+  layered_depth:
+    use_for:
+      - "cinematic ensemble"
+      - "crowd with hero"
+      - "group selfie"
+    rules:
+      - "foreground/midground/background separation"
+      - "front subjects do not block important back faces"
+  selfie_cluster:
+    use_for:
+      - "group selfie"
+      - "cosplay ensemble selfie"
+      - "party snapshot with rich background"
+    rules:
+      - "use close handheld selfie perspective with controlled wide-angle character and no visible device by default"
+      - "arrange faces in a triangle, diamond, or arc rather than a flat row"
+      - "put one subject closest to camera as the anchor without covering other faces"
+      - "use depth staggering: closest arm, foreground faces, back-row faces, atmospheric background"
+      - "keep edge faces inside crop and avoid cutting through eyes, mouth, or hands"
+  two_teams:
+    use_for:
+      - "sports"
+      - "battle"
+      - "competition"
+    rules:
+      - "separate teams by field, net, lane, or opposing sides"
+
+gaze_and_emotion_rules:
+  camera_group:
+    - "most subjects look toward the camera"
+    - "expressions are coordinated but not identical"
+  conversational:
+    - "subjects look at each other naturally"
+    - "body orientation supports conversation"
+  action_focus:
+    - "gaze follows the ball, prop, opponent, or action target"
+  cinematic_ensemble:
+    - "primary subject gaze controls viewer focus"
+    - "secondary gazes create narrative direction"
+
+prompt_recipes:
+  three_person_editorial:
+    positive:
+      - "three distinct adult subjects"
+      - "triangular composition"
+      - "primary subject in the foreground"
+      - "two supporting subjects behind left and right"
+      - "clear face separation and unique silhouettes"
+      - "coherent group lighting"
+    negative:
+      - "merged faces"
+      - "same face repeated"
+      - "shared limbs"
+      - "unreadable group"
+
+  group_selfie_five_people:
+    positive:
+      - "five distinct people in a natural group selfie"
+      - "each face readable and separated"
+      - "close selfie-perspective camera feel with controlled distortion and phone off-frame"
+      - "clear front-to-back layering"
+      - "natural overlapping shoulders without fused bodies"
+    negative:
+      - "extra faces"
+      - "merged people"
+      - "floating hands"
+      - "warped selfie distortion"
+
+  premium_five_character_pool_selfie:
+    positive:
+      - "five distinct adult characters in a premium night pool-party selfie"
+      - "controlled close handheld selfie perspective with the device off-frame"
+      - "optional foreground arm creates depth without covering faces or implying a visible phone"
+      - "faces arranged in a diamond cluster, all eyes sharp and readable"
+      - "each subject has a different hair color, hairstyle, outfit silhouette, metal/leather/fabric accent, and expression"
+      - "shared wet hair strands, skin droplets, foam on sleeves or gloves, and glossy costume materials"
+      - "neon cyan and warm palm-tree lighting, pool reflections, bokeh guests, layered resort background"
+    negative:
+      - "same face repeated"
+      - "cloned hair"
+      - "identical costumes"
+      - "warped selfie face"
+      - "foreground arm blocking faces"
+      - "merged accessories"
+      - "flat background"
+
+  sports_two_teams:
+    positive:
+      - "two clearly separated teams"
+      - "correct positions across the field or net"
+      - "main action subject emphasized"
+      - "supporting players remain readable"
+      - "physically plausible spacing"
+    negative:
+      - "players merged together"
+      - "wrong team placement"
+      - "unreadable sports action"
+
+  pool_group_water_splash:
+    positive:
+      - "four distinct adult subjects in a shallow pool, clear left-to-right spacing"
+      - "one central subject is the visible splash source, palms scooping water upward"
+      - "splash origin, arc, droplets, and falling spray follow one force direction"
+      - "the group reacts to the same splash with varied laughter, gaze, and hand gestures"
+      - "hands remain anatomically readable despite partial water occlusion"
+      - "feet, ankles, ripples, and foam show one consistent shallow-water plane"
+      - "wet swimwear and skin sheen respond to direct sunlight and pool water"
+      - "background is softened and separated from the water spray"
+    negative:
+      - "source-less splash"
+      - "floating water overlay"
+      - "merged hands"
+      - "fused fingers"
+      - "cloned expressions"
+      - "floating feet"
+      - "inconsistent water depth"
+      - "dry clothing in pool"
+
+model_specific_rendering:
+  chatgpt_image:
+    positive_template: >
+      Show each subject as a distinct individual with clear position, pose, gaze, wardrobe,
+      and role. Use readable group spacing, correct occlusion order, and physically plausible contact.
+      For group action, define the shared event center, who causes it, and how each subject reacts.
+      For ensemble selfies, give each key subject a compact character card and unify them with one shared camera, lighting, material, and environment.
+    negative_template: >
+      Avoid merged faces, repeated identical faces, shared limbs, fused bodies, extra arms,
+      unreadable crowding, body intersections, source-less effects, cloned expressions, and unclear action.
+  z_image_turbo:
+    positive_template: >
+      distinct subjects, clear group spacing, readable faces, unique silhouettes,
+      correct occlusion, natural interaction, clear event center, varied reactions,
+      differentiated hair outfits accessories, controlled wide-angle selfie, no fused bodies
+    negative_template: >
+      merged faces, same face repeated, fused bodies, shared limbs, extra arms,
+      intersecting limbs, unreadable group, source-less action, cloned expressions
+  stable_diffusion:
+    positive_template: >
+      multiple distinct people, clear separation, group composition, unique faces,
+      readable poses, correct occlusion
+    negative_template: >
+      duplicate face, cloned face, merged bodies, fused limbs, extra arms, bad group, crowd artifacts
+
+self_review_checklist:
+  - "Is the subject count explicit and preserved?"
+  - "Does each subject have a clear role and position?"
+  - "Are faces distinct and not duplicated?"
+  - "Are limbs separated and physically plausible?"
+  - "Is group spacing readable?"
+  - "Is gaze/interaction logic clear?"
+  - "If there is a shared action or effect, is its source subject, direction, and group reaction clear?"
+  - "Are hand gestures, feet, and occlusion still readable around action effects such as water, confetti, smoke, or motion blur?"
+  - "Does the primary subject remain visually dominant when required?"
+  - "Are collision and occlusion rules applied in close-contact scenes?"
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - multi_subject_interaction
+    action: "Detect subject count, group type, relationship, interaction, and collision risk."
+  phase_2_cinematic_enrichment:
+    action: "Translate group intent into formation, roles, gaze, spacing, and interaction logic."
+  phase_3_scene_blueprint:
+    action: "Place subjects in a clear spatial arrangement with occlusion and contact rules."
+  phase_4_self_review:
+    checks:
+      - "Check subject count."
+      - "Check identity separation."
+      - "Check merged limbs/faces."
+      - "Check group hierarchy."
+  phase_4_5_cleanup:
+    action: "Do not remove subject count, role, or interaction constraints."
+  phase_4_6_renderer_selection:
+    action: "Render multi-subject guardrails in model-appropriate language."
+  phase_5_final_prompt:
+    action: "Include concise multi-subject composition and interaction instructions when required."

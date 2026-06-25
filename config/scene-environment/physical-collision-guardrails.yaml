@@ -1,0 +1,1099 @@
+# ============================================================
+# physical-collision-guardrails.yaml
+# Physical collision, contact logic, occlusion, and material interaction controller
+# Version: 1.0.0
+# Purpose:
+#   Prevent physically implausible intersections, floating contact, bad occlusion,
+#   and flat material interaction in images involving humans, objects, furniture,
+#   vehicles, products, architecture, props, clothing, and multi-subject scenes.
+# ============================================================
+
+schema_version: "1.1.0"
+name: "physical-collision-guardrails"
+description: >
+  A spatial-logic and contact-consistency module for prompt enhancement. It detects
+  collision-risk situations, clarifies physical relationships between subjects and objects,
+  improves occlusion order, support contact, material interaction, and light-surface behavior,
+  and reduces clipping, intersection, floating, or merged geometry failures.
+
+  LOAD POLICY: This is a 38KB file. Do NOT load for every seated or leaning pose.
+  Only load when collision risk is genuinely significant — complex object interaction,
+  multi-subject physical contact, tight overlap, or material-sensitive contact scenes.
+
+# ------------------------------------------------------------
+# 1. Core Principle
+# ------------------------------------------------------------
+
+core_principle: >
+  Do not treat objects and subjects as isolated layers. Prompt the model with explicit
+  spatial relationships, contact logic, occlusion hierarchy, support mechanics, and
+  material-response cues so the scene reads as physically coherent rather than flat,
+  clipped, or plastic-looking.
+
+primary_goal: >
+  Preserve physically believable scene structure, including body-object contact,
+  body-body spacing, prop interaction, support surfaces, ground contact, overlapping order,
+  and material/light interaction.
+
+global_rules:
+  - "Explicitly define who touches what, what supports what, and what occludes what."
+  - "When objects overlap, specify the overlap amount and which object is in front."
+  - "When a subject is seated, leaning, kneeling, holding, or touching, define the contact point."
+  - "Prevent body/object intersections, floating gaps, and impossible contact."
+  - "When material realism matters, describe hardness, softness, gloss, texture, and how light reacts on the surface."
+  - "Use contact shadows and reflected light to reinforce physical presence and depth."
+  - "Do not rely only on 'realistic' or 'physically accurate'; name the interaction directly."
+
+# ------------------------------------------------------------
+# 1a. Universal Support Surface Physics
+# ------------------------------------------------------------
+# These rules apply to ANY spatial interaction regardless of scenario.
+# Scenario-specific sections (below) are APPLIED EXAMPLES that reference
+# these universal rules — not replacements for them.
+# ------------------------------------------------------------
+
+universal_physics:
+  gravity:
+    direction: "always downward"
+    rule: "Every body part must have a physically plausible load path to a support surface. No floating body parts."
+    violations: ["floating body above surface", "suspended without support", "body part hanging in mid-air with no contact"]
+
+  surface_types:
+    solid_rigid:
+      description: "Concrete, wood, metal, stone, tile, hard plastic, glass"
+      behavior: "No deformation. Rigid support. Sharp contact shadows. Clear surface boundary."
+      prompt_hints: ["firmly supported by the rigid surface", "clear contact shadow on hard surface"]
+    soft_deformable:
+      description: "Bed, sofa, cushion, mattress, pillow, blanket, towel"
+      behavior: "Deforms under weight. Fabric wrinkles. Subtle compression. Soft contact shadows."
+      prompt_hints: ["subtle compression under body weight", "fabric wrinkles radiating from contact points", "soft contact shadow"]
+    liquid:
+      description: "Water, pool, bathtub, lake, ocean"
+      behavior: "NO rigid support. Buoyancy only. Cannot support sitting/standing weight. Waterline wraps around submerged parts."
+      prompt_hints: ["water surface is BELOW the sitting surface", "waterline wraps around calves/ankles, not hips", "no rigid support from water"]
+    suspension_hanging:
+      description: "Rope, bar, trapeze, someone holding another person"
+      behavior: "Load path through suspension point. Tension, grip, or hold must be visible."
+      prompt_hints: ["weight hangs from the grip point", "tension visible in arms and shoulders"]
+
+  contact_types:
+    sitting_load:
+      description: "Body weight bears DOWN on a horizontal surface via buttocks/hips"
+      required_contact: "buttocks or hips contact the flat top surface of the support"
+      surface_requirement: "Support must be a SOLID or SOFT surface — liquid cannot support sitting weight"
+      load_path: "spine → pelvis → hips → support surface"
+      prompt_positive: ["seated on the surface, body weight supported from below", "buttocks and thighs firmly contact the sitting surface"]
+      prompt_negative: ["hovering above the seat", "no visible contact between body and surface", "sitting on liquid without solid support"]
+    standing_load:
+      description: "Body weight bears DOWN through legs to feet on a surface"
+      required_contact: "feet contact the ground or support surface"
+      load_path: "spine → hips → legs → feet → surface"
+      prompt_positive: ["feet firmly planted on the surface", "clear ground contact with weight visible in stance"]
+      prompt_negative: ["floating feet", "no ground contact", "feet hovering above surface"]
+    leaning_load:
+      description: "Body weight transfers at an angle onto a vertical or near-vertical surface"
+      required_contact: "shoulder, back, side, or arm contacts the support surface"
+      load_path: "body center of gravity → contact point → surface"
+      prompt_positive: ["body leans naturally against the surface", "clear contact point between body and support"]
+      prompt_negative: ["leaning without visible contact", "body floating near the surface without touching"]
+    reclining_load:
+      description: "Body weight distributed along a horizontal surface (lying, semi-reclined)"
+      required_contact: "back, shoulders, hips, thighs contact the surface along their length"
+      surface_requirement: "For soft surfaces: describe compression. For solid: describe contact points."
+      prompt_positive: ["body weight visibly distributed along the surface", "hips and shoulders contact the surface"]
+      prompt_negative: ["body hovering above reclining surface", "no contact between back and surface"]
+    hand_support_load:
+      description: "Upper-body weight transfers through arms to palms or elbows on a surface"
+      required_contact: "palms or elbows press down on the surface"
+      load_path: "shoulders → elbows → wrists → palms → surface"
+      prompt_positive: ["palms press down on the surface, supporting upper-body weight", "elbows bear body weight with visible contact pressure"]
+      prompt_negative: ["hands touching without carrying weight", "floating palms", "unsupported upper body"]
+    grasping_load:
+      description: "Fingers wrap around an object to hold or grip it"
+      required_contact: "fingers wrap around the object surface"
+      prompt_positive: ["fingers wrap naturally around the object", "secure grip without clipping"]
+      prompt_negative: ["fingers clipping through object", "floating grip", "impossible hand position"]
+
+  surface_boundary_disambiguation:
+    purpose: >
+      When two surface types meet at a boundary (e.g., solid pool coping + water),
+      explicitly state which surface supports what. Models often merge adjacent
+      surfaces or confuse which surface provides structural support.
+    rules:
+      - "When a SOLID surface and LIQUID surface meet: the solid surface provides structural support; the liquid surface does NOT."
+      - "When a SOLID surface and SOFT surface meet: the solid provides rigid support; the soft deforms but does not replace the solid's structural role."
+      - "When a person is AT the boundary of two surfaces: state explicitly which surface supports each body part."
+      - "The support surface must be visible or clearly implied by body position and contact shadows."
+      - "If multiple surfaces could plausibly support the subject, disambiguate in the positive prompt."
+    example_pool_edge:
+      scene: "person sitting on pool edge with feet in water"
+      disambiguation:
+        - "buttocks/hips are supported by the SOLID pool coping, NOT the water"
+        - "feet are IN the water but the water does NOT support the person's weight"
+        - "waterline is at calf/ankle height, not at hip height"
+        - "pool edge is between the person and the water surface — the water is BELOW and IN FRONT of the sitting surface"
+        - "contact shadow between buttocks and pool coping confirms solid-surface contact"
+
+  occlusion_order:
+    rule: "The front-most element occludes elements behind it. State the hierarchy explicitly."
+    example: "A (foreground) partially occludes B (midground); B is fully in front of C (background)."
+    prompt_positive: ["clear front-to-back occlusion order", "A partially covers B"]
+    prompt_negative: ["wrong occlusion order", "reversed front/back", "merged layers without depth"]
+
+
+# ------------------------------------------------------------
+# OLD GLOBAL RULES — replaced by universal_physics above.
+# Keep scenario-specific sections as APPLIED EXAMPLES.
+# ------------------------------------------------------------
+
+# ------------------------------------------------------------
+# 2. Collision Risk Detector
+# ------------------------------------------------------------
+
+collision_risk_detector:
+  high_risk_conditions:
+    human_object_contact:
+      - "leaning on a car"
+      - "sitting on a chair"
+      - "sitting on a bed"
+      - "resting on a table"
+      - "holding a product"
+      - "gripping a weapon"
+      - "touching a wall"
+      - "lying on a surface"
+      - "hands on pool edge"
+      - "climbing out of pool"
+      - "emerging from pool"
+      - "supporting body on pool ledge"
+      - "palms on pool coping"
+      - "reclining on a bed"
+      - "semi-reclined on bed"
+      - "propped on hands"
+      - "propped on elbows"
+      - "hands supporting torso"
+      - "elbows supporting torso"
+      - "kneeling on the floor"
+      - "hand on face or body"
+      - "crossed arms"
+      - "hand in pocket"
+
+    multi_subject_contact:
+      - "group photo"
+      - "group pool photo"
+      - "pool party"
+      - "friends splashing water"
+      - "water splash between people"
+      - "hugging"
+      - "carrying"
+      - "crowded composition"
+      - "subjects close together"
+      - "dance duet"
+      - "fight pose"
+      - "team portrait"
+
+    object_overlap_and_occlusion:
+      - "foreground object"
+      - "partially hidden object"
+      - "object behind subject"
+      - "A covers part of B"
+      - "framing through objects"
+      - "layered still life"
+      - "tabletop products with overlap"
+
+    environment_support:
+      - "feet visible"
+      - "support leg visible"
+      - "feet in pool water"
+      - "standing in shallow water"
+      - "waterline around ankles"
+      - "stairs"
+      - "platform"
+      - "balcony"
+      - "suspension"
+      - "floating object near contact surface"
+      - "soft bed surface"
+      - "mattress support"
+      - "blanket wrinkles under body"
+      - "sofa cushion compression"
+
+    wardrobe_and_material:
+      - "tight clothing"
+      - "armor"
+      - "body-conscious outfit"
+      - "jewelry"
+      - "bag strap"
+      - "gloves"
+      - "shoes"
+      - "wet fabric"
+      - "bath towel wrapped around body"
+      - "towel slipping down"
+      - "slipping bath towel"
+      - "falling towel"
+      - "after-bath towel"
+      - "towel covering chest"
+      - "partial breast reveal from towel slip"
+      - "reflective material"
+      - "glass object"
+      - "metal object"
+      - "leather product"
+
+  risk_levels:
+    low:
+      action: "Basic spacing and occlusion guidance."
+    medium:
+      action: "Add contact points, support logic, and front/back layering."
+    high:
+      action: "Add explicit collision, occlusion, and material interaction guardrails."
+    critical:
+      action: "Add full spatial-contact blueprint, support mechanics, collision negatives, and renderer-specific reinforcement."
+
+# ------------------------------------------------------------
+# 3. Spatial Relationship Schema
+# ------------------------------------------------------------
+
+spatial_relationship_schema:
+  key_fields:
+    camera_relation:
+      - "distance to camera"
+      - "foreground / midground / background role"
+      - "left/right/up/down placement"
+    subject_object_relation:
+      - "touching"
+      - "holding"
+      - "leaning"
+      - "resting"
+      - "wearing"
+      - "partially covering"
+      - "passing behind"
+      - "placed in front of"
+    overlap_relation:
+      - "A occludes 20% of B"
+      - "A blocks the lower half of B"
+      - "subject partially hides the rear wheel"
+      - "front object covers only the corner of the product"
+    support_relation:
+      - "feet planted on floor"
+      - "body weight supported by chair"
+      - "hand presses lightly on tabletop"
+      - "bag strap rests on shoulder"
+      - "hips press into mattress"
+      - "thigh and knee rest on bed"
+      - "palm presses into bed sheet"
+      - "forearm compresses sofa cushion"
+      - "elbow supports upper-body weight"
+      - "palms press down on pool coping"
+      - "fingers curl over the pool edge"
+      - "pool ledge supports upper-body weight"
+      - "bath towel wraps around torso under the arms"
+      - "towel top edge catches under one armpit or against the upper chest"
+      - "wet towel weight pulls the loose side downward"
+      - "hand lightly holds the towel fold if retention is intended"
+    light_interaction:
+      - "light from camera-left 45 degrees"
+      - "contact shadow under the object"
+      - "specular highlight on glossy surfaces"
+      - "soft bounce light from surrounding surfaces"
+
+# ------------------------------------------------------------
+# 4. Collision / Contact Failure Taxonomy
+# ------------------------------------------------------------
+
+collision_failure_taxonomy:
+  body_object_intersection:
+    symptoms:
+      - "body clips through furniture, wall, vehicle, or prop"
+      - "arm passes through object"
+      - "subject merges into support surface"
+    positive_fix:
+      - "physically plausible contact points"
+      - "body touches the object without intersecting it"
+      - "clear separation between body and object geometry"
+    negative_fix:
+      - "body clipping through objects"
+      - "merged geometry"
+      - "impossible body-object intersection"
+
+  body_body_intersection:
+    symptoms:
+      - "subjects merge into each other"
+      - "limbs pass through another person"
+      - "crowded pose loses clear body separation"
+    positive_fix:
+      - "clear subject separation"
+      - "physically plausible body-to-body spacing"
+      - "readable overlap and occlusion order"
+    negative_fix:
+      - "intersecting bodies"
+      - "merged limbs"
+      - "unreadable subject overlap"
+
+  prop_hand_intersection:
+    symptoms:
+      - "fingers clip through object"
+      - "weapon or product not actually held"
+      - "grip is visually impossible"
+    positive_fix:
+      - "hand grips the object naturally"
+      - "fingers wrap around the prop without clipping"
+      - "contact points between hand and object are clear"
+    negative_fix:
+      - "fingers clipping into object"
+      - "floating prop"
+      - "impossible hand grip"
+
+  foot_ground_contact_failure:
+    symptoms:
+      - "feet float above the floor"
+      - "ground contact absent or unclear"
+      - "stance unsupported"
+    positive_fix:
+      - "feet firmly contact the ground"
+      - "clear contact shadow beneath feet"
+      - "support foot aligned with body balance"
+    negative_fix:
+      - "floating feet"
+      - "no ground contact"
+      - "unsupported stance"
+
+  seated_support_failure:
+    symptoms:
+      - "subject appears to hover above chair or bed"
+      - "hips do not contact seat surface"
+      - "weight distribution on support surface is unclear"
+    positive_fix:
+      - "body weight naturally supported by the seat"
+      - "hips and thighs contact the support surface believably"
+      - "compression and posture match the seated pose"
+    negative_fix:
+      - "floating seated pose"
+      - "hovering above chair"
+      - "no seat contact"
+
+  soft_surface_weight_failure:
+    symptoms:
+      - "body appears to lie on a bed or sofa without weight"
+      - "hips, thighs, knees, hands, or elbows do not compress the soft surface"
+      - "legs look pasted on top of bedding or float above the bed"
+      - "foreground lower leg appears stretched because the support plane is unclear"
+    positive_fix:
+      - "hips and thighs sink subtly into the mattress"
+      - "bed sheet wrinkles and compresses under hips, thighs, knees, palms, or elbows"
+      - "soft contact shadow follows the body-surface contact points"
+      - "legs rest naturally against the bed surface"
+    negative_fix:
+      - "floating legs on bed"
+      - "body hovering above mattress"
+      - "no fabric compression"
+      - "unsupported soft-surface contact"
+
+  arm_support_load_path_failure:
+    symptoms:
+      - "hands are posed on the bed but do not appear to carry body weight"
+      - "upper body is lifted without believable arm support"
+      - "wrists, elbows, shoulders, and torso do not align as a support chain"
+      - "palms or elbows touch the bed without pressure or contact shadow"
+    positive_fix:
+      - "hands planted beneath the shoulders, palms pressing into the bed"
+      - "elbows or wrists aligned with shoulders to support upper-body weight"
+      - "subtle compression and contact shadow under palms or elbows"
+      - "upper-body weight visibly transfers through the arms into the surface"
+    negative_fix:
+      - "hands posed as support without carrying weight"
+      - "unsupported upper body"
+      - "floating palms"
+      - "broken wrist support"
+
+  pool_edge_support_semantic_drift:
+    symptoms:
+      - "hands on pool edge becomes arms raised overhead"
+      - "subject appears to lift or hold an overhead ledge instead of pushing down on the pool edge"
+      - "pool coping is placed above the head like a bar or ceiling edge"
+      - "upper body does not show weight transfer through palms into the pool edge"
+    positive_fix:
+      - "both palms press down on the pool coping at waterline or chest height"
+      - "fingers curl naturally over the near edge of the pool ledge"
+      - "elbows bend downward and shoulders load into the hands"
+      - "upper body rises out of the water because the pool edge supports the body weight"
+      - "pool edge stays beside or in front of the subject, not above the head"
+    negative_fix:
+      - "arms raised overhead"
+      - "holding an overhead ledge"
+      - "lifting the pool edge"
+      - "hands gripping underside of tile"
+      - "pool edge above head"
+      - "overhead bar pose"
+
+  clothing_body_clipping:
+    symptoms:
+      - "fabric cuts into body unnaturally"
+      - "straps sink into skin geometry"
+      - "garment intersects with limbs"
+    positive_fix:
+      - "clothing follows the body naturally"
+      - "fabric sits on the body without clipping"
+      - "straps and accessories rest believably on the body"
+    negative_fix:
+      - "clothing clipping into skin"
+      - "intersecting garment geometry"
+      - "merged clothing and body"
+
+  wrong_occlusion_order:
+    symptoms:
+      - "front and back elements are visually reversed"
+      - "overlap lacks clarity"
+      - "object hidden by the wrong element"
+    positive_fix:
+      - "clear front-to-back layering"
+      - "correct occlusion order"
+      - "readable overlap hierarchy"
+    negative_fix:
+      - "wrong occlusion order"
+      - "confused front/back layering"
+      - "unreadable overlap"
+
+  flat_material_interaction:
+    symptoms:
+      - "materials look like cheap plastic"
+      - "surfaces ignore hardness, gloss, or texture"
+      - "light does not react correctly on material"
+    positive_fix:
+      - "material-specific highlights and reflections"
+      - "surface texture reads clearly"
+      - "hardness, gloss, and roughness feel physically coherent"
+      - "contact shadows and reflected light reinforce depth"
+    negative_fix:
+      - "flat material response"
+      - "cheap plastic look"
+      - "incorrect specular behavior"
+
+  source_less_water_splash:
+    symptoms:
+      - "water splash appears as a particle overlay with no visible hand, foot, or object causing it"
+      - "splash direction does not match any subject's motion"
+      - "droplets float evenly across the frame without gravity, arc, or depth"
+      - "water spray hides hands and creates fused fingers instead of partial occlusion"
+    positive_fix:
+      - "define the splash source subject and the exact hand or foot action"
+      - "place the splash origin at the palm, foot, or water surface contact point"
+      - "show a directional water arc, larger droplets near the source, fine mist farther away, and falling droplets under gravity"
+      - "keep hands readable with correct partial water occlusion"
+    negative_fix:
+      - "source-less splash"
+      - "floating water overlay"
+      - "uniform particle spray"
+      - "hands hidden by random splash"
+      - "fused fingers behind water"
+
+  inconsistent_pool_depth_support:
+    symptoms:
+      - "subjects in the same pool stand at incompatible water depths"
+      - "feet or ankles appear to float because the pool floor or ledge plane is unclear"
+      - "waterline cuts across legs inconsistently from left to right"
+      - "foam, ripples, and leg occlusion do not match the support plane"
+    positive_fix:
+      - "define a shared shallow-water plane for the whole group"
+      - "feet contact the pool floor or shallow ledge with contact foam and ripples"
+      - "waterline wraps ankles or calves consistently according to camera perspective"
+      - "leg occlusion, refraction, and caustics match the same water depth"
+    negative_fix:
+      - "floating feet"
+      - "inconsistent water depth"
+      - "legs pasted onto water"
+      - "missing foot contact"
+      - "wrong waterline"
+
+  towel_slip_reveal_physics_failure:
+    symptoms:
+      - "bath towel looks glued to the chest instead of wrapped around the torso"
+      - "towel top edge cuts through or floats in front of the body"
+      - "breast exposure appears as a cutout rather than a natural slip of fabric"
+      - "both sides of the towel fall symmetrically while only one side should loosen"
+      - "towel has no anchor point, hand support, friction point, or gravity direction"
+    positive_fix:
+      - "thick terry towel wraps around the torso with visible fabric thickness"
+      - "one towel edge slips diagonally downward from the upper chest"
+      - "opposite towel edge remains caught under the arm or lightly held by a hand"
+      - "gravity pulls the damp towel into vertical folds"
+      - "towel overlaps the body with clear front/back occlusion and soft contact shadows"
+    negative_fix:
+      - "floating towel"
+      - "towel clipping through chest"
+      - "painted-on towel"
+      - "impossible cutout reveal"
+      - "symmetrical towel fall"
+      - "fabric glued to skin"
+
+  adult_landmark_occlusion_error:
+    symptoms:
+      - "nipple, areola, or adult external anatomy appears on top of towel, fabric, shadow, or unrelated texture"
+      - "visible anatomical landmark ignores the front/back order of skin, towel edge, hand, thigh, or fabric"
+      - "landmark is visible through opaque towel without wet/sheer/transparent physical support"
+      - "external anatomy appears outside the correct body region because occlusion or crop logic is confused"
+    positive_fix:
+      - "correct occlusion order between skin, towel edge, hands, thighs, and visible adult anatomy"
+      - "landmarks remain on visible skin surfaces only"
+      - "opaque towel edge covers hidden anatomy unless reveal is physically caused by lowered fabric"
+      - "visible external anatomy follows pelvis orientation and is occluded naturally by pose and fabric"
+    negative_fix:
+      - "nipple on towel"
+      - "floating areola"
+      - "landmark through opaque towel"
+      - "displaced external anatomy"
+      - "wrong occlusion order"
+
+soft_surface_support_mechanics:
+  purpose: >
+    APPLIED EXAMPLE of universal_physics.surface_types.soft_deformable +
+    universal_physics.contact_types.reclining_load / hand_support_load.
+    Strengthen bed, sofa, cushion, blanket, and mattress poses by making the support
+    surface visibly carry body weight.
+  universal_rules_applied:
+    - "surface_types.soft_deformable: deformation + wrinkles + soft shadows"
+    - "contact_types.reclining_load: weight distributed along body-surface contact"
+    - "contact_types.hand_support_load: palms/elbows press into surface"
+    - "gravity: no floating body parts — every contact point visible"
+  support_points_to_define:
+    - "pelvis / hip contact"
+    - "outer thigh contact"
+    - "knee contact"
+    - "forearm or elbow contact"
+    - "palm or wrist contact"
+    - "foot or ankle contact if visible"
+  visible_surface_effects:
+    - "subtle mattress depression (soft_deformable behavior)"
+    - "sheet wrinkles radiating from pressure points"
+    - "fabric tension around hips, thighs, knees, palms, or elbows"
+    - "soft contact shadows under body parts touching the bed"
+    - "no visible air gap between body and support surface"
+  prompt_positive:
+    - "body weight visibly supported by the soft bed surface"
+    - "hips and thighs subtly compress the mattress"
+    - "sheet wrinkles and contact shadows under hips, knees, palms, and elbows"
+    - "hands or elbows press into the bedding and support the torso"
+  prompt_negative:
+    - "floating body above bed"
+    - "no mattress compression"
+    - "missing contact shadows"
+    - "unsupported hand contact"
+    - "legs hovering over bedding"
+
+pool_edge_exit_support_mechanics:
+  purpose: >
+    APPLIED EXAMPLE of universal_physics.surface_boundary_disambiguation +
+    universal_physics.contact_types.hand_support_load.
+    Preserve the meaning of "hands supporting on the pool edge while emerging from water."
+    This is a downward support action on a SOLID surface (pool coping) at the boundary
+    with a LIQUID surface (water). The solid supports weight; the liquid does not.
+  universal_rules_applied:
+    - "surface_boundary_disambiguation: SOLID pool coping vs LIQUID water — coping supports weight, water does not"
+    - "contact_types.hand_support_load: palms press down, arms carry torso weight"
+    - "gravity: downward load path from shoulders through arms to palms"
+  activate_when:
+    - "hands on pool edge"
+    - "supporting on pool edge"
+    - "climbing out of pool"
+    - "emerging from pool"
+    - "out of water"
+    - "poolside ledge"
+    - "pool coping"
+  required_contact_logic:
+    - "pool edge sits at waterline, chest height, or shoulder-adjacent height, not above the head"
+    - "palms press downward on the top surface of the pool coping"
+    - "fingers curl over the near edge for grip"
+    - "wrists, elbows, shoulders, and torso form a downward support load path"
+    - "upper body weight visibly transfers through the arms into the pool ledge"
+    - "waterline and wet arms support the action of rising from the pool"
+  prompt_positive:
+    - "both palms planted on the pool coping at the waterline"
+    - "fingers curled over the near pool edge"
+    - "elbows bent downward, shoulders pressing into the hands"
+    - "upper body rising out of the water, weight supported by the pool ledge"
+    - "pool edge beside or in front of the subject, not above the head"
+  prompt_negative:
+    - "arms raised overhead"
+    - "hands holding an overhead ledge"
+    - "lifting the pool edge"
+    - "gripping underside of tiles"
+    - "hanging from pool edge"
+    - "pool edge above head"
+
+pool_edge_seated_support_mechanics:
+  purpose: >
+    APPLIED EXAMPLE of universal_physics.surface_boundary_disambiguation +
+    universal_physics.contact_types.sitting_load + universal_physics.surface_types.solid_rigid.
+    Preserve the correct physical meaning of "sitting on the pool edge" (坐在泳池邊).
+    The pool coping/edge is a SOLID RIGID horizontal surface supporting the person's weight
+    from below. The LIQUID water surface is below and in front — it does NOT support weight.
+  universal_rules_applied:
+    - "surface_boundary_disambiguation.example_pool_edge: SOLID coping vs LIQUID water"
+    - "contact_types.sitting_load: buttocks/hips on horizontal solid surface"
+    - "surface_types.solid_rigid: no deformation, sharp contact shadow"
+    - "surface_types.liquid: water below sitting level, waterline at calves/ankles"
+    - "gravity: center of gravity above coping, not above water"
+  activate_when:
+    - "sitting on pool edge"
+    - "sitting by the pool"
+    - "poolside sitting"
+    - "dangling feet in pool"
+    - "坐在泳池邊"
+    - "池邊坐姿"
+    - "pool edge seated"
+    - "sitting on pool coping"
+    - "legs in water sitting on edge"
+  required_contact_logic:
+    - "buttocks or hips contact the flat top surface of the pool coping — this is the primary weight-bearing contact"
+    - "pool edge is a SOLID horizontal surface at or slightly above the waterline"
+    - "water surface is BELOW the sitting surface — the person does NOT sit on the water"
+    - "feet may dangle into the water, touch the pool deck, or rest against the pool wall"
+    - "if feet are in the water: the waterline wraps around calves or ankles, not the hips or buttocks"
+    - "the person's center of gravity is above the pool coping, not above the water"
+    - "legs extend downward from the hips toward the water or deck — they do not float horizontally"
+  prompt_positive:
+    - "seated on the pool coping, buttocks firmly on the flat ledge surface"
+    - "pool edge supports body weight from below as a solid sitting surface"
+    - "feet dangling into the water, waterline at calf or ankle height"
+    - "hands resting on thighs or beside hips on the pool coping"
+    - "pool edge clearly separate from the water surface"
+  prompt_negative:
+    - "sitting on water surface"
+    - "floating above water while seated"
+    - "buttocks on water instead of solid ledge"
+    - "feet floating without waterline contact"
+    - "pool edge merged with water surface"
+    - "hips submerged while upper body is dry"
+    - "suspended sitting without visible support surface"
+
+bath_towel_slip_support_mechanics:
+  purpose: >
+    APPLIED EXAMPLE of universal_physics.contact_types.grasping_load +
+    universal_physics.occlusion_order + universal_physics.gravity.
+    Preserve believable after-bath towel slip physics.
+  universal_rules_applied:
+    - "contact_types.grasping_load: towel anchored under arm or held by hand"
+    - "occlusion_order: towel edge occludes skin at the wrap boundary; exposed skin is in front of/above the towel edge"
+    - "gravity: loose side slips downward, heavy damp folds pulled by gravity"
+    - "surface_types.soft_deformable: fabric weight, thickness, dampness change the drape behavior"
+  activate_when:
+    - "after bath"
+    - "post-shower"
+    - "bath towel"
+    - "towel wrapped around body"
+    - "towel slipping"
+    - "towel sliding down"
+    - "浴巾滑落"
+    - "出浴"
+  required_contact_logic:
+    - "towel wraps around the torso as a continuous layer, with visible thickness at the top edge"
+    - "one side loosens and slips diagonally downward under gravity"
+    - "the other side remains anchored under the arm, tucked at the bust line, or lightly held by a hand"
+    - "the top edge follows the chest volume without cutting through skin"
+    - "fabric folds hang vertically or diagonally from the slipping edge"
+    - "soft contact shadows show where towel touches wet skin"
+    - "after-bath towel is at least slightly damp, with heavier folds and darker wet contact zones"
+    - "wet hair, droplets, skin sheen, and humid bathroom air support the just-bathed context"
+  reveal_logic:
+    - "partial exposure happens because the top edge has slipped below the intended coverage area"
+    - "the reveal boundary is the towel edge, not a transparent or cutout effect"
+    - "exposed skin remains physically in front of or above the towel edge with correct occlusion"
+    - "wet skin, droplets, and steam may be present, but they should not hide collision errors"
+  prompt_positive:
+    - "thick white terry bath towel wrapped around torso"
+    - "slightly damp towel touching wet skin"
+    - "one towel edge slipping diagonally downward from the upper chest"
+    - "opposite edge caught under the arm or lightly held, believable anchor point"
+    - "heavy damp towel folds pulled by gravity"
+    - "darker wet contact zones in the absorbent terry texture"
+    - "soft contact shadows where towel overlaps wet skin"
+    - "natural partial reveal caused by the lowered towel edge"
+  prompt_negative:
+    - "floating towel"
+    - "towel clipping through chest"
+    - "painted-on towel"
+    - "impossible cutout reveal"
+    - "fabric glued to skin"
+    - "symmetrical towel fall"
+    - "transparent towel unless requested"
+    - "completely dry towel in a steamy post-shower scene"
+
+# ------------------------------------------------------------
+# 5. Contact Logic Rules
+# ------------------------------------------------------------
+
+contact_logic_rules:
+  leaning_pose:
+    requirements:
+      - "the body visibly contacts the support object"
+      - "the leaning angle matches the contact point"
+      - "contact shadow or pressure cue reinforces the touch"
+    prompt_positive:
+      - "the subject leans naturally against the surface"
+      - "clear body-to-surface contact"
+      - "physically plausible leaning posture"
+
+  seated_pose:
+    requirements:
+      - "hips and thighs contact the seat"
+      - "spine and legs align with the seated support"
+      - "body weight reads as supported"
+    prompt_positive:
+      - "body weight naturally supported by the chair"
+      - "clear seated contact with the surface"
+      - "physically believable seated posture"
+
+  pool_edge_exit_support:
+    requirements:
+      - "pool edge remains beside, in front of, or slightly below the shoulders, never above the head"
+      - "palms press down on the top surface of the pool coping"
+      - "fingers curl over the near edge without gripping the underside of tile"
+      - "elbows bend downward and shoulders visibly carry body weight through the hands"
+      - "upper body rises from the water because the ledge supports the torso"
+    prompt_positive:
+      - "both palms planted on the pool coping at the waterline"
+      - "fingers naturally curled over the near edge"
+      - "elbows bent downward, shoulders loaded into the hands"
+      - "upper body rising out of the water with weight supported by the pool ledge"
+    prompt_negative:
+      - "arms raised overhead"
+      - "holding an overhead ledge"
+      - "lifting the pool edge"
+      - "gripping underside of tiles"
+      - "pool edge above head"
+
+  bath_towel_slip:
+    requirements:
+      - "towel is a continuous thick wrap around the torso"
+      - "one side slips diagonally downward while another point remains anchored"
+      - "top edge follows body contour without intersecting the chest"
+      - "fabric weight creates vertical folds and a clear gravity direction"
+      - "occlusion order between towel edge, exposed skin, arms, and torso is readable"
+      - "towel reads as slightly damp or wet at contact areas in after-bath scenes"
+      - "visible anatomical landmarks remain on exposed skin and never on the towel surface"
+    prompt_positive:
+      - "thick terry bath towel wrapped around torso"
+      - "slightly damp towel against wet skin"
+      - "one towel edge slipping diagonally downward"
+      - "opposite edge caught under the arm or lightly held"
+      - "heavy damp towel folds pulled by gravity"
+      - "darker wet contact zones in the towel"
+      - "soft contact shadows at towel-skin overlap"
+      - "correct occlusion between towel edge and exposed skin"
+    prompt_negative:
+      - "floating towel"
+      - "towel clipping through chest"
+      - "painted-on towel"
+      - "impossible cutout reveal"
+      - "fabric glued to skin"
+      - "dry towel in a just-showered scene"
+      - "nipple on towel"
+      - "floating areola"
+
+  hand_prop_interaction:
+    requirements:
+      - "fingers wrap the object plausibly"
+      - "the object sits in the hand without floating"
+      - "the hand-object contact area is readable"
+    prompt_positive:
+      - "hand grips the object naturally"
+      - "clear hand-to-object contact"
+      - "fingers do not clip through the prop"
+
+  layered_overlap_scene:
+    requirements:
+      - "foreground/midground/background hierarchy is readable"
+      - "overlap amount is controlled"
+      - "occlusion order is clear"
+    prompt_positive:
+      - "clear front-to-back layering"
+      - "A partially occludes B"
+      - "readable overlap hierarchy"
+
+  group_contact_scene:
+    requirements:
+      - "subjects remain individually readable"
+      - "limbs do not intersect"
+      - "body spacing remains plausible"
+    prompt_positive:
+      - "physically plausible spacing between subjects"
+      - "clear subject separation"
+      - "readable contact and overlap"
+
+  group_pool_water_splash:
+    requirements:
+      - "the water splash has a visible source subject and contact point"
+      - "the direction of the splash follows the palm, foot, or object motion"
+      - "droplet size changes with distance and falls under gravity"
+      - "hands remain readable where the splash partially overlaps them"
+      - "all subjects share one believable pool depth and support plane"
+      - "feet, ankles, foam, ripples, and waterline match the same shallow-water geometry"
+      - "wet swimwear and skin highlights match the pool-play action"
+    prompt_positive:
+      - "central splash caused by a visible hand scooping water upward"
+      - "splash origin at the palms with a clear upward arc and falling droplets"
+      - "larger droplets near the hands, fine mist higher up, gravity pulling spray downward"
+      - "readable hands and fingers around the water spray"
+      - "all feet planted on the same shallow pool floor or ledge"
+      - "consistent ankle-level waterline, ripples, foam, and leg occlusion"
+      - "wet swimwear cling, sunlit water highlights, and droplets on skin"
+    prompt_negative:
+      - "source-less splash"
+      - "floating water overlay"
+      - "uniform particle spray"
+      - "hands hidden by random splash"
+      - "fused fingers behind splash"
+      - "floating feet"
+      - "inconsistent water depth"
+      - "dry swimwear in pool"
+
+  product_surface_scene:
+    requirements:
+      - "product sits firmly on the support surface"
+      - "contact shadow grounds the product"
+      - "surface reflection and shadow match material"
+    prompt_positive:
+      - "product rests firmly on the surface"
+      - "subtle contact shadow anchors the object"
+      - "material response matches the product finish"
+
+# ------------------------------------------------------------
+# 6. Occlusion / Layering Translation
+# ------------------------------------------------------------
+
+generator_visible_collision_translation:
+  general:
+    positive:
+      - "physically plausible contact points"
+      - "clear separation between intersecting forms"
+      - "correct occlusion order"
+      - "readable front-to-back layering"
+      - "contact shadows reinforce depth"
+    compressed: "physically plausible contact, correct occlusion, readable layering, contact shadows"
+
+  body_object:
+    positive:
+      - "body touches the object without intersecting it"
+      - "clear body-object contact"
+      - "support surface contact is visible"
+    compressed: "clear body-object contact without clipping"
+
+  prop_grip:
+    positive:
+      - "hand grips the object naturally"
+      - "fingers wrap around the prop without clipping"
+      - "the prop is firmly held"
+    compressed: "natural hand grip, no finger clipping, prop firmly held"
+
+  overlap_specification:
+    positive:
+      - "A partially occludes B"
+      - "the front object covers only part of the rear object"
+      - "the overlap remains readable"
+    compressed: "controlled partial occlusion with clear front/back order"
+
+  material_response:
+    positive:
+      - "material-specific highlights and reflections"
+      - "surface texture reads clearly"
+      - "hardness, gloss, and roughness are believable"
+      - "light interacts naturally with the material"
+    compressed: "believable material response with clear texture, gloss, and contact shadows"
+
+  group_pool_water_splash:
+    positive:
+      - "visible splash source and contact point"
+      - "directional water arc with gravity-falling droplets"
+      - "readable hands around partial water occlusion"
+      - "consistent shallow-water support plane"
+      - "feet planted with ripples and foam"
+      - "wet swimwear and skin droplets match the action"
+    compressed: "visible splash source, directional water arc, readable hands, consistent shallow-water foot support"
+
+# ------------------------------------------------------------
+# 7. Prompt Recipes
+# ------------------------------------------------------------
+
+prompt_recipes:
+  human_object_contact:
+    positive:
+      - "physically plausible contact points"
+      - "body touches the object without intersecting it"
+      - "clear body-object separation"
+      - "contact shadows reinforce the touch"
+    negative:
+      - "body clipping through object"
+      - "merged geometry"
+      - "floating contact"
+      - "impossible intersection"
+
+  seated_subject:
+    positive:
+      - "body weight naturally supported by the seat"
+      - "hips and thighs contact the support surface"
+      - "clear seated posture"
+    negative:
+      - "floating seated pose"
+      - "hovering above chair"
+      - "no seat contact"
+
+  prop_in_hand:
+    positive:
+      - "hand grips the object naturally"
+      - "fingers wrap around the prop without clipping"
+      - "prop is firmly held"
+    negative:
+      - "fingers clipping into prop"
+      - "floating prop"
+      - "impossible grip"
+
+  layered_scene:
+    positive:
+      - "clear front-to-back layering"
+      - "A partially occludes B"
+      - "readable overlap hierarchy"
+    negative:
+      - "wrong occlusion order"
+      - "confused overlap"
+      - "reversed depth layering"
+
+  material_realism:
+    positive:
+      - "material-specific highlights and reflections"
+      - "surface texture reads clearly"
+      - "hardness and gloss feel believable"
+      - "light interacts naturally with the material"
+    negative:
+      - "cheap plastic look"
+      - "flat material response"
+      - "incorrect reflections"
+
+# ------------------------------------------------------------
+# 8. Material / Light Interaction Guidance
+# ------------------------------------------------------------
+
+material_light_interaction_rules:
+  hard_glossy_surfaces:
+    examples:
+      - "painted metal"
+      - "car body"
+      - "glass"
+      - "glazed ceramic"
+    require:
+      - "clean specular highlights"
+      - "clear reflected light"
+      - "controlled sharp reflections"
+      - "contact shadows at points of support"
+
+  soft_matte_surfaces:
+    examples:
+      - "fabric"
+      - "paper"
+      - "skin"
+      - "brushed suede"
+    require:
+      - "diffuse light response"
+      - "soft edge shadow transitions"
+      - "visible texture rather than plastic shine"
+
+  structured_fashion_materials:
+    examples:
+      - "leather"
+      - "denim"
+      - "satin"
+      - "latex-like glossy fabric"
+    require:
+      - "material-specific folds and sheen"
+      - "the garment sits on the body believably"
+      - "surface response matches the material's stiffness and gloss"
+
+  spatial_light_rules:
+    recommended_language:
+      - "light from camera-left at 45 degrees"
+      - "contact shadow beneath the object"
+      - "subtle bounce light from surrounding surfaces"
+      - "reflections match the object orientation"
+      - "occluded areas receive less direct light"
+
+# ------------------------------------------------------------
+# 9. Self-Review Checklist
+# ------------------------------------------------------------
+
+collision_self_review_checklist:
+  - "Does every touching subject/object pair have a believable contact point?"
+  - "Do hands, fingers, limbs, props, furniture, and vehicles avoid clipping into each other?"
+  - "Are feet grounded, or otherwise correctly supported by the scene?"
+  - "If seated or leaning, does the body visibly rest on the support surface?"
+  - "Is occlusion order clear and front/back layering correct?"
+  - "If objects overlap, is the amount and direction of overlap readable?"
+  - "Do clothing, straps, jewelry, and accessories sit on the body without intersection errors?"
+  - "Do product, furniture, and environmental surfaces show believable contact shadows?"
+  - "Do materials respond to light according to gloss, roughness, hardness, or softness?"
+  - "Does the scene avoid the cheap plastic or flat compositing look?"
+
+# ------------------------------------------------------------
+# 10. Model-Specific Rendering
+# ------------------------------------------------------------
+
+model_specific_collision_rendering:
+  chatgpt_image:
+    positive_template: >
+      Maintain physically plausible contact and spatial logic: objects and subjects should
+      touch naturally without intersecting, overlap should be readable with correct occlusion
+      order, support surfaces should visibly carry weight, and materials should respond to
+      light with believable texture, gloss, and contact shadows.
+    avoid_template: >
+      Avoid body clipping through objects, floating contact, wrong occlusion order,
+      finger clipping, merged geometry, flat material response, and cheap plastic-looking surfaces.
+
+  z_image_turbo:
+    positive_template: >
+      physically plausible contact points, no body-object clipping, correct occlusion order,
+      grounded feet, clear support contact, natural hand grip, material-specific reflections, contact shadows
+    negative_template: >
+      clipping, intersecting limbs, floating feet, hovering body, fingers through object,
+      wrong occlusion order, merged geometry, cheap plastic look, flat material response
+
+  stable_diffusion:
+    positive_template: >
+      physically plausible contact, correct occlusion, grounded support, natural hand grip,
+      believable material response, contact shadows
+    negative_template: >
+      clipping, intersection, floating contact, wrong occlusion order, merged geometry,
+      plastic look, flat lighting response
+
+  image_edit:
+    repair_template: >
+      Repair only the physical collision and contact logic while preserving identity, pose intent,
+      composition, lighting mood, and scene design. Fix clipping, floating contact, wrong occlusion
+      order, support-surface contact, and material response.
+
+# ------------------------------------------------------------
+# 11. Prompt Assembly Hooks
+# ------------------------------------------------------------
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - collision_risk
+    action: "Detect contact-heavy, overlap-heavy, support-heavy, and material-sensitive scenes."
+
+  phase_2_cinematic_enrichment:
+    action: "Translate contact, occlusion, spatial distance, support logic, and material/light interaction into generator-visible constraints."
+
+  phase_3_scene_blueprint:
+    action: "Specify contact points, support surfaces, overlap relations, occlusion order, and light-material behavior."
+
+  phase_3_5_prompt_package:
+    action: "Store collision/contact guardrails as structured positive and negative renderer hints."
+
+  phase_4_self_review:
+    checks:
+      - "Check clipping, intersection, floating contact, support logic, and occlusion order."
+      - "Check material interaction, reflections, and contact shadows where relevant."
+
+  phase_4_5_cleanup:
+    action: "Do not remove collision, support, occlusion, or material-interaction guardrails when collision risk is high or critical."
+
+  phase_4_6_renderer_selection:
+    action: "Apply model-specific collision/contact wording."
+
+  phase_5_final_prompt:
+    action: "Include concise collision/contact, occlusion, and material-interaction guardrails in the final prompt when the scene requires them."

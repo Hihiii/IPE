@@ -1,0 +1,57 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xii--characters--fran
+  display_name: Fran
+  aliases:
+  - Fran
+  - 芙蘭
+  - 芙蘭 (Final Fantasy XII)
+  - Viera
+  source_title: Final Fantasy XII
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XII default appearance
+  identity_summary: Viera archer with very long white silver hair, prominent rabbit-like ears, deep crimson
+    red eyes, a black and white revealing outfit, long black boots, and a tall longbow.
+  visual_anchors:
+  - very long white silver hair
+  - long rabbit-like Viera ears
+  - deep crimson red eyes
+  - black and white revealing outfit
+  - tall longbow
+  - long black boots
+  - long white silver hair
+  - white silver hair
+  - smooth flowing crown with Viera ears prominent
+  - long straight fringe
+  - deep crimson red
+  - elegant angular face
+  - tall elegant Viera build
+  outfit_anchors:
+  - very long white silver hair
+  - long rabbit-like Viera ears
+  - deep crimson red eyes
+  - black corset-style top with white underlayer
+  - long black boots
+  - tall longbow
+  - Viera archer with very long white silver hair and rabbit ears, a black and white revealing outfit
+    consisting of a black corset top with white underlayer, short black skirt with gold trim, thigh holster,
+    and long black boots.
+  style_anchors:
+  - calm, composed observation
+  drift_guards:
+  - missing Viera ears
+  - wrong hair color
+  - wrong eye color
+  - no rabbit ears
+  - generic attractive person
+  - wrong face impression
+  - missing white silver hair
+  - missing black corset top
+  - missing long black boots
+  - fully covered outfit
+  - random outfit redesign
+  - short hair
+  - dark hair
+  - styled curly hair
+  - hunched posture
+  - heavy bulky build

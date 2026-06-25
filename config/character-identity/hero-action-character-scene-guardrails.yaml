@@ -1,0 +1,379 @@
+# ============================================================
+# hero-action-character-scene-guardrails.yaml
+# Hero action character scenes, poster props, and cinematic IP realism
+# Version: 1.0.0
+# Purpose:
+#   Strengthen prompts for recognizable character/IP hero shots, wanted posters,
+#   torn paper props, open outerwear, dynamic kneeling/standing poses, and
+#   cinematic low-key scenes where anatomy, text, props, cloth, and lighting
+#   must remain coherent.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "hero-action-character-scene-guardrails"
+description: >
+  A structural guardrail module for character-driven cinematic action images.
+  It coordinates character identity locks, hero pose biomechanics, hand-prop
+  interaction, paper/poster text control, torn-material physics, open clothing
+  collision, motivated lighting, and scene-depth storytelling.
+
+core_principle: >
+  A premium hero image must read as one physical event. The character identity,
+  body weight, hand contact, prop deformation, fabric motion, lighting direction,
+  text hierarchy, and background story should all support the same action.
+
+primary_goal: >
+  Prevent character-IP images from becoming generic cosplay, fitness-model
+  portraits, fake-text posters, pasted paper effects, floating limbs, plastic skin,
+  or unmotivated cinematic lighting.
+
+activate_when:
+  character_action_ip:
+    - "recognizable character"
+    - "anime character"
+    - "game character"
+    - "cosplay"
+    - "live action version"
+    - "realistic character portrait"
+    - "character poster"
+    - "wanted poster"
+    - "bounty poster"
+    - "hero shot"
+    - "victory pose"
+    - "pirate"
+  dynamic_pose_and_props:
+    - "kneeling"
+    - "one knee raised"
+    - "crouching hero pose"
+    - "holding poster"
+    - "holding paper"
+    - "tearing paper"
+    - "torn poster"
+    - "wind-blown paper"
+    - "open shirt"
+    - "open jacket"
+    - "wind-blown clothing"
+
+phase_routing:
+  phase_1_intent_analysis:
+    add_fields:
+      - hero_action_scene_risk
+      - character_identity_mode
+      - prop_text_mode
+      - paper_prop_physics
+      - open_outerwear_physics
+    action: >
+      Detect character-IP hero scenes, dynamic full-body or half-body poses,
+      hand-held paper/poster props, readable or implied text, open clothing, and
+      cinematic action staging.
+  phase_2_cinematic_enrichment:
+    action: >
+      Convert the scene into visible cause-and-effect: identity anchors, pose
+      support, hand grip, prop deformation, text hierarchy, cloth-body contact,
+      lighting motivation, and background story.
+  phase_3_scene_blueprint:
+    action: >
+      Specify body support points, poster grip points, torn-edge direction,
+      wind direction, cloth anchor points, light source position, and foreground /
+      midground / background depth.
+  phase_3_5_prompt_package:
+    action: >
+      Store hero-action positives and task-specific negatives under anatomy,
+      collision, wardrobe, text_rendering, character_identity, lighting, and scene
+      depth categories.
+  phase_4_self_review:
+    checks:
+      - "Does the character remain recognizable beyond costume color alone?"
+      - "Does the pose have a clear support leg, grounded foot/knee, and sustainable center of gravity?"
+      - "Do hands visibly grip the prop with pressure, bend, shadow, and occlusion?"
+      - "If the paper/poster is torn, do tear fibers, holes, folds, and flying fragments share one physical cause?"
+      - "If text matters, is exact text quoted and fake filler suppressed?"
+      - "Does open clothing attach to shoulders/arms/waist and cast believable shadows on the body?"
+      - "Does the light source explain highlights, shadows, rim light, and background visibility?"
+  phase_4_5_cleanup:
+    action: >
+      Do not remove identity anchors, pose-support mechanics, prop-contact logic,
+      exact text constraints, paper physics, cloth anchor points, or motivated
+      lighting when this module is active.
+  phase_4_6_renderer_selection:
+    action: >
+      For Z Image Base/Turbo, keep the wording concrete and visual-result based;
+      use negatives for fake text, prop clipping, floating limbs, generic cosplay,
+      plastic skin, and unmotivated light beams.
+  phase_5_final_prompt:
+    action: >
+      Include the selected hero-action structure only when relevant, written as
+      natural visual instructions rather than technical jargon.
+
+character_ip_realism_lock:
+  purpose: >
+    Keep recognizable characters stable when rendered in photoreal, cinematic,
+    cosplay, or live-action style.
+  rules:
+    - "Lock face impression, gaze behavior, signature expression, hair silhouette, body silhouette, palette hierarchy, costume markers, and signature props."
+    - "Do not rely only on the outfit color or character name."
+    - "Photoreal or live-action interpretation may change texture and lighting, but not the character's visual identity anchors."
+    - "Avoid drifting into a generic fitness model, fashion model, idol portrait, or random cosplayer."
+    - "If the character has a known personality, translate it into expression, posture, and camera relation."
+  positive_language:
+    - "recognizable character identity through face impression, hair silhouette, costume markers, and signature prop"
+    - "character-specific grin, gaze, posture, and energy"
+    - "live-action realism while preserving iconic silhouette and palette hierarchy"
+  negative_language:
+    - "generic cosplayer"
+    - "generic handsome model"
+    - "fitness-model face"
+    - "wrong character expression"
+    - "costume-only resemblance"
+    - "lost signature accessory"
+
+hero_pose_biomechanics:
+  purpose: >
+    Make dramatic one-knee, crouching, standing, and victory poses physically
+    sustainable.
+  support_schema:
+    - "which foot or knee carries most body weight"
+    - "where the center of gravity falls"
+    - "pelvis direction"
+    - "ribcage direction"
+    - "front knee direction"
+    - "rear leg direction"
+    - "foot contact and toe direction"
+    - "spine action line"
+    - "shoulder and arm load if arms are raised or holding props"
+  one_knee_hero_pose:
+    positive:
+      - "one-knee hero stance with the front foot planted flat and carrying visible weight"
+      - "rear knee or rear foot grounded on the same support plane"
+      - "pelvis, front thigh, knee, shin, and foot aligned in one readable direction"
+      - "ribcage twist remains connected to the pelvis through a natural waist turn"
+      - "center of gravity balanced between planted foot and rear knee or foot"
+      - "clear contact shadows under foot, knee, and sandals or shoes"
+    negative:
+      - "floating knee"
+      - "unsupported crouch"
+      - "pelvis facing camera while legs point unrelated directions"
+      - "front foot sliding with no weight"
+      - "broken waist twist"
+      - "knees and feet pointing in impossible directions"
+  raised_arm_hero_pose:
+    positive:
+      - "raised arms follow shoulder rotation and ribcage twist"
+      - "shoulders show natural engagement without dislocation"
+      - "elbows, wrists, and hands align with the held prop or gesture"
+    negative:
+      - "dislocated shoulders"
+      - "arms pasted onto torso"
+      - "impossible raised-arm angle"
+
+hand_prop_contact_and_deformation:
+  purpose: >
+    Ensure held paper, posters, hats, weapons, accessories, and signs respond to
+    hand pressure and do not float as independent flat layers.
+  grip_requirements:
+    - "define the exact grip point: top edge, corner, handle, rim, or folded area"
+    - "show fingers wrapping or pinching according to prop thickness"
+    - "add small contact shadows where fingers overlap the prop"
+    - "show pressure deformation, bends, folds, or tension lines radiating from the grip"
+    - "keep correct occlusion order between fingers, prop edge, torn holes, and the character body"
+  paper_or_poster_positive:
+    - "fingers pinching the poster top edge with visible pressure"
+    - "paper bends downward from the hand grip"
+    - "folds and tension lines radiate from the held corner"
+    - "contact shadow under the fingers on the paper"
+    - "paper thickness visible along torn and folded edges"
+  paper_or_poster_negative:
+    - "floating poster"
+    - "flat paper pasted onto image"
+    - "fingers clipping through paper"
+    - "hand not actually gripping the prop"
+    - "wrong occlusion between hand and poster"
+
+paper_poster_text_and_tear_physics:
+  purpose: >
+    Control wanted posters, bounty posters, newspapers, signs, torn sheets, and
+    flying paper fragments.
+  text_policy:
+    exact_text_required:
+      rule: "Quote only the exact text the user provides; keep it short and large."
+      positive:
+        - "large readable headline text exactly as specified"
+        - "secondary text minimal and subordinate"
+        - "no extra words beyond specified text"
+      negative:
+        - "misspelled headline"
+        - "gibberish lettering"
+        - "random filler columns"
+        - "fake names"
+    implied_text_or_style_only:
+      rule: "Use the poster layout as a visual object, but avoid dense pseudo-text."
+      positive:
+        - "vintage poster layout with large clean headline area"
+        - "minimal decorative small print kept abstract and unobtrusive"
+        - "main graphic remains readable despite tears"
+      negative:
+        - "dense fake text"
+        - "unreadable random typography"
+        - "fake newspaper columns stealing attention"
+  tear_physics:
+    rules:
+      - "Tear direction should match the hand pull, impact, wind, or explosion cause."
+      - "Large torn holes expose the background behind the paper with correct occlusion."
+      - "Torn edges show uneven fibers, curled corners, and paper thickness."
+      - "Flying fragments share one wind direction and scale distribution."
+      - "Motion blur appears only on fast-moving fragments, not the entire poster."
+      - "Light passes through holes and catches lifted torn edges."
+    positive:
+      - "ragged torn fibers and curled paper edges"
+      - "holes reveal the scene behind the poster"
+      - "paper fragments blown in one consistent wind direction"
+      - "larger fragments near the torn poster, smaller fragments farther away"
+      - "warm rim light catching paper edges"
+    negative:
+      - "perfect cutout hole"
+      - "paper shards floating in random directions"
+      - "torn effect pasted on top"
+      - "poster holes not revealing the background"
+      - "uniform paper fragments"
+
+open_outerwear_cloth_body_collision:
+  purpose: >
+    Keep open shirts, jackets, coats, capes, and costume outerwear attached to
+    the body while still showing motion, wind, and dramatic silhouette.
+  anchor_points:
+    - "collar rests around neck or shoulders"
+    - "shoulder seams remain on the shoulders"
+    - "sleeves follow raised or bent arms"
+    - "armpit folds respond to arm lift"
+    - "waist hem or side panels fall with gravity"
+    - "fabric casts shadows on torso where it overlaps"
+  wind_and_motion_rules:
+    - "Wind pulls loose panels in one direction."
+    - "Fabric billows from free edges, not from anchored seams."
+    - "Open front reveals the torso because panels separate from the center line, not because the garment disappears."
+    - "Button placket, seams, and folds maintain garment construction."
+  positive_language:
+    - "open shirt anchored at shoulders with sleeves following the raised arms"
+    - "wind pulls the loose front panels outward while shoulder seams stay in place"
+    - "armpit tension folds and hem folds follow the arm lift"
+    - "fabric casts soft shadows across the torso"
+  negative_language:
+    - "shirt floating away from body"
+    - "missing shoulder anchor"
+    - "random wind folds"
+    - "painted-on open shirt"
+    - "fabric clipping through arms"
+
+skin_body_surface_realism:
+  purpose: >
+    Avoid over-rendered AI body gloss in cinematic hero scenes.
+  positive_language:
+    - "natural skin texture with pores, slight sweat, and subtle tone variation"
+    - "muscle definition shaped by directional light, not carved plastic anatomy"
+    - "scars, markings, and dirt follow the body's surface curvature"
+    - "asymmetry and small imperfections preserved"
+  negative_language:
+    - "plastic skin"
+    - "over-sculpted abdominal muscles"
+    - "bodybuilder anatomy drift"
+    - "scar floating on skin"
+    - "painted-on dirt"
+
+motivated_cinematic_lighting_logic:
+  purpose: >
+    Make dramatic lighting believable by defining source, direction, falloff, and
+    material response.
+  rules:
+    - "Name the motivated key source when possible: sunset, torch, ship light, window, streetlamp, neon, practical lamp."
+    - "Specify the key light direction and what it illuminates."
+    - "Use rim light to separate silhouette from dark background."
+    - "Use fill or bounce only enough to keep face and identity readable."
+    - "Avoid unmotivated beams, random glow, and shadows that contradict the stated light."
+  positive_language:
+    - "motivated warm low-angle key light from camera-left"
+    - "cool ambient fill from the sea and sky"
+    - "thin rim light separating hat, hair, shoulders, and torn paper edges"
+    - "deep shadows with readable face, hands, prop, and costume markers"
+  negative_language:
+    - "unmotivated spotlight"
+    - "random light beam"
+    - "face lost in shadow"
+    - "overexposed muscles"
+    - "lighting direction contradiction"
+
+scene_depth_storytelling:
+  purpose: >
+    Make the background support the character instead of becoming generic bokeh.
+  layering_order:
+    foreground:
+      - "deck boards, rope, paper fragments, water spray, dust, or other story objects"
+    midground:
+      - "hero character, held poster, costume silhouette, primary action"
+    background:
+      - "ships, harbor lights, sea horizon, architecture, smoke, weather, or world-specific motifs"
+  rules:
+    - "Foreground texture should frame the hero, not hide feet or key props."
+    - "Background motifs should support the character universe without overpowering identity."
+    - "Atmospheric haze should separate layers but not erase silhouettes."
+    - "Keep hero face, hands, and signature prop as the sharpest readable areas."
+  positive_language:
+    - "layered foreground deck texture, midground hero, and background harbor silhouettes"
+    - "world-specific props support the character story"
+    - "atmospheric depth falloff while preserving the hero silhouette"
+  negative_language:
+    - "generic empty background"
+    - "busy background stealing attention"
+    - "foreground objects hiding support points"
+
+model_specific_rendering:
+  chatgpt_image:
+    positive_template: >
+      Build the character as a physically coherent cinematic hero shot: recognizable
+      identity anchors, sustainable body weight, clear hand-prop contact, readable
+      or intentionally minimal poster text, believable torn paper fibers, open
+      clothing anchored to the body, motivated lighting, and layered background story.
+    avoid_template: >
+      Avoid generic cosplay drift, fake dense text, floating paper, impossible
+      grip, unsupported pose, floating knee or foot, open clothing detached from
+      the body, plastic skin, over-sculpted muscles, and random unmotivated light.
+  z_image_base:
+    positive_template: >
+      recognizable character identity, hero pose biomechanics, grounded foot and
+      knee support, natural hand grip on poster, paper bends from finger pressure,
+      torn fibers and curled edges, readable headline or minimal poster text, open
+      shirt anchored at shoulders, motivated cinematic light, layered harbor scene
+    negative_template: >
+      generic cosplayer, fake text, gibberish lettering, floating poster, fingers
+      through paper, impossible grip, unsupported crouch, floating knee, twisted
+      pelvis, detached clothing, plastic skin, over-sculpted abs, random spotlight
+  z_image_turbo:
+    positive_template: >
+      character identity locked, grounded hero pose, natural poster grip, torn
+      paper fibers, open shirt anchored to body, motivated light, readable scene
+      depth
+    negative_template: >
+      generic cosplay, fake text, floating paper, bad grip, floating foot, twisted
+      pelvis, detached shirt, plastic skin, random light beam
+  flux:
+    positive_template: >
+      composition-first hero sketch with clear silhouette, grounded one-knee pose,
+      held poster shape, large readable headline zone, open shirt silhouette, and
+      simple motivated light direction.
+    negative_template: >
+      confusing silhouette, unsupported pose, unreadable prop, cluttered text,
+      detached clothing, random lighting.
+
+quality_rubric_hooks:
+  hard_fail_if:
+    - "character identity is only recognizable by outfit color"
+    - "the support foot, knee, or pelvis makes the pose physically impossible"
+    - "held poster has no believable hand contact"
+    - "wanted/poster text turns into dense gibberish when text should matter"
+    - "open clothing floats without shoulder, sleeve, or torso contact"
+    - "torn paper holes fail to reveal the background behind them"
+    - "lighting hides face, hands, or signature identity anchors"
+  pass_conditions:
+    - "identity, pose, prop, cloth, light, and background all support one action"
+    - "hands and paper show pressure, bend, occlusion, and contact shadows"
+    - "text policy is explicit: exact readable text or intentionally minimal decorative text"
+    - "skin and body structure read as realistic, not plastic or over-sculpted"

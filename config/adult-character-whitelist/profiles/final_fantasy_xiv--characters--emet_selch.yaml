@@ -1,0 +1,62 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xiv--characters--emet_selch
+  display_name: Emet-Selch
+  aliases:
+  - Emet-Selch
+  - 愛梅特賽爾克
+  - 愛梅特賽爾克 (Final Fantasy XIV)
+  - Solus zos Galvus
+  source_title: Final Fantasy XIV
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XIV default appearance (Shadowbringers era)
+  identity_summary: Ancient Ascian sorcerer with wavy black hair swept back with white streaks at the
+    temples, piercing golden-yellow eyes, a sardonic aristocratic face, wearing an ornate white and gold
+    Ascian long coat with a high standing collar, red inner lining, an elaborate gold clasp at the neck,
+    a white vest over a dark shirt, black fitted pants, black leather gloves, and black polished boots,
+    radiating an ancient ageless presence.
+  visual_anchors:
+  - wavy black hair with white temple streaks
+  - golden-amber yellow eyes
+  - white and gold Ascian long coat with high standing collar
+  - sardonic aristocratic face with perpetual half-smile
+  - red inner lining visible at coat collar
+  - sardonic perpetual half-smile
+  - high cheekbones
+  - black with white streaks at the temples
+  - smooth wavy crown
+  - swept back from forehead
+  - golden-amber yellow
+  - sharp aristocratic face with high cheekbones
+  - tall lean build, elegant regal posture
+  outfit_anchors:
+  - wavy black hair with white temple streaks
+  - golden-amber yellow eyes
+  - white and gold Ascian coat with high standing collar
+  - red inner lining on coat
+  - Ancient Ascian sorcerer wearing an ornate white and gold Ascian long coat with a high standing collar,
+    red inner lining, an elaborate gold clasp at the neck, a white fitted vest over a dark shirt, black
+    fitted trousers, black leather gloves, and black polished boots.
+  style_anchors:
+  - sardonic amused
+  - sardonic amused, knowing half-lidded gaze
+  drift_guards:
+  - short hair
+  - missing white temple streaks
+  - missing golden eyes (must not be green or blue)
+  - missing white and gold Ascian coat
+  - generic attractive person replacement
+  - wrong face impression
+  - warm friendly expression
+  - heroic muscular build
+  - missing high standing collar
+  - missing red inner lining
+  - missing dark shirt beneath vest
+  - missing black leather gloves
+  - random outfit redesign
+  - missing fitted trousers
+  - short cropped hair
+  - full white hair
+  - long flowing unkempt hair
+  - hunched passive posture
+  - hulking muscular build

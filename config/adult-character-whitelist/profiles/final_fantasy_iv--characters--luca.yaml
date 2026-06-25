@@ -1,0 +1,63 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_iv--characters--luca
+  display_name: Luca
+  aliases:
+  - Luca
+  - 露卡
+  - Luca (Final Fantasy IV)
+  source_title: Final Fantasy IV
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy IV The After Years default appearance
+  identity_summary: Businesswoman and engineer with bright red shoulder-length wavy hair, emerald green
+    eyes, a white business jacket with light blue trim over a red top, gold hoop earrings, and a confident
+    shrewd expression, often holding blueprints.
+  visual_anchors:
+  - bright red shoulder-length wavy hair
+  - emerald green eyes
+  - white business jacket with light blue trim
+  - red top beneath
+  - gold hoop earrings
+  - blueprints in hand
+  - bright red hair
+  - confident shrewd expression
+  - voluminous rounded crown
+  - side-swept wavy fringe
+  - emerald green
+  - angular diamond face
+  - average athletic build
+  outfit_anchors:
+  - bright red shoulder-length wavy hair
+  - white business jacket
+  - red top beneath
+  - gold hoop earrings
+  - blueprints or business documents
+  - Businesswoman and engineer with bright red shoulder-length wavy hair, emerald green eyes, a white
+    fitted business jacket with light blue lapel trim, a red sleeveless top beneath, a dark blue knee-length
+    pencil skirt, gold hoop earrings, a gold bracelet, and dark heeled boots.
+  style_anchors:
+  - confident, shrewd calm
+  drift_guards:
+  - dark or black hair
+  - brown eyes
+  - wrong face impression
+  - generic attractive person
+  - shy or timid expression
+  - missing red hair
+  - indecisive or hesitant look
+  - childish expression
+  - missing white jacket
+  - missing red top
+  - missing gold earrings
+  - fantasy armor or robes
+  - random outfit redesign
+  - casual streetwear
+  - overly formal ball gown
+  - dark gothic clothing
+  - pastel or pink outfit
+  - straight flat hair
+  - blonde or black hair
+  - short cropped style
+  - fragile delicate frame
+  - hunched submissive posture
+  - childlike build

@@ -1,0 +1,16 @@
+schema_version: "1.0.0"
+cases:
+  - id: adult_cinematic_portrait
+    request: "clearly adult original fictional woman, cinematic portrait"
+  - id: wet_dynamic_scene
+    request: "clearly adult original fictional woman in a wet white shirt, dynamic pose in a steamy shower"
+  - id: sports_bra_shorts_scene
+    request: "clearly adult original fictional woman in a white sports bra and black shorts, wet cinematic hotel doorway portrait"
+  - id: office_formal_exposure_action
+    request: "clearly adult original fictional woman with short pink hair in formal office clothes, cinematic office portrait"
+  - id: lighting_only_edit
+    request: "edit an eligible clearly adult human source: change only side lighting"
+  - id: anime_dynamic_scene
+    request: "clearly adult original fictional woman, anime-realism, dynamic pose"
+  - id: nonhuman_landscape
+    request: "misty mountain landscape at sunrise with a lake"

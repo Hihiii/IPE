@@ -1,0 +1,57 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_ix--characters--freya_crescent
+  display_name: Freya Crescent
+  aliases:
+  - Freya Crescent
+  - 芙蕾雅
+  - 芙蕾雅 (Final Fantasy IX)
+  source_title: Final Fantasy IX
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy IX default appearance
+  identity_summary: Elegant anthropomorphic rat-like dragon knight with grey-silver fur, warm golden-amber
+    eyes, long furry tail with tufted end, wearing silver armor with a hot pink scarf, wielding a long
+    metal spear.
+  visual_anchors:
+  - grey-silver fur covering entire body
+  - anthropomorphic rat-like face with whiskers
+  - long furry tail with tufted end
+  - hot pink scarf worn as headband
+  - long metal spear
+  - grey-silver fur covering entire face
+  - warm golden-amber eyes
+  - long whiskers
+  - anthropomorphic rat-like muzzle
+  - grey-silver fur (no conventional hair)
+  - rounded fur-covered crown
+  - furrowed forehead fur
+  - warm golden-amber
+  - elongated anthropomorphic rat-like muzzle
+  - lean athletic anthropomorphic rat-like build
+  outfit_anchors:
+  - grey-silver fur covering entire body
+  - anthropomorphic rat-like face
+  - long furry tail with tufted end
+  - hot pink scarf
+  - long metal spear
+  - Elegant anthropomorphic rat-like dragon knight in silver armor with hot pink scarf, white tabard,
+    leather boots, and long metal spear.
+  style_anchors:
+  - melancholic dignified calm
+  drift_guards:
+  - completely human appearance
+  - no fur
+  - wrong fur color
+  - generic cat or fox face
+  - missing tail
+  - missing whiskers
+  - wrong eye color
+  - missing pink scarf
+  - missing spear
+  - missing silver armor
+  - random fantasy armor
+  - modern clothing
+  - human hair
+  - long flowing hair
+  - bald head
+  - slouched beast posture

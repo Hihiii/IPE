@@ -1,0 +1,61 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_vii--characters--aerith_gainsborough
+  display_name: Aerith Gainsborough
+  aliases:
+  - Aerith Gainsborough
+  - 艾莉絲·蓋恩斯巴勒
+  - 艾莉絲·蓋恩斯巴勒 (Final Fantasy VII)
+  source_title: Final Fantasy VII
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy VII Remake default appearance
+  identity_summary: Gentle Cetra healer with chestnut-brown hair in a long braid tied with a large pink
+    ribbon bow, bright green eyes, wearing a short pink jacket over a white or light top, a long red dress
+    with white trim and floral patterns, brown lace-up boots with white socks, and a slender silver metal
+    staff with a materia orb.
+  visual_anchors:
+  - chestnut brown hair in long braid
+  - large pink ribbon bow
+  - short pink jacket
+  - long red dress
+  - brown lace-up boots
+  - silver metal staff
+  - bright green eyes
+  - chestnut brown hair in long braid with pink ribbon
+  - chestnut brown hair
+  - soft rounded crown silhouette
+  - curved soft fringe
+  - bright green
+  - soft oval face
+  - slender adult woman
+  outfit_anchors:
+  - chestnut braid with large pink ribbon
+  - short pink jacket
+  - long red dress with white trim
+  - brown lace-up boots
+  - slender silver metal staff
+  - Gentle Cetra healer with chestnut-brown hair in a long braid tied with a large pink ribbon bow, bright
+    green eyes, wearing a short pink jacket over a white or light top, a long red dress with white trim
+    and floral patterns, brown lace-up boots with white socks, and a slender silver metal staff with a
+    materia orb.
+  style_anchors:
+  - gentle curiosity
+  drift_guards:
+  - missing pink ribbon
+  - short hair or loose hair
+  - missing braid
+  - dark outfit
+  - aggressive expression
+  - missing staff
+  - generic attractive person
+  - wrong eye color
+  - missing pink ribbon on long braid
+  - missing short pink jacket
+  - missing long red dress with trim
+  - missing brown lace-up boots
+  - missing silver metal staff
+  - random outfit redesign
+  - short hair
+  - black hair
+  - aggressive combat bulk
+  - doll-like frozen pose

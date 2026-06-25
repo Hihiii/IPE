@@ -1,0 +1,63 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_x--characters--yuna
+  display_name: Yuna
+  aliases:
+  - Yuna
+  - 優娜
+  - 優娜 (Final Fantasy X)
+  source_title: Final Fantasy X
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy X default appearance
+  identity_summary: Young summoner from Besaid on a pilgrimage to defeat Sin, with long dark brown hair
+    in a braided ponytail, warm brown eyes, gentle kind face, petite slender build, white kimono-style
+    summoner dress with blue gradient hem and large floral-pattern sleeves.
+  visual_anchors:
+  - long dark brown hair with braided ponytail and white flower accessory
+  - warm brown eyes with gentle expression
+  - white kimono-style summoner dress with blue gradient hem
+  - large floral-pattern sleeves
+  - tall wooden summoner staff with metal rings
+  - warm brown eyes
+  - long braided dark brown hair
+  - gentle serene expression
+  - dark brown
+  - smooth crown with braided volume
+  - side-swept gentle fringe
+  - warm brown
+  - soft oval face
+  - slender graceful build, petite
+  outfit_anchors:
+  - white summoner dress with blue gradient
+  - large floral sleeves
+  - purple obi
+  - braided ponytail with flower
+  - summoner staff
+  - White base kimono-style summoner dress with blue gradient hem, large floral-pattern sleeves, purple
+    obi, open back
+  style_anchors:
+  - gentle serene
+  - warm compassionate
+  drift_guards:
+  - aggressive expression
+  - dark makeup
+  - wrong hair color
+  - wrong eye color
+  - tall muscular build
+  - warrior archetype
+  - short hair
+  - short skirt
+  - pants
+  - armor
+  - dark colored dress
+  - western modern clothing
+  - missing obi sash
+  - closed neckline
+  - sleeveless top
+  - short bob
+  - blond hair
+  - black hair
+  - no braid
+  - muscular build
+  - tall imposing frame
+  - heavy or bulky

@@ -1,0 +1,62 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_iv--characters--rydia
+  display_name: Rydia
+  aliases:
+  - Rydia
+  - 莉迪亞
+  - Rydia (Final Fantasy IV)
+  - Rydia of Mist
+  source_title: Final Fantasy IV
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy IV default appearance (adult version)
+  identity_summary: Mysterious summoner with very long flowing green hair reaching her waist, pale green
+    eyes, an emerald green and white summoner dress with teal accents, gold and silver jewelry, a whip
+    in hand, and a mysterious ethereal composure.
+  visual_anchors:
+  - very long flowing green hair
+  - pale green eyes
+  - emerald green and white summoner dress
+  - teal accents
+  - gold and silver jewelry
+  - whip in hand
+  - long green hair
+  - mysterious ethereal aura
+  - green hair
+  - smooth flowing crown
+  - straight blunt fringe at eyebrow level
+  - pale green
+  - elegant heart-shaped face
+  - slender ethereal build
+  outfit_anchors:
+  - very long flowing green hair
+  - emerald green and white summoner dress
+  - gold choker with green gem
+  - whip in hand
+  - pale green eyes
+  - Mysterious summoner with very long flowing green hair to waist, pale green eyes, an emerald green
+    bodice with white draped sleeves and teal fabric accents, a white skirt with green and teal layered
+    panels, a gold choker with green gem, gold bracelets, a silver hair chain with green gem ornament,
+    and soft white sandals with gold straps.
+  style_anchors:
+  - mysterious, serene composure
+  drift_guards:
+  - short hair
+  - brown or black hair
+  - wrong eye color
+  - wrong face impression
+  - generic attractive person
+  - overly cheerful expression
+  - child appearance (adult version)
+  - missing green hair
+  - missing emerald green dress
+  - missing gold choker
+  - missing whip
+  - dark or black outfit
+  - random outfit redesign
+  - heavy armor or robes
+  - curly or voluminous style
+  - unnatural bright colors
+  - muscular athletic build
+  - hunched posture
+  - clumsy or awkward frame

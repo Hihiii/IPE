@@ -1,0 +1,1497 @@
+# =============================================================================
+# CINEMATOGRAPHY GRAMMAR — AUTOREVISE ENHANCED
+# Purpose:
+#   Convert high-level film grammar into generator-visible visual storytelling.
+#   This file controls narrative shot language, scene blocking, film-still logic,
+#   visual reveals, motivated light, camera movement implication, and edit-ready
+#   prompt phrases for cinematic image generation.
+# =============================================================================
+
+cinematography_grammar:
+  film_still:
+    purpose: "Make the image feel like a frame from a movie, not a posed photo."
+    add_positive:
+      - "cinematic film still"
+      - "naturalistic blocking"
+      - "motivated lighting"
+      - "subtle story moment"
+      - "foreground, midground, and background depth"
+    add_negative:
+      - "flat studio pose"
+      - "empty background"
+      - "overly staged composition"
+
+  hero_reveal:
+    purpose: "Introduce a subject with power and dramatic presence."
+    best_for:
+      - character_poster
+      - sports_poster
+      - fantasy_warrior
+      - luxury_vehicle
+    add_positive:
+      - "dramatic hero reveal"
+      - "strong silhouette"
+      - "rim light outlining the subject"
+      - "low-angle cinematic composition"
+
+  motivated_lighting:
+    purpose: "Scene light appears to come from visible or believable sources."
+    add_positive:
+      - "motivated practical lighting"
+      - "visible warm lamp sources"
+      - "light direction consistent with the environment"
+
+# =============================================================================
+# AUTOREVISE CINEMATOGRAPHY SYSTEM
+# =============================================================================
+
+autorevise_cinematography_system:
+  role: "Narrative and film-language layer for prompt enhancement."
+  phase_usage:
+    phase_1_intent_analysis:
+      - "detect whether the prompt asks for movie still, poster, commercial ad, documentary realism, game screen, or visual concept"
+      - "extract narrative beat, subject role, emotional state, and visual hierarchy"
+      - "flag whether cinematic grammar should be subtle, balanced, strong, or disabled"
+    phase_2_cinematic_enrichment:
+      - "select one primary cinematic grammar pattern and optional secondary support pattern"
+      - "map the selected grammar to composition, lighting, lens, exposure, mood, and motion decisions"
+      - "translate director language into generator-visible visual effects"
+    phase_3_scene_blueprint:
+      - "define blocking, spatial layers, implied camera position, practical light motivation, and story beat"
+    phase_3_5_prompt_package:
+      - "place cinematic grammar in composition, style_and_lighting, atmosphere, and background categories"
+    phase_4_self_review:
+      - "detect cinematic contradictions: staged pose vs film still, poster layout vs candid scene, unreadable drama, unmotivated lighting"
+    phase_4_5_compression:
+      - "compress film grammar into one or two decisive phrases"
+    phase_5_final_prompt:
+      - "include only generator-visible cinematic language, not film theory explanation"
+
+  core_principles:
+    - "Cinematic does not mean more effects; it means story, motivated light, spatial depth, and intentional blocking."
+    - "Use one dominant cinematic grammar pattern per final prompt."
+    - "Do not stack every film term; choose the pattern that supports the user’s task."
+    - "If the task is UI, education, product packshot, or architecture documentation, cinematic grammar must not harm readability or accuracy."
+    - "A film still should feel like a captured story moment; a poster should feel designed and iconic."
+    - "Practical lights, weather, windows, screens, neon signs, and fire should explain the light direction whenever possible."
+
+master_level_shooting_discipline:
+  purpose: >
+    Turn professional photography and cinematography knowledge into visible image
+    decisions without dumping equipment lists into the final prompt. Use this when
+    a short user prompt needs expansion into a richer, precise, high-quality image prompt.
+  universal_rules:
+    - "Choose one camera position and make subject scale, perspective, and background depth consistent with it."
+    - "Choose one dominant light motivation and keep highlight, shadow, rim, and reflection behavior coherent."
+    - "Use background layers to support the subject, not compete with it."
+    - "Describe material response through visible behavior: skin texture, fabric weave, glass reflection, metal edge highlight, product label clarity."
+    - "Use lens language only when it changes perspective, compression, working distance, depth of field, or distortion control."
+    - "If text, labels, faces, hands, product geometry, or architecture matter, prioritize clarity over shallow depth, dramatic shadow, or foreground obstruction."
+  professional_recipes:
+    portrait_editorial:
+      visible_prompt: >
+        master-level portrait photography, eye-level or slightly below eye-level camera,
+        natural facial micro-expression, clean catchlights, soft directional key light,
+        gentle shadow shape, realistic skin texture, background depth kept subordinate
+      protect:
+        - "face"
+        - "eyes"
+        - "jaw/neck/shoulder structure"
+        - "skin tone and texture"
+      avoid:
+        - "dead eyes"
+        - "plastic skin"
+        - "forced grin"
+        - "busy background behind the head"
+    full_body_fashion:
+      visible_prompt: >
+        high-end fashion editorial photography, controlled full-body framing, readable
+        pose silhouette, coherent body balance, fabric texture visible, clean floor
+        contact, elegant background separation
+      protect:
+        - "full body silhouette"
+        - "hands"
+        - "feet"
+        - "outfit shape"
+        - "fabric material"
+      avoid:
+        - "cropped feet"
+        - "warped legs"
+        - "melted hands"
+        - "fabric hiding anatomy errors"
+    product_commercial:
+      visible_prompt: >
+        premium commercial product photography, precise product geometry, controlled
+        reflections, readable label area, clean negative space, material-first lighting,
+        background texture separated from product edges
+      protect:
+        - "product shape"
+        - "label"
+        - "logo"
+        - "surface finish"
+        - "edge definition"
+      avoid:
+        - "unreadable label"
+        - "warped product geometry"
+        - "random props"
+        - "overdark shadows"
+    poster_or_cover:
+      visible_prompt: >
+        poster-grade visual hierarchy, iconic hero subject, clear title-safe region,
+        readable face or product detail, controlled atmosphere, background scale that
+        supports the headline area
+      protect:
+        - "hero identity"
+        - "title-safe area"
+        - "text hierarchy when requested"
+        - "subject silhouette"
+      avoid:
+        - "no-text contradiction when title is requested"
+        - "busy masthead area"
+        - "random fake cover copy"
+    vehicle_hero:
+      visible_prompt: >
+        professional automotive hero photography, controlled low angle, clean wheel
+        geometry, crisp body-panel reflections, readable grille and headlights, motion
+        energy kept behind the vehicle silhouette
+      protect:
+        - "vehicle proportions"
+        - "wheels"
+        - "front grille"
+        - "reflections"
+      avoid:
+        - "warped wheels"
+        - "bent body panels"
+        - "speed effects covering the car"
+    vehicle_rain_speed:
+      visible_prompt: >
+        professional high-speed rainy-night automotive tracking shot, sharp panned
+        vehicle body, recognizable grille and headlight geometry, wheels carrying
+        controlled rotation blur, wet road lines streaking with the camera pan,
+        tire spray thrown outward and backward from the contact patches, headlights
+        aimed forward and diffused through rain mist without crossing the car body
+      protect:
+        - "vehicle identity and body proportions"
+        - "front grille and symmetrical headlights"
+        - "wheel shape and tire contact"
+        - "forward headlight beam direction"
+        - "water spray direction"
+      avoid:
+        - "static parked pose"
+        - "diagonal spotlight crossing the vehicle"
+        - "floating tires"
+        - "dry tire contact during rain"
+        - "water spray without tire source"
+        - "blurred car body"
+    architecture_interior:
+      visible_prompt: >
+        architectural editorial photography, straight verticals, controlled perspective,
+        window-motivated light, readable room layout, material junctions visible,
+        uncluttered foreground and balanced negative space
+      protect:
+        - "straight verticals"
+        - "room scale"
+        - "material junctions"
+        - "window highlight detail"
+      avoid:
+        - "fisheye warp"
+        - "tilted walls"
+        - "overly cinematic darkness hiding layout"
+  compression_rule: >
+    In the final prompt, keep the visible photographic decision and remove redundant
+    equipment names unless the user explicitly asked for gear.
+
+# =============================================================================
+# GENERATOR-VISIBLE CINEMATOGRAPHY TRANSLATION
+# =============================================================================
+
+generator_visible_cinematography_translation:
+  film_still:
+    director_meaning: "A still frame from a larger scene, natural yet visually composed."
+    generator_prompt: "cinematic film-still composition with naturalistic blocking, motivated light direction, layered foreground-midground-background depth, and a subtle story moment"
+    visible_effects:
+      - "subject appears caught in a believable moment rather than posing"
+      - "environment supports the story without feeling decorative"
+      - "light direction has a visible source or plausible motivation"
+      - "foreground and background create spatial depth"
+    best_for:
+      - cinematic_portrait
+      - narrative_scene
+      - photorealistic_cosplay
+      - quiet_emotional_scene
+      - street_scene
+    avoid:
+      - "flat studio pose"
+      - "random dramatic effects"
+      - "overly centered passport-photo framing"
+      - "empty background with no story cues"
+    compression_phrase: "cinematic film-still moment with natural blocking and motivated light"
+
+  poster_hero:
+    director_meaning: "Iconic promotional composition with subject hierarchy and graphic impact."
+    generator_prompt: "poster-grade hero composition, clear subject hierarchy, strong silhouette, dramatic background scale, and clean title-safe negative space"
+    visible_effects:
+      - "subject reads instantly as the hero element"
+      - "silhouette is graphic and memorable"
+      - "background supports scale and theme"
+      - "negative space is usable for typography"
+    best_for:
+      - movie_poster
+      - brand_collaboration_poster
+      - character_poster
+      - sports_poster
+      - luxury_vehicle
+    avoid:
+      - "busy title area"
+      - "weak silhouette"
+      - "background competing with hero"
+      - "random floating elements"
+    compression_phrase: "poster-grade hero composition with strong silhouette and title-safe negative space"
+
+  commercial_hero:
+    director_meaning: "Clean advertisement framing with product or subject clarity."
+    generator_prompt: "commercial hero image with precise visual hierarchy, clean readable subject, controlled reflections, and deliberate negative space for layout"
+    visible_effects:
+      - "first read is the product, face, or brand element"
+      - "surfaces are clean and sellable"
+      - "background is premium but subordinate"
+      - "composition supports text or campaign layout"
+    best_for:
+      - product_ad
+      - fashion_campaign
+      - beauty_ad
+      - luxury_brand_visual
+    avoid:
+      - "unreadable label"
+      - "overly cinematic darkness hiding product"
+      - "random props"
+      - "visual clutter"
+    compression_phrase: "commercial hero image with clean hierarchy and controlled layout space"
+
+  documentary_observational:
+    director_meaning: "Natural, grounded, less polished, believable captured moment."
+    generator_prompt: "observational documentary-style framing, natural light behavior, imperfect lived-in environment, and authentic candid subject presence"
+    visible_effects:
+      - "image feels real and unstaged"
+      - "environment has believable imperfections"
+      - "lighting is natural or available-light motivated"
+      - "subject posture feels unforced"
+    best_for:
+      - lifestyle
+      - street_photography
+      - travel_scene
+      - candid_portrait
+    avoid:
+      - "overly glossy commercial finish"
+      - "perfect symmetrical studio pose"
+      - "excessive retouching"
+    compression_phrase: "observational documentary framing with authentic candid presence"
+
+  noir_tension:
+    director_meaning: "Suspenseful dramatic blocking with controlled shadow and partial information."
+    generator_prompt: "noir tension with selective illumination, deep readable shadows, partial silhouette, frame-within-frame depth, and psychologically charged negative space"
+    visible_effects:
+      - "only key details are illuminated"
+      - "shadow shapes create mystery but subject remains readable"
+      - "negative space implies threat or uncertainty"
+      - "composition feels controlled and tense"
+    best_for:
+      - thriller
+      - mystery_portrait
+      - villain_poster
+      - night_interior
+    avoid:
+      - "crushed unreadable blacks"
+      - "random horror effects"
+      - "face completely lost"
+    compression_phrase: "noir tension with selective highlights and readable deep shadows"
+
+  epic_scale:
+    director_meaning: "Subject appears small or heroic against a large world."
+    generator_prompt: "epic wide cinematic scale, subject integrated into a vast environment, atmospheric depth, strong foreground-to-background perspective, and monumental spatial contrast"
+    visible_effects:
+      - "environment scale is immediately clear"
+      - "subject has dramatic relationship to surroundings"
+      - "depth haze or atmospheric layering adds distance"
+      - "composition emphasizes grandeur"
+    best_for:
+      - fantasy_landscape
+      - architecture_exterior
+      - travel_campaign
+      - hero_journey_scene
+    avoid:
+      - "tiny unreadable subject if identity matters"
+      - "flat backdrop"
+      - "scale inconsistency"
+    compression_phrase: "epic wide cinematic scale with atmospheric depth"
+
+  intimate_close_scene:
+    director_meaning: "Close emotional scene with controlled detail and small spatial cues."
+    generator_prompt: "intimate cinematic close scene, close framing, quiet emotional focus, soft environmental cues, shallow spatial depth, and expressive micro-detail"
+    visible_effects:
+      - "viewer attention goes to face, hands, eyes, or detail"
+      - "background is present but soft"
+      - "emotion feels contained and personal"
+      - "small gestures carry narrative weight"
+    best_for:
+      - emotional_portrait
+      - romantic_scene
+      - character_closeup
+      - detail_driven_story
+    avoid:
+      - "overly wide distant framing"
+      - "crowded background"
+      - "generic glamour pose"
+    compression_phrase: "intimate cinematic close scene with quiet emotional focus"
+
+  surreal_psychological:
+    director_meaning: "Stylized symbolic film language showing inner state or fragmented memory."
+    generator_prompt: "surreal psychological cinematic composition with symbolic visual motifs, controlled asymmetry, reflective or fragmented surfaces, and emotionally charged color contrast"
+    visible_effects:
+      - "scene visualizes mental state or memory"
+      - "symbolic objects support the subject"
+      - "composition may be split, mirrored, or fractured"
+      - "color and light carry emotional meaning"
+    best_for:
+      - psychological_poster
+      - broken_mirror_portrait
+      - symbolic_character_art
+      - dream_sequence
+    avoid:
+      - "random surreal clutter"
+      - "unreadable subject"
+      - "confusing visual metaphor"
+    compression_phrase: "surreal psychological composition with symbolic motifs and controlled fragmentation"
+
+# =============================================================================
+# CINEMATOGRAPHY INTENT SELECTOR
+# =============================================================================
+
+cinematography_intent_selector:
+  cinematic_portrait:
+    primary_pattern: film_still
+    support_patterns:
+      - intimate_close_scene
+      - motivated_lighting
+    final_prompt_effect: "cinematic portrait with natural blocking, motivated light, expressive eyes, and layered depth"
+    protect:
+      - face
+      - eyes
+      - skin tone
+      - subject identity
+    avoid:
+      - flat studio pose
+      - random movie effects
+      - background stealing attention
+
+  fashion_editorial:
+    primary_pattern: commercial_hero
+    support_patterns:
+      - poster_hero
+      - intimate_close_scene
+    final_prompt_effect: "fashion editorial composition with clean visual hierarchy, deliberate pose, fabric readability, and premium layout control"
+    protect:
+      - outfit silhouette
+      - fabric texture
+      - face and pose
+      - text-safe area if requested
+    avoid:
+      - excessive narrative clutter
+      - motion blur hiding clothing
+      - overdark cinematic mood
+
+  photorealistic_cosplay_editorial:
+    primary_pattern: film_still
+    support_patterns:
+      - poster_hero
+      - commercial_hero
+    final_prompt_effect: "photorealistic real-life character editorial, cinematic film-still blocking, character-inspired design cues, and realistic set integration"
+    protect:
+      - photoreal medium
+      - character design cues
+      - natural anatomy
+      - real costume construction
+    avoid:
+      - anime drawing
+      - cartoon rendering
+      - plastic CGI skin
+      - random cosplay convention background unless requested
+
+  product_ad:
+    primary_pattern: commercial_hero
+    support_patterns:
+      - motivated_lighting
+    final_prompt_effect: "commercial product hero image with readable label, controlled reflections, clean negative space, and material-first lighting"
+    protect:
+      - product geometry
+      - label readability
+      - brand color
+      - surface finish
+    avoid:
+      - film drama hiding product
+      - unreadable logo
+      - props competing with product
+      - unmotivated lens flare
+
+  movie_poster:
+    primary_pattern: poster_hero
+    support_patterns:
+      - epic_scale
+      - noir_tension
+      - surreal_psychological
+    final_prompt_effect: "movie-poster visual hierarchy, iconic hero silhouette, cinematic atmosphere, and title-safe negative space"
+    protect:
+      - hero identity
+      - poster layout
+      - silhouette
+      - text area
+    avoid:
+      - chaotic background
+      - weak first read
+      - title area clutter
+
+  architecture_interior:
+    primary_pattern: commercial_hero
+    support_patterns:
+      - film_still
+      - motivated_lighting
+    final_prompt_effect: "architectural cinematic interior with straight verticals, realistic light motivation, clean spatial layers, and material readability"
+    protect:
+      - straight verticals
+      - room scale
+      - material junctions
+      - window highlight detail
+    avoid:
+      - fisheye warp
+      - excessive mood hiding layout
+      - cluttered foreground
+
+  architecture_exterior:
+    primary_pattern: epic_scale
+    support_patterns:
+      - commercial_hero
+      - motivated_lighting
+    final_prompt_effect: "cinematic architectural exterior with controlled perspective, believable scale, atmosphere, and facade clarity"
+    protect:
+      - facade grid
+      - straight verticals
+      - structural logic
+      - scale references
+    avoid:
+      - impossible geometry
+      - warped towers
+      - overdramatic sky stealing focus
+
+  educational_game_ui:
+    primary_pattern: commercial_hero
+    support_patterns: []
+    cinematic_strength: subtle
+    final_prompt_effect: "gameplay-readable layout with friendly visual hierarchy, large interactive objects, and mild cinematic depth only where it does not reduce clarity"
+    protect:
+      - readability
+      - learning objective
+      - large tappable elements
+      - low cognitive load
+    avoid:
+      - dark cinematic lighting
+      - shallow depth hiding UI
+      - overly complex film staging
+
+  hidden_object_scene:
+    primary_pattern: film_still
+    support_patterns:
+      - epic_scale
+    cinematic_strength: balanced
+    final_prompt_effect: "dense but organized cinematic scene with clear visual zones, readable small objects, and layered environmental storytelling"
+    protect:
+      - object readability
+      - visual zones
+      - discoverable details
+      - no random clutter
+    avoid:
+      - excessive bokeh
+      - chaotic prop placement
+      - dramatic darkness hiding objects
+
+  vehicle_hero:
+    primary_pattern: poster_hero
+    support_patterns:
+      - commercial_hero
+      - epic_scale
+    final_prompt_effect: "vehicle hero composition with powerful silhouette, low-angle presence, controlled reflections, and motion-ready cinematic background"
+    protect:
+      - vehicle shape
+      - brand/model cues
+      - reflections
+      - wheel geometry
+    avoid:
+      - distorted body panels
+      - random speed effects
+      - hidden front grille
+
+  anime_realism_character:
+    primary_pattern: poster_hero
+    support_patterns:
+      - film_still
+      - surreal_psychological
+    final_prompt_effect: "anime-realism character image with iconic silhouette, cinematic lighting, readable costume design, and polished game-art finish"
+    protect:
+      - character silhouette
+      - costume readability
+      - stylized face consistency
+      - anatomy
+    avoid:
+      - chibi proportions
+      - random FX covering design
+      - raw documentary photo style
+
+# =============================================================================
+# FILM GRAMMAR PATTERNS
+# =============================================================================
+
+film_grammar_patterns:
+  establishing_shot:
+    purpose: "Introduce the location, scale, atmosphere, and world context."
+    generator_prompt: "wide establishing view, location-first composition, subject integrated into the environment, strong sense of place and scale"
+    best_for:
+      - city_scene
+      - architecture
+      - fantasy_world
+      - travel_campaign
+      - hidden_object_scene
+    risks:
+      - "subject may become too small"
+      - "identity may be lost"
+    corrective_terms:
+      - "subject remains readable"
+      - "clear scale reference"
+      - "environment supports the hero element"
+    compression_phrase: "wide establishing view with clear scale and readable subject"
+
+  master_shot:
+    purpose: "Show subject, environment, and action relationship in one coherent frame."
+    generator_prompt: "cinematic master shot with full scene blocking visible, subject and environment spatially connected, readable action path"
+    best_for:
+      - group_scene
+      - interior_action
+      - game_scene
+      - film_still
+    risks:
+      - "too much empty space"
+      - "weak first read"
+    corrective_terms:
+      - "clear hero-first hierarchy"
+      - "supporting elements stay secondary"
+    compression_phrase: "cinematic master shot with clear scene blocking"
+
+  insert_shot:
+    purpose: "Focus on a story detail that carries information."
+    generator_prompt: "cinematic insert shot, close detail emphasized, hero detail sharp, background softened into context"
+    best_for:
+      - product_detail
+      - jewelry
+      - hands
+      - weapon_detail
+      - clue_or_symbol
+    risks:
+      - "context may disappear"
+      - "hands may deform"
+    corrective_terms:
+      - "detail remains sharp and readable"
+      - "natural hands if present"
+    compression_phrase: "cinematic insert detail with sharp hero focus"
+
+  over_the_shoulder:
+    purpose: "Create perspective, conversation, or voyeuristic depth."
+    generator_prompt: "over-the-shoulder cinematic framing with soft foreground shoulder or silhouette, subject in midground, spatial relationship clearly visible"
+    best_for:
+      - conversation
+      - mirror_scene
+      - subject_observing_another_subject
+      - cinematic_dialogue
+    risks:
+      - "foreground may block subject"
+      - "extra body parts may appear"
+    corrective_terms:
+      - "foreground softly blurred"
+      - "main subject unobstructed"
+      - "clean body silhouette"
+    compression_phrase: "over-the-shoulder framing with unobstructed subject"
+
+  profile_shot:
+    purpose: "Graphic side-view showing elegance, tension, or introspection."
+    generator_prompt: "clean side-profile composition, elegant silhouette, strong facial outline, background supporting the subject’s direction of gaze"
+    best_for:
+      - luxury_portrait
+      - fashion
+      - character_psychology
+      - poster_design
+    risks:
+      - "flat depth"
+      - "nose/lips may distort"
+    corrective_terms:
+      - "clean facial outline"
+      - "subtle depth behind profile"
+    compression_phrase: "clean side-profile silhouette with elegant depth"
+
+  silhouette_shot:
+    purpose: "Reduce subject to iconic shape against bright background."
+    generator_prompt: "strong readable silhouette against a brighter background, rim-lit outline, clear recognizable shape, minimal internal detail"
+    best_for:
+      - hero_entrance
+      - sunset_scene
+      - mystery
+      - epic_poster
+    risks:
+      - "identity details may be lost"
+      - "subject may become black blob"
+    corrective_terms:
+      - "recognizable silhouette"
+      - "subtle edge detail"
+      - "key identity cues remain visible"
+    compression_phrase: "strong readable silhouette with rim-lit identity cues"
+
+  foreground_reveal:
+    purpose: "Use foreground obstruction to reveal or frame the subject."
+    generator_prompt: "soft blurred foreground elements partially frame the scene, subject revealed in sharp midground, background supports atmosphere"
+    best_for:
+      - romantic_scene
+      - spy_scene
+      - street_scene
+      - cinematic_film_still
+    risks:
+      - "foreground may become clutter"
+      - "subject may be hidden"
+    corrective_terms:
+      - "foreground remains soft and non-distracting"
+      - "subject clearly visible"
+    compression_phrase: "soft foreground reveal framing a clear subject"
+
+  frame_within_frame:
+    purpose: "Use doorways, windows, mirrors, arches, vehicles, or architecture to contain the subject."
+    generator_prompt: "frame-within-frame composition, subject visually contained by architectural or environmental edges, strong depth and intentional negative space"
+    best_for:
+      - architecture_interior
+      - emotional_portrait
+      - film_still
+      - luxury_editorial
+    risks:
+      - "AI may turn frame into unwanted door/window"
+      - "subject may be boxed too tightly"
+    corrective_terms:
+      - "comfortable margins around subject"
+      - "environmental frame does not crop the subject"
+    compression_phrase: "frame-within-frame composition with comfortable subject margins"
+
+  reaction_shot:
+    purpose: "Show a subject responding emotionally to something implied off-screen."
+    generator_prompt: "cinematic reaction shot, subject’s expression is the first read, gaze directed toward an implied off-screen event, background remains secondary"
+    best_for:
+      - narrative_portrait
+      - emotional_scene
+      - film_still
+    risks:
+      - "unclear gaze direction"
+      - "expression may become generic"
+    corrective_terms:
+      - "clear eye direction"
+      - "specific emotional expression"
+      - "subtle story context"
+    compression_phrase: "cinematic reaction shot with clear off-screen gaze"
+
+  two_shot:
+    purpose: "Show relationship between two subjects."
+    generator_prompt: "cinematic two-shot, both subjects clearly visible, spatial relationship readable, balanced blocking with one dominant emotional focus"
+    best_for:
+      - dialogue
+      - couple_scene
+      - rivalry
+      - mentor_student
+    risks:
+      - "faces may merge"
+      - "hierarchy may be unclear"
+    corrective_terms:
+      - "separate silhouettes"
+      - "clear primary emotional focus"
+      - "no merged faces or limbs"
+    compression_phrase: "cinematic two-shot with separate silhouettes and clear relationship"
+
+# =============================================================================
+# BLOCKING AND SCENE STAGING
+# =============================================================================
+
+blocking_and_scene_staging:
+  subject_blocking_roles:
+    hero_subject:
+      purpose: "The primary subject should dominate attention."
+      add_positive:
+        - "hero subject is the first visual read"
+        - "supporting elements remain secondary"
+        - "clear silhouette and readable pose"
+    observer_subject:
+      purpose: "Subject is watching or reacting to something."
+      add_positive:
+        - "gaze direction implies off-screen story"
+        - "body angle supports the line of attention"
+    environmental_subject:
+      purpose: "Subject is part of a larger world."
+      add_positive:
+        - "subject integrated into the environment"
+        - "scale relationship remains clear"
+    symbolic_subject:
+      purpose: "Subject represents memory, emotion, or theme."
+      add_positive:
+        - "symbolic visual motifs support the subject"
+        - "metaphor remains visually readable"
+
+  blocking_depth_patterns:
+    shallow_stage:
+      description: "Subject close to background; graphic and poster-like."
+      best_for:
+        - poster_hero
+        - fashion_editorial
+        - product_ad
+      add_positive:
+        - "graphic subject-background relationship"
+        - "clean silhouette"
+      avoid:
+        - "flat background unless intentionally minimal"
+
+    deep_stage:
+      description: "Clear foreground, midground, background; cinematic depth."
+      best_for:
+        - film_still
+        - hidden_object_scene
+        - street_scene
+        - architecture_interior
+      add_positive:
+        - "clear foreground, midground, and background separation"
+        - "subject sharp in midground"
+        - "background adds story context"
+      avoid:
+        - "foreground blocking the hero subject"
+
+    diagonal_blocking:
+      description: "Subjects or objects form diagonal energy across the frame."
+      best_for:
+        - action_scene
+        - fashion_pose
+        - vehicle_motion
+      add_positive:
+        - "diagonal visual energy guiding the eye through the frame"
+        - "dynamic pose readable against background"
+      avoid:
+        - "random tilted horizon unless Dutch angle is requested"
+
+    triangular_blocking:
+      description: "Three visual anchors create stable cinematic grouping."
+      best_for:
+        - group_scene
+        - family_scene
+        - product_with_props
+        - poster_layout
+      add_positive:
+        - "triangular visual arrangement with clear hierarchy"
+        - "primary subject at the strongest point"
+      avoid:
+        - "equal-weight clutter"
+
+  gaze_and_eye_line:
+    direct_to_camera:
+      effect: "confrontational, iconic, commercial, or intimate."
+      add_positive:
+        - "direct eye contact"
+        - "viewer-facing emotional connection"
+    looking_off_frame:
+      effect: "narrative, contemplative, implies unseen story."
+      add_positive:
+        - "gaze directed toward an implied off-screen event"
+        - "negative space supports the direction of gaze"
+    looking_at_object:
+      effect: "establishes object importance."
+      add_positive:
+        - "eye line leads toward the hero object"
+        - "viewer’s eye follows gaze to the object"
+    downcast:
+      effect: "quiet, vulnerable, introspective."
+      add_positive:
+        - "soft downcast gaze"
+        - "subtle introspective emotion"
+
+# =============================================================================
+# MOTIVATED LIGHTING AND PRACTICAL SOURCES
+# =============================================================================
+
+motivated_lighting_cinematography:
+  purpose: "Ensure cinematic lighting appears to come from plausible visual sources."
+  source_types:
+    window_light:
+      visible_source: "window, curtain, glass wall, doorway"
+      generator_prompt: "soft directional window light, visible or implied window source, natural shadow direction"
+      best_for:
+        - bridal
+        - bedroom_editorial
+        - architecture_interior
+        - lifestyle
+      avoid:
+        - "impossible light direction"
+
+    practical_lamp:
+      visible_source: "table lamp, wall sconce, pendant, candle, lantern"
+      generator_prompt: "warm practical light visible in the scene, gentle local glow, light direction consistent with lamp position"
+      best_for:
+        - night_interior
+        - wabi_sabi_lobby
+        - restaurant_scene
+        - cozy_room
+      avoid:
+        - "lamp visible but light direction contradicts it"
+
+    neon_sign:
+      visible_source: "neon sign, LED screen, city signage"
+      generator_prompt: "colored practical neon light grazing edges, wet reflections, natural skin tone preserved on face"
+      best_for:
+        - cyberpunk
+        - rainy_night_city
+        - music_video
+      avoid:
+        - "full-face color contamination"
+        - "random unreadable neon text"
+
+    fire_or_candle:
+      visible_source: "fireplace, candle, torch, lantern"
+      generator_prompt: "warm flickering firelight, soft orange highlights, deep surrounding shadows with readable subject edges"
+      best_for:
+        - fantasy
+        - historical_scene
+        - ritual_scene
+        - cozy_interior
+      avoid:
+        - "over-orange skin"
+        - "crushed shadows"
+
+    screen_light:
+      visible_source: "phone, monitor, holographic interface, arcade screen"
+      generator_prompt: "cool screen glow on face or hands, visible source screen, realistic falloff into surrounding darkness"
+      best_for:
+        - tech_product
+        - AI_phone
+        - cyberpunk_room
+        - gaming_scene
+      avoid:
+        - "screen glow overpowering the subject"
+        - "unreadable UI unless requested"
+
+    moonlight:
+      visible_source: "night sky, window opening, exterior cool source"
+      generator_prompt: "cool moonlit ambience with soft blue edge light and selective warm practical contrast"
+      best_for:
+        - night_film_still
+        - mystery
+        - romantic_night
+      avoid:
+        - "blue wash destroying skin tone"
+        - "subject disappearing into darkness"
+
+  generator_prompt_rule:
+    - "If a visible practical source is present, light direction must support it."
+    - "If no practical source is visible, describe the visible effect rather than equipment."
+    - "Do not add visible lamps, candles, neon, or screens unless they support the scene and do not conflict with user constraints."
+
+# =============================================================================
+# CINEMATIC RHYTHM AND IMPLIED EDITING
+# =============================================================================
+
+cinematic_rhythm_and_editing:
+  scene_beat_types:
+    arrival:
+      generator_prompt: "subject entering or just revealed, composition holds anticipation, environment opens toward the subject"
+      best_for:
+        - hero_reveal
+        - travel_scene
+        - architecture_entrance
+      compression_phrase: "arrival beat with anticipatory reveal"
+
+    aftermath:
+      generator_prompt: "quiet aftermath moment, subject stillness contrasted with environmental traces, lingering atmosphere"
+      best_for:
+        - battle_aftermath
+        - rainy_street
+        - emotional_scene
+      compression_phrase: "quiet aftermath beat with lingering atmosphere"
+
+    confrontation:
+      generator_prompt: "tense confrontation blocking, direct opposing visual forces, strong negative space between subjects or subject and threat"
+      best_for:
+        - rivalry
+        - noir
+        - sports_drama
+      compression_phrase: "tense confrontation blocking"
+
+    discovery:
+      generator_prompt: "discovery moment, subject attention directed toward a newly revealed object or space, viewer eye follows the gaze"
+      best_for:
+        - adventure
+        - product_reveal
+        - hidden_object_scene
+      compression_phrase: "discovery beat with gaze-led reveal"
+
+    preparation:
+      generator_prompt: "pre-action preparation moment, subject focused and composed, props and body language imply imminent movement"
+      best_for:
+        - martial_arts
+        - sports
+        - fashion_backstage
+      compression_phrase: "pre-action preparation beat"
+
+    suspended_peak:
+      generator_prompt: "peak-action frozen moment, clear subject silhouette, secondary motion elements suspended in air"
+      best_for:
+        - action
+        - water_splash
+        - dance
+        - vehicle
+      compression_phrase: "suspended peak-action moment"
+
+  implied_camera_movement:
+    static_locked_off:
+      generator_prompt: "locked-off cinematic frame, stable geometry, composed scene like a precise film still"
+      best_for:
+        - architecture
+        - product
+        - formal_scene
+    slow_push_in:
+      generator_prompt: "composition feels like a slow cinematic push-in, subject intimacy emphasized, background gently recedes"
+      best_for:
+        - emotional_portrait
+        - dramatic_reveal
+    tracking_side:
+      generator_prompt: "side-tracking cinematic feel, motion direction clearly horizontal, background suggests movement while subject remains readable"
+      best_for:
+        - vehicle
+        - running
+        - street_scene
+    handheld_subtle:
+      generator_prompt: "subtle handheld realism, slight observational imperfection, authentic documentary energy without blur"
+      best_for:
+        - lifestyle
+        - documentary
+        - candid_scene
+      avoid:
+        - "uncontrolled motion blur"
+        - "crooked accidental framing"
+
+# =============================================================================
+# TASK-SPECIFIC CINEMATIC GUARDRAILS
+# =============================================================================
+
+subject_specific_cinematography_guardrails:
+  human_portrait:
+    protect:
+      - "face and eyes remain first read"
+      - "cinematic mood does not erase facial structure"
+      - "skin tone remains believable"
+    add_positive:
+      - "naturalistic blocking"
+      - "expressive eyes"
+      - "motivated light shaping the face"
+    avoid:
+      - "random movie effects over the face"
+      - "overdark shadows hiding expression"
+
+  full_body_character:
+    protect:
+      - "entire silhouette"
+      - "costume readability"
+      - "feet and weapon/accessories inside frame"
+    add_positive:
+      - "full-body cinematic character blocking"
+      - "readable pose silhouette"
+      - "background supports character identity"
+    avoid:
+      - "cinematic crop cutting off feet"
+      - "FX covering costume details"
+
+  product:
+    protect:
+      - "label"
+      - "geometry"
+      - "material finish"
+      - "brand color"
+    add_positive:
+      - "commercial cinematic product hierarchy"
+      - "controlled reflections"
+      - "clean negative space"
+    avoid:
+      - "dramatic shadow hiding the label"
+      - "random storytelling props competing with product"
+
+  architecture:
+    protect:
+      - "straight verticals"
+      - "scale"
+      - "layout readability"
+      - "material junctions"
+    add_positive:
+      - "cinematic spatial depth"
+      - "realistic light motivation"
+      - "controlled architectural perspective"
+    avoid:
+      - "Dutch angle unless requested"
+      - "overly dark film mood hiding the space"
+
+  vehicle:
+    protect:
+      - "body shape"
+      - "wheels"
+      - "front grille"
+      - "reflections"
+    add_positive:
+      - "low-angle vehicle hero reveal"
+      - "clean body-panel reflections"
+      - "motion-ready background"
+    avoid:
+      - "warped vehicle geometry"
+      - "random speed streaks over body lines"
+
+  educational_game_ui:
+    protect:
+      - "readability"
+      - "interaction clarity"
+      - "large tappable elements"
+      - "low cognitive load"
+    add_positive:
+      - "friendly gameplay-readable composition"
+      - "clear visual zones"
+    avoid:
+      - "overly cinematic depth"
+      - "dark dramatic lighting"
+      - "film grain hiding UI"
+
+  hidden_object_scene:
+    protect:
+      - "object readability"
+      - "organized density"
+      - "clear zones"
+    add_positive:
+      - "layered environmental storytelling"
+      - "dense but organized visual zones"
+      - "readable small objects"
+    avoid:
+      - "shallow depth of field hiding clues"
+      - "random clutter"
+
+# =============================================================================
+# CINEMATOGRAPHY CONFLICT RESOLUTION
+# =============================================================================
+
+cinematography_conflict_resolution:
+  film_still_vs_poster:
+    conflict: "User asks for both cinematic film still and poster/cover layout."
+    resolution:
+      - "If text, logo, title, or campaign use is mentioned, poster/commercial layout wins."
+      - "If narrative moment or natural scene is emphasized, film still wins."
+      - "Use film-still lighting inside poster layout only if it does not reduce title-safe space."
+    final_prompt_fix: "poster-grade visual hierarchy with cinematic film-still lighting and clear title-safe negative space"
+
+  cinematic_dark_vs_readability:
+    conflict: "Dark cinematic mood conflicts with product label, UI, architecture, outfit, or hidden objects."
+    resolution:
+      - "Keep dark atmosphere in background and shadows."
+      - "Use selective highlights on required details."
+      - "Never sacrifice hard-locked readability."
+    final_prompt_fix: "dark cinematic atmosphere with selective highlights keeping the hero detail readable"
+
+  naturalistic_blocking_vs_fashion_pose:
+    conflict: "Natural film-still blocking conflicts with deliberate fashion editorial pose."
+    resolution:
+      - "Fashion/editorial task wins for pose intentionality."
+      - "Use cinematic depth and motivated light, but keep pose deliberate and clean."
+    final_prompt_fix: "editorial fashion pose with cinematic depth and motivated light"
+
+  practical_light_vs_clean_product:
+    conflict: "Visible practical lights may add clutter to a clean product advertisement."
+    resolution:
+      - "Use practical-light-inspired gradient without adding visible lamps unless user requested environment."
+      - "Keep reflections controlled and label readable."
+    final_prompt_fix: "warm motivated glow without visible lighting equipment or distracting lamps"
+
+  epic_scale_vs_subject_identity:
+    conflict: "Wide epic scale may make the subject too small."
+    resolution:
+      - "If subject identity matters, use medium-wide heroic framing instead of extreme wide."
+      - "Keep identity cues readable."
+    final_prompt_fix: "medium-wide epic scale with readable identity cues"
+
+  hidden_object_vs_bokeh:
+    conflict: "Cinematic shallow depth conflicts with hidden object readability."
+    resolution:
+      - "Use deep layered composition instead of shallow bokeh."
+      - "Preserve readable objects across the frame."
+    final_prompt_fix: "deep-focus layered scene with cinematic atmosphere and readable hidden objects"
+
+  architecture_drama_vs_perspective_accuracy:
+    conflict: "Dramatic film angle conflicts with architectural accuracy."
+    resolution:
+      - "Straight verticals and controlled perspective win."
+      - "Add drama through light, atmosphere, and material contrast, not warped geometry."
+    final_prompt_fix: "cinematic architectural lighting with straight verticals and controlled perspective"
+
+  ui_vs_cinematic_mood:
+    conflict: "Cinematic mood conflicts with UI clarity."
+    resolution:
+      - "Gameplay readability wins."
+      - "Use mild cinematic polish only in background or soft shadows."
+    final_prompt_fix: "clear gameplay-readable UI with subtle cinematic polish"
+
+# =============================================================================
+# CINEMATOGRAPHY FAILURE TAXONOMY
+# =============================================================================
+
+cinematography_failure_taxonomy:
+  cinematic_word_only:
+    symptoms:
+      - "prompt says cinematic but no visible film grammar"
+      - "image looks generic or posed"
+    likely_causes:
+      - "cinematic used as empty adjective"
+      - "no blocking, light motivation, depth, or story beat defined"
+    fix:
+      - "add one clear film grammar pattern"
+      - "define story beat, spatial layers, and motivated light"
+    add_positive:
+      - "cinematic film-still composition with natural blocking and motivated light"
+    add_negative:
+      - "generic posed studio shot"
+
+  overcinematic_fx:
+    symptoms:
+      - "random lens flares, smoke, particles, or explosions"
+      - "subject becomes secondary to effects"
+    likely_causes:
+      - "cinematic interpreted as visual FX overload"
+      - "too many dramatic mood terms"
+    fix:
+      - "reduce FX"
+      - "restore subject hierarchy and motivated atmosphere"
+    add_positive:
+      - "controlled cinematic atmosphere, subject remains first visual read"
+    add_negative:
+      - "random visual effects, excessive lens flare, distracting particles"
+
+  unmotivated_lighting:
+    symptoms:
+      - "light direction does not match visible source"
+      - "scene feels artificial or inconsistent"
+    likely_causes:
+      - "practical light mentioned but not tied to direction"
+      - "multiple conflicting light sources"
+    fix:
+      - "define a plausible source and visible light behavior"
+    add_positive:
+      - "light direction consistent with the visible source"
+    add_negative:
+      - "incoherent light direction"
+
+  staged_not_film_still:
+    symptoms:
+      - "subject looks like a studio pose instead of a narrative moment"
+      - "background has no story relevance"
+    likely_causes:
+      - "film_still requested but no story beat or blocking"
+    fix:
+      - "add subtle story moment and naturalistic blocking"
+    add_positive:
+      - "caught in a subtle story moment, naturalistic blocking"
+    add_negative:
+      - "overly staged pose"
+
+  unreadable_dark_cinema:
+    symptoms:
+      - "dramatic shadows hide required subject details"
+      - "product label, face, outfit, UI, or architecture unreadable"
+    likely_causes:
+      - "low-key/noir language applied without readability guardrails"
+    fix:
+      - "add selective highlights and readable shadows"
+    add_positive:
+      - "selective highlights keeping the hero detail readable"
+    add_negative:
+      - "crushed unreadable shadows"
+
+  confused_film_vs_poster:
+    symptoms:
+      - "image lacks either story moment or graphic poster hierarchy"
+      - "text area cluttered by film-still details"
+    likely_causes:
+      - "film_still and poster_hero both used without priority"
+    fix:
+      - "choose dominant layout according to use case"
+    add_positive:
+      - "poster-grade hierarchy with cinematic lighting"
+    add_negative:
+      - "busy title area"
+
+  weak_blocking:
+    symptoms:
+      - "subjects and props appear randomly placed"
+      - "no relationship between subject and environment"
+    likely_causes:
+      - "missing blocking roles and depth staging"
+    fix:
+      - "define hero, support, foreground/midground/background"
+    add_positive:
+      - "clear hero-first blocking with supporting elements secondary"
+    add_negative:
+      - "random prop placement"
+
+  cinematic_depth_hurts_task:
+    symptoms:
+      - "bokeh or foreground hides UI, hidden objects, outfit, or label"
+    likely_causes:
+      - "film-still depth applied to a readability-first task"
+    fix:
+      - "use deep-focus layered composition"
+    add_positive:
+      - "deep layered scene with all required details readable"
+    add_negative:
+      - "excessive bokeh hiding important details"
+
+# =============================================================================
+# CINEMATOGRAPHY COMPRESSION RULES
+# =============================================================================
+
+cinematography_compression_rules:
+  max_patterns_in_final_prompt:
+    normal: 1
+    expert: 2
+    debug: 4
+
+  keep_priority:
+    - "primary cinematic grammar pattern"
+    - "story beat if relevant"
+    - "motivated light source"
+    - "blocking / depth staging"
+    - "task-specific readability guardrail"
+
+  remove_first:
+    - "film theory labels not visible in image"
+    - "redundant cinematic adjectives"
+    - "multiple similar drama terms"
+    - "equipment names"
+    - "secondary patterns that do not support the task"
+
+  semantic_deduplication:
+    cinematic_cluster:
+      redundant_terms:
+        - "cinematic"
+        - "filmic"
+        - "movie-like"
+        - "film grade"
+        - "dramatic film still"
+      compressed_as: "cinematic film-still composition"
+
+    story_cluster:
+      redundant_terms:
+        - "narrative"
+        - "storytelling"
+        - "scene moment"
+        - "subtle story"
+      compressed_as: "subtle story moment"
+
+    depth_cluster:
+      redundant_terms:
+        - "foreground"
+        - "midground"
+        - "background"
+        - "layered depth"
+        - "spatial depth"
+      compressed_as: "layered foreground-midground-background depth"
+
+    hero_cluster:
+      redundant_terms:
+        - "heroic"
+        - "powerful"
+        - "dramatic hero"
+        - "iconic subject"
+      compressed_as: "iconic hero composition"
+
+  compressed_phrases:
+    film_still: "cinematic film-still moment with natural blocking and motivated light"
+    poster_hero: "poster-grade hero composition with strong silhouette and title-safe space"
+    commercial_hero: "commercial hero image with clean hierarchy and controlled layout"
+    noir: "noir tension with selective highlights and readable shadows"
+    epic: "epic cinematic scale with atmospheric depth"
+    intimate: "intimate cinematic close scene with quiet emotional focus"
+    hidden_object: "dense but organized cinematic scene with readable visual zones"
+    architecture: "cinematic architectural depth with straight verticals and realistic light motivation"
+    educational_ui: "gameplay-readable UI with subtle cinematic polish"
+
+# =============================================================================
+# MODEL OUTPUT MODE CINEMATOGRAPHY STYLE
+# =============================================================================
+
+model_output_mode_cinematography_style:
+  chatgpt_image:
+    style: "natural language, visually explicit, one or two cinematic phrases maximum"
+    prefer:
+      - "cinematic film-still moment with natural blocking"
+      - "motivated light from visible window/practical source"
+      - "layered foreground-midground-background depth"
+    avoid:
+      - "technical screenplay jargon"
+      - "too many shot names"
+      - "camera rig terminology"
+
+  stable_diffusion:
+    style: "compact positive tags plus separate negative prompt"
+    prefer:
+      - "cinematic film still"
+      - "naturalistic blocking"
+      - "motivated lighting"
+      - "foreground midground background depth"
+    negative_prompt_candidates:
+      - "overly staged"
+      - "random lens flare"
+      - "unmotivated lighting"
+      - "busy title area"
+      - "unreadable shadows"
+
+  midjourney:
+    style: "short aesthetic composition phrases"
+    prefer:
+      - "cinematic film still"
+      - "hero poster composition"
+      - "motivated practical lighting"
+      - "layered depth"
+    avoid:
+      - "long YAML-style constraints"
+      - "too many repair phrases"
+
+  flux:
+    style: "clear semantic ordering and concrete visual effect language"
+    prefer:
+      - "subject first, then blocking, then light motivation, then atmosphere"
+    avoid:
+      - "abstract film theory without visible rendering cues"
+
+  image_edit:
+    style: "preserve locked visual attributes; change only requested cinematic dimension"
+    prefer:
+      - "keep subject identity and composition unchanged unless explicitly edited"
+      - "apply cinematic lighting/blocking only to editable attributes"
+    avoid:
+      - "rewriting the whole image"
+
+  video_prompt:
+    style: "add story beat, camera movement implication, and motion-ready staging"
+    prefer:
+      - "stable first frame"
+      - "clear subject silhouette"
+      - "parallax-ready foreground/midground/background"
+      - "consistent light source for motion"
+    avoid:
+      - "tangled limbs"
+      - "ambiguous spatial layers"
+      - "text unless required"
+
+# =============================================================================
+# CINEMATOGRAPHY QUALITY RUBRIC
+# =============================================================================
+
+cinematography_quality_rubric:
+  dimensions:
+    cinematic_intent_clarity:
+      score_5: "One clear cinematic grammar pattern supports the user task."
+      score_3: "Cinematic mood is present but somewhat generic."
+      score_1: "Cinematic is only an empty adjective."
+    blocking_readability:
+      score_5: "Subject, supporting elements, gaze, and spatial layers are clearly staged."
+      score_3: "Subject is readable but environment relationship is weak."
+      score_1: "Elements feel randomly placed."
+    motivated_lighting:
+      score_5: "Light direction is visibly motivated by window, practical, neon, screen, sky, or plausible source."
+      score_3: "Lighting is attractive but source logic is vague."
+      score_1: "Light direction is incoherent."
+    task_fit:
+      score_5: "Film grammar supports the task without harming readability, product accuracy, UI clarity, or architecture."
+      score_3: "Cinematic effect slightly competes with task needs."
+      score_1: "Cinematic treatment harms the actual goal."
+    compression_quality:
+      score_5: "Final prompt uses compact visible film language with no redundant theory terms."
+      score_3: "Some repeated cinematic adjectives remain."
+      score_1: "Prompt is film-jargon soup."
+
+  minimum_by_task:
+    movie_poster:
+      cinematic_intent_clarity: 5
+      blocking_readability: 4
+      task_fit: 5
+    product_ad:
+      task_fit: 5
+      blocking_readability: 4
+      motivated_lighting: 4
+    educational_game_ui:
+      task_fit: 5
+      blocking_readability: 5
+      cinematic_intent_clarity: 3
+    hidden_object_scene:
+      blocking_readability: 5
+      task_fit: 5
+    architecture:
+      task_fit: 5
+      motivated_lighting: 4
+      blocking_readability: 4
+
+# =============================================================================
+# PROMPT ASSEMBLY HOOKS
+# =============================================================================
+
+prompt_assembly_hooks:
+  recommended_order:
+    - "subject and task"
+    - "cinematic grammar pattern"
+    - "blocking / story beat"
+    - "composition and spatial depth"
+    - "motivated lighting"
+    - "lens / exposure / color / material"
+    - "task-specific guardrails"
+    - "avoid list"
+
+  insertion_rules:
+    subject:
+      include:
+        - "cinematic subject role if relevant"
+        - "story beat if it changes subject behavior"
+    composition:
+      include:
+        - "film grammar pattern"
+        - "blocking"
+        - "depth staging"
+    style_and_lighting:
+      include:
+        - "motivated light source"
+        - "film-still / poster / commercial hierarchy"
+    atmosphere:
+      include:
+        - "cinematic mood only if visible and task-relevant"
+    constraints:
+      include:
+        - "readability guardrails"
+        - "title-safe area"
+        - "no over-FX"
+    avoid:
+      include_only_if_relevant:
+        - "random lens flare"
+        - "unmotivated lighting"
+        - "overly staged pose"
+        - "busy title area"
+        - "crushed shadows"
+        - "excessive bokeh hiding details"
+
+  final_prompt_rules:
+    - "Use one primary cinematography phrase unless expert/debug mode is requested."
+    - "Do not include screenplay terminology unless it visibly affects the image."
+    - "Do not include multiple contradictory shot grammars."
+    - "For product/UI/architecture, cinematic grammar must support clarity, not override it."
+    - "For image edit tasks, do not alter locked subject attributes while adding cinematic refinements."

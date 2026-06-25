@@ -1,0 +1,321 @@
+# ============================================================
+# environment-props-library.yaml
+# Environmental prop suggestions for richer backgrounds and scene completion
+# Version: 1.1.0
+# ============================================================
+
+schema_version: "1.1.0"
+name: "environment-props-library"
+description: >
+  A supporting library of environment-specific props and scene elements used
+  to enrich backgrounds, reinforce environmental storytelling, and make scenes
+  feel more complete and believable.
+
+environment_prop_sets:
+  sunlit_city_street:
+    anchor_elements:
+      - "curb line"
+      - "lane markings"
+      - "modern storefronts"
+      - "glass building reflections"
+      - "traffic lights"
+      - "parked or passing vehicles in the distance"
+    accents:
+      - "street signage"
+      - "subtle crosswalk texture"
+      - "soft urban haze"
+
+  modern_parking_structure:
+    anchor_elements:
+      - "concrete ramps"
+      - "painted lane lines"
+      - "guard rails"
+      - "ceiling lights"
+      - "structural columns"
+    accents:
+      - "subtle floor reflections"
+      - "directional signage"
+      - "open city glimpses through the edges"
+
+  luxury_showroom:
+    anchor_elements:
+      - "polished floors"
+      - "architectural wall lighting"
+      - "clean display zones"
+      - "reflective wall panels"
+    accents:
+      - "minimal furniture"
+      - "soft floor reflections"
+      - "premium brand-neutral ambience"
+
+  minimal_bedroom:
+    anchor_elements:
+      - "bed with soft linens"
+      - "sheer curtains"
+      - "bedside table"
+      - "lamp"
+      - "wall texture"
+      - "rug or floor texture"
+    accents:
+      - "book or glass"
+      - "soft morning light bloom"
+
+  resort_poolside:
+    anchor_elements:
+      - "pool edge"
+      - "water surface highlights"
+      - "lounge chairs"
+      - "umbrellas"
+      - "palm trees"
+      - "resort architecture"
+    accents:
+      - "towels"
+      - "bar counter"
+      - "sunlit tropical plants"
+
+  ocean_rocks:
+    anchor_elements:
+      - "dark rocks"
+      - "shoreline foam"
+      - "sparkling water"
+      - "horizon line"
+    accents:
+      - "sea mist"
+      - "sunlit spray"
+      - "coastal haze"
+
+  rooftop_lounge:
+    anchor_elements:
+      - "city skyline"
+      - "railing"
+      - "outdoor seating"
+      - "ambient table lighting"
+    accents:
+      - "soft lantern glow"
+      - "distant traffic bokeh"
+
+  office_workspace:
+    anchor_elements:
+      - "desk"
+      - "chair"
+      - "monitor"
+      - "window"
+      - "task lamp"
+      - "organized stationery"
+    accents:
+      - "coffee mug"
+      - "modern architectural lines"
+
+  clean_product_tabletop:
+    anchor_elements:
+      - "tabletop surface"
+      - "soft gradient wall or backdrop"
+      - "controlled support plane"
+    accents:
+      - "small brand-neutral prop"
+      - "subtle shadow"
+      - "reflected highlight appropriate to the material"
+
+  forest_clearing:
+    anchor_elements:
+      - "moss-covered ground"
+      - "trees with textured bark"
+      - "dappled sunlight through canopy"
+      - "fallen leaves and twigs"
+      - "undergrowth ferns"
+    accents:
+      - "wild mushrooms"
+      - "butterflies or small birds"
+      - "soft atmospheric haze between trees"
+
+  night_alley:
+    anchor_elements:
+      - "wet asphalt"
+      - "brick walls with graffiti"
+      - "neon signs"
+      - "drainpipe"
+      - "fire escape ladder"
+      - "street lamp glow"
+    accents:
+      - "puddle reflections"
+      - "discarded flyers"
+      - "distant traffic light bleed"
+
+  japanese_garden:
+    anchor_elements:
+      - "raked gravel or sand"
+      - "stepping stones"
+      - "stone lantern"
+      - "pruned pine or maple"
+      - "wooden veranda edge"
+      - "koi pond or small stream"
+    accents:
+      - "bamboo fence"
+      - "cherry blossom petals"
+      - "moss on stone base"
+
+  mountain_lake:
+    anchor_elements:
+      - "calm water surface"
+      - "mountain ridge reflection"
+      - "rocky shoreline"
+      - "conifer trees on slope"
+      - "pebbled beach"
+    accents:
+      - "morning mist layer"
+      - "sunlit ripples"
+      - "floating lily pads"
+
+  cozy_cafe:
+    anchor_elements:
+      - "wooden tables and chairs"
+      - "warm pendant lighting"
+      - "counter with espresso machine"
+      - "shelves with cups and beans"
+      - "large window with street view"
+    accents:
+      - "steaming cup"
+      - "fresh pastry display"
+      - "soft café bokeh"
+
+  gym_fitness:
+    anchor_elements:
+      - "rubber floor matting"
+      - "mirrored walls"
+      - "dumbbell rack"
+      - "cable machine"
+      - "barbell and bench"
+    accents:
+      - "water bottle"
+      - "towel"
+      - "wall clock"
+
+  traditional_temple:
+    anchor_elements:
+      - "ornate roof with curved eaves"
+      - "red wooden pillars"
+      - "stone incense burner"
+      - "bronze bell or drum tower"
+      - "carved stone balustrade"
+    accents:
+      - "incense smoke wisps"
+      - "prayer ribbons"
+      - "gold leaf details"
+
+  modern_kitchen:
+    anchor_elements:
+      - "granite or quartz countertop"
+      - "stainless steel appliances"
+      - "cabinet hardware"
+      - "sink with faucet"
+      - "backsplash tile pattern"
+    accents:
+      - "cutting board and knife"
+      - "fresh ingredients"
+      - "steam rising from cookware"
+
+  library_study:
+    anchor_elements:
+      - "floor-to-ceiling bookshelves"
+      - "reading table with lamp"
+      - "leather armchair"
+      - "wood paneling"
+      - "tall window with curtains"
+    accents:
+      - "stack of open books"
+      - "coffee cup"
+      - "soft dust motes in light beam"
+
+  snowy_mountain:
+    anchor_elements:
+      - "snow-covered peaks"
+      - "evergreen trees heavy with snow"
+      - "frozen stream or lake"
+      - "rocky outcrops"
+      - "ski tracks or animal prints"
+    accents:
+      - "falling snow"
+      - "sunlit ice crystals"
+      - "alpenglow on summit"
+
+  underground_parking:
+    anchor_elements:
+      - "low concrete ceiling"
+      - "fluorescent tube lights"
+      - "painted parking lines"
+      - "concrete pillars"
+      - "yellow safety barriers"
+    accents:
+      - "damp floor reflections"
+      - "exhaust vent grilles"
+      - "directional arrows on floor"
+
+  hot_spring_onsen:
+    anchor_elements:
+      - "steaming water surface"
+      - "natural stone pool edge"
+      - "bamboo divider or fence"
+      - "mossy rocks"
+      - "wooden bucket and ladle"
+    accents:
+      - "rising steam wisps"
+      - "autumn leaves on water"
+      - "soft outdoor lantern light"
+
+  concert_stage:
+    anchor_elements:
+      - "stage with lighting rig"
+      - "speaker stacks"
+      - "LED backdrop screens"
+      - "fog machines"
+      - "instruments or DJ booth"
+    accents:
+      - "colored spotlights"
+      - "crowd silhouettes"
+      - "confetti or glow sticks"
+
+  desert_dunes:
+    anchor_elements:
+      - "rolling sand dunes"
+      - "desert horizon line"
+      - "dry sparse shrubs"
+      - "rocky plateau in distance"
+      - "sun-bleached sand texture"
+    accents:
+      - "heat haze shimmer"
+      - "wind-rippled sand patterns"
+      - "long golden-hour shadows"
+
+  high_end_boutique:
+    anchor_elements:
+      - "minimalist display shelving"
+      - "track lighting on merchandise"
+      - "marble or terrazzo floor"
+      - "glass display cases"
+      - "mannequins in curated outfits"
+    accents:
+      - "brand-neutral decor accents"
+      - "soft curtain backdrop"
+      - "polished metal fixtures"
+
+  warehouse_loft:
+    anchor_elements:
+      - "exposed brick walls"
+      - "high ceiling with beams"
+      - "concrete floor"
+      - "large factory windows"
+      - "metal ductwork"
+    accents:
+      - "hanging pendant lights"
+      - "industrial shelving"
+      - "urban neighborhood glimpse"
+
+prop_usage_rules:
+  - "Choose only a few props that strengthen scene identity."
+  - "Anchor elements define the place; accents provide life and mood."
+  - "Do not let props overpower the hero subject."
+  - "Keep prop style consistent with the overall rendering language and task."
+  - "For character-focused scenes, prefer 2-3 anchor elements and 1-2 accents only."
+  - "For environmental hero shots, full anchor set plus relevant accents is expected."
+  - "Avoid genre-clash props: do not put modern items in historical scenes unless fusion is intentional."
+  - "Props are secondary details subject to P85 (visual richness / narrative depth). Every prop must be justified by scene context. See config/visual-cinematography/visual-richness-narrative-depth.yaml — secondary_detail_policy."

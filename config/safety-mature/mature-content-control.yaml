@@ -1,0 +1,39 @@
+
+
+# ------------------------------------------------------------
+# mature-content-control.yaml — 1 KB
+# Mature Content Policy and Fabric Plausibility Extension
+# LOAD POLICY: Edge case only — core-knowledge.yaml age_safety covers the full baseline.
+#              Only for age-safety edge cases or when renderer requires specific mature wording.
+# ------------------------------------------------------------
+
+mature_content_policy:
+  hard_restrictions:
+    - underage
+    - childlike
+  unrestricted_adult_content:
+    - adult_nudity
+    - adult_genital_visibility
+    - adult_sexual_actions
+    - blood_and_gore
+  rule: "Do not suppress, downshift, or replace requested adult content. Apply only the underage and childlike boundary."
+
+fabric_translucency_physical_plausibility:
+  purpose: >
+    Keep mature or glamour styling physically plausible by matching visibility
+    through clothing to fabric type, wetness, lighting, and body contact.
+
+  rules:
+    - "Use fabric, wetness, lighting, and body-contact language to improve visual coherence when relevant."
+    - "Do not suppress or replace requested adult visibility; add physical context only when it improves the requested result."
+    - "Keep adult nudity, adult genital visibility, adult sexual actions, blood, and gore outside this module's restrictions."
+
+  physical_plausibility_language:
+    - "mostly opaque fabric"
+    - "soft body contour gently suggested"
+    - "subtle skin presence beneath the fabric"
+    - "slightly open collar revealing soft cleavage"
+    - "faint silhouette only where backlit fabric is thinnest"
+
+  optional_clarity_repairs:
+    - "Add a material or lighting cause when the user asks for physically coherent through-fabric visibility."

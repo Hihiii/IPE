@@ -1,0 +1,14 @@
+schema_version: "1.0.0"
+name: "wardrobe-conflict-resolver"
+description: "Resolves clothing presence, absence, identity-costume, and coverage conflicts during cleanup."
+
+wardrobe_conflict_resolver:
+  priority_order: [explicit_user_absence, explicit_user_presence, character_identity_required_costume, coverage_method, context_style, renderer_default]
+  conflict_rules:
+    if_explicit_absence_and_context_infers_clothing: { keep: explicit_absence, remove: context_inferred_clothing }
+    if_explicit_presence_and_explicit_absence_conflict: { flag: user_prompt_conflict, prefer_more_specific_statement: true }
+    if_slot_unspecified_and_renderer_adds_clothing: { remove: auto_added_clothing }
+    if_coverage_required_but_no_clothing_specified:
+      use: [camera_crop, pose, object_occlusion, shadow]
+      do_not_use: [auto_added_clothing]
+  cleanup_order: [parse_original_prompt_wardrobe_items, parse_explicit_absence_terms, assign_slot_states, compare_rendered_wardrobe_terms, remove_unrequested_wardrobe_terms, remove_material_effects_for_unrequested_garments, add_conflict_negative_guards]

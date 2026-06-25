@@ -1,0 +1,41 @@
+# =============================================================================
+# SKILL PHASE 4.3: FINAL PROMPT REPACKAGING
+# Extracted from SKILL.md (lines 1386-1415)
+# =============================================================================
+
+skill_phase:
+  phase: 4.3
+  name: "Phase 4.3: Final Prompt Repackaging"
+  internal: true
+  source: "SKILL.md lines 1386-1415"
+  instructions: |
+    ## Phase 4.3: Final Prompt Repackaging *(internal)*
+
+    Phase 4.2 selects a renderer and produces renderer-specific fields. Repackage that result before delivery so every downstream path receives one stable contract. This phase must not re-enrich the scene, change the selected model syntax, remove renderer-required detail, or add new aesthetic decisions.
+
+    ```yaml
+    final_prompt_delivery_package:
+      model_target: "<selected target>"
+      renderer_profile: "<selected Phase 4.2 renderer>"
+      publication_mode: "<none | implied_cover_text_mode | text_safe_layout_only_mode | explicit_text_mode>"
+      positive_prompt: "<renderer prompt or shared_positive_prompt>"
+      negative_prompt: "<renderer negative prompt, avoid text, or not specified>"
+      locked_constraints: []
+      exact_text: []
+      suggest_resolution: "<resolved from output specs>"
+      output_contract:
+        final_prompt_ready: true
+        renderer_fields_normalized: true
+        no_raw_internal_package: true
+    ```
+
+    Repackaging rules:
+
+    - Map model-specific prompt field names into `positive_prompt` and `negative_prompt` without changing their contents.
+    - Preserve `locked_constraints`, exact text, publication mode, aspect ratio, resolution, and renderer-specific workflow notes.
+    - For targets without negatives, set `negative_prompt: "(not specified)"`; never invent a negative list.
+    - For `comfyui_flux2_zimage_3stage`, map `shared_positive_prompt` to `positive_prompt`, `z_image_negative_prompt` to `negative_prompt`, and preserve the Flux/Z Image stage-use note.
+    - Collapse only byte-identical renderer outputs; retain separate packages where syntax, negative behavior, or resolution differs.
+    - Run final structural validation: selected model target exists, required renderer fields are present, no raw prompt package leaks into the final prompt, and no renderer decision was dropped.
+
+    Output is consumed by Phase 5 only.

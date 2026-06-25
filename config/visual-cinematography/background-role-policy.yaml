@@ -1,0 +1,64 @@
+schema_version: "1.0.0"
+name: "background-role-policy"
+description: >
+  Defines what job the background performs: minimal, readable, worldbuilding,
+  spectacle, product support, stage, or architectural landmark.
+
+core_principle: >
+  Background is a role, not filler. Decide whether it should disappear, support,
+  explain the world, show scale, carry text space, or become part of the action.
+
+background_role_policy:
+  modes:
+    minimal:
+      emphasis: "subject_only"
+      detail_level: "low"
+      use_when: ["beauty portrait", "product hero", "clean poster", "text-safe layout"]
+      prompt: "minimal low-detail background that keeps all attention on the subject"
+    readable_secondary:
+      emphasis: "subject_first_background_second"
+      detail_level: "medium"
+      use_when: ["lifestyle", "fashion editorial", "character in location", "brand campaign"]
+      prompt: "background remains softly legible and supports the subject context"
+    worldbuilding_support:
+      emphasis: "subject_plus_context"
+      detail_level: "medium_high"
+      use_when: ["fantasy", "sci-fi", "historical", "character IP", "cinematic scene"]
+      prompt: "background contains readable worldbuilding anchors without overpowering the subject"
+    atmospheric_abstract:
+      emphasis: "mood_and_depth"
+      detail_level: "low_to_medium"
+      use_when: ["beauty", "album cover", "abstract poster", "dreamlike scene"]
+      prompt: "abstract atmospheric background with controlled value and color"
+    product_support:
+      emphasis: "product_geometry_and_usage"
+      detail_level: "low_to_medium"
+      use_when: ["product ad", "food", "packaging", "commercial hero"]
+      prompt: "supporting surface and props stay lower contrast than product"
+    concert_stage:
+      emphasis: "performance_scale_but_performer_retained"
+      detail_level: "high_controlled"
+      use_when: ["concert", "idol performance", "stage show", "festival"]
+      prompt: "stage lighting and crowd scale remain behind the performer hierarchy"
+    architectural_landmark:
+      emphasis: "place_identity_and_scale"
+      detail_level: "high"
+      use_when: ["architecture", "travel", "cathedral", "city landmark"]
+      prompt: "landmark remains readable with level geometry and clear scale cues"
+    spectacle_background:
+      emphasis: "event_scale_but_subject_retained"
+      detail_level: "high"
+      use_when: ["destruction", "storm", "battle", "sports crowd", "large action"]
+      prompt: "spectacle shows scale while subject/action target remains readable"
+
+readability_controls:
+  simplify_when:
+    - "face is not first read"
+    - "product label is unreadable"
+    - "typography needs safe space"
+    - "action target is lost"
+  preserve_when:
+    - "environment is the story"
+    - "architecture or location is requested"
+    - "background contains required text/signage"
+    - "worldbuilding identity matters"

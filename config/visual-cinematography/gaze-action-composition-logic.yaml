@@ -1,0 +1,114 @@
+schema_version: "1.0.0"
+name: "gaze-action-composition-logic"
+description: >
+  Links gaze, attention target, body orientation, object placement, and lead room
+  to composition decisions.
+
+core_principle: >
+  Where the subject looks or acts determines where the frame needs space. Gaze,
+  body direction, hand role, object position, and lead room must agree.
+
+gaze_action_composition_logic:
+  global_rules:
+    - "If the subject looks or moves toward a side, reserve lead room on that side unless intentionally claustrophobic."
+    - "If the subject targets an object, the object must be visible or directionally implied."
+    - "If screen attention is present, head, eyes, torso, screen glow, and hand/remote cues should align."
+    - "If an action direction is defined, body orientation and secondary motion must support it."
+    - "If the subject looks at the viewer, keep eyes readable and avoid background distractions near the face."
+
+attention_scenarios:
+  selfie_perspective:
+    composition:
+      gaze_target: "camera lens"
+      lead_room: "not_required"
+      object_visibility: "no capture device unless explicitly triggered"
+      viewpoint: "close handheld selfie perspective"
+    guardrails:
+      - "subject is lens-aware and looks into the camera"
+      - "phone, mirror, and selfie stick remain off-frame by default"
+      - "foreground arm is optional but does not imply a visible phone"
+  looking_at_viewer:
+    composition:
+      gaze_target: "viewer"
+      lead_room: "not_required"
+      priority: ["eyes", "face", "expression"]
+    guardrails:
+      - "eyes face camera"
+      - "catchlights readable"
+      - "no competing bright object beside face"
+  looking_at_phone:
+    composition:
+      gaze_target: "phone"
+      lead_room: "toward phone side"
+      object_visibility: "phone visible unless explicitly off-frame"
+    guardrails:
+      - "eyes angle downward or sideways toward phone"
+      - "phone hand and screen direction visible"
+      - "screen glow can motivate face light"
+  looking_at_mirror:
+    composition:
+      gaze_target: "mirror/reflection"
+      lead_room: "toward mirror plane"
+      object_visibility: "mirror plane and reflection logic visible"
+    guardrails:
+      - "reflection angle matches subject position"
+      - "reflected face/body remains consistent"
+  looking_at_tv:
+    composition:
+      gaze_target: "screen"
+      lead_room: "toward screen side"
+      object_visibility: "TV visible or screen glow/off-frame direction implied"
+    guardrails:
+      - "head, eyes, torso align toward TV"
+      - "avoid direct viewer gaze unless requested"
+  looking_at_another_character:
+    composition:
+      gaze_target: "secondary_subject"
+      lead_room: "between subjects"
+      object_visibility: "both subjects or implied off-frame partner"
+    guardrails:
+      - "eyelines meet or point logically"
+      - "body language supports relationship"
+  looking_at_object_in_hand:
+    composition:
+      gaze_target: "held object"
+      lead_room: "toward object"
+      object_visibility: "object clear and not fused with hand"
+    guardrails:
+      - "hand pose supports object weight/use"
+      - "object is not hidden by blur or crop"
+  aiming_weapon:
+    composition:
+      gaze_target: "aim direction"
+      lead_room: "toward aim"
+      object_visibility: "weapon/tool and aim line readable"
+    guardrails:
+      - "hands align with grip"
+      - "face and aim direction do not contradict"
+  performing_on_stage:
+    composition:
+      gaze_target: "audience/camera/spotlight direction"
+      lead_room: "toward gesture or movement"
+      object_visibility: "stage depth and light path readable"
+    guardrails:
+      - "gesture silhouette not cropped"
+      - "stage lights support performer hierarchy"
+  running_attacking_reaching:
+    composition:
+      gaze_target: "action target or travel direction"
+      lead_room: "in front of movement"
+      object_visibility: "target or impact zone visible/implied"
+    guardrails:
+      - "body orientation supports action"
+      - "motion particles move from contact source"
+      - "avoid crop at hands, feet, weapon, or target"
+
+prompt_phrases:
+  lead_room:
+    - "facing toward camera-right with clear lead room"
+    - "moving diagonally through the frame with space ahead of the action"
+    - "gaze directed toward the off-frame screen, with screen-side negative space"
+  action_alignment:
+    - "body orientation supports the action target"
+    - "hands, gaze, and object placement align to one clear action"
+    - "motion cues originate from the contact point"

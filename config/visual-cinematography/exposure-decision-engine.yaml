@@ -1,0 +1,43 @@
+version: 1
+purpose: "Choose exposure around the information the image must preserve."
+
+exposure_strategy:
+  fields:
+    metering_priority: [face, skin, product, sky, highlight, shadow, balanced_scene]
+    exposure_bias: [underexpose, neutral, overexpose, protect_highlights, expose_for_skin]
+    highlight_policy: [preserve, soft_clip, allow_bloom, avoid_clip]
+    shadow_policy: [open, natural, controlled, deep]
+    skin_exposure_priority: [low, medium, high, critical]
+    subject_readability: [low, medium, high, critical]
+    background_exposure_role: [secondary, readable, silhouette, luminous]
+
+presets:
+  portrait:
+    metering_priority: face
+    exposure_bias: expose_for_skin
+    highlight_policy: preserve
+    shadow_policy: controlled
+    prompt_effect: "exposed for face and skin tones, readable skin midtones, soft highlight roll-off"
+  backlit_portrait:
+    metering_priority: face
+    exposure_bias: expose_for_skin
+    highlight_policy: allow_bloom
+    shadow_policy: open
+    prompt_effect: "preserved facial midtones with softly blooming backlight and gentle fill"
+  product:
+    metering_priority: product
+    exposure_bias: protect_highlights
+    highlight_policy: preserve
+    shadow_policy: controlled
+    prompt_effect: "specular highlights retain shape, material reflections and logo remain readable"
+  night_scene:
+    metering_priority: face
+    exposure_bias: neutral
+    highlight_policy: preserve
+    shadow_policy: controlled
+    prompt_effect: "readable night exposure, practical lights preserved, subject midtones visible"
+
+conflict_rules:
+  - "Face, product label, and required costume markers outrank decorative highlight bloom."
+  - "Protect highlight detail on white fabric, windows, paint, chrome, and screens when they carry requested information."
+  - "Never use a shadow policy that makes a critical subject unreadable."

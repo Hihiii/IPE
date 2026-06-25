@@ -1,0 +1,84 @@
+schema_version: "1.0.0"
+name: "depth-layering-system"
+description: >
+  Foreground, midground, and background planning for cinematic, editorial,
+  commercial, action, and portrait scenes.
+
+core_principle: >
+  Depth is not random bokeh. Foreground, midground, background, atmosphere, and
+  focus mode must support the subject hierarchy and story goal.
+
+depth_layering_system:
+  default_layers:
+    foreground: "optional_supporting_frame"
+    midground: "primary_subject"
+    background: "readable_secondary_world"
+    atmosphere: "optional_depth_separator"
+  layer_roles:
+    foreground:
+      uses:
+        - "frame the subject"
+        - "show scale"
+        - "create immersion"
+        - "carry particles/splash/sand only when action causes them"
+      risks:
+        - "excessive foreground obstruction"
+        - "foreground hand or prop covers face"
+    midground:
+      uses:
+        - "primary subject plane"
+        - "main product or object plane"
+        - "action contact plane"
+      rules:
+        - "primary subject remains dominant unless the task is environment-first"
+    background:
+      modes:
+        - "minimal"
+        - "readable_secondary"
+        - "worldbuilding_support"
+        - "spectacle_background"
+        - "soft_blur"
+        - "deep_focus"
+      rules:
+        - "background supports subject first"
+        - "sharpness, contrast, and saturation depend on background role"
+
+focus_modes:
+  shallow_subject_priority:
+    use_when:
+      - "portrait"
+      - "beauty"
+      - "subject identity priority"
+    prompt: "shallow depth of field isolates the face while preserving key silhouette cues"
+  moderate_readable_background:
+    use_when:
+      - "editorial scene"
+      - "lifestyle"
+      - "character in location"
+      - "brand campaign"
+    prompt: "moderate depth of field keeps the subject sharp while the background remains readable"
+  deep_focus:
+    use_when:
+      - "architecture"
+      - "sports action"
+      - "large-scale destruction"
+      - "group interaction"
+    prompt: "deep focus preserves subject, action target, and environment geometry"
+  graphic_flat:
+    use_when:
+      - "poster"
+      - "watercolor/ink illustration"
+      - "clean key visual"
+    prompt: "controlled graphic depth with clear silhouette and negative space"
+
+conditional_rules:
+  if_cinematic:
+    prefer_foreground_occlusion: true
+    but:
+      - "do not cover face, hands, product label, or action target"
+  if_character_ip_priority:
+    keep_midground_subject_dominant: true
+  if_background_context_is_important:
+    avoid_excessive_bokeh: true
+  if_text_overlay_needed:
+    background_behind_text: "low_detail_low_contrast"

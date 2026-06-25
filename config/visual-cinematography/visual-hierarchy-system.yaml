@@ -1,0 +1,94 @@
+schema_version: "1.0.0"
+name: "visual-hierarchy-system"
+description: >
+  Controls what the viewer sees first, second, and third. Prevents background,
+  effects, bokeh, text, or color accents from overpowering the subject.
+
+core_principle: >
+  A strong image has a planned first read. Face, eyes, product/logo, action
+  target, or title must win the first second of attention according to the task.
+
+visual_hierarchy_system:
+  first_read_priority:
+    general_human:
+      - face
+      - eyes
+      - expression
+      - gesture
+      - silhouette
+    character_ip:
+      - face_and_hair_silhouette
+      - eyes_or_signature_expression
+      - signature_prop
+      - costume_marker
+      - palette_hierarchy
+    product:
+      - product_shape
+      - label_or_logo_if_required
+      - hero_material_highlight
+      - usage_context
+    action:
+      - action_subject
+      - action_target
+      - force_direction
+      - reaction_or_result
+    publication:
+      - masthead_or_title_when_required
+      - hero_subject
+      - support_copy_or_panel
+      - background_context
+  second_read_priority:
+    - body_language
+    - main_action_target
+    - secondary_prop
+    - garment_or_material_detail
+    - environment_anchor
+  third_read_priority:
+    - worldbuilding
+    - background_crowd
+    - decorative_atmosphere
+    - particles
+    - secondary_text
+
+priority_controls:
+  face_priority:
+    positive:
+      - "face remains the brightest or sharpest human focal area"
+      - "eyes have clean catchlights and readable gaze direction"
+    suppress:
+      - "background face-like details competing with the face"
+      - "foreground effects covering eyes"
+  bright_focal_area_priority:
+    rule: "The brightest area should support the first-read target unless the scene intentionally uses silhouette."
+  high_contrast_priority:
+    rule: "Highest contrast belongs to the subject, title, or action target, not random background detail."
+  saturated_accent_priority:
+    rule: "Use saturated accent color as a guide to the first or second read; prevent accent color takeover."
+  action_target_priority:
+    rule: "If an action target exists, it must be visible or directionally implied by gaze, body orientation, lead room, and motion cues."
+  typography_suppression_when_not_needed:
+    rule: "Suppress random text, fake logos, and signage unless text is part of the task."
+  background_detail_suppression:
+    rule: "Reduce background contrast, saturation, face-like shapes, and sharpness when they compete with the subject."
+
+failure_guardrails:
+  - "first read is unclear"
+  - "background contrast exceeds subject contrast"
+  - "bright practical lights pull attention away from face/product"
+  - "accent color dominates the whole image"
+  - "text appears when not requested"
+  - "action target is missing or visually weak"
+
+prompt_phrases:
+  first_read_face:
+    - "face and eyes are the clear first-read focal point"
+    - "background detail stays secondary to the face"
+  first_read_product:
+    - "product silhouette and label are the strongest first read"
+    - "support props remain lower contrast"
+  first_read_action:
+    - "the viewer reads the action direction immediately"
+    - "action target remains visible and aligned with body orientation"
+  first_read_title:
+    - "large clean title zone with clear hierarchy"
+    - "subject placement supports readable typography"

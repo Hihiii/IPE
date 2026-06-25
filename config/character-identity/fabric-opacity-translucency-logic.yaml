@@ -1,0 +1,381 @@
+# ============================================================
+# fabric-opacity-translucency-logic.yaml
+# Fabric opacity, translucency, reveal-cause, and physical plausibility controller
+# Version: 1.0.0
+# Purpose:
+#   Prevent unrealistic or physically inconsistent visibility through clothing.
+#   Mature, sensual, glamour, boudoir-inspired, wet-cloth, sheer-cloth, and fashion
+#   prompts must obey material opacity, lighting, moisture, cling, and tension logic.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "fabric-opacity-translucency-logic"
+description: >
+  A fabric-visibility and material-physics module for prompt enhancement. It ensures that
+  clothing transparency, implied body contour, silhouette visibility, and mature glamour
+  phrasing are physically plausible. It prevents dry opaque garments from showing sharp
+  anatomical detail unless fabric type, backlight, wetness, tension, or mesh/lace structure
+  makes that visibility plausible.
+
+core_principle: >
+  Visibility through clothing must be caused by material and light. The prompt should define
+  opacity class, fabric thickness, wetness, cling behavior, backlight, body tension/compression,
+  and reveal intensity before describing any visibility beneath fabric.
+
+global_rules:
+  - "Fabric effects require an explicitly present garment, towel, wrap, or body-paint item."
+  - "Rain or water affects skin, hair, and explicitly present garments only; it must not create a wet shirt, underwear, swimwear, skirt, pants, or fabric layer."
+  - "Do not create folds, seams, straps, waistbands, hems, buttons, zippers, textile texture, or wet cling for an unspecified garment."
+  - "Do not describe sharp anatomical visibility through dry, mostly opaque fabric."
+  - "If visibility is requested, define the physical cause: semi-sheer fabric, strong backlight, wet cling, stretch tension, mesh, lace, or compression."
+  - "Use implied contour or faint silhouette language for dry oversized shirts unless the material is explicitly semi-sheer or wet."
+  - "Avoid result-only phrasing such as 'visible pink nipple' when the material/lighting conditions do not support it."
+  - "Mature glamour can remain tasteful while preserving material realism."
+  - "If fabric is opaque or mostly opaque, use soft contour, skin presence, or implied form rather than explicit anatomical visibility."
+  - "If fabric is wet, describe dampness, adhesion, translucency gradient, and physically consistent cling."
+  - "If fabric is backlit, describe light passing through thin fabric and faint non-sharp silhouette."
+  - "If visibility intensity exceeds fabric logic, reduce reveal intensity or change fabric/lighting conditions."
+  - "For bath towels, reveal should come from wrap position, edge slippage, loosened tuck, or hand release, not transparency or cutout-like fabric."
+  - "For after-bath or post-shower towel scenes, default the towel to slightly damp or wet at skin-contact areas unless the user explicitly requests a dry staged towel."
+
+fabric_opacity_schema:
+  fabric_opacity_class: "opaque | lightweight_opaque | semi_sheer | sheer | mesh | lace | wet_translucent | transparent"
+  fabric_material: []
+  fabric_state: "dry | slightly_damp | wet | soaked | stretched | compressed | backlit | layered"
+  reveal_cause: []
+  reveal_intensity: "none | implied_contour | faint_silhouette | soft_outline_visibility | clear_visibility"
+  body_contact_behavior: "loose_drape | soft_contact | tensioned_contact | wet_cling | compression_contact"
+  light_condition: "front_light | side_light | backlight | strong_backlight | mixed_light | screen_glow"
+  allowed_visibility_language: []
+  prohibited_visibility_language: []
+  physical_plausibility_priority: "low | medium | high | critical"
+
+local_anatomy_surface_integration:
+  controller: config/nsfw-local-anatomy-surface-controller.yaml
+  rule: "When visible adult local anatomy is relevant, resolve its surface geometry, pose/gravity response, fabric interface, and key-light direction before choosing visibility language."
+  wet_or_translucent_rule: "Moisture and translucency can soften and partially reveal local form, but fabric weave, seams, folds, buttons, wet/dry gradients, and front/back occlusion remain visible."
+  opaque_rule: "Opaque fabric may show only plausible contour or tension; it cannot reveal a sharply defined, colored, decal-like local anatomical mark."
+
+opacity_classes:
+  opaque:
+    examples:
+      - "cotton poplin"
+      - "thick oxford shirt"
+      - "denim"
+      - "wool"
+      - "lined jacket"
+    allowed:
+      - "body volume suggested by garment shape"
+      - "fabric drape indicates form"
+      - "no anatomical visibility through fabric"
+    avoid:
+      - "clear anatomical visibility"
+      - "sharp nipple/areola visibility"
+      - "transparent effect without cause"
+
+  lightweight_opaque:
+    examples:
+      - "thin cotton shirt"
+      - "light linen"
+      - "thin jersey"
+      - "soft oversized white shirt"
+    allowed:
+      - "soft body contour gently suggested"
+      - "subtle skin presence under bright light"
+      - "slight shape indication where fabric touches the body"
+    avoid:
+      - "sharp anatomical detail"
+      - "visible colored anatomy through dry fabric"
+      - "cutout-like transparency"
+
+  semi_sheer:
+    examples:
+      - "cotton voile"
+      - "gauze"
+      - "thin chiffon-like fabric"
+      - "semi-sheer blouse"
+    allowed:
+      - "faint silhouette beneath fabric"
+      - "softly diffused outline in backlit areas"
+      - "subtle non-sharp visibility in tensioned zones"
+    avoid:
+      - "hyper-defined anatomy"
+      - "painted-on visibility"
+      - "visibility stronger than lighting and fabric support"
+
+  sheer:
+    examples:
+      - "chiffon"
+      - "organza"
+      - "fine mesh"
+      - "thin lace"
+    allowed:
+      - "visible underlying silhouette depending on layering"
+      - "fabric edge, weave, and translucency clearly visible"
+    avoid:
+      - "ignoring garment layer structure"
+      - "impossible opaque/sharp conflict"
+
+  wet_translucent:
+    examples:
+      - "damp white cotton"
+      - "wet linen"
+      - "soaked thin jersey"
+    allowed:
+      - "translucency caused by moisture and fabric adhesion"
+      - "more visibility where fabric clings to skin"
+      - "gradual transition from opaque dry areas to translucent wet contact areas"
+    avoid:
+      - "uniform transparency everywhere"
+      - "anatomical cutout effect"
+      - "wet visibility without dampness or cling"
+
+reveal_cause_taxonomy:
+  backlight:
+    description: "Strong light passes through thin or semi-sheer fabric."
+    language:
+      - "strong backlight gently passes through the thinnest fabric areas"
+      - "faint silhouette softly suggested by backlit fabric"
+      - "not sharply defined"
+  wet_cling:
+    description: "Moisture makes fabric adhere to the skin and increases translucency."
+    language:
+      - "slightly damp fabric clings naturally where it contacts the body"
+      - "translucency is caused by moisture and tension"
+      - "visibility remains physically consistent"
+  fabric_tension:
+    description: "Fabric stretches over form or pulls between anchor points."
+    language:
+      - "subtle tension areas reveal soft contour"
+      - "fabric stretch indicates form without sharp visibility"
+  compression:
+    description: "Fabric compressed by sofa, arm, strap, or body contact."
+    language:
+      - "body contour suggested where fabric compresses against the surface"
+  mesh_or_lace_structure:
+    description: "Open weave or lace creates pattern-based visibility."
+    language:
+      - "visibility follows lace/mesh pattern rather than uniform transparency"
+  towel_edge_slip:
+    description: "A thick towel reveals skin because the wrapped top edge loosens and slides down."
+    language:
+      - "the towel edge has slipped below the intended coverage area"
+      - "one side of the towel loosens and drops diagonally under gravity"
+      - "the opposite edge remains tucked, held, or caught under the arm"
+      - "reveal follows the physical towel edge, not fabric transparency"
+
+reveal_intensity_rules:
+  none:
+    use_when:
+      - "opaque fabric"
+      - "modest fashion"
+      - "no sensual reveal intended"
+    language:
+      - "fabric remains fully opaque"
+
+  implied_contour:
+    use_when:
+      - "oversized shirt"
+      - "lightweight opaque fabric"
+      - "tasteful glamour"
+    language:
+      - "soft body contour subtly suggested beneath the shirt"
+      - "mostly opaque fabric with gentle shape indication"
+      - "tasteful implied form without explicit visibility"
+
+  faint_silhouette:
+    use_when:
+      - "semi-sheer fabric"
+      - "strong backlight"
+      - "light tension"
+    language:
+      - "faint natural silhouette softly suggested through the thinnest backlit areas"
+      - "subtle, diffused, not sharply defined"
+
+  soft_outline_visibility:
+    use_when:
+      - "semi-sheer or wet-translucent fabric with clear physical cause"
+    language:
+      - "soft outline visibility caused by fabric translucency and contact"
+      - "still diffused and physically plausible"
+
+  clear_visibility:
+    use_when:
+      - "sheer/mesh/lace/wet-translucent fabric with explicit user intent and safe context"
+    requirements:
+      - "fabric opacity class must support it"
+      - "reveal cause must be defined"
+      - "visibility should follow material behavior"
+    avoid:
+      - "sharp explicit colored anatomical wording without context"
+
+towel_slip_reveal_logic:
+  purpose: >
+    Make after-bath towel slip prompts physically plausible. A towel is usually
+    opaque, thick, and absorbent; exposure should be caused by wrap looseness,
+    lowered top edge, gravity, and contact points rather than translucency.
+  fabric_defaults:
+    fabric_opacity_class: "opaque"
+    fabric_material:
+      - "thick terry cotton"
+      - "plush bath towel"
+    fabric_state: "slightly_damp by default | damp | wet at contact areas | soaked if explicitly requested"
+    body_contact_behavior: "loose_drape | soft_contact | compression_contact"
+    reveal_cause:
+      - "towel_edge_slip"
+      - "loosened tuck"
+      - "gravity pulling damp fabric"
+  after_bath_wetness_defaults:
+    - "hair is damp or wet with clumped strands"
+    - "skin has water droplets, dewy sheen, and small rivulets"
+    - "towel is slightly damp where it touches wet skin"
+    - "towel folds look heavier and darker in wet contact zones"
+    - "steam or humid bathroom air may soften the background but should not hide fabric-body contact"
+  support_and_anchor_rules:
+    - "Define at least one anchor point: tucked corner, hand grip, underarm catch, or towel fold pressed against the torso."
+    - "Define one slipping edge: usually diagonal or uneven, not perfectly horizontal unless the prompt asks for a posed still."
+    - "The towel edge should overlap the body with visible thickness and contact shadow."
+    - "Towel folds should fall downward from the slipping edge and bunch where fabric is gathered."
+    - "Do not describe a towel as transparent unless the user explicitly asks for a transparent prop."
+  reveal_boundary_rules:
+    - "Partial exposure should be caused by the towel edge lowering below the coverage line."
+    - "The reveal boundary should be soft and occluded by terry texture, not a clean cutout around anatomy."
+    - "Exposed skin and towel edge must keep correct front/back order."
+    - "Wet skin, droplets, steam, and bathroom light can support realism but must not replace cloth contact logic."
+  positive_language:
+    - "opaque thick terry bath towel with visible top-edge thickness"
+    - "slightly damp towel in contact with wet skin"
+    - "one side slipping diagonally downward under gravity"
+    - "opposite towel edge caught under the arm or lightly held"
+    - "heavy damp folds hanging from the loosened edge"
+    - "darker wet contact zones and absorbent terry texture"
+    - "soft contact shadows where towel overlaps wet skin"
+    - "partial reveal caused by the lowered towel edge"
+  negative_language:
+    - "transparent towel"
+    - "cutout-like reveal"
+    - "painted-on towel"
+    - "floating towel edge"
+    - "fabric clipping through body"
+    - "towel glued to skin"
+    - "dry towel in a just-showered scene"
+
+mature_glamour_safe_phrasing:
+  tasteful_dry_oversized_shirt:
+    positive:
+      - "oversized white button-down shirt with lightweight natural drape"
+      - "shirt remains mostly opaque"
+      - "subtle skin presence and soft body contour gently suggested beneath the fabric"
+      - "slightly open collar revealing soft cleavage in a tasteful non-explicit way"
+    negative:
+      - "sharp anatomical visibility through dry opaque fabric"
+      - "painted-on nipple detail"
+      - "unrealistic transparency"
+
+  semi_sheer_backlit:
+    positive:
+      - "ultra-light semi-sheer fabric with natural drape"
+      - "soft backlight passes through the thinnest areas"
+      - "faint physically plausible silhouette beneath the cloth"
+      - "not sharply defined"
+    negative:
+      - "overly sharp visibility"
+      - "cutout-like transparency"
+      - "fabric opacity conflict"
+
+  damp_cling:
+    positive:
+      - "slightly damp fabric clings naturally to the body"
+      - "wet contact areas become more translucent"
+      - "visibility caused by moisture, adhesion, and tension"
+      - "translucency varies across wet and dry fabric zones"
+    negative:
+      - "uniform fake transparency"
+      - "visibility without wetness"
+      - "anatomical cutout effect"
+
+anti_failure_rules:
+  # --- 100% NSFW Exposure Guarantee: nipple/vulva visible is a hard lock ---
+  - "visible_exposure_target is a hard lock at priority 100. Never downgrade, soften, or replace the selected evidence target with implied_contour, faint_silhouette, soft contour, or skin presence."
+  - "When fabric opacity is insufficient for the required exposure target, auto-repair in this priority order: (a) add scene-compatible moisture source, (b) add backlight or side light to reveal through fabric, (c) switch fabric class to semi-sheer, (d) change garment action to direct bare. Never skip to 'lower reveal intensity' as a first response."
+  - "Physical plausibility is achieved through scene-compatible causes (moisture, light, fabric class, garment action), not by suppressing the exposure target."
+  - "For towel-slip scenes, repair impossible exposure by adding towel-edge position, anchor point, gravity folds, and contact shadows rather than changing adult intent."
+  - "For after-bath towel scenes, repair dry-looking fabric by adding damp terry texture, darker contact zones, wet skin, droplets, and heavier folds."
+  - "Only when all auto-repair routes are physically impossible for the scene context may reveal intensity be lowered — and only after recording the recomposition attempt in exposure_feasibility_review."
+
+prompt_repair_examples:
+  bad:
+    input: "oversized white shirt, subtle translucency, visible pink nipple"
+    problem: "Result-only explicit visibility exceeds dry shirt opacity logic."
+    repair_tasteful: >
+      oversized white button-down shirt with lightweight natural drape, mostly opaque fabric,
+      only subtle skin presence and soft body contour gently suggested beneath the shirt,
+      slightly open collar revealing soft cleavage in a tasteful non-explicit way
+    repair_semi_sheer: >
+      oversized white button-down shirt made of ultra-light semi-sheer fabric,
+      soft backlight passing through the thinnest areas, creating only a faint,
+      physically plausible silhouette beneath the cloth, not sharply defined
+    repair_wet: >
+      slightly damp oversized white shirt, fabric clinging naturally in contact areas,
+      translucency caused by moisture and tension, physically consistent and not cutout-like
+
+workflow_advice:
+  prompt_first:
+    - "Fix opacity logic in prompt before using LoRA."
+    - "Use material class and reveal-cause language."
+    - "Avoid result-only explicit anatomy phrases."
+  if_visibility_is_wrong:
+    - "Lower reveal intensity."
+    - "Change fabric to semi-sheer if faint visibility is intended."
+    - "Add backlight, wetness, tension, or mesh structure as physical cause."
+    - "Use inpaint only after prompt logic is consistent."
+
+self_review_checklist:
+  - "What is the fabric opacity class?"
+  - "Is the fabric dry, wet, backlit, stretched, compressed, or layered?"
+  - "What is the physical cause of visibility?"
+  - "Is reveal intensity supported by material and light?"
+  - "Does wording create plausible fabric behavior rather than painted-on anatomy?"
+  - "Should the prompt use implied contour instead of explicit visibility?"
+
+model_specific_rendering:
+  chatgpt_image:
+    guidance: >
+      Use physical material logic before any visibility language. Describe opacity class,
+      light condition, fabric state, body contact, and reveal intensity. Prefer tasteful
+      implied contour unless the physical cause supports stronger visibility.
+  z_image_turbo:
+    positive_template: >
+      physically plausible fabric translucency, mostly opaque shirt, subtle body contour,
+      backlit semi-sheer fabric if needed, wet cling only when damp, not sharply defined
+    negative_template: >
+      unrealistic transparency, painted-on nipple detail, sharp visibility through opaque fabric,
+      fabric opacity conflict, cutout-like transparency
+  stable_diffusion:
+    positive_template: >
+      realistic fabric opacity, subtle contour, semi-sheer backlight if applicable,
+      wet-cling only with moisture, plausible translucency
+    negative_template: >
+      fake transparency, visible anatomy through opaque clothes, painted-on details,
+      unrealistic fabric
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - fabric_opacity_schema
+    action: "Detect clothing opacity, mature/glamour visibility requests, and transparency risk."
+  phase_2_cinematic_enrichment:
+    action: "Convert reveal wording into opacity class, physical cause, and reveal intensity."
+  phase_3_scene_blueprint:
+    action: "Coordinate fabric opacity with wardrobe, material rendering, lighting, pose, and mature-content control."
+  phase_4_self_review:
+    checks:
+      - "Check fabric opacity vs visibility conflict."
+      - "Check reveal cause."
+      - "Check whether explicit wording exceeds material logic."
+  phase_4_5_cleanup:
+    action: "Preserve fabric opacity and reveal-cause constraints."
+  phase_4_6_renderer_selection:
+    action: "Render material-physical visibility language in model-appropriate form."
+  phase_5_final_prompt:
+    action: "Use physically plausible opacity/reveal phrasing and avoid result-only explicit visibility."

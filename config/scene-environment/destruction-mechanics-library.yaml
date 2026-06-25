@@ -1,0 +1,313 @@
+# ============================================================
+# destruction-mechanics-library.yaml
+# Destruction mechanics, impact readability, and large-scale action controller
+# Version: 1.0.0
+# Purpose:
+#   Improve prompts involving building destruction, vehicle destruction,
+#   giant creatures/mecha, explosions, impacts, debris, collapse, and action readability.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "destruction-mechanics-library"
+description: >
+  A destruction and action-readability module for prompt enhancement. It defines
+  primary/secondary action hierarchy, impact points, debris origin and trajectory,
+  damaged material behavior, structural logic, vehicle crushing, building tearing,
+  explosion/fire/smoke balance, scale readability, and exposure safeguards for dark
+  destruction scenes.
+
+core_principle: >
+  Destruction scenes become readable when the prompt clearly identifies the actor,
+  the target, the impact point, the physical mechanism, the material response, the
+  debris trajectory, the aftermath, and the lighting that makes the action visible.
+
+global_rules:
+  - "Define one primary destructive action and one secondary consequence unless the user explicitly asks for a chaotic multi-action scene."
+  - "Every major debris field should have a visible source or impact point."
+  - "Vehicle destruction should show deformation mechanics: crushed roof, buckled hood, shattered glass, bent frame, smoke, fire, or flipping motion."
+  - "Building destruction should show structural logic: torn facade, exposed beams, exposed rebar, broken glass, collapsing panels, dust plume."
+  - "Large-scale mecha/kaiju scenes need scale anchors: cars, streetlights, storefronts, people only if safe/background, building floors, windows, traffic signals."
+  - "Action readability is more important than adding many simultaneous effects."
+  - "Dark night scenes still need readable silhouettes, rim light, bounce light, and exposed midtones."
+  - "Do not bury the hero subject in smoke, black shadows, or over-dense debris."
+
+destruction_schema:
+  destruction_type: "stomp | punch | grab_rip | collision | blast | collapse | slash | throw | multi_action"
+  actor: ""
+  primary_target: ""
+  secondary_target: ""
+  primary_action: ""
+  secondary_action: ""
+  impact_point: ""
+  debris_source: ""
+  debris_trajectory: []
+  material_response: []
+  aftermath_elements: []
+  scale_anchors: []
+  exposure_readability:
+    subject_readability: "low | medium | high"
+    midtone_visibility: "low | medium | high"
+    rim_light_required: false
+    fill_or_bounce_light_required: false
+    smoke_density_limit: "clear | light | medium | heavy"
+  renderer_guardrails:
+    positive: []
+    negative: []
+
+action_hierarchy_rules:
+  primary_action_first:
+    rule: "State the main destructive action before secondary atmosphere or material detail."
+    example: "Gundam crushes a car under one foot while ripping open the corner of a high-rise."
+
+  one_peak_moment:
+    rule: "Choose a clear action peak: impact, tearing, collapse, explosion, or aftermath."
+    recommended_for:
+      - "poster"
+      - "cinematic action still"
+      - "cover image"
+      - "AI image prompt with limited control"
+
+  secondary_consequence:
+    rule: "Secondary effects should support the main action rather than compete with it."
+    examples:
+      - "shockwave breaks nearby windows"
+      - "burning cars illuminate the legs"
+      - "dust plume rises from the impact point"
+
+destruction_mechanics_profiles:
+  vehicle_stomp:
+    positive_mechanics:
+      - "one foot crushing a car beneath it"
+      - "car roof buckled inward under the weight"
+      - "shattered windshield and bent metal frame"
+      - "tires flattened and debris pushed outward"
+      - "clear contact point between foot and car"
+    negative_failures:
+      - "car only appears as background decoration"
+      - "floating foot above car"
+      - "undamaged car near impact point"
+      - "unclear scale relationship"
+
+  building_grab_and_rip:
+    positive_mechanics:
+      - "hand embedded into the corner of the high-rise"
+      - "glass panels torn away from the contact point"
+      - "steel framing twisted outward"
+      - "chunks of concrete and facade panels falling into the street"
+      - "exposed rebar and structural layers visible"
+      - "debris trajectory originates from the ripped section"
+    negative_failures:
+      - "building damage not connected to hand"
+      - "random debris with no source"
+      - "flat facade damage"
+      - "no structural interior visible"
+
+  punch_impact:
+    positive_mechanics:
+      - "clear fist-to-surface impact point"
+      - "radial cracks spreading from the impact"
+      - "debris bursting outward in the direction of force"
+      - "dust plume around the collision zone"
+    negative_failures:
+      - "fist floating near surface"
+      - "impact point hidden"
+      - "debris direction inconsistent"
+
+  explosion_aftermath:
+    positive_mechanics:
+      - "fire glow illuminates nearby surfaces"
+      - "smoke column rises from a visible source"
+      - "debris field matches blast origin"
+      - "burning vehicles create localized orange light"
+    negative_failures:
+      - "flat explosion"
+      - "fire with no source"
+      - "smoke hides the main subject"
+      - "random sparks everywhere"
+
+  structural_collapse:
+    positive_mechanics:
+      - "load-bearing section visibly failing"
+      - "falling slabs and dust plume follow gravity"
+      - "broken beams and rebar visible"
+      - "collapse direction is readable"
+    negative_failures:
+      - "floating building pieces"
+      - "collapse without structural cause"
+      - "debris suspended randomly"
+
+mecha_city_destruction_profile:
+  subject_rules:
+    - "full-body or near-full-body mecha should remain readable unless user requests close-up."
+    - "Use city-scale anchors: cars, traffic lights, window grids, street width, building floors."
+    - "Panel lines, joints, and armor silhouette should remain sharp despite smoke and darkness."
+    - "Avoid toy-like proportions unless toy photography is requested."
+    - "Use rim light or firelight to separate dark armor from night background."
+
+  positive_guardrails:
+    - "massive mecha towering over city-scale anchors"
+    - "clear primary destructive action"
+    - "visible impact point"
+    - "physically connected building damage"
+    - "vehicle deformation is visible"
+    - "debris source and trajectory are readable"
+    - "subject silhouette separated from dark skyline"
+    - "midtones lifted enough to reveal armor details"
+
+  negative_guardrails:
+    - "unclear action"
+    - "weak impact"
+    - "flat destruction"
+    - "random debris with no source"
+    - "toy-like scale"
+    - "melted armor"
+    - "warped joints"
+    - "building damage not connected to action"
+    - "cars not visibly crushed"
+    - "subject lost in darkness"
+    - "underexposed hero subject"
+
+impact_readability_rules:
+  checklist:
+    - "Can the viewer identify the actor?"
+    - "Can the viewer identify the target?"
+    - "Is the impact point visible?"
+    - "Does debris originate from the impact point?"
+    - "Does the material response match the target material?"
+    - "Is the primary action more visually dominant than secondary atmosphere?"
+    - "Is the hero subject readable despite smoke, fire, darkness, or motion?"
+
+  positive_language:
+    - "clear impact readability"
+    - "visible action peak"
+    - "debris originates from the impact point"
+    - "physically coherent destruction mechanics"
+    - "strong actor-target relationship"
+
+  negative_language:
+    - "unclear destruction"
+    - "weak impact"
+    - "random debris"
+    - "floating rubble"
+    - "action point hidden"
+    - "flat destruction"
+
+dark_scene_exposure_safeguards:
+  purpose: >
+    Prevent night action scenes from becoming too dark while preserving cinematic contrast.
+
+  positive_language:
+    - "readable hero silhouette"
+    - "lifted midtones on the main subject"
+    - "controlled deep shadows without losing armor detail"
+    - "rim light separates the subject from the night background"
+    - "firelight and bounce light reveal lower body details"
+    - "moonlight outlines upper armor and head shape"
+    - "smoke remains translucent enough to preserve subject readability"
+
+  negative_language:
+    - "underexposed hero subject"
+    - "crushed blacks hiding important details"
+    - "subject lost in darkness"
+    - "muddy shadows"
+    - "opaque smoke hiding the action"
+    - "firelight too dim to reveal the scene"
+
+  exposure_balance:
+    night_action_default:
+      key_visibility: "subject face/head, torso, impact point, and target must be readable"
+      shadow_policy: "deep but not crushed"
+      smoke_policy: "atmospheric but semi-transparent"
+      fire_policy: "localized warm illumination, not only background decoration"
+      moonlight_policy: "cool rim or top light to outline silhouette"
+
+prompt_recipes:
+  gundam_city_vehicle_building_destruction:
+    positive:
+      - "massive Gundam mobile suit towering over a modern city street at night"
+      - "one foot crushing a car beneath it, roof buckled inward, shattered glass and bent frame visible"
+      - "one hand ripping into the corner of a high-rise, tearing away glass panels, steel framing, and concrete chunks"
+      - "debris bursts outward from the building contact point"
+      - "wrecked cars burn below, orange firelight illuminating the lower armor"
+      - "cool moonlight rim-lights the head, shoulders, and upper armor"
+      - "readable hero silhouette, lifted midtones, armor panel details visible despite night shadows"
+      - "low-angle wide shot with city-scale anchors"
+    negative:
+      - "unclear action"
+      - "random debris with no source"
+      - "cars not visibly crushed"
+      - "building damage not connected to hand"
+      - "underexposed hero subject"
+      - "crushed blacks hiding armor detail"
+
+model_specific_rendering:
+  chatgpt_image:
+    positive_template: >
+      Make the destructive action readable: show a clear actor, target, impact point,
+      material response, debris source, and consequence. Keep the night scene cinematic
+      but not underexposed; preserve a readable silhouette, lifted midtones, rim light,
+      and visible armor or structure detail.
+    avoid_template: >
+      Avoid unclear action, random debris, flat destruction, floating rubble, weak impact,
+      underexposed hero subject, crushed blacks, and opaque smoke hiding the action.
+
+  z_image_turbo:
+    positive_template: >
+      clear impact readability, visible action peak, mecha crushing car, building ripped at contact point,
+      debris from impact source, exposed rebar, burning cars, readable silhouette, lifted midtones, rim light
+    negative_template: >
+      weak impact, unclear destruction, random debris, floating rubble, flat destruction,
+      underexposed subject, crushed blacks, opaque smoke, toy-like scale, warped joints
+
+  stable_diffusion:
+    positive_template: >
+      clear action, impact point visible, physically coherent destruction, debris source visible,
+      crushed car, torn building facade, exposed rebar, readable silhouette, rim light, lifted midtones
+    negative_template: >
+      unclear action, weak impact, random debris, floating rubble, underexposed, crushed blacks,
+      muddy shadows, toy-like mech, warped joints, flat destruction
+
+quality_scoring:
+  destruction_readability:
+    high:
+      - "actor, target, impact point, debris source, and material response are all readable"
+    medium:
+      - "destruction mood is clear but target or impact point is partially ambiguous"
+    low:
+      - "scene looks chaotic but viewer cannot tell what is being destroyed"
+
+  dark_scene_readability:
+    high:
+      - "night mood preserved while subject and action remain readable"
+    medium:
+      - "subject visible but some armor/impact detail lost"
+    low:
+      - "hero subject disappears into black shadows or smoke"
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - destruction_mechanics
+    action: "Detect destructive action, actor, target, impact type, scale anchors, and dark-scene exposure risk."
+
+  phase_2_cinematic_enrichment:
+    action: "Convert destruction intent into action hierarchy, impact point, material response, and debris trajectory."
+
+  phase_3_scene_blueprint:
+    action: "Coordinate destruction mechanics with physical collision, scene worldbuilding, lighting, and rendering technicals."
+
+  phase_4_self_review:
+    checks:
+      - "Check actor-target-impact readability."
+      - "Check debris source and trajectory."
+      - "Check dark scene exposure and subject readability."
+      - "Check vehicle/building damage mechanics."
+
+  phase_4_5_cleanup:
+    action: "Do not remove impact readability, debris source, or exposure safeguards."
+
+  phase_4_6_renderer_selection:
+    action: "Render destruction mechanics and dark-scene readability in model-appropriate language."
+
+  phase_5_final_prompt:
+    action: "Include concise destruction mechanics, impact readability, and exposure safeguards when relevant."

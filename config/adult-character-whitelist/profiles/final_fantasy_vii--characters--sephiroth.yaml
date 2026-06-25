@@ -1,0 +1,56 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_vii--characters--sephiroth
+  display_name: Sephiroth
+  aliases:
+  - Sephiroth
+  - 賽菲羅斯
+  - 賽菲羅斯 (Final Fantasy VII)
+  source_title: Final Fantasy VII
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy VII default appearance
+  identity_summary: Legendary SOLDIER turned antagonist with waist-length silver-white hair, luminous
+    green-blue eyes with slit pupils, pale skin, wearing a long black leather coat with silver pauldron
+    armor on one shoulder and silver studs/buttons, a black high-neck sleeveless undershirt, black fitted
+    pants with a silver chain and black leather belt, black knee-high boots, and black leather gloves,
+    carrying an impossibly long katana.
+  visual_anchors:
+  - waist-length silver-white hair
+  - luminous green-blue cat-slit eyes
+  - long black leather coat
+  - silver pauldron on left shoulder
+  - Masamune katana
+  - luminous green-blue cat-slit pupils
+  - pale cool-toned skin
+  - silver-white hair
+  - smooth high crown
+  - long straight side-swept bangs
+  - luminous green-blue with slit pupils
+  - long refined angular face
+  - tall lean athletic build
+  outfit_anchors:
+  - waist-length silver-white hair
+  - green-blue cat-slit eyes
+  - long black leather coat with silver pauldron
+  - Masamune katana
+  - Sephiroth wearing his signature long black leather coat with silver pauldron on the left shoulder,
+    a black high-neck sleeveless undershirt, black fitted pants with a silver chain and black leather
+    belt, black knee-high boots, and black leather gloves.
+  style_anchors:
+  - calm controlled menace
+  drift_guards:
+  - short hair
+  - non-silver hair color
+  - missing slit pupils
+  - wrong eye color
+  - warm friendly expression
+  - generic attractive person
+  - missing long black leather coat
+  - missing silver pauldron
+  - white or heroic clothing
+  - missing Masamune
+  - missing black gloves
+  - spiky hair
+  - curly hair
+  - hunched posture
+  - timid body language

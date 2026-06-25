@@ -1,0 +1,1338 @@
+# ============================================================
+# human-anatomy-guardrails.yaml
+# Human figure anatomy, pose biomechanics, and lower-body structure guardrails
+# Version: 1.1.0
+# Purpose:
+#   Strengthen human figure prompts against common anatomy failures,
+#   especially pelvis / hip / thigh / knee / leg / ankle / foot-orientation problems in
+#   full-body, dance, glamour, swimsuit, cosplay, fashion, and dynamic poses.
+# ============================================================
+
+schema_version: "1.2.0"
+name: "human-anatomy-guardrails"
+description: >
+  A human figure anatomy and pose biomechanics guardrail module for the cinematic
+  prompt enhancer. It detects anatomy-risk situations, adds generator-visible
+  anatomy constraints, routes lower-body failure repairs, and provides model-specific
+  anatomy wording for ChatGPT Image, Z Image Turbo, Stable Diffusion, Flux, and image edit workflows.
+
+  LOAD POLICY: This is a 54KB file. Do NOT load for every human subject — use
+  core-knowledge.yaml anatomy_guardrails (zone_requirements) for basic risk assessment
+  first. Only load this full file when anatomy risk is MEDIUM/HIGH/CRITICAL, e.g.
+  dynamic/athletic posing, dance, glamour, swimsuit, body-conscious fashion,
+  lower-body-visible with biomechanics concern, or previous anatomy failure repair.
+
+# ------------------------------------------------------------
+# 1. Core Principle
+# ------------------------------------------------------------
+
+core_principle: >
+  Human anatomy quality should be treated as structure, not decoration.
+  Do not rely on vague terms like "correct anatomy" alone. Break anatomy control
+  into pelvis structure, hip-to-thigh connection, weight distribution, knee direction,
+  leg proportions, foot grounding, ankle-foot orientation, toe direction, and pose biomechanics.
+
+primary_goal: >
+  Preserve a physically believable human figure, especially when the lower body is visible,
+  the pose is dynamic, the outfit is fitted, or the camera angle emphasizes hips and legs.
+
+global_rules:
+  - "Use positive anatomy guardrails before relying on negative prompts."
+  - "For full-body or lower-body-visible poses, specify pelvis, hip-to-thigh, knee, leg proportion, and foot grounding logic."
+  - "For dynamic poses, specify the support leg and center of gravity."
+  - "For glamour, dance, swimsuit, body-conscious fashion, or cosplay poses, increase lower-body anatomy priority."
+  - "Do not overcomplicate the pose if anatomy risk is already high."
+  - "Avoid impossible body balance, disconnected thighs, warped pelvis, twisted knees, and mismatched leg lengths."
+  - "For portraits and character images, treat face, neck, shoulders, ribcage, hands, pelvis, knees, ankles, and feet as one connected structure."
+  - "Anti-boring pose design (P93) takes priority over conservative anatomy. Do not flatten or symmetrize a pose merely to reduce anatomy risk. See config/character-identity/anti-boring-pose-system.yaml."
+  - "Hands and fingers require explicit natural gesture logic when they are visible near the face, product, weapon, clothing, or camera."
+  - "Camera angle, lens perspective, outfit fit, and pose drama must not override anatomical plausibility."
+  - "For reclining, half-sitting, side-lying, kneeling-on-bed, or leaning-on-arms poses, specify pelvis direction, ribcage direction, thigh fold, lower-leg direction, foot orientation, and support-surface contact as one connected system."
+  - "When adult anatomical landmarks are visible or explicitly requested, their placement must follow body structure, pose, camera perspective, and occlusion order."
+
+whole_body_structure_chain:
+  purpose: >
+    Provide a full-body structural pass so the renderer does not fix one anatomy zone
+    while breaking another. Use this whenever a person is central, and strengthen it
+    for full-body, fashion, glamour, dance, action, cosplay, or portrait close-ups.
+  chain_order:
+    - "skull and jaw connect naturally to the neck"
+    - "neck inserts into shoulders without floating or over-stretching"
+    - "shoulders, collarbones, and ribcage share the same body turn"
+    - "ribcage and pelvis remain connected through a plausible waist twist"
+    - "pelvis defines believable hip socket placement"
+    - "thighs originate from the hip sockets and follow pelvis rotation"
+    - "knees follow femur direction"
+    - "shins align from knee to ankle"
+    - "ankles and feet support the pose or extend naturally from the leg line"
+  prompt_positive:
+    - "coherent full-body structure from head, neck, shoulders, ribcage, pelvis, legs, and feet"
+    - "natural joint alignment and physically believable body balance"
+    - "pose reads as sustainable and anatomically connected"
+  avoid_language:
+    - "floating head"
+    - "disconnected shoulders"
+    - "collapsed torso"
+    - "detached pelvis"
+    - "broken limb alignment"
+    - "rubber body"
+
+hands_fingers_and_contact_guardrails:
+  activate_when:
+    - "hands visible"
+    - "hands near face"
+    - "holding object"
+    - "touching body or clothing"
+    - "arms crossed"
+    - "hand gesture"
+    - "weapon or prop held"
+    - "product held"
+    - "couple pose or physical contact"
+  requirements:
+    - "each visible hand has five fingers unless the crop hides some naturally"
+    - "finger lengths taper naturally and follow the same palm perspective"
+    - "wrist direction matches forearm angle"
+    - "hands contact objects or skin at believable pressure points"
+    - "no fingers merge into face, hair, fabric, props, or another person's body"
+    - "touching poses preserve clear boundaries between bodies and limbs"
+  prompt_positive:
+    - "natural relaxed hands with correct finger structure"
+    - "wrists aligned with forearms"
+    - "believable contact points and clear limb separation"
+  prompt_negative:
+    - "extra fingers"
+    - "fused fingers"
+    - "melted hands"
+    - "broken wrists"
+    - "hands merging into face or clothing"
+    - "unclear physical contact"
+
+camera_pose_anatomy_interlock:
+  rules:
+    - "Low-angle full-body shots must keep feet, knees, pelvis, and torso perspective consistent."
+    - "Wide-angle fashion shots must not stretch legs or shrink the head beyond plausible perspective."
+    - "Close portraits must keep jaw, neck, shoulders, and visible hands anatomically believable."
+    - "Side-view and three-quarter poses must preserve near/far limb separation."
+    - "Extreme dynamic poses should include one clear action line and one clear support or balance logic."
+  generator_visible_translation:
+    low_angle_human: "controlled low-angle perspective with believable leg proportions, grounded feet, and natural pelvis-to-torso alignment"
+    close_portrait_hands: "natural face, jaw, neck, shoulders, and hands, with relaxed fingers and believable contact"
+    dynamic_pose: "dynamic pose with clear action line, natural joint alignment, and physically sustainable balance"
+
+reclining_half_seated_pose_logic:
+  purpose: >
+    Prevent mixed reclining / half-sitting / side-lying / kneeling poses from producing
+    contradictory pelvis, waist, thigh, shin, foot, and arm-support directions.
+    Use this for bed, sofa, chaise lounge, floor cushion, beach towel, bathtub edge,
+    or any soft-surface pose where the body is partly supported by hands, elbows,
+    hips, thighs, knees, or feet.
+  activate_when:
+    - "lying on bed"
+    - "reclining on bed"
+    - "half-sitting"
+    - "semi-reclined"
+    - "side-lying"
+    - "propped on elbows"
+    - "propped on hands"
+    - "kneeling on bed"
+    - "one knee folded under body"
+    - "lounging on sofa"
+    - "reclining glamour pose"
+  direction_chain:
+    - "ribcage angle and pelvis angle must be compatible; a twist may exist but should pass through the waist naturally"
+    - "pelvis direction defines where both hip sockets are located"
+    - "thighs must originate from those hip sockets and fold in directions that match pelvis rotation"
+    - "knees must follow the thigh direction rather than turning independently"
+    - "shins and feet must continue from the knee and ankle line without floating, stretching, or rotating into a third unrelated angle"
+    - "near and far leg overlap should remain readable, with clear occlusion order"
+  support_logic:
+    - "hips and outer thigh visibly contact the bed or soft surface"
+    - "the mattress, sheet, cushion, or fabric compresses subtly under pelvis, thigh, knee, forearm, palm, or foot contact"
+    - "hands or elbows that prop the torso should sit under the shoulder line and visibly receive upper-body weight"
+    - "wrists, elbows, shoulders, ribcage, and spine form a plausible load path when arms support the torso"
+    - "legs should show relaxed weight against the bed surface instead of hovering"
+  prompt_positive:
+    - "semi-reclined pose with ribcage, pelvis, thighs, knees, shins, and feet aligned as one coherent body"
+    - "pelvis direction clearly matches the folded-leg direction"
+    - "hips and thighs visibly rest into the bed surface"
+    - "subtle mattress and sheet compression under hips, thighs, hands, and knees"
+    - "hands planted under the shoulders, arms visibly supporting the upper-body weight"
+    - "legs relaxed against the bed, no floating feet or stretched shins"
+  prompt_negative:
+    - "pelvis facing one way while thighs, shins, and feet point in unrelated directions"
+    - "floating legs on bed"
+    - "unsupported upper body"
+    - "hands posed as support without carrying weight"
+    - "stretched foreground shin"
+    - "twisted pelvis"
+    - "knees and feet pointing in impossible directions"
+  z_image_phrases:
+    base_positive: "semi-reclined body mechanics, pelvis and folded legs aligned, hips and thighs resting into the bed, hands under shoulders supporting torso weight, subtle sheet compression"
+    turbo_positive: "semi-reclined pose, pelvis and legs aligned, hips on bed, hands support torso, no floating legs"
+    negative: "twisted pelvis, mismatched leg direction, floating legs, unsupported torso, stretched shin, impossible knee direction"
+
+pool_edge_exit_pose_logic:
+  purpose: >
+    Keep "hands supporting on the pool edge while coming out of water" anatomically
+    and mechanically clear. The action should read as a downward push into the
+    pool coping, not an overhead pull, hanging pose, or lifted pool-edge gesture.
+  activate_when:
+    - "hands on pool edge"
+    - "hands supporting on pool edge"
+    - "supporting on pool ledge"
+    - "climbing out of pool"
+    - "emerging from pool"
+    - "getting out of water"
+    - "pool coping"
+  upper_body_support_chain:
+    - "palms stay on top of the pool coping near the waterline, chest height, or shoulder-adjacent height"
+    - "wrists, elbows, shoulders, and ribcage align as a believable load path"
+    - "elbows bend downward under body weight instead of pointing upward like a hanging grip"
+    - "shoulders show mild engagement and downward pressure into the hands"
+    - "torso rises from the water because arm support transfers weight into the ledge"
+  waterline_body_logic:
+    - "waterline intersects the lower torso, waist, hips, or thighs according to the requested crop"
+    - "wet skin, droplets, and water tension reinforce contact with the pool environment"
+    - "lower body can remain partly submerged, but the upper-body lift must match the hand support"
+  prompt_positive:
+    - "palms pressing down on pool coping at the waterline"
+    - "fingers curled over the near edge"
+    - "elbows bent downward, shoulders loaded into the hands"
+    - "upper body rising from the water with believable arm support"
+    - "pool edge beside or in front of the subject, not above the head"
+  prompt_negative:
+    - "arms raised overhead"
+    - "overhead ledge grip"
+    - "hanging from pool edge"
+    - "lifting the pool edge"
+    - "pool edge above head"
+  z_image_phrases:
+    base_positive: "pool-exit support mechanics, palms pressing down on pool coping at waterline, fingers curled over near edge, elbows bent downward, shoulders loaded, upper body rising from water"
+    turbo_positive: "palms on pool edge, elbows bent down, body rising from water, no overhead grip"
+    negative: "arms raised overhead, overhead ledge grip, lifting pool edge, pool edge above head, hanging pose"
+
+adult_anatomical_landmark_alignment:
+  purpose: >
+    Keep visible adult anatomical landmarks structurally correct. This applies to
+    nipples, areolae, breasts/chest landmarks, and adult external genital anatomy
+    when they are visible, implied by partial coverage, requested by the user, or
+    part of a repair prompt. The module preserves adult intent without adding
+    unrequested explicit focus.
+  activate_when:
+    - "adult nude"
+    - "adult explicit"
+    - "visible nipple"
+    - "visible areola"
+    - "breast exposed"
+    - "partial breast reveal"
+    - "adult genital visibility"
+    - "external genital anatomy"
+    - "body paint"
+    - "anatomy repair"
+    - "nipple placement wrong"
+  nipple_areola_alignment:
+    - "nipple and areola placement follows the natural breast or chest volume"
+    - "left and right placement remains anatomically symmetrical after perspective and pose are considered"
+    - "landmarks sit on the visible skin surface, not on top of towel, clothing, or shadow artifacts"
+    - "covered or occluded landmarks should not appear through opaque fabric unless fabric physics supports visibility"
+    - "avoid duplicated, floating, overly lateral, overly high, overly low, or detached nipple/areola placement"
+  external_genital_alignment:
+    - "adult external genital anatomy, when visible or requested, remains in the anatomically correct pelvic region"
+    - "placement follows pelvis direction, hip rotation, leg position, and camera perspective"
+    - "occlusion by towel, thighs, hands, fabric, or pose must be physically consistent"
+    - "avoid displaced, duplicated, mismatched, floating, or wrong-sex external anatomy"
+  prompt_positive:
+    - "adult anatomical landmarks correctly placed according to body structure"
+    - "nipple and areola placement follows natural chest anatomy and perspective"
+    - "visible adult external anatomy remains consistent with pelvis orientation when requested"
+    - "correct occlusion between skin, towel, fabric, hands, and body landmarks"
+  prompt_negative:
+    - "misplaced nipple"
+    - "floating areola"
+    - "duplicated nipple"
+    - "nipple on towel"
+    - "wrong nipple position"
+    - "displaced external anatomy"
+    - "duplicated genital anatomy"
+    - "wrong intimate anatomy"
+  z_image_phrases:
+    base_positive: "adult anatomical landmarks correctly placed, nipple and areola placement follows natural chest anatomy and perspective, correct skin-towel occlusion, external anatomy consistent with pelvis orientation when visible"
+    turbo_positive: "correct adult anatomy landmarks, natural nipple placement, correct towel occlusion, no misplaced anatomy"
+    negative: "misplaced nipple, floating areola, duplicated nipple, nipple on towel, displaced external anatomy, wrong intimate anatomy"
+
+# ------------------------------------------------------------
+# 2. Anatomy Risk Detector
+# ------------------------------------------------------------
+
+anatomy_risk_detector:
+  high_risk_conditions:
+    pose_and_crop:
+      - "full body"
+      - "three-quarter body"
+      - "lower body visible"
+      - "legs fully visible"
+      - "feet visible"
+      - "dance pose"
+      - "stage pose"
+      - "one-leg support pose"
+      - "hip twist pose"
+      - "S-curve pose"
+      - "bent knee pose"
+      - "crossed-leg pose"
+      - "wide stance"
+      - "high kick"
+      - "squat"
+      - "kneeling"
+      - "sitting with crossed legs"
+      - "semi-reclined pose"
+      - "side-lying pose"
+      - "propped on hands"
+      - "propped on elbows"
+      - "kneeling on bed"
+      - "folded legs on bed"
+      - "hands on pool edge"
+      - "climbing out of pool"
+      - "emerging from pool"
+      - "pool-edge support pose"
+      - "low-angle full-body shot"
+      - "worm's-eye full-body shot"
+
+    wardrobe_and_context:
+      - "swimsuit"
+      - "bikini"
+      - "bodysuit"
+      - "body-conscious outfit"
+      - "fitted dress"
+      - "dance costume"
+      - "cosplay outfit"
+      - "stage costume"
+      - "body-paint-inspired fashion"
+      - "glamour editorial"
+      - "boudoir non-explicit"
+
+    visual_risk:
+      - "hips emphasized"
+      - "legs emphasized"
+      - "thighs visible"
+      - "side body pose"
+      - "bed pose"
+      - "soft-surface reclining pose"
+      - "arched back"
+      - "twisted torso"
+      - "asymmetric stance"
+      - "strong perspective"
+      - "wide-angle close full-body"
+      - "motion freeze pose"
+
+  risk_levels:
+    low:
+      conditions:
+        - "close-up"
+        - "bust portrait"
+        - "hands and lower body mostly out of frame"
+      action: "Use general human anatomy guardrails only."
+    medium:
+      conditions:
+        - "waist-up"
+        - "hands visible"
+        - "mild pose twist"
+      action: "Use hands/shoulders/torso alignment guardrails as needed."
+    high:
+      conditions:
+        - "full body"
+        - "lower body visible"
+        - "dynamic or glamour pose"
+        - "fitted or revealing fashion"
+      action: "Use full lower-body biomechanics guardrails."
+    critical:
+      conditions:
+        - "dance pose with hip twist"
+        - "one-leg support"
+        - "extreme low angle"
+        - "wide stance with visible legs"
+        - "swimsuit or body-conscious outfit plus dynamic pose"
+      action: "Use full lower-body biomechanics guardrails plus renderer-specific anatomy strengthening."
+
+  phase_1_output:
+    anatomy_risk:
+      level: "low | medium | high | critical"
+      triggers: []
+      lower_body_visible: false
+      support_leg_required: false
+      pose_biomechanics_required: false
+      renderer_guardrails_required: false
+
+# ------------------------------------------------------------
+# 3. Anatomy Zones and Required Structure
+# ------------------------------------------------------------
+
+anatomy_zones:
+  head_neck:
+    requirements:
+      - "head naturally connected to neck"
+      - "neck length plausible"
+      - "jaw and face proportions not warped by camera angle"
+    common_failures:
+      - "floating head"
+      - "overlong neck"
+      - "tilted head with broken neck angle"
+
+  shoulders_arms_hands:
+    requirements:
+      - "shoulders connect naturally to torso"
+      - "upper arms and forearms have consistent length"
+      - "elbows bend in plausible direction"
+      - "hands have correct finger count and natural gesture"
+    common_failures:
+      - "extra fingers"
+      - "melted hands"
+      - "disconnected wrists"
+      - "arms bending impossibly"
+
+  torso_ribcage_waist:
+    requirements:
+      - "ribcage and pelvis feel connected"
+      - "waist twist remains anatomically plausible"
+      - "torso volume is not collapsed"
+    common_failures:
+      - "pinched impossible waist"
+      - "detached torso"
+      - "ribcage and pelvis rotate independently without believable transition"
+
+  pelvis_hips:
+    requirements:
+      - "pelvis volume remains structurally believable"
+      - "left and right hip joints are located plausibly"
+      - "pelvis rotation matches torso and leg placement"
+      - "hip line supports the stance"
+    common_failures:
+      - "warped pelvis"
+      - "asymmetric hip socket placement"
+      - "pelvis detached from torso"
+      - "implausible crotch or groin transition"
+
+  upper_thighs:
+    requirements:
+      - "femurs originate from plausible hip positions"
+      - "upper-thigh direction follows pelvis rotation"
+      - "inner-thigh transition remains anatomically clean"
+      - "glute-to-thigh connection remains smooth and natural"
+    common_failures:
+      - "disconnected thighs"
+      - "upper thigh starting from wrong position"
+      - "melted inner thighs"
+      - "warped glute-thigh transition"
+
+  knees:
+    requirements:
+      - "knee direction follows thigh rotation"
+      - "knees sit at believable height"
+      - "patella orientation matches leg direction"
+      - "knee bend remains plausible"
+    common_failures:
+      - "twisted knees"
+      - "knees facing impossible direction"
+      - "knees too high or too low"
+      - "broken knee bend"
+
+  lower_legs:
+    requirements:
+      - "shin direction follows knee and ankle"
+      - "calf and shin proportions remain consistent"
+      - "left and right leg lengths remain believable"
+    common_failures:
+      - "mismatched lower-leg length"
+      - "broken shin angle"
+      - "rubber legs"
+
+  feet_ankles_grounding:
+    requirements:
+      - "support foot feels planted"
+      - "ankle aligns with support leg"
+      - "feet are not floating or sliding"
+      - "ground contact supports the pose"
+    common_failures:
+      - "floating feet"
+      - "missing feet"
+      - "feet not aligned with body weight"
+      - "support foot not grounded"
+
+# ------------------------------------------------------------
+# 4. Lower-Body Failure Taxonomy
+# ------------------------------------------------------------
+
+lower_body_failure_taxonomy:
+  pelvis_femur_connection_error:
+    symptoms:
+      - "upper thigh appears disconnected from pelvis"
+      - "hip joint location feels wrong"
+      - "leg seems attached too high, too low, or too far sideways"
+    likely_causes:
+      - "dynamic hip twist without anatomy guardrails"
+      - "fitted or revealing outfit exposes difficult hip geometry"
+      - "wide-angle or low-angle perspective exaggerates pelvis"
+    positive_fix:
+      - "anatomically believable pelvis and hip structure"
+      - "natural hip-to-thigh connection"
+      - "femurs originate from plausible hip positions"
+    negative_fix:
+      - "warped pelvis"
+      - "disconnected thighs"
+      - "broken hip anatomy"
+
+  weight_distribution_error:
+    symptoms:
+      - "body appears unsupported"
+      - "pose looks like the subject is falling"
+      - "support leg does not carry the body weight"
+    likely_causes:
+      - "one-leg pose without center-of-gravity cue"
+      - "standing pose with unclear support foot"
+      - "dynamic stage pose with floating feet"
+    positive_fix:
+      - "body weight naturally balanced over the planted support leg"
+      - "support foot firmly grounded"
+      - "physically believable standing balance"
+    negative_fix:
+      - "impossible pose balance"
+      - "floating feet"
+      - "unsupported body weight"
+
+  femur_rotation_knee_conflict:
+    symptoms:
+      - "thigh rotation and knee direction do not match"
+      - "knee appears twisted relative to upper leg"
+      - "leg bend looks broken"
+    likely_causes:
+      - "hip twist pose"
+      - "bent knee pose"
+      - "side body pose"
+    positive_fix:
+      - "knee direction follows the rotation of the upper leg"
+      - "natural knee alignment"
+      - "believable thigh-to-knee-to-shin line"
+    negative_fix:
+      - "twisted knees"
+      - "broken knee anatomy"
+      - "impossible knee direction"
+
+  leg_length_asymmetry_error:
+    symptoms:
+      - "one leg appears much longer or shorter without perspective reason"
+      - "thigh and shin ratios do not match"
+      - "legs do not belong to the same body scale"
+    likely_causes:
+      - "strong perspective without proportion guardrails"
+      - "dynamic pose with one leg bent"
+      - "model confuses near and far leg"
+    positive_fix:
+      - "consistent left and right leg proportions"
+      - "believable thigh and shin lengths"
+      - "natural perspective-consistent leg scale"
+    negative_fix:
+      - "mismatched leg length"
+      - "uneven leg proportions"
+      - "rubber legs"
+
+  crotch_pelvic_transition_error:
+    symptoms:
+      - "groin or pelvis transition looks warped"
+      - "inner thighs merge unnaturally"
+      - "clothing edge exposes anatomy failure"
+    likely_causes:
+      - "fitted swimsuit or dance outfit"
+      - "side pose with hip twist"
+      - "high leg opening or visible upper thigh"
+    positive_fix:
+      - "clean, anatomically natural pelvic transition"
+      - "smooth inner-thigh transition"
+      - "clothing follows body structure naturally"
+    negative_fix:
+      - "warped crotch region"
+      - "melted inner thighs"
+      - "unnatural groin anatomy"
+
+  glute_thigh_transition_error:
+    symptoms:
+      - "buttock-to-thigh connection is melted or distorted"
+      - "hip curve does not connect to leg structure"
+      - "side-body silhouette is anatomically implausible"
+    positive_fix:
+      - "smooth anatomical transition from hips and glutes into upper thighs"
+      - "natural side-body silhouette"
+      - "believable hip and thigh volume"
+    negative_fix:
+      - "warped glute-thigh transition"
+      - "melted hip anatomy"
+      - "deformed lower body"
+
+  support_foot_grounding_error:
+    symptoms:
+      - "feet float above ground"
+      - "support foot does not align with body weight"
+      - "ankle angle cannot support the pose"
+    positive_fix:
+      - "support foot firmly planted on the ground"
+      - "grounded stance"
+      - "ankle aligned under the support leg"
+    negative_fix:
+      - "floating feet"
+      - "missing feet"
+      - "unsupported stance"
+
+# ------------------------------------------------------------
+# 5. Biomechanical Pose Rules
+# ------------------------------------------------------------
+
+biomechanical_pose_rules:
+  one_leg_support:
+    detect_when:
+      - "one leg bent"
+      - "one leg lifted"
+      - "contrapposto"
+      - "dance pose"
+      - "stage pose"
+      - "hip pushed to one side"
+    requirements:
+      - "center of gravity reads over the support leg"
+      - "support hip, knee, ankle, and foot feel load-bearing"
+      - "free leg may bend or extend but should not appear to carry weight"
+      - "support foot firmly contacts the ground"
+    prompt_positive:
+      - "body weight naturally balanced over the planted support leg"
+      - "support leg clearly weight-bearing"
+      - "free leg relaxed and non-load-bearing"
+      - "grounded standing balance"
+
+  hip_twist_pose:
+    detect_when:
+      - "hip twist"
+      - "S-curve"
+      - "side body pose"
+      - "arched pose"
+      - "glamour pose"
+      - "dance pose"
+    requirements:
+      - "pelvis rotation and ribcage twist feel coordinated"
+      - "waist narrowing does not detach pelvis from torso"
+      - "upper thigh origins remain anatomically plausible"
+      - "side-body silhouette remains elegant but physically believable"
+    prompt_positive:
+      - "coherent pelvis and ribcage rotation"
+      - "anatomically believable hip twist"
+      - "natural hip-to-thigh connection"
+      - "physically believable S-curve pose"
+
+  bent_knee_pose:
+    detect_when:
+      - "bent knee"
+      - "knee raised"
+      - "leg folded"
+      - "dance step"
+    requirements:
+      - "knee direction follows femur rotation"
+      - "shin angle remains believable"
+      - "patella orientation matches the pose"
+      - "knee bend is not hyperextended"
+    prompt_positive:
+      - "knee aligned with upper-leg rotation"
+      - "natural thigh-to-knee-to-shin line"
+      - "believable knee bend"
+
+  crossed_leg_pose:
+    detect_when:
+      - "crossed legs"
+      - "legs crossed"
+      - "one leg over another"
+    requirements:
+      - "near/far leg overlap remains readable"
+      - "leg crossing does not collapse pelvic volume"
+      - "support leg remains structurally clear"
+    prompt_positive:
+      - "readable crossed-leg structure"
+      - "clear separation between near and far leg"
+      - "pelvis volume remains intact"
+
+  seated_pose:
+    detect_when:
+      - "sitting"
+      - "seated"
+      - "kneeling"
+    requirements:
+      - "pelvis contacts support surface believably"
+      - "thigh compression and leg bend are plausible"
+      - "feet and knees follow the seated posture"
+    prompt_positive:
+      - "physically believable seated anatomy"
+      - "natural thigh and pelvis contact with the surface"
+      - "clear knee and foot placement"
+
+  semi_reclined_bed_pose:
+    detect_when:
+      - "reclining"
+      - "lying on bed"
+      - "half-sitting"
+      - "semi-reclined"
+      - "side-lying"
+      - "propped on hands"
+      - "propped on elbows"
+    requirements:
+      - "ribcage, waist, pelvis, thighs, knees, shins, and feet form one readable direction chain"
+      - "pelvis direction remains compatible with the folded-leg direction"
+      - "hips, thighs, knees, hands, or elbows visibly contact and compress the soft support surface"
+      - "arms that prop the torso create a believable shoulder-elbow-wrist load path"
+      - "foreground lower leg and foot remain perspective-consistent, not floating or stretched"
+    prompt_positive:
+      - "physically believable semi-reclined bed pose"
+      - "coherent ribcage-to-pelvis-to-leg direction chain"
+      - "hips and thighs resting naturally into the bed"
+      - "hands planted under shoulders supporting upper-body weight"
+      - "legs relaxed against the bed surface"
+
+  dynamic_dance_pose:
+    detect_when:
+      - "dance"
+      - "performance"
+      - "stage"
+      - "motion freeze"
+      - "twirl"
+      - "kick"
+    requirements:
+      - "motion remains anatomically plausible"
+      - "support leg and center of gravity remain readable"
+      - "limbs follow a clear action line"
+      - "pelvis, knees, and feet remain structurally consistent"
+    prompt_positive:
+      - "dynamic but anatomically believable dance pose"
+      - "clear action line through torso and legs"
+      - "support leg grounded and weight-bearing"
+      - "legs aligned naturally with pelvis and knee direction"
+
+# ------------------------------------------------------------
+# 6. Generator-Visible Anatomy Translation
+# ------------------------------------------------------------
+
+generator_visible_anatomy_translation:
+  general_human:
+    positive:
+      - "realistic human anatomy"
+      - "natural body proportions"
+      - "physically believable pose"
+      - "coherent joint alignment"
+    compressed: "realistic human anatomy with natural proportions and coherent joint alignment"
+
+  full_body_guardrail:
+    positive:
+      - "realistic full-body anatomy"
+      - "coherent pelvic structure"
+      - "natural hip-to-thigh connection"
+      - "consistent leg proportions"
+      - "grounded stance"
+    compressed: "realistic full-body anatomy, coherent pelvis, natural hip-to-thigh connection, consistent legs, grounded stance"
+
+  lower_body_visible_guardrail:
+    positive:
+      - "anatomically believable pelvis and hip structure"
+      - "natural upper-thigh origins"
+      - "knees aligned with thigh rotation"
+      - "left and right leg proportions remain consistent"
+      - "support foot firmly planted"
+    compressed: "believable pelvis and hips, natural upper-thigh origins, aligned knees, consistent leg proportions, planted support foot"
+
+  one_leg_support_guardrail:
+    positive:
+      - "body weight naturally balanced over the planted support leg"
+      - "support leg clearly weight-bearing"
+      - "free leg relaxed and non-load-bearing"
+      - "grounded foot contact"
+    compressed: "weight balanced over planted support leg, free leg non-load-bearing, grounded foot contact"
+
+  dance_pose_guardrail:
+    positive:
+      - "dynamic but anatomically believable dance pose"
+      - "clear action line through torso and legs"
+      - "pelvis, knees, and feet remain structurally consistent"
+      - "support leg grounded and weight-bearing"
+    compressed: "dynamic anatomically believable dance pose with grounded support leg and coherent pelvis-knee-foot alignment"
+
+  glamour_pose_guardrail:
+    positive:
+      - "elegant pose with physically believable hip twist"
+      - "smooth anatomical transition from hips into upper thighs"
+      - "natural side-body silhouette"
+      - "leg proportions remain consistent"
+    compressed: "elegant anatomically believable hip twist, smooth hip-to-thigh transition, natural leg proportions"
+
+# ------------------------------------------------------------
+# 7. Positive / Negative Prompt Recipes
+# ------------------------------------------------------------
+
+prompt_recipes:
+  full_body_human:
+    positive:
+      - "realistic full-body anatomy"
+      - "coherent pelvic structure"
+      - "natural hip-to-thigh connection"
+      - "consistent left and right leg proportions"
+      - "knees aligned naturally with thigh rotation"
+      - "grounded support foot"
+      - "physically believable pose"
+    negative:
+      - "broken legs"
+      - "warped pelvis"
+      - "disconnected thighs"
+      - "twisted knees"
+      - "mismatched leg length"
+      - "floating feet"
+      - "impossible pose balance"
+
+  lower_body_visible_glamour_pose:
+    positive:
+      - "anatomically believable pelvis and hip structure"
+      - "smooth hip-to-thigh transition"
+      - "natural inner-thigh geometry"
+      - "body weight clearly supported by the planted leg"
+      - "knees follow the direction of the thighs"
+      - "realistic leg proportions"
+    negative:
+      - "warped crotch region"
+      - "melted inner thighs"
+      - "deformed lower body"
+      - "broken hip anatomy"
+      - "twisted knees"
+      - "rubber legs"
+
+  dance_stage_pose:
+    positive:
+      - "dynamic but anatomically believable dance pose"
+      - "clear support leg"
+      - "center of gravity naturally over the planted foot"
+      - "coherent pelvis and ribcage twist"
+      - "natural knee and ankle alignment"
+    negative:
+      - "impossible dance pose"
+      - "floating feet"
+      - "broken legs"
+      - "warped pelvis"
+      - "twisted knees"
+      - "unsupported body weight"
+
+  image_edit_repair_lower_body:
+    instruction:
+      - "Repair only the lower-body anatomy while preserving face, hairstyle, outfit, lighting, background, and camera framing."
+      - "Make the pelvis, hip-to-thigh connection, leg proportions, knee direction, and support-foot grounding anatomically believable."
+      - "Do not change identity, wardrobe design, or overall pose intent unless needed for physical plausibility."
+
+# ------------------------------------------------------------
+# 8. Model-Specific Renderer Rules
+# ------------------------------------------------------------
+
+model_specific_anatomy_rendering:
+  chatgpt_image:
+    style: "natural-language anatomy sentence"
+    positive_template: >
+      Maintain realistic full-body anatomy with a believable pelvis, natural hip-to-thigh connection,
+      consistent leg proportions, knees aligned naturally with the direction of the thighs,
+      and body weight clearly supported by the planted foot.
+    avoid_template: >
+      Avoid warped pelvis, disconnected thighs, twisted knees, mismatched leg lengths,
+      floating feet, impossible pose balance, and deformed lower-body anatomy.
+
+  z_image_turbo:
+    style: "short positive / negative visual phrases"
+    positive_template: >
+      realistic full-body anatomy, believable pelvis, natural hip-to-thigh connection,
+      correct leg proportions, support leg clearly weight-bearing, knees aligned with thigh direction, grounded feet
+    negative_template: >
+      broken legs, warped pelvis, disconnected thighs, mismatched leg length, twisted knees,
+      floating feet, impossible pose balance, deformed lower body
+
+  stable_diffusion:
+    style: "tag-style positive / negative prompt"
+    positive_template: >
+      realistic anatomy, full body anatomy, believable pelvis, natural hip-thigh connection,
+      correct leg proportions, weight-bearing support leg, grounded stance
+    negative_template: >
+      bad anatomy, broken legs, warped pelvis, disconnected thighs, twisted knees,
+      mismatched legs, floating feet, deformed lower body
+
+  flux:
+    style: "clear natural language"
+    positive_template: >
+      The full-body pose is physically believable, with coherent pelvis structure,
+      natural leg proportions, grounded feet, and knees aligned with the direction of the thighs.
+    negative_template: >
+      warped pelvis, broken legs, impossible balance, floating feet, mismatched leg proportions
+
+  image_edit:
+    style: "repair instruction with preservation locks"
+    repair_template: >
+      Fix the lower-body anatomy while preserving the original face, hairstyle, outfit, lighting,
+      background, and overall pose intent. Make the pelvis, hip-to-thigh connection, leg proportions,
+      knee direction, and support-foot grounding anatomically believable.
+
+# ------------------------------------------------------------
+# 9. Anatomy Quality Rubric
+# ------------------------------------------------------------
+
+anatomy_quality_rubric:
+  dimensions:
+    pelvic_structure_coherence:
+      weight: 1.4
+      checks:
+        - "Pelvis volume is believable."
+        - "Hip sockets appear plausibly placed."
+        - "Pelvis rotation matches torso and leg placement."
+    hip_to_thigh_connection:
+      weight: 1.5
+      checks:
+        - "Femurs originate from plausible hip positions."
+        - "Upper-thigh transition is natural."
+        - "Inner-thigh and glute-thigh transitions are not warped."
+    support_leg_mechanics:
+      weight: 1.4
+      checks:
+        - "Support leg clearly carries body weight."
+        - "Center of gravity reads over the planted foot."
+        - "Ankle and foot placement support the pose."
+    knee_direction_consistency:
+      weight: 1.3
+      checks:
+        - "Knees follow thigh rotation."
+        - "Patella orientation is believable."
+        - "Knee bend is physically plausible."
+    leg_proportion_consistency:
+      weight: 1.2
+      checks:
+        - "Left and right leg lengths are consistent."
+        - "Thigh-to-shin ratios are believable."
+        - "Perspective explains any scale difference."
+    foot_grounding:
+      weight: 1.2
+      checks:
+        - "Feet contact the floor or support surface."
+        - "Support foot is not floating or sliding."
+        - "Ground contact matches body balance."
+    overall_pose_believability:
+      weight: 1.3
+      checks:
+        - "Pose feels physically sustainable."
+        - "Dynamic pose still follows biomechanical logic."
+        - "No limb appears detached, melted, or impossible."
+
+  hard_fail_conditions:
+    - "disconnected or implausible upper-thigh origin"
+    - "major leg length mismatch without perspective reason"
+    - "body balance impossible for the pose"
+    - "knee and thigh rotation contradiction"
+    - "broken pelvis or warped crotch region"
+    - "floating support foot in a standing pose"
+    - "severe lower-body deformation"
+
+# ------------------------------------------------------------
+# 10. Self-Review Checklist
+# ------------------------------------------------------------
+
+anatomy_self_review_checklist:
+  lower_body_visible:
+    - "Does the support leg clearly carry the body weight?"
+    - "Is the pelvis structurally believable?"
+    - "Do both femurs appear to originate from plausible hip positions?"
+    - "Do knee directions match the rotation of the thighs?"
+    - "Are leg lengths and proportions consistent?"
+    - "Does the pose feel physically sustainable?"
+    - "If the outfit is fitted or revealing, is the hip/groin transition still anatomically clean?"
+    - "Are the feet grounded and aligned with the body balance?"
+
+  dynamic_pose:
+    - "Is there a clear action line?"
+    - "Does the center of gravity make sense?"
+    - "Does motion exaggeration preserve joint alignment?"
+    - "Would simplifying the pose improve anatomy reliability?"
+
+  image_edit_repair:
+    - "Are identity, face, outfit, lighting, and background preserved?"
+    - "Is only anatomy repaired unless a broader change is requested?"
+    - "Does the repaired pose still match the original pose intent?"
+
+# ------------------------------------------------------------
+# 11. Conflict Resolution
+# ------------------------------------------------------------
+
+anatomy_conflict_resolution:
+  complex_pose_vs_anatomy:
+    problem: "A highly complex pose increases anatomy failure risk."
+    rule: "Preserve pose intent but simplify impossible limb relationships."
+    fix:
+      - "dynamic but anatomically believable pose"
+      - "clear support leg"
+      - "coherent pelvis-knee-foot alignment"
+
+  glamour_curve_vs_biomechanics:
+    problem: "Overemphasized S-curve or hip twist breaks pelvis/leg connection."
+    rule: "Keep elegant silhouette but preserve pelvis and hip-to-thigh structure."
+    fix:
+      - "elegant physically believable hip twist"
+      - "natural side-body silhouette"
+      - "smooth hip-to-thigh transition"
+
+  low_angle_vs_leg_distortion:
+    problem: "Low-angle full-body shot exaggerates legs and pelvis."
+    rule: "Use controlled low angle and anatomy guardrails."
+    fix:
+      - "controlled low-angle perspective"
+      - "correct leg proportions"
+      - "feet and knees not exaggerated"
+
+  fitted_outfit_vs_pelvic_error:
+    problem: "Fitted clothing reveals or amplifies lower-body anatomy errors."
+    rule: "Describe clothing following body structure naturally."
+    fix:
+      - "clothing follows body structure naturally"
+      - "clean pelvic transition"
+      - "smooth inner-thigh geometry"
+
+  motion_blur_vs_anatomy_readability:
+    problem: "Motion effects hide broken anatomy or create duplicate limbs."
+    rule: "Keep the hero body silhouette sharp; limit motion blur to edges or background."
+    fix:
+      - "sharp readable body silhouette"
+      - "motion blur limited to garment fringe or background"
+      - "clear limb count and joint alignment"
+
+
+# ------------------------------------------------------------
+# 13. Foot / Ankle / Pointe Orientation Biomechanics
+# ------------------------------------------------------------
+
+foot_and_ankle_biomechanics:
+  core_rule: >
+    The foot must not be treated as an isolated decorative shape.
+    Its orientation must follow the ankle, shin, knee, hip rotation, camera angle,
+    and overall leg line naturally. This is especially important for ballet,
+    pointe shoes, dance poses, lifted-leg poses, and one-leg support poses.
+
+  activate_when:
+    - "feet visible"
+    - "lifted foot visible"
+    - "pointe shoes"
+    - "ballet pose"
+    - "dance pose"
+    - "pointed foot"
+    - "extended leg"
+    - "one-leg support pose"
+    - "turnout"
+    - "low-angle full-body pose"
+    - "side-body pose with raised leg"
+
+  critical_checks:
+    - "foot orientation matches the leg direction"
+    - "the top of the foot is visible on the correct side"
+    - "ankle rotation is anatomically plausible"
+    - "toe direction follows the foot line naturally"
+    - "the pointed foot continues the leg line"
+    - "the support foot angle matches balance and grounding"
+    - "pointe shoe orientation is correct if ballet shoes are present"
+    - "the lifted foot is not flipped or rotated 180 degrees"
+    - "the visible sole / top-of-foot relationship matches the camera angle"
+
+foot_orientation_failure_taxonomy:
+  foot_orientation_180_error:
+    symptoms:
+      - "lifted foot appears flipped or rotated 180 degrees"
+      - "top of foot faces the wrong direction"
+      - "front/back direction of the foot contradicts the leg"
+    likely_causes:
+      - "lifted leg pose without foot orientation guardrail"
+      - "ballet or pointe pose with ambiguous foot surface"
+      - "side body pose where model confuses the near/far side of the foot"
+    positive_fix:
+      - "the lifted foot is oriented correctly"
+      - "top of the foot faces the proper direction"
+      - "foot direction follows the lifted leg naturally"
+    negative_fix:
+      - "reversed foot orientation"
+      - "foot rotated 180 degrees"
+      - "flipped foot"
+
+  ankle_foot_rotation_conflict:
+    symptoms:
+      - "ankle rotation conflicts with shin direction"
+      - "foot twists independently from the lower leg"
+      - "foot angle is physically impossible"
+    positive_fix:
+      - "ankle rotation aligns naturally with the shin and leg direction"
+      - "foot follows the lower-leg line"
+      - "physically believable ankle-foot alignment"
+    negative_fix:
+      - "twisted ankle"
+      - "broken ankle angle"
+      - "impossible foot rotation"
+
+  toe_direction_conflict:
+    symptoms:
+      - "toes point in an implausible direction"
+      - "toe direction does not follow foot or leg line"
+      - "toe box turns away from the expected orientation"
+    positive_fix:
+      - "toes point naturally along the direction of the foot"
+      - "toe direction follows the leg line"
+      - "believable toe orientation"
+    negative_fix:
+      - "impossible toe direction"
+      - "broken toe orientation"
+      - "misdirected toes"
+
+  pointe_shoe_orientation_error:
+    symptoms:
+      - "pointe shoe box faces the wrong direction"
+      - "pointe shoe appears reversed"
+      - "shoe front/back orientation contradicts the foot"
+    likely_causes:
+      - "pointe shoe treated as generic shoe"
+      - "lifted foot has ambiguous direction"
+      - "AI confuses the flat front box with heel or sole"
+    positive_fix:
+      - "pointe shoe faces the correct direction"
+      - "pointe shoe follows the line of the foot"
+      - "shoe box orientation matches the toe direction"
+    negative_fix:
+      - "incorrect pointe shoe direction"
+      - "reversed pointe shoe"
+      - "broken pointe shoe angle"
+
+  plantar_dorsal_surface_swap:
+    symptoms:
+      - "top of foot and sole-facing side are visually swapped"
+      - "visible foot surface contradicts camera angle"
+      - "foot appears inside-out"
+    positive_fix:
+      - "visible top of foot and sole orientation match the camera angle"
+      - "foot surface orientation remains anatomically correct"
+    negative_fix:
+      - "inside-out foot"
+      - "swapped foot surface"
+      - "wrong sole orientation"
+
+  foot_line_break_error:
+    symptoms:
+      - "pointed foot breaks the graceful line of the leg"
+      - "ankle/foot angle interrupts the pose line"
+      - "extended leg ends with a crooked or reversed foot"
+    positive_fix:
+      - "pointed foot continues the line of the leg naturally"
+      - "elegant pointed-foot extension"
+      - "unbroken leg-to-foot line"
+    negative_fix:
+      - "broken foot line"
+      - "crooked pointed foot"
+      - "deformed foot extension"
+
+  turnout_foot_mismatch:
+    symptoms:
+      - "foot turnout does not match hip and knee rotation"
+      - "foot twists independently from the leg"
+      - "ballet turnout looks mechanically impossible"
+    positive_fix:
+      - "foot turnout follows hip and knee rotation naturally"
+      - "turnout angle is consistent through hip, knee, ankle, and foot"
+    negative_fix:
+      - "incorrect turnout"
+      - "twisted turnout"
+      - "foot turnout mismatch"
+
+dance_foot_biomechanics_rules:
+  pointed_foot_pose:
+    detect_when:
+      - "pointed foot"
+      - "extended foot"
+      - "ballet line"
+      - "dance pose"
+    requirements:
+      - "the pointed foot continues the line of the shin and leg naturally"
+      - "the ankle is extended but anatomically plausible"
+      - "the top of the foot faces the correct direction"
+      - "toe direction remains coherent with the foot and leg line"
+    prompt_positive:
+      - "elegant pointed-foot extension"
+      - "pointed foot continues the leg line naturally"
+      - "correct ankle alignment and foot orientation"
+
+  lifted_leg_ballet_pose:
+    detect_when:
+      - "lifted leg"
+      - "raised leg"
+      - "arabesque-like pose"
+      - "ballet pose"
+      - "one leg extended backward or sideways"
+    requirements:
+      - "the lifted foot orientation follows the rotation of the lifted leg"
+      - "the lifted foot is not reversed"
+      - "the visible surface of the foot matches the camera angle"
+      - "the foot continues the leg line"
+    prompt_positive:
+      - "lifted foot oriented correctly"
+      - "top of lifted foot facing the proper direction"
+      - "foot follows the lifted-leg line"
+
+  pointe_pose:
+    detect_when:
+      - "pointe shoes"
+      - "en pointe"
+      - "ballet shoes"
+      - "ballet dancer"
+    requirements:
+      - "the pointe shoe box faces the correct direction"
+      - "the ankle is stacked and aligned for the pose"
+      - "the support foot remains stable and believable"
+      - "the shoe front/back orientation is not reversed"
+    prompt_positive:
+      - "correct pointe shoe direction"
+      - "pointe shoe follows the foot line"
+      - "stable pointe shoe alignment"
+
+  turnout_pose:
+    detect_when:
+      - "turnout"
+      - "ballet stance"
+      - "feet turned out"
+      - "dance stance"
+    requirements:
+      - "foot turnout follows hip and knee rotation"
+      - "the foot is not twisted independently from the leg"
+      - "both feet preserve believable turnout mechanics"
+    prompt_positive:
+      - "believable ballet turnout"
+      - "foot turnout matches hip and knee rotation"
+      - "consistent hip-knee-ankle-foot alignment"
+
+generator_visible_foot_translation:
+  foot_orientation_180_error:
+    rewrite: "the lifted foot is oriented correctly, with the top of the foot facing the proper direction"
+  ankle_foot_rotation_conflict:
+    rewrite: "the ankle rotation aligns naturally with the shin and leg direction"
+  toe_direction_conflict:
+    rewrite: "the toes point naturally along the direction of the foot"
+  pointe_shoe_orientation_error:
+    rewrite: "the pointe shoe faces the correct direction and follows the line of the foot"
+  plantar_dorsal_surface_swap:
+    rewrite: "the visible top of the foot and sole orientation match the camera angle"
+  foot_line_break_error:
+    rewrite: "the pointed foot extends gracefully and continues the line of the leg naturally"
+  turnout_foot_mismatch:
+    rewrite: "the turnout of the foot matches the hip and knee rotation naturally"
+  ballet_full_rule:
+    rewrite: "accurate ballet foot mechanics, correct ankle alignment, proper foot orientation, and elegant pointed-foot line"
+
+foot_orientation_self_review:
+  - "Does the lifted foot face the correct direction?"
+  - "Is the top of the foot visible on the correct side?"
+  - "Does the ankle rotation match the shin direction?"
+  - "Do the toes point in a believable direction?"
+  - "Does the pointed foot continue the line of the leg naturally?"
+  - "If pointe shoes are visible, is the shoe box facing the correct direction?"
+  - "If turnout is present, does foot turnout match hip and knee rotation?"
+  - "Does the visible top/sole relationship match the camera angle?"
+  - "Is the support foot angle consistent with balance and grounding?"
+
+foot_orientation_prompt_recipes:
+  ballet_lifted_leg_positive:
+    - "accurate ballet foot mechanics"
+    - "correct ankle alignment"
+    - "lifted foot oriented correctly"
+    - "top of the lifted foot facing the proper direction"
+    - "pointed foot continues the leg line naturally"
+    - "correct pointe shoe direction"
+  ballet_lifted_leg_negative:
+    - "reversed foot orientation"
+    - "twisted ankle"
+    - "foot rotated 180 degrees"
+    - "incorrect foot direction"
+    - "broken pointe shoe angle"
+    - "impossible toe direction"
+    - "deformed feet"
+
+  generic_visible_feet_positive:
+    - "correct foot orientation"
+    - "ankles aligned with shins"
+    - "toes point naturally with the foot direction"
+    - "feet grounded or extended according to the pose"
+  generic_visible_feet_negative:
+    - "reversed feet"
+    - "twisted ankles"
+    - "impossible foot rotation"
+    - "wrong toe direction"
+    - "deformed feet"
+
+model_specific_foot_rendering:
+  chatgpt_image:
+    positive_template: >
+      Maintain accurate foot and ankle mechanics: the lifted foot should face the correct direction,
+      ankle alignment should follow the shin naturally, and the pointed foot should extend the leg line gracefully.
+    avoid_template: >
+      Avoid reversed foot orientation, twisted ankles, foot rotated 180 degrees, incorrect pointe shoe direction,
+      impossible toe direction, and deformed feet.
+
+  z_image_turbo:
+    positive_template: >
+      accurate ballet foot mechanics, correct foot orientation, ankle aligned with shin,
+      pointed foot continues leg line, correct pointe shoe direction
+    negative_template: >
+      reversed foot, twisted ankle, foot rotated 180 degrees, incorrect pointe shoe angle,
+      broken foot direction, impossible toe direction, deformed feet
+
+  stable_diffusion:
+    positive_template: >
+      accurate foot anatomy, correct foot orientation, aligned ankle, pointed foot line,
+      believable ballet pose, correct pointe shoe direction
+    negative_template: >
+      bad feet, reversed foot, twisted ankle, foot rotated 180 degrees,
+      broken pointe shoe direction, impossible toe direction, deformed feet
+
+  flux:
+    positive_template: >
+      The lifted foot faces the correct direction, the ankle follows the shin naturally,
+      and the pointed foot continues the leg line with correct ballet foot mechanics.
+    negative_template: >
+      reversed foot, twisted ankle, incorrect foot direction, broken pointe shoe angle, deformed feet
+
+  image_edit:
+    repair_template: >
+      Repair the foot and ankle orientation while preserving the face, hairstyle, outfit, lighting,
+      background, and overall pose intent. Make the lifted foot face the correct direction,
+      align the ankle with the shin, and make the pointed foot continue the leg line naturally.
+
+# ------------------------------------------------------------
+# 12. Prompt Assembly Hooks
+# ------------------------------------------------------------
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - anatomy_risk
+    action: "Detect lower-body visibility, dynamic pose risk, support-leg need, and anatomy guardrail level."
+
+  phase_2_cinematic_enrichment:
+    action: "Translate anatomy risk into generator-visible anatomy and biomechanics constraints."
+
+  phase_3_scene_blueprint:
+    action: "Add support-leg, pose balance, and camera-angle anatomy notes when full body or lower body is visible."
+
+  phase_3_5_prompt_package:
+    action: "Store anatomy_guardrails as positive and negative renderer hints."
+
+  phase_4_self_review:
+    checks:
+      - "Run lower-body self-review when lower body is visible."
+      - "Check pelvis, hip-to-thigh connection, leg proportions, knee direction, foot grounding, and foot orientation."
+      - "If anatomy risk is high, reduce pose complexity or add stronger generator-visible anatomy constraints."
+      - "For ballet, dance, pointe shoes, or lifted-leg poses, check ankle-foot orientation and pointe shoe direction."
+
+  phase_4_5_cleanup:
+    action: "Do not remove anatomy or foot-orientation guardrails when lower-body risk is high or critical."
+
+  phase_4_6_renderer_selection:
+    action: "Apply model-specific anatomy wording based on target renderer."
+
+  phase_5_final_prompt:
+    action: "Include concise anatomy guardrails in final positive prompt and task-specific lower-body negatives when needed."

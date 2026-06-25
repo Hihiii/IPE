@@ -1,0 +1,941 @@
+# =============================================================================
+# STYLE & REALISM CONTROL — style guardrails with compatible/incompatible
+# term pairs to prevent cross-contamination between visual styles.
+# =============================================================================
+
+style_realism_control:
+  photorealistic:
+    primary_terms:
+      - "photorealistic"
+      - "real camera photography"
+      - "physically plausible lighting"
+      - "natural skin texture"
+      - "real lens rendering"
+    incompatible_terms:
+      - "anime"
+      - "cartoon"
+      - "flat illustration"
+      - "cel shading"
+    correction:
+      - "avoid painterly rendering"
+      - "avoid CGI plastic skin"
+
+  anime_realism:
+    primary_terms:
+      - "anime realism"
+      - "realistic proportions with anime-inspired facial design"
+      - "cinematic lighting"
+      - "clean stylized details"
+    incompatible_terms:
+      - "raw smartphone photo"
+      - "documentary photography"
+    correction:
+      - "avoid chibi proportions"
+      - "avoid overly cartoonish face"
+
+  architectural_visualization:
+    primary_terms:
+      - "professional architectural visualization"
+      - "physically accurate materials"
+      - "straight vertical lines"
+      - "realistic daylight"
+    incompatible_terms:
+      - "handheld selfie"
+      - "fisheye distortion"
+      - "cartoon background"
+
+
+# =============================================================================
+# STYLE CONFLICT RESOLUTION — when terms from different modes collide
+# =============================================================================
+style_conflict_resolution:
+  photorealistic_vs_anime:
+    if_user_says: ["photorealistic", "真人", "real-life"]
+    remove_or_downweight:
+      - "anime"
+      - "cel shading"
+      - "cartoon"
+    preserve_if_character_reference:
+      - "character-inspired costume"
+      - "signature color palette"
+      - "recognizable hairstyle influence"
+
+  anime_realism_vs_cartoon:
+    if_user_says: ["anime realism", "高端日系", "半寫實日漫"]
+    keep:
+      - "stylized facial design"
+      - "cinematic lighting"
+      - "realistic body proportions"
+    avoid:
+      - "chibi"
+      - "flat cartoon"
+      - "raw documentary photo"
+
+  general_rule: >
+    When a user mixes terms that belong to incompatible style modes (e.g., "photorealistic" + "cartoon"),
+    the first explicit style noun wins. If neither is explicit, default to the highest realism mode
+    mentioned. Never preserve both incompatible mode terms — the model will average them into mud.
+
+
+# =============================================================================
+# AUTOREVISE STYLE SYSTEM — style mode as a hard medium decision, not decoration
+# =============================================================================
+autorevise_style_system:
+  purpose: >
+    Control the final image medium, realism level, rendering grammar, and style
+    compatibility. This module prevents prompt drift caused by mixing mutually
+    incompatible style terms such as photorealistic, anime, cartoon, 3D render,
+    illustration, and cinematic film still.
+  phase_usage:
+    phase_1:
+      - "detect explicit style mode, medium, realism level, and character-reference cues"
+      - "separate medium-defining words from loose aesthetic references"
+    phase_2:
+      - "select one dominant style mode and translate it into generator-visible rendering behavior"
+      - "remove or downweight incompatible style vocabulary"
+    phase_3_5:
+      - "compile selected style into style_and_lighting.visual_language and medium"
+    phase_4:
+      - "scan for style conflict, medium drift, over-stylization, and realism contamination"
+    phase_4_5:
+      - "compress style language into one concise style phrase"
+
+  priority_order:
+    - "explicit_user_medium"
+    - "explicit_user_correction_language"
+    - "task_profile_required_medium"
+    - "subject_reference_type"
+    - "mood_or_aesthetic_reference"
+    - "inferred_enhancement"
+
+  style_lock_rule: >
+    Once the dominant style mode is selected, every other aesthetic cue must be
+    translated as design influence, lighting mood, color palette, or material treatment.
+    Do not preserve multiple incompatible medium terms in the final prompt.
+
+# =============================================================================
+# STYLE MODE ROUTER — detect dominant rendering mode
+# =============================================================================
+style_mode_router:
+  selection_signals:
+    photorealistic:
+      strong_triggers:
+        - "photorealistic"
+        - "realistic photo"
+        - "real camera"
+        - "真人"
+        - "真實攝影"
+        - "real-life"
+        - "live-action"
+        - "cosplay photo"
+        - "smartphone selfie"
+      output_mode: "photographic_image"
+      default_realism_level: "real_camera"
+
+    cinematic_film_still:
+      strong_triggers:
+        - "cinematic film still"
+        - "電影劇照"
+        - "movie still"
+        - "film frame"
+        - "cinematography"
+      output_mode: "photographic_or_filmic_image"
+      default_realism_level: "physically_plausible"
+
+    anime_realism:
+      strong_triggers:
+        - "anime realism"
+        - "動畫寫實"
+        - "二次元寫實"
+        - "半寫實日漫"
+        - "realistic anime"
+        - "AAA anime game art"
+      output_mode: "stylized_illustration"
+      default_realism_level: "stylized_realism"
+
+    cel_shaded_anime:
+      strong_triggers:
+        - "anime style"
+        - "日漫風"
+        - "cel shading"
+        - "賽璐璐"
+        - "clean anime illustration"
+      output_mode: "anime_illustration"
+      default_realism_level: "stylized"
+
+    high_end_illustration:
+      strong_triggers:
+        - "high-end illustration"
+        - "concept art"
+        - "painterly"
+        - "illustrative design"
+        - "角色設定"
+        - "遊戲原畫"
+      output_mode: "illustration"
+      default_realism_level: "painterly_stylized"
+
+    product_render:
+      strong_triggers:
+        - "product render"
+        - "industrial design render"
+        - "CMF render"
+        - "studio product render"
+        - "產品設計圖"
+      output_mode: "3d_or_photographic_product_render"
+      default_realism_level: "precise_material_render"
+
+    architectural_visualization:
+      strong_triggers:
+        - "architectural visualization"
+        - "archviz"
+        - "室內設計圖"
+        - "建築外觀圖"
+        - "rendered interior"
+      output_mode: "architectural_render"
+      default_realism_level: "physically_plausible_space"
+
+    pixel_art:
+      strong_triggers:
+        - "pixel art"
+        - "像素圖"
+        - "64x64"
+        - "sprite"
+      output_mode: "pixel_art"
+      default_realism_level: "symbolic_low_resolution"
+
+    vector_ui:
+      strong_triggers:
+        - "vector UI"
+        - "flat vector"
+        - "educational game UI"
+        - "兒童遊戲畫面"
+        - "icon set"
+      output_mode: "vector_or_ui_illustration"
+      default_realism_level: "readable_simplified"
+
+  tie_breakers:
+    correction_language_overrides_previous:
+      triggers:
+        - "but"
+        - "instead"
+        - "rather than"
+        - "not"
+        - "不要"
+        - "不是"
+        - "更接近"
+        - "改成"
+        - "不像"
+      rule: "Later corrective style overrides earlier loose style mentions."
+    medium_terms_outrank_aesthetic_terms:
+      rule: "Words defining the image medium outrank vibe words. 'Photorealistic cosplay' outranks 'anime character reference'."
+    character_reference_is_design_cue:
+      rule: "Named anime/game character references do not force anime rendering when the user asks for real-life, photorealistic, or cosplay."
+    task_output_contract_overrides_mood:
+      rule: "Educational UI, transparent asset, product cutout, and archviz require task-appropriate rendering even if cinematic mood is requested."
+
+# =============================================================================
+# GENERATOR-VISIBLE STYLE TRANSLATION
+# =============================================================================
+generator_visible_style_translation:
+  photorealistic:
+    generator_prompt: "photorealistic camera-style image with physically plausible lighting, natural lens rendering, realistic skin/material texture, and believable proportions"
+    visible_features:
+      - "real camera perspective"
+      - "natural depth of field"
+      - "physically plausible shadows and reflections"
+      - "realistic material surface response"
+    avoid_terms:
+      - "anime"
+      - "cartoon"
+      - "cel shading"
+      - "flat illustration"
+      - "painterly brushwork"
+      - "CGI plastic skin"
+    corrective_terms:
+      - "real-life photographic rendering"
+      - "natural anatomy and proportions"
+      - "not an illustration"
+
+  cinematic_film_still:
+    generator_prompt: "cinematic film-still realism with motivated lighting, naturalistic blocking, layered foreground-midground-background depth, and controlled color grade"
+    visible_features:
+      - "scene feels captured from a movie moment"
+      - "lighting appears motivated by believable sources"
+      - "subtle story context instead of static posing"
+      - "controlled filmic contrast"
+    avoid_terms:
+      - "random lens flare overload"
+      - "unmotivated glowing effects"
+      - "flat studio pose"
+    corrective_terms:
+      - "motivated light direction"
+      - "naturalistic staging"
+      - "film-still composition"
+
+  anime_realism:
+    generator_prompt: "anime-realism illustration with realistic body proportions, anime-inspired facial design, cinematic lighting, clean stylized details, and polished game-art finish"
+    visible_features:
+      - "stylized facial design"
+      - "realistic anatomy scale"
+      - "clean controlled edges"
+      - "cinematic light and material detail"
+    avoid_terms:
+      - "raw photo"
+      - "documentary realism"
+      - "chibi"
+      - "cartoonish proportions"
+      - "flat cel-only rendering"
+    corrective_terms:
+      - "realistic proportions with stylized anime face"
+      - "high-end anime realism"
+
+  cel_shaded_anime:
+    generator_prompt: "clean cel-shaded anime illustration with crisp linework, intentional flat color shapes, expressive character design, and readable silhouette"
+    visible_features:
+      - "clear line art"
+      - "hard-edged shadows"
+      - "simplified material rendering"
+      - "graphic color blocks"
+    avoid_terms:
+      - "photorealistic skin pores"
+      - "raw camera photo"
+      - "uncanny realistic face"
+    corrective_terms:
+      - "intentional anime illustration"
+      - "clean cel shading"
+
+  high_end_illustration:
+    generator_prompt: "high-end illustrative concept art with deliberate shape design, painterly lighting, refined material suggestion, and controlled visual hierarchy"
+    visible_features:
+      - "designed edges"
+      - "painterly atmosphere"
+      - "stylized material simplification"
+      - "poster or concept art finish"
+    avoid_terms:
+      - "raw smartphone photo"
+      - "documentary photography"
+      - "uncontrolled realism"
+    corrective_terms:
+      - "intentional illustration medium"
+      - "refined concept-art finish"
+
+  product_render:
+    generator_prompt: "professional product render with precise geometry, controlled reflections, crisp edges, accurate material finish, and clean studio presentation"
+    visible_features:
+      - "accurate product shape"
+      - "crisp seams and bevels"
+      - "controlled specular highlights"
+      - "label or interface remains readable"
+    avoid_terms:
+      - "handheld blur"
+      - "organic distortion"
+      - "warped product geometry"
+    corrective_terms:
+      - "precise industrial design geometry"
+      - "controlled studio reflections"
+
+  architectural_visualization:
+    generator_prompt: "professional architectural visualization with straight vertical lines, realistic scale, physically plausible materials, coherent lighting, and clean spatial perspective"
+    visible_features:
+      - "straight verticals"
+      - "realistic floor/wall/ceiling junctions"
+      - "consistent scale"
+      - "material reflectance stays believable"
+    avoid_terms:
+      - "fisheye distortion"
+      - "handheld selfie perspective"
+      - "cartoon background"
+      - "warped windows"
+    corrective_terms:
+      - "controlled architectural perspective"
+      - "straight vertical lines"
+
+  pixel_art:
+    generator_prompt: "clean pixel-art sprite style with readable silhouette, limited palette, deliberate pixel grid, and no anti-aliased painterly detail"
+    visible_features:
+      - "clear pixel grid"
+      - "limited color clusters"
+      - "readable silhouette at small size"
+      - "iconic simplified form"
+    avoid_terms:
+      - "photorealistic detail"
+      - "smooth painterly gradients"
+      - "blurred pixel edges"
+    corrective_terms:
+      - "crisp pixel edges"
+      - "sprite-readable silhouette"
+
+  vector_ui:
+    generator_prompt: "clean vector-style educational UI with rounded shapes, flat readable colors, large tappable objects, and low visual clutter"
+    visible_features:
+      - "simple object silhouettes"
+      - "clear UI hierarchy"
+      - "large interactive areas"
+      - "low cognitive load"
+    avoid_terms:
+      - "dark cinematic realism"
+      - "tiny unreadable text"
+      - "overly detailed material texture"
+    corrective_terms:
+      - "child-friendly readable UI"
+      - "large clear interactive objects"
+
+# =============================================================================
+# STYLE INTENT SELECTOR — task-aware default style modes
+# =============================================================================
+style_intent_selector:
+  human_portrait:
+    preferred_modes:
+      - "photorealistic"
+      - "cinematic_film_still"
+      - "anime_realism"
+    default_if_unspecified: "photorealistic"
+    protect:
+      - "natural skin and eyes"
+      - "coherent anatomy"
+      - "style does not overpower face"
+
+  photorealistic_cosplay:
+    preferred_modes:
+      - "photorealistic"
+      - "cinematic_film_still"
+    final_prompt_style: "photorealistic real-life cosplay editorial with character-inspired design cues"
+    avoid:
+      - "anime drawing"
+      - "cartoon rendering"
+      - "flat illustration"
+      - "plastic CGI skin"
+
+  anime_character_design:
+    preferred_modes:
+      - "anime_realism"
+      - "cel_shaded_anime"
+      - "high_end_illustration"
+    default_if_unspecified: "anime_realism"
+    protect:
+      - "character silhouette"
+      - "outfit design readability"
+      - "intentional stylization"
+
+  product_ad:
+    preferred_modes:
+      - "product_render"
+      - "photorealistic"
+    default_if_unspecified: "product_render"
+    protect:
+      - "product geometry"
+      - "label readability"
+      - "material finish"
+
+  architecture:
+    preferred_modes:
+      - "architectural_visualization"
+      - "photorealistic"
+    default_if_unspecified: "architectural_visualization"
+    protect:
+      - "straight verticals"
+      - "realistic scale"
+      - "material coherence"
+
+  educational_game_ui:
+    preferred_modes:
+      - "vector_ui"
+      - "cel_shaded_anime"
+    default_if_unspecified: "vector_ui"
+    protect:
+      - "readability"
+      - "large interactive objects"
+      - "low cognitive load"
+
+  hidden_object_scene:
+    preferred_modes:
+      - "high_end_illustration"
+      - "vector_ui"
+      - "anime_realism"
+    default_if_unspecified: "high_end_illustration"
+    protect:
+      - "organized density"
+      - "readable small objects"
+      - "no random clutter"
+
+  pixel_game_asset:
+    preferred_modes:
+      - "pixel_art"
+    default_if_unspecified: "pixel_art"
+    protect:
+      - "sprite silhouette"
+      - "grid consistency"
+      - "limited palette"
+
+# =============================================================================
+# REALISM LEVELS — separate realism from medium
+# =============================================================================
+realism_levels:
+  documentary_realism:
+    description: "Natural, imperfect, real-life camera capture."
+    add_positive:
+      - "natural camera capture"
+      - "believable imperfections"
+      - "unforced candid realism"
+    avoid:
+      - "over-polished CGI"
+      - "plastic skin"
+
+  commercial_photoreal:
+    description: "Photographic realism with polished commercial control."
+    add_positive:
+      - "premium commercial photographic finish"
+      - "controlled reflections and clean detail"
+      - "realistic but polished"
+    avoid:
+      - "messy documentary lighting"
+      - "cartoon rendering"
+
+  cinematic_realism:
+    description: "Photoreal or semi-real image with filmic staging and grading."
+    add_positive:
+      - "cinematic film-still realism"
+      - "motivated lighting"
+      - "filmic contrast and depth"
+    avoid:
+      - "random FX"
+      - "overprocessed HDR"
+
+  stylized_realism:
+    description: "Realistic structure with intentional stylized design."
+    add_positive:
+      - "realistic proportions with stylized design language"
+      - "controlled shape simplification"
+      - "cinematic stylized rendering"
+    avoid:
+      - "uncanny half-photo half-cartoon"
+      - "inconsistent rendering style"
+
+  graphic_simplified:
+    description: "Clarity-first simplified style for UI, education, icons, maps, and assets."
+    add_positive:
+      - "clear simplified shapes"
+      - "readable silhouette"
+      - "flat clean color areas"
+    avoid:
+      - "photorealistic clutter"
+      - "unreadable micro-details"
+
+# =============================================================================
+# STYLE STRENGTH CONTROL
+# =============================================================================
+style_strength_control:
+  subtle:
+    usage: "When user wants realism with slight aesthetic influence."
+    final_prompt_pattern: "{dominant_medium} with subtle {style_reference} influence"
+    avoid: "Do not let the reference style dominate subject identity or medium."
+
+  balanced:
+    usage: "Default. Style clearly visible but subject and task stay primary."
+    final_prompt_pattern: "{dominant_medium}, {style_reference} visual language, subject remains first-read"
+
+  strong:
+    usage: "For posters, concept art, branded visuals, or explicit style requests."
+    final_prompt_pattern: "strong {style_reference} style in {dominant_medium}, with preserved constraints"
+    guardrail: "Only use when not conflicting with text/logo/readability or photoreal hard lock."
+
+  locked:
+    usage: "When user explicitly says exact style/medium."
+    rule: "No incompatible style terms may be added. All enhancements must be translated within locked mode."
+
+# =============================================================================
+# STYLE CONFLICT RESOLUTION — improved conflict logic
+# =============================================================================
+style_conflict_resolution_v2:
+  explicit_correction_overrides_earlier_style:
+    triggers:
+      - "but"
+      - "instead"
+      - "rather than"
+      - "not"
+      - "不是"
+      - "不要"
+      - "更接近"
+      - "改成"
+      - "像真人"
+      - "不是二次元"
+    rule: "Later corrective style terms override earlier loose style terms."
+    example:
+      input: "anime character, but photorealistic real-life cosplay"
+      resolved: "photorealistic real-life cosplay with character-inspired costume and colors"
+
+  medium_vs_aesthetic:
+    rule: "Medium-defining words outrank vibe words."
+    medium_terms:
+      - "photorealistic photography"
+      - "anime illustration"
+      - "3D render"
+      - "architectural visualization"
+      - "pixel art"
+      - "vector UI"
+    aesthetic_terms:
+      - "cinematic"
+      - "luxury"
+      - "dreamy"
+      - "cute"
+      - "dark"
+      - "futuristic"
+    resolution: "Preserve medium; translate aesthetics into lighting, color, composition, and material."
+
+  character_reference_vs_rendering_style:
+    rule: "Character/IP references are identity/design cues, not automatic rendering style."
+    if_user_says_photorealistic:
+      final_prompt: "photorealistic real-life interpretation with character-inspired design cues"
+      avoid:
+        - "anime drawing"
+        - "cartoon rendering"
+    if_user_says_anime_realism:
+      final_prompt: "anime-realism character design with recognizable design cues"
+      avoid:
+        - "raw documentary photo"
+
+  ue5_vs_photoreal:
+    rule: "UE5 can mean game-engine realism, not necessarily real camera photography."
+    resolution:
+      photorealistic_ue5: "photorealistic real-time cinematic render with physically plausible lighting"
+      real_photo_preferred: "real camera-style photography, not game-engine render"
+      game_art_preferred: "AAA game-engine cinematic render"
+
+  illustration_vs_camera_terms:
+    rule: "Camera/lens terms may describe perspective, not literal photography, inside illustration modes."
+    final_prompt_translation:
+      illustration_with_85mm: "portrait-like compressed perspective with soft background separation"
+      anime_with_low_angle: "low-angle heroic composition"
+    avoid:
+      - "raw camera photo"
+      - "documentary lens metadata"
+
+  vector_ui_vs_cinematic:
+    rule: "For educational/game UI, readability outranks cinematic realism."
+    final_prompt: "bright readable game UI with mild cinematic depth only in the background"
+    avoid:
+      - "dark low-key lighting"
+      - "complex photorealistic texture"
+      - "tiny unreadable details"
+
+# =============================================================================
+# SUBJECT-SPECIFIC STYLE GUARDRAILS
+# =============================================================================
+subject_specific_style_guardrails:
+  human_skin:
+    photorealistic:
+      keep:
+        - "natural skin texture"
+        - "believable facial anatomy"
+        - "realistic hairline"
+      avoid:
+        - "wax figure"
+        - "over-smoothed plastic skin"
+    anime_realism:
+      keep:
+        - "stylized anime-inspired facial design"
+        - "realistic body proportions"
+        - "clean cinematic shading"
+      avoid:
+        - "uncanny photoreal face with anime eyes"
+        - "chibi proportions unless requested"
+
+  full_body_character:
+    protect:
+      - "complete outfit readability"
+      - "clear silhouette"
+      - "consistent rendering style across face, clothes, props"
+    avoid:
+      - "photoreal face on cartoon body"
+      - "inconsistent hand rendering"
+
+  product:
+    protect:
+      - "accurate geometry"
+      - "material finish"
+      - "readable label"
+    avoid:
+      - "painterly warped packaging unless illustration explicitly requested"
+      - "style effects covering product text"
+
+  architecture:
+    protect:
+      - "straight verticals"
+      - "scale realism"
+      - "material coherence"
+    avoid:
+      - "cartoon warped perspective"
+      - "handheld selfie distortion"
+
+  educational_ui:
+    protect:
+      - "readability"
+      - "clear icons"
+      - "age-appropriate visual complexity"
+    avoid:
+      - "photorealistic clutter"
+      - "dark cinematic mood overpowering gameplay"
+
+  hidden_object_scene:
+    protect:
+      - "consistent illustration style across all objects"
+      - "readable small details"
+      - "organized visual density"
+    avoid:
+      - "random mixed rendering styles"
+      - "photorealistic depth blur hiding objects"
+
+# =============================================================================
+# STYLE FAILURE TAXONOMY
+# =============================================================================
+style_failure_taxonomy:
+  muddy_hybrid_style:
+    symptoms:
+      - "image feels half-photo half-cartoon without intention"
+      - "face, body, clothing, and background use different rendering systems"
+    likely_causes:
+      - "incompatible style modes preserved together"
+      - "photorealistic + anime + 3D render all kept in final prompt"
+    fix:
+      - "select one dominant medium"
+      - "convert other style references into design cues"
+    add_positive:
+      - "single consistent rendering style throughout the image"
+    add_negative:
+      - "mixed inconsistent rendering styles"
+
+  character_reference_forces_wrong_medium:
+    symptoms:
+      - "photorealistic cosplay request becomes anime drawing"
+      - "real-life version loses photographic realism"
+    likely_causes:
+      - "character reference treated as medium"
+    fix:
+      - "separate character design cues from final rendering medium"
+    add_positive:
+      - "photorealistic real-life interpretation with character-inspired costume and colors"
+    add_negative:
+      - "anime drawing"
+      - "cartoon rendering"
+
+  over_realistic_when_stylized_requested:
+    symptoms:
+      - "anime realism becomes uncanny raw photograph"
+      - "stylized UI becomes photorealistic clutter"
+    likely_causes:
+      - "camera/lens/material realism terms overpower selected style mode"
+    fix:
+      - "translate camera and material terms into stylized equivalents"
+    add_positive:
+      - "intentional stylized rendering with consistent shape language"
+    add_negative:
+      - "raw documentary photo"
+
+  over_stylized_when_photoreal_requested:
+    symptoms:
+      - "photo request becomes illustration, anime, or CGI"
+      - "skin becomes plastic or painterly"
+    likely_causes:
+      - "mood or character reference dominates medium lock"
+    fix:
+      - "restore photorealistic medium and use references as subtle design cues"
+    add_positive:
+      - "real camera-style photographic rendering"
+      - "natural skin and material texture"
+    add_negative:
+      - "cartoon"
+      - "anime illustration"
+      - "painterly rendering"
+
+  style_keyword_soup:
+    symptoms:
+      - "final prompt contains many style labels"
+      - "cinematic, anime, photorealistic, UE5, concept art, illustration all appear together"
+    likely_causes:
+      - "no style compression or conflict resolution"
+    fix:
+      - "compress to one medium phrase and one aesthetic modifier"
+    add_positive:
+      - "single dominant visual language"
+    add_negative: []
+
+  medium_incompatible_with_task:
+    symptoms:
+      - "educational UI too realistic or dark"
+      - "product render too painterly"
+      - "archviz warped by anime background style"
+    likely_causes:
+      - "mood or style applied without task profile guardrails"
+    fix:
+      - "task output requirements override loose style mood"
+    add_positive:
+      - "task-appropriate rendering style"
+    add_negative:
+      - "style effects that reduce readability"
+
+# =============================================================================
+# STYLE COMPRESSION RULES
+# =============================================================================
+style_compression_rules:
+  max_style_phrases:
+    normal: 2
+    expert: 3
+    debug: 6
+
+  compression_clusters:
+    photoreal_cluster:
+      redundant_terms:
+        - "photorealistic"
+        - "ultra realistic"
+        - "realistic photo"
+        - "real-life"
+        - "real camera"
+      compressed_as: "photorealistic camera-style image"
+
+    cinematic_cluster:
+      redundant_terms:
+        - "cinematic"
+        - "filmic"
+        - "movie-like"
+        - "film still"
+        - "cinematography"
+      compressed_as: "cinematic film-still realism"
+
+    anime_realism_cluster:
+      redundant_terms:
+        - "anime realism"
+        - "semi-realistic anime"
+        - "realistic anime"
+        - "AAA anime game art"
+      compressed_as: "anime-realism character art"
+
+    luxury_editorial_cluster:
+      redundant_terms:
+        - "luxury"
+        - "high-end"
+        - "premium"
+        - "elegant"
+        - "sophisticated"
+        - "refined"
+      compressed_as: "luxury editorial aesthetic"
+
+    product_render_cluster:
+      redundant_terms:
+        - "product render"
+        - "industrial design render"
+        - "studio product shot"
+        - "CMF render"
+      compressed_as: "professional product render"
+
+  final_prompt_pattern:
+    normal: "{dominant_style_mode}, {one_aesthetic_modifier}"
+    photoreal_cosplay: "photorealistic real-life cosplay editorial with character-inspired design cues"
+    anime_realism: "anime-realism character art with realistic proportions and cinematic lighting"
+    educational_ui: "clean child-friendly educational game UI"
+    archviz: "professional architectural visualization with physically plausible materials"
+
+  remove_first:
+    - "duplicated style adjectives"
+    - "incompatible medium labels"
+    - "model-brand labels unless explicitly needed"
+    - "technical renderer names that confuse output mode"
+
+# =============================================================================
+# MODEL OUTPUT MODE STYLE GUIDANCE
+# =============================================================================
+model_output_mode_style:
+  chatgpt_image:
+    style: "natural language with one clear dominant medium and concise aesthetic modifier"
+    avoid:
+      - "SD-style weighted syntax"
+      - "long style tag lists"
+      - "contradictory medium words"
+
+  stable_diffusion:
+    style: "positive prompt may include concise style tags; negative prompt handles incompatible modes"
+    positive_order:
+      - "dominant medium"
+      - "subject"
+      - "composition"
+      - "lighting/style"
+    negative_prompt:
+      - "incompatible rendering modes"
+      - "known failure artifacts"
+
+  midjourney:
+    style: "compact visual direction; fewer technical constraints; use --no for strong conflicts"
+    avoid:
+      - "overly technical lighting gear"
+      - "long YAML-like descriptions"
+
+  flux:
+    style: "clear natural language; strong subject and style order; minimal negative list"
+    avoid:
+      - "keyword soup"
+      - "contradictory rendering labels"
+
+  image_edit:
+    style: "preserve original medium unless user explicitly requests style transfer"
+    rule: "Only change style if requested; otherwise maintain source image realism and edit target."
+
+# =============================================================================
+# STYLE QUALITY RUBRIC
+# =============================================================================
+style_quality_rubric:
+  dimensions:
+    dominant_medium_clarity:
+      score_5: "One clear medium controls the whole prompt."
+      score_3: "Medium mostly clear but minor style clutter remains."
+      score_1: "Multiple incompatible media compete."
+
+    style_task_fit:
+      score_5: "Style supports the task, subject, and output format."
+      score_3: "Style is attractive but slightly reduces task clarity."
+      score_1: "Style undermines readability, product accuracy, or subject identity."
+
+    style_consistency:
+      score_5: "Face, body, materials, background, and effects share one rendering grammar."
+      score_3: "Mostly consistent with minor mismatches."
+      score_1: "Mixed rendering systems create visual mud."
+
+    generator_translation_quality:
+      score_5: "Style terms are translated into visible rendering behavior."
+      score_3: "Some abstract style words remain."
+      score_1: "Only abstract style labels are used."
+
+  minimum_pass:
+    normal: 3
+    production: 4
+    image_edit: 4
+
+# =============================================================================
+# PROMPT ASSEMBLY HOOKS
+# =============================================================================
+prompt_assembly_hooks:
+  phase_1:
+    detect:
+      - "dominant style mode"
+      - "explicit medium locks"
+      - "style correction language"
+      - "character references as design cues"
+  phase_2:
+    apply:
+      - "generator_visible_style_translation"
+      - "style_conflict_resolution_v2"
+      - "subject_specific_style_guardrails"
+  phase_3_5:
+    write_to:
+      - "prompt_package.style_and_lighting.visual_language"
+      - "prompt_package.style_and_lighting.medium"
+      - "prompt_package.constraints.style_lock"
+  phase_4:
+    scan_for:
+      - "muddy_hybrid_style"
+      - "style_keyword_soup"
+      - "medium_incompatible_with_task"
+      - "character_reference_forces_wrong_medium"
+  phase_4_5:
+    compress_with:
+      - "style_compression_rules"
+  phase_5:
+    final_prompt_rule: "Use exactly one dominant style phrase and at most one aesthetic modifier unless debug mode is requested."

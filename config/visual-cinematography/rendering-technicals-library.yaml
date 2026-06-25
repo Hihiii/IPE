@@ -1,0 +1,435 @@
+# ============================================================
+# rendering-technicals-library.yaml
+# Rendering & technical finish controller
+# Version: 1.0.0
+# Purpose:
+#   Convert visual rendering intent into model-appropriate final prompt language
+#   and optional technical parameter guidance for ComfyUI / SD-style workflows.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "rendering-technicals-library"
+description: >
+  Rendering and technical finish module for prompt enhancement. It controls
+  render intent, material fidelity, lighting physics, texture detail, optical
+  behavior, post-processing, and optional model-specific parameter hints.
+  It separates visible rendering language from tool-specific technical parameters.
+
+core_principle: >
+  Rendering terms should be translated into visible image qualities. For semantic
+  image models, describe the final visual effect. For parameter-driven models,
+  provide prompt terms plus optional technical parameter hints. Do not leak
+  irrelevant sampler / CFG / steps language into models that do not expose those controls.
+
+global_rules:
+  - "Describe rendering by visible output quality, not only by engine jargon."
+  - "For ChatGPT Image and Flux, prefer natural visual language."
+  - "For Z Image Turbo, use detailed, explicit render-quality phrases that state the visible subject, lighting, material, spatial, and finish decisions."
+  - "For Stable Diffusion / ComfyUI, allow positive / negative render tags and optional parameter hints."
+  - "Do not put sampler, CFG, seed, or denoise language into ChatGPT Image final prompts."
+  - "Tie technical finish to the task: product needs material precision, portrait needs skin and hair fidelity, architecture needs geometry clarity."
+  - "Avoid over-sharpening faces or skin when natural realism is requested."
+  - "Use negative render terms only when they target likely failures."
+
+rendering_technicals_schema:
+  render_intent: "photoreal | cinematic_photoreal | anime | semi_real | product_render | architecture_visualization | illustration | graphic_design"
+  detail_density: "clean | standard | high | ultra"
+  material_fidelity: "low | medium | high | hero"
+  lighting_physics: "stylized | natural | physically_coherent | studio_controlled"
+  depth_of_field: "none | subtle | moderate | strong"
+  motion_blur: "none | subtle | directional | action_freeze"
+  output_sharpness: "soft | balanced | crisp | ultra_sharp"
+  texture_priority:
+    skin: "none | natural | high"
+    fabric: "none | visible | high"
+    metal: "none | visible | high"
+    glass: "none | visible | high"
+    environment: "none | visible | high"
+  post_processing: []
+  model_parameter_hints:
+    chatgpt_image: []
+    z_image_turbo: []
+    stable_diffusion: []
+    flux: []
+    image_edit: []
+
+render_intent_profiles:
+  photoreal:
+    visible_language:
+      - "photorealistic rendering"
+      - "natural lighting response"
+      - "realistic material behavior"
+      - "fine surface texture"
+      - "balanced contrast and color"
+    avoid:
+      - "plastic skin"
+      - "flat lighting"
+      - "overprocessed render"
+
+  cinematic_photoreal:
+    visible_language:
+      - "cinematic photorealism"
+      - "physically coherent lighting"
+      - "controlled specular highlights"
+      - "subtle bloom"
+      - "filmic contrast"
+      - "realistic shadow falloff"
+    avoid:
+      - "overdone glow"
+      - "muddy shadows"
+      - "fake HDR"
+
+  anime:
+    visible_language:
+      - "clean anime rendering"
+      - "controlled cel shading"
+      - "sharp silhouette edges"
+      - "coherent background rendering"
+      - "intentional color design"
+    avoid:
+      - "muddy linework"
+      - "inconsistent shading"
+      - "over-rendered plastic look"
+
+  semi_real:
+    visible_language:
+      - "semi-realistic rendering"
+      - "anime-inspired facial design with realistic material response"
+      - "clean stylized edges"
+      - "soft cinematic lighting"
+    avoid:
+      - "uncanny realism"
+      - "style mismatch between subject and background"
+
+  product_render:
+    visible_language:
+      - "commercial product rendering"
+      - "precise material finish"
+      - "controlled reflections"
+      - "clean edge definition"
+      - "contact shadow anchoring"
+    avoid:
+      - "warped product geometry"
+      - "cheap plastic look"
+      - "unreadable surface detail"
+
+  architecture_visualization:
+    visible_language:
+      - "architectural visualization quality"
+      - "straight vertical lines"
+      - "realistic material joints"
+      - "physically coherent daylight"
+      - "clean facade detail"
+    avoid:
+      - "warped perspective"
+      - "bent verticals"
+      - "fake material tiling"
+
+detail_density_rules:
+  clean:
+    language:
+      - "clean controlled detail"
+      - "premium minimal finish"
+      - "no unnecessary visual noise"
+  standard:
+    language:
+      - "natural level of detail"
+      - "balanced texture and clarity"
+  high:
+    language:
+      - "high-detail surface texture"
+      - "crisp important edges"
+      - "visible material detail"
+  ultra:
+    language:
+      - "ultra-fine surface detail"
+      - "precise micro-texture"
+      - "high clarity hero subject"
+    caution:
+      - "Do not apply ultra-sharp detail to skin in a harsh or artificial way."
+
+material_fidelity_profiles:
+  skin:
+    positive:
+      - "natural skin texture"
+      - "subtle pores"
+      - "soft specular highlights"
+      - "realistic skin tone variation"
+    negative:
+      - "plastic skin"
+      - "waxy skin"
+      - "over-smoothed face"
+  fabric:
+    positive:
+      - "visible fabric weave"
+      - "natural folds"
+      - "material-appropriate softness or stiffness"
+      - "cloth catches light naturally"
+    negative:
+      - "rubbery fabric"
+      - "flat cloth texture"
+  metal:
+    positive:
+      - "controlled specular highlights"
+      - "brushed or polished metal response"
+      - "realistic edge reflections"
+    negative:
+      - "dull fake metal"
+      - "plastic metallic look"
+  glass:
+    positive:
+      - "transparent thickness"
+      - "controlled refraction"
+      - "edge highlights"
+      - "environment reflections"
+    negative:
+      - "milky glass artifact"
+      - "flat transparent plastic"
+  car_paint:
+    positive:
+      - "glossy automotive paint"
+      - "clean body reflections"
+      - "specular highlight lines following the car surface"
+      - "clear panel definition"
+      - "rain beads following hood, windshield, and body-panel curvature when weather is wet"
+      - "reflections bend consistently across fenders, doors, grille, and sculpted body lines"
+    negative:
+      - "warped reflections"
+      - "melted body panels"
+      - "toy-like plastic car paint"
+
+  wet_asphalt_vehicle_motion:
+    positive:
+      - "wet asphalt reflections stretched along the road plane"
+      - "shallow standing water broken by tire contact patches"
+      - "tire spray thrown outward and backward from each wheel"
+      - "fine mist trailing behind the car while the car body remains readable"
+      - "lane markings and guardrails streak in the direction of camera pan"
+    negative:
+      - "dry road during heavy rain"
+      - "floating tires with no contact shadow"
+      - "water spray with no tire source"
+      - "spray moving forward against vehicle motion"
+      - "mirror-like road reflections that ignore perspective"
+
+lighting_physics_profiles:
+  natural:
+    language:
+      - "natural light falloff"
+      - "coherent shadow direction"
+      - "realistic bounce light"
+  physically_coherent:
+    language:
+      - "physically coherent lighting"
+      - "consistent key, fill, and reflected light behavior"
+      - "contact shadows grounding objects"
+  studio_controlled:
+    language:
+      - "controlled studio reflections"
+      - "clean highlight shape"
+      - "precise shadow edge transition"
+  stylized:
+    language:
+      - "stylized but coherent light direction"
+      - "intentional graphic shadow shapes"
+      - "color-designed highlights and shadows"
+
+optical_finish_controls:
+  depth_of_field:
+    none:
+      language: "deep focus, all important elements readable"
+    subtle:
+      language: "subtle depth of field, subject separated from background"
+    moderate:
+      language: "moderate depth of field with softly blurred background"
+    strong:
+      language: "strong background blur, subject remains sharp"
+      caution: "Avoid strong blur when background worldbuilding must stay readable."
+  motion_blur:
+    none:
+      language: "sharp still image"
+    subtle:
+      language: "subtle motion feeling while key details remain readable"
+    directional:
+      language: "directional motion blur supporting the action line"
+    automotive_panning:
+      language: "sharp panned vehicle body, spinning wheels with controlled circular blur, horizontally streaked background, road markings stretched by motion"
+    action_freeze:
+      language: "frozen action with crisp silhouette and suspended motion details"
+  output_sharpness:
+    soft:
+      language: "soft editorial finish"
+    balanced:
+      language: "balanced clarity and natural detail"
+    crisp:
+      language: "crisp hero subject with clean edges"
+    ultra_sharp:
+      language: "ultra-sharp hero detail"
+
+post_processing_profiles:
+  editorial_color_grade:
+    language:
+      - "professional editorial color grading"
+      - "balanced highlights and shadows"
+      - "natural skin tones protected"
+  cinematic_grade:
+    language:
+      - "cinematic color grade"
+      - "filmic contrast"
+      - "subtle highlight bloom"
+  commercial_clean:
+    language:
+      - "clean commercial finish"
+      - "controlled contrast"
+      - "sharp product readability"
+  anime_finish:
+    language:
+      - "clean cel-shaded finish"
+      - "controlled gradient shadows"
+      - "polished anime background integration"
+
+model_specific_rendering:
+  chatgpt_image:
+    rule: "Use visible rendering-result language only; no CFG, steps, sampler, seed, denoise, clip skip."
+    positive_template: >
+      Render with physically coherent lighting, material-specific texture, realistic shadow falloff,
+      controlled depth of field, clean edge definition, and professional color grading.
+    avoid_template: >
+      Avoid plastic skin, flat lighting, fake HDR, muddy shadows, overprocessed texture,
+      warped reflections, and cheap material response.
+
+  z_image_turbo:
+    rule: "Use short visual phrases and compact negatives."
+    positive_template: >
+      photorealistic render, high-detail texture, realistic reflections, soft cinematic light,
+      clean edges, controlled depth of field, professional color grading
+    negative_template: >
+      plastic skin, waxy texture, flat lighting, fake HDR, blurry, low detail,
+      noisy render, cheap plastic look, bad reflections
+
+  stable_diffusion:
+    rule: "Use tag-style positive / negative rendering phrases and optional parameter guidance."
+    positive_template: >
+      photorealistic, high detail, realistic texture, fabric weave, natural skin texture,
+      specular highlights, global illumination, depth of field, sharp focus, professional color grading
+    negative_template: >
+      lowres, blurry, plastic skin, waxy skin, flat lighting, bad render, noisy image,
+      oversharpened, jpeg artifacts, bad reflections
+    optional_parameter_hints:
+      steps: "model-dependent, usually standard/high quality range"
+      cfg: "model-dependent; avoid overcooking prompt adherence"
+      sampler: "workflow-dependent"
+      denoise: "image-edit only; lower for preservation, higher for major regeneration"
+      seed_policy: "random for exploration, fixed for controlled iteration"
+
+  flux:
+    rule: "Use clear natural-language rendering instructions; avoid SD-only parameter clutter."
+    positive_template: >
+      Use high-quality natural rendering with coherent lighting, detailed material response,
+      clean edges, balanced depth, and polished editorial color grading.
+    negative_template: >
+      Avoid flat surfaces, noisy detail, plastic-looking materials, and inconsistent lighting.
+
+  image_edit:
+    rule: "Preserve identity/composition locks; use technical finish changes only where requested."
+    repair_template: >
+      Improve rendering quality while preserving the original subject identity, composition,
+      pose, and scene design. Refine material texture, lighting coherence, shadow falloff,
+      edge clarity, and color grading without changing locked content.
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - rendering_technicals
+    action: "Determine render intent, detail density, material fidelity, lighting physics, optical finish, and model-specific technical handling."
+
+  phase_2_cinematic_enrichment:
+    action: "Translate rendering intent into visible output qualities and material/light behavior."
+
+  phase_3_5_prompt_package:
+    action: "Store rendering technicals as structured positive/negative renderer hints."
+
+  phase_4_self_review:
+    checks:
+      - "Does the render finish match the task and model target?"
+      - "Are material, lighting, depth, sharpness, and post-processing coherent?"
+      - "Were model-inappropriate technical parameters removed?"
+
+  phase_4_5_cleanup:
+    action: "Remove renderer-inappropriate technical jargon while preserving visible rendering quality."
+
+  phase_4_6_renderer_selection:
+    action: "Apply model-specific rendering language and optional parameter hints."
+
+  phase_5_final_prompt:
+    action: "Include concise rendering and technical finish instructions appropriate to the selected model."
+
+
+# ------------------------------------------------------------
+# Detail Problem Diagnosis Extension
+# ------------------------------------------------------------
+
+detail_problem_diagnosis:
+  purpose: >
+    Distinguish between structure problems, local detail problems, repair problems,
+    and texture-polish problems before recommending detailer LoRA or refine workflows.
+
+  problem_types:
+    structure_problem:
+      examples:
+        - "clothing construction is wrong"
+        - "building geometry is unclear"
+        - "vehicle proportions are wrong"
+        - "body anatomy is wrong"
+      recommended_actions:
+        - "fix prompt structure first"
+        - "increase base generation quality"
+        - "use domain-specific LoRA only if needed"
+        - "local inpaint structural area"
+      avoid_first:
+        - "generic detailer LoRA"
+
+    local_detail_problem:
+      examples:
+        - "eyes lack detail"
+        - "fabric texture too soft"
+        - "metal surface lacks fine lines"
+      recommended_actions:
+        - "local detailer"
+        - "domain detail LoRA at low weight"
+        - "upscale and refine"
+
+    repair_problem:
+      examples:
+        - "broken hands"
+        - "broken clothing seam"
+        - "warped phone"
+      recommended_actions:
+        - "local inpaint"
+        - "repair-specific prompt"
+        - "ADetailer / hand detailer / object repair"
+
+    texture_polish_problem:
+      examples:
+        - "image is generally soft"
+        - "background lacks crispness"
+      recommended_actions:
+        - "upscale + low denoise refine"
+        - "Turbo refine with lower denoise"
+        - "detailer LoRA only after structure is stable"
+
+background_architecture_dof_control:
+  readable_background_default:
+    apply_when:
+      - "city background"
+      - "architecture matters"
+      - "automotive or product commercial scene"
+      - "mecha or urban destruction scene"
+    positive:
+      - "controlled depth of field without excessive background blur"
+      - "background architecture remains readable"
+      - "visible facade geometry and window grid"
+    negative:
+      - "overly blurred background"
+      - "mushy architecture"
+      - "excessive bokeh hiding the city"

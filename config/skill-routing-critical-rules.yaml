@@ -1,0 +1,172 @@
+# =============================================================================
+# SKILL CRITICAL RULES
+# Extracted from SKILL.md (lines 1612-1773)
+# =============================================================================
+
+skill_routing:
+  phase: null
+  name: "Critical Rules"
+  internal: false
+  source: "SKILL.md lines 1612-1773"
+  instructions: |
+    ## Critical Rules
+
+    For anime-realism, high-end anime illustration, luminous character scenes, ChatGPT Image 2.0-like anime quality, festival/garden scenes, translucent outfits, wet reflective floors, delicate accessories, or small-prop character actions, classify the task with `config/visual-cinematography/luminous-anime-detail-system.yaml`. Use it to organize detail richness into light transmission, garment construction, color roles, depth planes, prop contact, wet-surface physics, face expression, and small text/sign handling. Do not express richness by adding random ornaments or repeated quality adjectives.
+
+    - Every enhanced detail must reference a valid entry from `config/` knowledge bases.
+    - For every request, enforce `config/prompt-core/phase-execution-contract.yaml`: scan all config domains, record every selected YAML in the internal read ledger, complete every phase in order, and block Phase 5 until the receipt validator passes. An unrecorded config read or a skipped phase is an execution failure, not an acceptable optimization.
+    - Internal Phase outputs should be machine-readable YAML for auditability, but default user-facing output should only include Phase 5's model-specific `final_prompt` plus the generated `final_YYYYMMDD_HHMMSS.txt` export.
+    - Keep the original user prompt visible in the internal package — never lose it.
+    - Each prompt category is independently controllable — never merge categories into one opaque blob.
+    - **Describe lighting by its visual effect, never by equipment name.** Image generators render "octabox" or "white V-flat" as physical objects. Instead of "octabox key light", use "soft diffused key light with round catchlight". The equipment detail stays in the lighting_diagram YAML for human reference, not in the final prompt string.
+    - Do not add random photography terms. Every modifier, lens, and color choice must be justified by the intent.
+    - Phase 4.1 is cleanup, not compression. Never remove meaningful visual information only to make the prompt shorter.
+    - When the user states token usage is not a concern, preserve richer visual, layout, material, typography, and constraint details.
+    - Do not clean below the minimum detail floor required by the subject type, task profile, model target, or publication layout.
+    > **Loading note for all routing instructions below:** Before loading any referenced config file, check `config/_manifest.yaml` to confirm the trigger condition matches. The file's essential rules may already be covered in `config/core-knowledge.yaml` — only load the full file for detail beyond what core-knowledge provides.
+
+    - Mature content is classified via `core-knowledge.yaml age_safety` first (basic tiers, hard_restrictions, unrestricted content). Only use `config/safety-mature/mature-content-tiering-system.yaml` when core-knowledge tier-level detail is insufficient. Reserve `config/safety-mature/mature-content-control.yaml` for age-safety edge cases and renderer-specific mature wording.
+    - For mature styling, require adult / 21+ / mature adult wording when sensual framing is present.
+    - Do not add or preserve underage or childlike cues in mature/sexualized prompts.
+    - Do not rewrite adult nudity, adult genital visibility, or gore into non-explicit editorial language unless the user asks for that style.
+    - Route full-body, lower-body-visible, glamour, swimsuit, cosplay, dance, and dynamic human poses through `config/character-identity/human-anatomy-guardrails.yaml` only when anatomy risk is MEDIUM/HIGH/CRITICAL after basic assessment via core-knowledge.yaml. For low-risk standing or seated poses, core-knowledge zone_requirements are sufficient — do NOT load the 54KB file unnecessarily.
+    - For anatomy-risk prompts, use specific structure language such as pelvis, hip-to-thigh connection, support leg, knee direction, leg proportions, and grounded feet instead of only saying `correct anatomy`.
+    - Do not remove anatomy guardrails during cleanup when the pose is asymmetric, dynamic, low-angle, or lower-body-focused.
+    - For image-edit repair tasks, anatomy fixes must preserve identity, face, hairstyle, wardrobe, lighting, background, and overall pose intent unless a broader change is explicitly requested.
+    - Route adult body-presentation consistency through `config/character-identity/sex-characteristics-control.yaml` only when body-presentation control is explicitly needed (NSFW, swimsuit, glamour, anatomy repair, intimate anatomy lock). Do NOT trigger for casual gender mentions like 'a woman' or 'a man' without body-presentation consistency concerns.
+    - Explicit user-specified body presentation wins over automatic male/female cleanup.
+    - Do not force binary body traits when the user explicitly requested androgynous, trans, nonbinary, gender-fluid, or user-specified presentation.
+    - Use non-explicit visible body-structure language such as masculine torso, flat chest, feminine torso, natural bust shape, or gender-neutral body presentation only when needed for consistency.
+    - For external intimate-anatomy consistency, use safe consistency wording by default and strict anatomical negative terms only when the context requires it.
+    - Female-coded subjects must not gain unintended male external anatomy unless explicitly requested.
+    - Male-coded subjects must not gain unintended female external anatomy unless explicitly requested.
+    - Explicit user-specified anatomy wins over automatic intimate-anatomy cleanup.
+    - Route contact-heavy, overlap-heavy, support-heavy, prop-handling, vehicle, furniture, product, and multi-subject scenes through `config/scene-environment/physical-collision-guardrails.yaml` only when collision risk is genuinely significant. Do NOT load for casual seated or leaning poses without complex object interaction — assess collision_risk.level first.
+    - Specify physical relationships explicitly: what touches what, what supports what, and what occludes what.
+    - Use contact-shadow, surface texture, gloss, hardness, and reflected-light cues when material realism matters.
+
+    - When a human subject's pose is genuinely static, symmetrical, or underspecified (assessed via core-knowledge P93 anti-boring rule), route through `config/character-identity/anti-boring-pose-system.yaml` (P93) first for pose design and stiffness diagnosis, then through `config/character-identity/standing-pose-balance-system.yaml` for balance mechanics; define support leg, center of gravity, foot contact, knee direction, pelvis/shoulder counterbalance, and ground shadow. Do NOT load for every standing full-body pose — core-knowledge P93 rule covers basic anti-boring guidance.
+    - Route reclining, lounging, side-lying, propped-on-elbows, propped-on-hands, bed, sofa, and mattress poses through `config/character-identity/reclining-pose-physics.yaml`; define load-bearing points, pelvis/spine/leg direction chain, hand/elbow support, surface response, and occlusion order.
+    - Route beds, sofas, cushions, pillows, blankets, towels, mattresses, and padded supports through `config/scene-environment/soft-surface-contact-physics.yaml`; add compression, wrinkle direction, fabric tension, contact shadows, and surface deformation at the load points.
+    - Route screen viewing, product handling, weapon/tool use, phone/TV/monitor interaction, sign reading, and object-dependent reactions through `config/scene-environment/action-object-attention-system.yaml`; align gaze target, hand contact, body orientation, object placement, and light/reflection response.
+    - For group pool or water-play scenes, route through `config/character-identity/multi-subject-interaction-system.yaml`, `config/scene-environment/physical-collision-guardrails.yaml`, `config/scene-environment/oceans-subaquatic-physics.yaml`, and `config/character-identity/pose-gesture-body-language.yaml`; define the splash source, hand action, droplet direction, varied reactions, consistent water depth, planted feet, wet swimwear, and readable hand occlusion.
+    - For ensemble selfie or cosplay-party scenes, route through `config/character-identity/multi-subject-interaction-system.yaml`, `config/visual-cinematography/composition-library.yaml`, `config/character-identity/pose-gesture-body-language.yaml`, and `config/prompt-core/prompt-renderer.yaml`; define a character design matrix, controlled wide-angle selfie perspective, face cluster geometry, foreground arm logic, varied expressions, rich outfit/accessory motifs, and shared lighting/material unifiers.
+    - Treat plain `selfie` / `自拍` as a close selfie camera relationship, not a phone prop action: keep the phone, mirror, and selfie stick off-frame unless an explicit trigger requests `holding phone`, `phone visible`, `mirror selfie`, `selfie stick`, `拿手機自拍`, `手機入鏡`, `對鏡自拍`, or `自拍棒`.
+    - For semi-reclined bed/sofa poses, preserve pelvis-leg direction chain, arm-support load path, visible fabric compression, and contact shadows through cleanup and renderer output.
+    - For pool-edge exit poses, do not rewrite hand support into `arms raised overhead`, `holding an overhead ledge`, `lifting the pool edge`, `gripping underside of tiles`, or `hanging from pool edge`; use positive support wording before these negatives.
+    - For towel-slip / after-bath prompts, route through `config/character-identity/fabric-opacity-translucency-logic.yaml`, `config/character-identity/wardrobe-outfit-construction.yaml`, and `config/scene-environment/physical-collision-guardrails.yaml`; do not turn an opaque towel reveal into transparent cloth, cutout exposure, floating fabric, or fabric clipping through the body.
+    - In towel-slip adult prompts, preserve adult anatomical correctness without censoring adult intent: visible landmarks must be correctly placed and occluded by the towel edge instead of appearing on the towel surface or in impossible positions.
+    - Do not remove collision/contact guardrails during cleanup when clipping, floating contact, or wrong occlusion order is likely.
+    - Always select `model_target` before Phase 5. If unspecified, default to `chatgpt_image`.
+    - Always detect publication-style intent before Phase 5. If the user asks for a cover/poster/封面/海報 and does not provide exact text, default to `implied_cover_text_mode`, not a text-free image.
+    - Do not put `no text`, `text artifacts`, or equivalent broad text-suppression terms in the negative prompt when a cover/poster/publication layout is requested. Use `random unreadable text`, `messy typography`, or `illegible cover lines` instead.
+    - If final typography will be added later in another tool, explicitly set `publication_mode: text_safe_layout_only_mode`; otherwise preserve visible masthead/title/cover-line intent.
+    - Internal prompt packages may be YAML/JSON, but final prompts must be rendered into the target model's preferred syntax. Never pass raw prompt_package YAML/JSON directly to the image model unless the downstream workflow explicitly parses it.
+    - For `chatgpt_image`, use natural language with clear semantic relationships, moderate detail, and concise avoid instructions.
+    - For `z_image_base`, use dense visual-result phrases with positive/negative split. Keep subject, hard locks, anatomy/expression/gaze, exact text, composition, lighting, material response, background depth, and geometry integrity. Avoid ChatGPT-style paragraphs.
+    - For `z_image_turbo`, use visual-result phrases, strong subject-first ordering, fewer abstract cinematography terms, and separate positive/negative prompts when supported; keep all details needed for image correctness even when the prompt becomes longer.
+
+    - For SDXL, Pony, Illustrious, anime, or LoRA-based workflows, route through `config/prompt-core/lora-routing-system.yaml`; character LoRA priority outranks style LoRA when identity is at risk, and costume LoRA outranks generic fashion terms when marker preservation matters.
+    - Use `config/prompt-core/model-specific-compact-prompt-generator.yaml` only when the user explicitly requests compact output or a downstream tool has a known hard limit; keep explicit constraints, identity locks, exact text, anatomy/contact, costume markers, mature/fabric logic, and aspect ratio before removing redundant style language.
+    - For `comfyui_flux2_zimage_3stage`, output `shared_positive_prompt` and `z_image_negative_prompt`. Use the shared positive for Flux.2 Dev, Z-Image Base, and Z-Image Turbo; use the negative prompt only in Z-Image Base and Z-Image Turbo nodes.
+    - In `comfyui_flux2_zimage_3stage`, never put `no`, `avoid`, `bad`, `deformed`, `wrong`, artifact terms, or age-safety negatives in `shared_positive_prompt`. Convert them to positive replacements and keep failure terms in `z_image_negative_prompt`.
+    - In the shared positive, order content for the pipeline: composition skeleton, subject and hard locks, pose/expression/gaze, positive anatomy/geometry guardrails, camera/framing, lighting, material/fabric/skin detail, background, text/output. This lets Flux.2 Dev build layout before Z Image stages rebuild quality.
+    - For both `z_image_base` and `z_image_turbo`, put positive integrity guardrails before negative bans: natural anatomy, clear gaze, natural facial expression, realistic skin texture, natural hands if visible, exact requested text, accurate product geometry, correct vehicle proportions, straight architectural verticals.
+    - For Z Image negative prompts, keep only high-risk failures: deformed anatomy/hands, dead eyes/forced grin, wrong gaze, random unreadable text, misspelled text, fake logos, warped product/vehicle/architecture geometry, watermark, and age-safety negatives when mature content is present.
+    - Do not enforce length budgets in Phase 4.2, Phase 4.3, or Phase 5. Advisory length ranges may inform readability, but subject identity, character matrices, anatomy, expression/gaze, pose mechanics, text, geometry, water/fabric physics, and scene logic always outrank brevity.
+    - For `stable_diffusion`, output detailed `positive_prompt` and `negative_prompt` fields separately, using precise tag-friendly phrasing.
+    - For `midjourney`, output a detailed aesthetic prompt with aspect ratio parameters when requested.
+    - For `flux`, use clean natural language with explicit subject-first ordering and minimal keyword noise.
+    - For `image_edit`, prioritize `change_only`, `must_preserve`, `locked_attributes`, and `forbidden_changes` over all aesthetic enhancements.
+    - For `video_prompt`, preserve stable first-frame composition, readable subject silhouettes, motion-ready layers, and camera movement intent.
+
+    These modules are documented in `config/_manifest.yaml` with full trigger conditions. Load them only when a trigger fires — their core content is summarized in `config/core-knowledge.yaml` where applicable.
+
+    ### Image Edit / Repair Templates
+
+    If the task is an edit, selective repair, localized replacement, cleanup, background swap, or attribute change on an existing image, classify it with `config/edit-reference/image-edit-repair-templates.yaml`.
+
+    This module controls:
+    - what changes
+    - what stays the same
+    - local vs global edit scope
+    - repair templates for face / hands / legs / outfit / background / text
+    - anti-drift preserve rules
+
+    ### Identity / Character Consistency
+
+    If the task depends on keeping the same person, same character, same product identity, or same subject across edits/variations/series, classify it with `config/character-identity/identity-character-consistency.yaml`.
+
+    If the task includes reference images, classify each reference with `config/character-identity/reference-image-override-system.yaml` and `config/edit-reference/reference-image-control.yaml`; explicit text constraints win, reference images override only their declared role, and per-IP identity locks remain active unless the user asks to change them.
+
+    If the task asks for a character sheet, turnaround, multi-view, expression sheet, prop callout, or model sheet, route through `config/character-identity/character-sheet-multiview-system.yaml` and keep silhouette, hair, face, palette, costume markers, and props consistent across all views.
+
+    If the task includes multiple named characters, a team lineup, ensemble poster, party selfie, or battle group, route through `config/character-identity/group-composition-identity-preservation.yaml`; build an identity matrix so each character keeps distinct hair, face, palette, costume marker, pose language, spatial position, and interaction role.
+
+    If the task asks for a recognizable character, original character IP, named character, cosplay, character-inspired design, reinterpretation, same character across variants, or stronger character identity, first load `config/character-ip/_global/character-resolver-policy.yaml` and check `config/character-ip/_indexes/character-lookup-index.yaml`. A complete formal profile tree wins only when `identity.yaml`, `appearance.yaml`, `outfits/canonical.yaml`, `prompt-pack.yaml`, and `negative-guards.yaml` exist. Load only that matched character tree, record its loaded layers, and honor `validation.yaml` review status. If the formal tree is missing a required layer or no formal match exists, use `config/character-ip/character-ip-database.index.yaml` or `config/character-ip/character-ip-lookup-index.yaml`, load the mapped legacy per-IP file from `config/character-ip-by-ip/`, verify `aliases[character_key]`, and merge `base_profiles[character_key]` with `enhanced_profiles[character_key]`. Alias indexes locate candidates only; they are never prompt sources. Record the selected source and fallback reason in the receipt. Then classify the character with `config/character-identity/character-ip-identity-system.yaml`, `config/character-identity/character-archetype-visual-system.yaml`, and `config/character-identity/crop-aware-character-outfit-policy.yaml`. Do not preserve character identity by repeating the name. Convert the character into visual anchors that are visible in the requested shot: hair identity, face impression, palette hierarchy, visible costume structure, signature prop/emblem, archetype pose/expression, worldbuilding motif, allowed variation, and forbidden drift.
+
+    When a formal profile has `validation.detail_layer_status: enhanced`, load `config/character-ip/_global/schemas/character-detail-layer-schema.yaml` and inject only its populated detail-layer values in this order: maturity and identity, face and gaze, hair silhouette, body proportion, pose and hands, temperament, wardrobe markers, then skin and makeup. Then use `config/character-identity/crop-aware-character-outfit-policy.yaml` with the completed composition decision to filter candidate wardrobe anchors to the actual crop: selfie and close portrait use the composition-visible face, hair, upper torso, action-required hands, and nearby scene objects; boots, full legwear, complete silhouette, standing pose, and wide costume display remain out of frame unless the composition or user explicitly requests them. Do not use character-specific crop maps. Treat `age_unverified`, `adult_presentation_unspecified`, and `not_adult` as non-adult-routing states; never infer maturity from anatomy, clothing, or art style. Canonical wardrobe remains opt-in even when the detail layer is present. When the detail layer is absent, use the existing profile unchanged and do not fabricate details.
+
+    If the character task changes outfit, uses cosplay, asks for fashion/editorial reinterpretation, photoreal conversion, brand collaboration, or commercial-safe transformation, also classify it with `config/character-identity/costume-marker-priority-system.yaml`. Preserve the marker hierarchy before adding new styling: silhouette, color blocking, emblem/crest or safe motif, signature props/accessories, shoulder/collar/waist structure, material language, footwear/gloves, then micro trim.
+
+
+    If the character task also includes a hero shot, victory pose, dynamic kneeling/crouching stance, wanted poster, bounty poster, torn paper, held poster/sign, open shirt/jacket, wind-blown clothing, pirate/adventure scene, or dramatic cinematic action portrait, also classify it with `config/character-identity/hero-action-character-scene-guardrails.yaml`. Use it to connect the character identity lock to body support mechanics, hand-prop contact, poster text policy, paper tear physics, cloth-body collision, motivated lighting, and layered scene storytelling.
+
+    This module controls:
+    - locked traits
+    - allowed variations
+    - recurring visual markers
+    - face / hair / body / costume continuity
+    - anti-drift safeguards
+    - character IP visual-recognition anchors
+    - archetype-specific gaze, expression, posture, gesture, and camera relation
+
+    Character IP priority order:
+    1. silhouette and outline
+    2. hair identity
+    3. face impression and gaze
+    4. color palette hierarchy
+    5. costume structure and color blocking
+    6. signature props, emblem, or markings
+    7. personality pose and expression
+    8. worldbuilding motifs
+    9. rendering style
+    10. decorative micro-details
+
+    For character IP prompts, separate:
+    - `locked_traits`: hair silhouette, face impression, eye color, core costume palette, signature accessory, emblem, body silhouette
+    - `allowed_variations`: pose, camera angle, lighting, background, seasonal outfit detail, expression within character range
+    - `forbidden_drift`: changed hairstyle, wrong palette, missing emblem, generic outfit, wrong personality expression, face identity drift, missing signature prop
+
+    ### Text Rendering Accuracy
+
+    If the task includes titles, slogans, copy, labels, captions, multilingual text, or exact wording requirements, classify it with `config/text-brand-layout/text-rendering-accuracy.yaml`.
+
+    This module controls:
+    - exact wording
+    - text hierarchy
+    - language/script integrity
+    - no-extra-text constraints
+    - clean typography rendering goals
+
+    ### Reference Image Control
+
+    If the task depends on one or more reference images, classify it with `config/edit-reference/reference-image-control.yaml`.
+
+    This module controls:
+    - reference role assignment
+    - preserve vs reinterpret logic
+    - reference priority order
+    - conflict resolution between references
+    - prevention of accidental irrelevant copying
+
+    ### Brand / Commercial Visual System
+
+    If the task is a poster, product ad, campaign KV, website hero, magazine cover, billboard, or other marketing/commercial visual, classify it with `config/text-brand-layout/brand-commercial-visual-system.yaml`.
+
+    This module controls:
+    - commercial hero hierarchy
+    - headline/logo/CTA-safe layout zones
+    - brand presence strength
+    - product vs person balance
+    - commercial usability and ad readability

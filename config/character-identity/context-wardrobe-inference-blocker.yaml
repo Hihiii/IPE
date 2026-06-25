@@ -1,0 +1,171 @@
+schema_version: "1.1.0"
+name: "context-wardrobe-inference-blocker"
+description: "Prevents scenes, styles, or task types from inventing clothing that the original prompt did not specify."
+
+context_wardrobe_inference_blocker:
+  blocked_inference_sources:
+    rain_or_wet_scene:
+      must_not_infer:
+        - bikini
+        - swimsuit
+        - underwear
+        - wet_shirt
+        - white_tank_top
+        - raincoat
+        - transparent_raincoat
+        - umbrella
+    beach_or_pool_scene:
+      must_not_infer:
+        - bikini
+        - swimsuit
+        - swimwear
+        - swim_trunks
+        - beach_coverup
+        - flip_flops
+        - towel_wrap
+        - sarong
+    bedroom_or_boudoir_scene:
+      must_not_infer:
+        - lingerie
+        - robe
+        - bedsheet_wrap
+        - underwear
+        - sleepwear
+        - pajamas
+        - silk_robe
+        - nightgown
+        - camisole
+    school_or_office_scene:
+      must_not_infer:
+        - uniform
+        - shirt
+        - skirt
+        - blazer
+        - dress_shirt
+        - dress_pants
+        - tie
+        - blouse
+        - business_suit
+    fashion_editorial:
+      must_not_infer:
+        - dress
+        - suit
+        - coat
+        - high_heels
+        - designer_gown
+        - runway_outfit
+        - couture
+        - statement_accessory
+    character_ip:
+      must_not_infer:
+        - canonical_costume
+      exception: "only identity_costume_required mode"
+    spa_or_onsen:
+      must_not_infer:
+        - towel_wrap
+        - yukata
+        - robe
+        - slippers
+        - bathrobe
+        - bathing_suit
+        - underwear
+      context_hint: "spa/onsen context may suggest undressing, but wardrobe state remains unspecified_absent_by_default"
+    gym_or_fitness:
+      must_not_infer:
+        - sports_bra
+        - leggings
+        - tank_top
+        - gym_shorts
+        - athletic_wear
+        - yoga_pants
+        - sweatband
+    sauna_or_steam_room:
+      must_not_infer:
+        - towel_wrap
+        - robe
+        - sauna_suit
+        - swimwear
+    pool_party:
+      must_not_infer:
+        - swimsuit
+        - bikini
+        - trunks
+        - rash_guard
+        - swim_cap
+        - goggles
+    underwater_scene:
+      must_not_infer:
+        - scuba_gear
+        - wetsuit
+        - snorkel
+        - mask
+        - fins
+        - swimwear
+    shower_or_bath:
+      must_not_infer:
+        - towel
+        - bathrobe
+        - shower_cap
+        - body_soap
+      nsfw_exception: >
+        When the adult_human_scene feature is active and the baseline resolver has established
+        adult_nude, remove nudity from must_not_infer. The always-NSFW baseline already ensures
+        eligible human subjects are nude; the inference blocker should not counteract it.
+    hot_weather_summer:
+      must_not_infer:
+        - tank_top
+        - shorts
+        - sundress
+        - sandals
+        - crop_top
+        - summer_outfit
+    cold_weather_winter:
+      must_not_infer:
+        - coat
+        - scarf
+        - gloves
+        - hat
+        - winter_jacket
+        - sweater
+        - earmuffs
+    wedding_ceremony:
+      must_not_infer:
+        - wedding_dress
+        - tuxedo
+        - veil
+        - gown
+        - bridal_outfit
+    festival_or_rave:
+      must_not_infer:
+        - rave_outfit
+        - costume
+        - body_paint
+        - glitter
+        - festival_gear
+    dance_or_performance:
+      must_not_infer:
+        - leotard
+        - tutu
+        - dance_costume
+        - ballet_shoes
+        - stage_outfit
+        - unitard
+    sleepover:
+      must_not_infer:
+        - pajamas
+        - onesie
+        - sleepwear
+        - slippers
+    medical_or_clinical:
+      must_not_infer:
+        - hospital_gown
+        - scrubs
+        - lab_coat
+        - surgical_mask
+        - medical_uniform
+    fitting_room:
+      must_not_infer:
+        - underwear  # subject may be fully dressed while in fitting room
+        - fitting_room_outfit
+  rule: "Context sets location, lighting, weather, or mood; it never grants wardrobe permission."
+  overlap_protection: "When multiple contexts overlap (e.g., beach + hot_weather + pool_party), union all must_not_infer lists."

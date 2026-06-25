@@ -1,0 +1,45 @@
+# =============================================================================
+# SKILL STYLE CONFLICT RESOLUTION
+# Extracted from SKILL.md (lines 1577-1611)
+# =============================================================================
+
+skill_routing:
+  phase: null
+  name: "Style Conflict Resolution"
+  internal: false
+  source: "SKILL.md lines 1577-1611"
+  instructions: |
+    ## Style Conflict Resolution
+
+    When the user prompt mixes terms from different style modes (e.g., "photorealistic anime portrait"), the style conflict resolution rules determine which mode takes priority and which terms must be removed or downweighted. Always reference `config/visual-cinematography/style-realism-control.yaml` for the base mode definitions.
+
+    ```yaml
+    style_conflict_resolution:
+      photorealistic_vs_anime:
+        if_user_says: ["photorealistic", "真人", "real-life"]
+        remove_or_downweight:
+          - "anime"
+          - "cel shading"
+          - "cartoon"
+        preserve_if_character_reference:
+          - "character-inspired costume"
+          - "signature color palette"
+          - "recognizable hairstyle influence"
+
+      anime_realism_vs_cartoon:
+        if_user_says: ["anime realism", "高端日系", "半寫實日漫"]
+        keep:
+          - "stylized facial design"
+          - "cinematic lighting"
+          - "realistic body proportions"
+        avoid:
+          - "chibi"
+          - "flat cartoon"
+          - "raw documentary photo"
+
+      general_rule: >
+        When style terms conflict, medium-defining terms outrank loose aesthetic references.
+        Correction language such as "but", "instead", "rather than", "不要", "更接近", "不是...而是..."
+        overrides earlier style terms. A named anime/game character reference is a subject or design cue,
+        not automatically the rendering medium. Never preserve incompatible medium terms as equal-weight style modes.
+    ```

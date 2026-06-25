@@ -1,0 +1,61 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xiii--characters--oerba_yun_fang
+  display_name: Oerba Yun Fang
+  aliases:
+  - Oerba Yun Fang
+  - 歐爾芭·雲·牙
+  - 歐爾芭·雲·牙 (Final Fantasy XIII)
+  source_title: Final Fantasy XIII
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XIII default appearance
+  identity_summary: Fierce warrior l'Cie from Oerba with very long black hair in multiple braided sections
+    with red and turquoise bead accents, calm green eyes, tan skin, wearing a purple tribal-style halter
+    top with fur trim at shoulders, a high-waisted wrap skirt with a high slit on one side (dark purple
+    with tribal patterns and gold trim), wide leather belt with metal ornaments, gold and turquoise bangles/bracelets
+    on wrists, and strappy brown sandals/boots with fur trim, carrying a three-bladed spear.
+  visual_anchors:
+  - very long black hair with braided sections and beads
+  - calm green eyes
+  - tan sun-kissed skin
+  - purple tribal-style halter top with fur trim
+  - high-waisted wrap skirt with slit
+  - three-bladed spear weapon
+  - very long black hair with braided sections interwoven with beads
+  - black hair
+  - high thick crown with braided crown section
+  - long swept side fringe
+  - calm green
+  - defined angular face
+  - tall athletic muscular warrior build
+  outfit_anchors:
+  - very long black hair with multiple braids interwoven with red/turquoise beads and cords
+  - purple tribal halter top with fur trim
+  - high-waisted wrap skirt with high slit and gold trim
+  - gold and turquoise bangles/bracelets
+  - three-bladed spear
+  - Fierce warrior l'Cie from Oerba with very long black braided hair, wearing a purple tribal-style halter
+    top with fur trim at shoulders, high-waisted wrap skirt with gold trim and high slit, wide leather
+    belt, gold and turquoise bangles, and strappy brown sandals with fur trim.
+  style_anchors:
+  - confident, calm focus
+  drift_guards:
+  - short hair
+  - missing braids
+  - pale skin
+  - heavy armor
+  - modern outfit
+  - missing spear
+  - wrong eye color
+  - wrong face impression
+  - missing long braided black hair
+  - missing purple tribal halter top
+  - missing high-slit wrap skirt
+  - missing gold and turquoise jewelry
+  - missing three-bladed spear
+  - random outfit redesign
+  - single plain ponytail
+  - loose unbraided hair
+  - fragile passive pose
+  - petite delicate frame
+  - impossible spinal twist

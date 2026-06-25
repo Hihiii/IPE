@@ -1,0 +1,58 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_x--characters--tidus
+  display_name: Tidus
+  aliases:
+  - Tidus
+  - 提達
+  - 提達 (Final Fantasy X)
+  source_title: Final Fantasy X
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy X default appearance
+  identity_summary: Star blitzball player from Zanarkand with blond spiky hair, bright blue eyes, tanned
+    athletic build, a blue zip-up jacket with red interior worn open over bare chest, black shorts, black
+    headband, and brown gladiator sandals.
+  visual_anchors:
+  - spiky blond hair swept back
+  - blue jacket with red interior worn open over bare chest
+  - black headband across forehead
+  - tanned athletic build
+  - Brotherhood longsword or blitzball in hand
+  - bright blue eyes
+  - blond spiky hair
+  - confident cheerful smile
+  - tanned skin
+  - blond
+  - high spiked crown
+  - swept-back upward spikes
+  - bright blue
+  - oval face
+  - athletic swimmer or blitzball build, defined lean muscles
+  outfit_anchors:
+  - spiky blond hair
+  - blue-red jacket
+  - headband
+  - bare chest
+  - Blue zip-up jacket worn open over bare chest, black shorts, headband, and sandals
+  style_anchors:
+  - cheerful bright grin
+  - direct, energetic, youthful
+  drift_guards:
+  - generic pretty boy
+  - long hair
+  - beard
+  - wrong eye color
+  - generic anime hero
+  - stoic or brooding archetype
+  - missing jacket
+  - closed jacket
+  - wrong colors
+  - pants instead of shorts
+  - shirt worn under jacket
+  - formal wear
+  - armor
+  - slicked back hair
+  - flat or straight hair
+  - dark hair color
+  - bulky heavy frame
+  - skinny frail build

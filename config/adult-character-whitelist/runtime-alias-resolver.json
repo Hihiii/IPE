@@ -1,0 +1,2665 @@
+{
+  "aliases": {
+    "2b": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--2b",
+      "name": "2B",
+      "profile": "profiles/尼爾_自動人形--characters--2b.yaml"
+    },
+    "2b (nier automata)": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--2b",
+      "name": "2B",
+      "profile": "profiles/尼爾_自動人形--characters--2b.yaml"
+    },
+    "2b (nier: automata)": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--2b",
+      "name": "2B",
+      "profile": "profiles/尼爾_自動人形--characters--2b.yaml"
+    },
+    "2b (nier:automata)": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--2b",
+      "name": "2B",
+      "profile": "profiles/尼爾_自動人形--characters--2b.yaml"
+    },
+    "2b (尼爾：自動人形)": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--2b",
+      "name": "2B",
+      "profile": "profiles/尼爾_自動人形--characters--2b.yaml"
+    },
+    "2b yorha": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--2b",
+      "name": "2B",
+      "profile": "profiles/尼爾_自動人形--characters--2b.yaml"
+    },
+    "a2": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--game_0406_character",
+      "name": "A2",
+      "profile": "profiles/尼爾_自動人形--characters--game_0406_character.yaml"
+    },
+    "a2 (nier:automata)": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--game_0406_character",
+      "name": "A2",
+      "profile": "profiles/尼爾_自動人形--characters--game_0406_character.yaml"
+    },
+    "a2 (尼爾：自動人形)": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--game_0406_character",
+      "name": "A2",
+      "profile": "profiles/尼爾_自動人形--characters--game_0406_character.yaml"
+    },
+    "acheron": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0171_character",
+      "name": "Acheron",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0171_character.yaml"
+    },
+    "aerith gainsborough": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--aerith_gainsborough",
+      "name": "Aerith Gainsborough",
+      "profile": "profiles/final_fantasy_vii--characters--aerith_gainsborough.yaml"
+    },
+    "ahri": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0089_character",
+      "name": "Ahri",
+      "profile": "profiles/英雄聯盟--characters--game_0089_character.yaml"
+    },
+    "ahri (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0089_character",
+      "name": "Ahri",
+      "profile": "profiles/英雄聯盟--characters--game_0089_character.yaml"
+    },
+    "albedo": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--albedo",
+      "name": "Albedo",
+      "profile": "profiles/原神--characters--albedo.yaml"
+    },
+    "albedo (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--albedo",
+      "name": "Albedo",
+      "profile": "profiles/原神--characters--albedo.yaml"
+    },
+    "ardyn izunia": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--ardyn_izunia",
+      "name": "Ardyn Izunia",
+      "profile": "profiles/final_fantasy_xv--characters--ardyn_izunia.yaml"
+    },
+    "ashe (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0104_character",
+      "name": "Ashe",
+      "profile": "profiles/英雄聯盟--characters--game_0104_character.yaml"
+    },
+    "astra": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0388_character",
+      "name": "Astra",
+      "profile": "profiles/特戰英豪--characters--game_0388_character.yaml"
+    },
+    "astra (valorant)": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0388_character",
+      "name": "Astra",
+      "profile": "profiles/特戰英豪--characters--game_0388_character.yaml"
+    },
+    "auron": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--auron",
+      "name": "Auron",
+      "profile": "profiles/final_fantasy_x--characters--auron.yaml"
+    },
+    "balthier": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--balthier",
+      "name": "Balthier",
+      "profile": "profiles/final_fantasy_xii--characters--balthier.yaml"
+    },
+    "barbara": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--barbara",
+      "name": "Barbara",
+      "profile": "profiles/原神--characters--barbara.yaml"
+    },
+    "barbara (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--barbara",
+      "name": "Barbara",
+      "profile": "profiles/原神--characters--barbara.yaml"
+    },
+    "barret wallace": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--barret_wallace",
+      "name": "Barret Wallace",
+      "profile": "profiles/final_fantasy_vii--characters--barret_wallace.yaml"
+    },
+    "basch fon ronsenburg": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--basch_fon_ronsenburg",
+      "name": "Basch fon Ronsenburg",
+      "profile": "profiles/final_fantasy_xii--characters--basch_fon_ronsenburg.yaml"
+    },
+    "beatrix": {
+      "game": "Final Fantasy IX",
+      "id": "final_fantasy_ix--characters--beatrix",
+      "name": "Beatrix",
+      "profile": "profiles/final_fantasy_ix--characters--beatrix.yaml"
+    },
+    "black swan": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0169_character",
+      "name": "Black Swan",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0169_character.yaml"
+    },
+    "blue mary": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--blue_mary",
+      "name": "Blue Mary",
+      "profile": "profiles/格鬥天王--characters--blue_mary.yaml"
+    },
+    "blue mary (kof)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--blue_mary",
+      "name": "Blue Mary",
+      "profile": "profiles/格鬥天王--characters--blue_mary.yaml"
+    },
+    "blue mary (the king of fighters)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--blue_mary",
+      "name": "Blue Mary",
+      "profile": "profiles/格鬥天王--characters--blue_mary.yaml"
+    },
+    "bronya": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0160_character",
+      "name": "Bronya",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0160_character.yaml"
+    },
+    "caitlyn": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0092_character",
+      "name": "Caitlyn",
+      "profile": "profiles/英雄聯盟--characters--game_0092_character.yaml"
+    },
+    "caitlyn (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0092_character",
+      "name": "Caitlyn",
+      "profile": "profiles/英雄聯盟--characters--game_0092_character.yaml"
+    },
+    "cammy": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--cammy",
+      "name": "Cammy",
+      "profile": "profiles/快打旋風--characters--cammy.yaml"
+    },
+    "captain basch": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--basch_fon_ronsenburg",
+      "name": "Basch fon Ronsenburg",
+      "profile": "profiles/final_fantasy_xii--characters--basch_fon_ronsenburg.yaml"
+    },
+    "celes": {
+      "game": "Final Fantasy VI",
+      "id": "final_fantasy_vi--characters--celes_chere",
+      "name": "Celes Chere",
+      "profile": "profiles/final_fantasy_vi--characters--celes_chere.yaml"
+    },
+    "celes chere": {
+      "game": "Final Fantasy VI",
+      "id": "final_fantasy_vi--characters--celes_chere",
+      "name": "Celes Chere",
+      "profile": "profiles/final_fantasy_vi--characters--celes_chere.yaml"
+    },
+    "chun-li": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--chun_li",
+      "name": "Chun-Li",
+      "profile": "profiles/快打旋風--characters--chun_li.yaml"
+    },
+    "cid highwind": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--cid_highwind",
+      "name": "Cid Highwind",
+      "profile": "profiles/final_fantasy_vii--characters--cid_highwind.yaml"
+    },
+    "clive rosfield": {
+      "game": "Final Fantasy XVI",
+      "id": "final_fantasy_xvi--characters--clive_rosfield",
+      "name": "Clive Rosfield",
+      "profile": "profiles/final_fantasy_xvi--characters--clive_rosfield.yaml"
+    },
+    "clorinde": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--clorinde",
+      "name": "Clorinde",
+      "profile": "profiles/原神--characters--clorinde.yaml"
+    },
+    "clorinde (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--clorinde",
+      "name": "Clorinde",
+      "profile": "profiles/原神--characters--clorinde.yaml"
+    },
+    "cloud strife": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--cloud_strife",
+      "name": "Cloud Strife",
+      "profile": "profiles/final_fantasy_vii--characters--cloud_strife.yaml"
+    },
+    "daughter of the void": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0097_character",
+      "name": "Kai'Sa",
+      "profile": "profiles/英雄聯盟--characters--game_0097_character.yaml"
+    },
+    "edea": {
+      "game": "Final Fantasy VIII",
+      "id": "final_fantasy_viii--characters--edea_kramer",
+      "name": "Edea Kramer",
+      "profile": "profiles/final_fantasy_viii--characters--edea_kramer.yaml"
+    },
+    "edea kramer": {
+      "game": "Final Fantasy VIII",
+      "id": "final_fantasy_viii--characters--edea_kramer",
+      "name": "Edea Kramer",
+      "profile": "profiles/final_fantasy_viii--characters--edea_kramer.yaml"
+    },
+    "ei": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--raiden_shogun",
+      "name": "Raiden Shogun",
+      "profile": "profiles/原神--characters--raiden_shogun.yaml"
+    },
+    "emet-selch": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--emet_selch",
+      "name": "Emet-Selch",
+      "profile": "profiles/final_fantasy_xiv--characters--emet_selch.yaml"
+    },
+    "estinien varlineau": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--estinien_varlineau",
+      "name": "Estinien Varlineau",
+      "profile": "profiles/final_fantasy_xiv--characters--estinien_varlineau.yaml"
+    },
+    "eve": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--game_0409_character",
+      "name": "Eve",
+      "profile": "profiles/尼爾_自動人形--characters--game_0409_character.yaml"
+    },
+    "eve (nier:automata)": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--game_0409_character",
+      "name": "Eve",
+      "profile": "profiles/尼爾_自動人形--characters--game_0409_character.yaml"
+    },
+    "faris scherwiz": {
+      "game": "Final Fantasy V",
+      "id": "final_fantasy_v--characters--faris_scherwiz",
+      "name": "Faris Scherwiz",
+      "profile": "profiles/final_fantasy_v--characters--faris_scherwiz.yaml"
+    },
+    "feixiao": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0177_character",
+      "name": "Feixiao",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0177_character.yaml"
+    },
+    "firefly": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0174_character",
+      "name": "Firefly",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0174_character.yaml"
+    },
+    "focalors": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--furina",
+      "name": "Furina",
+      "profile": "profiles/原神--characters--furina.yaml"
+    },
+    "fran": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--fran",
+      "name": "Fran",
+      "profile": "profiles/final_fantasy_xii--characters--fran.yaml"
+    },
+    "freya crescent": {
+      "game": "Final Fantasy IX",
+      "id": "final_fantasy_ix--characters--freya_crescent",
+      "name": "Freya Crescent",
+      "profile": "profiles/final_fantasy_ix--characters--freya_crescent.yaml"
+    },
+    "fu xuan": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0162_character",
+      "name": "Fu Xuan",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0162_character.yaml"
+    },
+    "furina": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--furina",
+      "name": "Furina",
+      "profile": "profiles/原神--characters--furina.yaml"
+    },
+    "furina (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--furina",
+      "name": "Furina",
+      "profile": "profiles/原神--characters--furina.yaml"
+    },
+    "ganyu": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--ganyu",
+      "name": "Ganyu",
+      "profile": "profiles/原神--characters--ganyu.yaml"
+    },
+    "ganyu (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--ganyu",
+      "name": "Ganyu",
+      "profile": "profiles/原神--characters--ganyu.yaml"
+    },
+    "gladiolus amicitia": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--gladiolus_amicitia",
+      "name": "Gladiolus Amicitia",
+      "profile": "profiles/final_fantasy_xv--characters--gladiolus_amicitia.yaml"
+    },
+    "himeko": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0153_character",
+      "name": "Himeko",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0153_character.yaml"
+    },
+    "hu tao": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--hu_tao",
+      "name": "Hu Tao",
+      "profile": "profiles/原神--characters--hu_tao.yaml"
+    },
+    "hu tao (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--hu_tao",
+      "name": "Hu Tao",
+      "profile": "profiles/原神--characters--hu_tao.yaml"
+    },
+    "ignis scientia": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--ignis_scientia",
+      "name": "Ignis Scientia",
+      "profile": "profiles/final_fantasy_xv--characters--ignis_scientia.yaml"
+    },
+    "izayoi": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--izayoi",
+      "name": "Izayoi",
+      "profile": "profiles/final_fantasy_iv--characters--izayoi.yaml"
+    },
+    "izayoi (final fantasy iv)": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--izayoi",
+      "name": "Izayoi",
+      "profile": "profiles/final_fantasy_iv--characters--izayoi.yaml"
+    },
+    "jade": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0175_character",
+      "name": "Jade",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0175_character.yaml"
+    },
+    "jean": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--jean",
+      "name": "Jean",
+      "profile": "profiles/原神--characters--jean.yaml"
+    },
+    "jean (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--jean",
+      "name": "Jean",
+      "profile": "profiles/原神--characters--jean.yaml"
+    },
+    "jett": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0375_character",
+      "name": "Jett",
+      "profile": "profiles/特戰英豪--characters--game_0375_character.yaml"
+    },
+    "jett (valorant)": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0375_character",
+      "name": "Jett",
+      "profile": "profiles/特戰英豪--characters--game_0375_character.yaml"
+    },
+    "jill warrick": {
+      "game": "Final Fantasy XVI",
+      "id": "final_fantasy_xvi--characters--jill_warrick",
+      "name": "Jill Warrick",
+      "profile": "profiles/final_fantasy_xvi--characters--jill_warrick.yaml"
+    },
+    "jingliu": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0164_character",
+      "name": "Jingliu",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0164_character.yaml"
+    },
+    "jinx": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0091_character",
+      "name": "Jinx",
+      "profile": "profiles/英雄聯盟--characters--game_0091_character.yaml"
+    },
+    "jinx (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0091_character",
+      "name": "Jinx",
+      "profile": "profiles/英雄聯盟--characters--game_0091_character.yaml"
+    },
+    "joshua rosfield": {
+      "game": "Final Fantasy XVI",
+      "id": "final_fantasy_xvi--characters--joshua_rosfield",
+      "name": "Joshua Rosfield",
+      "profile": "profiles/final_fantasy_xvi--characters--joshua_rosfield.yaml"
+    },
+    "juri": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--juri",
+      "name": "Juri",
+      "profile": "profiles/快打旋風--characters--juri.yaml"
+    },
+    "juri (street fighter)": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--juri",
+      "name": "Juri",
+      "profile": "profiles/快打旋風--characters--juri.yaml"
+    },
+    "juri han": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--juri",
+      "name": "Juri",
+      "profile": "profiles/快打旋風--characters--juri.yaml"
+    },
+    "juri han (street fighter)": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--juri",
+      "name": "Juri",
+      "profile": "profiles/快打旋風--characters--juri.yaml"
+    },
+    "kafka": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0155_character",
+      "name": "Kafka",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0155_character.yaml"
+    },
+    "kai'sa": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0097_character",
+      "name": "Kai'Sa",
+      "profile": "profiles/英雄聯盟--characters--game_0097_character.yaml"
+    },
+    "kai'sa (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0097_character",
+      "name": "Kai'Sa",
+      "profile": "profiles/英雄聯盟--characters--game_0097_character.yaml"
+    },
+    "kainé": {
+      "game": "NieR Replicant",
+      "id": "尼爾_人工生命--characters--game_0411_character",
+      "name": "Kainé",
+      "profile": "profiles/尼爾_人工生命--characters--game_0411_character.yaml"
+    },
+    "kainé (nier replicant)": {
+      "game": "NieR Replicant",
+      "id": "尼爾_人工生命--characters--game_0411_character",
+      "name": "Kainé",
+      "profile": "profiles/尼爾_人工生命--characters--game_0411_character.yaml"
+    },
+    "kamisato ayaka": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--kamisato_ayaka",
+      "name": "Kamisato Ayaka",
+      "profile": "profiles/原神--characters--kamisato_ayaka.yaml"
+    },
+    "kamisato ayaka (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--kamisato_ayaka",
+      "name": "Kamisato Ayaka",
+      "profile": "profiles/原神--characters--kamisato_ayaka.yaml"
+    },
+    "keqing": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--keqing",
+      "name": "Keqing",
+      "profile": "profiles/原神--characters--keqing.yaml"
+    },
+    "keqing (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--keqing",
+      "name": "Keqing",
+      "profile": "profiles/原神--characters--keqing.yaml"
+    },
+    "killjoy": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0385_character",
+      "name": "Killjoy",
+      "profile": "profiles/特戰英豪--characters--game_0385_character.yaml"
+    },
+    "killjoy (valorant)": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0385_character",
+      "name": "Killjoy",
+      "profile": "profiles/特戰英豪--characters--game_0385_character.yaml"
+    },
+    "kimahri": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--kimahri_ronso",
+      "name": "Kimahri Ronso",
+      "profile": "profiles/final_fantasy_x--characters--kimahri_ronso.yaml"
+    },
+    "kimahri ronso": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--kimahri_ronso",
+      "name": "Kimahri Ronso",
+      "profile": "profiles/final_fantasy_x--characters--kimahri_ronso.yaml"
+    },
+    "king": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--king",
+      "name": "King",
+      "profile": "profiles/格鬥天王--characters--king.yaml"
+    },
+    "king (kof)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--king",
+      "name": "King",
+      "profile": "profiles/格鬥天王--characters--king.yaml"
+    },
+    "king (the king of fighters)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--king",
+      "name": "King",
+      "profile": "profiles/格鬥天王--characters--king.yaml"
+    },
+    "knight of dalmasca": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--basch_fon_ronsenburg",
+      "name": "Basch fon Ronsenburg",
+      "profile": "profiles/final_fantasy_xii--characters--basch_fon_ronsenburg.yaml"
+    },
+    "kuki shinobu": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--kuki_shinobu",
+      "name": "Kuki Shinobu",
+      "profile": "profiles/原神--characters--kuki_shinobu.yaml"
+    },
+    "kuki shinobu (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--kuki_shinobu",
+      "name": "Kuki Shinobu",
+      "profile": "profiles/原神--characters--kuki_shinobu.yaml"
+    },
+    "laura": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--laura",
+      "name": "Laura",
+      "profile": "profiles/快打旋風--characters--laura.yaml"
+    },
+    "laura (street fighter)": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--laura",
+      "name": "Laura",
+      "profile": "profiles/快打旋風--characters--laura.yaml"
+    },
+    "laura matsuda": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--laura",
+      "name": "Laura",
+      "profile": "profiles/快打旋風--characters--laura.yaml"
+    },
+    "laura matsuda (street fighter)": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--laura",
+      "name": "Laura",
+      "profile": "profiles/快打旋風--characters--laura.yaml"
+    },
+    "leona": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--leona_heidern",
+      "name": "Leona Heidern",
+      "profile": "profiles/格鬥天王--characters--leona_heidern.yaml"
+    },
+    "leona (the king of fighters)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--leona_heidern",
+      "name": "Leona Heidern",
+      "profile": "profiles/格鬥天王--characters--leona_heidern.yaml"
+    },
+    "leona heidern": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--leona_heidern",
+      "name": "Leona Heidern",
+      "profile": "profiles/格鬥天王--characters--leona_heidern.yaml"
+    },
+    "leona heidern (kof)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--leona_heidern",
+      "name": "Leona Heidern",
+      "profile": "profiles/格鬥天王--characters--leona_heidern.yaml"
+    },
+    "lightning": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--lightning",
+      "name": "Lightning",
+      "profile": "profiles/final_fantasy_xiii--characters--lightning.yaml"
+    },
+    "lingsha": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0178_character",
+      "name": "Lingsha",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0178_character.yaml"
+    },
+    "luca": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--luca",
+      "name": "Luca",
+      "profile": "profiles/final_fantasy_iv--characters--luca.yaml"
+    },
+    "luca (final fantasy iv)": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--luca",
+      "name": "Luca",
+      "profile": "profiles/final_fantasy_iv--characters--luca.yaml"
+    },
+    "lulu": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--lulu",
+      "name": "Lulu",
+      "profile": "profiles/final_fantasy_x--characters--lulu.yaml"
+    },
+    "lunafreya nox fleuret": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--lunafreya_nox_fleuret",
+      "name": "Lunafreya Nox Fleuret",
+      "profile": "profiles/final_fantasy_xv--characters--lunafreya_nox_fleuret.yaml"
+    },
+    "lux": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0094_character",
+      "name": "Lux",
+      "profile": "profiles/英雄聯盟--characters--game_0094_character.yaml"
+    },
+    "lux (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0094_character",
+      "name": "Lux",
+      "profile": "profiles/英雄聯盟--characters--game_0094_character.yaml"
+    },
+    "lynette": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--lynette",
+      "name": "Lynette",
+      "profile": "profiles/原神--characters--lynette.yaml"
+    },
+    "lynette (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--lynette",
+      "name": "Lynette",
+      "profile": "profiles/原神--characters--lynette.yaml"
+    },
+    "mai shiranui": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--mai_shiranui",
+      "name": "Mai Shiranui",
+      "profile": "profiles/格鬥天王--characters--mai_shiranui.yaml"
+    },
+    "makima": {
+      "game": "鏈鋸人",
+      "id": "鏈鋸人--characters--makima",
+      "name": "Makima",
+      "profile": "profiles/鏈鋸人--characters--makima.yaml"
+    },
+    "march 7th": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0151_character",
+      "name": "March 7th",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0151_character.yaml"
+    },
+    "mary": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--blue_mary",
+      "name": "Blue Mary",
+      "profile": "profiles/格鬥天王--characters--blue_mary.yaml"
+    },
+    "miss fortune": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0099_character",
+      "name": "Miss Fortune",
+      "profile": "profiles/英雄聯盟--characters--game_0099_character.yaml"
+    },
+    "miss fortune (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0099_character",
+      "name": "Miss Fortune",
+      "profile": "profiles/英雄聯盟--characters--game_0099_character.yaml"
+    },
+    "mona": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--mona",
+      "name": "Mona",
+      "profile": "profiles/原神--characters--mona.yaml"
+    },
+    "mona (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--mona",
+      "name": "Mona",
+      "profile": "profiles/原神--characters--mona.yaml"
+    },
+    "nami": {
+      "game": "航海王",
+      "id": "航海王--characters--nami",
+      "name": "Nami",
+      "profile": "profiles/航海王--characters--nami.yaml"
+    },
+    "navia": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--navia",
+      "name": "Navia",
+      "profile": "profiles/原神--characters--navia.yaml"
+    },
+    "navia (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--navia",
+      "name": "Navia",
+      "profile": "profiles/原神--characters--navia.yaml"
+    },
+    "nico robin": {
+      "game": "航海王",
+      "id": "航海王--characters--nico_robin",
+      "name": "Nico Robin",
+      "profile": "profiles/航海王--characters--nico_robin.yaml"
+    },
+    "nier 2b": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--2b",
+      "name": "2B",
+      "profile": "profiles/尼爾_自動人形--characters--2b.yaml"
+    },
+    "nilou": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--nilou",
+      "name": "Nilou",
+      "profile": "profiles/原神--characters--nilou.yaml"
+    },
+    "nilou (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--nilou",
+      "name": "Nilou",
+      "profile": "profiles/原神--characters--nilou.yaml"
+    },
+    "noctis lucis caelum": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--noctis_lucis_caelum",
+      "name": "Noctis Lucis Caelum",
+      "profile": "profiles/final_fantasy_xv--characters--noctis_lucis_caelum.yaml"
+    },
+    "oerba yun fang": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--oerba_yun_fang",
+      "name": "Oerba Yun Fang",
+      "profile": "profiles/final_fantasy_xiii--characters--oerba_yun_fang.yaml"
+    },
+    "paine": {
+      "game": "Final Fantasy X-2",
+      "id": "final_fantasy_x--characters--paine",
+      "name": "Paine",
+      "profile": "profiles/final_fantasy_x--characters--paine.yaml"
+    },
+    "poison": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--poison",
+      "name": "Poison",
+      "profile": "profiles/快打旋風--characters--poison.yaml"
+    },
+    "poison (street fighter)": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--poison",
+      "name": "Poison",
+      "profile": "profiles/快打旋風--characters--poison.yaml"
+    },
+    "power": {
+      "game": "鏈鋸人",
+      "id": "鏈鋸人--characters--power",
+      "name": "Power",
+      "profile": "profiles/鏈鋸人--characters--power.yaml"
+    },
+    "power (chainsaw man)": {
+      "game": "鏈鋸人",
+      "id": "鏈鋸人--characters--power",
+      "name": "Power",
+      "profile": "profiles/鏈鋸人--characters--power.yaml"
+    },
+    "princess ashe": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--ashe",
+      "name": "Ashe",
+      "profile": "profiles/final_fantasy_xii--characters--ashe.yaml"
+    },
+    "prompto argentum": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--prompto_argentum",
+      "name": "Prompto Argentum",
+      "profile": "profiles/final_fantasy_xv--characters--prompto_argentum.yaml"
+    },
+    "queen ashe": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--ashe",
+      "name": "Ashe",
+      "profile": "profiles/final_fantasy_xii--characters--ashe.yaml"
+    },
+    "quistis": {
+      "game": "Final Fantasy VIII",
+      "id": "final_fantasy_viii--characters--quistis_trepe",
+      "name": "Quistis Trepe",
+      "profile": "profiles/final_fantasy_viii--characters--quistis_trepe.yaml"
+    },
+    "quistis trepe": {
+      "game": "Final Fantasy VIII",
+      "id": "final_fantasy_viii--characters--quistis_trepe",
+      "name": "Quistis Trepe",
+      "profile": "profiles/final_fantasy_viii--characters--quistis_trepe.yaml"
+    },
+    "r. mika": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--rainbow_mika",
+      "name": "R. Mika",
+      "profile": "profiles/快打旋風--characters--rainbow_mika.yaml"
+    },
+    "r. mika (street fighter)": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--rainbow_mika",
+      "name": "R. Mika",
+      "profile": "profiles/快打旋風--characters--rainbow_mika.yaml"
+    },
+    "raiden ei": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--raiden_shogun",
+      "name": "Raiden Shogun",
+      "profile": "profiles/原神--characters--raiden_shogun.yaml"
+    },
+    "raiden shogun": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--raiden_shogun",
+      "name": "Raiden Shogun",
+      "profile": "profiles/原神--characters--raiden_shogun.yaml"
+    },
+    "raiden shogun (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--raiden_shogun",
+      "name": "Raiden Shogun",
+      "profile": "profiles/原神--characters--raiden_shogun.yaml"
+    },
+    "rainbow mika": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--rainbow_mika",
+      "name": "R. Mika",
+      "profile": "profiles/快打旋風--characters--rainbow_mika.yaml"
+    },
+    "rainbow mika (street fighter)": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--rainbow_mika",
+      "name": "R. Mika",
+      "profile": "profiles/快打旋風--characters--rainbow_mika.yaml"
+    },
+    "rappa": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0179_character",
+      "name": "Rappa",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0179_character.yaml"
+    },
+    "raze": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0384_character",
+      "name": "Raze",
+      "profile": "profiles/特戰英豪--characters--game_0384_character.yaml"
+    },
+    "raze (valorant)": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0384_character",
+      "name": "Raze",
+      "profile": "profiles/特戰英豪--characters--game_0384_character.yaml"
+    },
+    "reyna": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0378_character",
+      "name": "Reyna",
+      "profile": "profiles/特戰英豪--characters--game_0378_character.yaml"
+    },
+    "reyna (valorant)": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0378_character",
+      "name": "Reyna",
+      "profile": "profiles/特戰英豪--characters--game_0378_character.yaml"
+    },
+    "rikku": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--rikku",
+      "name": "Rikku",
+      "profile": "profiles/final_fantasy_x--characters--rikku.yaml"
+    },
+    "riven": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0102_character",
+      "name": "Riven",
+      "profile": "profiles/英雄聯盟--characters--game_0102_character.yaml"
+    },
+    "riven (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0102_character",
+      "name": "Riven",
+      "profile": "profiles/英雄聯盟--characters--game_0102_character.yaml"
+    },
+    "robin": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0173_character",
+      "name": "Robin",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0173_character.yaml"
+    },
+    "rosa": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--rosa_farrell",
+      "name": "Rosa Farrell",
+      "profile": "profiles/final_fantasy_iv--characters--rosa_farrell.yaml"
+    },
+    "rosa farrell": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--rosa_farrell",
+      "name": "Rosa Farrell",
+      "profile": "profiles/final_fantasy_iv--characters--rosa_farrell.yaml"
+    },
+    "rosa farrell (final fantasy iv)": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--rosa_farrell",
+      "name": "Rosa Farrell",
+      "profile": "profiles/final_fantasy_iv--characters--rosa_farrell.yaml"
+    },
+    "rose": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--rose",
+      "name": "Rose",
+      "profile": "profiles/快打旋風--characters--rose.yaml"
+    },
+    "rose (street fighter)": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--rose",
+      "name": "Rose",
+      "profile": "profiles/快打旋風--characters--rose.yaml"
+    },
+    "ruan mei": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0167_character",
+      "name": "Ruan Mei",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0167_character.yaml"
+    },
+    "rydia": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--rydia",
+      "name": "Rydia",
+      "profile": "profiles/final_fantasy_iv--characters--rydia.yaml"
+    },
+    "rydia (final fantasy iv)": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--rydia",
+      "name": "Rydia",
+      "profile": "profiles/final_fantasy_iv--characters--rydia.yaml"
+    },
+    "rydia of mist": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--rydia",
+      "name": "Rydia",
+      "profile": "profiles/final_fantasy_iv--characters--rydia.yaml"
+    },
+    "sage": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0377_character",
+      "name": "Sage",
+      "profile": "profiles/特戰英豪--characters--game_0377_character.yaml"
+    },
+    "sage (valorant)": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0377_character",
+      "name": "Sage",
+      "profile": "profiles/特戰英豪--characters--game_0377_character.yaml"
+    },
+    "sangonomiya kokomi": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--sangonomiya_kokomi",
+      "name": "Sangonomiya Kokomi",
+      "profile": "profiles/原神--characters--sangonomiya_kokomi.yaml"
+    },
+    "sangonomiya kokomi (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--sangonomiya_kokomi",
+      "name": "Sangonomiya Kokomi",
+      "profile": "profiles/原神--characters--sangonomiya_kokomi.yaml"
+    },
+    "sarisa scherwil (original japanese)": {
+      "game": "Final Fantasy V",
+      "id": "final_fantasy_v--characters--faris_scherwiz",
+      "name": "Faris Scherwiz",
+      "profile": "profiles/final_fantasy_v--characters--faris_scherwiz.yaml"
+    },
+    "sazh katzroy": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--sazh_katzroy",
+      "name": "Sazh Katzroy",
+      "profile": "profiles/final_fantasy_xiii--characters--sazh_katzroy.yaml"
+    },
+    "seele": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0159_character",
+      "name": "Seele",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0159_character.yaml"
+    },
+    "sephiroth": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--sephiroth",
+      "name": "Sephiroth",
+      "profile": "profiles/final_fantasy_vii--characters--sephiroth.yaml"
+    },
+    "shenhe": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--shenhe",
+      "name": "Shenhe",
+      "profile": "profiles/原神--characters--shenhe.yaml"
+    },
+    "shenhe (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--shenhe",
+      "name": "Shenhe",
+      "profile": "profiles/原神--characters--shenhe.yaml"
+    },
+    "shermie": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--shermie",
+      "name": "Shermie",
+      "profile": "profiles/格鬥天王--characters--shermie.yaml"
+    },
+    "shermie (kof)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--shermie",
+      "name": "Shermie",
+      "profile": "profiles/格鬥天王--characters--shermie.yaml"
+    },
+    "shermie (the king of fighters)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--shermie",
+      "name": "Shermie",
+      "profile": "profiles/格鬥天王--characters--shermie.yaml"
+    },
+    "silver wolf": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0156_character",
+      "name": "Silver Wolf",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0156_character.yaml"
+    },
+    "sky pirate": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--balthier",
+      "name": "Balthier",
+      "profile": "profiles/final_fantasy_xii--characters--balthier.yaml"
+    },
+    "skye": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0386_character",
+      "name": "Skye",
+      "profile": "profiles/特戰英豪--characters--game_0386_character.yaml"
+    },
+    "skye (valorant)": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0386_character",
+      "name": "Skye",
+      "profile": "profiles/特戰英豪--characters--game_0386_character.yaml"
+    },
+    "snow villiers": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--snow_villiers",
+      "name": "Snow Villiers",
+      "profile": "profiles/final_fantasy_xiii--characters--snow_villiers.yaml"
+    },
+    "solus zos galvus": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--emet_selch",
+      "name": "Emet-Selch",
+      "profile": "profiles/final_fantasy_xiv--characters--emet_selch.yaml"
+    },
+    "sorceress edea": {
+      "game": "Final Fantasy VIII",
+      "id": "final_fantasy_viii--characters--edea_kramer",
+      "name": "Edea Kramer",
+      "profile": "profiles/final_fantasy_viii--characters--edea_kramer.yaml"
+    },
+    "sparkle": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0170_character",
+      "name": "Sparkle",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0170_character.yaml"
+    },
+    "thancred waters": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--thancred_waters",
+      "name": "Thancred Waters",
+      "profile": "profiles/final_fantasy_xiv--characters--thancred_waters.yaml"
+    },
+    "the bounty hunter": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0099_character",
+      "name": "Miss Fortune",
+      "profile": "profiles/英雄聯盟--characters--game_0099_character.yaml"
+    },
+    "the exile": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0102_character",
+      "name": "Riven",
+      "profile": "profiles/英雄聯盟--characters--game_0102_character.yaml"
+    },
+    "the frost archer": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0104_character",
+      "name": "Ashe",
+      "profile": "profiles/英雄聯盟--characters--game_0104_character.yaml"
+    },
+    "the lady of luminosity": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0094_character",
+      "name": "Lux",
+      "profile": "profiles/英雄聯盟--characters--game_0094_character.yaml"
+    },
+    "the leading man": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--balthier",
+      "name": "Balthier",
+      "profile": "profiles/final_fantasy_xii--characters--balthier.yaml"
+    },
+    "the loose cannon": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0091_character",
+      "name": "Jinx",
+      "profile": "profiles/英雄聯盟--characters--game_0091_character.yaml"
+    },
+    "the night hunter": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0106_character",
+      "name": "Vayne",
+      "profile": "profiles/英雄聯盟--characters--game_0106_character.yaml"
+    },
+    "the nine-tailed fox": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0089_character",
+      "name": "Ahri",
+      "profile": "profiles/英雄聯盟--characters--game_0089_character.yaml"
+    },
+    "the piltover enforcer": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0093_character",
+      "name": "Vi",
+      "profile": "profiles/英雄聯盟--characters--game_0093_character.yaml"
+    },
+    "the sheriff of piltover": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0092_character",
+      "name": "Caitlyn",
+      "profile": "profiles/英雄聯盟--characters--game_0092_character.yaml"
+    },
+    "the yordle gunner": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0098_character",
+      "name": "Tristana",
+      "profile": "profiles/英雄聯盟--characters--game_0098_character.yaml"
+    },
+    "tidus": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--tidus",
+      "name": "Tidus",
+      "profile": "profiles/final_fantasy_x--characters--tidus.yaml"
+    },
+    "tifa lockhart": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--tifa_lockhart",
+      "name": "Tifa Lockhart",
+      "profile": "profiles/final_fantasy_vii--characters--tifa_lockhart.yaml"
+    },
+    "tristana": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0098_character",
+      "name": "Tristana",
+      "profile": "profiles/英雄聯盟--characters--game_0098_character.yaml"
+    },
+    "tristana (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0098_character",
+      "name": "Tristana",
+      "profile": "profiles/英雄聯盟--characters--game_0098_character.yaml"
+    },
+    "urianger augurelt": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--urianger_augurelt",
+      "name": "Urianger Augurelt",
+      "profile": "profiles/final_fantasy_xiv--characters--urianger_augurelt.yaml"
+    },
+    "vanessa": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--vanessa",
+      "name": "Vanessa",
+      "profile": "profiles/格鬥天王--characters--vanessa.yaml"
+    },
+    "vanessa (kof)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--vanessa",
+      "name": "Vanessa",
+      "profile": "profiles/格鬥天王--characters--vanessa.yaml"
+    },
+    "vanessa (the king of fighters)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--vanessa",
+      "name": "Vanessa",
+      "profile": "profiles/格鬥天王--characters--vanessa.yaml"
+    },
+    "vayne": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0106_character",
+      "name": "Vayne",
+      "profile": "profiles/英雄聯盟--characters--game_0106_character.yaml"
+    },
+    "vayne (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0106_character",
+      "name": "Vayne",
+      "profile": "profiles/英雄聯盟--characters--game_0106_character.yaml"
+    },
+    "vi": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0093_character",
+      "name": "Vi",
+      "profile": "profiles/英雄聯盟--characters--game_0093_character.yaml"
+    },
+    "vi (league of legends)": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0093_character",
+      "name": "Vi",
+      "profile": "profiles/英雄聯盟--characters--game_0093_character.yaml"
+    },
+    "viera": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--fran",
+      "name": "Fran",
+      "profile": "profiles/final_fantasy_xii--characters--fran.yaml"
+    },
+    "vincent valentine": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--vincent_valentine",
+      "name": "Vincent Valentine",
+      "profile": "profiles/final_fantasy_vii--characters--vincent_valentine.yaml"
+    },
+    "viper": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0379_character",
+      "name": "Viper",
+      "profile": "profiles/特戰英豪--characters--game_0379_character.yaml"
+    },
+    "viper (valorant)": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0379_character",
+      "name": "Viper",
+      "profile": "profiles/特戰英豪--characters--game_0379_character.yaml"
+    },
+    "wakka": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--wakka",
+      "name": "Wakka",
+      "profile": "profiles/final_fantasy_x--characters--wakka.yaml"
+    },
+    "y'shtola rhul": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--y_shtola_rhul",
+      "name": "Y'shtola Rhul",
+      "profile": "profiles/final_fantasy_xiv--characters--y_shtola_rhul.yaml"
+    },
+    "yae miko": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yae_miko",
+      "name": "Yae Miko",
+      "profile": "profiles/原神--characters--yae_miko.yaml"
+    },
+    "yae miko (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yae_miko",
+      "name": "Yae Miko",
+      "profile": "profiles/原神--characters--yae_miko.yaml"
+    },
+    "yelan": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yelan",
+      "name": "Yelan",
+      "profile": "profiles/原神--characters--yelan.yaml"
+    },
+    "yelan (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yelan",
+      "name": "Yelan",
+      "profile": "profiles/原神--characters--yelan.yaml"
+    },
+    "yorha 2b": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--2b",
+      "name": "2B",
+      "profile": "profiles/尼爾_自動人形--characters--2b.yaml"
+    },
+    "yorha no.2 type b": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--2b",
+      "name": "2B",
+      "profile": "profiles/尼爾_自動人形--characters--2b.yaml"
+    },
+    "yorha type a no.2": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--game_0406_character",
+      "name": "A2",
+      "profile": "profiles/尼爾_自動人形--characters--game_0406_character.yaml"
+    },
+    "yun jin": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yun_jin",
+      "name": "Yun Jin",
+      "profile": "profiles/原神--characters--yun_jin.yaml"
+    },
+    "yun jin (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yun_jin",
+      "name": "Yun Jin",
+      "profile": "profiles/原神--characters--yun_jin.yaml"
+    },
+    "yuna": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--yuna",
+      "name": "Yuna",
+      "profile": "profiles/final_fantasy_x--characters--yuna.yaml"
+    },
+    "zack fair": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--zack_fair",
+      "name": "Zack Fair",
+      "profile": "profiles/final_fantasy_vii--characters--zack_fair.yaml"
+    },
+    "zenos yae galvus": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--zenos_yae_galvus",
+      "name": "Zenos yae Galvus",
+      "profile": "profiles/final_fantasy_xiv--characters--zenos_yae_galvus.yaml"
+    },
+    "七川美華": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--rainbow_mika",
+      "name": "R. Mika",
+      "profile": "profiles/快打旋風--characters--rainbow_mika.yaml"
+    },
+    "三月七": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0151_character",
+      "name": "March 7th",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0151_character.yaml"
+    },
+    "三月七 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0151_character",
+      "name": "March 7th",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0151_character.yaml"
+    },
+    "不知火舞": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--mai_shiranui",
+      "name": "Mai Shiranui",
+      "profile": "profiles/格鬥天王--characters--mai_shiranui.yaml"
+    },
+    "不知火舞 (格鬥天王)": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--mai_shiranui",
+      "name": "Mai Shiranui",
+      "profile": "profiles/格鬥天王--characters--mai_shiranui.yaml"
+    },
+    "久岐忍": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--kuki_shinobu",
+      "name": "Kuki Shinobu",
+      "profile": "profiles/原神--characters--kuki_shinobu.yaml"
+    },
+    "久岐忍 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--kuki_shinobu",
+      "name": "Kuki Shinobu",
+      "profile": "profiles/原神--characters--kuki_shinobu.yaml"
+    },
+    "亂破": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0179_character",
+      "name": "Rappa",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0179_character.yaml"
+    },
+    "云堇": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yun_jin",
+      "name": "Yun Jin",
+      "profile": "profiles/原神--characters--yun_jin.yaml"
+    },
+    "云堇 (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yun_jin",
+      "name": "Yun Jin",
+      "profile": "profiles/原神--characters--yun_jin.yaml"
+    },
+    "亞雪·班皮根·達馬斯克": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--ashe",
+      "name": "Ashe",
+      "profile": "profiles/final_fantasy_xii--characters--ashe.yaml"
+    },
+    "亞雪·班皮根·達馬斯克 (final fantasy xii)": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--ashe",
+      "name": "Ashe",
+      "profile": "profiles/final_fantasy_xii--characters--ashe.yaml"
+    },
+    "伊札尤": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--izayoi",
+      "name": "Izayoi",
+      "profile": "profiles/final_fantasy_iv--characters--izayoi.yaml"
+    },
+    "伊格尼斯·斯圖皮歐·科學亞": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--ignis_scientia",
+      "name": "Ignis Scientia",
+      "profile": "profiles/final_fantasy_xv--characters--ignis_scientia.yaml"
+    },
+    "伊格尼斯·斯圖皮歐·科學亞 (final fantasy xv)": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--ignis_scientia",
+      "name": "Ignis Scientia",
+      "profile": "profiles/final_fantasy_xv--characters--ignis_scientia.yaml"
+    },
+    "伊迪雅·克雷默": {
+      "game": "Final Fantasy VIII",
+      "id": "final_fantasy_viii--characters--edea_kramer",
+      "name": "Edea Kramer",
+      "profile": "profiles/final_fantasy_viii--characters--edea_kramer.yaml"
+    },
+    "伊迪雅·克雷默 (final fantasy viii)": {
+      "game": "Final Fantasy VIII",
+      "id": "final_fantasy_viii--characters--edea_kramer",
+      "name": "Edea Kramer",
+      "profile": "profiles/final_fantasy_viii--characters--edea_kramer.yaml"
+    },
+    "優娜": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--yuna",
+      "name": "Yuna",
+      "profile": "profiles/final_fantasy_x--characters--yuna.yaml"
+    },
+    "優娜 (final fantasy x)": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--yuna",
+      "name": "Yuna",
+      "profile": "profiles/final_fantasy_x--characters--yuna.yaml"
+    },
+    "克勞德·史特萊夫": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--cloud_strife",
+      "name": "Cloud Strife",
+      "profile": "profiles/final_fantasy_vii--characters--cloud_strife.yaml"
+    },
+    "克勞德·史特萊夫 (final fantasy vii)": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--cloud_strife",
+      "name": "Cloud Strife",
+      "profile": "profiles/final_fantasy_vii--characters--cloud_strife.yaml"
+    },
+    "克洛琳德": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--clorinde",
+      "name": "Clorinde",
+      "profile": "profiles/原神--characters--clorinde.yaml"
+    },
+    "克洛琳德 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--clorinde",
+      "name": "Clorinde",
+      "profile": "profiles/原神--characters--clorinde.yaml"
+    },
+    "克萊夫·羅斯菲爾德": {
+      "game": "Final Fantasy XVI",
+      "id": "final_fantasy_xvi--characters--clive_rosfield",
+      "name": "Clive Rosfield",
+      "profile": "profiles/final_fantasy_xvi--characters--clive_rosfield.yaml"
+    },
+    "克萊夫·羅斯菲爾德 (final fantasy xvi)": {
+      "game": "Final Fantasy XVI",
+      "id": "final_fantasy_xvi--characters--clive_rosfield",
+      "name": "Clive Rosfield",
+      "profile": "profiles/final_fantasy_xvi--characters--clive_rosfield.yaml"
+    },
+    "八重神子": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yae_miko",
+      "name": "Yae Miko",
+      "profile": "profiles/原神--characters--yae_miko.yaml"
+    },
+    "八重神子 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yae_miko",
+      "name": "Yae Miko",
+      "profile": "profiles/原神--characters--yae_miko.yaml"
+    },
+    "冰雪·維里耶": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--snow_villiers",
+      "name": "Snow Villiers",
+      "profile": "profiles/final_fantasy_xiii--characters--snow_villiers.yaml"
+    },
+    "冰雪·維里耶 (final fantasy xiii)": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--snow_villiers",
+      "name": "Snow Villiers",
+      "profile": "profiles/final_fantasy_xiii--characters--snow_villiers.yaml"
+    },
+    "凡妮莎": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--vanessa",
+      "name": "Vanessa",
+      "profile": "profiles/格鬥天王--characters--vanessa.yaml"
+    },
+    "凱寧": {
+      "game": "NieR Replicant",
+      "id": "尼爾_人工生命--characters--game_0411_character",
+      "name": "Kainé",
+      "profile": "profiles/尼爾_人工生命--characters--game_0411_character.yaml"
+    },
+    "凱寧 (尼爾：人工生命)": {
+      "game": "NieR Replicant",
+      "id": "尼爾_人工生命--characters--game_0411_character",
+      "name": "Kainé",
+      "profile": "profiles/尼爾_人工生命--characters--game_0411_character.yaml"
+    },
+    "凱特琳": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0092_character",
+      "name": "Caitlyn",
+      "profile": "profiles/英雄聯盟--characters--game_0092_character.yaml"
+    },
+    "凱莎": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0097_character",
+      "name": "Kai'Sa",
+      "profile": "profiles/英雄聯盟--characters--game_0097_character.yaml"
+    },
+    "刻晴": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--keqing",
+      "name": "Keqing",
+      "profile": "profiles/原神--characters--keqing.yaml"
+    },
+    "刻晴 (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--keqing",
+      "name": "Keqing",
+      "profile": "profiles/原神--characters--keqing.yaml"
+    },
+    "卡芙卡": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0155_character",
+      "name": "Kafka",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0155_character.yaml"
+    },
+    "卡芙卡 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0155_character",
+      "name": "Kafka",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0155_character.yaml"
+    },
+    "吉兒·沃里克": {
+      "game": "Final Fantasy XVI",
+      "id": "final_fantasy_xvi--characters--jill_warrick",
+      "name": "Jill Warrick",
+      "profile": "profiles/final_fantasy_xvi--characters--jill_warrick.yaml"
+    },
+    "吉兒·沃里克 (final fantasy xvi)": {
+      "game": "Final Fantasy XVI",
+      "id": "final_fantasy_xvi--characters--jill_warrick",
+      "name": "Jill Warrick",
+      "profile": "profiles/final_fantasy_xvi--characters--jill_warrick.yaml"
+    },
+    "嘉米": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--cammy",
+      "name": "Cammy",
+      "profile": "profiles/快打旋風--characters--cammy.yaml"
+    },
+    "嘉米 (快打旋風)": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--cammy",
+      "name": "Cammy",
+      "profile": "profiles/快打旋風--characters--cammy.yaml"
+    },
+    "埃斯蒂尼安": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--estinien_varlineau",
+      "name": "Estinien Varlineau",
+      "profile": "profiles/final_fantasy_xiv--characters--estinien_varlineau.yaml"
+    },
+    "埃斯蒂尼安 (final fantasy xiv)": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--estinien_varlineau",
+      "name": "Estinien Varlineau",
+      "profile": "profiles/final_fantasy_xiv--characters--estinien_varlineau.yaml"
+    },
+    "夏娃": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--game_0409_character",
+      "name": "Eve",
+      "profile": "profiles/尼爾_自動人形--characters--game_0409_character.yaml"
+    },
+    "夏娃 (尼爾：自動人形)": {
+      "game": "尼爾：自動人形",
+      "id": "尼爾_自動人形--characters--game_0409_character",
+      "name": "Eve",
+      "profile": "profiles/尼爾_自動人形--characters--game_0409_character.yaml"
+    },
+    "夜兰": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yelan",
+      "name": "Yelan",
+      "profile": "profiles/原神--characters--yelan.yaml"
+    },
+    "夜兰 (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--yelan",
+      "name": "Yelan",
+      "profile": "profiles/原神--characters--yelan.yaml"
+    },
+    "奇樂": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0385_character",
+      "name": "Killjoy",
+      "profile": "profiles/特戰英豪--characters--game_0385_character.yaml"
+    },
+    "奇馬利·朗索": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--kimahri_ronso",
+      "name": "Kimahri Ronso",
+      "profile": "profiles/final_fantasy_x--characters--kimahri_ronso.yaml"
+    },
+    "奇馬利·朗索 (final fantasy x)": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--kimahri_ronso",
+      "name": "Kimahri Ronso",
+      "profile": "profiles/final_fantasy_x--characters--kimahri_ronso.yaml"
+    },
+    "奎斯提斯·特利普": {
+      "game": "Final Fantasy VIII",
+      "id": "final_fantasy_viii--characters--quistis_trepe",
+      "name": "Quistis Trepe",
+      "profile": "profiles/final_fantasy_viii--characters--quistis_trepe.yaml"
+    },
+    "奎斯提斯·特利普 (final fantasy viii)": {
+      "game": "Final Fantasy VIII",
+      "id": "final_fantasy_viii--characters--quistis_trepe",
+      "name": "Quistis Trepe",
+      "profile": "profiles/final_fantasy_viii--characters--quistis_trepe.yaml"
+    },
+    "奧隆": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--auron",
+      "name": "Auron",
+      "profile": "profiles/final_fantasy_x--characters--auron.yaml"
+    },
+    "奧隆 (final fantasy x)": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--auron",
+      "name": "Auron",
+      "profile": "profiles/final_fantasy_x--characters--auron.yaml"
+    },
+    "好運姐": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0099_character",
+      "name": "Miss Fortune",
+      "profile": "profiles/英雄聯盟--characters--game_0099_character.yaml"
+    },
+    "妮可·羅賓": {
+      "game": "航海王",
+      "id": "航海王--characters--nico_robin",
+      "name": "Nico Robin",
+      "profile": "profiles/航海王--characters--nico_robin.yaml"
+    },
+    "妮可·羅賓 (航海王)": {
+      "game": "航海王",
+      "id": "航海王--characters--nico_robin",
+      "name": "Nico Robin",
+      "profile": "profiles/航海王--characters--nico_robin.yaml"
+    },
+    "妮露": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--nilou",
+      "name": "Nilou",
+      "profile": "profiles/原神--characters--nilou.yaml"
+    },
+    "妮露 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--nilou",
+      "name": "Nilou",
+      "profile": "profiles/原神--characters--nilou.yaml"
+    },
+    "姬子": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0153_character",
+      "name": "Himeko",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0153_character.yaml"
+    },
+    "姬子 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0153_character",
+      "name": "Himeko",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0153_character.yaml"
+    },
+    "娜維婭": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--navia",
+      "name": "Navia",
+      "profile": "profiles/原神--characters--navia.yaml"
+    },
+    "娜維婭 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--navia",
+      "name": "Navia",
+      "profile": "profiles/原神--characters--navia.yaml"
+    },
+    "娜美": {
+      "game": "航海王",
+      "id": "航海王--characters--nami",
+      "name": "Nami",
+      "profile": "profiles/航海王--characters--nami.yaml"
+    },
+    "娜美 (航海王)": {
+      "game": "航海王",
+      "id": "航海王--characters--nami",
+      "name": "Nami",
+      "profile": "profiles/航海王--characters--nami.yaml"
+    },
+    "婕特": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0375_character",
+      "name": "Jett",
+      "profile": "profiles/特戰英豪--characters--game_0375_character.yaml"
+    },
+    "崔絲塔娜": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0098_character",
+      "name": "Tristana",
+      "profile": "profiles/英雄聯盟--characters--game_0098_character.yaml"
+    },
+    "巴修·馮·羅森伯格": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--basch_fon_ronsenburg",
+      "name": "Basch fon Ronsenburg",
+      "profile": "profiles/final_fantasy_xii--characters--basch_fon_ronsenburg.yaml"
+    },
+    "巴修·馮·羅森伯格 (final fantasy xii)": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--basch_fon_ronsenburg",
+      "name": "Basch fon Ronsenburg",
+      "profile": "profiles/final_fantasy_xii--characters--basch_fon_ronsenburg.yaml"
+    },
+    "巴爾弗雷": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--balthier",
+      "name": "Balthier",
+      "profile": "profiles/final_fantasy_xii--characters--balthier.yaml"
+    },
+    "巴爾弗雷 (final fantasy xii)": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--balthier",
+      "name": "Balthier",
+      "profile": "profiles/final_fantasy_xii--characters--balthier.yaml"
+    },
+    "巴雷特·華萊士": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--barret_wallace",
+      "name": "Barret Wallace",
+      "profile": "profiles/final_fantasy_vii--characters--barret_wallace.yaml"
+    },
+    "巴雷特·華萊士 (final fantasy vii)": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--barret_wallace",
+      "name": "Barret Wallace",
+      "profile": "profiles/final_fantasy_vii--characters--barret_wallace.yaml"
+    },
+    "布洛妮婭": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0160_character",
+      "name": "Bronya",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0160_character.yaml"
+    },
+    "布洛妮婭 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0160_character",
+      "name": "Bronya",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0160_character.yaml"
+    },
+    "布魯瑪莉": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--blue_mary",
+      "name": "Blue Mary",
+      "profile": "profiles/格鬥天王--characters--blue_mary.yaml"
+    },
+    "希兒": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0159_character",
+      "name": "Seele",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0159_character.yaml"
+    },
+    "希兒 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0159_character",
+      "name": "Seele",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0159_character.yaml"
+    },
+    "帕瓦": {
+      "game": "鏈鋸人",
+      "id": "鏈鋸人--characters--power",
+      "name": "Power",
+      "profile": "profiles/鏈鋸人--characters--power.yaml"
+    },
+    "帕瓦 (鏈鋸人)": {
+      "game": "鏈鋸人",
+      "id": "鏈鋸人--characters--power",
+      "name": "Power",
+      "profile": "profiles/鏈鋸人--characters--power.yaml"
+    },
+    "席德·海溫德": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--cid_highwind",
+      "name": "Cid Highwind",
+      "profile": "profiles/final_fantasy_vii--characters--cid_highwind.yaml"
+    },
+    "席德·海溫德 (final fantasy vii)": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--cid_highwind",
+      "name": "Cid Highwind",
+      "profile": "profiles/final_fantasy_vii--characters--cid_highwind.yaml"
+    },
+    "愛梅特賽爾克": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--emet_selch",
+      "name": "Emet-Selch",
+      "profile": "profiles/final_fantasy_xiv--characters--emet_selch.yaml"
+    },
+    "愛梅特賽爾克 (final fantasy xiv)": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--emet_selch",
+      "name": "Emet-Selch",
+      "profile": "profiles/final_fantasy_xiv--characters--emet_selch.yaml"
+    },
+    "拉克絲": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0094_character",
+      "name": "Lux",
+      "profile": "profiles/英雄聯盟--characters--game_0094_character.yaml"
+    },
+    "提達": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--tidus",
+      "name": "Tidus",
+      "profile": "profiles/final_fantasy_x--characters--tidus.yaml"
+    },
+    "提達 (final fantasy x)": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--tidus",
+      "name": "Tidus",
+      "profile": "profiles/final_fantasy_x--characters--tidus.yaml"
+    },
+    "文森特·瓦倫丁": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--vincent_valentine",
+      "name": "Vincent Valentine",
+      "profile": "profiles/final_fantasy_vii--characters--vincent_valentine.yaml"
+    },
+    "文森特·瓦倫丁 (final fantasy vii)": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--vincent_valentine",
+      "name": "Vincent Valentine",
+      "profile": "profiles/final_fantasy_vii--characters--vincent_valentine.yaml"
+    },
+    "於勒尚熱·奧居雷": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--urianger_augurelt",
+      "name": "Urianger Augurelt",
+      "profile": "profiles/final_fantasy_xiv--characters--urianger_augurelt.yaml"
+    },
+    "於勒尚熱·奧居雷 (final fantasy xiv)": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--urianger_augurelt",
+      "name": "Urianger Augurelt",
+      "profile": "profiles/final_fantasy_xiv--characters--urianger_augurelt.yaml"
+    },
+    "星甌": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0388_character",
+      "name": "Astra",
+      "profile": "profiles/特戰英豪--characters--game_0388_character.yaml"
+    },
+    "春麗": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--chun_li",
+      "name": "Chun-Li",
+      "profile": "profiles/快打旋風--characters--chun_li.yaml"
+    },
+    "春麗 (快打旋風)": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--chun_li",
+      "name": "Chun-Li",
+      "profile": "profiles/快打旋風--characters--chun_li.yaml"
+    },
+    "普羅恩普特·阿根塔姆": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--prompto_argentum",
+      "name": "Prompto Argentum",
+      "profile": "profiles/final_fantasy_xv--characters--prompto_argentum.yaml"
+    },
+    "普羅恩普特·阿根塔姆 (final fantasy xv)": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--prompto_argentum",
+      "name": "Prompto Argentum",
+      "profile": "profiles/final_fantasy_xv--characters--prompto_argentum.yaml"
+    },
+    "札克斯·菲爾": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--zack_fair",
+      "name": "Zack Fair",
+      "profile": "profiles/final_fantasy_vii--characters--zack_fair.yaml"
+    },
+    "札克斯·菲爾 (final fantasy vii)": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--zack_fair",
+      "name": "Zack Fair",
+      "profile": "profiles/final_fantasy_vii--characters--zack_fair.yaml"
+    },
+    "格拉迪歐藍斯·艾米提亞": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--gladiolus_amicitia",
+      "name": "Gladiolus Amicitia",
+      "profile": "profiles/final_fantasy_xv--characters--gladiolus_amicitia.yaml"
+    },
+    "格拉迪歐藍斯·艾米提亞 (final fantasy xv)": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--gladiolus_amicitia",
+      "name": "Gladiolus Amicitia",
+      "profile": "profiles/final_fantasy_xv--characters--gladiolus_amicitia.yaml"
+    },
+    "桑克瑞德·沃特斯": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--thancred_waters",
+      "name": "Thancred Waters",
+      "profile": "profiles/final_fantasy_xiv--characters--thancred_waters.yaml"
+    },
+    "桑克瑞德·沃特斯 (final fantasy xiv)": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--thancred_waters",
+      "name": "Thancred Waters",
+      "profile": "profiles/final_fantasy_xiv--characters--thancred_waters.yaml"
+    },
+    "歐爾芭·雲·牙": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--oerba_yun_fang",
+      "name": "Oerba Yun Fang",
+      "profile": "profiles/final_fantasy_xiii--characters--oerba_yun_fang.yaml"
+    },
+    "歐爾芭·雲·牙 (final fantasy xiii)": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--oerba_yun_fang",
+      "name": "Oerba Yun Fang",
+      "profile": "profiles/final_fantasy_xiii--characters--oerba_yun_fang.yaml"
+    },
+    "毒蛇": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0379_character",
+      "name": "Viper",
+      "profile": "profiles/特戰英豪--characters--game_0379_character.yaml"
+    },
+    "法莉絲 (final fantasy v)": {
+      "game": "Final Fantasy V",
+      "id": "final_fantasy_v--characters--faris_scherwiz",
+      "name": "Faris Scherwiz",
+      "profile": "profiles/final_fantasy_v--characters--faris_scherwiz.yaml"
+    },
+    "法莉絲·薛維茲": {
+      "game": "Final Fantasy V",
+      "id": "final_fantasy_v--characters--faris_scherwiz",
+      "name": "Faris Scherwiz",
+      "profile": "profiles/final_fantasy_v--characters--faris_scherwiz.yaml"
+    },
+    "波伊森": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--poison",
+      "name": "Poison",
+      "profile": "profiles/快打旋風--characters--poison.yaml"
+    },
+    "派茵": {
+      "game": "Final Fantasy X-2",
+      "id": "final_fantasy_x--characters--paine",
+      "name": "Paine",
+      "profile": "profiles/final_fantasy_x--characters--paine.yaml"
+    },
+    "派茵 (final fantasy x-2)": {
+      "game": "Final Fantasy X-2",
+      "id": "final_fantasy_x--characters--paine",
+      "name": "Paine",
+      "profile": "profiles/final_fantasy_x--characters--paine.yaml"
+    },
+    "流螢": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0174_character",
+      "name": "Firefly",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0174_character.yaml"
+    },
+    "玫瑰": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--rose",
+      "name": "Rose",
+      "profile": "profiles/快打旋風--characters--rose.yaml"
+    },
+    "珊瑚宮心海": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--sangonomiya_kokomi",
+      "name": "Sangonomiya Kokomi",
+      "profile": "profiles/原神--characters--sangonomiya_kokomi.yaml"
+    },
+    "珊瑚宮心海 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--sangonomiya_kokomi",
+      "name": "Sangonomiya Kokomi",
+      "profile": "profiles/原神--characters--sangonomiya_kokomi.yaml"
+    },
+    "琳妮特": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--lynette",
+      "name": "Lynette",
+      "profile": "profiles/原神--characters--lynette.yaml"
+    },
+    "琳妮特 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--lynette",
+      "name": "Lynette",
+      "profile": "profiles/原神--characters--lynette.yaml"
+    },
+    "琴": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--jean",
+      "name": "Jean",
+      "profile": "profiles/原神--characters--jean.yaml"
+    },
+    "琴 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--jean",
+      "name": "Jean",
+      "profile": "profiles/原神--characters--jean.yaml"
+    },
+    "瓦卡": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--wakka",
+      "name": "Wakka",
+      "profile": "profiles/final_fantasy_x--characters--wakka.yaml"
+    },
+    "瓦卡 (final fantasy x)": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--wakka",
+      "name": "Wakka",
+      "profile": "profiles/final_fantasy_x--characters--wakka.yaml"
+    },
+    "甘雨": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--ganyu",
+      "name": "Ganyu",
+      "profile": "profiles/原神--characters--ganyu.yaml"
+    },
+    "甘雨 (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--ganyu",
+      "name": "Ganyu",
+      "profile": "profiles/原神--characters--ganyu.yaml"
+    },
+    "申鹤": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--shenhe",
+      "name": "Shenhe",
+      "profile": "profiles/原神--characters--shenhe.yaml"
+    },
+    "申鹤 (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--shenhe",
+      "name": "Shenhe",
+      "profile": "profiles/原神--characters--shenhe.yaml"
+    },
+    "真紀真": {
+      "game": "鏈鋸人",
+      "id": "鏈鋸人--characters--makima",
+      "name": "Makima",
+      "profile": "profiles/鏈鋸人--characters--makima.yaml"
+    },
+    "真紀真 (鏈鋸人)": {
+      "game": "鏈鋸人",
+      "id": "鏈鋸人--characters--makima",
+      "name": "Makima",
+      "profile": "profiles/鏈鋸人--characters--makima.yaml"
+    },
+    "知更鳥": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0173_character",
+      "name": "Robin",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0173_character.yaml"
+    },
+    "神里綾華": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--kamisato_ayaka",
+      "name": "Kamisato Ayaka",
+      "profile": "profiles/原神--characters--kamisato_ayaka.yaml"
+    },
+    "神里綾華 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--kamisato_ayaka",
+      "name": "Kamisato Ayaka",
+      "profile": "profiles/原神--characters--kamisato_ayaka.yaml"
+    },
+    "符玄": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0162_character",
+      "name": "Fu Xuan",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0162_character.yaml"
+    },
+    "符玄 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0162_character",
+      "name": "Fu Xuan",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0162_character.yaml"
+    },
+    "約書亞·羅斯菲爾德": {
+      "game": "Final Fantasy XVI",
+      "id": "final_fantasy_xvi--characters--joshua_rosfield",
+      "name": "Joshua Rosfield",
+      "profile": "profiles/final_fantasy_xvi--characters--joshua_rosfield.yaml"
+    },
+    "約書亞·羅斯菲爾德 (final fantasy xvi)": {
+      "game": "Final Fantasy XVI",
+      "id": "final_fantasy_xvi--characters--joshua_rosfield",
+      "name": "Joshua Rosfield",
+      "profile": "profiles/final_fantasy_xvi--characters--joshua_rosfield.yaml"
+    },
+    "絲凱": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0386_character",
+      "name": "Skye",
+      "profile": "profiles/特戰英豪--characters--game_0386_character.yaml"
+    },
+    "羅莎·法雷爾": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--rosa_farrell",
+      "name": "Rosa Farrell",
+      "profile": "profiles/final_fantasy_iv--characters--rosa_farrell.yaml"
+    },
+    "翡翠": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0175_character",
+      "name": "Jade",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0175_character.yaml"
+    },
+    "聖祈": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0377_character",
+      "name": "Sage",
+      "profile": "profiles/特戰英豪--characters--game_0377_character.yaml"
+    },
+    "胡桃": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--hu_tao",
+      "name": "Hu Tao",
+      "profile": "profiles/原神--characters--hu_tao.yaml"
+    },
+    "胡桃 (genshin impact)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--hu_tao",
+      "name": "Hu Tao",
+      "profile": "profiles/原神--characters--hu_tao.yaml"
+    },
+    "艾汀·伊茲尼亞": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--ardyn_izunia",
+      "name": "Ardyn Izunia",
+      "profile": "profiles/final_fantasy_xv--characters--ardyn_izunia.yaml"
+    },
+    "艾汀·伊茲尼亞 (final fantasy xv)": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--ardyn_izunia",
+      "name": "Ardyn Izunia",
+      "profile": "profiles/final_fantasy_xv--characters--ardyn_izunia.yaml"
+    },
+    "艾莉絲·蓋恩斯巴勒": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--aerith_gainsborough",
+      "name": "Aerith Gainsborough",
+      "profile": "profiles/final_fantasy_vii--characters--aerith_gainsborough.yaml"
+    },
+    "艾莉絲·蓋恩斯巴勒 (final fantasy vii)": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--aerith_gainsborough",
+      "name": "Aerith Gainsborough",
+      "profile": "profiles/final_fantasy_vii--characters--aerith_gainsborough.yaml"
+    },
+    "芙寧娜": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--furina",
+      "name": "Furina",
+      "profile": "profiles/原神--characters--furina.yaml"
+    },
+    "芙寧娜 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--furina",
+      "name": "Furina",
+      "profile": "profiles/原神--characters--furina.yaml"
+    },
+    "芙蕾雅": {
+      "game": "Final Fantasy IX",
+      "id": "final_fantasy_ix--characters--freya_crescent",
+      "name": "Freya Crescent",
+      "profile": "profiles/final_fantasy_ix--characters--freya_crescent.yaml"
+    },
+    "芙蕾雅 (final fantasy ix)": {
+      "game": "Final Fantasy IX",
+      "id": "final_fantasy_ix--characters--freya_crescent",
+      "name": "Freya Crescent",
+      "profile": "profiles/final_fantasy_ix--characters--freya_crescent.yaml"
+    },
+    "芙蘭": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--fran",
+      "name": "Fran",
+      "profile": "profiles/final_fantasy_xii--characters--fran.yaml"
+    },
+    "芙蘭 (final fantasy xii)": {
+      "game": "Final Fantasy XII",
+      "id": "final_fantasy_xii--characters--fran",
+      "name": "Fran",
+      "profile": "profiles/final_fantasy_xii--characters--fran.yaml"
+    },
+    "芝諾斯·耶·加爾烏斯": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--zenos_yae_galvus",
+      "name": "Zenos yae Galvus",
+      "profile": "profiles/final_fantasy_xiv--characters--zenos_yae_galvus.yaml"
+    },
+    "芝諾斯·耶·加爾烏斯 (final fantasy xiv)": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--zenos_yae_galvus",
+      "name": "Zenos yae Galvus",
+      "profile": "profiles/final_fantasy_xiv--characters--zenos_yae_galvus.yaml"
+    },
+    "芭芭拉": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--barbara",
+      "name": "Barbara",
+      "profile": "profiles/原神--characters--barbara.yaml"
+    },
+    "芭芭拉 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--barbara",
+      "name": "Barbara",
+      "profile": "profiles/原神--characters--barbara.yaml"
+    },
+    "芮茲": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0384_character",
+      "name": "Raze",
+      "profile": "profiles/特戰英豪--characters--game_0384_character.yaml"
+    },
+    "花火": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0170_character",
+      "name": "Sparkle",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0170_character.yaml"
+    },
+    "花火 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0170_character",
+      "name": "Sparkle",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0170_character.yaml"
+    },
+    "茱莉": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--juri",
+      "name": "Juri",
+      "profile": "profiles/快打旋風--characters--juri.yaml"
+    },
+    "莉可": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--rikku",
+      "name": "Rikku",
+      "profile": "profiles/final_fantasy_x--characters--rikku.yaml"
+    },
+    "莉可 (final fantasy x)": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--rikku",
+      "name": "Rikku",
+      "profile": "profiles/final_fantasy_x--characters--rikku.yaml"
+    },
+    "莉迪亞": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--rydia",
+      "name": "Rydia",
+      "profile": "profiles/final_fantasy_iv--characters--rydia.yaml"
+    },
+    "莎莉絲 (final fantasy vi)": {
+      "game": "Final Fantasy VI",
+      "id": "final_fantasy_vi--characters--celes_chere",
+      "name": "Celes Chere",
+      "profile": "profiles/final_fantasy_vi--characters--celes_chere.yaml"
+    },
+    "莎莉絲·榭亞": {
+      "game": "Final Fantasy VI",
+      "id": "final_fantasy_vi--characters--celes_chere",
+      "name": "Celes Chere",
+      "profile": "profiles/final_fantasy_vi--characters--celes_chere.yaml"
+    },
+    "莫娜": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--mona",
+      "name": "Mona",
+      "profile": "profiles/原神--characters--mona.yaml"
+    },
+    "莫娜 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--mona",
+      "name": "Mona",
+      "profile": "profiles/原神--characters--mona.yaml"
+    },
+    "菲艾": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0093_character",
+      "name": "Vi",
+      "profile": "profiles/英雄聯盟--characters--game_0093_character.yaml"
+    },
+    "蒂法·洛克哈特": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--tifa_lockhart",
+      "name": "Tifa Lockhart",
+      "profile": "profiles/final_fantasy_vii--characters--tifa_lockhart.yaml"
+    },
+    "蒂法·洛克哈特 (final fantasy vii)": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--tifa_lockhart",
+      "name": "Tifa Lockhart",
+      "profile": "profiles/final_fantasy_vii--characters--tifa_lockhart.yaml"
+    },
+    "蕾娜": {
+      "game": "VALORANT",
+      "id": "特戰英豪--characters--game_0378_character",
+      "name": "Reyna",
+      "profile": "profiles/特戰英豪--characters--game_0378_character.yaml"
+    },
+    "蕾歐娜": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--leona_heidern",
+      "name": "Leona Heidern",
+      "profile": "profiles/格鬥天王--characters--leona_heidern.yaml"
+    },
+    "薩茲·卡茲羅伊": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--sazh_katzroy",
+      "name": "Sazh Katzroy",
+      "profile": "profiles/final_fantasy_xiii--characters--sazh_katzroy.yaml"
+    },
+    "薩茲·卡茲羅伊 (final fantasy xiii)": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--sazh_katzroy",
+      "name": "Sazh Katzroy",
+      "profile": "profiles/final_fantasy_xiii--characters--sazh_katzroy.yaml"
+    },
+    "蘿拉": {
+      "game": "快打旋風",
+      "id": "快打旋風--characters--laura",
+      "name": "Laura",
+      "profile": "profiles/快打旋風--characters--laura.yaml"
+    },
+    "諾克提斯·路希斯·切拉姆": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--noctis_lucis_caelum",
+      "name": "Noctis Lucis Caelum",
+      "profile": "profiles/final_fantasy_xv--characters--noctis_lucis_caelum.yaml"
+    },
+    "諾克提斯·路希斯·切拉姆 (final fantasy xv)": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--noctis_lucis_caelum",
+      "name": "Noctis Lucis Caelum",
+      "profile": "profiles/final_fantasy_xv--characters--noctis_lucis_caelum.yaml"
+    },
+    "貝雅特麗克絲": {
+      "game": "Final Fantasy IX",
+      "id": "final_fantasy_ix--characters--beatrix",
+      "name": "Beatrix",
+      "profile": "profiles/final_fantasy_ix--characters--beatrix.yaml"
+    },
+    "貝雅特麗克絲 (final fantasy ix)": {
+      "game": "Final Fantasy IX",
+      "id": "final_fantasy_ix--characters--beatrix",
+      "name": "Beatrix",
+      "profile": "profiles/final_fantasy_ix--characters--beatrix.yaml"
+    },
+    "賽菲羅斯": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--sephiroth",
+      "name": "Sephiroth",
+      "profile": "profiles/final_fantasy_vii--characters--sephiroth.yaml"
+    },
+    "賽菲羅斯 (final fantasy vii)": {
+      "game": "Final Fantasy VII",
+      "id": "final_fantasy_vii--characters--sephiroth",
+      "name": "Sephiroth",
+      "profile": "profiles/final_fantasy_vii--characters--sephiroth.yaml"
+    },
+    "金": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--king",
+      "name": "King",
+      "profile": "profiles/格鬥天王--characters--king.yaml"
+    },
+    "金克絲": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0091_character",
+      "name": "Jinx",
+      "profile": "profiles/英雄聯盟--characters--game_0091_character.yaml"
+    },
+    "銀狼": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0156_character",
+      "name": "Silver Wolf",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0156_character.yaml"
+    },
+    "銀狼 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0156_character",
+      "name": "Silver Wolf",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0156_character.yaml"
+    },
+    "鏡流": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0164_character",
+      "name": "Jingliu",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0164_character.yaml"
+    },
+    "鏡流 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0164_character",
+      "name": "Jingliu",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0164_character.yaml"
+    },
+    "阮·梅": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0167_character",
+      "name": "Ruan Mei",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0167_character.yaml"
+    },
+    "阮·梅 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0167_character",
+      "name": "Ruan Mei",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0167_character.yaml"
+    },
+    "阮梅": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0167_character",
+      "name": "Ruan Mei",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0167_character.yaml"
+    },
+    "阿璃": {
+      "game": "League of Legends",
+      "id": "英雄聯盟--characters--game_0089_character",
+      "name": "Ahri",
+      "profile": "profiles/英雄聯盟--characters--game_0089_character.yaml"
+    },
+    "阿貝多": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--albedo",
+      "name": "Albedo",
+      "profile": "profiles/原神--characters--albedo.yaml"
+    },
+    "阿貝多 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--albedo",
+      "name": "Albedo",
+      "profile": "profiles/原神--characters--albedo.yaml"
+    },
+    "雅·修特拉·路爾": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--y_shtola_rhul",
+      "name": "Y'shtola Rhul",
+      "profile": "profiles/final_fantasy_xiv--characters--y_shtola_rhul.yaml"
+    },
+    "雅·修特拉·路爾 (final fantasy xiv)": {
+      "game": "Final Fantasy XIV",
+      "id": "final_fantasy_xiv--characters--y_shtola_rhul",
+      "name": "Y'shtola Rhul",
+      "profile": "profiles/final_fantasy_xiv--characters--y_shtola_rhul.yaml"
+    },
+    "雪魯米": {
+      "game": "格鬥天王",
+      "id": "格鬥天王--characters--shermie",
+      "name": "Shermie",
+      "profile": "profiles/格鬥天王--characters--shermie.yaml"
+    },
+    "雷光": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--lightning",
+      "name": "Lightning",
+      "profile": "profiles/final_fantasy_xiii--characters--lightning.yaml"
+    },
+    "雷光 (final fantasy xiii)": {
+      "game": "Final Fantasy XIII",
+      "id": "final_fantasy_xiii--characters--lightning",
+      "name": "Lightning",
+      "profile": "profiles/final_fantasy_xiii--characters--lightning.yaml"
+    },
+    "雷電將軍": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--raiden_shogun",
+      "name": "Raiden Shogun",
+      "profile": "profiles/原神--characters--raiden_shogun.yaml"
+    },
+    "雷電將軍 (原神)": {
+      "game": "Genshin Impact",
+      "id": "原神--characters--raiden_shogun",
+      "name": "Raiden Shogun",
+      "profile": "profiles/原神--characters--raiden_shogun.yaml"
+    },
+    "露卡": {
+      "game": "Final Fantasy IV",
+      "id": "final_fantasy_iv--characters--luca",
+      "name": "Luca",
+      "profile": "profiles/final_fantasy_iv--characters--luca.yaml"
+    },
+    "露娜弗蕾亞·諾克斯·芙蕾": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--lunafreya_nox_fleuret",
+      "name": "Lunafreya Nox Fleuret",
+      "profile": "profiles/final_fantasy_xv--characters--lunafreya_nox_fleuret.yaml"
+    },
+    "露娜弗蕾亞·諾克斯·芙蕾 (final fantasy xv)": {
+      "game": "Final Fantasy XV",
+      "id": "final_fantasy_xv--characters--lunafreya_nox_fleuret",
+      "name": "Lunafreya Nox Fleuret",
+      "profile": "profiles/final_fantasy_xv--characters--lunafreya_nox_fleuret.yaml"
+    },
+    "露露": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--lulu",
+      "name": "Lulu",
+      "profile": "profiles/final_fantasy_x--characters--lulu.yaml"
+    },
+    "露露 (final fantasy x)": {
+      "game": "Final Fantasy X",
+      "id": "final_fantasy_x--characters--lulu",
+      "name": "Lulu",
+      "profile": "profiles/final_fantasy_x--characters--lulu.yaml"
+    },
+    "靈砂": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0178_character",
+      "name": "Lingsha",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0178_character.yaml"
+    },
+    "飛霄": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0177_character",
+      "name": "Feixiao",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0177_character.yaml"
+    },
+    "黃泉": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0171_character",
+      "name": "Acheron",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0171_character.yaml"
+    },
+    "黑天鵝": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0169_character",
+      "name": "Black Swan",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0169_character.yaml"
+    },
+    "黑天鵝 (崩壞：星穹鐵道)": {
+      "game": "Honkai: Star Rail",
+      "id": "崩壞_星穹鐵道--characters--game_0169_character",
+      "name": "Black Swan",
+      "profile": "profiles/崩壞_星穹鐵道--characters--game_0169_character.yaml"
+    }
+  },
+  "name": "adult-character-runtime-alias-resolver",
+  "resolver_mode": "exact_normalized_alias_only",
+  "schema_version": "1.0.0"
+}

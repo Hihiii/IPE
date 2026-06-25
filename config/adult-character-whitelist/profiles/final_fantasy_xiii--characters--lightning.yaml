@@ -1,0 +1,55 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xiii--characters--lightning
+  display_name: Lightning
+  aliases:
+  - Lightning
+  - 雷光
+  - 雷光 (Final Fantasy XIII)
+  source_title: Final Fantasy XIII
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XIII default appearance
+  identity_summary: Disciplined former soldier with pale pink layered hair swept asymmetrically, sharp
+    blue-gray eyes, wearing a cream-white asymmetric military-style coat with a red shoulder cape, exposed
+    silver pauldron on one shoulder, black form-fitting undersuit, black gloves, black pants, and brown
+    combat boots, carrying a gunblade.
+  visual_anchors:
+  - pale pink layered hair
+  - cream-white asymmetric military coat
+  - red shoulder cape
+  - exposed silver pauldron
+  - gunblade
+  - blue-gray sharp eyes
+  - stern determined expression
+  - pale pink
+  - layered high crown
+  - asymmetrical side-swept bangs
+  - blue-gray
+  - lean angular face
+  - lean athletic soldier build
+  outfit_anchors:
+  - pale pink hair
+  - cream-white asymmetric coat
+  - red shoulder cape
+  - exposed silver pauldron
+  - gunblade
+  - Disciplined former soldier with pale pink layered hair, sharp blue-gray eyes, wearing a cream-white
+    asymmetric military-style coat with a red shoulder cape, exposed silver pauldron on one shoulder,
+    black form-fitting undersuit, black gloves, black pants, and brown combat boots.
+  style_anchors:
+  - stern determined
+  drift_guards:
+  - long flowing hair
+  - non-pink hair color
+  - wrong eye color
+  - generic attractive person
+  - soft smiling expression
+  - wrong face impression
+  - missing red shoulder cape
+  - missing silver pauldron
+  - missing asymmetric cream-white coat
+  - casual outfit replacement
+  - missing black gloves
+  - missing brown combat boots
+  - fragile passive pose
+  - unathletic proportion

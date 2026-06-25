@@ -1,0 +1,675 @@
+# =============================================================================
+# ANTI-BORING POSE SYSTEM — diagnoses and prevents stiff, unintentional poses
+# by designing pose intent, weight shift, asymmetry, scene interaction, and
+# camera relationship.
+# Priority: P93 (between explicit_scene_context P94 and character_ip P92).
+# =============================================================================
+
+schema_version: "1.1.0"
+name: "anti-boring-pose-system"
+description: >
+  Diagnoses and prevents stiff, unintentional poses. A boring pose is not a
+  quiet or calm pose — it is a pose with no intention. This system detects
+  common boring patterns and provides concrete strategies to give every pose
+  a reason, a weight shift, and a relationship to the camera and scene.
+
+  LOAD POLICY: Do NOT load for every standing portrait or full-body pose.
+  Core-knowledge.yaml (P93 anti-boring rule) covers basic guidance. Only load
+  this 14KB file when the pose is genuinely static, symmetrical, or underspecified
+  and needs detailed diagnosis and design strategies.
+
+core_principle: >
+  Boring is not silence — boring is absence of intention. A person standing
+  still can be elegant, tense, sad, or powerful. A person standing with no
+  weight shift, symmetrical shoulders, straight arms, and empty gaze is
+  boring. Fix the intention, not the activity level.
+
+# ===========================================================================
+# BORING POSE DIAGNOSIS — detect each pattern in the intent
+# ===========================================================================
+
+boring_pose_diagnosis:
+  patterns:
+
+    full_frontal_symmetry:
+      description: "Body completely face-on to camera, shoulders and hips parallel, no depth between body planes."
+      detection:
+        - "both shoulders at equal angle to camera"
+        - "hips parallel to shoulders"
+        - "no torso rotation or twist"
+        - "head facing same direction as shoulders"
+      severity: high
+
+    dead_weight_arms:
+      description: "Both arms hang straight down at sides with no tension, gesture, or purpose."
+      detection:
+        - "arms fully extended downward"
+        - "hands at sides"
+        - "no hand-object or hand-body contact"
+        - "no asymmetry in arm positions"
+      severity: high
+
+    even_stance:
+      description: "Weight equally distributed on both feet, no visual center of gravity."
+      detection:
+        - "feet parallel and evenly spaced"
+        - "weight on both legs"
+        - "no hip shift or tilt"
+        - "knees equally locked or equally bent"
+      severity: high
+
+    aligned_planes:
+      description: "Head, shoulders, chest, and hips all oriented in the same direction, creating a flat profile."
+      detection:
+        - "head facing same angle as torso"
+        - "shoulder line parallel to hip line"
+        - "no counter-rotation between upper and lower body"
+      severity: medium
+
+    empty_gaze:
+      description: "Eyes looking directly at lens with no detectable emotion, intention, or target."
+      detection:
+        - "direct eye contact with neutral expression"
+        - "no micro-expression cue (smile, smirk, intensity, softness)"
+        - "gaze has no narrative target"
+      severity: medium
+
+    no_scene_interaction:
+      description: "Subject exists independently of their environment — no contact, no acknowledgment of setting."
+      detection:
+        - "no body part touches or references any scene element"
+        - "pose would be identical in any location"
+        - "no weight leaning on environment (wall, table, rail)"
+        - "no gaze toward environment features"
+      severity: medium
+
+    pose_independent_of_camera:
+      description: "Same pose structure regardless of camera angle — no adaptation to perspective."
+      detection:
+        - "low angle but subject looks down at camera (should look up)"
+        - "high angle but subject stands square (should acknowledge height)"
+        - "profile shot but subject faces camera directly"
+        - "close-up but full-body arm positions retained"
+      severity: high
+
+    description_only:
+      description: "Only garment, face, and body are described with no action, stance, or pose logic."
+      detection:
+        - "prompt contains only clothing adjectives and facial features"
+        - "no stance or weight distribution mentioned"
+        - "no hand or arm position"
+        - "no verb indicating pose (standing, leaning, sitting, etc.)"
+      severity: critical
+
+    hanger_pose:
+      description: "Subject treats body as a passive clothes hanger — garment is described but body shows no engagement, tension, or attitude."
+      detection:
+        - "garment fully described but no body engagement or muscle tension"
+        - "shoulders relaxed and symmetrical with no purpose"
+        - "hands idle with no garment interaction"
+        - "no weight shift or hip engagement despite full-body framing"
+        - "pose would look identical even if the garment were removed"
+      severity: high
+
+    frozen_catalog:
+      description: "Perfect commercial symmetry with fixed lifeless pose — common in low-end e-commerce or generic catalog imagery."
+      detection:
+        - "both feet parallel and evenly weighted"
+        - "both arms in identical mirrored position"
+        - "fixed commercial smile with no micro-expression"
+        - "no torso rotation or depth between body planes"
+        - "pose feels 'pasted' onto the background"
+      severity: medium
+
+# ===========================================================================
+# ANTI-BORING PRINCIPLES
+# ===========================================================================
+
+anti_boring_principles:
+  - "Every pose must have a reason. 'Standing' is not a pose — 'leaning against a wall with weight on back foot' is."
+  - "Asymmetry is life. Perfect bilateral symmetry reads as stiff, formal, or unnatural unless intentionally graphic."
+  - "Weight must be placed. Even weight distribution = zero visual tension. Shift weight to one leg."
+  - "Pose must respond to camera angle. Low angle and eye-level demand different body lines."
+  - "Gaze must have a target or emotion. Blank stare at camera is the fastest path to boring."
+  - "Hands must have purpose. Idle hands are the #1 cause of boring portraits."
+  - "Pose must acknowledge the scene. A café pose, a mountain pose, and a studio pose are not interchangeable."
+  - "The body should never present all planes at the same angle. Rotate at least one axis."
+  - "Silence is not boring. A quiet, still pose with intention (weight shifted, hand in pocket, soft gaze) is elegant, not boring."
+  - "Never override a user-specified action. Pose enrichment sits within the action, not instead of it."
+  - "Pose enrichment must not change locked attributes: face, hairstyle, outfit, identity markers, body shape, or specified props."
+  - "When the user says 'standing' with no other pose info, treat it as description_only + even_stance + dead_weight_arms — apply all three fixes."
+
+# ===========================================================================
+# POSE DESIGN STRATEGIES — fix each boring pattern
+# ===========================================================================
+
+pose_design_strategies:
+
+  fix_full_frontal_symmetry:
+    goal: "Create depth between body planes without changing the essential pose type."
+    strategies:
+      - "rotate shoulders 15-30 degrees away from camera while keeping face toward lens"
+      - "shift weight to back leg, letting front hip drop slightly"
+      - "tilt head 5-10 degrees toward raised shoulder"
+      - "let the far shoulder drop slightly lower for natural asymmetry"
+      - "advance one foot slightly toward camera to create leg depth"
+    renderer_language:
+      - "slight three-quarter turn"
+      - "weight shifted onto back leg"
+      - "natural shoulder asymmetry"
+
+  fix_dead_arms:
+    goal: "Give each arm a purpose without adding random props."
+    strategies:
+      - "one hand in pocket (thumb out or full hand)"
+      - "one hand touching collar, necklace, or lapel"
+      - "arms crossed with asymmetry (one hand visible, one tucked)"
+      - "one arm resting along body, the other bent with hand at waist"
+      - "one hand brushing hair back or touching temple"
+      - "hands clasped behind back for controlled elegance"
+      - "one arm hanging naturally, forearm lifted slightly with relaxed fingers"
+    renderer_language:
+      - "one hand casually in pocket"
+      - "one hand lightly touching collar"
+      - "relaxed asymmetric arm position"
+    forbidden:
+      - "both hands in pockets (hides hands completely)"
+      - "both arms crossed tight (defensive, stiff)"
+      - "fist clenching without tension context"
+
+  fix_even_stance:
+    goal: "Create a clear weight distribution and center of gravity."
+    strategies:
+      - "shift 70-80% weight onto back leg, front leg relaxed with toe contact"
+      - "let the weight-bearing hip rise slightly, free hip drop"
+      - "front knee slightly bent, back knee locked or soft"
+      - "front foot pointed slightly outward for visual line"
+      - "contrapposto: support hip rises, opposite shoulder drops"
+    renderer_language:
+      - "weight shifted onto back leg"
+      - "relaxed contrapposto stance"
+      - "natural hip and shoulder counterbalance"
+    forbidden:
+      - "hyperextended locked knees on weight-bearing leg"
+      - "collapsed ankle on free leg"
+
+  fix_aligned_planes:
+    goal: "Introduce counter-rotation between upper and lower body."
+    strategies:
+      - "rotate hips 10-20 degrees away from shoulders"
+      - "keep face toward camera while torso angles slightly away"
+      - "let one shoulder come forward, the other back"
+      - "shift weight so hip line angles naturally"
+      - "head turned slightly past shoulder line for neck tension"
+    renderer_language:
+      - "subtle counter-rotation between shoulders and hips"
+      - "upper body angled slightly away from camera"
+      - "head turned past the shoulder line"
+
+  fix_empty_gaze:
+    goal: "Give the gaze an emotion, target, or narrative purpose."
+    strategies:
+      - "soft confident gaze just past camera (slightly above lens)"
+      - "introspective downward gaze with subtle brow tension"
+      - "warm direct engagement with micro-smile at corner of mouth"
+      - "intense focus on an implied target off-frame"
+      - "closed eyes with serene or contemplative expression"
+      - "looking over shoulder back at camera with subtle chin lift"
+    renderer_language:
+      - "soft engaging gaze just past camera"
+      - "warm direct eye contact with gentle expression"
+      - "introspective downward gaze"
+      - "intense focused look toward off-frame target"
+    forbidden:
+      - "blank emotionless stare directly into lens"
+      - "forced exaggerated smile with no eye engagement"
+
+  fix_no_scene_interaction:
+    goal: "Connect at least one body point to the environment."
+    strategies:
+      - "lean shoulder or hip against a wall, column, or counter"
+      - "rest hand on a surface (table, rail, car hood, chair back)"
+      - "one foot on a step, curb, or rock for broken leg line"
+      - "sit on a surface edge with weight on one hand"
+      - "interact with scene-appropriate element (coffee cup, book, rail, foliage)"
+    renderer_language:
+      - "one shoulder leaning against the wall"
+      - "hand resting on the surface"
+      - "one foot propped on the step"
+    forbidden:
+      - "interaction that implies a different scene (holding beach ball in office)"
+      - "touch that requires explanation"
+
+  fix_pose_independent_of_camera:
+    goal: "Adapt pose to the camera angle for natural perspective."
+    strategies:
+      low_angle:
+        - "chin slightly lifted, jawline defined"
+        - "shoulders open and back"
+        - "one hand closer to camera for foreground depth"
+        - "weight slightly back so torso doesn't loom"
+      high_angle:
+        - "chin slightly down, eyes looking up at camera"
+        - "one hand near face or hair"
+        - "shoulders relaxed, not hunched"
+        - "weight forward to avoid foreshortening distortion"
+      profile_or_three_quarter:
+        - "lead shoulder down, trailing shoulder back"
+        - "visible S-curve through spine"
+        - "hands visible: front hand at waist or pocket, back hand behind"
+      close_up:
+        - "micro-poses only: head tilt, chin angle, eye direction"
+        - "hands only if near face or chest"
+        - "shoulder line still matters — slight angle avoids flatness"
+
+  fix_description_only:
+    goal: "Add a pose skeleton before any clothing or feature description."
+    strategies:
+      - "always begin pose description with stance + weight + arm position"
+      - "define the verb first: 'leaning against', 'sitting on edge of', 'standing with weight on'"
+      - "then add garment behavior on top of the pose skeleton"
+      - "never list clothing without the body wearing it having a position"
+    when_user_only_says_standing:
+      description: "User literally only says 'standing' — most common boring default."
+      apply_fixes_in_order:
+        - "fix_full_frontal_symmetry: rotate shoulders, shift weight to back leg"
+        - "fix_even_stance: define support leg, counterbalance hip and shoulder"
+        - "fix_dead_arms: assign one hand a purpose (pocket, collar, waist)"
+        - "fix_empty_gaze: give gaze a soft target or emotion"
+        - "fix_no_scene_interaction: connect one body point to environment if available"
+      result_example: "standing with a slight three-quarter turn, weight shifted onto the back leg, one hand casually in pocket, soft engaging gaze just past camera"
+      preserve: "User's specified medium, camera angle, crop, outfit, and identity are not changed."
+
+  fix_hanger_pose:
+    goal: "Convert passive garment display into active wearing with body tension and attitude."
+    strategies:
+      - "rotate torso 15-20° away from camera to create depth while keeping face toward lens"
+      - "engage one shoulder forward, letting the garment drape or tension at the collarbone"
+      - "shift weight to back leg, letting front hip engage with a subtle tilt"
+      - "assign one hand a garment interaction (holding hem, gripping lapel, adjusting sleeve)"
+      - "add micro-tension in the arm that contacts the garment — fabric should respond to body position"
+      - "let the garment's weight and fabric type influence the pose: heavy coat needs shoulder support, silk dress needs hip sway"
+    fabric_specific_guidance:
+      silk_satin: "Soft body sway, gentle arm drift that reveals fabric drape and liquid reflection. Avoid sharp angular breaks that clash with silk's fluid nature."
+      cashmere_wool: "Relaxed weight shift with soft shoulder engagement. Let the fabric's natural drape do the work — minimal tension points."
+      leather_couture: "Angular limbs with sharp crease points at elbows and hips. Leather needs structured tension — one hand on hip, one gripping a lapel."
+      lace_sheer_mesh: "Stretched fabric contact points where fingers pull the material taut. Backlit body lines visible through the sheer zones. Avoid bunching or wrinkled lace."
+      tulle_organza: "Wide stance with one hand lifting or spreading the fabric. Volume needs space — avoid compressed poses that crush the silhouette."
+    renderer_language:
+      - "engaged editorial stance with garment-responsive body tension"
+      - "torso angled with one shoulder forward, fabric draping naturally"
+      - "one hand interacting with the garment"
+      - "weight shifted with subtle hip engagement"
+    forbidden:
+      - "static clothes-hanger symmetry"
+      - "garment and body existing independently of each other"
+
+  fix_fabric_presentation:
+    goal: "Use pose structure to showcase fabric behavior and material quality tier."
+    strategies:
+      - "when silk/satin is the hero material, pose for drape lines: one arm raised or extended to create a continuous fabric fall line"
+      - "when leather/couture is primary, pose for crease and tension: bent elbow with jacket crease, hand in pocket stretching the waistband"
+      - "when cashmere/wool is primary, pose for soft bulk: leaning pose where fabric gathers naturally at shoulders and hips"
+      - "when lace/sheer is active, pose for translucency: backlit body with fabric stretched across the light source"
+      - "when tulle/organza is used, pose for volume: one hand lifting the hem, fabric spreading in a wide silhouette"
+      - "align fabric tension points with the material_quality tier: standard → minimal tension, premium → deliberate tension, ultra-premium → fabric as the primary visual element"
+    renderer_language:
+      - "pose structured to reveal fabric drape and material behavior"
+      - "garment tension responding to body position"
+      - "fabric quality highlighted through natural crease and flow lines"
+    cross_reference: "Fabric tiers are defined in config/visual-cinematography/material-rendering-library.yaml (fashion_material_quality_ladder). Match pose strategy to the active fabric tier."
+
+# ===========================================================================
+# WEIGHT AND BALANCE RULES
+# ===========================================================================
+
+weight_and_balance_rules:
+  - "In any standing pose, one leg bears most weight. The free leg provides visual line, not support."
+  - "Weight-bearing hip rises slightly; free hip drops. This is the foundation of natural stance."
+  - "Opposite shoulder drops toward the free hip, creating the classic counterbalance line."
+  - "Feet should never be perfectly parallel unless a formal/military pose is requested."
+  - "The free foot should point, tap, or rest on toe — never float without ground reference."
+  - "For seated poses, weight is on one hip or both, but the spine should not be perfectly straight."
+  - "For leaning poses, the support point (shoulder, hip, hand) must visibly carry partial body weight."
+  - "For reclining poses, weight distributes across the widest contact surface; the free limbs create visual line."
+
+# ===========================================================================
+# GAZE AND INTENTION
+# ===========================================================================
+
+gaze_and_intention:
+  categories:
+    direct_engagement:
+      emotions: [confident, warm, intense, playful, curious]
+      technique: "Direct eye contact with specific micro-expression. Not blank."
+    off_frame:
+      emotions: [thoughtful, longing, alert, suspicious, wondering]
+      technique: "Gaze toward an implied target outside frame. Specify direction (upper-left, lower-right, etc.)."
+    introspective:
+      emotions: [serene, sad, tired, contemplative, shy]
+      technique: "Gaze downward or slightly averted. Subtle brow and lid tension controls mood."
+    over_shoulder:
+      emotions: [inviting, coy, confident, playful]
+      technique: "Head turned back toward camera, body angled away. Chin height controls tone."
+    closed_eyes:
+      emotions: [peaceful, blissful, pained, concentrating]
+      technique: "Closed eyes require supporting micro-expression in brows and mouth."
+
+  rules:
+    - "Neutral open eyes + neutral mouth = boring. At least one facial feature must carry expression."
+    - "Gaze direction should be motivated: looking at something, looking for something, or looking away from something."
+    - "Closed eyes need a reason (sun glare, emotion, meditation) — not a default."
+    - "Over-shoulder gaze must show visible neck tension; the chin lift/angle defines the tone."
+
+# ===========================================================================
+# HAND PURPOSE CATALOG
+# ===========================================================================
+
+hand_purpose_catalog:
+  categories:
+    pocket:
+      variations: [thumb_out_front, thumb_out_side, full_hand, fingertips]
+      mood: [casual, confident, relaxed]
+      note: "Thumb visible = engaged. Full hand hidden = more closed-off mood."
+    self_contact:
+      variations: [touching_collar, adjusting_cuff, hand_on_chest, fingers_at_necklace, hand_on_hip, touching_temple, brushing_hair]
+      mood: [elegant, thoughtful, playful, sensual]
+      note: "Self-contact should look intentional, not nervous."
+    surface_contact:
+      variations: [palm_flat, fingertips_resting, forearm_resting, leaning_weight_on_hand]
+      mood: [relaxed, grounded, casual]
+      note: "Surface contact must show partial weight transfer."
+    object_interaction:
+      variations: [holding_lightly, gripping, fingertips_touching, cradling]
+      mood: [context_dependent]
+      note: "Only for scene-justified objects. Do not invent props."
+    frame_reference:
+      variations: [near_camera_foreground, crossing_body, reaching_toward_lens]
+      mood: [dynamic, playful, intimate]
+      note: "Foreground hands add depth but must not cover face."
+    gesture:
+      variations: [pointing, peace_sign, wave, thumbs_up, hand_on_heart]
+      mood: [playful, narrative, expressive]
+      note: "Gestures must match audience and cultural context."
+    empty_purposeful:
+      variations: [slight_finger_curl, relaxed_open_palm, fingers_lightly_spread]
+      mood: [natural, candid, elegant]
+      note: "Even idle hands can look intentional with a slight curve."
+
+    garment_interaction:
+      variations: [holding_hem, adjusting_sleeve, gripping_lapel, pulling_fabric_taut, draping_arm_through_coat, flicking_skirt_hem, holding_jacket_over_shoulder, pulling_waistband, adjusting_collar, tugging_cuff, gathering_fabric_at_hip]
+      mood: [elegant, sensual, editorial, confident, playful]
+      note: "Garment interaction shows fabric quality through touch. Must look intentional, not fidgeting. Each fabric type responds differently: silk needs light pinch, leather needs firm grip, lace needs careful stretch. Cross-reference with the active fabric tier from material-rendering-library.yaml."
+      forbidden:
+        - "both hands doing the same garment interaction"
+        - "pulling fabric in a way that distorts the garment silhouette unnaturally"
+        - "fidgeting or nervous adjustment — each touch must look editorial"
+
+  rules:
+    - "Each visible hand must have a distinct role. Never both hands doing the same thing."
+    - "One hand active, one hand resting creates the best visual balance."
+    - "Fingers should never be fully straight and together unless a deliberate pose."
+    - "Hands near face should frame, not cover. Fingers near mouth or eyes must be intentional."
+    - "In commercial/editorial, hands should not block the product, logo, or face."
+
+# ===========================================================================
+# SCENE INTERACTION MATRIX
+# ===========================================================================
+
+scene_interaction_matrix:
+  note: "These are context defaults when no action is specified. If the user specifies an action (drinking, reading, typing, etc.), preserve that action and only enrich its pose expression — do not replace it with these defaults."
+  cafe_restaurant:
+    contact_points: [hand_on_cup, elbow_on_table, leaning_on_counter, holding_menu]
+    recommended: "Hand resting on or near a cup. Elbow on table with chin in hand for thoughtful mood."
+    avoid: "Two hands flat on table (interrogation pose)."
+  urban_street:
+    contact_points: [shoulder_on_wall, hand_on_railing, leaning_on_lamppost, one_foot_on_curb]
+    recommended: "One shoulder against wall, weight on back foot, front foot on curb."
+    avoid: "Standing perfectly centered in frame with no environmental contact."
+  beach_pool:
+    contact_points: [hand_on_hip, touching_water, holding_hat, adjusting_hair_for_wind]
+    recommended: "Weight on back leg, hand shielding eyes or touching hair, implied wind in pose."
+    avoid: "Standing stiffly at water's edge facing camera."
+  bedroom:
+    contact_points: [sitting_on_bed_edge, leaning_on_headboard, adjusting_sheet, hand_on_pillow]
+    recommended: "Sitting on edge with weight on one hand, legs at angle. Or side-lying with visible support arm."
+    avoid: "Lying perfectly centered and symmetrical on the bed."
+  studio_portrait:
+    contact_points: [hand_on_prop, leaning_on_stool, touching_collar, arm_on_thigh]
+    recommended: "Three-quarter turn, weight on back leg, one hand in pocket or touching collar."
+    avoid: "Front-facing, hands at sides, both feet planted."
+  staircase:
+    contact_points: [hand_on_railing, one_foot_upper_step, sitting_on_step, leaning_on_banister]
+    recommended: "Standing a few steps up, one hand on railing, body angled, trailing leg slightly behind."
+    avoid: "Standing flat on one step facing camera."
+  car_editorial:
+    contact_points: [leaning_on_hood, sitting_on_bonnet, hand_on_door_handle, arm_on_open_window]
+    recommended: "Lean against car with hip, one foot forward, hand on surface, body angled."
+    avoid: "Standing next to car with both hands at sides."
+
+  editorial_studio:
+    contact_points: [hand_on_prop, leaning_on_seamless_grip, gripping_fabric, adjusting_wardrobe, hand_on_light_stand]
+    recommended: "Three-quarter turn with one hand adjusting collar or gripping fabric. Weight on back leg, front leg creating a broken line at the knee. Use the studio space: lean into the background curve, interact with a prop, let garment drape toward the floor."
+    avoid: "Static full-frontal centered in frame with no studio interaction. Hands at sides on a seamless backdrop with no depth."
+
+  luxury_hotel_suite:
+    contact_points: [leaning_on_headboard, sitting_on_sofa_edge, hand_on_balcony_rail, arm_on_mirror, adjusting_bathrobe, holding_curtain]
+    recommended: "Sit on the edge of the bed or sofa with weight on one hand, legs crossed or one knee bent. Or lean against the balcony rail with city skyline behind, body angled, one hand touching hair or collar. Use the mirror for reflective depth."
+    avoid: "Lying perfectly centered on the bed with symmetrical arm position. Standing stiffly on the balcony facing camera."
+
+  runway_catwalk:
+    contact_points: [hand_on_hip_mid_walk, arm_swinging_naturally, turning_shoulder_back, garment_flying, one_foot_directly_below_hip]
+    recommended: "Mid-stride with one hand on hip or swinging naturally. The trailing arm should be slightly behind the body to show garment movement. Shoulders counter-rotate against the hips. The leading foot should land directly below the hip for a confident walk line."
+    avoid: "Frozen mannequin mid-step with both arms locked. Symmetrical stride. Garment showing no motion response."
+
+  yacht_private_jet:
+    contact_points: [leaning_on_railing, hand_on_wing, one_foot_on_step, sitting_on_armrest, looking_at_horizon, holding_champagne_flute]
+    recommended: "Lean against the railing with hip contact, one foot on a lower step, body angled toward the horizon. One hand on the railing, the other holding a glass or touching hair. The wind should visibly interact with hair and lightweight fabric."
+    avoid: "Both feet planted stiffly on deck. Standing at attention. Hands clutching the railing like a safety grip."
+
+# ===========================================================================
+# CAMERA RELATIONSHIP
+# ===========================================================================
+
+camera_relationship:
+  low_angle:
+    body_adaptation:
+      - "chin lifts slightly, jawline becomes more prominent"
+      - "shoulders open and pull back"
+      - "one hand can come closer to camera for forced perspective"
+      - "weight shifts back slightly to prevent looming"
+    mood_effect: "empowering, heroic, commanding, dramatic"
+    common_mistake: "subject looks down at camera — breaks the power dynamic"
+
+  high_angle:
+    body_adaptation:
+      - "chin drops slightly, eyes look up toward lens"
+      - "shoulders relax to avoid hunching"
+      - "hands near face or hair create intimacy"
+      - "weight shifts forward to prevent squat appearance"
+    mood_effect: "intimate, vulnerable, playful, delicate"
+    common_mistake: "hunched shoulders from looking down"
+
+  eye_level:
+    body_adaptation:
+      - "most natural, but most prone to boring without asymmetry"
+      - "shoulder angle and weight shift are critical here"
+      - "head tilt of 5-10 degrees prevents flatness"
+      - "hand purpose and gaze intention carry the pose"
+    mood_effect: "neutral, approachable, direct, honest"
+    common_mistake: "full-frontal symmetry with no weight shift"
+
+  dutch_angle:
+    body_adaptation:
+      - "pose should lean into or push against the tilt"
+      - "asymmetry is already present from the angle — do not overcorrect"
+      - "one hand reaching toward the tilt direction adds dynamic flow"
+    mood_effect: "uneasy, dynamic, edgy, cinematic"
+    common_mistake: "posing straight as if the camera were level"
+
+# ===========================================================================
+# FASHION-SPECIFIC: BROKEN LINE vs S-CURVE POSING
+# ===========================================================================
+
+fashion_pose_geometry:
+  description: >
+    High-fashion editorial uses two distinct pose geometries based on fabric type.
+    Selecting the wrong geometry breaks the garment's visual language.
+  geometry_types:
+    broken_line:
+      description: "Angular, geometric posing with sharp bends at joints — elbows, wrists, hips, knees create deliberate angles."
+      best_for_fabrics: [leather, couture, structured_cotton, denim, tailored_wool, stiff_silk]
+      best_for_moods: [edgy, powerful, avant_garde, architectural, high_contrast]
+      principles:
+        - "each major joint should form a visible angle (elbow bent 45-90°, hip shifted to create a waist angle)"
+        - "avoid soft curves: the arm line should change direction deliberately"
+        - "the spine can be straight or arched, but never in a soft C-curve"
+        - "hands should form sharp lines: wrist bent, fingers extended or precisely placed"
+      common_mistake: "Soft round curves that contradict the structured fabric's geometry"
+      renderer_language:
+        - "angular editorial pose with deliberate broken lines at elbows and hips"
+        - "geometric limb placement reinforcing the structured garment silhouette"
+
+    s_curve:
+      description: "Continuous flowing lines through the body — spine, neck, and limbs form an S or C curve."
+      best_for_fabrics: [silk, satin, chiffon, cashmere, fine_wool, jersey, lace]
+      best_for_moods: [sensual, elegant, romantic, soft, luxurious, dreamy]
+      principles:
+        - "the spine should show a gentle S-curve from head to pelvis"
+        - "limbs should flow into each other: arm into shoulder into torso without sharp breaks"
+        - "weight shift creates the curve: support hip pushes out, opposite shoulder drops"
+        - "hands and fingers should be relaxed, following the curve rather than breaking it"
+      common_mistake: "Jagged or angular breaks that interrupt the fabric's fluid drape"
+      renderer_language:
+        - "continuous S-curve silhouette with flowing body line"
+        - "elegant serpentine pose that mirrors the fabric's fluid drape"
+
+  fabric_geometry_mapping:
+    rule: "Match the pose geometry to the dominant fabric type. See config/visual-cinematography/material-rendering-library.yaml fashion_material_quality_ladder for tier definitions."
+    mapping:
+      "silk, satin, chiffon": "s_curve"
+      "cashmere, fine wool, jersey": "s_curve"
+      "lace, tulle, organza, sheer mesh": "s_curve with occasional broken accent at hem or sleeve"
+      "leather, patent leather, coated fabric": "broken_line"
+      "couture, denim, tailored wool, stiff cotton": "broken_line"
+      "mixed materials": "Let the dominant material decide. If equal, favor the more visually impactful fabric's geometry."
+
+# ===========================================================================
+# TASK TYPE DEFAULTS
+# ===========================================================================
+
+task_defaults:
+  portrait:
+    recommended_patterns: [fix_full_frontal_symmetry, fix_dead_arms, fix_empty_gaze]
+    priority: "face engagement first, body asymmetry second"
+    note: "Even headshot needs shoulder angle and gaze intention."
+  fashion_editorial:
+    recommended_patterns: [fix_even_stance, fix_aligned_planes, fix_dead_arms]
+    priority: "silhouette and garment lines first, face second"
+    note: "Fashion pose serves the clothing. Garment drape needs body tension."
+  selfie:
+    recommended_patterns: [fix_pose_independent_of_camera, fix_dead_arms, fix_empty_gaze]
+    priority: "camera relationship first, hand purpose second"
+    note: "Selfie has built-in camera relationship. Use near-hand for depth."
+  character_sheet:
+    recommended_patterns: [fix_aligned_planes, fix_even_stance]
+    priority: "silhouette readability first, asymmetry second"
+    note: "Character sheet needs readable front/side lines. Controlled asymmetry still required."
+  action:
+    recommended_patterns: [fix_no_scene_interaction, fix_dead_arms, fix_even_stance]
+    priority: "action line first, balance second, gaze third"
+    note: "Action already has motion — focus on readable force vector."
+  group:
+    recommended_patterns: [fix_full_frontal_symmetry, fix_aligned_planes, fix_dead_arms]
+    priority: "individual asymmetry within group rhythm"
+    note: "Never let all subjects pose the same way. Assign each a different weight shift."
+  editorial_cover:
+    recommended_patterns: [fix_full_frontal_symmetry, fix_empty_gaze, fix_dead_arms]
+    priority: "mood alignment first, pose readability second"
+    note: "Cover pose must work with typography layout. Leave negative space on one side."
+  swimwear_editorial:
+    recommended_patterns: [fix_even_stance, fix_aligned_planes, fix_dead_arms]
+    priority: "body line and weight shift first, hand placement second"
+    note: "Swimwear has no garment structure to hide behind — pose must create the visual interest."
+
+  luxury_fashion_editorial:
+    recommended_patterns: [fix_hanger_pose, fix_fabric_presentation, fix_even_stance, fix_aligned_planes]
+    priority: "silhouette and material quality first, garment interaction second, model attitude third, face last"
+    note: >
+      Luxury editorial serves the fabric and silhouette before the model's face. The pose must reveal
+      material quality through body tension and garment contact points. Fabric geometry (s-curve vs
+      broken line) must match the dominant material type. The model's attitude should project
+      confident detachment — not warm engagement, not blank emptiness.
+    fabric_specific:
+      silk_satin: "s-curve pose with flowing arm lines and gentle hip sway. Garment interaction: light pinch at hem or waist."
+      leather_couture: "broken-line pose with angular elbows and structured shoulder tension. Garment interaction: firm grip on lapel or waistband."
+      cashmere_wool: "relaxed s-curve with soft shoulder engagement. Garment interaction: hand in pocket or adjusting collar."
+      lace_sheer: "s-curve with stretched fabric contact points. Garment interaction: pulling fabric taut across the body to reveal translucency."
+      tulle_organza: "wide broken-line pose with lifted arm holding or spreading the hem. Garment interaction: one hand lifting the fabric volume."
+
+# ===========================================================================
+# FORBIDDEN FIXES — what NOT to do when fighting boring
+# ===========================================================================
+
+forbidden_fixes:
+  - "Do not add random props just to give hands something to do. Props must be scene-justified."
+  - "Do not force dynamic poses (jumping, spinning, running) when the user asks for a calm or elegant portrait."
+  - "Do not contort anatomy to create interest. Asymmetry must stay within natural range of motion."
+  - "Do not invent extra characters, animals, or objects for interaction."
+  - "Do not change the camera shot size just to accommodate pose variety."
+  - "Do not fabricate wind, weather, or motion effects to add life to a static pose."
+  - "Do not replace a boring standing pose with a seated or reclining pose if standing was specified."
+  - "Do not overcorrect: a slight shoulder angle and hand in pocket is often enough to fix a boring pose."
+  - "Do not override the user's specified action. If the user says 'holding a sword', do not change it to 'hand in pocket'."
+  - "Do not change locked attributes: face, hairstyle, outfit, body shape, props, or identity markers — even if the pose would look better with different clothing."
+  - "Do not add pose interactions that require the subject to move from their specified location or crop."
+  - "Do not modify explicit hand actions (waving, pointing, holding, gripping) — only enrich if the hand position is truly unspecified."
+
+# ===========================================================================
+# FASHION NEGATIVE GUARDS — explicit avoid terms for final renderer
+# ===========================================================================
+
+fashion_editorial_negative_guards:
+  purpose: "Prevent boring pose artifacts from reaching the final prompt. These are added to the negative/renderer guardrails when fashion editorial posing is active."
+  guards:
+    - "stiff front-facing pose"
+    - "mannequin-like posture"
+    - "symmetrical standing"
+    - "arms hanging lifelessly"
+    - "flat shoulders"
+    - "frozen expression"
+    - "awkward hands"
+    - "disconnected body parts"
+    - "unnatural spine twist"
+    - "broken anatomy"
+    - "random gesture"
+    - "exaggerated action unrelated to the scene"
+  model_specific_mapping:
+    chatgpt_image: "Use natural-language avoid phrases woven into the brief: 'avoid stiff front-facing pose, mannequin posture, symmetrical standing, arms hanging lifelessly, flat shoulders, frozen expression, awkward hands, disconnected body parts, unnatural spine twist, broken anatomy, random gesture, or exaggerated action.'"
+    z_image_turbo: "Compact negative tags: stiff_front_pose, mannequin_posture, symmetrical_standing, lifeless_arms, flat_shoulders, frozen_expression, awkward_hands, disconnected_body, unnatural_twist, broken_anatomy, random_gesture, exaggerated_action."
+    stable_diffusion: "Direct negative prompt tags: stiff front-facing pose, mannequin like posture, symmetrical standing, arms hanging lifelessly, flat shoulders, frozen expression, awkward hands, disconnected body parts, unnatural spine twist, broken anatomy, random gesture, exaggerated action."
+
+# ===========================================================================
+# RULES
+# ===========================================================================
+
+rules:
+  - "P93 anti-boring check runs before character identity is resolved. Pose design precedes outfit and anatomy detail."
+  - "If the user explicitly describes a pose, preserve it. Only enrich for intention, never overwrite."
+  - "If no pose is described, diagnose boring patterns and apply strategies before adding any other detail."
+  - "A quiet pose with intention (weight shifted, hand in pocket, soft gaze) is not boring — do not over-enrich it."
+  - "Every standing subject must have a weight distribution. Even stance is the default boring pattern to fix."
+  - "Every subject with visible hands must have a hand purpose. Idle hands trigger the anti-boring hand catalog."
+  - "Pose enrichment must not contradict the camera angle. Check camera_relationship section for adaptation rules."
+  - "Scene interaction must be motivated by the environment. Do not invent contact with non-existent objects."
+  - "Cross-reference with pose-gesture-body-language.yaml for pose vocabulary and emotional posture."
+  - "Cross-reference with standing-pose-balance-system.yaml for weight distribution and center of gravity mechanics."
+  - "Cross-reference with human-anatomy-guardrails.yaml to ensure pose enrichment does not create anatomy risk."
+  - "When luxury_fashion_editorial task is active, apply fabric-specific pose geometry from fashion_pose_geometry section. Match s-curve or broken-line to the dominant fabric type from material-rendering-library.yaml."
+  - "When fashion editorial is active, include fashion_editorial_negative_guards in the renderer guardrails to prevent boring pose artifacts in the final prompt."
+  - "If the user specifies a locked_attributes block, every pose fix must be compatible with all locked elements. Do not change outfit, hairstyle, props, or identity markers."
+  - "Pose enrichment must not introduce new action verbs that replace the user's verb. Enrich the existing action, not replace it."
+  - "Scene_interaction_matrix entries are context defaults when no action is specified. They must not override explicit user actions."
+  - "Cross-reference with fashion-silhouette-library.yaml when a silhouette is active. Match pose_geometry (s-curve or broken-line) to the silhouette's recommended geometry. For cut_out and strappy silhouettes, default to broken-line angular poses. For plunge and sheer_layering, default to s-curve flowing poses."
+  - "Cross-reference with garment-layering-logic.yaml when layering is active. Adjust pose to show visible edge rules (collar peeking, hem distinction, cuff visibility). Avoid poses that compress or hide the layering structure."
+  - "When fashion_pose_geometry.broken_line is active from a sexy editorial silhouette (cut_out, strappy), use angular limb placement that emphasizes strap tension and cut-out geometry. The negative space of the pose should mirror the negative space of the garment."

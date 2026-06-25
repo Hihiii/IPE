@@ -1,0 +1,150 @@
+# =============================================================================
+# SKILL PHASE 5: FINAL PROMPT — USER SIGN-OFF
+# Extracted from SKILL.md (lines 1417-1556)
+# =============================================================================
+
+skill_phase:
+  phase: 5
+  name: "Phase 5: Final Prompt — User Sign-Off"
+  internal: false
+  source: "SKILL.md lines 1417-1556"
+  instructions: |
+    ## Phase 5: Final Prompt — User Sign-Off
+
+    Deliver the final prompt repackaged in Phase 4.3. The `final_prompt` is the only default user-facing output. It must remain cleaned, internally consistent, and formatted for the selected `model_target`; if a cover/poster/publication request exists, it must also reflect the selected `publication_mode`. Do not dump verbose category output or raw YAML/JSON prompt packages into the generator-facing prompt field.
+
+    After the final prompt is assembled, generate a timestamped TXT export containing ALL model targets. Save every generated TXT file in the user's real desktop folder `comfyui_prompt`, creating the folder if it does not already exist. Resolve the desktop path in a cross-platform way before writing: on Linux, respect `XDG_DESKTOP_DIR` from `~/.config/user-dirs.dirs`; otherwise use the user's standard Desktop folder such as `~/Desktop` or `C:\Users\<user>\Desktop`. Never treat `desktop/comfyui_prompt` as a relative path, and never write the export under the skill folder, repository folder, current working directory, or any local `desktop/` folder. The filename must be `final_` plus the current local date and time in `YYYYMMDD_HHMMSS` format, followed by `.txt`, for example `final_20260618_214530.txt`; if that filename already exists, create a new suffixed file such as `final_20260618_214530_01.txt` rather than overwriting. Generate family variants for all renderers: chatgpt_image, flux, z_image_base, z_image_turbo, comfyui_flux2_zimage_3stage, stable_diffusion, midjourney, image_edit. collapse_identical_outputs deduplicates sections when multiple models share identical positive/negative/resolution content. Each section must include:
+
+    - `Positive Prompt`
+    - `Negative Prompt`
+    - `Suggested Resolution`
+
+    For `chatgpt_image`, `flux`, and `midjourney`, map the main `prompt` field to `Positive Prompt` and map `avoid` / `--no` terms to `Negative Prompt`. For `comfyui_flux2_zimage_3stage`, map `shared_positive_prompt` to `Positive Prompt`, map `z_image_negative_prompt` to `Negative Prompt`, and include the stage usage note so Flux.2 Dev uses positive only while Z-Image Base/Turbo use positive plus negative. If a renderer does not support a true negative prompt, write `(not specified)` rather than inventing one. Use `config/core-knowledge.yaml` (`output_specs` section) to choose `suggest_resolution` from aspect ratio, output use, and workflow target.
+
+    If multiple model targets produce exactly the same Positive Prompt, Negative Prompt, and Suggested Resolution, do not duplicate separate sections. Write one section and list all equivalent targets in `model_target`, for example `model_target: chatgpt_image, flux`. If any target needs different syntax, different negative prompt behavior, or a different resolution, keep it as a separate section.
+
+    Use `scripts/write_final_prompt_txt.py` for deterministic file output whenever a machine-readable Phase 5 object is available. Do not pass a relative `--output-dir`; omit `--output-dir` so the script resolves Desktop automatically, unless an absolute custom directory is explicitly requested by the user.
+
+    ### ChatGPT Image Example
+
+    ```yaml
+    final_prompt:
+      model_target: "chatgpt_image"
+      renderer_profile: "natural_language_semantic"
+      suggest_resolution: "1024x1536 or 1536x2048 portrait, depending on workflow budget"
+
+      prompt: >
+        A photorealistic waist-up fashion portrait of an adult woman standing between two semi-transparent frosted glass panels.
+        She is placed on the left third with generous negative space to the right.
+        Soft diffused light comes from camera-right, creating smooth facial shadows and natural catchlights.
+        The image has natural skin texture, warm neutral tones, and a restrained luxury editorial mood.
+
+      avoid: >
+        Avoid cropped hands, plastic skin, random text, watermark, distorted anatomy, door handles, hinges, or glass doors.
+
+      locked_constraints:
+        - "frosted glass panels, not glass doors"
+        - "no door handles or hinges"
+
+      user_status: "pending | accepted | modified"
+    ```
+
+    ### Z Image Turbo Example — Publication / Magazine Cover
+
+    ```yaml
+    final_prompt:
+      model_target: "z_image_turbo"
+      renderer_profile: "detailed_visual_explicit"
+      publication_mode: "implied_cover_text_mode"
+      suggest_resolution: "1024x1536 portrait or 1536x2048 upscale target"
+
+      positive_prompt: >
+        photorealistic automotive magazine cover, Toyota Supra sports car, full car visible,
+        parked on a sunlit city street at golden hour, Japanese woman casually leaning against the driver-side door,
+        smiling at the camera, car slightly left of center, warm soft side light from camera-right,
+        glossy metallic paint, correct car proportions, clean wheel shape, urban background softly blurred,
+        large magazine masthead at the top, a few clean supporting cover lines,
+        clear professional cover layout, high-contrast editorial look
+
+      negative_prompt: >
+        cropped car, cropped hands, extra fingers, blurry face, blurry car, distorted car proportions,
+        warped wheels, random unreadable text, messy typography, watermark, flat lighting, cartoon
+
+      locked_constraints:
+        - "automotive magazine cover, not text-free hero image"
+        - "Toyota Supra remains the hero subject"
+        - "cover typography intent remains visible"
+
+      user_status: "pending | accepted | modified"
+    ```
+
+    ### ChatGPT Image Example — Exact Cover Text
+
+    ```yaml
+    final_prompt:
+      model_target: "chatgpt_image"
+      renderer_profile: "natural_language_semantic"
+      publication_mode: "exact_text_mode"
+      suggest_resolution: "1024x1536 portrait or 1536x2048 upscale target"
+
+      prompt: >
+        A photorealistic automotive magazine cover featuring a Toyota Supra sports car and a Japanese woman on a golden-hour city street.
+        The Supra is the hero subject, fully visible with clean proportions and glossy metallic paint.
+        Add a large readable masthead at the top reading "SUPRA STYLE" and a short supporting cover line reading "TOKYO STREET PERFORMANCE".
+        Keep the cover layout professional, with clear editorial spacing, sharp subject focus, and softly blurred urban background.
+
+      avoid: >
+        Avoid cropped car, warped wheels, blurry face, distorted hands, random extra text, messy typography, watermark, and cartoon style.
+
+      locked_constraints:
+        - "masthead text: SUPRA STYLE"
+        - "cover line text: TOKYO STREET PERFORMANCE"
+
+      user_status: "pending | accepted | modified"
+    ```
+
+    ### Stable Diffusion Example
+
+    ```yaml
+    final_prompt:
+      model_target: "stable_diffusion"
+      renderer_profile: "tag_style_positive_negative"
+      suggest_resolution: "832x1216 portrait or nearest model-native aspect ratio"
+
+      positive_prompt: >
+        photorealistic portrait, waist-up, adult woman, frosted glass panels, subject on left side,
+        negative space, soft side light, natural skin texture, sharp eyes, warm neutral palette, editorial photography
+
+      negative_prompt: >
+        cropped hands, extra fingers, bad anatomy, plastic skin, blurry face, watermark, random text, glass door, door handle
+
+      user_status: "pending | accepted | modified"
+    ```
+
+    ### Image Edit Example
+
+    ```yaml
+    final_prompt:
+      model_target: "image_edit"
+      renderer_profile: "change_only_preserve_rest"
+      suggest_resolution: "match source image resolution unless the user requests resizing"
+
+      edit_instruction: >
+        Only change the pose to a cheerful peace-sign gesture and make the expression happy.
+
+      must_preserve:
+        - "same face"
+        - "same hairstyle"
+        - "same body shape"
+        - "same outfit"
+        - "same background"
+
+      forbidden_changes:
+        - "do not change identity"
+        - "do not change clothing"
+        - "do not change camera crop unless requested"
+
+      user_status: "pending | accepted | modified"
+    ```
+
+    The user may edit any part. After sign-off, the model-specific final prompt and the generated `final_YYYYMMDD_HHMMSS.txt` file are ready for generation.

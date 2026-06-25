@@ -1,0 +1,282 @@
+# ============================================================
+# face-expression-gaze-system.yaml
+# Facial expression, gaze control, and emotional-readability controller
+# Version: 1.0.0
+# Purpose:
+#   Improve prompts involving portraits and characters by controlling
+#   expression logic, gaze direction, emotional clarity, and facial micro-cues.
+# ============================================================
+
+schema_version: "1.1.0"
+name: "face-expression-gaze-system"
+description: >
+  A prompt-enhancement module for facial expression design, eye direction,
+  emotional readability, and portrait-level psychological presence. It helps
+  define not only what the face looks like, but how the face feels.
+
+  LOAD POLICY: Do NOT load for every portrait. Core-knowledge.yaml basic
+  visual hierarchy already covers face/eyes as first-read priority. Only load
+  this 12KB file when emotional expression, gaze direction, or uncanny-face
+  prevention needs detailed control.
+
+core_principle: >
+  A strong face prompt defines gaze target, emotional tone, facial muscle logic,
+  and intensity level. Eyes, eyebrows, eyelids, mouth corners, jaw relaxation,
+  and head tilt should cooperate rather than contradict each other.
+
+global_rules:
+  - "Separate gaze direction from emotional expression."
+  - "Define whether eye contact is direct, indirect, off-camera, downward, upward, or target-oriented."
+  - "Define the emotional tone and intensity: subtle, moderate, or strong."
+  - "Facial features should coordinate logically: eyebrows, eyelids, mouth, jaw, and head angle should support the same emotional reading."
+  - "Avoid expression drift where the eyes suggest one emotion while the mouth suggests an unrelated one unless ambiguity is intentional."
+  - "For editorial or cinematic portraits, favor nuanced micro-expression over exaggerated cartoon-like emotion unless stylization is requested."
+  - "Preserve identity while adjusting expression."
+  - "Expression must match the body action, social situation, lighting mood, and camera distance."
+  - "Avoid beauty-retouching language that turns faces into doll-like, waxy, or emotionally blank masks."
+  - "For realistic portraits, use small asymmetric human cues instead of perfectly symmetrical facial tension."
+
+face_expression_gaze_schema:
+  gaze_mode: "direct_eye_contact | looking_off_camera | looking_at_subject | looking_down | looking_up | side_glance | closed_eyes | distant_gaze"
+  gaze_target: "camera | viewer | another_character | object | horizon | undefined"
+  emotional_tone: []
+  intensity: "subtle | moderate | strong"
+  eyebrow_state: []
+  eyelid_state: []
+  mouth_state: []
+  jaw_state: []
+  head_tilt: "none | slight_left | slight_right | chin_up | chin_down | custom"
+  preserve_identity: true
+  ambiguity_mode: "off | controlled | intentional"
+
+emotion_profiles:
+  confident:
+    cues:
+      - "steady gaze"
+      - "slightly lowered chin or calm frontal posture"
+      - "controlled mouth corners"
+      - "composed eyelids"
+  joyful:
+    cues:
+      - "bright eyes"
+      - "lifted cheeks"
+      - "natural smile affecting both mouth and eyes"
+  melancholic:
+    cues:
+      - "soft or distant gaze"
+      - "relaxed mouth"
+      - "slightly heavy eyelids"
+      - "subtle emotional restraint"
+  serious:
+    cues:
+      - "focused gaze"
+      - "neutral mouth"
+      - "minimal cheek tension"
+      - "stable brow line"
+  playful:
+    cues:
+      - "side glance or teasing eye contact"
+      - "asymmetric smile"
+      - "light eyebrow lift"
+  mysterious:
+    cues:
+      - "partially indirect gaze"
+      - "controlled expression"
+      - "understated mouth movement"
+      - "reserved emotional readability"
+  seductive:
+    cues:
+      - "soft intense eye contact or half-lidded gaze"
+      - "controlled mouth softness"
+      - "confident facial relaxation"
+  surprised:
+    cues:
+      - "widened eyes"
+      - "raised brows"
+      - "slightly parted lips"
+      - "jaw loosened"
+
+natural_expression_logic:
+  purpose: >
+    Convert vague emotion words into believable facial muscle behavior. The final prompt
+    should describe a face that makes psychological and physical sense instead of stacking
+    unrelated expression adjectives.
+  facial_muscle_coherence:
+    eyes:
+      realistic_cues:
+        - "eyes focused on a clear target"
+        - "catchlights present but not glassy"
+        - "eyelid tension matches emotion intensity"
+      avoid:
+        - "dead eyes"
+        - "overly glassy stare"
+        - "cross-eyed look"
+        - "eyes looking at different targets"
+    brows:
+      realistic_cues:
+        - "brow tension supports the emotion"
+        - "subtle asymmetry when natural"
+        - "forehead tension stays proportional"
+      avoid:
+        - "random raised eyebrows"
+        - "over-wrinkled forehead"
+        - "brows contradicting mouth emotion"
+    mouth:
+      realistic_cues:
+        - "mouth corners follow the emotional tone"
+        - "smile affects cheeks and lower eyelids when genuine"
+        - "parted lips remain natural and context-appropriate"
+      avoid:
+        - "forced grin"
+        - "over-wide mouth"
+        - "teeth distorted by expression"
+        - "smile with lifeless eyes"
+    jaw_and_head:
+      realistic_cues:
+        - "jaw relaxation matches tension level"
+        - "chin angle supports confidence, vulnerability, attention, or fatigue"
+        - "head turn aligns with gaze target"
+      avoid:
+        - "broken neck angle"
+        - "head turned away while eyes stare directly at viewer without intent"
+        - "jaw tension unrelated to scene"
+
+contextual_expression_profiles:
+  commercial_beauty:
+    guidance: "clean confident expression, relaxed jaw, subtle mouth softness, bright but natural eyes, no exaggerated smile"
+  cinematic_drama:
+    guidance: "contained emotion, focused gaze, restrained brow tension, small mouth movement, expression shaped by the story beat"
+  lifestyle_candid:
+    guidance: "unforced expression, natural asymmetry, gaze tied to the activity, smile or concentration that feels captured rather than posed"
+  fashion_editorial:
+    guidance: "controlled facial expression, precise gaze direction, composed mouth, elegant head angle, emotionally readable but not theatrical"
+  action_or_sports:
+    guidance: "focused eyes, exertion-consistent jaw and brow tension, mouth shape matching breathing or effort, no glamour smile unless requested"
+  intimate_portrait:
+    guidance: "soft eye contact or intentional off-camera gaze, relaxed facial tension, subtle micro-expression, skin texture preserved"
+
+gaze_target_consistency_rules:
+  purpose: "Prevent direct viewer-facing portraits when the scene implies attention elsewhere."
+  rules:
+    - "If the subject is holding or using an object, gaze should usually connect to the object unless direct eye contact is requested."
+    - "If multiple people interact, define who looks at whom or which shared object anchors attention."
+    - "If the subject is walking, driving, cooking, reading, watching, performing, aiming, or working, gaze should follow the activity."
+    - "If direct eye contact is requested, body posture and head angle should support intentional viewer engagement."
+    - "If gaze is distant or off-camera, make the direction and emotional reason readable."
+  positive_language:
+    - "gaze anchored to the action"
+    - "eyes, head angle, and body direction agree"
+    - "clear attention target"
+    - "natural off-camera gaze"
+  negative_language:
+    - "unclear gaze"
+    - "accidental eye contact"
+    - "eyes and head facing different directions"
+    - "attention target mismatch"
+
+micro_expression_guidelines:
+  - "Subtle expressions should rely on small brow, eye, and mouth changes."
+  - "Smiles should affect the eyes unless the scene intentionally calls for a posed smile."
+  - "A serious or elegant expression should avoid overly exaggerated mouth tension."
+  - "A melancholic look should not collapse into a blank or lifeless face."
+  - "Mouth openness, teeth visibility, and tongue visibility should be intentional and physically plausible, not accidental artifacts."
+  - "Face lighting should reveal eye shape and expression; avoid shadows that erase the emotional read unless mystery is requested."
+
+common_failures:
+  - "blank doll-like face"
+  - "dead eyes"
+  - "emotion mismatch between eyes and mouth"
+  - "forced grin"
+  - "unintended cross-eyed look"
+  - "expression too exaggerated for editorial realism"
+  - "gaze direction unclear"
+  - "over-smoothed plastic face"
+  - "uncanny perfect symmetry"
+  - "head direction disconnected from gaze"
+  - "expression does not match body action"
+
+self_review_checklist:
+  - "Is the gaze direction explicit?"
+  - "Is the emotional tone explicit?"
+  - "Do the eyes, brows, and mouth support the same emotion?"
+  - "Does the face remain expressive without losing identity?"
+  - "Is the expression intensity appropriate for the scene type?"
+
+model_specific_rendering:
+  chatgpt_image:
+    guidance: >
+      Use natural language to describe gaze target, emotional tone, and facial micro-cues.
+      Favor nuanced expression wording for portraits and editorial imagery. Link eyes,
+      brows, mouth, jaw, and head angle into one coherent expression and make the gaze
+      target match the scene action.
+  z_image_turbo:
+    positive_template: >
+      clear gaze direction, expressive eyes, coordinated expression,
+      natural facial emotion, no dead eyes, subtle micro-expression
+    negative_template: >
+      blank face, dead eyes, forced smile, emotion mismatch, unclear gaze
+  stable_diffusion:
+    positive_template: >
+      expressive face, clear gaze, natural emotion, subtle brow and mouth cues,
+      readable expression
+    negative_template: >
+      blank expression, dead eyes, awkward smile, cross-eyed, emotion mismatch
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - face_expression_gaze_schema
+    action: "Detect portrait/character tasks where gaze and emotional expression matter."
+  phase_2_cinematic_enrichment:
+    action: "Translate vague emotional requests into coordinated gaze and facial-muscle cues."
+  phase_3_scene_blueprint:
+    action: "Coordinate facial emotion with body language, identity, styling, and lighting."
+  phase_4_self_review:
+    checks:
+      - "Check gaze clarity."
+      - "Check emotion readability."
+      - "Check micro-expression coherence."
+  phase_4_5_cleanup:
+    action: "Preserve facial-expression and gaze instructions during compression."
+  phase_4_6_renderer_selection:
+    action: "Render expression/gaze instructions in model-appropriate language."
+  phase_5_final_prompt:
+    action: "Include concise but explicit gaze and expression instructions whenever people are central."
+
+
+# ------------------------------------------------------------
+# Screen / Object Attention Gaze Extension
+# ------------------------------------------------------------
+
+screen_viewing_gaze_logic:
+  purpose: >
+    Prevent prompts such as watching TV or using a screen from becoming direct viewer-facing portraits.
+  rules:
+    - "If the user says watching TV, the gaze target should be the TV screen, not the viewer."
+    - "If the TV is off-frame, the gaze direction should still clearly point toward the off-frame screen."
+    - "Head angle and eyes should align toward the attention anchor."
+    - "Direct viewer eye contact is a failure unless explicitly requested."
+  positive_language:
+    - "eyes directed toward the TV screen"
+    - "head subtly turned toward the television"
+    - "gaze follows the off-frame screen direction"
+    - "screen is the attention anchor"
+  negative_language:
+    - "looking at viewer"
+    - "direct portrait eye contact"
+    - "gaze unrelated to the television"
+    - "head direction disconnected from screen"
+
+selfie_gaze_logic:
+  selfie_perspective:
+    default_gaze: looking_into_lens
+    lens_awareness: high
+    mirror_gaze: false
+    phone_gaze: false
+  phone_selfie:
+    default_gaze: looking_at_phone_camera_or_screen
+    lens_awareness: high
+    phone_position_affects_gaze: true
+  mirror_selfie:
+    default_gaze: looking_at_mirror_reflection_or_phone_screen
+    reflection_gaze_logic: required

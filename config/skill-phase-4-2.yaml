@@ -1,0 +1,268 @@
+# =============================================================================
+# SKILL PHASE 4.2: MODEL-SPECIFIC RENDERER SELECTION
+# Extracted from SKILL.md (lines 1128-1385)
+# =============================================================================
+
+skill_phase:
+  phase: 4.2
+  name: "Phase 4.2: Model-Specific Renderer Selection"
+  internal: true
+  source: "SKILL.md lines 1128-1385"
+  instructions: |
+    ## Phase 4.2: Model-Specific Renderer Selection *(internal)*
+
+    For covers, posters, magazine layouts, labels, or exact-copy requests, load `config/text-brand-layout/publication-text-policy.yaml` with `config/text-brand-layout/text-rendering-accuracy.yaml`. Use exact text for ChatGPT Image when requested; for Z Image, Flux, Stable Diffusion, and Midjourney, prefer `text_safe_layout_only_mode` or a limited short exact-text request according to the selected policy. Never invent cover lines or fake brand copy.
+
+    For image-edit or image-to-image tasks, load `config/edit-reference/attribute-change-control-policy.yaml` with `config/prompt-core/constraints-library.yaml`. Preserve identity, pose, camera angle, composition, clothing, expression, and body shape unless the user explicitly makes an attribute editable; do not rewrite an edit request as a text-to-image scene.
+
+    Select the final prompt renderer from `config/prompt-core/prompt-renderer.yaml` using `intent.model_target`. This phase converts the cleaned universal prompt package into the target model's preferred final syntax. It must not enforce a token or word budget; advisory length ranges are only references for unusual user-requested brevity or known downstream limits. Do not report this internal renderer selection unless expert or debug output is requested.
+
+    ### Renderer Selection Rules
+
+    ```yaml
+    renderer_selection:
+      default_model_target: "chatgpt_image"
+      supported_targets:
+        - chatgpt_image
+        - z_image_base
+        - z_image_turbo
+        - comfyui_flux2_zimage_3stage
+        - stable_diffusion
+        - midjourney
+        - flux
+        - image_edit
+        - video_prompt
+
+      selection_priority:
+        - explicit_user_model_target
+        - workflow_or_platform_hint
+        - output_medium_hint
+        - default_model_target
+
+      routing_examples:
+        chatgpt_image:
+          triggers: ["ChatGPT Image", "image2", "gpt image", "OpenAI image"]
+          final_format: "natural_language_prompt_with_concise_avoid"
+        z_image_base:
+          triggers: ["Z Image Base", "z-image base", "z image base"]
+          final_format: "dense_positive_prompt_and_negative_prompt"
+        z_image_turbo:
+          triggers: ["Z Image Turbo", "z image turbo", "turbo", "ComfyUI z image turbo"]
+          final_format: "positive_prompt_and_negative_prompt"
+        comfyui_flux2_zimage_3stage:
+          triggers: ["Flux.2 Dev + Z-Image Base + Z-Image Turbo", "three-stage ComfyUI workflow", "shared positive prompt"]
+          final_format: "shared_positive_prompt_and_z_image_negative_prompt"
+        stable_diffusion:
+          triggers: ["Stable Diffusion", "SDXL", "Pony", "checkpoint", "LoRA"]
+          final_format: "positive_prompt_and_negative_prompt_tag_style"
+        midjourney:
+          triggers: ["Midjourney", "MJ", "--ar", "--style raw"]
+          final_format: "compact_aesthetic_prompt_with_parameters"
+        flux:
+          triggers: ["Flux", "FLUX.1", "schnell", "dev"]
+          final_format: "subject_first_clean_natural_language"
+        image_edit:
+          triggers: ["edit", "modify", "only change", "只改", "保持不變"]
+          final_format: "change_only_with_must_preserve_and_forbidden_changes"
+        video_prompt:
+          triggers: ["i2v", "t2v", "video", "first frame", "影片"]
+          final_format: "stable_first_frame_plus_motion_and_camera_movement"
+    ```
+
+    ### Renderer Behavior
+
+    - `chatgpt_image`: preserve semantic relationships, natural-language scene logic, and concise avoid instructions; when the source prompt is short, expand it into a complete prompt with subject, composition, light, material, background, atmosphere, output intent, and constraints.
+    - `z_image_base`: use dense subject-first visual phrase chains with positive/negative split. Preserve complete composition, lighting, material, anatomy, expression/gaze, exact text, and geometry details, but do not use ChatGPT-style paragraphs.
+    - `z_image_turbo`: use a subject-first, detailed visual phrase chain and output positive/negative prompts when supported. Translate cinematography into concrete visible effects, including spatial relationships, lighting direction, material response, and scene logic. Preserve all prompt details that materially affect the image, including multi-subject roles, anatomy, expression/gaze, exact text, material, geometry, water/fabric physics, and scene support logic; do not shorten purely for a word target.
+    - `comfyui_flux2_zimage_3stage`: output one `shared_positive_prompt` for Flux.2 Dev, Z-Image Base, and Z-Image Turbo, plus one `z_image_negative_prompt` used only by Z-Image Base/Turbo. The shared positive must contain no negative syntax or failure words because Flux.2 Dev consumes it directly.
+    - `stable_diffusion`: use detailed, tag-friendly positive and negative prompts, keep the most important tags early, and preserve every image-affecting relationship without relying on long prose.
+    - `midjourney`: use detailed, clear visual language in Midjourney-compatible syntax and append requested parameters such as aspect ratio.
+    - `flux`: use clean natural language with explicit subject-first ordering and minimal keyword noise.
+    - `image_edit`: prioritize `change_only`, `must_preserve`, `locked_attributes`, and `forbidden_changes` over all aesthetic enhancements.
+    - `video_prompt`: preserve a stable first frame, readable subject silhouette, motion-ready layers, and camera movement intent.
+
+    ### Output Contract
+
+    ```yaml
+    renderer_output_contract:
+      model_target: "chatgpt_image | z_image_base | z_image_turbo | comfyui_flux2_zimage_3stage | stable_diffusion | midjourney | flux | image_edit | video_prompt"
+      renderer_profile: "selected in Phase 4.2"
+      source_prompt_package: "Phase 3.1 optimized and Phase 4.1 cleaned package"
+      final_fields_depend_on_renderer:
+        chatgpt_image: [prompt, avoid, suggest_resolution, locked_constraints, user_status]
+        z_image_base: [positive_prompt, negative_prompt, suggest_resolution, locked_constraints, user_status]
+        z_image_turbo: [positive_prompt, negative_prompt, suggest_resolution, locked_constraints, user_status]
+        comfyui_flux2_zimage_3stage: [shared_positive_prompt, z_image_negative_prompt, suggest_resolution, stage_usage, locked_constraints, user_status]
+        stable_diffusion: [positive_prompt, negative_prompt, suggest_resolution, settings_notes, user_status]
+        midjourney: [prompt, parameters, no_terms, suggest_resolution, user_status]
+        flux: [prompt, avoid, suggest_resolution, user_status]
+        image_edit: [edit_instruction, must_preserve, change_only, forbidden_changes, suggest_resolution, user_status]
+        video_prompt: [first_frame_prompt, motion_prompt, camera_motion, avoid, suggest_resolution, user_status]
+      phase_5_txt_export:
+        required: true
+        filename_pattern: "final_YYYYMMDD_HHMMSS.txt"
+        output_directory: "ABSOLUTE_USER_DESKTOP/comfyui_prompt"
+        forbidden_output_directories:
+          - "skill folder"
+          - "repository folder"
+          - "current working directory"
+          - "relative desktop/comfyui_prompt"
+        desktop_resolution: "Resolve the real user Desktop first, then append comfyui_prompt. On Linux, respect XDG_DESKTOP_DIR from ~/.config/user-dirs.dirs; otherwise use the user's standard Desktop folder."
+        create_output_directory_if_missing: true
+        writer: "scripts/write_final_prompt_txt.py"
+        export_family_variants: true
+        export_family_variants_rule: "Always generate family variants for ALL model targets: chatgpt_image, flux, z_image_base, z_image_turbo, comfyui_flux2_zimage_3stage, stable_diffusion, midjourney, image_edit. collapse_identical_outputs deduplicates sections when multiple models share identical content."
+        include_requested_workflow_target: true
+        collapse_identical_outputs: true
+        fields_per_model_target:
+          - positive_prompt
+          - negative_prompt
+          - suggest_resolution
+    ```
+
+    ### Anatomy Rendering Rules
+
+    When `anatomy_risk.level` is `high` or `critical`, or when the lower body is clearly visible, apply `config/character-identity/human-anatomy-guardrails.yaml` before final rendering.
+
+    ```yaml
+    anatomy_rendering:
+      required_when:
+        - "full body"
+        - "lower body visible"
+        - "glamour pose"
+        - "dance pose"
+        - "stage pose"
+        - "swimsuit editorial"
+        - "body-conscious outfit"
+        - "one-leg support pose"
+        - "dynamic asymmetric stance"
+
+      prefer_positive_language:
+        - "realistic full-body anatomy"
+        - "believable pelvis and hip structure"
+        - "natural hip-to-thigh connection"
+        - "knees aligned with thigh direction"
+        - "consistent leg proportions"
+        - "support foot firmly grounded"
+        - "body weight naturally balanced over the planted leg"
+
+      lower_body_negative_guardrails:
+        - "warped pelvis"
+        - "disconnected thighs"
+        - "twisted knees"
+        - "mismatched leg length"
+        - "floating feet"
+        - "impossible pose balance"
+        - "deformed lower body"
+    ```
+
+    Do not overuse generic anatomy tags when specific structure can be named.
+    For high-risk poses, specific lower-body rules outperform vague phrases like `correct anatomy`.
+
+    ### Intimate Anatomy Consistency Rendering Rules
+
+    When `sex_characteristics.intimate_anatomy_lock` is `male_external`, `female_external`, or `user_specified`, apply `config/character-identity/sex-characteristics-control.yaml` before final rendering.
+
+    Use safe consistency wording by default:
+
+    ```yaml
+    intimate_anatomy_rendering:
+      female_external_lock:
+        safe: "external anatomy remains consistent with the specified adult female subject"
+        strict_negative_when_needed:
+          - "glans"
+          - "penile anatomy"
+          - "testicles"
+          - "male external genital anatomy"
+
+      male_external_lock:
+        safe: "external anatomy remains consistent with the specified adult male subject"
+        strict_negative_when_needed:
+          - "vagina"
+          - "female external genital anatomy"
+
+      user_specified_lock:
+        rule: "explicit user-specified anatomy wins; do not force binary intimate anatomy"
+    ```
+
+    Strict intimate-anatomy terms should be used only when the context is NSFW-sensitive, anatomy-sensitive, image repair/inpainting, or when the user explicitly asks to prevent wrong external sex characteristics.
+
+    ### Physical Collision Rendering Rules
+
+    When `collision_risk.level` is `high` or `critical`, or when the scene contains visible touch/contact/overlap/support relationships, apply `config/scene-environment/physical-collision-guardrails.yaml` before final rendering.
+
+    ```yaml
+    collision_rendering:
+      contact_logic:
+        - "physically plausible contact points"
+        - "body touches the object without intersecting it"
+        - "support surfaces visibly carry weight"
+
+      occlusion_and_layering:
+        - "correct occlusion order"
+        - "clear front-to-back layering"
+        - "readable partial overlap"
+
+      material_interaction:
+        - "material-specific highlights and reflections"
+        - "surface texture reads clearly"
+        - "contact shadows reinforce depth"
+
+      avoid:
+        - "clipping"
+        - "merged geometry"
+        - "floating contact"
+        - "wrong occlusion order"
+        - "cheap plastic look"
+    ```
+
+    Use explicit overlap and support wording when composition, contact, or product realism depends on it.
+
+    ### Era / Culture and Environment / Atmosphere Rendering Rules
+    ### Natural Environment Rendering Rules
+
+    Apply the matching `config/scene-environment/*.yaml` modules when the image depends on large-scale natural spectacle or environmental physics. Check `config/_manifest.yaml` → scene-environment section for trigger conditions. Use them to preserve weather logic, sky/light logic, water physics, underwater readability, terrain layering, geology, and landscape scale.
+
+    Avoid:
+    - generic flat sky treatment
+    - weather not affecting surfaces or visibility
+    - flat water with random foam
+    - underwater scenes with air-like clarity
+    - flat backdrop mountains with no terrain layering
+
+
+    Apply `config/scene-environment/era-culture-library.yaml` and `config/scene-environment/environment-atmosphere-library.yaml` when the final image depends on historical, cultural, regional, atmospheric, or sensory context.
+
+    Include era-consistent visual details, culturally coherent architecture/fashion/props/materials, period-appropriate signage or typography when relevant, time-of-day lighting, weather-specific surface response, air quality and mood cues, and purposeful particle effects. Avoid anachronistic props, generic cultural mashup, random fog, overdone bloom, muddy visibility, and inconsistent weather/lighting.
+
+    ### Typography and Multi-subject Rendering Rules
+
+    Apply `config/text-brand-layout/typography-layout-system.yaml` and `config/character-identity/multi-subject-interaction-system.yaml` whenever text layout or multiple subjects affect the final image.
+
+    ```yaml
+    typography_render:
+      include:
+        - "clear typography hierarchy"
+        - "reserved negative space"
+        - "subject-safe text placement"
+        - "exact requested text only"
+      avoid:
+        - "random text"
+        - "text over face"
+        - "misspelled brand names"
+        - "cluttered layout"
+
+    multi_subject_render:
+      include:
+        - "explicit subject count"
+        - "distinct individual faces and silhouettes"
+        - "clear group formation"
+        - "readable spacing and occlusion"
+        - "physically plausible interaction"
+      avoid:
+        - "merged faces"
+        - "same face repeated"
+        - "shared limbs"
+        - "fused bodies"
+        - "unreadable crowding"
+    ```

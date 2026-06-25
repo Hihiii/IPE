@@ -1,0 +1,367 @@
+# ============================================================
+# pose-gesture-body-language.yaml
+# Pose logic, gesture control, and body-language controller
+# Version: 1.0.0
+# Purpose:
+#   Improve human poses so they feel intentional, expressive, and physically coherent.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "pose-gesture-body-language"
+description: >
+  A prompt-enhancement module for pose design, body-language communication,
+  gesture readability, and character/subject physical presence. It goes beyond
+  anatomy correction to control attitude, emotional posture, and narrative stance.
+
+core_principle: >
+  A strong pose is not only anatomically correct; it communicates intention.
+  Weight distribution, shoulder line, spine curve, head tilt, hand placement,
+  limb openness, and gesture relationship to the environment should all support the scene.
+
+global_rules:
+  - "Define weight distribution and posture logic."
+  - "Specify whether the pose should feel relaxed, elegant, powerful, shy, dynamic, playful, or cinematic."
+  - "Hands and arms should support the narrative, not float aimlessly."
+  - "Head angle, torso orientation, and leg stance should read as one coherent pose."
+  - "Avoid symmetrical stiffness unless a formal, graphic, or military pose is intended."
+  - "For editorial/fashion work, allow controlled asymmetry, contrapposto, and silhouette shaping."
+  - "For action poses, define a readable action line and balance point."
+  - "For reclining, half-sitting, or propped-arm poses, define the support points that actually carry the body weight."
+  - "Do not let a pose combine standing, kneeling, side-lying, and seated cues unless the pelvis, spine, legs, and support points make a believable transition."
+  - "Before selecting a pose profile, run anti-boring diagnosis from config/character-identity/anti-boring-pose-system.yaml (P93). Ensure the pose has weight shift, asymmetry, hand purpose, and gaze intention before enriching with gesture vocabulary."
+
+pose_body_language_schema:
+  pose_family: "standing | seated | leaning | kneeling | walking | running | action | reclining | semi_reclined | side_lying | propped_on_hands | selfie_pose | fashion_editorial | custom"
+  emotional_posture: []
+  weight_distribution: "centered | left_leg | right_leg | seated_support | forward_drive | backward_lean | dynamic_custom"
+  shoulder_line: "level | slight_tilt | dramatic_tilt"
+  hip_line: "level | slight_tilt | contrapposto"
+  spine_curve: "neutral | soft_s_curve | strong_s_curve | action_curve"
+  head_orientation: []
+  arm_logic: []
+  hand_gesture: []
+  leg_stance: []
+  environment_contact: []
+  support_points: []
+  load_path: []
+  gesture_readability_priority: "low | medium | high"
+
+pose_profiles:
+  confident_editorial:
+    cues:
+      - "weight shifted onto one leg"
+      - "controlled shoulder asymmetry"
+      - "relaxed but intentional hand placement"
+      - "stable chin and neck posture"
+  relaxed_lifestyle:
+    cues:
+      - "soft shoulders"
+      - "natural elbow bend"
+      - "casual hand placement"
+      - "non-rigid torso line"
+  powerful_action:
+    cues:
+      - "clear line of action"
+      - "strong balance and momentum"
+      - "wide stance or directional force"
+      - "purposeful arm mechanics"
+  elegant_feminine:
+    cues:
+      - "elongated neck"
+      - "graceful hand articulation"
+      - "soft hip shift"
+      - "fluid silhouette"
+  shy_reserved:
+    cues:
+      - "slightly inward posture"
+      - "gentle hand self-contact or garment contact"
+      - "smaller body openness"
+  playful:
+    cues:
+      - "light asymmetry"
+      - "energetic gesture"
+      - "livelier head tilt"
+      - "expressive hands"
+  semi_reclined_supported:
+    cues:
+      - "torso partly lifted from the bed or sofa"
+      - "hands, elbows, hips, and thighs define the support points"
+      - "shoulders, elbows, wrists, and palms align as a believable support chain"
+      - "pelvis and folded legs follow one readable direction"
+      - "body weight visibly settles into the soft support surface"
+  pool_edge_exit_supported:
+    cues:
+      - "upper body rising from pool water"
+      - "both palms pressing down on the pool coping"
+      - "fingers curled over the near pool edge for grip"
+      - "elbows bent downward instead of arms raised overhead"
+      - "shoulders and torso visibly loaded through the hands"
+      - "pool edge beside or in front of the subject, not above the head"
+  group_pool_play:
+    cues:
+      - "group arranged in a readable arc or shallow diagonal"
+      - "one subject creates the water splash with a visible scooping or clapping motion"
+      - "nearby subjects react to the splash with varied laughter, squinting, flinching, or playful hand gestures"
+      - "hands point toward or respond to the same event center instead of floating independently"
+      - "feet and knees remain balanced on the same shallow pool floor or ledge"
+  ensemble_selfie_body_language:
+    cues:
+      - "one foreground subject extends an arm toward the lens or implies the camera position"
+      - "do not make a phone, selfie stick, or camera visible unless the user explicitly requests a visible device"
+      - "side subjects lean inward to fit the frame naturally"
+      - "back-row subjects raise arms or tilt shoulders to remain visible without covering faces"
+      - "each subject has a different expression intensity: soft smile, open laugh, confident gaze, playful reach, calm direct look"
+      - "hands have clear roles such as implied camera arm, waving, reaching toward foam, resting on costume strap, or balancing posture"
+
+gesture_guidelines:
+  - "Hands should either interact with the body, a prop, the environment, or support visual rhythm."
+  - "Avoid disconnected floating hands."
+  - "Finger articulation should match the emotional tone: soft, tense, elegant, forceful, etc."
+  - "Leg stance should reinforce the upper-body pose rather than contradict it."
+  - "If hands support the body, place palms or elbows under the shoulder line rather than as decorative gestures."
+  - "If the torso is lifted, the pose should show where that lift comes from: planted palms, elbows, hip contact, or core tension."
+  - "For multi-person action scenes, assign each visible hand a purpose: causing the action, reacting to it, balancing the body, or resting naturally."
+  - "When water, confetti, smoke, or motion effects cross the hands, keep palm direction, wrist angle, and finger count readable through partial occlusion."
+  - "For plain selfie or 自拍 prompts, use selfie-perspective body language and do not add a visible phone or selfie stick unless explicitly requested."
+  - "When a visible selfie device is requested, define which hand holds it, where the screen/lens faces, and what it may occlude."
+
+reclining_support_body_language:
+  purpose: >
+    Make reclining and half-sitting poses read as physically supported, not as
+    unrelated body segments arranged on a bed or sofa.
+  direction_rules:
+    - "Head, shoulders, ribcage, pelvis, thighs, shins, and feet should follow a believable pose flow."
+    - "A twist is acceptable only if it transitions through the waist and does not detach pelvis from legs."
+    - "The camera-facing pelvis, side-folded thighs, and differently angled shins should be simplified unless the support logic is explicit."
+  support_rules:
+    - "If both hands support the torso, shoulders should sit above or slightly behind the hands."
+    - "Wrists and elbows should bend naturally under the implied body weight."
+    - "A supported torso should show slight shoulder engagement, not relaxed floating arms."
+    - "Hips and thighs should create the main resting weight on the bed while hands add upper-body lift."
+  positive_language:
+    - "semi-reclined supported pose"
+    - "hands planted under shoulders supporting the upper body"
+    - "hips and thighs resting into the bed"
+    - "pelvis and folded legs aligned"
+    - "torso lift visibly supported by arms"
+  negative_language:
+    - "decorative hand support"
+    - "unsupported torso"
+    - "pelvis and legs pointing in unrelated directions"
+    - "floating lower legs"
+    - "mixed side-lying and kneeling pose"
+
+pool_edge_exit_body_language:
+  purpose: >
+    Preserve pool-exit support as a downward arm-support action. The subject is
+    pushing body weight into the pool edge while rising from water, not hanging
+    from an overhead ledge or lifting the pool edge upward.
+  direction_rules:
+    - "The pool edge should sit near the waterline, chest, or shoulder area, not above the head."
+    - "The torso rises from the water toward the ledge, with shoulders aligned over or slightly behind the planted hands."
+    - "Wrists, elbows, shoulders, and torso should form a readable downward support chain."
+    - "Hands should stay near the pool coping; avoid translating the gesture into arms stretched overhead."
+  support_rules:
+    - "Palms press down on the top surface of the coping."
+    - "Fingers curl over the near edge for grip without hooking under tile from below."
+    - "Elbows bend downward under the implied body weight."
+    - "Wet arms, waterline, and small contact shadows reinforce the upward-from-water action."
+  positive_language:
+    - "palms pressing down on pool coping at the waterline"
+    - "fingers curled over the near pool edge"
+    - "elbows bent downward, shoulders loaded"
+    - "upper body rising out of water, weight supported by the pool ledge"
+    - "pool edge beside the subject, not overhead"
+  negative_language:
+    - "arms raised overhead"
+    - "holding an overhead ledge"
+    - "lifting the pool edge"
+    - "gripping underside of tiles"
+    - "hanging from the pool edge"
+    - "pool edge above head"
+
+group_pool_play_body_language:
+  purpose: >
+    Make pool-party or group water-play images read as one shared candid event
+    rather than several people posing independently while a random splash is pasted
+    into the center.
+  event_rules:
+    - "Define the splash source: which subject's hands or feet caused the water to move."
+    - "Place the action center between subjects only if at least one subject visibly interacts with it."
+    - "Use varied reactions: one subject laughs toward the splash, another squints or turns slightly away, another raises hands in playful defense."
+    - "Avoid identical open-mouth smiles on every subject unless the brief explicitly wants a staged commercial stock look."
+  hand_rules:
+    - "The source subject's palms should face the water or each other according to the splash action."
+    - "Reactive hands should stay outside the densest spray or be only partially occluded."
+    - "Do not let water spray hide all fingers; use readable partial occlusion."
+  support_rules:
+    - "All standing subjects should have knees, ankles, and feet aligned with the same pool floor or ledge."
+    - "Feet may be partly hidden by foam, but the support plane and balance should remain clear."
+    - "Waterline height should follow camera perspective rather than change randomly between subjects."
+  positive_language:
+    - "one shared splash event at the center of the group"
+    - "source subject scooping water upward with readable palms"
+    - "varied natural reactions toward the same splash"
+    - "hands and fingers remain readable around water occlusion"
+    - "balanced stances on the same shallow pool floor"
+  negative_language:
+    - "random central splash"
+    - "identical laughing expressions"
+    - "floating hands"
+    - "hands completely hidden by splash"
+    - "unclear foot support"
+    - "different water depths for each person"
+
+ensemble_selfie_body_language:
+  purpose: >
+    Make a multi-character selfie feel intimate, rich, and intentionally staged
+    without collapsing into duplicated faces, random arms, or distorted wide-angle anatomy.
+  camera_pose_rules:
+    - "Define who holds the camera or which foreground arm explains the selfie perspective."
+    - "The camera should be close enough for intimacy but controlled enough to keep faces attractive."
+    - "Closest arms and hands may be cropped, but they must not cover eyes or central faces."
+    - "Faces should cluster in a triangle, diamond, or arc with varied head heights."
+  expression_rules:
+    - "Use coordinated but non-identical expressions."
+    - "Give each person one expression anchor: calm direct gaze, bright laugh, playful open-mouth smile, subtle confidence, relaxed soft smile."
+    - "Eyes, brows, cheeks, and mouth should agree with each subject's expression."
+  hand_rules:
+    - "Every visible hand should have a purpose: camera hold, greeting, reaching toward lens, costume touch, or playful reaction."
+    - "Foreground hands should show believable perspective foreshortening and remain outside key face areas."
+  positive_language:
+    - "controlled wide-angle group selfie body language"
+    - "one foreground selfie arm leading toward the camera"
+    - "faces clustered in a diamond arrangement"
+    - "varied natural expressions across the group"
+    - "purposeful hands and readable gestures"
+    - "side subjects leaning inward naturally"
+  negative_language:
+    - "random arms"
+    - "foreground hand covering faces"
+    - "identical expressions"
+    - "warped selfie anatomy"
+    - "cloned face"
+    - "floating hands"
+
+common_failures:
+  - "stiff mannequin pose"
+  - "unclear weight distribution"
+  - "floating hands"
+  - "arms without purpose"
+  - "pose lacks silhouette readability"
+  - "overly symmetrical stance"
+  - "torso, hips, and head pointing in unrelated directions"
+  - "hands posed as support without carrying body weight"
+  - "pelvis and legs arranged in incompatible directions"
+  - "reclining body floating above the support surface"
+  - "pool-edge support rewritten as overhead gripping or lifting"
+  - "multi-person action has no clear event source"
+  - "group water splash appears as a pasted overlay"
+  - "all subjects show identical expression and gesture"
+  - "hands disappear into splash effects"
+  - "ensemble selfie has cloned faces, identical styling, random arms, or foreground hand covering faces"
+
+self_review_checklist:
+  - "What is the pose family?"
+  - "What emotion or attitude should the body communicate?"
+  - "Where is the body weight?"
+  - "Do the hands and arms have purpose?"
+  - "Is the full pose readable in silhouette?"
+  - "For group action, who causes the central event and how does each person react?"
+  - "Are hands and feet still physically readable through water, spray, motion, or foreground effects?"
+
+model_specific_rendering:
+  chatgpt_image:
+    guidance: >
+      Use body-language language such as weight shift, shoulder tilt, hand placement,
+      contrapposto, or action line when needed.
+  z_image_turbo:
+    positive_template: >
+      natural body language, clear weight shift, purposeful hands,
+      elegant pose, readable silhouette, supported torso, clear group action source, no stiffness
+    negative_template: >
+      stiff pose, floating hands, unclear balance, unsupported torso, mannequin posture,
+      source-less action, cloned expressions
+  stable_diffusion:
+    positive_template: >
+      natural pose, expressive gesture, clear stance, coherent posture,
+      readable silhouette
+    negative_template: >
+      stiff pose, disconnected arms, unclear weight, awkward stance
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - pose_body_language_schema
+    action: "Detect when pose, gesture, or body language is central to the image."
+  phase_2_cinematic_enrichment:
+    action: "Translate generic pose requests into weight, gesture, and attitude logic."
+  phase_3_scene_blueprint:
+    action: "Coordinate pose with anatomy, subject rules, prop interaction, and camera framing."
+  phase_4_self_review:
+    checks:
+      - "Check weight distribution."
+      - "Check gesture purpose."
+      - "Check silhouette readability."
+  phase_4_5_cleanup:
+    action: "Preserve pose/body-language cues during compression."
+  phase_4_6_renderer_selection:
+    action: "Render pose instructions in model-appropriate language."
+  phase_5_final_prompt:
+    action: "Include concise but expressive body-language instructions whenever human pose matters."
+
+
+# ------------------------------------------------------------
+# Adult Pose Routing Extension
+# ------------------------------------------------------------
+
+adult_pose_routing:
+  activate_when: [adult_glamour, boudoir, lingerie, swimwear_editorial, implied_nude, artistic_nude, adult_figure_pose]
+  route_to:
+    - config/safety-mature/adult-pose-tiering-system.yaml
+    - config/safety-mature/age-maturity-guardrails.yaml
+    - config/character-identity/adult-standing-pose-system.yaml
+    - config/character-identity/adult-seated-pose-system.yaml
+    - config/character-identity/adult-reclining-pose-system.yaml
+    - config/character-identity/adult-nude-pose-system.yaml
+    - config/character-identity/adult-hand-placement-system.yaml
+    - config/character-identity/adult-lens-aware-posing-system.yaml
+    - config/character-identity/adult-garment-pose-interaction-system.yaml
+  rules:
+    - "Preserve adult pose tier while enforcing balance, support, contact, and age-maturity clarity."
+    - "Use only teen, childlike, underage, or youth-coded terms as adult-pose hard boundaries."
+
+selfie_pose_logic:
+  selfie_perspective:
+    hand_intent: { phone_hand: false, camera_device_hand: false, implied_camera_holding: optional }
+    body_language: [camera_aware, near_lens_expression, intimate_framing]
+    rule: "Do not infer a visible hand-held phone from selfie perspective alone."
+  phone_selfie:
+    hand_intent: { phone_hand: true, hand_phone_contact: required, finger_grip_logic: required }
+  mirror_selfie:
+    hand_intent: { phone_hand: true, hand_phone_contact: required, mirror_alignment: required }
+  selfie_stick_shot:
+    hand_intent: { stick_hand: true, hand_stick_contact: required, pole_direction: required }
+
+# ------------------------------------------------------------
+# TV Watching / Screen Attention Pose Extension
+# ------------------------------------------------------------
+
+tv_watching_pose_logic:
+  reclining_sofa:
+    positive_language:
+      - "relaxed reclining pose on the sofa"
+      - "torso angled toward the television direction"
+      - "head turned slightly toward the screen"
+      - "eyes tracking the TV instead of the viewer"
+      - "one arm resting naturally on the sofa or near a remote control"
+    negative_language:
+      - "fashion portrait pose ignoring the TV"
+      - "body facing camera while action says watching TV"
+      - "staged portrait eye contact"
+
+  composition_pose_alignment:
+    rules:
+      - "The pose should read as watching television, not simply lounging for a portrait."
+      - "Body orientation, head angle, and gaze should agree with the screen direction."
+      - "If TV is off-frame, leave visual space or light direction suggesting where it is."

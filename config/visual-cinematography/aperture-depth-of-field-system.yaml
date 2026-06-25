@@ -1,0 +1,30 @@
+version: 1
+purpose: "Select depth of field from subject-plane priority and required background readability."
+
+aperture_dof_profile:
+  fields:
+    aperture_intent: [wide_open, portrait_shallow, moderate, deep_focus, macro_shallow]
+    background_readability: [blurred, readable_secondary, highly_readable]
+    subject_plane_priority: [eyes, face, full_body, product, group, environment]
+    bokeh_quality: [none, soft, creamy, busy, cinematic]
+    focus_falloff: [fast, natural, slow]
+
+presets:
+  portrait_shallow:
+    prompt_effect: "eyes tack sharp, face clear, soft background separation"
+    use_for: [beauty_portrait, intimate_editorial]
+  moderate:
+    prompt_effect: "subject sharp while key room, architecture, or worldbuilding remains softly legible"
+    use_for: [environmental_portrait, vehicle_editorial, fashion, narrative_scene]
+  deep_focus:
+    prompt_effect: "sharp subject silhouette and clear background structure across the scene"
+    use_for: [architecture, cityscape, group_scene, spectacle]
+  macro_shallow:
+    prompt_effect: "narrow focus plane with fine material texture at the focal point"
+    use_for: [jewelry, surface_detail, food_detail]
+
+decision_rules:
+  - "Use moderate depth when character IP and background story must both remain readable."
+  - "Use deep focus for architecture, groups, or any task whose primary output is spatial context."
+  - "Avoid extreme shallow depth of field when background_readability is readable_secondary or highly_readable."
+  - "At macro distance, do not claim the entire object is equally sharp."

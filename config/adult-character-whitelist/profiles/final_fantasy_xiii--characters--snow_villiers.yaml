@@ -1,0 +1,56 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xiii--characters--snow_villiers
+  display_name: Snow Villiers
+  aliases:
+  - Snow Villiers
+  - 冰雪·維里耶
+  - 冰雪·維里耶 (Final Fantasy XIII)
+  source_title: Final Fantasy XIII
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XIII default appearance
+  identity_summary: Heroic guardian with short spiky dark brown hair, bright blue eyes, rugged confident
+    smile, wearing a white military-style jacket with fur-trimmed collar worn open, a black form-fitting
+    undershirt, black pants with knee guards, black boots, a red bandana tied on his right arm, and a
+    silver pendant necklace.
+  visual_anchors:
+  - short spiky dark brown hair
+  - white fur-collar military jacket
+  - red bandana on right arm
+  - silver pendant necklace
+  - muscular heroic build
+  - bright blue eyes
+  - confident heroic grin
+  - dark brown
+  - spiky textured crown
+  - short upward-brushed fringe
+  - bright blue
+  - rugged square face
+  - tall extremely muscular build
+  outfit_anchors:
+  - short spiky dark brown hair
+  - white fur-collar jacket
+  - red bandana on right arm
+  - silver pendant necklace
+  - muscular build
+  - Heroic guardian with short spiky dark brown hair, bright blue eyes, rugged confident smile, wearing
+    a white military-style jacket with fur-trimmed collar worn open, a black form-fitting undershirt,
+    black pants with knee guards, black boots, a red bandana tied on his right arm, and a silver pendant
+    necklace.
+  style_anchors:
+  - overconfident heroic grin
+  - confident direct gaze
+  drift_guards:
+  - long hair
+  - non-brown hair color
+  - wrong eye color
+  - skinny build
+  - timid uncertain expression
+  - generic attractive person
+  - missing red arm bandana
+  - missing white fur-collar jacket
+  - closed jacket instead of open
+  - missing silver pendant necklace
+  - wrong jacket color
+  - casual outfit replacement
+  - timid shrinking posture

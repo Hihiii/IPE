@@ -1,0 +1,58 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_x--characters--wakka
+  display_name: Wakka
+  aliases:
+  - Wakka
+  - 瓦卡
+  - 瓦卡 (Final Fantasy X)
+  source_title: Final Fantasy X
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy X default appearance
+  identity_summary: Tall muscular blitzball player with bright orange-red spiky hair, a blue sleeveless
+    vest worn open exposing chest, blue loose shorts to knees, an orange headband tied around his forehead,
+    and a blitzball.
+  visual_anchors:
+  - bright orange-red spiky hair
+  - blue sleeveless vest worn open
+  - orange headband tied around forehead
+  - blue loose shorts to knees
+  - blitzball
+  - bright blue eyes
+  - big infectious smile
+  - bright orange-red
+  - short spiked crown
+  - upward spiked fringe
+  - bright blue
+  - round friendly face
+  - tall muscular broad-shouldered build
+  outfit_anchors:
+  - bright orange-red spiky hair
+  - blue sleeveless vest worn open
+  - orange headband tied around forehead
+  - blue loose shorts to knees
+  - blitzball
+  - Tall muscular blitzball player with bright orange-red spiky hair, a blue sleeveless vest worn open
+    exposing chest, blue loose shorts to knees, an orange headband tied around his forehead, and a blitzball.
+  style_anchors:
+  - cheerful energetic
+  - cheerful direct eye contact
+  drift_guards:
+  - serious all the time
+  - elegant refined pose
+  - missing orange headband
+  - wrong haircut
+  - no blitzball
+  - bright blue eyes missing
+  - wrong skin tone
+  - missing blue sleeveless vest
+  - wearing full armor
+  - wearing a shirt that covers chest
+  - long pants instead of shorts
+  - wrong color vest
+  - formal wear
+  - long hair
+  - slicked back hair
+  - bald or shaved head
+  - skinny frail build
+  - overly lean runner physique

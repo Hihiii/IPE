@@ -1,0 +1,318 @@
+schema_version: "1.0.0"
+name: nsfw-comfyui-execution-catalog
+mode: fixed_complete_semantic_closure
+description: >
+  Deterministic catalog of the active enhancement rules. A selected RuleNode
+  represents a complete relevant rule section plus all declared dependencies;
+  agents must not independently omit files, sections, or phases.
+
+phase_ids:
+  - phase_0_config_resolution
+  - phase_1_intent_analysis
+  - phase_2_composition_and_cinematography
+  - phase_3_scene_blueprint
+  - phase_3_1_prompt_package
+  - phase_4_self_review
+  - phase_4_1_cleanup
+  - phase_4_2_comfyui_renderer
+  - phase_4_3_delivery_package
+  - phase_5_final_output
+
+rule_nodes:
+  - id: foundation_contract
+    triggers: [always]
+    phases: [phase_0_config_resolution, phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package, phase_4_self_review, phase_4_1_cleanup, phase_4_2_comfyui_renderer, phase_4_3_delivery_package, phase_5_final_output]
+    requires: []
+    conflicts: []
+    cost_class: medium
+    claims: [phase_execution, semantic_priority, prompt_assembly, quality_review, composition, camera, shot_scale, crop_safety, visual_hierarchy]
+    sources:
+      - path: config/core-knowledge.yaml
+        sections: [decision_pre_filter, priority_chain, phase_execution_contract, constraint_tiers, age_safety, output_format, semantic_priority_rules]
+      - path: config/core-knowledge.yaml
+        sections: [composition_decision_order, visual_hierarchy, shot_taxonomy, crop_safety, lighting_translations, lens_translations, anatomy_guardrails, wardrobe_policy, mature_tier_balance_priority, underage_childlike_boundary_priority, nipple_visibility_physical_context_priority, prompt_assembly_hooks]
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [always]
+      - path: config/enhancement-pipeline.yaml
+      - path: config/prompt-core/prompt-assembly-schema.yaml
+        sections: [prompt_assembly_schema, assembly_modes, explicit_intent_precedence, priority_stack, assembly_pipeline, generator_visible_translation_rules, assembly_conflict_resolution, semantic_deduplication, detail_priority_allocation, cleanup_remove_order, cleanup_keep_order, final_prompt_templates, assembly_quality_checks, prompt_assembly_hooks]
+        load_mode: reference_only
+        materialize_at_phase: phase_3_1_prompt_package
+        activate_when: [always]
+      - path: config/prompt-core/quality-rubric.yaml
+        sections: [minimum_delivery_score, minimum_single_dimension_score, hard_reject, delivery_rule, mature_tier_quality, adult_pose_quality, wardrobe_explicitness_quality]
+        load_mode: reference_only
+        materialize_at_phase: phase_4_self_review
+        activate_when: [always]
+      - path: config/prompt-core/failure-taxonomy.yaml
+        sections: [mature_tiering_failures, camera_technical_failures, adult_pose_failures, technical_decision_order_failure]
+        load_mode: reference_only
+        materialize_at_phase: phase_4_self_review
+        activate_when: [always]
+      - path: config/prompt-core/intent-preservation-review.yaml
+        sections: [phase_4_self_review, prompt_assembly_hooks]
+        load_mode: reference_only
+        materialize_at_phase: phase_4_self_review
+        activate_when: [always]
+      - path: config/visual-cinematography/composition-decision-engine.yaml
+        sections: [core_principle, composition_decision_engine, composition_schema, task_goal_defaults, prompt_assembly_hooks]
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [always]
+      - path: config/visual-cinematography/camera-technical-router.yaml
+        sections: [camera_technical_router, scene_defaults, conflict_resolution]
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [always]
+      - path: config/visual-cinematography/shot-taxonomy.yaml
+        sections: [shot_taxonomy, generator_visible_shot_translation, subject_specific_shot_guardrails, shot_failure_taxonomy, shot_conflict_resolution, shot_quality_rubric, prompt_assembly_hooks]
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [always]
+      - path: config/visual-cinematography/crop-safety-rules.yaml
+        sections: [core_principle, crop_safety_rules, conditional_rules, prompt_phrases]
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [always]
+      - path: config/visual-cinematography/visual-hierarchy-system.yaml
+        sections: [core_principle, visual_hierarchy_system, priority_controls, failure_guardrails, prompt_phrases]
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [always]
+
+  - id: adult_policy_and_delivery
+    triggers: [always]
+    phases: [phase_0_config_resolution, phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package, phase_4_self_review, phase_4_1_cleanup, phase_4_2_comfyui_renderer, phase_4_3_delivery_package, phase_5_final_output]
+    requires: [foundation_contract]
+    conflicts: []
+    cost_class: low
+    claims: [adult_eligibility, always_nsfw_baseline, delivery_contract, dynamic_scene_contract, material_contract, visual_focus_contract, local_surface_contract]
+    sources:
+      - path: config/adult-content-policy.yaml
+      - path: config/nsfw-baseline-resolver.yaml
+      - path: config/nsfw-comfyui-overrides.yaml
+      - path: config/comfyui-prompt-pack.yaml
+      - path: config/nsfw-dynamic-scene-controller.yaml
+        load_mode: reference_only
+        materialize_at_phase: phase_1_intent_analysis
+        activate_when: [adult_human_scene]
+      - path: config/nsfw-material-environment-controller.yaml
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [adult_human_scene]
+      - path: config/nsfw-composition-lighting-controller.yaml
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [adult_human_scene]
+      - path: config/nsfw-local-anatomy-surface-controller.yaml
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [adult_human_scene]
+      - path: config/nsfw-visual-director.yaml
+        load_mode: reference_only
+        materialize_at_phase: phase_1_intent_analysis
+        activate_when: [adult_human_scene]
+
+  - id: adult_human_anatomy_and_pose
+    triggers: [adult_human_scene]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package, phase_4_self_review]
+    requires: [adult_policy_and_delivery]
+    conflicts: []
+    cost_class: high
+    claims: [adult_human_identity, anatomy, adult_pose, support_points, contact_physics]
+    sources:
+      - path: config/character-identity/human-anatomy-guardrails.yaml
+        sections: [core_principle, primary_goal, global_rules, whole_body_structure_chain, hands_fingers_and_contact_guardrails, camera_pose_anatomy_interlock, adult_anatomical_landmark_alignment, anatomy_risk_detector, anatomy_zones, biomechanical_pose_rules, generator_visible_anatomy_translation, anatomy_quality_rubric, anatomy_self_review_checklist, anatomy_conflict_resolution, prompt_assembly_hooks]
+        load_mode: reference_only
+        materialize_at_phase: phase_1_intent_analysis
+        activate_when: [adult_human_scene]
+      - path: config/character-identity/pose-gesture-body-language.yaml
+        sections: [core_principle, global_rules, pose_body_language_schema, pose_profiles, gesture_guidelines, common_failures, self_review_checklist, adult_pose_routing]
+        load_mode: reference_only
+        materialize_at_phase: phase_1_intent_analysis
+        activate_when: [adult_human_scene]
+      - path: config/character-identity/adult-lens-aware-posing-system.yaml
+        sections: [wide_angle_adult_pose, portrait_lens_adult_pose, high_angle_adult_pose, low_angle_adult_pose, selection_rules]
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [adult_human_scene]
+      - path: config/character-identity/adult-hand-placement-system.yaml
+        sections: [adult_hand_placement, hand_quality_rules]
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [adult_human_scene]
+      - path: config/character-identity/adult-nude-pose-system.yaml
+        sections: [adult_nude_pose_system, rules]
+        load_mode: reference_only
+        materialize_at_phase: phase_2_composition_and_cinematography
+        activate_when: [adult_human_scene]
+      - path: config/safety-mature/adult-pose-tiering-system.yaml
+        sections: [adult_content_policy, adult_pose_tiers, routing_rules, prompt_assembly_hooks]
+        load_mode: reference_only
+        materialize_at_phase: phase_1_intent_analysis
+        activate_when: [adult_human_scene]
+      - path: config/safety-mature/mature-content-tiering-system.yaml
+        sections: [core_principle, global_rules, mature_tier_schema, mature_tiers, nipple_areola_handling, genital_handling, renderer_behavior, self_review_checklist, prompt_assembly_hooks]
+        load_mode: reference_only
+        materialize_at_phase: phase_1_intent_analysis
+        activate_when: [adult_human_scene]
+
+  - id: visible_adult_exposure_contract
+    triggers: [adult_human_scene]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package, phase_4_self_review, phase_4_2_comfyui_renderer, phase_4_3_delivery_package]
+    requires: [adult_human_anatomy_and_pose]
+    conflicts: []
+    cost_class: low
+    claims: [visible_adult_exposure, exposure_evidence_target, garment_transformation_action, camera_visibility_guard]
+    sources:
+      - path: config/nsfw-visible-exposure-contract.yaml
+        sections: [execution_leaf]
+
+  - id: exposure_action_and_feasibility
+    triggers: [adult_human_scene]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package, phase_4_self_review, phase_4_2_comfyui_renderer, phase_4_3_delivery_package]
+    requires: [visible_adult_exposure_contract]
+    conflicts: []
+    cost_class: low
+    claims: [exposure_action_plan, exposure_action_compatibility, exposure_geometry_plan, exposure_feasibility_review, exposure_recomposition]
+    sources:
+      - path: config/nsfw-exposure-action-controller.yaml
+        sections: [execution_leaf]
+
+  - id: adult_standing_pose
+    triggers: [standing_pose]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+    requires: [adult_human_anatomy_and_pose]
+    conflicts: []
+    cost_class: low
+    claims: [standing_support, standing_body_line]
+    sources:
+      - path: config/character-identity/adult-standing-pose-system.yaml
+
+  - id: adult_seated_pose
+    triggers: [seated_pose]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+    requires: [adult_human_anatomy_and_pose]
+    conflicts: []
+    cost_class: low
+    claims: [seated_support, pelvis_leg_alignment]
+    sources:
+      - path: config/character-identity/adult-seated-pose-system.yaml
+
+  - id: adult_reclining_pose
+    triggers: [reclining_pose]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+    requires: [adult_human_anatomy_and_pose]
+    conflicts: []
+    cost_class: low
+    claims: [reclining_support, load_points, gravity_led_drape]
+    sources:
+      - path: config/character-identity/adult-reclining-pose-system.yaml
+      - path: config/character-identity/reclining-pose-physics.yaml
+
+  - id: named_character_identity
+    triggers: [named_character]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+    requires: [adult_policy_and_delivery]
+    conflicts: []
+    cost_class: medium
+    claims: [unique_whitelist_lookup, character_identity, character_drift_guards]
+    sources:
+      - path: config/adult-character-whitelist/index.yaml
+
+  - id: image_edit_preservation
+    triggers: [image_edit]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package, phase_4_self_review, phase_4_2_comfyui_renderer]
+    requires: [adult_policy_and_delivery]
+    conflicts: []
+    cost_class: medium
+    claims: [edit_scope, preservation_locks, source_aspect_ratio, localized_change]
+    sources:
+      - path: config/image-edit-policy.yaml
+      - path: config/edit-reference/reference-image-control.yaml
+      - path: config/edit-reference/attribute-change-control-policy.yaml
+      - path: config/edit-reference/image-edit-repair-templates.yaml
+
+  - id: dynamic_motion_and_interaction
+    triggers: [dynamic_action_or_interaction]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+    requires: [adult_human_anatomy_and_pose]
+    conflicts: []
+    cost_class: high
+    claims: [motion_state, force_direction, secondary_motion, shutter_control, action_attention]
+    sources:
+      - path: config/visual-cinematography/gaze-action-composition-logic.yaml
+        sections: [core_principle, gaze_action_composition_logic, prompt_phrases]
+      - path: config/visual-cinematography/motion-capture.yaml
+        sections: [shutter_strategies, motion_techniques, action_aperture, generator_visible_motion_translation, pose_readability_rules, secondary_motion_elements, motion_failure_taxonomy, motion_conflict_resolution, motion_quality_rubric]
+      - path: config/visual-cinematography/shutter-motion-control-system.yaml
+        sections: [shutter_motion_profile, presets, decision_rules]
+
+  - id: scene_physics_and_environment
+    triggers: [scene_and_visual_enrichment]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+    requires: [adult_human_anatomy_and_pose]
+    conflicts: []
+    cost_class: high
+    claims: [scene_semantics, collision_guardrails, soft_surface_support, environmental_coupling, action_object_attention]
+    sources:
+      - path: config/scene-environment/scene-worldbuilding-library.yaml
+        sections: [core_principle, global_rules, scene_enrichment_schema, scene_type_inference, depth_layering_rules, subject_background_interaction_rules, background_density_control, quality_review_hooks]
+      - path: config/scene-environment/physical-collision-guardrails.yaml
+        sections: [core_principle, primary_goal, spatial_relationship_schema, collision_failure_taxonomy, soft_surface_support_mechanics, contact_logic_rules, generator_visible_collision_translation, material_light_interaction_rules, collision_self_review_checklist, prompt_assembly_hooks]
+      - path: config/scene-environment/soft-surface-contact-physics.yaml
+        sections: [core_principle, soft_surface_schema, surface_response_patterns, failure_taxonomy, prompt_assembly_hooks]
+      - path: config/scene-environment/action-object-attention-system.yaml
+        sections: [core_principle, attention_schema, target_types, failure_taxonomy, prompt_assembly_hooks]
+      - path: config/scene-environment/environment-atmosphere-library.yaml
+        sections: [core_principle, global_rules, composition_task_layer, environment_atmosphere_schema, trigger_detection, time_of_day_profiles, weather_profiles, atmosphere_density_control, generator_visible_translation, self_review_checklist, prompt_assembly_hooks]
+
+  - id: material_and_environment_response
+    triggers: [material_or_environment_response]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
+    requires: [adult_human_anatomy_and_pose]
+    conflicts: []
+    cost_class: medium
+    claims: [material_response, wetness_cause, fabric_tension, reflection_behavior, atmosphere_response, garment_pose_interaction, opacity_physics]
+    sources:
+      - path: config/character-identity/adult-garment-pose-interaction-system.yaml
+        sections: [adult_garment_pose_interaction, rules]
+      - path: config/character-identity/fabric-opacity-translucency-logic.yaml
+        sections: [core_principle, global_rules, fabric_opacity_schema, local_anatomy_surface_integration, reveal_cause_taxonomy, reveal_intensity_rules, anti_failure_rules, self_review_checklist, prompt_assembly_hooks]
+      - path: config/character-identity/garment-motion-physics.yaml
+        sections: [core_principle, turning_twisting_fabric, pose_specific_motion, common_motion_failures, renderer_language]
+      - path: config/visual-cinematography/material-rendering-library.yaml
+        sections: [fabric_opacity_materials]
+      - path: config/visual-cinematography/expert-visual-synthesis-system.yaml
+        sections: [core_principle, global_rules, realism_surface_stack, lighting_physics_synthesis, wet_cloth_geometry_physics, render_lookdev_synthesis, prompt_assembly_hooks]
+
+  - id: cinematic_camera_lighting_and_style
+    triggers: [visual_cinematography, style_realism]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package, phase_4_self_review, phase_4_1_cleanup]
+    requires: [foundation_contract]
+    conflicts: []
+    cost_class: high
+    claims: [lighting, lens, exposure, depth, balance, gaze_flow, style_translation, renderer_visible_cinematics]
+    sources:
+      - path: config/visual-cinematography/lighting-diagrams.yaml
+        sections: [lighting_patterns, portrait_lighting_patterns, generator_visible_lighting_translation, final_prompt_lighting_safety, lighting_intent_selector, portrait_face_lighting_effects, material_specific_lighting, scene_lighting_presets, lighting_failure_taxonomy, lighting_conflict_resolution, lighting_quality_rubric]
+      - path: config/visual-cinematography/camera-lens-library.yaml
+        sections: [focal_length_strategies, lens_selection_guide, cinema_optical_characteristics, generator_visible_lens_translation, lens_intent_selector, subject_specific_lens_guardrails, lens_failure_taxonomy, lens_conflict_resolution, lens_quality_rubric, lens_selection_logic, focal_length_prompt_routing]
+      - path: config/visual-cinematography/exposure-decision-engine.yaml
+        sections: [exposure_strategy, presets, conflict_rules]
+      - path: config/visual-cinematography/depth-layering-system.yaml
+        sections: [core_principle, depth_layering_system, focus_modes, conditional_rules]
+      - path: config/visual-cinematography/visual-balance-system.yaml
+        sections: [core_principle, visual_balance_system, rules, failure_guardrails]
+
+  - id: explicit_style_translation
+    triggers: [style_realism]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package, phase_4_self_review, phase_4_1_cleanup]
+    requires: [cinematic_camera_lighting_and_style]
+    conflicts: []
+    cost_class: medium
+    claims: [explicit_style_translation, style_conflict_resolution]
+    sources:
+      - path: config/visual-cinematography/style-realism-control.yaml
+        sections: [style_realism_control, style_mode_router, generator_visible_style_translation, style_intent_selector, subject_specific_style_guardrails, style_quality_rubric, prompt_assembly_hooks]

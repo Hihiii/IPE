@@ -1,0 +1,54 @@
+schema_version: "1.0.0"
+name: "composition-preset-routing"
+description: >
+  Routes user intent and task profile to composition presets and required
+  composition decision fields.
+
+composition_preset_routing:
+  routing_order:
+    - explicit_user_composition
+    - publication_or_text_intent
+    - task_profile
+    - subject_type
+    - action_or_gaze
+    - environment_scale
+    - default_safe_composition
+
+routes:
+  magazine_cover:
+    triggers: ["cover", "magazine", "poster cover", "封面", "雜誌"]
+    preset: "magazine_cover_vertical"
+    required_fields: ["subject_position", "negative_space_policy", "typography_space", "crop_policy"]
+  selfie:
+    triggers: ["selfie", "自拍"]
+    preset: "close handheld selfie-perspective framing, phone off-frame"
+    required_fields: ["camera_relationship", "camera_distance_policy", "gaze_target", "crop_policy", "background_readability"]
+    default_viewpoint: "selfie_perspective"
+    route_to: "config/visual-cinematography/selfie-perspective-disambiguation.yaml"
+  performance_stage:
+    triggers: ["performing on stage", "concert", "idol stage", "舞台", "演唱會"]
+    preset: "performance_stage_wide"
+    required_fields: ["performer_priority", "stage_depth", "lighting_hierarchy", "gesture_crop"]
+  reclining_pose:
+    triggers: ["lying on bed", "lying on sofa", "reclining", "躺", "沙發", "床"]
+    preset: "reclining_interior_composition"
+    required_fields: ["support_contact", "body_diagonal", "crop_policy", "soft_surface_depth"]
+  automotive_editorial:
+    triggers: ["car magazine", "vehicle editorial", "motorcycle editorial", "車", "機車"]
+    preset: "centered_hero or left/right-third editorial"
+    required_fields: ["vehicle_full_silhouette", "wheel_crop_safety", "model_vehicle_relationship", "background_role"]
+  large_scale_action:
+    triggers: ["city destruction", "explosion", "battle", "kaiju", "destruction", "破壞"]
+    preset: "wide action with subject/action target hierarchy"
+    required_fields: ["scale_cue", "action_direction", "spectacle_background", "subject_readability"]
+  architecture:
+    triggers: ["cathedral", "interior", "architecture", "building", "大教堂", "建築"]
+    preset: "symmetrical_architecture or environmental portrait"
+    required_fields: ["level_verticals", "scale_cue", "background_readability", "light_path"]
+
+default_safe_composition:
+  portrait: "medium close-up, face first, readable background, safe hands crop"
+  product: "centered or three-quarter product hero, full silhouette visible, clean negative space"
+  action: "wide enough to include body, target, and motion direction"
+  group: "staggered face cluster or triangle with all faces visible"
+  environment: "wide readable composition with subject scale cue"

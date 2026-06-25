@@ -1,0 +1,64 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_x--characters--rikku
+  display_name: Rikku
+  aliases:
+  - Rikku
+  - 莉可
+  - 莉可 (Final Fantasy X)
+  source_title: Final Fantasy X
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy X default appearance
+  identity_summary: Energetic Al Bhed thief with golden blond hair in two high buns, bright green eyes,
+    freckles across nose, a green midriff-baring cropped top, yellow scarf neck wrap, brown fitted short
+    shorts, thigh-high black boots, and protective goggles.
+  visual_anchors:
+  - golden blond high twin buns
+  - green midriff-baring cropped top
+  - yellow scarf neck wrap
+  - protective goggles on forehead
+  - brown fitted short shorts
+  - thigh-high black boots with white trim
+  - bright green eyes
+  - freckles across nose
+  - golden blond
+  - two high rounded buns
+  - thin braided strands framing face
+  - bright green
+  - heart-shaped face
+  - petite athletic build
+  outfit_anchors:
+  - golden blond high twin buns with thin face braids
+  - green midriff-baring cropped top
+  - yellow scarf neck wrap
+  - brown fitted short shorts
+  - protective goggles
+  - thigh-high black boots with white trim
+  - tool belt with pouches
+  - Energetic Al Bhed thief with golden blond hair in two high buns, bright green eyes, freckles across
+    nose, a green midriff-baring cropped top, yellow scarf neck wrap, brown fitted short shorts, thigh-high
+    black boots with white trim, and protective goggles.
+  style_anchors:
+  - bubbly cheerful grin
+  - bright curious eye contact
+  drift_guards:
+  - missing goggles
+  - wrong hair buns missing
+  - no freckles
+  - serious expression
+  - wrong eye color
+  - tall build
+  - elegant poised demeanor
+  - missing green cropped top
+  - missing yellow scarf
+  - wearing full-length pants
+  - wearing dress or skirt
+  - missing tool belt
+  - wrong color top
+  - closed neckline top
+  - single ponytail
+  - short bob
+  - long straight hair
+  - dark hair color
+  - tall statuesque build
+  - heavy muscular build

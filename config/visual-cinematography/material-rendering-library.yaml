@@ -1,0 +1,766 @@
+# =============================================================================
+# MATERIAL RENDERING LIBRARY — visual properties and prompt guardrails for
+# physically accurate material rendering.
+# Version: 1.1.0
+# =============================================================================
+
+materials:
+  frosted_glass:
+    visual_properties:
+      - "semi-transparent"
+      - "diffuses shapes behind it"
+      - "soft edge reflections"
+      - "milky translucent surface"
+    add_positive:
+      - "semi-transparent frosted glass panels"
+      - "soft diffused silhouettes through the glass"
+      - "subtle edge reflections"
+    add_negative:
+      - "clear mirror glass"
+      - "door handle"
+      - "hinges"
+      - "window frame unless specified"
+
+  skin_realistic:
+    visual_properties:
+      - "subsurface scattering"
+      - "fine pores"
+      - "subtle color variation"
+      - "natural specular highlights"
+    add_positive:
+      - "natural skin texture"
+      - "visible pores"
+      - "subtle unevenness"
+      - "soft subsurface scattering"
+    add_negative:
+      - "plastic skin"
+      - "over-smoothed face"
+      - "wax figure look"
+
+  polished_marble:
+    visual_properties:
+      - "natural veining"
+      - "cold glossy reflection"
+      - "stone depth"
+    add_positive:
+      - "polished marble with natural veining"
+      - "soft glossy reflections"
+      - "realistic stone texture"
+
+  oak_wood:
+    visual_properties:
+      - "warm brown grain"
+      - "linear wood texture"
+      - "slight natural sheen on finished surface"
+      - "visible pore pattern"
+    add_positive:
+      - "warm oak wood grain"
+      - "subtle satin wood finish"
+      - "natural wood texture"
+    add_negative:
+      - "plastic wood"
+      - "painted-over grain"
+      - "uniform flat brown"
+
+  walnut_wood:
+    visual_properties:
+      - "deep chocolate brown"
+      - "rich swirling grain"
+      - "smooth polished feel"
+      - "high-end furniture sheen"
+    add_positive:
+      - "dark walnut wood with rich grain pattern"
+      - "smooth polished surface"
+      - "deep warm brown wood tone"
+    add_negative:
+      - "flat black"
+      - "painted wood look"
+
+  concrete:
+    visual_properties:
+      - "matte gray surface"
+      - "fine aggregate speckle"
+      - "subtle surface pitting"
+      - "cold neutral tone"
+    add_positive:
+      - "raw concrete texture"
+      - "matte gray industrial surface"
+      - "visible aggregate speckle"
+    add_negative:
+      - "glossy"
+      - "uniform flat gray plastic"
+
+  leather_smooth:
+    visual_properties:
+      - "fine grain texture"
+      - "soft matte sheen"
+      - "slight surface stretch marks"
+      - "supple drape"
+    add_positive:
+      - "smooth leather with fine grain"
+      - "soft matte finish"
+      - "natural leather texture"
+    add_negative:
+      - "patent plastic"
+      - "vinyl look"
+      - "perfectly uniform surface"
+
+  leather_aged:
+    visual_properties:
+      - "cracked patina"
+      - "worn edges with lighter undertone"
+      - "wrinkled surface"
+      - "rich deepened color"
+    add_positive:
+      - "aged leather with patina"
+      - "crackled surface texture"
+      - "worn natural creasing"
+    add_negative:
+      - "new plastic leather"
+      - "uniform color"
+
+  brushed_metal:
+    visual_properties:
+      - "directional grain lines"
+      - "soft anisotropic reflection"
+      - "matte metallic sheen"
+    add_positive:
+      - "brushed metal with directional grain"
+      - "soft metallic reflection"
+      - "satin metal finish"
+    add_negative:
+      - "mirror polish"
+      - "plastic chrome"
+
+  polished_chrome:
+    visual_properties:
+      - "mirror-like reflection"
+      - "sharp environmental bounce"
+      - "cool metallic tone"
+      - "zero diffuse scatter"
+    add_positive:
+      - "mirror-polished chrome"
+      - "sharp crisp reflections"
+      - "high-gloss metallic surface"
+    add_negative:
+      - "brushed finish"
+      - "tarnished or dull"
+
+  brass:
+    visual_properties:
+      - "warm golden metallic tone"
+      - "moderate reflectivity"
+      - "can develop green patina"
+    add_positive:
+      - "warm polished brass"
+      - "soft golden metallic reflection"
+      - "slight warm metallic sheen"
+    add_negative:
+      - "cold silver metal"
+      - "plastic gold"
+
+  copper:
+    visual_properties:
+      - "distinctive warm reddish-orange"
+      - "moderate gloss"
+      - "oxidizes to green patina over time"
+    add_positive:
+      - "warm copper metal with reddish tone"
+      - "soft metallic sheen"
+      - "natural copper color"
+    add_negative:
+      - "pink metal"
+      - "gold substitute"
+
+  ceramic_glazed:
+    visual_properties:
+      - "hard glossy surface"
+      - "sharp specular highlight"
+      - "smooth to touch"
+      - "consistent color"
+    add_positive:
+      - "glossy ceramic with hard smooth surface"
+      - "bright specular highlight"
+      - "clean even glazed finish"
+    add_negative:
+      - "plastic matte"
+      - "rough unglazed clay"
+
+  porcelain:
+    visual_properties:
+      - "translucent white"
+      - "extremely smooth"
+      - "hard glossy with blue-white tone"
+      - "delicate thin edges"
+    add_positive:
+      - "fine porcelain with translucent quality"
+      - "smooth glossy ceramic surface"
+      - "pure white with blue undertone"
+    add_negative:
+      - "thick opaque ceramic"
+      - "ivory plastic"
+
+  terracotta:
+    visual_properties:
+      - "warm earthy reddish-brown"
+      - "matte porous surface"
+      - "slightly rough texture"
+      - "natural clay variation"
+    add_positive:
+      - "terracotta clay texture"
+      - "matte earthy surface"
+      - "warm reddish-brown natural tone"
+    add_negative:
+      - "glazed ceramic"
+      - "uniform plastic orange"
+
+  velvet:
+    visual_properties:
+      - "deep rich color"
+      - "soft matte with pile direction"
+      - "light absorption in deep folds"
+      - "luxurious heaviness"
+    add_positive:
+      - "rich velvet with soft pile texture"
+      - "deep color saturation"
+      - "luxurious heavy drape"
+      - "matte fabric with direction-dependent sheen"
+    add_negative:
+      - "flat cotton"
+      - "plastic shine"
+
+  silk:
+    visual_properties:
+      - "lustrous sheen"
+      - "smooth liquid drape"
+      - "sharp fold highlights"
+      - "lightweight flowing"
+    add_positive:
+      - "lustrous silk fabric"
+      - "smooth liquid drape"
+      - "sharp fold highlights"
+      - "elegant natural sheen"
+    add_negative:
+      - "matte cotton"
+      - "stiff synthetic"
+
+  denim:
+    visual_properties:
+      - "diagonal twill weave"
+      - "indigo blue color"
+      - "slight roughness"
+      - "fades and wear at stress points"
+    add_positive:
+      - "denim with visible twill weave"
+      - "slight fabric roughness"
+      - "natural indigo tone"
+    add_negative:
+      - "smooth uniform blue"
+      - "stretchy synthetic look"
+
+  linen:
+    visual_properties:
+      - "irregular slub texture"
+      - "matte finish"
+      - "crisp but soft drape"
+      - "natural creasing"
+    add_positive:
+      - "linen with natural slub texture"
+      - "matte breathable fabric"
+      - "crisp natural wrinkles"
+    add_negative:
+      - "perfectly smooth"
+      - "starched stiff"
+
+  wool:
+    visual_properties:
+      - "soft fibrous surface"
+      - "matte with subtle heathered color"
+      - "thick substantial drape"
+      - "natural insulation look"
+    add_positive:
+      - "wool fabric with soft fibrous texture"
+      - "heathered natural color variation"
+      - "thick warm material"
+    add_negative:
+      - "smooth synthetic"
+      - "flat uniform knit"
+
+  clear_glass:
+    visual_properties:
+      - "fully transparent"
+      - "sharp refractive edges"
+      - "thin bright rim highlights"
+      - "visible through and behind"
+    add_positive:
+      - "clear transparent glass"
+      - "sharp refractive highlights at edges"
+      - "clean see-through material"
+    add_negative:
+      - "frosted glass"
+      - "dirty or cloudy surface"
+
+  tinted_glass:
+    visual_properties:
+      - "transparent with color cast"
+      - "moderate light absorption"
+      - "colored rim highlights"
+    add_positive:
+      - "tinted glass with even color cast"
+      - "colored transparent material"
+      - "subtle light filtration"
+    add_negative:
+      - "opaque colored plastic"
+      - "clear glass"
+
+  granite:
+    visual_properties:
+      - "coarse speckled pattern"
+      - "hard dense surface"
+      - "subtle sparkle from crystal inclusions"
+      - "cold to touch"
+    add_positive:
+      - "granite stone with speckled crystal pattern"
+      - "hard dense polished surface"
+      - "natural stone sparkle"
+    add_negative:
+      - "uniform gray plastic"
+      - "marble veining"
+
+  slate:
+    visual_properties:
+      - "dark layered surface"
+      - "matte fine grain"
+      - "slight cleft texture"
+      - "subtle sheen when polished"
+    add_positive:
+      - "dark slate with layered texture"
+      - "matte stone surface"
+      - "fine-grained natural rock"
+    add_negative:
+      - "shiny polished stone"
+      - "concrete substitute"
+
+  water_clear:
+    visual_properties:
+      - "fully transparent liquid"
+      - "surface tension ripples"
+      - "caustic light patterns underwater"
+      - "meniscus at container edges"
+    add_positive:
+      - "crystal clear water"
+      - "gentle surface ripples"
+      - "caustic light refraction"
+      - "natural meniscus at boundaries"
+    add_negative:
+      - "thick syrup consistency"
+      - "cloudy murky water"
+
+  oil:
+    visual_properties:
+      - "viscous liquid"
+      - "thick slow flow"
+      - "iridescent surface sheen"
+      - "distinct meniscus"
+    add_positive:
+      - "viscous oil with thick flow"
+      - "iridescent surface reflection"
+      - "slow heavy liquid movement"
+    add_negative:
+      - "watery thin"
+      - "clear transparent"
+
+  ice:
+    visual_properties:
+      - "semi-transparent crystalline"
+      - "internal fractures and bubbles"
+      - "sharp faceted edges"
+      - "cold blue-white tone"
+    add_positive:
+      - "translucent ice with internal fractures"
+      - "sharp crystalline edges"
+      - "cold blue-white frozen material"
+    add_negative:
+      - "clear glass"
+      - "uniform plastic frost"
+
+  snow_fresh:
+    visual_properties:
+      - "soft powdery white"
+      - "diffuse light scattering"
+      - "fine crystalline sparkle"
+      - "cold matte surface"
+    add_positive:
+      - "fresh powdery snow"
+      - "soft white diffuse surface"
+      - "fine crystal sparkle"
+      - "cold pristine snow texture"
+    add_negative:
+      - "slush"
+      - "dirty gray"
+
+  latex_pvc:
+    visual_properties:
+      - "high-gloss reflective"
+      - "tight second-skin fit"
+      - "sharp specular highlights"
+      - "smooth uniform surface"
+    add_positive:
+      - "high-gloss latex with sharp reflections"
+      - "tight second-skin fit"
+      - "smooth uniform shiny surface"
+    add_negative:
+      - "matte rubber"
+      - "fabric texture"
+
+  carbon_fiber:
+    visual_properties:
+      - "woven or unidirectional pattern"
+      - "matte dark with subtle sheen"
+      - "distinctive checkered weave texture"
+      - "lightweight high-tech look"
+    add_positive:
+      - "carbon fiber with woven texture pattern"
+      - "matte dark high-tech surface"
+      - "subtle checkered weave visible"
+    add_negative:
+      - "flat black plastic"
+      - "glossy painted surface"
+
+  rubber:
+    visual_properties:
+      - "matte non-reflective"
+      - "soft flexible appearance"
+      - "fine surface texture"
+      - "dense solid feel"
+    add_positive:
+      - "matte rubber texture"
+      - "soft dense flexible material"
+      - "non-reflective surface"
+    add_negative:
+      - "shiny plastic"
+      - "hard rigid"
+
+  terrazzo:
+    visual_properties:
+      - "composite with embedded chips"
+      - "polished smooth surface"
+      - "varied aggregate colors"
+      - "subtle glossy reflection"
+    add_positive:
+      - "terrazzo with embedded marble chips"
+      - "smooth polished composite surface"
+      - "varied aggregate color pattern"
+    add_negative:
+      - "uniform solid color"
+      - "rough unfinished"
+
+  resin_epoxy:
+    visual_properties:
+      - "ultra-glossy transparent or colored"
+      - "perfectly smooth surface"
+      - "deep wet-looking gloss"
+      - "can embed objects"
+    add_positive:
+      - "glossy epoxy resin with deep wet look"
+      - "perfectly smooth glass-like surface"
+      - "high-gloss transparent finish"
+    add_negative:
+      - "matte plastic"
+      - "cloudy or bubbly"
+
+  bamboo:
+    visual_properties:
+      - "warm golden-yellow"
+      - "smooth with periodic nodes"
+      - "linear grain"
+      - "natural organic sheen"
+    add_positive:
+      - "natural bamboo with warm golden tone"
+      - "smooth surface with visible nodes"
+      - "linear bamboo grain"
+    add_negative:
+      - "plastic tube"
+      - "painted wood"
+
+# ------------------------------------------------------------
+# FASHION PREMIUM MATERIAL QUALITY LADDER
+# Extended material quality tiers for high-end fashion and portrait photography.
+# Each entry defines three quality levels: standard, premium, ultra_premium.
+# ------------------------------------------------------------
+
+fashion_material_quality_ladder:
+  purpose: "Map material quality to premium fashion output. Higher tiers add refined surface behavior, specific fabric physics, and targeted negative guards against cheap rendering."
+  usage: "Select tier based on task_profile, mood, and subject. Ultra-premium reserved for haute couture, luxury editorial, and high-end commercial beauty."
+
+  skin_quality:
+    description: "Human skin realism tier — from standard realistic to ultra-premium editorial finish."
+    standard:
+      prompt_positive: "realistic skin texture with visible pores and natural tone variation"
+      prompt_negative: "plastic skin, waxy face, over-smoothed beauty filter"
+    premium:
+      prompt_positive: "refined skin texture with natural subsurface scattering, soft diffuse quality, subtle pore definition, natural specular highlights following facial planes"
+      prompt_negative: "plastic skin, waxy CGI finish, uniform airbrushed surface, poreless skin"
+    ultra_premium:
+      prompt_positive: "porcelain-finish skin with delicate luminescence, refined pore structure, natural subsurface scattering, soft warm undertones, micro-texture variation with no visible powder or makeup caking, natural specular response on cheekbones and collarbone, skin breathes like real living tissue"
+      prompt_negative: "plastic skin, wax figure, over-smoothed beauty filter, uniform skin tone, airbrushed perfection, CGI gloss, poreless mannequin skin"
+
+  silk_quality:
+    description: "Silk fabric rendering — from basic sheen to haute couture charmeuse."
+    standard:
+      prompt_positive: "lustrous silk fabric, smooth drape, natural sheen"
+      prompt_negative: "matte cotton, stiff synthetic"
+    premium:
+      prompt_positive: "premium silk charmeuse with liquid drape, refined luster, sharp fold highlights, soft fluid movement, natural iridescent sheen shifting with fold direction"
+      prompt_negative: "matte cotton, stiff synthetic, plastic shine, uniform flat color"
+    ultra_premium:
+      prompt_positive: "haute couture silk charmeuse with liquid-metal drape, ultra-refined luster, champagne-gold highlight rolloff on folds, micro-pleat memory, weightless floating hem, subtle warp and weft variation creating natural depth, edge-stitch definition on hems"
+      prompt_negative: "cheap polyester shine, stiff synthetic drape, uniform flat luster, plastic silk, no fabric weight"
+
+  cashmere_wool_quality:
+    description: "Premium knit and wool fabric for high-end fashion editorial."
+    standard:
+      prompt_positive: "soft wool fabric with fibrous texture, matte finish, natural drape"
+      prompt_negative: "smooth synthetic, flat uniform knit"
+    premium:
+      prompt_positive: "luxury cashmere wool with soft matte finish, subtle fiber halo, natural heathered color variation, substantial drape weight, fine rib or knit structure visible at edges"
+      prompt_negative: "smooth synthetic, flat acrylic knit, plastic fiber, uniform color without depth"
+    ultra_premium:
+      prompt_positive: "ultra-fine cashmere with barely visible fiber halo, liquid-soft hand feel, nuanced heathered color depth, natural drape with soft weight, micro-rib texture only visible at close inspection, no pilling or synthetic shine, garment structure holds shape naturally"
+      prompt_negative: "cheap acrylic knit, synthetic pilling, flat uniform color, plastic fiber sheen, stiff cardboard drape"
+
+  couture_fabric_quality:
+    description: "High-end structural and embellished fabrics for haute couture fashion."
+    standard:
+      prompt_positive: "structured fashion fabric with clean silhouette, readable texture"
+      prompt_negative: "cheap costume fabric, flat uniform texture"
+    premium:
+      prompt_positive: "couture-quality fabric with intricate weave structure, precise fold behavior clean silhouette definition, subtle texture variation across panels, refined seam and dart placement"
+      prompt_negative: "cheap costume fabric, flat iron-on texture, sloppy seam construction, fabric wrinkling without structural cause"
+    ultra_premium:
+      prompt_positive: "haute couture fabric with architectural body, hand-finished seam construction, intricate micro-texture only visible at close range, fabric holds sculptural shape while maintaining natural drape weight, beadwork or embroidery sits flush with surface, lining moves independently from outer shell, invisible zipper or hand-stitched closure detail"
+      prompt_negative: "cheap costume satin, printed-on texture, visible machine stitching, iron-on embellishment, fabric puckering at seams, polyester lining visible"
+
+  leather_fashion_quality:
+    description: "Premium leather for fashion garments and accessories."
+    standard:
+      prompt_positive: "smooth leather with fine grain and soft matte sheen"
+      prompt_negative: "patent plastic, vinyl look, perfectly uniform surface"
+    premium:
+      prompt_positive: "full-grain calf leather with supple drape, natural grain variation, soft matte luxury sheen, subtle surface stretch marks, fine creasing at bend points"
+      prompt_negative: "cheap patent leather, vinyl plastic, stamped grain, uniform surface"
+    ultra_premium:
+      prompt_positive: "nappa lambskin leather with buttery soft drape, natural pull-up effect revealing lighter undertone at crease points, micro-grain texture, matte-satin finish with no artificial gloss, leather breathes and drapes like second skin, edge painting or folded hem finish"
+      prompt_negative: "cheap corrected-grain leather, patent vinyl, plastic-coated leather, uniform stamped texture, cardboard stiff leather"
+
+  satin_fabric_quality:
+    description: "Satin weave fabric for premium fashion and evening wear."
+    standard:
+      prompt_positive: "smooth satin fabric with lustrous face, fluid drape, crisp fold highlights"
+      prompt_negative: "matte cotton, cheap polyester shine"
+    premium:
+      prompt_positive: "premium charmeuse satin with high-luster face and matte back, fluid liquid drape, sharp fold highlights catching key light, subtle warp luster variation, soft weight that follows body contour"
+      prompt_negative: "cheap polyester satin, plastic shine, stiff drape, uniform flat luster"
+    ultra_premium:
+      prompt_positive: "ultra-premium silk satin with mirror-like luster on face, matte liquid back, drape follows gravity in continuous fluid lines, fold highlights create natural champagne-gold or pearl-silver accent, fabric weight just heavy enough for controlled movement yet light enough to float, no polyester or synthetic blend visible"
+      prompt_negative: "synthetic poly-satin, plastic shine, cardboard drape, uniform flat reflection, cheap evening wear fabric"
+
+  lace_fabric_quality:
+    description: "Fine lace for premium fashion and intimate apparel."
+    standard:
+      prompt_positive: "lace fabric with open weave pattern, soft texture"
+      prompt_negative: "printed lace pattern, cheap synthetic mesh"
+    premium:
+      prompt_positive: "fine French lace with intricate pattern definition, soft scalloped edges, subtle texture variation between floral motifs and mesh ground, lays flat against skin without gaping"
+      prompt_negative: "printed lace pattern, stiff synthetic lace, uniform machine-made repeat, scratchy texture"
+    ultra_premium:
+      prompt_positive: "Chantilly or Alençon lace with hand-finished scalloped edges, micro-floral motifs connected by delicate brides, corded outline defining each pattern element, lace appears to float above skin with no visible seam or edge finish, soft stretch follows body contour without distortion"
+      prompt_negative: "printed lace, cheap synthetic mesh, stiff scalloped edge, visible fusible backing, uniform machine repeat"
+
+  tulle_organza_quality:
+    description: "Sheer structural fabrics for premium fashion and editorial."
+    standard:
+      prompt_positive: "sheer tulle or organza fabric, crisp transparent quality, soft volume"
+      prompt_negative: "opaque fabric, flat wrinkled net"
+    premium:
+      prompt_positive: "crisp silk organza with transparent body, holds structural shape, subtle iridescent shimmer, layered translucency creates depth, stiff enough for volume yet soft enough for fluid movement"
+      prompt_negative: "stiff plastic net, flat opaque fabric, wrinkled or crushed texture, cheap costume tulle"
+    ultra_premium:
+      prompt_positive: "ultra-fine silk organza with barely-there transparency, crisp structural body that floats with movement, subtle moiré or iridescence in overlapping layers, pleats or ruffles hold sharp architectural edge, fabric makes its own shape independent of underlayer"
+      prompt_negative: "cheap nylon tulle, plastic stiffness, crushed wrinkled net, opaque synthetic organza, costume-shop quality"
+
+fashion_premium_material_assembly_rules:
+  purpose: "Rules for combining premium materials in a single fashion editorial prompt."
+  rules:
+    - "Select one primary fabric quality tier for the hero garment; secondary fabrics may be one tier lower."
+    - "Skin quality tier should match or exceed garment tier for editorial consistency."
+    - "For full-body fashion, all visible materials should share the same quality tier."
+    - "For beauty close-up, skin ultra-premium is mandatory; fabric can be one tier lower."
+    - "When mixing materials (leather + silk + lace), ensure each has distinct specular response."
+  conflict_resolution:
+    garment_vs_skin_conflict:
+      trigger: "Ultra-premium garment but standard skin"
+      resolution: "Raise skin to premium minimum for editorial coherence"
+    mixed_fabric_tiers:
+      trigger: "Multiple fabrics at different quality tiers"
+      resolution: "Use highest tier as anchor; describe others as complementary"
+    fabric_vs_lighting:
+      trigger: "Ultra-premium fabric detail lost in dark mood lighting"
+      resolution: "Add selective hero illumination on fabric texture zones"
+
+# ------------------------------------------------------------
+# Fabric Opacity / Translucency Material Extension
+# ------------------------------------------------------------
+
+fabric_opacity_materials:
+  cotton_poplin:
+    opacity: "opaque"
+    behavior:
+      - "structured"
+      - "mostly opaque"
+      - "holds collar and placket shape"
+    visibility_rule: "No sharp anatomical visibility through dry fabric."
+
+  lightweight_cotton:
+    opacity: "lightweight_opaque"
+    behavior:
+      - "soft drape"
+      - "slight body contour where touching skin"
+      - "mostly opaque under normal light"
+    visibility_rule: "Use implied contour only unless strong backlight or wetness is specified."
+
+  cotton_voile:
+    opacity: "semi_sheer"
+    behavior:
+      - "light and airy"
+      - "soft backlit translucency"
+      - "faint silhouette in thinnest areas"
+    visibility_rule: "Use faint non-sharp silhouette, not clear explicit visibility."
+
+  chiffon:
+    opacity: "sheer"
+    behavior:
+      - "transparent layering"
+      - "floating drape"
+      - "visible overlap and layering"
+    visibility_rule: "Visibility must follow layered fabric structure."
+
+  damp_cotton:
+    opacity: "wet_translucent"
+    behavior:
+      - "clings in contact areas"
+      - "more translucent where wet and tensioned"
+      - "opaque-to-translucent gradient"
+    visibility_rule: "Visibility must be caused by moisture, cling, and tension."
+
+  lace_or_mesh:
+    opacity: "mesh_or_lace"
+    behavior:
+      - "pattern-based visibility"
+      - "open weave"
+    visibility_rule: "Visibility follows lace/mesh pattern, not uniform transparency."
+
+  satin:
+    opacity: "opaque_with_sheen"
+    behavior:
+      - "smooth lustrous surface"
+      - "high-luster face, matte back"
+      - "fluid drape with crisp fold highlights"
+    visibility_rule: "Opaque except where tension thins weave under strong backlight."
+
+  organza:
+    opacity: "stiff_sheer"
+    behavior:
+      - "crisp transparent sheer"
+      - "holds structural shape"
+      - "iridescent shimmer possible"
+    visibility_rule: "Fully transparent where single layer; overlapping layers reduce visibility."
+
+  neoprene:
+    opacity: "opaque_thick"
+    behavior:
+      - "thick spongy edge"
+      - "matte surface"
+      - "holds shape without draping"
+    visibility_rule: "Fully opaque regardless of light or moisture."
+
+  leather_thin:
+    opacity: "opaque_supple"
+    behavior:
+      - "opaque but follows body contour"
+      - "stretches slightly over joints"
+      - "subtle surface sheen"
+    visibility_rule: "Opaque — anatomical contour visible through fit, not transparency."
+
+# ===========================================================================
+# FASHION SILHOUETTE RECOMMENDATIONS
+# Maps each fabric tier to recommended silhouettes from
+# config/character-identity/fashion-silhouette-library.yaml
+# ===========================================================================
+
+fashion_silhouette_recommendations:
+  purpose: "Maps each fabric quality tier to the best matching editorial silhouettes. Use when both fabric tier and silhouette choice are active."
+  cross_reference: "See config/character-identity/fashion-silhouette-library.yaml for full silhouette definitions, construction vocabulary, and crop affinity."
+
+  silk_fashion_quality:
+    silk_standard:
+      recommended: [a_line, trapeze, fit_and_flare, bodycon]
+      acceptable: [column, peplum, high_low, plunge]
+      avoid: [cocoon, deconstructed, cape, strappy, cut_out, asymmetrical]
+    silk_premium:
+      recommended: [a_line, column, fit_and_flare, high_low, trapeze, plunge]
+      acceptable: [hourglass, peplum, bodycon, sheer_layering]
+      avoid: [cocoon, deconstructed, cape, strappy, cut_out]
+    silk_ultra_premium:
+      recommended: [a_line, column, fit_and_flare, high_low, hourglass, plunge]
+      acceptable: [trapeze, bodycon, peplum, sheer_layering]
+      avoid: [cocoon, cape, deconstructed, strappy, cut_out]
+
+  cashmere_fashion_quality:
+    cashmere_standard:
+      recommended: [column, cocoon, a_line, bodycon]
+      acceptable: [hourglass, peplum]
+      avoid: [trapeze, deconstructed, cape, asymmetrical, high_low, cut_out, strappy]
+    cashmere_premium:
+      recommended: [cocoon, column, hourglass, a_line]
+      acceptable: [peplum, bodycon, cape]
+      avoid: [trapeze, deconstructed, asymmetrical, cut_out, strappy, plunge]
+    cashmere_ultra_premium:
+      recommended: [cocoon, column, cape, hourglass]
+      acceptable: [a_line, peplum, bodycon]
+      avoid: [trapeze, deconstructed, high_low, cut_out, strappy, plunge]
+
+  leather_fashion_quality:
+    leather_standard:
+      recommended: [bodycon, asymmetrical, deconstructed, peplum, cut_out, strappy]
+      acceptable: [hourglass, column, plunge]
+      avoid: [a_line, trapeze, cape, cocoon, fit_and_flare]
+    leather_premium:
+      recommended: [asymmetrical, deconstructed, bodycon, peplum, hourglass, cut_out, strappy]
+      acceptable: [column, fit_and_flare, plunge]
+      avoid: [a_line, trapeze, cape, cocoon]
+
+  satin_fabric_quality:
+    satin_standard:
+      recommended: [a_line, trapeze, bodycon, fit_and_flare]
+      acceptable: [column, hourglass, high_low, plunge]
+      avoid: [cocoon, deconstructed, cape, asymmetrical, strappy, cut_out]
+    satin_premium:
+      recommended: [a_line, column, hourglass, fit_and_flare, high_low, plunge]
+      acceptable: [peplum, bodycon, trapeze, sheer_layering]
+      avoid: [cocoon, deconstructed, cape, strappy, cut_out]
+
+  lace_fabric_quality:
+    lace_standard:
+      recommended: [a_line, trapeze, fit_and_flare, peplum, sheer_layering]
+      acceptable: [column, high_low, hourglass, plunge]
+      avoid: [cocoon, deconstructed, cape, asymmetrical, bodycon, cut_out, strappy]
+    lace_premium:
+      recommended: [a_line, trapeze, fit_and_flare, high_low, cape, sheer_layering]
+      acceptable: [hourglass, column, peplum, plunge]
+      avoid: [deconstructed, bodycon, asymmetrical, cocoon, cut_out, strappy]
+
+  tulle_organza_fashion_quality:
+    recommended: [a_line, trapeze, fit_and_flare, high_low, cape, sheer_layering]
+    acceptable: [peplum, column, hourglass]
+    avoid: [cocoon, deconstructed, bodycon, cut_out, strappy]
