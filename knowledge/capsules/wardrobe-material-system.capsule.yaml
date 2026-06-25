@@ -1,0 +1,45 @@
+# wardrobe-material-system.capsule.yaml — Phase 3 compiled capsule
+
+policy:
+  auto_fill_prohibited: true
+  context_inference_blocked: true
+  canonical_costume_trigger_required: true
+  trigger_keywords: [canonical, cosplay, original_outfit, source_accurate]
+
+slots:
+  - headwear
+  - top
+  - bottom
+  - dress
+  - outerwear
+  - footwear
+  - accessories
+  - undergarments
+
+explicit_rules:
+  - Only describe items present in raw prompt
+  - Do not infer clothing from scene, weather, or location
+  - Material effects apply only to existing items
+  - Wet/transparent effects require explicit wet/transparent trigger
+
+materials:
+  cotton: matte, soft_fold, diffuse_highlight
+  silk: high_luster, fluid_drape, sharp_highlight
+  leather: stiff_highlight, defined_crease, surface_reflect
+  denim: textured, flat_seam, minimal_highlight
+  lace: patterned_void, skin_visible_through, edge_frill
+  vinyl: wet_look, high_specular, crisp_reflection
+  wool: fuzzy_contour, matte_surface, soft_volume
+  mesh: grid_visible, skin_tone_through, translucent_overlay
+
+opacity:
+  opaque: no_skin_visible
+  translucent: skin_tone_modulated
+  sheer: skin_clearly_visible
+  wet_sheer: skin_visible_with_highlight
+
+negative_guards:
+  - "unrequested clothing"
+  - "context-inferred outfit"
+  - "generic fantasy armor"
+  - "default nude cover"

@@ -1,0 +1,36 @@
+# pose-body-language-system.capsule.yaml — Phase 2-3 compiled capsule
+
+pose_categories:
+  standing:
+    variants: [straight, contrapposto, leaned, asymmetrical]
+    support: [both_feet, single_leg, wall_support]
+  seated:
+    variants: [chair, floor, edge, cross_legged, straddle]
+    support: [buttocks, backrest, armrest, floor]
+  reclining:
+    variants: [supine, side_lying, prone, inclined]
+    support: [back, hip, shoulder, arm_prop]
+  kneeling:
+    variants: [both_knees, single_knee, crouched, genuflect]
+    support: [knees, shins, hands]
+  action:
+    variants: [walking, running, turning, reaching, bending, stretching]
+    support: [dynamic_balance, momentum]
+
+anatomy_guardrails:
+  - no_floating_hands
+  - no_broken_spine
+  - no_twisted_pelvis
+  - no_impossible_contortion
+  - maintain_joint_angle_limits
+  - weight_distribution_must_match_support
+
+hand_intent:
+  categories: [resting, gesturing, holding, touching, covering, reaching]
+  visibility: [visible, obscured, partially_visible, out_of_frame]
+
+forbidden:
+  - "broken spine"
+  - "floating hands"
+  - "twisted pelvis"
+  - "impossible anatomy"

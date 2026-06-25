@@ -1,0 +1,63 @@
+# prompt-output-schema.capsule.yaml — Z-Image output contract
+# Runtime: permanent.
+
+output_format:
+  type: json
+  fields:
+    final_positive_prompt:
+      type: string
+      max_length: 2048
+      required: true
+    final_negative_prompt:
+      type: string
+      max_length: 1024
+      required: true
+    suggested_resolution:
+      type: string
+      enum:
+        - "832x1216"
+        - "1216x832"
+        - "1024x1024"
+        - "896x1152"
+        - "1152x896"
+        - "768x1344"
+      required: true
+  optional:
+    compact_positive_prompt:
+      type: string
+      max_length: 512
+    compact_negative_prompt:
+      type: string
+      max_length: 256
+    detected_intent:
+      type: object
+    warnings:
+      type: array
+      items: string
+    debug_json:
+      type: object
+
+field_order:
+  positive:
+    - subject_core
+    - identity_markers
+    - expression_gaze
+    - hair_description
+    - body_pose
+    - skin_texture
+    - wardrobe_explicit
+    - lighting
+    - environment
+    - atmosphere
+    - camera
+    - composition
+    - color_grade
+    - narrative_context
+    - sensory_cues
+    - technical_flags
+  negative:
+    - anatomy_failures
+    - physics_failures
+    - material_failures
+    - style_drift
+    - quality_artifacts

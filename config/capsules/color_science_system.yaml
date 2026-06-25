@@ -1,6 +1,0 @@
-schema_version: "1.0.0"
-module_id: color_science_system
-summary: Resolve palette, color temperature, tonal foundation, skin-tone protection, and grade style.
-phase_focus: [phase_2_composition_and_cinematography, phase_3_1_prompt_package]
-prompt_rules:
-  - Color grading should support subject clarity and avoid destructive hue drift.

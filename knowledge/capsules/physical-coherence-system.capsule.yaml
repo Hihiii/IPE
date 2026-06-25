@@ -1,0 +1,48 @@
+# physical-coherence-system.capsule.yaml — Phase 3-4 compiled capsule
+
+gravity:
+  enabled: true
+  effects:
+    - fabric_drape_downward
+    - hair_weight_pulls_down
+    - breast_natural_sag_or_lift_by_support
+    - loose_material_falls
+
+contact:
+  types: [standing, sitting, lying, leaning, pressing]
+  rules:
+    - support_surface_must_intersect_body
+    - no_gap_between_body_and_support
+    - pressure_deformation_on_soft_surfaces
+    - weight_distribution_visible_in_fabric
+
+collision_guardrails:
+  - no_arm_through_torso
+  - no_leg_overlap_without_contact
+  - no_clothing_clipping_through_body
+  - adjacent_limbs_maintain_separation
+
+compression:
+  soft_surfaces:
+    - mattress_indentation
+    - cushion_deformation
+    - fabric_gathering_at_pressure_points
+  hard_surfaces:
+    - minimal_deformation
+    - pressure_flattening_at_contact
+
+water_interaction:
+  surface_tension: true
+  droplet_behavior: gravity_aligned
+  wet_body_sheen: directional_by_light
+
+wind:
+  consistent_direction: true
+  fabric_response: directional_flow
+  hair_response: mass_momentum
+
+negative_guards:
+  - "floating objects"
+  - "weightless fabric"
+  - "gravity ignored"
+  - "body clipping through support"

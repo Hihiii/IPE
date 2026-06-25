@@ -1,0 +1,35 @@
+# semantic-priority.capsule.yaml — Priority rules for prompt assembly
+
+priority_order:
+  - explicit_user_instruction
+  - identity_canonical
+  - exposure_contract
+  - safety_guardrails
+  - composition_constraints
+  - lighting_requirements
+  - material_properties
+  - environment_context
+  - atmospheric_effects
+  - narrative_context
+
+hard_locks:
+  - identity_markers
+  - exposure_contract
+  - age_maturity
+  - forbidden_drift
+
+conflict_resolution:
+  user_explicit_overrides_domain: true
+  policy_overrides_model_suggestion: true
+  safety_overrides_aesthetic: true
+  identity_overrides_style_variation: true
+
+priority_flags:
+  hard_lock:
+    - "Cannot override: identity markers"
+    - "Cannot override: adult maturity baseline"
+    - "Cannot override: exposure contract terms"
+  soft_preference:
+    - "Lighting can shift for narrative coherence"
+    - "Color grade can adapt to environment"
+    - "Camera distance can vary within shot taxonomy"

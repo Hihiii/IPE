@@ -1,0 +1,84 @@
+# module-index.yaml — Master module lookup for capsule retriever
+
+modules:
+  "01":
+    name: subject_intent_parser
+    capsule: subject-intent-parser.capsule.yaml
+    full_source: full/subject-intent-parser.yaml
+    always_resident: true
+  "02":
+    name: human_character_system
+    capsule: human-character-system.capsule.yaml
+    full_source: full/human-description-system.yaml
+  "03":
+    name: skin_rendering_system
+    capsule: skin-rendering-system.capsule.yaml
+    full_source: full/skin-hair-makeup-rendering.yaml
+  "04":
+    name: hair_physics_system
+    capsule: hair-physics-system.capsule.yaml
+    full_source: full/hair-physics-rendering-system.yaml
+  "05":
+    name: emotion_expression_system
+    capsule: emotion-expression-system.capsule.yaml
+    full_source: full/emotion-expression-router.yaml
+  "06":
+    name: pose_body_language_system
+    capsule: pose-body-language-system.capsule.yaml
+    full_source: full/pose-gesture-body-language.yaml
+  "07":
+    name: wardrobe_material_system
+    capsule: wardrobe-material-system.capsule.yaml
+    full_source: full/explicit-wardrobe-policy.yaml
+  "08":
+    name: physical_coherence_system
+    capsule: physical-coherence-system.capsule.yaml
+    full_source: full/physical-coherence-engine.yaml
+    always_resident: true
+  "09":
+    name: microclimate_atmosphere_system
+    capsule: microclimate-atmosphere-system.capsule.yaml
+    full_source: full/microclimate-atmosphere-system.yaml
+  "10":
+    name: lighting_exposure_system
+    capsule: lighting-exposure-system.capsule.yaml
+    full_source: full/lighting-diagrams.yaml
+  "11":
+    name: camera_composition_system
+    capsule: camera-composition-system.capsule.yaml
+    full_source: full/camera-lens-library.yaml
+  "12":
+    name: color_science_system
+    capsule: color-science-system.capsule.yaml
+    full_source: full/color-science-decision-engine.yaml
+  "13":
+    name: scene_dna_system
+    capsule: scene-dna-system.capsule.yaml
+    full_source: full/scene-dna-system.yaml
+  "14":
+    name: visual_narrative_system
+    capsule: visual-narrative-system.capsule.yaml
+    full_source: full/visual-narrative-system.yaml
+  "15":
+    name: sensory_detail_system
+    capsule: sensory-detail-system.capsule.yaml
+    full_source: full/sensory-detail-system.yaml
+  "16":
+    name: character_ip_database
+    capsule: character-ip-resolver.capsule.yaml
+    full_source: full/character-ip/
+  "17":
+    name: policy_rule_system
+    capsule: policy-rule-system.capsule.yaml
+    full_source: full/global-policy.yaml
+    always_resident: true
+  "18":
+    name: prompt_renderer_system
+    capsule: prompt-renderer-system.capsule.yaml
+    full_source: full/prompt-assembly-schema.yaml
+    always_resident: true
+  "19":
+    name: quality_failure_validation
+    capsule: quality-failure-validation.capsule.yaml
+    full_source: full/quality-rubric.yaml
+    always_resident: true

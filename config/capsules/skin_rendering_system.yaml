@@ -1,6 +1,0 @@
-schema_version: "1.0.0"
-module_id: skin_rendering_system
-summary: Add skin texture, highlight behavior, material response, and anti-plastic-skin guards.
-phase_focus: [phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
-prompt_rules:
-  - Prefer natural texture, plausible highlights, and light-responsive surface detail.

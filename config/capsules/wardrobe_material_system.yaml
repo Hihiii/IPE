@@ -1,6 +1,0 @@
-schema_version: "1.0.0"
-module_id: wardrobe_material_system
-summary: Resolve wardrobe identity, explicit item preservation, material opacity, fabric behavior, and adult baseline transformation.
-phase_focus: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_1_prompt_package]
-prompt_rules:
-  - Preserve garment identity markers while satisfying adult baseline requirements.

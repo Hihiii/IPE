@@ -1,0 +1,61 @@
+# master-module-map.capsule.yaml — Module routing map
+# Runtime: permanent.
+
+modules:
+  01_subject_intent_parser:
+    capsule: subject-intent-parser.capsule.yaml
+    triggers: [always]
+  02_human_character_system:
+    capsule: human-character-system.capsule.yaml
+    triggers: [human, character, person, woman, man, figure]
+  03_skin_rendering_system:
+    capsule: skin-rendering-system.capsule.yaml
+    triggers: [skin, wet, rain, closeup, portrait, nude, sheer]
+  04_hair_physics_system:
+    capsule: hair-physics-system.capsule.yaml
+    triggers: [hair, wet, wind, rain, motion]
+  05_emotion_expression_system:
+    capsule: emotion-expression-system.capsule.yaml
+    triggers: [expression, emotion, mood, gaze, face, portrait]
+  06_pose_body_language_system:
+    capsule: pose-body-language-system.capsule.yaml
+    triggers: [pose, gesture, sitting, standing, lying, action, movement]
+  07_wardrobe_material_system:
+    capsule: wardrobe-material-system.capsule.yaml
+    triggers: [clothing, outfit, dress, wear, costume, uniform, bikini, lingerie, shoes, naked, nude]
+  08_physical_coherence_system:
+    capsule: physical-coherence-system.capsule.yaml
+    triggers: [always]
+  09_microclimate_atmosphere_system:
+    capsule: microclimate-atmosphere-system.capsule.yaml
+    triggers: [rain, wet, fog, mist, humidity, wind, storm, snow, weather]
+  10_lighting_exposure_system:
+    capsule: lighting-exposure-system.capsule.yaml
+    triggers: [lighting, night, backlight, studio, cinematic, dark, shadow, neon]
+  11_camera_composition_system:
+    capsule: camera-composition-system.capsule.yaml
+    triggers: [selfie, closeup, wide, angle, composition, lens, perspective, shot]
+  12_color_science_system:
+    capsule: color-science-system.capsule.yaml
+    triggers: [color, palette, warm, cold, cinematic, grade, saturation, neon]
+  13_scene_dna_system:
+    capsule: scene-dna-system.capsule.yaml
+    triggers: [scene, location, environment, room, street, city, nature, interior, exterior]
+  14_visual_narrative_system:
+    capsule: visual-narrative-system.capsule.yaml
+    triggers: [action, event, story, moment, narrative, cinematic, scene, drama]
+  15_sensory_detail_system:
+    capsule: sensory-detail-system.capsule.yaml
+    triggers: [cold, wet, heat, humidity, touch, texture, atmosphere, sensory, feel]
+  16_character_ip_database:
+    capsule: character-ip-resolver.capsule.yaml
+    triggers: [named_character, ip_reference]
+  17_policy_rule_system:
+    capsule: policy-rule-system.capsule.yaml
+    triggers: [always]
+  18_prompt_renderer_system:
+    capsule: prompt-renderer-system.capsule.yaml
+    triggers: [always]
+  19_quality_failure_validation:
+    capsule: quality-failure-validation.capsule.yaml
+    triggers: [always]

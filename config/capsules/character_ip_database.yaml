@@ -1,6 +1,0 @@
-schema_version: "1.0.0"
-module_id: character_ip_database
-summary: Resolve confirmed adult named-character aliases, identity anchors, appearance anchors, and drift guards.
-phase_focus: [phase_1_intent_analysis, phase_3_scene_blueprint, phase_4_self_review]
-prompt_rules:
-  - Named character NSFW requests require a unique confirmed-adult whitelist match.

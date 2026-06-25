@@ -1,0 +1,6 @@
+# human-description-system.yaml — Full source (not loaded at runtime)
+# See compiled capsule: knowledge/capsules/human-character-system.capsule.yaml
+
+version: 1.0
+status: reference_only
+description: Complete system for describing human subjects including face, hair, body, age maturity.

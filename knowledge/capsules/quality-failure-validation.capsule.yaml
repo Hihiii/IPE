@@ -1,0 +1,61 @@
+# quality-failure-validation.capsule.yaml — Phase 4 compiled capsule
+
+quality_checklist:
+  intent_preservation:
+    - subject_type_matches_intent
+    - primary_focus_preserved
+    - task_type_honored
+  exposure_feasibility:
+    - target_and_action_defined
+    - end_state_visualizable
+    - route_direct_or_sheer_clear
+    - unobstructed_parts_visible
+    - no_censorship_detected
+  composition_readability:
+    - subject_recognizable
+    - no_critical_crop_errors
+    - depth_layers_apparent
+  physical_coherence:
+    - pose_supported_by_anatomy
+    - no_floating_elements
+    - fabric_and_hair_have_weight
+  lighting_consistency:
+    - source_motivated
+    - shadows_match_highlights
+    - exposure_within_range
+  color_integrity:
+    - skin_tone_protected
+    - no_color_bleeding
+    - ip_colors_locked
+
+failure_taxonomy:
+  intent_shift:
+    severity: critical
+    action: recompose_from_phase_2
+  exposure_ambiguity:
+    severity: critical
+    action: request_clarification
+  anatomy_break:
+    severity: high
+    action: add_anatomy_guardrails
+  physics_violation:
+    severity: high
+    action: enforce_physical_rules
+  style_drift:
+    severity: medium
+    action: lock_identity_and_style
+  redundancy:
+    severity: low
+    action: deduplicate_prompt
+  contradiction:
+    severity: medium
+    action: resolve_priority_order
+
+repair_actions:
+  recompose:
+    max_attempts: 2
+    fallback: use_last_valid_composition
+  deduplicate:
+    method: remove_exact_and_near_duplicates
+  reformat:
+    method: trim_to_field_order_within_length_limits

@@ -1,0 +1,28 @@
+# hair-physics-system.capsule.yaml — Phase 2-3 compiled capsule
+
+hair_identity:
+  drift_protection: hard_lock
+  fields: [color, length, texture, cut, bangs, sides, back]
+
+physics:
+  dry: [natural_fall, volume, flyaway_fibers]
+  wet: [clumped_strands, darkened_tone, weighted_drape, scalp_adherence]
+  wind: [streaming, directional_flow, lift_at_crown]
+  motion: [momentum_trail, swing_arc, rebound_bounce]
+
+environment_interaction:
+  rain: [droplet_beading, strand_separation, weighted_tips]
+  humidity: [frizz_expansion, curl_definition_loss, volume_collapse]
+  water_immersion: [floating_spread, submerged_darkening, surface_tension]
+
+forbidden_drift:
+  - "color shift from canonical"
+  - "length inconsistency"
+  - "texture mismatch with environment"
+  - "unmotivated wind"
+
+negative_guards:
+  - "floating hair"
+  - "hair without weight"
+  - "static hair strands"
+  - "wig-like appearance"

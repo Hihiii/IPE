@@ -1,6 +1,0 @@
-schema_version: "1.0.0"
-module_id: prompt_renderer_system
-summary: Render structured prompt package into the strict three-field Z-Image prompt-only contract.
-phase_focus: [phase_3_1_prompt_package, phase_4_1_cleanup, phase_4_2_z_image_renderer, phase_4_3_delivery_package, phase_5_final_output]
-prompt_rules:
-  - Output only positive prompt, negative prompt, and suggested resolution.

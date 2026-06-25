@@ -1,0 +1,34 @@
+# microclimate-atmosphere-system.capsule.yaml — Phase 3 compiled capsule
+
+weather_states:
+  rain:
+    intensity: [drizzle, moderate, heavy, downpour, storm]
+    droplet_size: [fine_mist, medium_bead, large_droplet]
+    direction: [vertical, angled, wind-driven]
+    effects: [wet_surfaces, puddle_reflection, mist_rise, spray]
+  fog:
+    density: [light_haze, moderate_fog, dense_fog, thick_bank]
+    altitude: [ground_fog, elevated_mist, full_atmosphere]
+    effects: [light_scatter, distance_obscured, halo_around_lights, moisture_suspension]
+  wind:
+    speed: [breeze, moderate, strong, gale]
+    effects: [fabric_stream, hair_flow, debris_movement, surface_ripple]
+    consistent: true
+  humidity:
+    level: [dry, moderate, high, saturated]
+    effects: [ambient_moisture, softened_light, skin_dampness, hair_frizz]
+  snow:
+    type: [flurries, steady, heavy, blizzard]
+    effects: [accumulation, frost_buildup, cold_flush_on_skin, breath_visible]
+
+environment_interaction:
+  rain_on_skin: [droplet_beading, rivulet_trails, diffuse_wet_sheen]
+  rain_on_fabric: [darkened_wet_patches, fabric_weight_increase, cling]
+  fog_hair: [moisture_beading, curl_relaxation, volume_reduction]
+  cold_skin: [goosebumps, tightened_pores, pink_flush_at_extremities]
+  wind_fabric: [flutter, billow, press_against_body, lift_and_expose]
+
+forbidden:
+  - "rain does not automatically wet clothing"
+  - "humidity does not automatically imply rain"
+  - "fog does not automatically imply cold"

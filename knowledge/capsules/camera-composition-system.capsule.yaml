@@ -1,0 +1,60 @@
+# camera-composition-system.capsule.yaml — Phase 2 compiled capsule
+
+composition_layouts:
+  - rule_of_thirds
+  - centered
+  - leading_lines
+  - frame_within_frame
+  - symmetry
+  - diagonal
+  - golden_ratio
+  - negative_space
+  - fill_the_frame
+
+shot_taxonomy:
+  extreme_close_up: face_feature_or_detail
+  close_up: face_dominant
+  medium_close_up: chest_up
+  medium_shot: waist_up
+  medium_full: knees_up
+  full_shot: entire_body
+  wide_shot: subject_and_environment
+  extreme_wide: environment_dominant
+
+camera_angles:
+  eye_level: neutral
+  low_angle: subject_dominant
+  high_angle: subject_submissive
+  dutch: tension
+  overhead: god_view
+  over_shoulder: pov_proximity
+  selfie_perspective: arm_extended_portrait
+
+lens_effects:
+  wide_angle: [exaggerated_perspective, distortion_at_edges, deep_focus]
+  standard: [natural_perspective, minimal_distortion, balanced_dof]
+  telephoto: [compressed_perspective, shallow_dof, subject_isolation]
+  macro: [extreme_detail, minimal_dof, 1_to_1_magnification]
+
+depth_of_field:
+  deep: entire_frame_in_focus
+  medium: subject_isolated_background_soft
+  shallow: face_sharp_background_blurred
+  extreme_shallow: single_eye_in_focus
+
+selfie:
+  perspective_only: true
+  phone_prohibited: true
+  default_angle: slightly_above_eye_level
+
+crop_guardrails:
+  - no_crop_at_joints
+  - maintain_lead_room_for_gaze_direction
+  - maintain_headroom
+  - preserve_gesture_visibility
+
+negative_guards:
+  - "phone in selfie"
+  - "selfie stick"
+  - "cropped at joints"
+  - "insufficient headroom"

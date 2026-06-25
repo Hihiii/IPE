@@ -1,0 +1,55 @@
+# color-science-system.capsule.yaml — Phase 2-3 compiled capsule
+
+color_strategies:
+  analogous:
+    harmony: adjacent_on_wheel
+    mood: cohesive_serene
+    contrast: low
+  complementary:
+    harmony: opposite_on_wheel
+    mood: vibrant_dynamic
+    contrast: high
+  triadic:
+    harmony: evenly_spaced
+    mood: balanced_rich
+    contrast: moderate
+  monochromatic:
+    harmony: single_hue_varied_value
+    mood: subtle_elegant
+    contrast: tonal
+  muted:
+    harmony: desaturated_base
+    mood: subdued_atmospheric
+    contrast: texture_driven
+
+temperature:
+  warm: [2700K, 3500K]
+  neutral: [4500K, 5500K]
+  cool: [6000K, 7500K]
+  mixed: [ambient_plus_motivated_gel]
+
+skin_tone_protection:
+  - preserve_natural_skin_hue
+  - no_color_cast_on_skin
+  - maintain_skin_separation_from_background
+  - skin_luminance_within_zone
+
+grade_styles:
+  cinematic_teal_orange: teal_shadows_orange_highlights
+  bleach_bypass: desaturated_high_contrast
+  vintage_warm: sepia_warm_shadows
+  cool_minimalist: blue_shadows_neutral_midtones
+  neon_punch: saturated_cyan_magenta_fringe
+  natural_true: accurate_white_balance_minimal_grade
+
+forbidden_color_drift:
+  - "skin cast from environment light must be motivated"
+  - "no accidental brand color pollution"
+  - "character IP colors locked"
+  - "no over-saturation of skin tones"
+
+negative_guards:
+  - "color bleeding"
+  - "skin color cast"
+  - "oversaturated"
+  - "unmotivated color grade"

@@ -1,7 +1,0 @@
-schema_version: "1.0.0"
-module_id: subject_intent_parser
-summary: Parse raw prompt intent, subject kind, hard locks, task type, style, pose, aspect ratio, and module routing features.
-phase_focus: [phase_0_config_resolution, phase_1_intent_analysis]
-prompt_rules:
-  - Preserve user hard locks before enrichment.
-  - Route nonhuman-only prompts without adult NSFW injection.

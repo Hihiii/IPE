@@ -1,0 +1,28 @@
+# master-character-registry.yaml
+# Full metadata registry for all IP characters
+
+version: 1.0
+last_updated: "2026-06-25"
+
+characters:
+  # Placeholder — populate per IP acquisition
+  #
+  # anime:
+  #   - key: evangelion/asuka-langley
+  #     name: Asuka Langley Soryu
+  #     aliases: [asuka, asuka langley, soryu]
+  #     source: Neon Genesis Evangelion
+  #     category: anime
+  #
+  # games:
+  #   - key: nier-automata/2b
+  #     name: YoRHa No. 2 Type B
+  #     aliases: [2b, yorha 2b, 2b nier]
+  #     source: Nier: Automata
+  #     category: games
+  #
+  #   - key: final-fantasy/tifa-lockhart
+  #     name: Tifa Lockhart
+  #     aliases: [tifa, tifa lockhart]
+  #     source: Final Fantasy VII
+  #     category: games

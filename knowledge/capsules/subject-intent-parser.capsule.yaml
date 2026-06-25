@@ -1,0 +1,36 @@
+# subject-intent-parser.capsule.yaml — Phase 1 compiled capsule
+
+classifiers:
+  task_types:
+    - portrait
+    - selfie
+    - cinematic
+    - product
+    - architecture
+    - character_ip
+    - fashion
+    - stage
+    - action
+    - scene
+
+  subject_types:
+    - human
+    - creature
+    - object
+    - environment
+    - abstract
+
+  visual_focus:
+    - face
+    - full_body
+    - upper_body
+    - lower_body
+    - detail_shot
+    - environmental
+
+retrieval_routing:
+  human: [02_human_character_system, 03_skin_rendering_system, 04_hair_physics_system, 05_emotion_expression_system, 06_pose_body_language_system]
+  product: [10_lighting_exposure_system, 11_camera_composition_system, 12_color_science_system]
+  environment: [13_scene_dna_system, 09_microclimate_atmosphere_system, 10_lighting_exposure_system]
+  character_ip: [16_character_ip_database, 02_human_character_system, 07_wardrobe_material_system]
+  fashion: [07_wardrobe_material_system, 06_pose_body_language_system, 11_camera_composition_system]

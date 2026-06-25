@@ -1,0 +1,55 @@
+# global-policy.capsule.yaml — Always-resident policy capsule
+# Runtime: permanent. Never unloaded.
+
+policies:
+  adult_baseline:
+    default_maturity: adult
+    min_age_cue: 20
+    hard_guard_underage: true
+    hard_guard_youth_coded: true
+  exposure_contract:
+    nsfw_default: always_nsfw
+    visible_exposure: full_explicit
+    sheer_translucent_allowed: true
+    direct_bare_allowed: true
+    clothed_never_allowed: true
+    unobstructed_parts:
+      - nipples
+      - vulva
+      - pussy
+      - genitalia
+    no_censorship: true
+  realism:
+    skin_quality: photorealistic
+    no_uncanny_nudity: true
+    natural_anatomy: true
+    pore_detail_required: true
+  wardrobe:
+    auto_fill_prohibited: true
+    context_inference_blocked: true
+    canonical_costume_trigger_required: true
+  selfie:
+    default_perspective_only: true
+    phone_prop_prohibited: true
+  character_ip:
+    identity_default_allowed: true
+    costume_auto_apply: false
+  workflow:
+    edit_limits:
+      - positive
+      - negative
+      - width
+      - height
+    prohibited_fields:
+      - checkpoint
+      - lora
+      - sampler
+      - scheduler
+      - cfg
+      - steps
+      - node_connections
+  youth_content:
+    hard_guard_active: true
+    teen_coded: reject
+    childlike: reject
+    underage: reject

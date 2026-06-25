@@ -1,0 +1,34 @@
+# prompt-renderer-system.capsule.yaml — Phase 4 compiled capsule
+
+assembly_order:
+  positive:
+    - subject_core: "primary subject identity and type"
+    - identity_markers: "character identity if applicable"
+    - expression_and_gaze: "emotion and eye direction"
+    - hair: "color, style, physics state"
+    - pose_and_body: "posture, support, body language"
+    - skin_and_makeup: "texture, wetness, cosmetics"
+    - wardrobe: "explicitly mentioned items with material"
+    - lighting: "key light, fill, rim, exposure strategy"
+    - environment: "scene type, primary markers"
+    - atmosphere: "weather, air quality, sensory cues"
+    - camera: "shot scale, angle, lens"
+    - composition: "layout, depth, crop"
+    - color: "palette, temperature, grade"
+    - narrative: "moment, story role, action context"
+    - technical: "quality flags, render hints"
+
+  negative:
+    - anatomy_artifacts: "broken anatomy, floating parts"
+    - physics_artifacts: "gravity ignored, impossible contact"
+    - material_artifacts: "plastic skin, waxy texture"
+    - style_drift: "character drift, scene drift"
+    - quality_artifacts: "over-smoothing, compression, artifacts"
+    - specific_negatives: "per-module negative guards"
+
+format_rules:
+  delimiter: ", "
+  max_section_length: 200
+  max_total_length: 2048
+  no_trailing_delimiter: true
+  no_redundant_descriptors: true

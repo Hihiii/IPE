@@ -1,0 +1,51 @@
+# skin-rendering-system.capsule.yaml — Phase 2-3 compiled capsule
+
+skin_texture:
+  quality_target: realistic
+  guards:
+    - no_plastic_skin
+    - no_waxy_skin
+    - no_over_smoothing
+    - maintain_pore_detail
+  highlight_control:
+    - specular_placement
+    - wetness_response
+    - sweat_precision
+
+environment_response:
+  rain: [beaded_water, rivulet, diffuse_wetness]
+  humidity: [ambient_moisture, soft_highlight]
+  heat: [flush, sweat_sheen, dilated_pores]
+  cold: [goosebumps, tightened_texture, pale_tone]
+
+makeup:
+  style: contextual
+  skin_interaction: natural
+  negative_guards:
+    - no_masked_foundation
+    - no_uneven_blush
+    - no_clumpy_mascara
+
+negative_guards:
+  - "plastic skin"
+  - "waxy skin"
+  - "over-smoothed skin"
+  - "airbrushed skin"
+  - "mannequin skin"
+  - "porcelain doll skin"
+  - "uncanny valley nudity"
+  - "fake nude"
+  - "CGI nude body"
+  - "artificial breast"
+  - "unnatural body proportions"
+  - "silicone skin texture"
+  - "doll-like nude"
+  - "airbrushed nude"
+
+positive_quality:
+  - "natural nude body"
+  - "realistic skin texture with visible pores"
+  - "natural breast shape"
+  - "realistic nude anatomy"
+  - "natural body proportions"
+  - "authentic skin tone and texture"

@@ -1,0 +1,32 @@
+# visual-narrative-system.capsule.yaml — Phase 3 compiled capsule
+
+narrative_moments:
+  still_frame: frozen_moment_minimal_context
+  action_peak: climax_of_movement
+  before_storm: tension_before_event
+  aftermath: consequence_visible
+  candid: unposed_authentic
+  portrait: subject_facing_viewer
+  environmental: subject_within_story_context
+
+story_roles:
+  protagonist: primary_subject_action_driven
+  observer: subject_watching_or_contemplating
+  participant: subject_engaged_in_activity
+  victim: subject_affected_by_events
+  performer: subject_presenting_or_expressing
+
+action_reason:
+  - narrative_intent_must_explain_pose
+  - expression_must_match_context
+  - props_must_have_story_function
+
+prop_story_function:
+  - tool: implies_activity
+  - weapon: implies_conflict_or_defense
+  - personal_item: implies_character_depth
+  - environmental_prop: implies_location_context
+
+emotional_context:
+  derived_from: [expression, body_language, environment, lighting, color]
+  consistency: emotion_pose_and_setting_must_align

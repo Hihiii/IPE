@@ -1,6 +1,0 @@
-schema_version: "1.0.0"
-module_id: quality_failure_validation_system
-summary: Validate intent preservation, provenance, prompt schema, adult baseline readability, and failure reports.
-phase_focus: [phase_4_self_review, phase_4_1_cleanup, phase_5_final_output]
-prompt_rules:
-  - Validation must produce readable failure codes and paths.

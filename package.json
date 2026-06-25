@@ -1,0 +1,23 @@
+{
+  "name": "ipe-opencode",
+  "version": "1.0.0",
+  "description": "Agentic Visual Prompt RAG — Knowledge-driven prompt generation pipeline for Z-Image",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "lint": "eslint src/",
+    "typecheck": "npx jsconfig --check"
+  },
+  "keywords": [
+    "prompt-engineering",
+    "comfyui",
+    "image-generation",
+    "rag",
+    "visual-prompt",
+    "z-image"
+  ],
+  "license": "MIT"
+}

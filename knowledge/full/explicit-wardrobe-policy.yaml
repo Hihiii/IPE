@@ -1,0 +1,6 @@
+# explicit-wardrobe-policy.yaml — Full source (not loaded at runtime)
+# See compiled capsule: knowledge/capsules/wardrobe-material-system.capsule.yaml
+
+version: 1.0
+status: reference_only
+description: Complete wardrobe policy with all edge cases, slot definitions, and context-inference blockers.

@@ -1,6 +1,0 @@
-schema_version: "1.0.0"
-module_id: sensory_detail_system
-summary: Resolve tactile visuals, sensory cues, material sensation, and micro-detail priority.
-phase_focus: [phase_2_composition_and_cinematography, phase_3_1_prompt_package]
-prompt_rules:
-  - Sensory detail should be specific, visible, and physically plausible.

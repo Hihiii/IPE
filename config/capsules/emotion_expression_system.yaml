@@ -1,6 +1,0 @@
-schema_version: "1.0.0"
-module_id: emotion_expression_system
-summary: Resolve expression, gaze, facial tension, and body-language alignment.
-phase_focus: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint]
-prompt_rules:
-  - Expression and gaze should support the narrative without replacing visual locks.

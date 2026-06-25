@@ -1,0 +1,33 @@
+# human-character-system.capsule.yaml — Phase 1-2 compiled capsule
+
+maturity:
+  default: adult
+  min_visual_age: 22
+  youth_coded_prohibited: true
+
+description_layers:
+  face:
+    priority: primary
+    fields: [face_shape, jawline, cheekbones, nose, lips, brow]
+  eyes_gaze:
+    priority: primary
+    fields: [eye_color, eye_shape, gaze_direction, gaze_intensity, lid_position]
+  hair:
+    priority: primary
+    fields: [hair_color, hair_length, hair_texture, bangs, sides, part]
+  body:
+    priority: secondary
+    fields: [proportion, silhouette, height_cue, build]
+  personality:
+    priority: narrative
+    fields: [archetype, presence, energy, attitude]
+
+identity:
+  default_allowed: true
+  drift_protection: hard_lock
+
+forbidden:
+  - "generic beautiful woman"
+  - "anime girl"
+  - "teen"
+  - "youthful"

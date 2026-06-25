@@ -1,0 +1,42 @@
+# policy-rule-system.capsule.yaml — Phase 4 compiled capsule
+
+rule_priority:
+  level_0_critical:
+    - hard_guard_underage
+    - hard_guard_youth_coded
+    - exposure_contract
+  level_1_structural:
+    - identity_hard_lock
+    - wardrobe_auto_fill_block
+    - selfie_perspective_only
+    - canonical_costume_trigger
+  level_2_quality:
+    - composition_readability
+    - physical_coherence
+    - lighting_consistency
+    - color_integrity
+  level_3_preference:
+    - style_enhancement
+    - atmosphere_deepening
+    - sensory_richness
+
+cleanup_rules:
+  remove_if_no_explicit_mention:
+    - clothing_items
+    - props
+    - background_details
+  remove_if_contradictory:
+    - conflicting_lighting_sources
+    - inconsistent_weather
+    - incompatible_poses
+  hard_remove:
+    - youth_coded_markers
+    - phone_in_selfie
+    - auto_inferred_clothing
+
+warning_conditions:
+  - subject_age_ambiguous
+  - character_ip_unrecognized
+  - pose_physically_impossible
+  - contradictory_environment
+  - excessive_prompt_length

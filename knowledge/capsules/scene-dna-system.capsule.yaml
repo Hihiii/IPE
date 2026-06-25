@@ -1,0 +1,32 @@
+# scene-dna-system.capsule.yaml — Phase 3 compiled capsule
+
+scene_types:
+  interior:
+    markers: [walls, ceiling, floor, contained_lighting, enclosed_atmosphere]
+    sub_types: [bedroom, living_room, bathroom, kitchen, studio, corridor, industrial, warehouse]
+  exterior:
+    markers: [sky, horizon, open_space, natural_light, ambient_atmosphere]
+    sub_types: [urban_street, rooftop, park, beach, forest, mountain, desert, rural, coastline]
+  architectural:
+    markers: [structural_lines, geometry, materials, scale, symmetry]
+    sub_types: [modern, classical, ruin, futuristic, fantasy, underground]
+  fantasy:
+    markers: [impossible_geometry, magical_light, alien_biome, constructed_world]
+    sub_types: [ethereal, dark_fantasy, sci_fi, post_apocalyptic, surreal]
+
+background_role:
+  primary: environment_as_character
+  supportive: frames_subject
+  atmospheric: mood_background
+  minimal: out_of_focus_or_negative_space
+
+scene_integrity:
+  - primary_markers_must_be_present
+  - no_era_drift
+  - no_location_drift
+  - no_ip_world_contamination
+
+forbidden_scene_drift:
+  - "modern object in historical scene without cause"
+  - "IP scene elements in non-IP context"
+  - "contradictory climate or time-of-day markers"

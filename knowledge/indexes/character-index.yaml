@@ -1,0 +1,25 @@
+# character-index.yaml — Lookup for named IP characters
+
+characters:
+  # Example entries — expand per IP database population
+  # Format:
+  #   alias: [canonical_name, category, subfolder]
+  #
+  # anime:
+  #   "asuka": ["Asuka Langley Soryu", "anime", "evangelion/asuka-langley"]
+  #   "rei": ["Rei Ayanami", "anime", "evangelion/rei-ayanami"]
+  #   "shinji": ["Shinji Ikari", "anime", "evangelion/shinji-ikari"]
+  #
+  # games:
+  #   "2b": ["YoRHa No. 2 Type B", "games", "nier-automata/2b"]
+  #   "a2": ["YoRHa Type A No. 2", "games", "nier-automata/a2"]
+  #   "tifa": ["Tifa Lockhart", "games", "final-fantasy/tifa-lockhart"]
+  #
+  # manga:
+  #   "guts": ["Guts", "manga", "berserk/guts"]
+  #   "griffith": ["Griffith", "manga", "berserk/griffith"]
+  #
+  # mixed_media:
+  #   "hatsune_miku": ["Hatsune Miku", "mixed-media", "vocaloid/hatsune-miku"]
+
+reserved_aliases: []

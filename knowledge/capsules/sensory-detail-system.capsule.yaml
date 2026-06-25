@@ -1,0 +1,31 @@
+# sensory-detail-system.capsule.yaml — Phase 3 compiled capsule
+
+sensory_categories:
+  tactile:
+    wet_skin: [cool_sheen, droplet_line, surface_tension_reflection]
+    cold: [tightened_texture, gooseflesh_raised, breath_visible]
+    heat: [flush_spread, sweat_bead, skin_warmed_tone]
+    fabric_on_skin: [pressure_line, weight_feel, texture_transfer]
+    wind: [hair_stroke, fabric_press, skin_cooling]
+  thermal:
+    cold_environment: [breath_condensation, skin_tightening, pale_extremities]
+    hot_environment: [diffuse_glow, sweat_formation, skin_flush]
+    humid: [air_weight, skin_moisture_layering, softened_edges]
+  atmospheric:
+    heavy_air: [light_diffusion, color_desaturation, distance_haze]
+    crisp_air: [sharp_edges, clear_distance, cool_light_quality]
+    charged_air: [storm_tension, electric_quality, pressurized_feeling]
+  auditory_visualized:
+    rain: [visible_impact_splashes, surface_ripple_pattern]
+    wind: [bent_foliage, debris_trail, fabric_snap]
+    water: [ripple_concentric, splash_crown, foam_pattern]
+
+material_sensation:
+  metal: [cold_reflection, hard_edge, chill_conduction]
+  leather: [smooth_pressure, crease_pattern, warm_friction]
+  silk: [fluid_fall, cool_glide, light_reflect_surface]
+  wet_fabric: [skin_cling, transparency_at_stretch, weight_sag]
+
+forbidden:
+  - "generic mood words without visual translation"
+  - "sensory detail without physical cause"

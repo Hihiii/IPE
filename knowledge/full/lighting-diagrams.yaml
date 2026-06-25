@@ -1,0 +1,6 @@
+# lighting-diagrams.yaml — Full source (not loaded at runtime)
+# See compiled capsule: knowledge/capsules/lighting-exposure-system.capsule.yaml
+
+version: 1.0
+status: reference_only
+description: Complete lighting diagrams library with light placement, modifier selection, and exposure strategies.

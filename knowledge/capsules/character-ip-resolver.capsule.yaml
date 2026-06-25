@@ -1,0 +1,37 @@
+# character-ip-resolver.capsule.yaml — Phase 1-2 compiled capsule
+
+resolution_mode: alias_and_canonical_match
+
+identity_default_allowed: true
+costume_auto_apply: false
+costume_triggers: [canonical, cosplay, original_outfit, source_accurate]
+
+ip_categories:
+  - anime
+  - games
+  - manga
+  - mixed_media
+
+capsule_fields_per_character:
+  - identity
+  - appearance
+  - face_hair_body
+  - outfits: [canonical]
+  - props_weapons
+  - pose_language
+  - expression_gaze
+  - color_palette
+  - world_motifs
+  - negative_guards
+
+forbidden_drift:
+  - eye_color_change
+  - hair_color_change
+  - hair_style_change
+  - skin_tone_change
+  - costume_mismatch
+  - world_setting_contamination
+
+negative_guards:
+  - "generic character overwrite"
+  - "costume without trigger"

@@ -1,0 +1,53 @@
+# lighting-exposure-system.capsule.yaml — Phase 2-3 compiled capsule
+
+lighting_setups:
+  natural:
+    variants: [golden_hour, blue_hour, overcast, direct_sun, window_light]
+    control: [temperature, direction, diffusion, intensity]
+  studio:
+    variants: [beauty_dish, softbox, ring_light, strip_box, umbrella]
+    control: [key_ratio, fill_position, rim_separation, background_separation]
+  cinematic:
+    variants: [three_point, rembrandt, split, silhouette, edge_light, motivated]
+    control: [contrast_ratio, shadow_depth, color_temperature, motivated_source]
+  night:
+    variants: [moonlight, street_light, neon, candle, car_headlight, mixed_ambient]
+    control: [readability, highlight_management, shadow_detail, color_cast_control]
+  fantasy:
+    variants: [bioluminescent, magic_glow, ethereal_rim, god_ray, colored_gel]
+    control: [source_visibility, aura_spread, ambient_bounce]
+
+exposure_strategies:
+  readable_night:
+    - maintain_shadow_detail
+    - avoid_crushed_blacks
+    - highlight_exposure_within_range
+    - skin_tone_visible_in_shadow
+  high_key:
+    - minimal_shadows
+    - soft_contrast
+    - bright_ambient
+    - skin_exposure_protected
+  low_key:
+    - deep_shadows
+    - focused_highlight
+    - high_contrast
+    - rim_light_essential
+  backlit:
+    - rim_exposure_first
+    - face_fill_secondary
+    - flare_control
+    - edge_light_precision
+
+highlight_policy:
+  - skin_highlights_must_not_clip
+  - specular_highlights_on_wet_surfaces
+  - catchlights_in_eyes_preferred
+  - metal_reflections_defined
+
+negative_guards:
+  - "blown out highlights"
+  - "crushed blacks"
+  - "flat lighting"
+  - "unmotivated light source"
+  - "harsh shadow without source cause"

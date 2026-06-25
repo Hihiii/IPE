@@ -1,0 +1,61 @@
+# emotion-expression-system.capsule.yaml — Phase 2 compiled capsule
+
+expression_dimensions:
+  - mood
+  - intensity
+  - microexpression
+
+mapping:
+  neutral:
+    face: relaxed
+    mouth: closed_or_slight_curve
+    brows: level
+    tension: low
+  happy:
+    face: duchenne_smile_or_subtle
+    mouth: upturned_corners
+    brows: lifted
+    tension: relaxed
+  sad:
+    face: drooped_features
+    mouth: downturned_or_parted
+    brows: angled_up_inner
+    tension: moderate
+  angry:
+    face: furrowed
+    mouth: pressed_or_snarl
+    brows: lowered_and_drawn
+    tension: high
+  surprised:
+    face: widened_features
+    mouth: parted_or_open
+    brows: arched_high
+    tension: moderate
+  fearful:
+    face: tense_widen
+    mouth: parted_trembling
+    brows: raised_and_drawn
+    tension: high
+  lustful:
+    face: heavy_lidded_intensity
+    mouth: parted_slight_smile
+    brows: subtle_lift
+    tension: smoldering
+  contemplative:
+    face: soft_focus
+    mouth: slight_purse
+    brows: micro_furrow
+    tension: soft
+
+gaze:
+  direct: confrontational_or_intimate
+  averted: submissive_or_thoughtful
+  down: submissive_or_sad
+  up: contemplative_or_flirtatious
+  side: suspicious_or_distracted
+  closed: sensory_or_internal
+
+forbidden:
+  - "generic smile"
+  - "resting blank face"
+  - "uncanny valley expression"

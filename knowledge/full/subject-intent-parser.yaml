@@ -1,0 +1,9 @@
+# subject-intent-parser.yaml — Full source (not loaded at runtime)
+# See compiled capsule: knowledge/capsules/subject-intent-parser.capsule.yaml
+
+# This file contains the complete reference data for the subject intent parser.
+# Runtime uses only the compiled capsule from knowledge/capsules/.
+
+version: 1.0
+status: reference_only
+description: Full intent classification tree with all edge cases and multi-language support.

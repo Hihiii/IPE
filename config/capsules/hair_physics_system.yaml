@@ -1,6 +1,0 @@
-schema_version: "1.0.0"
-module_id: hair_physics_system
-summary: Resolve hair identity, motion, gravity, wetness, wind response, and forbidden drift.
-phase_focus: [phase_2_composition_and_cinematography, phase_3_scene_blueprint]
-prompt_rules:
-  - Hair motion must follow pose, wind, moisture, and camera timing.
