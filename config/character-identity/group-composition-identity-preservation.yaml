@@ -1,0 +1,61 @@
+schema_version: "1.0.0"
+name: "group-composition-identity-preservation"
+description: >
+  Group character identity preservation controller for team lineups, ensemble
+  posters, party selfies, battle groups, and multi-character scenes.
+
+core_principle: >
+  Group scenes need an identity matrix. Each character must keep distinct hair,
+  face, palette, costume markers, pose language, and spatial role without
+  merging into another character or becoming generic.
+
+identity_matrix_fields:
+  - character_key
+  - source_title
+  - silhouette
+  - hair_identity
+  - face_impression
+  - palette
+  - costume_marker
+  - signature_prop
+  - pose_language
+  - spatial_position
+  - interaction_role
+
+composition_patterns:
+  lineup:
+    rules:
+      - "assign each character a stable left-to-right slot"
+      - "preserve distinct silhouettes and color blocks"
+      - "avoid overlapping faces and signature props"
+  battle_group:
+    rules:
+      - "assign foreground/midground/background roles"
+      - "keep weapon/tool direction readable"
+      - "separate action vectors to avoid limb merging"
+  selfie_or_party:
+    rules:
+      - "define face cluster geometry"
+      - "control foreground arm logic"
+      - "preserve varied expressions and readable hair/costume markers"
+  poster_ensemble:
+    rules:
+      - "rank hero, secondary, and tertiary characters"
+      - "keep title-safe space if publication layout is requested"
+      - "use shared lighting while preserving individual palettes"
+
+failure_modes:
+  - "characters merge into each other"
+  - "two characters swap hair or costume markers"
+  - "group pose erases identity hierarchy"
+  - "signature props overlap or become unreadable"
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    action: "Detect multiple named characters and build an identity matrix."
+  phase_2_cinematic_enrichment:
+    action: "Assign spatial roles, interaction roles, and distinct marker locks for each character."
+  phase_4_self_review:
+    checks:
+      - "Does each character remain identifiable independently?"
+      - "Are overlaps, props, faces, and costumes separated clearly?"

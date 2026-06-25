@@ -1,0 +1,53 @@
+schema_version: 1.0.0
+character:
+  id: one_punch_man--characters--fubuki
+  display_name: Fubuki
+  aliases:
+  - Fubuki
+  - 地獄的吹雪
+  - Fubuki (One Punch Man)
+  - Blizzard of Breeze
+  - 吹雪
+  - Blizzard
+  source_title: One Punch Man
+  adult_status: confirmed_adult
+  adult_source_basis: One Punch Man default character design
+  identity_summary: B-Class Rank 1 hero known as the Blizzard of Breeze with long flowing dark brown-black hair with voluminous curls, calm dark brown eyes, fair skin, and a tall mature slender womanly build. Wears a stylish fitted white dress or business suit skirt combination with heeled boots. An esper (psychic) who leads the Blizzard Group. Ambitious, strategic, and proud but deeply insecure about living in her sister Tatsumaki's shadow. Gradually develops genuine care for her followers.
+  visual_anchors:
+  - long flowing dark brown-black hair with voluminous curls
+  - calm dark brown eyes
+  - fair skin
+  - tall mature slender womanly build
+  - fitted white dress
+  - business suit skirt combination
+  - heeled boots
+  - psychic esper aura
+  - proud ambitious expression
+  - long dark brown-black curly hair
+  - side-swept cascading bangs
+  - dark brown eyes
+  - mature elegant oval face
+  - tall womanly build
+  outfit_anchors:
+  - long dark curly hair
+  - dark brown eyes
+  - fitted white dress
+  - or business suit
+  - heeled boots
+  - professional stylish presence
+  - B-Class hero Blizzard of Breeze with long dark curly hair, white dress, and proud ambitious presence.
+  style_anchors:
+  - proud ambitious determination
+  - insecure hidden vulnerability
+  - strategic calculating calm
+  drift_guards:
+  - short hair
+  - wrong hair color (not dark brown-black)
+  - wrong eye color (not dark brown)
+  - generic attractive person
+  - petite build (must be taller than Tatsumaki)
+  - casual sporty outfit
+  - gothic dark outfit
+  - arrogant bullying demeanor
+  - blonde or bright hair
+  - missing psychic aura

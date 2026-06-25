@@ -1,0 +1,49 @@
+schema_version: 1.0.0
+character:
+  id: evangelion--characters--rei_ayanami
+  display_name: Rei Ayanami
+  aliases:
+  - Rei Ayanami
+  - 綾波零
+  - Rei Ayanami (Evangelion)
+  - 綾波零 (福音戰士)
+  - First Children
+  source_title: Evangelion
+  adult_status: confirmed_adult
+  adult_source_basis: Evangelion default character design
+  identity_summary: Mysterious pilot of Evangelion Unit-00 with short pale blue hair cut in a precise bob with blunt bangs, striking crimson red eyes, extremely pale skin, and a slender delicate build. Wears a white plug suit or the blue school uniform of Tokyo-3 Municipal High School. Emotionally subdued with an enigmatic, expressionless demeanor that masks profound existential depth.
+  visual_anchors:
+  - short pale blue bob with blunt bangs
+  - striking crimson red eyes
+  - extremely pale skin
+  - slender delicate build
+  - white form-fitting plug suit
+  - blue school uniform
+  - enigmatic expressionless face
+  - short pale blue hair
+  - blunt straight bangs covering forehead
+  - crimson red eyes
+  - delicate oval face
+  - slender fragile build
+  outfit_anchors:
+  - short pale blue bob
+  - crimson red eyes
+  - white plug suit
+  - or blue school uniform
+  - slender pale presence
+  - First Children with pale blue hair, crimson eyes, white plug suit, and enigmatic expressionless demeanor.
+  style_anchors:
+  - enigmatic emotionless calm
+  - profound existential stillness
+  - distant unknowable gaze
+  drift_guards:
+  - long hair
+  - wrong hair color (not pale blue)
+  - wrong eye color (not crimson red)
+  - generic attractive person
+  - emotional expressive face
+  - smiling or crying expression
+  - tanned skin
+  - athletic build
+  - bright colorful outfit
+  - western animated style

@@ -1,0 +1,52 @@
+schema_version: 1.0.0
+character:
+  id: one_piece--characters--nefertari_vivi
+  display_name: Nefertari Vivi
+  aliases:
+  - Nefertari Vivi
+  - 奈菲特·薇薇
+  - Vivi
+  - Miss Wednesday
+  - 薇薇 (航海王)
+  source_title: One Piece
+  adult_status: confirmed_adult
+  adult_source_basis: 航海王 default character design
+  identity_summary: Princess of the Alabasta Kingdom with medium-length wavy blue hair, large bright blue eyes, a slender athletic build, wearing a light blue and white Arabian-inspired outfit with a white cape and golden accessories. Wields the Peacock Slingshot (Kabu) for long-range attacks. Cheerful, determined, and deeply caring, with a strong sense of justice for her kingdom.
+  visual_anchors:
+  - medium-length wavy blue hair
+  - large bright blue eyes
+  - slender athletic build
+  - light blue and white Arabian-inspired outfit
+  - white flowing cape
+  - golden crown or tiara
+  - golden hoop earrings
+  - Peacock Slingshot (Kabu)
+  - cheerful determined expression
+  - medium wavy blue hair
+  - side-swept bangs
+  - bright blue eyes
+  - oval face
+  - slender princess build
+  outfit_anchors:
+  - medium-length wavy blue hair
+  - bright blue eyes
+  - light blue and white Arabian-inspired outfit
+  - white cape
+  - golden accessories
+  - Peacock Slingshot
+  - Princess of Alabasta with wavy blue hair, light blue Arabian-inspired outfit, white cape, and cheerful determined presence.
+  style_anchors:
+  - cheerful determined optimism
+  - caring warm leadership
+  - brave princess resolve
+  drift_guards:
+  - long hair instead of medium
+  - wrong hair color (not blue)
+  - wrong eye color (not bright blue)
+  - generic attractive person
+  - wrong face impression
+  - dark themed outfit
+  - missing Peacock Slingshot
+  - cold aloof demeanor
+  - western medieval outfit instead of Arabian
+  - missing golden accessories

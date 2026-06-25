@@ -1,0 +1,59 @@
+schema_version: 1.0.0
+character:
+  id: sailormoon--characters--usagi_tsukino
+  display_name: Usagi Tsukino
+  aliases:
+  - Usagi Tsukino
+  - 月野兔
+  - Sailor Moon
+  - Sailor Moon (美少女戰士)
+  - Serena Tsukino
+  - Princess Serenity
+  source_title: Sailor Moon
+  adult_status: confirmed_adult
+  adult_source_basis: Sailor Moon default character design
+  identity_summary: The reincarnation of Princess Serenity and leader of the Sailor Guardians with very long golden blonde hair styled in two high odango buns with long flowing tails, large bright blue eyes, fair skin, and a medium slim build. Transforms into Sailor Moon wearing a white sailor fuku with blue collar, red bow, blue skirt, white gloves, and red high-heeled boots, with a golden tiara and crescent moon emblem. Clumsy, crybaby, loves video games and food, but possesses immense inner strength and compassion.
+  visual_anchors:
+  - very long golden blonde hair in odango buns with flowing tails
+  - large bright blue eyes
+  - fair skin
+  - medium slim build
+  - white sailor fuku with blue collar and red bow
+  - blue pleated miniskirt
+  - white gloves
+  - red high-heeled boots
+  - golden tiara with crescent moon
+  - crescent moon brooch
+  - clumsy cheerful expression
+  - golden blonde odango buns
+  - flowing hair tails
+  - bright blue eyes
+  - round youthful face
+  - medium slim build
+  outfit_anchors:
+  - very long golden blonde odango buns
+  - bright blue eyes
+  - white sailor fuku
+  - blue collar with red bow
+  - blue miniskirt
+  - white gloves
+  - red boots
+  - golden tiara with crescent moon
+  - crescent moon brooch
+  - Sailor Moon in white sailor fuku, blue collar, red bow, blue skirt, red boots, golden tiara, and cheerful heroic presence.
+  style_anchors:
+  - clumsy cheerful optimism
+  - tearful emotional warmth
+  - brave compassionate resolve
+  drift_guards:
+  - wrong hair style (not odango buns)
+  - wrong hair color (not golden blonde)
+  - missing crescent moon tiara
+  - wrong eye color (not bright blue)
+  - generic attractive person
+  - wrong sailor fuku colors
+  - missing red bow
+  - dark themed outfit
+  - cold emotionless demeanor
+  - black or dark hair
+  - westernized redesign

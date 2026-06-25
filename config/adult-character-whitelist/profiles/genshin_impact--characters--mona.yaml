@@ -1,0 +1,54 @@
+schema_version: 1.0.0
+character:
+  id: genshin_impact--characters--mona
+  display_name: Mona
+  aliases:
+  - Mona
+  - 莫娜
+  - 莫娜 (原神)
+  - Mona (Genshin Impact)
+  source_title: Genshin Impact
+  adult_status: confirmed_adult
+  adult_source_basis: Genshin Impact default character design
+  identity_summary: Mysterious astrologist of Mondstadt with light brown long flowing hair, light blue
+    eyes, a large black witch hat with gold star and blue veil, a blue and black outfit with fishnet tights,
+    and a hydro vision on her belt.
+  visual_anchors:
+  - light brown long flowing hair
+  - large black witch hat with gold star
+  - light blue eyes
+  - blue and black astrological outfit
+  - hydro vision on belt
+  - light brown hair
+  - large witch hat
+  - smooth flowing crown
+  - asymmetrical side-swept fringe
+  - light blue
+  - soft oval face
+  - slender elegant build
+  outfit_anchors:
+  - light brown flowing hair
+  - large black witch hat with gold star
+  - blue and black outfit
+  - hydro vision on belt
+  - fishnet tights
+  - Blue sleeveless top with black bodice, detached blue sleeves, black shorts with gold trim, fishnet
+    tights, black thigh-high boots, large black witch hat with gold star and blue veil, and hydro vision
+    on a gold belt on the waist.
+  style_anchors:
+  - composed mysterious calm
+  drift_guards:
+  - short hair
+  - dark black hair
+  - generic attractive person
+  - wrong eye color
+  - missing witch hat
+  - wrong face impression
+  - missing blue and black outfit
+  - missing hydro vision
+  - missing fishnet tights
+  - random outfit redesign
+  - wrong color palette
+  - straight flat hair
+  - bulky build
+  - hunched posture

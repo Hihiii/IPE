@@ -1,0 +1,293 @@
+# ============================================================
+# garment-structure-failure-diagnosis.yaml
+# Garment construction diagnosis, outfit enrichment, and clothing repair controller
+# Version: 1.0.0
+# Purpose:
+#   Detect and repair clothing-construction failures such as broken collars,
+#   warped necklines, disconnected sleeves, random folds, misaligned buttons,
+#   unclear waistlines, fabric-body fusion, and weak outfit design.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "garment-structure-failure-diagnosis"
+description: >
+  A garment failure-diagnosis and wardrobe enrichment module for prompt enhancement.
+  It improves clothing prompts by converting vague outfit descriptions into structured
+  garment construction, silhouette logic, fabric behavior, styling hierarchy, and
+  failure-prevention language.
+
+core_principle: >
+  Clothing quality depends on construction first, detail second. A prompt should define
+  the garment type, silhouette, neckline, shoulder connection, sleeve construction,
+  opening/closure system, waistline, hemline, fabric weight, drape behavior, wrinkle
+  source, and how the outfit sits on the body.
+
+global_rules:
+  - "Do not rely only on generic outfit names when clothing is visually important."
+  - "Define garment construction before adding decorative detail."
+  - "Collar, neckline, shoulder seam, sleeve attachment, waistline, closure, and hemline should remain coherent."
+  - "Wrinkles and folds should have a source: tension, gravity, compression, movement, or fabric weight."
+  - "Layered clothing should have clear overlap order and thickness."
+  - "Accessories should interact with the garment and body, not float."
+  - "If the outfit is character-inspired or cosplay-like, preserve signature cues while translating them into believable garment construction."
+  - "Detailer LoRA can enhance texture, but it cannot fix a broken garment structure."
+
+garment_structure_schema:
+  garment_category: "shirt | blouse | jacket | dress | skirt | trousers | shorts | swimwear | uniform | costume | armor_cloth | fantasy_outfit | custom"
+  silhouette_family: []
+  neckline_or_collar: []
+  shoulder_connection: []
+  sleeve_construction: []
+  closure_system: []
+  waistline_or_fit_anchor: []
+  hemline_or_edge: []
+  layering_order: []
+  fabric_weight: "sheer | lightweight | medium | heavy | structured | stretch | rigid"
+  fabric_behavior: []
+  wrinkle_sources: []
+  body_contact_points: []
+  accessory_interactions: []
+  construction_priority: "low | medium | high | critical"
+
+outfit_enrichment_pipeline:
+  step_1_identify_base_garment:
+    questions:
+      - "What exact garment category is this?"
+      - "Is it structured, soft, stretchy, layered, tailored, loose, or body-conscious?"
+  step_2_define_silhouette:
+    questions:
+      - "What is the overall shape from shoulders to hem?"
+      - "Where does the garment widen, narrow, cling, or flow?"
+  step_3_define_construction:
+    questions:
+      - "How are the collar/neckline, shoulders, sleeves, closures, waist, and hem built?"
+  step_4_define_material_behavior:
+    questions:
+      - "How does the fabric fold, drape, stretch, reflect light, or wrinkle?"
+  step_5_define_styling_intent:
+    questions:
+      - "Is the look casual, editorial, luxury, cosplay reinterpretation, sportswear, uniform, fantasy, or techwear?"
+  step_6_define_failure_prevention:
+    questions:
+      - "What garment failures should be explicitly prevented?"
+
+garment_failure_taxonomy:
+  broken_collar:
+    symptoms:
+      - "collar shape inconsistent or melted"
+      - "collar does not wrap around the neck naturally"
+    repair_language:
+      - "clean collar construction"
+      - "collar sits naturally around the neck"
+      - "collar edges remain crisp and symmetrical unless intentionally asymmetrical"
+    negative_language:
+      - "broken collar"
+      - "melted collar"
+      - "warped collar"
+
+  warped_neckline:
+    symptoms:
+      - "neckline changes shape randomly"
+      - "neckline cuts into body unnaturally"
+    repair_language:
+      - "coherent neckline shape"
+      - "neckline follows the garment design and body angle"
+    negative_language:
+      - "warped neckline"
+      - "random neckline"
+      - "garment fused into skin"
+
+  disconnected_sleeves:
+    symptoms:
+      - "sleeves do not attach at shoulders"
+      - "armholes are impossible or inconsistent"
+    repair_language:
+      - "sleeves attached naturally at the shoulder seams"
+      - "clear armhole construction"
+      - "fabric tension follows the arm position"
+    negative_language:
+      - "sleeves disconnected from shoulders"
+      - "broken armholes"
+      - "floating sleeves"
+
+  misaligned_buttons_or_placket:
+    symptoms:
+      - "buttons drift away from centerline"
+      - "button placket curves randomly"
+    repair_language:
+      - "button placket aligned with the torso centerline"
+      - "buttons evenly spaced along the closure"
+      - "vertical tension folds around the placket"
+    negative_language:
+      - "misaligned buttons"
+      - "random buttons"
+      - "crooked placket"
+
+  unclear_waistline:
+    symptoms:
+      - "garment has no fit anchor"
+      - "top and bottom merge incoherently"
+    repair_language:
+      - "clear waistline or fit anchor"
+      - "garment transitions naturally at the waist"
+      - "belt, seam, waistband, or tuck defines the silhouette when appropriate"
+    negative_language:
+      - "unclear waistline"
+      - "melted outfit transition"
+      - "top and bottom fused together"
+
+  random_folds:
+    symptoms:
+      - "wrinkles appear without gravity, tension, movement, or compression source"
+    repair_language:
+      - "folds follow fabric tension and gravity"
+      - "subtle tension folds from shoulder, waist, elbow, or button placket"
+      - "fabric drapes according to material weight"
+    negative_language:
+      - "random folds"
+      - "illogical wrinkles"
+      - "noisy fabric creases"
+
+  fabric_body_fusion:
+    symptoms:
+      - "clothing edge disappears into skin"
+      - "garment has no thickness or edge"
+    repair_language:
+      - "clear garment edge and slight material thickness"
+      - "clothing sits on top of the body with believable contact"
+      - "visible hemline and seams where appropriate"
+    negative_language:
+      - "garment fused into skin"
+      - "painted-on clothing unless requested"
+      - "no garment edge"
+
+construction_enrichment_examples:
+  white_button_up_shirt:
+    positive:
+      - "structured lightweight white short-sleeved button-up shirt"
+      - "clean collar construction"
+      - "visible button placket aligned with the torso centerline"
+      - "sleeves attached naturally at the shoulders"
+      - "fabric drapes realistically over the chest and waist"
+      - "subtle vertical tension folds from the buttons"
+      - "clear hemline and coherent garment silhouette"
+    negative:
+      - "broken collar"
+      - "misaligned buttons"
+      - "random seams"
+      - "sleeves disconnected from shoulders"
+      - "illogical fabric folds"
+      - "garment fused into skin"
+
+  cropped_jacket:
+    positive:
+      - "cropped structured jacket with defined shoulder line"
+      - "clean lapel or neckline edge"
+      - "hem ending clearly above the waist"
+      - "fabric thickness visible at cuffs and opening"
+      - "sleeves follow arm pose with natural creasing"
+    negative:
+      - "melted jacket"
+      - "unclear hemline"
+      - "floating sleeves"
+
+  pleated_skirt:
+    positive:
+      - "pleated skirt with evenly distributed vertical pleats"
+      - "defined waistband"
+      - "pleats follow gravity and body motion"
+      - "hemline curves naturally with perspective"
+    negative:
+      - "random pleats"
+      - "warped waistband"
+      - "uneven broken hem"
+
+  cosplay_reinterpretation:
+    positive:
+      - "signature character color palette translated into wearable garment construction"
+      - "recognizable costume cues preserved through silhouette, accessories, and color blocking"
+      - "materials and seams designed like a real high-end costume"
+    negative:
+      - "costume markers lost"
+      - "random fantasy clothing"
+      - "incoherent garment pieces"
+
+prompt_enrichment_language:
+  base_additions:
+    - "clear garment construction"
+    - "coherent clothing silhouette"
+    - "defined neckline, shoulder seams, waistline, and hemline"
+    - "fabric drapes according to material weight"
+    - "wrinkles follow tension, compression, gravity, and body movement"
+    - "accessories integrated with clothing and body contact"
+  negative_additions:
+    - "messy clothing construction"
+    - "broken collar"
+    - "warped neckline"
+    - "misaligned buttons"
+    - "random seams"
+    - "disconnected sleeves"
+    - "illogical folds"
+    - "melted clothing"
+    - "garment fused into skin"
+    - "unclear waistline"
+
+workflow_advice:
+  clothing_structure_problem:
+    not_first_choice:
+      - "generic detailer LoRA"
+    better_first_steps:
+      - "improve garment construction prompt"
+      - "increase base model steps"
+      - "use clothing/fashion LoRA if needed"
+      - "local inpaint garment area"
+      - "use detailer LoRA only after structure is correct"
+
+self_review_checklist:
+  - "Is the garment category specific enough?"
+  - "Are neckline, shoulder seams, sleeves, closure, waistline, and hemline coherent?"
+  - "Do folds have a believable source?"
+  - "Does the fabric behavior match the material?"
+  - "Are accessories integrated with the garment and body?"
+  - "Are character/cosplay signature cues preserved if relevant?"
+
+model_specific_rendering:
+  chatgpt_image:
+    guidance: >
+      Use garment-construction language when clothing quality matters. Describe fit, seams,
+      neckline, shoulders, sleeves, closure, waistline, hemline, material weight, drape, and
+      wrinkle source in natural language.
+  z_image_turbo:
+    positive_template: >
+      clear garment construction, coherent outfit silhouette, defined neckline and shoulders,
+      realistic fabric drape, clean seams, integrated accessories
+    negative_template: >
+      messy clothing construction, broken collar, warped neckline, random folds,
+      disconnected sleeves, garment fused into skin
+  stable_diffusion:
+    positive_template: >
+      detailed garment construction, clear silhouette, clean collar, aligned buttons,
+      realistic drape, coherent seams
+    negative_template: >
+      bad clothes, broken collar, warped clothing, random seams, melted outfit, fused clothing
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - garment_structure_schema
+    action: "Detect if wardrobe is visually important or if clothing failure risk is high."
+  phase_2_cinematic_enrichment:
+    action: "Enrich clothing with construction, fit, drape, material behavior, and failure-prevention language."
+  phase_3_scene_blueprint:
+    action: "Coordinate garment construction with body pose, materials, identity, era/culture, and styling."
+  phase_4_self_review:
+    checks:
+      - "Check collar/neckline/sleeve/waist/hem coherence."
+      - "Check fabric behavior and wrinkle source."
+      - "Check clothing-body contact."
+  phase_4_5_cleanup:
+    action: "Do not remove garment-construction safeguards when clothing is central."
+  phase_4_6_renderer_selection:
+    action: "Render garment-enrichment and failure-prevention language in model-appropriate form."
+  phase_5_final_prompt:
+    action: "Include concise clothing construction and anti-failure terms when wardrobe matters."

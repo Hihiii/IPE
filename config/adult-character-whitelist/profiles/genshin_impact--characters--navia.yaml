@@ -1,0 +1,59 @@
+schema_version: 1.0.0
+character:
+  id: genshin_impact--characters--navia
+  display_name: Navia
+  aliases:
+  - Navia
+  - 娜維婭
+  - 娜維婭 (原神)
+  - Navia (Genshin Impact)
+  source_title: Genshin Impact
+  adult_status: confirmed_adult
+  adult_source_basis: Genshin Impact default character design
+  identity_summary: President of Spina di Rosula with long wavy blonde hair, bright blue eyes, a yellow
+    and white elegant dress with large hat, frilly umbrella, and a geo claymore.
+  visual_anchors:
+  - long wavy blonde hair
+  - bright blue eyes
+  - large black wide-brim hat
+  - yellow and white frilly dress
+  - frilly umbrella
+  - geo vision
+  - warm confident smile
+  - warm cheerful smile
+  - light golden blonde hair
+  - voluminous wavy crown
+  - side-swept layered waves
+  - soft oval face with gentle structure
+  - feminine elegant build
+  outfit_anchors:
+  - long wavy blonde hair
+  - bright blue eyes
+  - large black wide-brim hat with blue feather
+  - yellow-white dress
+  - frilly umbrella
+  - geo vision
+  - President of Spina di Rosula with long wavy blonde hair, bright blue eyes, a yellow and white elegant
+    dress, large black hat with blue feather, and frilly umbrella.
+  style_anchors:
+  - warm confident smile
+  drift_guards:
+  - wrong hair color
+  - wrong eye color
+  - generic attractive person
+  - missing geo vision
+  - cold expression
+  - wrong face impression
+  - missing hat
+  - missing large hat
+  - wrong dress color
+  - missing frilly umbrella
+  - generic fantasy armor
+  - casual modern clothing
+  - random outfit redesign
+  - straight flat hair
+  - short bob
+  - dark hair colors
+  - slouching posture
+  - aggressive stance
+  - overly casual pose

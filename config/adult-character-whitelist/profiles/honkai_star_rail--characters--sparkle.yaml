@@ -1,0 +1,59 @@
+schema_version: 1.0.0
+character:
+  id: honkai_star_rail--characters--sparkle
+  display_name: Sparkle
+  aliases:
+  - Sparkle
+  - 花火
+  - 花火 (崩壞：星穹鐵道)
+  source_title: 'Honkai: Star Rail'
+  adult_status: confirmed_adult
+  adult_source_basis: 'Honkai: Star Rail default appearance'
+  identity_summary: Petite playful female with bright pink twin-tail hair, pink-red mischievous eyes,
+    a red and black trickster outfit with white accents, a signature fox mask worn on head or held in
+    front of face, and a small dagger. A Quantum-element Harmony trickster from Penacony.
+  visual_anchors:
+  - bright pink twin-tail hair
+  - pink-red mischievous eyes
+  - red and black trickster outfit
+  - fox mask
+  - dagger
+  - mischievous playful expression
+  - pink-red eyes
+  - pink hair in twin tails
+  - ever-changing expressions
+  - fox mask accessory
+  - bright pink hair
+  - voluminous crown with tail attachments
+  - straight blunt bangs
+  - delicate heart-shaped face with playful features
+  - petite slender build
+  outfit_anchors:
+  - bright pink twin-tail hair
+  - pink-red mischievous eyes
+  - red and black cropped top and shorts
+  - fox mask (on head or in hand)
+  - dagger
+  - Petite playful trickster with bright pink twin-tail hair, pink-red mischievous eyes, a red and black
+    fitted cropped top with white trim, black high-waisted shorts, red thigh-high boots, a signature fox
+    mask worn on head or held, and a small dagger.
+  style_anchors:
+  - mischievous playful grin with sparkling eyes
+  - sparkling mischievous pink-red eyes
+  drift_guards:
+  - long straight hair
+  - dark hair
+  - single ponytail
+  - wrong eye color
+  - generic attractive person
+  - serious expression
+  - serene calm expression
+  - missing pink twin tails
+  - missing fox mask
+  - wrong color palette
+  - random outfit redesign
+  - generic casual clothing
+  - missing dagger
+  - static motionless posture
+  - tall imposing build
+  - heavy or bulky build

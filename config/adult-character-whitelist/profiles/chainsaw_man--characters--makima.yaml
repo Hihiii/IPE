@@ -1,0 +1,66 @@
+schema_version: 1.0.0
+character:
+  id: chainsaw_man--characters--makima
+  display_name: Makima
+  aliases:
+  - Makima
+  - 真紀真
+  - 真紀真 (鏈鋸人)
+  source_title: Chainsaw Man
+  adult_status: confirmed_adult
+  adult_source_basis: Chainsaw Man default character design
+  identity_summary: Public Safety Devil Hunter with long deep red hair in a single thick braid reaching
+    her lower back (tied with a red cord at the end), unsettling yellow eyes with multiple concentric
+    rings, fair skin, a white button-up shirt, black tie, and a tailored black suit with a long matching
+    coat. Tall slender build with an eerily calm, controlled, and manipulative demeanor. Speaks in a
+    soft, measured tone that masks her absolute authority and sinister motives.
+  visual_anchors:
+  - long deep red hair in a single thick braid
+  - braid tied with red cord at end
+  - unsettling yellow eyes with concentric rings
+  - fair pale skin
+  - white button-up shirt
+  - black tie
+  - tailored black suit jacket
+  - long black matching coat
+  - black pants
+  - tall slender build
+  - eerily calm controlled expression
+  - long red hair in braid
+  - smooth crown
+  - side-swept bangs
+  - yellow concentric-ringed eyes
+  - elegant oval face
+  - tall slender authoritative build
+  outfit_anchors:
+  - long deep red braid with red cord end
+  - unsettling yellow concentric-ringed eyes
+  - white button-up shirt
+  - black tie
+  - tailored black suit jacket
+  - long black coat
+  - black pants
+  - Public Safety Devil Hunter with long deep red braid, yellow concentric-ringed eyes, white shirt,
+    black tie, tailored black suit and long coat. Controlled sinister executive aesthetic.
+  style_anchors:
+  - eerily calm controlled authority
+  - soft measured manipulative tone
+  - sinister masked smile
+  drift_guards:
+  - wrong hair color (not deep red)
+  - loose flowing hair instead of braid
+  - missing braid end cord
+  - wrong eye type (not concentric-ringed yellow)
+  - matching normal yellow eyes
+  - generic attractive person
+  - wrong face impression
+  - missing white shirt
+  - missing black tie
+  - missing tailored black suit
+  - warm friendly expression
+  - emotional or angry expression
+  - casual relaxed posture
+  - short hair or bob
+  - bright cheerful demeanor
+  - revealing outfit
+  - missing authoritative presence

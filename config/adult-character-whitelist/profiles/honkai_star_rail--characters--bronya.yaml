@@ -1,0 +1,54 @@
+schema_version: 1.0.0
+character:
+  id: honkai_star_rail--characters--bronya
+  display_name: Bronya
+  aliases:
+  - Bronya
+  - 布洛妮婭
+  - 布洛妮婭 (崩壞：星穹鐵道)
+  source_title: 'Honkai: Star Rail'
+  adult_status: confirmed_adult
+  adult_source_basis: 'Honkai: Star Rail default appearance'
+  identity_summary: Regal Belobog commander with light grey-silver hair, pale ice blue eyes, white and
+    blue military coat with fur trim, Silvermane rifle, and composed noble demeanor.
+  visual_anchors:
+  - light grey-silver hair
+  - pale ice blue eyes
+  - white and blue military coat with fur
+  - Silvermane rifle
+  - regal composed expression
+  - light grey-silver
+  - smooth polished crown
+  - side-swept fringe with slight wave
+  - pale ice blue
+  - elegant oval face with refined noble contours
+  - elegant regal commander
+  outfit_anchors:
+  - light grey-silver hair
+  - white military coat with fur collar
+  - blue flower hair ornament
+  - Silvermane rifle
+  - white gloves
+  - Regal Belobog commander with light grey-silver hair, white and blue military dress coat with fur collar
+    and cuffs, dark blue underlayer, tall boots, and Silvermane rifle.
+  style_anchors:
+  - cool, regal composure
+  - cool, regal, composed
+  drift_guards:
+  - short bob cut
+  - dark hair color
+  - bright colorful hair
+  - messy unkempt hair
+  - wrong eye color (not ice blue)
+  - cheerful bubbly expression
+  - casual relaxed demeanor
+  - generic attractive person
+  - missing light grey-silver hair
+  - missing white military coat with fur
+  - missing Silvermane rifle
+  - missing white gloves
+  - random outfit redesign
+  - casual modern outfit
+  - slouching posture
+  - casual relaxed posture
+  - overly athletic build

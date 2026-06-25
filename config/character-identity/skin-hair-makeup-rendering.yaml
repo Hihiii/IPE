@@ -1,0 +1,162 @@
+# ============================================================
+# skin-hair-makeup-rendering.yaml
+# Skin, hair, and makeup rendering controller
+# Version: 1.0.0
+# Purpose:
+#   Improve prompts involving human appearance quality, skin realism,
+#   hair behavior, and makeup styling.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "skin-hair-makeup-rendering"
+description: >
+  A prompt-enhancement module for skin surface quality, facial cosmetics,
+  hair styling, strand behavior, wetness, wind interaction, and portrait beauty realism.
+
+core_principle: >
+  Beautiful human rendering depends on more than face shape. Skin texture,
+  specular response, subsurface softness, hair volume, strand definition,
+  and makeup finish all contribute to believability and visual quality.
+
+global_rules:
+  - "Define skin finish: natural, dewy, matte, glossy, sunlit, wet, etc."
+  - "Skin should retain realistic texture unless a highly stylized finish is requested."
+  - "Hair should have both shape and strand logic."
+  - "Makeup should be described as a styling system, not only a color list."
+  - "Wetness, sweat, humidity, or wind should visibly affect skin and hair."
+  - "Avoid plastic skin, helmet hair, or over-smoothed beauty-filter artifacts unless intentionally stylized."
+  - "Coordinate makeup and hair with the fashion/story tone."
+
+skin_hair_makeup_schema:
+  skin_finish: []
+  skin_texture_level: "soft_realistic | detailed_realistic | polished_editorial | stylized_smooth"
+  skin_effects: []
+  hair_style_family: []
+  hair_length: []
+  hair_behavior: []
+  hair_detail_priority: "low | medium | high"
+  makeup_style: []
+  makeup_focus: []
+  environmental_influence: []
+
+skin_profiles:
+  natural_realistic:
+    cues:
+      - "visible but refined skin texture"
+      - "natural highlight rolloff"
+      - "healthy complexion"
+  dewy_k_beauty:
+    cues:
+      - "soft luminous skin"
+      - "controlled dewy highlights"
+      - "fresh makeup balance"
+  editorial_polished:
+    cues:
+      - "clean refined complexion"
+      - "high-end beauty finish"
+      - "controlled texture, not plastic"
+  wet_summer:
+    cues:
+      - "subtle moisture on skin"
+      - "sunlit sheen or water droplets"
+      - "humidity affecting hair and makeup"
+
+hair_profiles:
+  soft_flowing:
+    cues:
+      - "natural volume"
+      - "defined strand grouping"
+      - "soft edge flyaways"
+  wet_tousled:
+    cues:
+      - "damp clumping"
+      - "wet reflective sheen"
+      - "reduced volume with believable strand grouping"
+  wind_blown:
+    cues:
+      - "directional movement"
+      - "lifted loose strands"
+      - "dynamic but coherent flow"
+  sleek_styled:
+    cues:
+      - "controlled silhouette"
+      - "smooth finish"
+      - "intentional parting or styling shape"
+
+makeup_profiles:
+  natural:
+    cues:
+      - "soft complexion correction"
+      - "subtle eye definition"
+      - "natural lip finish"
+  glam:
+    cues:
+      - "defined eyes"
+      - "more sculpted skin finish"
+      - "stronger lip and lash emphasis"
+  editorial:
+    cues:
+      - "fashion-forward but controlled"
+      - "clean visual impact"
+      - "makeup harmonized with styling"
+  k_beauty_soft:
+    cues:
+      - "clear fresh skin"
+      - "gentle blush"
+      - "defined but soft eyes"
+      - "luminous lips"
+
+common_failures:
+  - "plastic skin"
+  - "over-smoothed face"
+  - "helmet hair"
+  - "hair with no strand logic"
+  - "makeup disconnected from styling"
+  - "wet hair behaving like dry hair"
+  - "sweat or water effects applied randomly"
+
+self_review_checklist:
+  - "What is the skin finish?"
+  - "What is the hair shape and behavior?"
+  - "What makeup style is intended?"
+  - "Does environment affect skin and hair correctly?"
+  - "Does the result avoid plastic over-retouching?"
+
+model_specific_rendering:
+  chatgpt_image:
+    guidance: >
+      Use appearance-finish language such as dewy skin, realistic texture,
+      wind-blown strands, or soft editorial makeup when helpful.
+  z_image_turbo:
+    positive_template: >
+      realistic skin texture, luminous skin, detailed hair strands,
+      coherent makeup, natural beauty finish
+    negative_template: >
+      plastic skin, helmet hair, over-smoothed face, disconnected makeup
+  stable_diffusion:
+    positive_template: >
+      realistic skin, strand detail, coherent hair flow, refined makeup,
+      natural highlights
+    negative_template: >
+      plastic skin, bad hair, overretouched face, muddy makeup
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - skin_hair_makeup_schema
+    action: "Detect when human appearance rendering quality is important."
+  phase_2_cinematic_enrichment:
+    action: "Translate beauty/appearance requests into skin, hair, and makeup finish instructions."
+  phase_3_scene_blueprint:
+    action: "Coordinate appearance rendering with lighting, wardrobe, identity, and mood."
+  phase_4_self_review:
+    checks:
+      - "Check skin realism."
+      - "Check hair behavior."
+      - "Check makeup coherence."
+  phase_4_5_cleanup:
+    action: "Preserve skin/hair/makeup finish cues during compression."
+  phase_4_6_renderer_selection:
+    action: "Render appearance instructions in model-appropriate language."
+  phase_5_final_prompt:
+    action: "Include concise but impactful skin/hair/makeup rendering instructions whenever people are central."

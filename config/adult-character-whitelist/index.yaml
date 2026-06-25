@@ -1,0 +1,265 @@
+schema_version: 1.0.0
+name: adult-character-whitelist
+eligibility: legacy profile maturity_profile.status == confirmed_adult
+character_count: 130
+characters:
+- name: Izayoi
+  game: Final Fantasy IV
+- name: Luca
+  game: Final Fantasy IV
+- name: Rosa Farrell
+  game: Final Fantasy IV
+- name: Rydia
+  game: Final Fantasy IV
+- name: Beatrix
+  game: Final Fantasy IX
+- name: Freya Crescent
+  game: Final Fantasy IX
+- name: Faris Scherwiz
+  game: Final Fantasy V
+- name: Celes Chere
+  game: Final Fantasy VI
+- name: Aerith Gainsborough
+  game: Final Fantasy VII
+- name: Barret Wallace
+  game: Final Fantasy VII
+- name: Cid Highwind
+  game: Final Fantasy VII
+- name: Cloud Strife
+  game: Final Fantasy VII
+- name: Sephiroth
+  game: Final Fantasy VII
+- name: Tifa Lockhart
+  game: Final Fantasy VII
+- name: Vincent Valentine
+  game: Final Fantasy VII
+- name: Zack Fair
+  game: Final Fantasy VII
+- name: Edea Kramer
+  game: Final Fantasy VIII
+- name: Quistis Trepe
+  game: Final Fantasy VIII
+- name: Auron
+  game: Final Fantasy X
+- name: Kimahri Ronso
+  game: Final Fantasy X
+- name: Lulu
+  game: Final Fantasy X
+- name: Paine
+  game: Final Fantasy X-2
+- name: Rikku
+  game: Final Fantasy X
+- name: Tidus
+  game: Final Fantasy X
+- name: Wakka
+  game: Final Fantasy X
+- name: Yuna
+  game: Final Fantasy X
+- name: Ashe
+  game: Final Fantasy XII
+- name: Balthier
+  game: Final Fantasy XII
+- name: Basch fon Ronsenburg
+  game: Final Fantasy XII
+- name: Fran
+  game: Final Fantasy XII
+- name: Lightning
+  game: Final Fantasy XIII
+- name: Oerba Yun Fang
+  game: Final Fantasy XIII
+- name: Sazh Katzroy
+  game: Final Fantasy XIII
+- name: Snow Villiers
+  game: Final Fantasy XIII
+- name: Emet-Selch
+  game: Final Fantasy XIV
+- name: Estinien Varlineau
+  game: Final Fantasy XIV
+- name: Thancred Waters
+  game: Final Fantasy XIV
+- name: Urianger Augurelt
+  game: Final Fantasy XIV
+- name: Y'shtola Rhul
+  game: Final Fantasy XIV
+- name: Zenos yae Galvus
+  game: Final Fantasy XIV
+- name: Ardyn Izunia
+  game: Final Fantasy XV
+- name: Gladiolus Amicitia
+  game: Final Fantasy XV
+- name: Ignis Scientia
+  game: Final Fantasy XV
+- name: Lunafreya Nox Fleuret
+  game: Final Fantasy XV
+- name: Noctis Lucis Caelum
+  game: Final Fantasy XV
+- name: Prompto Argentum
+  game: Final Fantasy XV
+- name: Clive Rosfield
+  game: Final Fantasy XVI
+- name: Jill Warrick
+  game: Final Fantasy XVI
+- name: Joshua Rosfield
+  game: Final Fantasy XVI
+- name: Albedo
+  game: Genshin Impact
+- name: Barbara
+  game: Genshin Impact
+- name: Clorinde
+  game: Genshin Impact
+- name: Furina
+  game: Genshin Impact
+- name: Ganyu
+  game: Genshin Impact
+- name: Hu Tao
+  game: Genshin Impact
+- name: Jean
+  game: Genshin Impact
+- name: Kamisato Ayaka
+  game: Genshin Impact
+- name: Keqing
+  game: Genshin Impact
+- name: Kuki Shinobu
+  game: Genshin Impact
+- name: Lynette
+  game: Genshin Impact
+- name: Mona
+  game: Genshin Impact
+- name: Navia
+  game: Genshin Impact
+- name: Nilou
+  game: Genshin Impact
+- name: Raiden Shogun
+  game: Genshin Impact
+- name: Sangonomiya Kokomi
+  game: Genshin Impact
+- name: Shenhe
+  game: Genshin Impact
+- name: Yae Miko
+  game: Genshin Impact
+- name: Yelan
+  game: Genshin Impact
+- name: Yun Jin
+  game: Genshin Impact
+- name: Kainé
+  game: NieR Replicant
+- name: 2B
+  game: NieR:Automata
+- name: A2
+  game: NieR:Automata
+- name: Eve
+  game: NieR:Automata
+- name: March 7th
+  game: 'Honkai: Star Rail'
+- name: Himeko
+  game: 'Honkai: Star Rail'
+- name: Kafka
+  game: 'Honkai: Star Rail'
+- name: Silver Wolf
+  game: 'Honkai: Star Rail'
+- name: Seele
+  game: 'Honkai: Star Rail'
+- name: Bronya
+  game: 'Honkai: Star Rail'
+- name: Fu Xuan
+  game: 'Honkai: Star Rail'
+- name: Jingliu
+  game: 'Honkai: Star Rail'
+- name: Ruan Mei
+  game: 'Honkai: Star Rail'
+- name: Black Swan
+  game: 'Honkai: Star Rail'
+- name: Sparkle
+  game: 'Honkai: Star Rail'
+- name: Acheron
+  game: 'Honkai: Star Rail'
+- name: Robin
+  game: 'Honkai: Star Rail'
+- name: Firefly
+  game: 'Honkai: Star Rail'
+- name: Jade
+  game: 'Honkai: Star Rail'
+- name: Feixiao
+  game: 'Honkai: Star Rail'
+- name: Lingsha
+  game: 'Honkai: Star Rail'
+- name: Rappa
+  game: 'Honkai: Star Rail'
+- name: Cammy
+  game: Street Fighter
+- name: Chun-Li
+  game: Street Fighter
+- name: Juri
+  game: Street Fighter
+- name: Laura
+  game: Street Fighter
+- name: Poison
+  game: Street Fighter
+- name: R. Mika
+  game: Street Fighter
+- name: Rose
+  game: Street Fighter
+- name: Blue Mary
+  game: King of Fighters
+- name: King
+  game: King of Fighters
+- name: Leona Heidern
+  game: King of Fighters
+- name: Mai Shiranui
+  game: King of Fighters
+- name: Shermie
+  game: King of Fighters
+- name: Vanessa
+  game: King of Fighters
+- name: Nami
+  game: One Piece
+- name: Nico Robin
+  game: One Piece
+- name: Makima
+  game: Chainsaw Man
+- name: Power
+  game: Chainsaw Man
+- name: Boa Hancock
+  game: One Piece
+- name: Nefertari Vivi
+  game: One Piece
+- name: Carrot
+  game: One Piece
+- name: Bulma
+  game: Dragon Ball Z
+- name: Android 18
+  game: Dragon Ball Z
+- name: Chi-Chi
+  game: Dragon Ball Z
+- name: Videl
+  game: Dragon Ball Z
+- name: Rei Ayanami
+  game: Evangelion
+- name: Asuka Langley Soryu
+  game: Evangelion
+- name: Misato Katsuragi
+  game: Evangelion
+- name: Ritsuko Akagi
+  game: Evangelion
+- name: Usagi Tsukino
+  game: Sailor Moon
+- name: Ami Mizuno
+  game: Sailor Moon
+- name: Rei Hino
+  game: Sailor Moon
+- name: Makoto Kino
+  game: Sailor Moon
+- name: Minako Aino
+  game: Sailor Moon
+- name: Botan
+  game: Yu Yu Hakusho
+- name: Keiko Yukimura
+  game: Yu Yu Hakusho
+- name: Shizuru Kuwabara
+  game: Yu Yu Hakusho
+- name: Tatsumaki
+  game: One Punch Man
+- name: Fubuki
+  game: One Punch Man
+- name: Mosquito Girl
+  game: One Punch Man

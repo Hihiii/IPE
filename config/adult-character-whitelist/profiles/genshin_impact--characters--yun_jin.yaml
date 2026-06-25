@@ -1,0 +1,62 @@
+schema_version: 1.0.0
+character:
+  id: genshin_impact--characters--yun_jin
+  display_name: Yun Jin
+  aliases:
+  - Yun Jin
+  - 云堇
+  - 云堇 (Genshin Impact)
+  - Yun Jin (Genshin Impact)
+  source_title: Genshin Impact
+  adult_status: confirmed_adult
+  adult_source_basis: Genshin Impact default appearance
+  identity_summary: Elegant Liyue opera performer with very long light blue hair adorned with white flowers,
+    light blue eyes, a traditional Chinese opera-inspired outfit in white and pale blue with gold trim,
+    feather accessories, and Geo Vision.
+  visual_anchors:
+  - very long light blue hair with white flowers
+  - light blue eyes
+  - opera-inspired white and blue outfit
+  - feather accessories
+  - Geo Vision
+  - dancer's posture
+  - long light blue hair
+  - white flower hair ornaments
+  - traditional opera performer makeup style
+  - light blue hair, pale powder blue
+  - smooth high crown
+  - soft side-swept fringe
+  - light blue eyes, pale sky blue
+  - soft oval face with gentle refined features
+  - slender feminine build, graceful dancer
+  outfit_anchors:
+  - very long light blue hair
+  - white flower hair ornaments
+  - opera-inspired white and blue outfit
+  - feathered collar accessory
+  - detached floating sleeves
+  - White and pale blue traditional Chinese opera-inspired outfit with gold and teal trim, feathered collar
+    accessory, layered skirt with pink and teal panels, detached floating sleeves, white flower hair ornaments.
+  style_anchors:
+  - composed elegant calm with gentle warmth
+  - elegant calm gaze
+  drift_guards:
+  - short hair
+  - dark hair
+  - no flower ornaments
+  - wrong eye color
+  - generic attractive person
+  - wrong face impression
+  - missing opera elegance
+  - missing opera-style outfit
+  - missing feathered collar
+  - missing floating sleeves
+  - missing flower hair accessories
+  - random outfit redesign
+  - modern casual wear
+  - dark colored hair
+  - bright green or pink hair
+  - messy hairstyle
+  - bulky muscular build
+  - hunched posture
+  - clumsy movement

@@ -1,0 +1,51 @@
+schema_version: 1.0.0
+character:
+  id: genshin_impact--characters--jean
+  display_name: Jean
+  aliases:
+  - Jean
+  - 琴
+  - 琴 (原神)
+  - Jean (Genshin Impact)
+  source_title: Genshin Impact
+  adult_status: confirmed_adult
+  adult_source_basis: Genshin Impact default character design
+  identity_summary: Acting Grand Master of the Knights of Favonius with blonde mid-back ponytail, bright
+    blue eyes, white and blue knight armor dress with gold trim, anemo vision on her belt, and a noble
+    yet kind expression.
+  visual_anchors:
+  - blonde mid-back ponytail
+  - white and blue knight armor dress
+  - bright blue eyes
+  - anemo vision on belt
+  - noble kind expression
+  - blonde ponytail
+  - blonde hair
+  - smooth crown with ponytail base
+  - short straight fringe
+  - bright blue
+  - soft oval face
+  - athletic feminine build
+  outfit_anchors:
+  - blonde mid-back ponytail
+  - white and blue knight armor dress
+  - anemo vision on belt
+  - blue cape
+  - White and blue knight armor dress with a blue cape, gold trim, white gloves, brown leather belt with
+    anemo vision, and white knee-high boots, combining knightly authority with elegant femininity.
+  style_anchors:
+  - warm determined calm
+  drift_guards:
+  - dark hair
+  - short hair
+  - twin tails
+  - generic attractive person
+  - wrong eye color
+  - wrong face impression
+  - missing white and blue armor dress
+  - missing anemo vision
+  - missing blue cape
+  - random outfit redesign
+  - wrong color palette
+  - petite fragile build
+  - hunched posture

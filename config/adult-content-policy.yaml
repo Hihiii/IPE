@@ -1,0 +1,70 @@
+schema_version: "2.0.0"
+name: adult-content-policy
+purpose: >
+  Enforce adult-only fictional/original NSFW generation. Every accepted human
+  or humanoid subject receives the adult_nude product baseline unless an
+  explicit adult request raises the tier.
+
+product_mode: always_nsfw
+default_mature_tier: adult_nude
+
+eligibility:
+  allowed_subjects:
+    - clearly adult original fictional human or humanoid subjects
+    - characters resolved from adult-character-whitelist/index.yaml
+  nonhuman_exception:
+    - nonhuman-only subjects, objects, and landscapes remain non-NSFW
+  blocked_subjects:
+    - minors
+    - age-ambiguous subjects
+    - youth-coded or childlike presentation in a sexual context
+    - identifiable real people or celebrity likenesses
+  required_adult_anchor: "Use clear adult status and mature presentation near each eligible human subject."
+
+scene_limits:
+  supported_subject_counts: [single, duo]
+  unsupported_subject_counts: reject_before_render
+
+adult_content_tiers:
+  - adult_nude
+  - explicit_adult
+
+tier_resolution:
+  priority:
+    - age_or_real_person_block
+    - explicit_adult_user_tier
+    - default_adult_nude_baseline
+  rules:
+    - "Apply adult_nude to every eligible human or humanoid subject, including an input with no NSFW terms."
+    - "Preserve explicit_adult when the user requests it; never downshift it to adult_nude."
+    - "Neutral, conservative, fully covered, or nonsexual wording cannot disable the eligible-human baseline."
+    - "Only blocked-subject conditions can prevent adultization."
+
+rules:
+  - "Reject a request before enrichment when any blocked-subject cue is present."
+  - "Do not infer a named character is adult. A named character must resolve uniquely in the whitelist."
+  - "For single or duo scenes, validate every subject independently before rendering."
+  - "Reject group or multi-person scenes; this product routes only single subjects and consensual adult duos."
+  - "For duo interactions, require clearly adult fictional/original participants and a consensual scene context before enrichment."
+  - "Keep anatomy, pose support, contact, occlusion, fabric response, and lighting physically coherent."
+  - "For explicitly specified clothing, preserve garment identity while applying the baseline resolver's dynamic adult wardrobe transformation."
+  - "For unspecified clothing, use the adult_nude baseline without auto-adding garments or coverage."
+  - "For every eligible female/feminine human or humanoid, require the visible exposure contract: full nudity without a wardrobe request, or transformed partial nudity with nipple or vulva evidence when wardrobe is specified."
+  - "Wetness, generic translucency, body curves, bare limbs, sensual styling, or intact clothing do not satisfy visible adult exposure."
+
+rejection_response:
+  language: zh-TW
+  message: "無法處理包含未成年、年齡不明、青春化性化描述或真人肖像的 NSFW 請求；請改為明確成人的原創或白名單虛構角色。"
+
+self_review:
+  - every_eligible_human_subject_has_adult_nude_or_explicit_adult_baseline
+  - every_named_character_is_whitelisted
+  - nonhuman_only_input_has_no_added_adult_subject
+  - no_real_person_likeness
+  - anatomy_and_contact_are_coherent
+  - duo_interaction_is_clearly_adult_and_consensual_when_relevant
+  - visible_adult_exposure_contract_is_complete_for_eligible_human_subjects
+  - female_feminine_exposure_evidence_is_readable_not_merely_suggested
+  - exposure_action_target_garment_zone_and_end_state_are_compatible
+  - exposure_geometry_camera_ray_surface_facing_action_reach_and_crop_are_valid
+  - exposure_feasibility_review_passed_or_delivery_blocked

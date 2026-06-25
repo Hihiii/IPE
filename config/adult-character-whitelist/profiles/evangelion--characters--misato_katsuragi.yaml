@@ -1,0 +1,56 @@
+schema_version: 1.0.0
+character:
+  id: evangelion--characters--misato_katsuragi
+  display_name: Misato Katsuragi
+  aliases:
+  - Misato Katsuragi
+  - 葛城美里
+  - Misato (Evangelion)
+  - 葛城美里 (福音戰士)
+  - Captain Katsuragi
+  source_title: Evangelion
+  adult_status: confirmed_adult
+  adult_source_basis: Evangelion default character design
+  identity_summary: NERV Operations Director and captain with chin-length purple hair, sharp violet eyes, fair skin, and a tall mature womanly build. Wears a black sleeveless top with white military uniform jacket, red tie, black miniskirt, and black boots. Always wears a silver cross necklace given by her father. Outwardly carefree and fond of beer, but deeply scarred by her past and fiercely protective of her pilots.
+  visual_anchors:
+  - chin-length purple hair
+  - sharp violet eyes
+  - fair skin
+  - tall mature womanly build
+  - black sleeveless top
+  - white military jacket
+  - red tie
+  - black miniskirt
+  - black boots
+  - silver cross necklace
+  - carefree confident expression
+  - chin-length purple hair
+  - side-swept bangs
+  - sharp violet eyes
+  - mature oval face
+  - tall womanly build
+  outfit_anchors:
+  - chin-length purple hair
+  - sharp violet eyes
+  - white military jacket
+  - black sleeveless top
+  - red tie
+  - black miniskirt
+  - black boots
+  - silver cross necklace
+  - NERV Operations Director with purple hair, white military jacket, red tie, silver cross necklace, and carefree commanding presence.
+  style_anchors:
+  - carefree confident authority
+  - maternal protective warmth
+  - weary battle-scarred resolve
+  drift_guards:
+  - long hair
+  - wrong hair color (not purple)
+  - wrong eye color (not violet)
+  - generic attractive person
+  - missing silver cross necklace
+  - missing military jacket
+  - shy timid demeanor
+  - blonde or brown hair
+  - casual streetwear without military elements
+  - pale or desaturated outfit

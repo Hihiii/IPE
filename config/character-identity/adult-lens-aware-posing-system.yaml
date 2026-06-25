@@ -1,0 +1,25 @@
+schema_version: "1.0.0"
+name: "adult-lens-aware-posing-system"
+description: "Ensures adult posing remains proportional and physically readable under the selected camera perspective."
+
+wide_angle_adult_pose:
+  use_for: [dynamic_glamour, room_context, mirror_selfie, pool_or_bath_environment]
+  guards: [face_away_from_frame_edge, proportional_foreground_limbs, no_stretched_pelvis_or_legs]
+
+portrait_lens_adult_pose:
+  use_for: [glamour_portrait, boudoir_portrait, lingerie_editorial, artistic_figure]
+  effect: [flattering_facial_proportions, gentle_body_line_compression, soft_subject_separation]
+
+high_angle_adult_pose:
+  use_for: [bed_pose, sofa_pose, floor_pose]
+  guards: [proportional_legs_and_feet, readable_pelvis_direction, visible_support]
+
+low_angle_adult_pose:
+  use_for: [power_glamour, fashion_dominance, stage_pose]
+  guards: [controlled_chin_angle, powerful_not_oversized_legs, readable_face]
+
+selection_rules:
+  - "Lens choice changes perspective, not adult tier."
+  - "Use 35-50mm when room, mirror, or supported pose context is important."
+  - "Use 50-85mm for face-led glamour and intimate portrait posing."
+  - "Correct wide-angle proportions through camera distance and subject placement, not vague anatomy negatives alone."

@@ -1,0 +1,52 @@
+schema_version: 1.0.0
+character:
+  id: dragon_ball_z--characters--chi_chi
+  display_name: Chi-Chi
+  aliases:
+  - Chi-Chi
+  - 琪琪
+  - Chi-Chi (Dragon Ball)
+  - Milk
+  - 琪琪 (七龍珠)
+  source_title: Dragon Ball Z
+  adult_status: confirmed_adult
+  adult_source_basis: Dragon Ball Z default character design
+  identity_summary: Goku's wife and mother of Gohan and Goten with very long straight black hair, large dark brown-black eyes, fair skin, and a short slim build. Wears a pink Chinese-style dress with a high collar and golden trim, a green obi-sash, white boots, and golden hoop earrings. Known for her fiery temper and fierce protectiveness.
+  visual_anchors:
+  - very long straight black hair
+  - large dark brown-black eyes
+  - fair skin
+  - short slim build
+  - pink Chinese-style dress with high collar
+  - golden trim
+  - green obi-sash
+  - white boots
+  - golden hoop earrings
+  - fiery determined expression
+  - very long straight black hair
+  - dark brown-black eyes
+  - round youthful face
+  - short slim build
+  outfit_anchors:
+  - very long straight black hair
+  - dark brown-black eyes
+  - pink Chinese-style dress with gold trim
+  - green obi-sash
+  - white boots
+  - golden hoop earrings
+  - Goku's wife in pink Chinese-style dress, long black hair, green obi, and fiery determined presence.
+  style_anchors:
+  - fierce protective anger
+  - loving maternal worry
+  - determined domestic authority
+  drift_guards:
+  - short hair
+  - wrong hair color (not black)
+  - wrong eye color
+  - generic attractive person
+  - pale western outfit
+  - missing Chinese-style dress
+  - calm gentle demeanor
+  - blonde hair
+  - tall build
+  - casual modern clothing

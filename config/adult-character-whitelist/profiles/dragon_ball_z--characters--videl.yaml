@@ -1,0 +1,53 @@
+schema_version: 1.0.0
+character:
+  id: dragon_ball_z--characters--videl
+  display_name: Videl
+  aliases:
+  - Videl
+  - 比黛兒
+  - Videl (Dragon Ball)
+  - Videl Satan
+  - 比黛兒 (七龍珠)
+  source_title: Dragon Ball Z
+  adult_status: confirmed_adult
+  adult_source_basis: Dragon Ball Z default character design
+  identity_summary: Daughter of Mr. Satan and Gohan's wife with short black hair pulled back in a ponytail, sharp dark eyes, tan skin, and a tall athletic fighter build. Wears an orange gi-style top with black pants or a purple tank top with black training shorts. Tomboyish, brave, and fiercely independent.
+  visual_anchors:
+  - short black hair in ponytail
+  - sharp dark eyes
+  - tan skin
+  - tall athletic fighter build
+  - orange gi top
+  - black martial arts pants
+  - martial arts belt
+  - purple tank top variant
+  - black training shorts
+  - brave determined expression
+  - short black hair
+  - high ponytail
+  - sharp dark eyes
+  - strong angular face
+  - tall athletic build
+  outfit_anchors:
+  - short black ponytail
+  - sharp dark eyes
+  - orange gi top
+  - black martial arts pants
+  - martial arts belt
+  - tall athletic fighter build
+  - Mr. Satan's daughter with short black ponytail, orange gi, black training pants, and brave determined fighter presence.
+  style_anchors:
+  - brave determined fighter spirit
+  - tomboyish independent confidence
+  - warm loving vulnerability
+  drift_guards:
+  - long flowing hair
+  - wrong hair color (not black)
+  - wrong eye color
+  - generic attractive person
+  - wrong face impression
+  - feminine dress or skirt
+  - missing martial arts gi
+  - pale skin
+  - shy weak demeanor
+  - non-athletic build

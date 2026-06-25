@@ -1,0 +1,62 @@
+schema_version: "1.0.0"
+name: "lora-routing-system"
+description: >
+  LoRA routing controller for SDXL, Pony, Illustrious, anime, and custom
+  diffusion workflows. It defines slot priority for character, costume, style,
+  pose, and environment LoRAs without requiring a specific downstream UI.
+
+lora_slots:
+  character_lora:
+    priority: 100
+    purpose: "Preserve named character identity."
+    should_not_be_overridden_by:
+      - style_lora
+      - costume_lora
+      - environment_lora
+  costume_lora:
+    priority: 85
+    purpose: "Preserve specific outfit, armor, uniform, or cosplay construction."
+  style_lora:
+    priority: 70
+    purpose: "Apply rendering style without erasing character/costume identity."
+  pose_lora:
+    priority: 65
+    purpose: "Support difficult pose composition; must obey anatomy/physics guardrails."
+  environment_lora:
+    priority: 50
+    purpose: "Support worldbuilding or setting while keeping subject hierarchy."
+
+conflict_rules:
+  - "Character LoRA wins over style LoRA when identity is at risk."
+  - "Costume LoRA wins over fashion style terms when costume marker preservation matters."
+  - "Do not stack multiple character LoRAs unless the prompt is explicitly a group lineup."
+  - "If LoRA trigger words conflict with exact text, anatomy, or mature safety constraints, downweight or remove the trigger."
+
+renderer_notes:
+  sdxl:
+    positive_order:
+      - character_lora
+      - costume_lora
+      - pose_lora
+      - style_lora
+      - environment_lora
+    negative_focus:
+      - wrong character
+      - wrong costume
+      - identity drift
+      - bad anatomy
+  pony_illustrious:
+    positive_order:
+      - character tags
+      - costume tags
+      - pose tags
+      - style tags
+    negative_focus:
+      - wrong hair
+      - wrong outfit
+      - extra limbs
+      - bad hands
+
+prompt_assembly_hooks:
+  phase_4_6_renderer_selection:
+    action: "When target is SDXL/Pony/Illustrious/anime model, expose LoRA slot priority and negative tag set."

@@ -1,0 +1,1011 @@
+# =============================================================================
+# PROMPT ASSEMBLY SCHEMA — AUTOREVISE ENHANCED
+# Purpose:
+#   Canonical assembly, prioritization, completeness-preserving cleanup, conflict handling, and
+#   model-specific final prompt contracts for cinematic prompt enhancement.
+# =============================================================================
+
+prompt_assembly_schema:
+  version: "2.0-autorevise"
+  role: "final assembly controller"
+  core_principle: >
+    The final prompt must be visually decisive, constraint-safe, and model-friendly.
+    It should not expose the full internal cinematography plan unless debug mode is requested.
+
+  default_order:
+    - task_intent
+    - hard_locks_and_required_features
+    - subject_identity
+    - subject_attributes
+    - subject_action_pose_expression
+    - wardrobe_or_design
+    - environment
+    - shot_size
+    - subject_positioning
+    - composition
+    - camera_angle
+    - lens_and_visible_depth
+    - cinematic_grammar
+    - lighting_visible_effect
+    - exposure_and_tonality
+    - material_rendering
+    - color_palette
+    - visual_mood
+    - style_realism_mode
+    - motion_if_relevant
+    - output_specs
+    - negative_guardrails
+
+  assembly_rules:
+    - "Hard locks and required features must be promoted near the beginning of the final prompt."
+    - "User-specified subject identity must remain visible in the subject segment."
+    - "Use generator-visible language in final prompts; keep technical camera and lighting equipment in internal blueprint only."
+    - "Do not stack multiple equivalent style, mood, color, or quality terms."
+    - "Do not add cinematic depth, blur, darkness, or stylization when the task requires UI readability, product label clarity, hidden-object readability, or architectural accuracy."
+    - "When a user requests targeted edits, preserve all locked attributes and only rewrite editable attributes."
+    - "The final prompt should express what the image should visibly look like, not how much the system knows about photography."
+    - "When the original user prompt is short, expand it into a complete prompt package before renderer cleanup and syntax conversion."
+    - "When people are central, preserve body structure, hands, expression, gaze, and physical balance during cleanup and syntax conversion."
+    - "When text is requested or implied, preserve text intent and never add broad no-text language."
+    - "Professional photography enrichment must translate into visible camera position, light motivation, material response, and background control."
+
+# -----------------------------------------------------------------------------
+# 1. ASSEMBLY MODES
+# -----------------------------------------------------------------------------
+
+assembly_modes:
+  normal_user_facing:
+    purpose: "Default output for users who want a usable enhanced prompt."
+    include:
+      - final_prompt.prompt
+      - final_prompt.avoid
+      - locked_constraints_if_any
+      - brief_rationale
+    omit:
+      - full_phase_yaml
+      - lighting_diagram_equipment
+      - config_source_traces
+      - token-by-token audit
+    max_rationale_items: 3
+
+  expert_review:
+    purpose: "User wants to inspect why choices were made."
+    include:
+      - final_prompt.prompt
+      - final_prompt.avoid
+      - enhancement_summary
+      - top_risks_fixed
+      - remaining_risks
+    omit:
+      - full debug internals unless requested
+    max_rationale_items: 8
+
+  debug_yaml:
+    purpose: "Developer mode for testing the enhancer."
+    include:
+      - intent
+      - constraint_model
+      - selected_profile
+      - cinematic_enrichment
+      - scene_blueprint
+      - prompt_package
+      - optimization_pass
+      - cleanup_report
+      - final_prompt
+      - quality_scorecard
+    format: "machine-readable YAML"
+
+  direct_prompt_only:
+    purpose: "When user asks only for the prompt without explanation."
+    include:
+      - final_prompt.prompt
+      - final_prompt.avoid
+    omit:
+      - rationale
+      - phase labels
+      - report text
+
+# -----------------------------------------------------------------------------
+# 2. SEGMENT CONTRACTS
+# -----------------------------------------------------------------------------
+
+segment_contracts:
+  task_intent:
+    source_configs:
+      - task-profiles.yaml
+    purpose: "Anchor the image category and usage context."
+    final_prompt_rule: "Only include if it improves clarity; avoid generic labels like 'image'."
+    examples:
+      product_ad: "commercial product hero image"
+      movie_poster: "cinematic movie-poster composition"
+      educational_game_ui: "clear educational game screen"
+
+  hard_locks_and_required_features:
+    source_configs:
+      - constraints-library.yaml
+      - config/core-knowledge.yaml
+      - text-rendering-accuracy.yaml
+    purpose: "Protect explicit user requirements."
+    final_prompt_rule: "Promote hard locks early; do not bury them at the end."
+    examples:
+      full_body: "full-body head-to-toe framing"
+      exact_subject: "same face, hairstyle, and body shape preserved"
+      glass_panel: "freestanding frosted glass panels, not doors"
+
+  subject_identity:
+    source_configs:
+      - config/core-knowledge.yaml
+    purpose: "Define the hero subject and prevent drift."
+    final_prompt_rule: "Subject must be the first concrete visual noun phrase unless output is purely abstract."
+    examples:
+      human: "adult female fashion model"
+      product: "amber glass serum bottle with gold dropper cap"
+      architecture: "12-story stone residential facade"
+
+  subject_attributes:
+    source_configs:
+      - config/core-knowledge.yaml
+      - material-rendering-library.yaml
+    purpose: "Define visible subject traits that matter."
+    final_prompt_rule: "Keep only task-critical traits; avoid exhaustive biography."
+    examples:
+      human: "sharp expressive eyes, natural skin texture, realistic hairline"
+      product: "accurate geometry, sharp readable label, clean silhouette"
+      architecture: "straight vertical lines, consistent floor heights, realistic material joints"
+
+  action_pose_expression:
+    source_configs:
+      - motion-capture.yaml
+      - config/core-knowledge.yaml
+      - human-anatomy-guardrails.yaml
+      - face-expression-gaze-system.yaml
+    purpose: "Define pose, action, expression, or state."
+    final_prompt_rule: "Make action readable; protect body mechanics, hands, face, gaze, label, or UI when relevant."
+    examples:
+      portrait: "relaxed three-quarter pose with soft eye contact"
+      action: "crisp peak-action pose with readable silhouette"
+      product: "static centered product arrangement"
+
+  wardrobe_or_design:
+    source_configs:
+      - config/core-knowledge.yaml
+      - material-rendering-library.yaml
+      - constraints-library.yaml
+    purpose: "Define outfit, product design, UI design, architectural design."
+    final_prompt_rule: "Use construction and material language, not vague fashion adjectives."
+    examples:
+      fabric: "silk fabric with fluid drape and soft sheen"
+      product: "matte aluminum body with precise seams"
+      ui: "large rounded tappable objects with clean icon shapes"
+
+  environment:
+    source_configs:
+      - task-profiles.yaml
+      - cinematography-grammar.yaml
+      - visual-mood-library.yaml
+    purpose: "Define setting and environmental context."
+    final_prompt_rule: "Environment supports subject; do not steal first read unless task is environment-focused."
+    examples:
+      studio: "minimal studio tabletop with warm gradient background"
+      city: "dense but organized city street with readable visual zones"
+      interior: "warm wabi-sabi lobby with plaster walls and stone floor"
+
+  shot_size:
+    source_configs:
+      - shot-taxonomy.yaml
+    purpose: "Define crop and subject scale."
+    final_prompt_rule: "Use generator-visible crop guardrails for high-risk crops."
+    examples:
+      full_body: "full-body head-to-toe framing, feet fully inside frame"
+      waist_up: "waist-up composition with face and upper outfit visible"
+      close_up: "close-up hero framing, eyes or label sharp"
+
+  subject_positioning:
+    source_configs:
+      - composition-library.yaml
+      - config/core-knowledge.yaml
+    purpose: "Specify placement and safe margins."
+    final_prompt_rule: "Mention margins and text-safe areas when relevant."
+    examples:
+      left_third: "subject placed on the left third with right-side negative space"
+      centered: "centered symmetrical hero placement"
+      vertical_safe: "top and bottom safe margins preserved"
+
+  composition:
+    source_configs:
+      - composition-library.yaml
+    purpose: "Guide visual hierarchy and eye path."
+    final_prompt_rule: "Translate composition names into visible layout effects."
+    examples:
+      thirds: "balanced rule-of-thirds layout with clear eye path"
+      depth: "layered foreground-midground-background depth"
+      hidden_object: "dense but organized visual zones, readable small objects"
+
+  camera_angle:
+    source_configs:
+      - camera-angle-library.yaml
+    purpose: "Control viewpoint psychology and perspective."
+    final_prompt_rule: "Use angle strength appropriate to subject; avoid distortion risks."
+    examples:
+      heroic: "subtle heroic low-angle perspective"
+      product: "front three-quarter view with label facing camera"
+      ui: "top-down readable layout"
+
+  lens_and_visible_depth:
+    source_configs:
+      - camera-lens-library.yaml
+    purpose: "Express perspective, compression, and depth of field visibly."
+    final_prompt_rule: "Use visible lens effects; technical focal lengths are optional."
+    examples:
+      portrait: "flattering short-telephoto portrait compression with soft background separation"
+      architecture: "controlled wide architectural perspective with straight verticals"
+      product: "balanced depth of field with label sharp and background gently separated"
+
+  cinematography_grammar:
+    source_configs:
+      - cinematography-grammar.yaml
+    purpose: "Add story, blocking, and film grammar when appropriate."
+    final_prompt_rule: "Do not add film-still language to UI or technical product cutouts unless requested."
+    examples:
+      film_still: "naturalistic blocking with motivated light direction"
+      hero_reveal: "poster-grade hero silhouette with dramatic background scale"
+      product: "commercial hero staging with clean material highlights"
+
+  lighting_visible_effect:
+    source_configs:
+      - lighting-diagrams.yaml
+    purpose: "Describe light behavior without equipment terms."
+    final_prompt_rule: "Never include equipment names unless the task is behind-the-scenes or lighting diagram."
+    examples:
+      portrait: "soft diffused facial light with smooth shadows and clean catchlights"
+      product: "controlled edge highlights and clean reflections"
+      architecture: "soft daylight bounce with readable corners"
+
+  exposure_and_tonality:
+    source_configs:
+      - exposure-strategies.yaml
+    purpose: "Protect highlights, shadows, and readability."
+    final_prompt_rule: "Use tonal effect language rather than metering jargon."
+    examples:
+      high_key: "bright airy exposure with preserved highlight texture"
+      low_key: "dark atmosphere with selective highlights keeping hero detail readable"
+      architecture: "wide dynamic range without flat HDR look"
+
+  material_rendering:
+    source_configs:
+      - material-rendering-library.yaml
+    purpose: "Define surface behavior and tactile realism."
+    final_prompt_rule: "Use material-specific visible behavior."
+    examples:
+      skin: "natural skin texture with subtle pores and soft subsurface glow"
+      glass: "milky frosted glass with diffused silhouettes and soft edge reflections"
+      gold: "metallic gold with warm reflective highlights and amber shadows"
+
+  color_palette:
+    source_configs:
+      - color-palette-schemes.yaml
+    purpose: "Define controlled color relationship."
+    final_prompt_rule: "Use concise palette phrases with color roles and ratios when useful."
+    examples:
+      luxury: "warm champagne-gold and charcoal luxury palette"
+      education: "bright friendly pastel palette with clear contrast"
+      cyberpunk: "cyan-magenta neon accents with natural skin tone preserved"
+
+  visual_mood:
+    source_configs:
+      - visual-mood-library.yaml
+    purpose: "Define mood as visible cinematographic behavior."
+    final_prompt_rule: "Avoid mood word stacks; use one dominant mood phrase."
+    examples:
+      luxury: "restrained luxury editorial mood"
+      cinematic: "cinematic film-still mood"
+      playful: "bright friendly learning mood"
+
+  style_realism_mode:
+    source_configs:
+      - style-realism-control.yaml
+    purpose: "Lock the medium and rendering mode."
+    final_prompt_rule: "Use exactly one dominant style mode."
+    examples:
+      photorealistic: "photorealistic camera-style image"
+      anime_realism: "anime-realism illustration with realistic proportions"
+      vector_ui: "clean vector-style educational UI"
+
+  motion_if_relevant:
+    source_configs:
+      - motion-capture.yaml
+    purpose: "Add readable motion only when action or atmosphere needs it."
+    final_prompt_rule: "Do not blur hero details, faces, labels, UI, or hidden objects."
+    examples:
+      action: "crisp peak-action freeze with suspended particles"
+      panning: "sharp subject against directional background streaks"
+      subtle: "gentle secondary motion in hair and fabric"
+
+  output_specs:
+    source_configs:
+      - config/core-knowledge.yaml
+    purpose: "Control aspect ratio, safe zones, transparency, print, or video readiness."
+    final_prompt_rule: "Mention output constraints only when visually relevant."
+    examples:
+      vertical: "vertical 9:16 mobile-first composition with safe margins"
+      transparent: "isolated object on transparent background, no scene environment"
+      video: "stable first frame with parallax-ready background layers"
+
+  negative_guardrails:
+    source_configs:
+      - constraints-library.yaml
+      - failure-taxonomy.yaml
+      - config/core-knowledge.yaml
+      - human-anatomy-guardrails.yaml
+      - face-expression-gaze-system.yaml
+      - text-rendering-accuracy.yaml
+      - character-ip-identity-system.yaml
+      - character-archetype-visual-system.yaml
+    purpose: "Prevent likely failure modes without contradiction."
+    final_prompt_rule: "Keep avoid list short, relevant, and non-contradictory."
+    max_items_normal: 8
+    max_items_expert: 12
+
+# -----------------------------------------------------------------------------
+# 3. PRIORITY STACK
+# -----------------------------------------------------------------------------
+
+explicit_intent_precedence:
+  order:
+    - subject_identity
+    - explicit_user_action
+    - explicit_camera_framing
+    - explicit_scene_context
+    - character_identity
+    - visible_character_signature_details
+    - full_outfit_details_only_if_explicitly_requested
+    - optional_aesthetic_enhancement
+  rules:
+    subject_identity: "Preserve the named subject as the primary anchor before action, framing, or scene execution."
+    explicit_user_action: "Preserve the requested action and interaction objects before character or outfit enrichment."
+    explicit_camera_framing: "Preserve selfie, close-up, portrait, crop, camera distance, and body-visibility requests. Never widen framing for costume completion."
+    explicit_scene_context: "Preserve requested table, food, restaurant, furniture, location, and other action-supporting context before costume completion."
+    character_identity: "Complete character identity within the requested shot using visible anchors."
+    full_outfit_details_only_if_explicitly_requested: "Require an explicit full-body, full-outfit, fashion showcase, poster, or character-sheet request before adding boots, legwear, or complete silhouette requirements."
+
+priority_stack:
+  priority_100:
+    name: "explicit_user_constraints_and_age_safety_boundary"
+  rule: "Preserve explicit user intent; only enforce the underage or childlike sexual-framing boundary for mature content."
+  priority_98:
+    name: "identity_and_edit_locks"
+    rule: "For edit or reference tasks, change only requested attributes. Same face, outfit, product geometry, logo, or background must be preserved."
+  priority_97:
+    name: "subject_identity_and_role"
+    rule: "The primary named subject is the anchor. Action, framing, and scene serve the subject — they do not replace it."
+  priority_96:
+    name: "explicit_user_action"
+    rule: "Preserve the requested action, interaction objects, and required visibility before character or outfit enrichment."
+  priority_95:
+    name: "explicit_camera_or_framing"
+    rule: "Preserve requested crop, selfie, close-up, portrait, and body-visibility. Never widen framing for costume completion."
+  priority_94:
+    name: "explicit_scene_context"
+    rule: "Preserve requested location, table, food, furniture, and interaction context before background or costume enrichment."
+  priority_93:
+    name: "character_ip_identity_anchors"
+    rule: "When character recognizability matters, preserve silhouette, hair identity, face impression, palette hierarchy, costume markers, signature props/emblems, archetype behavior, world motifs, allowed variation, and forbidden drift before aesthetic enhancements."
+  priority_92:
+    name: "anatomy_physical_structure"
+    rule: "Joint logic, body balance, hand/finger count, face structure, product geometry, and architecture perspective must not be sacrificed for style or pose."
+  priority_91:
+    name: "required_text_logo_brand"
+    rule: "Specified text, logo, and brand colors must be preserved; avoid random extra text."
+  priority_88:
+    name: "composition_and_readability"
+    rule: "Hero-first hierarchy, title-safe area, unobstructed face, readable product label, and UI/hidden-object legibility must be preserved."
+  priority_85:
+    name: "output_format_and_aspect_ratio"
+    rule: "Aspect ratio, transparency, video-ready, and platform-safe constraints must be respected."
+  priority_78:
+    name: "task_specific_readability"
+    rule: "UI, hidden objects, product labels, architecture, and full-body design must remain readable."
+  priority_72:
+    name: "dominant_style_mode"
+    rule: "Only one medium/style mode should dominate."
+  priority_65:
+    name: "cinematic_aesthetic_enhancements"
+    rule: "Add only if they do not conflict with higher priorities."
+  priority_50:
+    name: "minor_quality_tags"
+    rule: "Remove first during compression."
+
+# -----------------------------------------------------------------------------
+# 4. ASSEMBLY PIPELINE
+# -----------------------------------------------------------------------------
+
+assembly_pipeline:
+  phase_A_collect:
+    steps:
+      - "Load original prompt and extracted intent."
+      - "Load hard_locks, soft_preferences, inferred_enhancements."
+      - "Load selected task_profile and secondary profile if any."
+      - "Load selected subject_rule, shot_size, composition, angle, lens, lighting, exposure, material, color, mood, style, output specs."
+      - "Load anatomy risk, expression/gaze needs, text mode, and conflict prevention stack."
+      - "Load character_ip_schema and character_archetype_schema when character recognizability, cosplay, reinterpretation, or same-character continuity matters."
+    output: "raw_segments"
+
+  phase_B_validate:
+    checks:
+      - "No segment contradicts hard_locks."
+      - "Exactly one dominant style_realism_mode is selected."
+      - "No lighting equipment terms appear in final_prompt candidates unless allowed."
+      - "No avoid item contradicts required features."
+      - "Shot_size, aspect_ratio, and composition are compatible."
+      - "Lens/depth choice does not break readability requirements."
+      - "Cinematic grammar does not overpower task-specific clarity."
+      - "Human pose, camera angle, clothing fit, and action remain anatomically compatible."
+      - "Expression, gaze target, body action, and story context do not contradict each other."
+      - "Requested or implied text is not contradicted by no-text cleanup."
+      - "Character IP locks are separated into locked traits, allowed variations, and forbidden drift."
+    output: "validated_segments"
+
+  phase_C_translate:
+    rules:
+      - "Convert technical lighting, lens, exposure, color theory, and composition terms into generator-visible effects."
+      - "Keep human technical plan in debug blueprint, not in final prompt."
+      - "Convert negative-only constraints into positive guardrails when possible."
+      - "Translate professional shooting decisions into camera position, light motivation, shadow behavior, material response, and background separation."
+      - "Translate expression requests into coordinated eyes, brows, mouth, jaw, head angle, and gaze target."
+      - "Translate character names or archetype labels into visual-recognition anchors instead of repeating the name."
+    output: "generator_visible_segments"
+
+  phase_D_rank:
+    rules:
+      - "Rank segments by priority_stack."
+      - "Place subject and hard locks before aesthetic enhancements."
+      - "Move output specs and negative guardrails to the end unless they affect crop/safe zones."
+    output: "ranked_segments"
+
+  phase_E_merge:
+    rules:
+      - "Merge adjacent segments that describe the same visible effect."
+      - "Keep each segment semantically distinct."
+      - "Avoid repeating the same noun or adjective cluster."
+    output: "merged_prompt_candidate"
+
+  phase_F_cleanup:
+    rules:
+      - "Do not apply a token or word budget unless the user explicitly asks for a shorter prompt or the downstream tool has a known hard limit."
+      - "Use semantic deduplication clusters."
+      - "Remove minor repeated quality tags before removing concrete visual nouns."
+      - "Preserve hard locks, character IP identity anchors, subject identity, anatomy/pose, expression/gaze, exact text, shot/crop, style mode, key lighting, material-critical details, output specs, and negative guardrails."
+    output: "cleaned_complete_final_prompt"
+
+  phase_G_final_review:
+    checks:
+      - "Final prompt retains original user intent."
+      - "Prompt is not keyword soup."
+      - "Avoid list is short and non-contradictory."
+      - "No internal equipment names leaked."
+      - "Task-specific quality thresholds are met."
+      - "People have plausible structure, hands, expression, gaze, and body balance."
+      - "Text/logo/title intent is preserved without no-text contradiction."
+      - "Professional photography details are visible image decisions, not equipment clutter."
+    output: "final_prompt"
+
+# -----------------------------------------------------------------------------
+# 5. GENERATOR-VISIBLE TRANSLATION RULES
+# -----------------------------------------------------------------------------
+
+generator_visible_translation_rules:
+  lighting:
+    replace:
+      octabox: "large soft diffused key light with smooth shadow transition"
+      softbox: "soft rectangular diffused light"
+      strip_softbox: "narrow elongated edge highlight"
+      V_flat: "gentle bounced fill"
+      grid: "controlled focused light spill"
+      snoot: "small focused pool of light"
+      beauty_dish: "crisp glamour light with clean facial highlights"
+    final_prompt_forbidden:
+      - "octabox"
+      - "softbox"
+      - "stripbox"
+      - "V-flat"
+      - "C-stand"
+      - "light stand"
+      - "studio flash"
+      - "reflector board"
+    allowed_when:
+      - behind_the_scenes_photo
+      - studio_setup_diagram
+      - photography_education_diagram
+      - lighting_equipment_product_shot
+
+  lens:
+    translate:
+      "85mm": "flattering short-telephoto portrait compression"
+      "24mm": "wide environmental perspective"
+      "macro": "close detail with crisp texture and shallow background falloff"
+      "tilt-shift": "controlled architectural perspective with straight verticals"
+    rule: "Focal length tags are optional; visible perspective effect is required."
+
+  exposure:
+    translate:
+      low_key: "dark atmosphere with selective readable highlights"
+      high_key: "bright airy exposure with preserved highlight texture"
+      HDR: "wide dynamic range without flat overprocessed look"
+    rule: "Use tonal readability language instead of metering jargon."
+
+  composition:
+    translate:
+      rule_of_thirds: "subject placed along a third line with balanced negative space"
+      golden_ratio: "elegant visual flow guiding the eye through the subject"
+      depth_layering: "clear foreground-midground-background separation"
+      symmetry: "centered symmetrical balance"
+    rule: "Composition names must be supported by visible layout description."
+
+  mood:
+    translate:
+      luxury: "restrained luxury editorial aesthetic"
+      cinematic: "cinematic film-still composition with motivated light and layered depth"
+      dreamy: "soft glow, gentle contrast, airy atmosphere while keeping hero detail sharp"
+      playful: "bright friendly visual mood with rounded forms and clear readability"
+    rule: "Use one dominant mood phrase; do not stack synonyms."
+
+# -----------------------------------------------------------------------------
+# 6. CONFLICT RESOLUTION DURING ASSEMBLY
+# -----------------------------------------------------------------------------
+
+assembly_conflict_resolution:
+  hard_lock_vs_aesthetic:
+    rule: "Hard lock wins. Remove or modify aesthetic enhancement."
+    example:
+      conflict: "user says outfit unchanged; enhancement adds new wardrobe"
+      repair: "remove wardrobe change; only improve lighting, pose, or allowed attributes"
+
+  targeted_edit_vs_full_rewrite:
+    rule: "If only one attribute is editable, preserve all other segments from original prompt."
+    repair_phrase: "only the requested attribute changes; all other visible features remain consistent"
+
+  photorealistic_vs_anime:
+    rule: "Medium terms outrank character references. Character names are design cues unless user explicitly requests anime illustration."
+    repair_phrase: "photorealistic real-life interpretation with character-inspired costume and color cues"
+
+  product_label_vs_shallow_dof:
+    rule: "Label readability wins over strong bokeh."
+    repair_phrase: "balanced depth of field, product label sharp, background gently separated"
+
+  full_body_vs_closeup:
+    rule: "Use full-body framing only when the user explicitly requests full body, shoes, complete outfit, fashion showcase, poster, or character sheet. Character identity alone never expands a close-up, portrait, or selfie into a full-body shot."
+    repair_phrase: "preserve the requested crop; include only character details visible within that framing"
+
+  action_or_selfie_vs_outfit_completion:
+    rule: "Explicit action, selfie framing, and nearby scene objects outrank canonical outfit completion. Keep face and upper torso dominant in a dinner selfie, and include hands, utensils, food, or table details only when the action requires them."
+    repair_phrase: "close arm-length dinner selfie, face and upper torso dominant, seated at a restaurant table, food and utensil visible"
+
+  text_overlay_vs_busy_background:
+    rule: "Text-safe area wins over dense background detail."
+    repair_phrase: "clean negative space reserved for text overlay, low-detail background behind text area"
+
+  dark_cinematic_vs_readability:
+    rule: "Preserve dark mood but keep hero details readable."
+    repair_phrase: "dark cinematic atmosphere with selective highlights keeping the hero detail readable"
+
+  transparent_background_vs_environment:
+    rule: "Transparent background overrides environment and atmosphere."
+    repair_phrase: "isolated subject on transparent background, no scene environment"
+
+  architecture_drama_vs_perspective_accuracy:
+    rule: "Architectural accuracy wins over dramatic distortion."
+    repair_phrase: "dramatic architectural view with straight verticals and controlled perspective"
+
+  hidden_object_vs_bokeh:
+    rule: "Hidden-object readability wins over shallow depth."
+    repair_phrase: "dense but readable deep-focus hidden-object layout"
+
+  educational_ui_vs_cinematic_mood:
+    rule: "Gameplay readability wins over cinematic complexity."
+    repair_phrase: "clear gameplay-readable layout with mild cinematic depth only in the background"
+
+  motion_vs_hero_detail:
+    rule: "Motion may affect background or secondary elements, not the hero face, label, UI, or hidden objects."
+    repair_phrase: "motion blur limited to background or moving edges; hero detail remains sharp"
+
+  brand_color_vs_color_grade:
+    rule: "Brand color remains accurate; grade affects environment and shadows."
+    repair_phrase: "brand colors preserved accurately on logo and product, cinematic grade applied to environment"
+
+# -----------------------------------------------------------------------------
+# 7. SEMANTIC DEDUPLICATION
+# -----------------------------------------------------------------------------
+
+semantic_deduplication:
+  luxury_cluster:
+    terms:
+      - premium
+      - high-end
+      - luxurious
+      - elegant
+      - sophisticated
+      - refined
+      - expensive
+    compressed_as: "restrained luxury editorial aesthetic"
+
+  cinematic_cluster:
+    terms:
+      - cinematic
+      - filmic
+      - movie-like
+      - dramatic film still
+      - film grade
+    compressed_as: "cinematic film-still composition"
+
+  realism_cluster:
+    terms:
+      - photorealistic
+      - ultra realistic
+      - real-life
+      - realistic photography
+      - real camera
+    compressed_as: "photorealistic camera-style image"
+
+  soft_light_cluster:
+    terms:
+      - soft light
+      - diffused light
+      - gentle light
+      - smooth shadow
+      - beauty light
+    compressed_as: "soft diffused light with smooth shadows"
+
+  sharp_detail_cluster:
+    terms:
+      - crisp
+      - sharp
+      - highly detailed
+      - ultra detailed
+      - clear focus
+    compressed_as: "crisp first-read detail"
+
+  warm_gold_cluster:
+    terms:
+      - warm
+      - golden
+      - amber
+      - champagne
+      - gold tone
+    compressed_as: "warm champagne-gold palette"
+
+  readable_layout_cluster:
+    terms:
+      - readable
+      - clear hierarchy
+      - organized
+      - not cluttered
+      - easy to understand
+    compressed_as: "clear readable visual hierarchy"
+
+  nsfw_exception: >
+    When the adult_human_scene feature is active, skip semantic deduplication for any cluster
+    that could compress surface anatomy, material response, exposure evidence, or garment
+    interaction terms. Specifically, do not merge terms from these clusters when they appear
+    in proximity to exposure action evidence:
+      - sharp_detail_cluster (preserves: areola, nipple, skin texture, local shadow detail)
+      - soft_light_cluster (preserves: light response on skin surface, material-highlight interplay)
+      - warm_gold_cluster (preserves: skin tone specificity, warmth of exposure lighting)
+    For adult scenes, term density around the exposure target is intentional specificity,
+    not redundancy.
+
+# -----------------------------------------------------------------------------
+# 8. DETAIL PRIORITY ALLOCATION
+# -----------------------------------------------------------------------------
+
+detail_priority_allocation:
+  enforcement: "advisory_only"
+  rule: "Use these percentages only to balance attention across prompt segments; never delete meaningful details to satisfy a length target."
+  quick_concept_120:
+    subject: "30%"
+    composition_and_crop: "20%"
+    style_lighting: "25%"
+    material_color: "10%"
+    output_constraints: "10%"
+    avoid: "5%"
+
+  standard_image_250:
+    subject: "25%"
+    composition_and_crop: "20%"
+    style_lighting: "25%"
+    material_color: "15%"
+    output_constraints: "10%"
+    avoid: "5%"
+
+  detailed_scene_450:
+    subject: "20%"
+    composition_and_crop: "18%"
+    environment: "15%"
+    style_lighting_exposure: "25%"
+    material_color_mood: "12%"
+    output_constraints: "6%"
+    avoid: "4%"
+
+  production_hero_700:
+    subject: "18%"
+    composition_and_crop: "15%"
+    environment_and_story: "15%"
+    style_lighting_exposure: "25%"
+    material_color_mood_motion: "15%"
+    output_constraints: "7%"
+    avoid: "5%"
+
+cleanup_remove_order:
+  - minor_quality_tags
+  - repeated_mood_adjectives
+  - redundant_color_synonyms
+  - unnecessary focal_length_numbers
+  - unnecessary equipment_terms
+  - "secondary props not required by user — EXCEPT exposure action support objects (towel edges, fabric grips, garment anchor points, moisture sources) when exposure_action_plan is active"
+  - "excessive atmosphere details — EXCEPT moisture sources, steam, water droplets, and fabric interaction elements that serve as physical causes for an active exposure route"
+  - "non-critical background details — EXCEPT scene context elements (bathroom tiles, shower fixtures, bed frame) that establish the exposure setting"
+  - low-priority inferred_enhancements
+  # 100% NSFW guarantee: never remove exposure target evidence
+  - "NEVER remove: evidence target terms (nipple, vulva, visible, unobscured, in frame), garment transformation action terms, or exposure state terms"
+
+cleanup_keep_order:
+  - explicit_user_constraints
+  - subject_identity
+  - required_features
+  - locked_attributes
+  - short_prompt_expansion_core_details
+  - human_structure_pose_hands_expression_gaze
+  - exact_text_logo_brand_copy
+  - shot_size_and_crop_guardrails
+  - task_profile_readability_requirements
+  - professional_camera_light_material_decisions
+  - dominant_style_mode
+  - key_lighting_visible_effect
+  - critical_material_details
+  - output_specs
+  - short_noncontradictory_avoid_list
+  # 100% NSFW guarantee: exposure contracts are hard locks
+  - visible_exposure_contract
+  - exposure_action_plan
+  - nsfw_baseline_tier
+  - exposure_support_objects
+  - evidence_target_and_garment_action_terms
+
+short_prompt_expansion_keep_order:
+  purpose: "Protect necessary details inferred from a short user prompt."
+  keep:
+    - "primary subject and explicit user nouns"
+    - "subject role, action, pose, expression, or product function"
+    - "human anatomy, hands, gaze target, facial micro-expression, and body balance when people are central"
+    - "shot size, composition, viewpoint, and hierarchy"
+    - "visible lighting effect and exposure feel"
+    - "material, texture, skin, fabric, product, or environmental surface behavior"
+    - "background depth, atmosphere, and scene context"
+    - "output format, text/brand/publication layout, and hard constraints"
+    - "exact requested text, logo, title, label, language/script, and no-extra-text protection"
+    - "targeted avoid terms for known model failures"
+  remove_before_these:
+    - "generic quality tags"
+    - "repeated mood adjectives"
+    - "unnecessary equipment names"
+    - "secondary props not implied by subject, setting, or use case"
+
+# -----------------------------------------------------------------------------
+# 9. MODEL-SPECIFIC FINAL PROMPT CONTRACTS
+# -----------------------------------------------------------------------------
+
+model_specific_assembly:
+  chatgpt_image:
+    style: "natural-language semantic prompt"
+    structure:
+      - "one compact prompt paragraph"
+      - "short avoid list"
+      - "locked constraints if any"
+    avoid:
+      - "SD weights"
+      - "long negative tag dump"
+      - "camera equipment names"
+    recommended: "Clear visual language, exact constraints, concise avoid list."
+
+  stable_diffusion:
+    style: "tag-friendly prompt with positive/negative separation"
+    structure:
+      positive_prompt: "comma-separated visible descriptors, most important tokens early"
+      negative_prompt: "short relevant negative list"
+    allow:
+      - "lens tags"
+      - "quality tags"
+      - "negative prompt syntax"
+    avoid:
+      - "long prose paragraphs if model performs better with tags"
+
+  midjourney:
+    style: "compact aesthetic direction"
+    structure:
+      - "short prompt"
+      - "core subject"
+      - "composition"
+      - "style"
+      - "lighting"
+      - "aspect parameter outside prompt when supported"
+    avoid:
+      - "overly technical lighting diagrams"
+      - "long avoid list"
+    recommended: "Use --no only for critical exclusions."
+
+  flux:
+    style: "clear natural-language with strong subject-composition ordering"
+    structure:
+      - "subject first"
+      - "composition second"
+      - "style and lighting third"
+      - "constraints last"
+    avoid:
+      - "keyword soup"
+
+  image_edit:
+    style: "targeted edit instruction"
+    structure:
+      - "what changes"
+      - "what stays locked"
+      - "style consistency"
+      - "avoid accidental changes"
+    rule: "Never regenerate unrelated attributes when user asks for a small edit."
+
+  video_prompt:
+    style: "scene + motion + camera movement"
+    structure:
+      - "stable first frame"
+      - "subject motion"
+      - "camera motion"
+      - "background parallax"
+      - "continuity constraints"
+    rule: "Avoid text unless static readable text is required."
+
+# -----------------------------------------------------------------------------
+# 10. AVOID LIST MANAGEMENT
+# -----------------------------------------------------------------------------
+
+avoid_list_management:
+  normal_mode:
+    max_items: 8
+    include_order:
+      - explicit_user_forbidden_elements
+      - high_risk_task_failures
+      - style_medium_conflicts
+      - critical crop or readability failures
+    exclude:
+      - generic_quality_negatives_unless_model_specific
+      - terms that contradict required features
+      - equipment terms already removed from final prompt unless reflection risk exists
+
+  expert_mode:
+    max_items: 12
+
+  debug_mode:
+    max_items: 20
+    include_reason_codes: true
+
+  contradiction_repairs:
+    logo_required_but_no_logo:
+      bad: "no logo"
+      fix: "no random extra logos"
+    text_required_but_no_text:
+      bad: "no text"
+      fix: "no random extra text, only specified text"
+    motion_required_but_no_blur:
+      bad: "no blur"
+      fix: "hero detail sharp, motion blur limited to background or moving edges"
+    full_body_required_but_no_crop:
+      bad: "no crop"
+      fix: "full-body head-to-toe framing, feet visible"
+
+# -----------------------------------------------------------------------------
+# 11. FINAL PROMPT TEMPLATES
+# -----------------------------------------------------------------------------
+
+final_prompt_templates:
+  chatgpt_image_normal:
+    format: |
+      final_prompt:
+        prompt: >
+          {subject_identity}, {required_features}, {shot_size}, {subject_positioning},
+          {composition}, {camera_angle}, {lens_and_visible_depth},
+          {style_realism_mode}, {cinematography_grammar}, {lighting_visible_effect},
+          {exposure_and_tonality}, {material_rendering}, {color_palette}, {visual_mood},
+          {environment}, {output_specs}.
+        avoid: [{negative_guardrails}]
+        locked_constraints: [{hard_locks_if_any}]
+
+  stable_diffusion:
+    format: |
+      positive_prompt: >
+        {subject_identity}, {required_features}, {shot_size}, {composition},
+        {camera_angle}, {lens_and_visible_depth}, {style_realism_mode},
+        {lighting_visible_effect}, {material_rendering}, {color_palette}, {output_specs}
+      negative_prompt: >
+        {negative_guardrails}
+
+  image_edit:
+    format: |
+      edit_prompt: >
+        Change only {editable_attributes}. Preserve {locked_attributes}. Keep the same
+        {identity_and_context}. Apply {requested_style_or_lighting_change}. Avoid
+        {forbidden_changes}.
+
+  video_ready:
+    format: |
+      video_prompt: >
+        Stable first frame: {subject_identity}, {shot_size}, {composition}, {lighting_visible_effect}.
+        Motion: {motion_if_relevant}. Camera: {implied_camera_movement}. Continuity:
+        preserve {locked_attributes}, no distracting text or unstable geometry.
+
+# -----------------------------------------------------------------------------
+# 12. ASSEMBLY QUALITY CHECKS
+# -----------------------------------------------------------------------------
+
+assembly_quality_checks:
+  must_pass:
+    - id: "original_intent_visible"
+      question: "Does the final prompt still visibly express the original user request?"
+      repair_route: "constraints-library.yaml + config/core-knowledge.yaml"
+    - id: "hard_locks_preserved"
+      question: "Are all hard locks included or protected?"
+      repair_route: "constraints-library.yaml + config/core-knowledge.yaml"
+    - id: "single_dominant_style"
+      question: "Is there exactly one dominant medium/style mode?"
+      repair_route: "style-realism-control.yaml"
+    - id: "task_profile_readability"
+      question: "Does the prompt preserve the task-specific readability requirement?"
+      repair_route: "task-profiles.yaml + quality-rubric.yaml"
+    - id: "crop_safe"
+      question: "Does shot size match the requested or inferred crop?"
+      repair_route: "shot-taxonomy.yaml + composition-library.yaml"
+    - id: "no_equipment_leak"
+      question: "Are lighting equipment terms absent from final prompt unless allowed?"
+      repair_route: "lighting-diagrams.yaml"
+    - id: "no_avoid_contradiction"
+      question: "Does avoid list avoid contradicting required features?"
+      repair_route: "constraints-library.yaml + config/core-knowledge.yaml"
+    - id: "not_keyword_soup"
+      question: "Is the prompt concise and non-redundant?"
+      repair_route: "prompt-assembly-schema.yaml + quality-rubric.yaml"
+
+  score_threshold:
+    deliver: 36
+    targeted_iterate: 28
+    rebuild_blueprint: 21
+    restart_from_intent: 20
+
+# -----------------------------------------------------------------------------
+# 13. PROMPT ASSEMBLY HOOKS
+# -----------------------------------------------------------------------------
+
+prompt_assembly_hooks:
+  phase_1_after_intent:
+    - "Extract hard_locks, soft_preferences, inferred_enhancements."
+    - "Select task_profile and dominant style mode."
+    - "Determine output mode and advisory length guidance."
+
+  phase_2_after_cinematic_enrichment:
+    - "Translate human-technical decisions into generator-visible effects."
+    - "Remove or quarantine equipment terms from final prompt candidate."
+    - "Resolve style, lens, lighting, exposure, and composition conflicts."
+
+  phase_3_5_prompt_package:
+    - "Populate independent editable categories."
+    - "Keep original_prompt visible."
+    - "Record source category for each segment."
+
+  phase_4_self_review:
+    - "Run assembly_quality_checks."
+    - "Route failures to the corresponding config."
+    - "Patch only failed dimensions unless critical conflict requires rebuild."
+
+  phase_4_5_cleanup:
+    - "Apply semantic_deduplication."
+    - "Remove contradictions, duplicate wording, equipment leaks, and avoid-list conflicts."
+    - "Preserve cleanup_keep_order and never delete meaningful visual details to satisfy a length target."
+
+  phase_5_final_output:
+    - "Emit according to assembly_modes and model_specific_assembly."
+    - "Expose final prompt, avoid list, locked constraints, and brief rationale in normal mode."

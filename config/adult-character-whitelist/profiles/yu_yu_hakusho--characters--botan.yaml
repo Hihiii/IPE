@@ -1,0 +1,50 @@
+schema_version: 1.0.0
+character:
+  id: yu_yu_hakusho--characters--botan
+  display_name: Botan
+  aliases:
+  - Botan
+  - 牡丹
+  - Botan (Yu Yu Hakusho)
+  - 牡丹 (幽遊白書)
+  - Ferry Girl of the River Styx
+  source_title: Yu Yu Hakusho
+  adult_status: confirmed_adult
+  adult_source_basis: Yu Yu Hakusho default character design
+  identity_summary: The cheerful ferry girl of the Spirit World with very long light blue hair tied in a high ponytail with a ribbon, large bright blue eyes, fair skin, and a slim youthful build. Wears a pink and white kimono-style outfit with a green sash, and carries a large wooden oar as her signature tool. Energetic, perpetually cheerful, and slightly scatterbrained but deeply compassionate and loyal to her friends in the Spirit Detective team.
+  visual_anchors:
+  - very long light blue hair in high ponytail
+  - large bright blue eyes
+  - fair skin
+  - slim youthful build
+  - pink and white kimono-style outfit
+  - green sash/obi
+  - large wooden oar
+  - bright cheerful smile
+  - very long light blue hair
+  - high ponytail
+  - bright blue eyes
+  - round youthful face
+  - slim build
+  outfit_anchors:
+  - very long light blue ponytail
+  - bright blue eyes
+  - pink and white kimono-style outfit
+  - green sash
+  - large wooden oar
+  - Spirit World ferry girl with light blue ponytail, pink kimono outfit, wooden oar, and cheerful bright presence.
+  style_anchors:
+  - cheerful bubbly optimism
+  - warm compassionate kindness
+  - ditzy loving energy
+  drift_guards:
+  - short hair
+  - wrong hair color (not light blue)
+  - wrong eye color (not bright blue)
+  - generic attractive person
+  - missing wooden oar
+  - dark themed outfit
+  - serious gloomy demeanor
+  - blonde or brown hair
+  - western outfit instead of kimono
+  - tall mature build

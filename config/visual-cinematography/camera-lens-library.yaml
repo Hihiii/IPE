@@ -1,0 +1,1402 @@
+version: 1
+purpose: "Lens characteristics, selection strategies, and filter effects for cinematic and commercial photography."
+
+# =============================================================================
+# FOCAL LENGTH STRATEGIES — category-level guidance
+# =============================================================================
+focal_length_strategies:
+  ultra_wide_10_14mm:
+    description: "Expansive field of view with strong distortion at edges. Exaggerates scale."
+    best_for:
+      - "dramatic architecture interiors"
+      - "creative forced perspective"
+      - "immersive environmental context"
+      - "car interiors and tight spaces"
+    avoid:
+      - "portraits (facial distortion)"
+      - "natural-looking images"
+    prompt_keywords: "ultra wide lens, dramatic perspective, expansive foreground, forced depth"
+
+  wide_16_35mm:
+    description: "Moderate wide angle. Retains context while managing distortion."
+    best_for:
+      - "environmental portraits"
+      - "architectural interiors"
+      - "establishing shots"
+      - "documentary style"
+    prompt_keywords: "wide angle lens, environmental context, moderate wide field of view"
+
+  standard_35_50mm:
+    description: "Natural perspective closest to human eye. Truthful and unexaggerated."
+    best_for:
+      - "street and documentary"
+      - "full-body to half-body portraits"
+      - "tabletop product"
+      - "versatile all-purpose"
+    prompt_keywords: "standard lens, natural perspective, truthful field of view, human eye equivalent"
+
+  short_tele_85_105mm:
+    description: "Flattering compression for portraits. Moderate subject isolation."
+    best_for:
+      - "portrait headshots and half-body"
+      - "beauty and commercial"
+      - "product hero shots"
+      - "fashion close-ups"
+    prompt_keywords: "short telephoto, flattering portrait perspective, natural bokeh, subject isolation"
+
+  medium_tele_135_200mm:
+    description: "Strong compression and background separation. Flattens depth planes."
+    best_for:
+      - "compressed fashion full-body"
+      - "candid telephoto"
+      - "extreme background separation"
+      - "layered depth effect"
+    prompt_keywords: "telephoto compression, flat depth planes, extreme background separation, isolated subject"
+
+  super_tele_300_800mm:
+    description: "Extreme reach and compression. Stacks distant elements. Very flat perspective."
+    best_for:
+      - "sports and wildlife"
+      - "epic landscape compression"
+      - "distant candid"
+      - "sun and moon with foreground"
+    notes: "Requires tripod or monopod. Subject distance can be 10-100m."
+    prompt_keywords: "super telephoto, extreme compression, stacked depth planes, distant subject compression"
+
+
+# =============================================================================
+# LENS EXAMPLES — specific lenses with detailed characteristics
+# =============================================================================
+lens_examples:
+  16mm:
+    category: "ultra_wide"
+    full_frame_equiv: "16mm"
+    aps_c_equiv: "10mm"
+    field_of_view_degrees: 107
+    compression: "extreme_expansive"
+    distortion: "strong_barrel"
+    working_distance: "extremely_close_0_2_1m"
+    perspective_effect: "Dramatic exaggeration of foreground, vast background feel, strong perspective lines"
+    best_for:
+      - "dramatic architecture"
+      - "interior spaces"
+      - "creative forced perspective"
+      - "dynamic editorial fashion"
+    avoid:
+      - "portraits (severe distortion)"
+      - "natural-looking images"
+    prompt_keywords: "16mm ultra wide lens, dramatic forced perspective, expansive view, strong distortion"
+    notes: "Use with caution. Foreground subjects will be strongly distorted. Excellent for creative effect."
+
+  24mm:
+    category: "wide_angle"
+    full_frame_equiv: "24mm"
+    aps_c_equiv: "16mm"
+    field_of_view_degrees: 84
+    compression: "low_expansive"
+    distortion: "noticeable_barrel"
+    working_distance: "close_1_2m"
+    perspective_effect: "exaggerates foreground, makes backgrounds feel farther"
+    best_for:
+      - "architecture interiors"
+      - "environmental portraits with context"
+      - "wide establishing shots"
+      - "real estate photography"
+      - "car interiors"
+    avoid:
+      - "close-up portraits (distorts face)"
+      - "product detail shots"
+    prompt_keywords: "24mm wide angle lens, expansive wide view, environmental context, slight wide distortion"
+    cinematic_use: "Establishes location. Used for master shots. Creates dynamic foreground/background relationship."
+
+  35mm:
+    category: "wide_to_normal"
+    full_frame_equiv: "35mm"
+    aps_c_equiv: "23mm"
+    field_of_view_degrees: 63
+    compression: "slight_expansive"
+    distortion: "minimal_natural"
+    working_distance: "moderate_1_3m"
+    perspective_effect: "natural with slight environment inclusion, close to human peripheral vision"
+    best_for:
+      - "environmental portraits"
+      - "documentary style"
+      - "editorial with context"
+      - "full-body fashion"
+    avoid:
+      - "tight headshots"
+    prompt_keywords: "35mm lens, natural perspective with environment, documentary look, slight wide context"
+    cinematic_use: "The 'master lens' for many filmmakers. Captures context while keeping natural proportions."
+
+  50mm:
+    category: "standard"
+    full_frame_equiv: "50mm"
+    aps_c_equiv: "35mm"
+    field_of_view_degrees: 47
+    compression: "neutral"
+    distortion: "minimal"
+    working_distance: "moderate_1_4m"
+    perspective_effect: "Matches human monocular vision. Most natural perspective."
+    best_for:
+      - "portrait full to half body"
+      - "street and documentary"
+      - "product on tabletop"
+      - "versatile all-purpose"
+    avoid:
+      - "extreme wide shots"
+      - "extreme close-ups"
+    prompt_keywords: "50mm standard lens, natural perspective, neutral field of view, true to human vision"
+    cinematic_use: "The most truthful lens. No exaggeration. Used when you want the audience to feel present."
+
+  85mm:
+    category: "short_telephoto"
+    full_frame_equiv: "85mm"
+    aps_c_equiv: "56mm"
+    field_of_view_degrees: 28
+    compression: "moderate"
+    distortion: "negligible"
+    working_distance: "moderate_far_1_5_3m"
+    perspective_effect: "Flattering face proportions, slight background compression, natural bokeh"
+    best_for:
+      - "portrait headshots and half-body"
+      - "beauty and commercial"
+      - "product hero shots"
+      - "fashion close-ups"
+    avoid:
+      - "full-body (needs too much distance)"
+      - "tight interior spaces"
+    prompt_keywords: "85mm portrait lens, flattering face perspective, natural bokeh, short telephoto"
+    cinematic_use: "The standard portrait lens. Creates intimate but not intrusive framing. Ideal for dialogue scenes."
+
+  100mm_macro:
+    category: "telephoto_macro"
+    full_frame_equiv: "100mm"
+    aps_c_equiv: "65mm"
+    field_of_view_degrees: 24
+    compression: "moderate_to_strong"
+    distortion: "negligible"
+    working_distance: "far_2_5m_plus_macro"
+    perspective_effect: "Flat face compression, excellent for macro detail, isolates subject strongly"
+    best_for:
+      - "product detail macro shots"
+      - "beauty close-ups (eyes, lips, texture)"
+      - "jewelry photography"
+      - "food texture close-ups"
+    avoid:
+      - "environmental shots"
+      - "group portraits"
+    prompt_keywords: "100mm macro lens, flat compression, extreme detail capture, product macro close-up"
+    notes: "Also functions as macro lens. Working distance for 1:1 macro is ~30cm."
+
+  105mm_f1_4:
+    category: "short_telephoto"
+    full_frame_equiv: "105mm"
+    aps_c_equiv: "70mm"
+    field_of_view_degrees: 23
+    compression: "moderate_to_strong"
+    distortion: "negligible"
+    working_distance: "far_2_6m"
+    perspective_effect: "Flattering face proportions with stronger compression than 85mm. Creamy bokeh wide open."
+    best_for:
+      - "beauty extreme close-ups"
+      - "portrait with extreme background separation"
+      - "editorial with bokeh emphasis"
+      - "low-light portrait"
+    avoid:
+      - "group shots"
+      - "environmental context"
+    prompt_keywords: "105mm f1.4 lens, creamy bokeh, extreme background separation, dreamy portrait lens"
+
+  135mm:
+    category: "telephoto"
+    full_frame_equiv: "135mm"
+    aps_c_equiv: "90mm"
+    field_of_view_degrees: 18
+    compression: "strong"
+    distortion: "none"
+    working_distance: "far_3_8m"
+    perspective_effect: "Strong background compression, very flattering facial proportions, isolates subject"
+    best_for:
+      - "compressed portraits"
+      - "fashion full-body with compression"
+      - "candid and street tele"
+      - "headshots with extreme background separation"
+    avoid:
+      - "environmental context needed"
+      - "indoor tight spaces"
+    prompt_keywords: "135mm telephoto lens, strong background compression, isolated subject, flat perspective"
+    cinematic_use: "Used for intimate close-ups without being physically close. Creates voyeuristic feel."
+
+  200mm:
+    category: "super_telephoto"
+    full_frame_equiv: "200mm"
+    aps_c_equiv: "135mm"
+    field_of_view_degrees: 12
+    compression: "extreme"
+    distortion: "none"
+    working_distance: "very_far_5_15m"
+    perspective_effect: "Extreme compression, flattens depth dramatically, stacks background and subject"
+    best_for:
+      - "compressed fashion full-body"
+      - "sports and wildlife style"
+      - "extreme subject isolation"
+      - "layered depth effect"
+    avoid:
+      - "any context or environment shots"
+      - "close interaction feel"
+    prompt_keywords: "200mm telephoto lens, extreme compression, flat depth layers, isolated subject against background"
+    cinematic_use: "Creates the 'spy glass' look. Stacks image planes. Used for epic landscape compression or intimate distance."
+
+  200mm_f2:
+    category: "super_telephoto"
+    full_frame_equiv: "200mm"
+    aps_c_equiv: "135mm"
+    field_of_view_degrees: 12
+    compression: "extreme"
+    distortion: "none"
+    working_distance: "very_far_5_15m"
+    perspective_effect: "Extreme compression with massive light gathering. Creamy bokeh at f/2. Separates subject from background completely."
+    best_for:
+      - "high-end fashion full-body compression"
+      - "editorial with extreme bokeh"
+      - "low-telephoto action"
+    notes: "Very heavy lens (3kg+). Requires monopod or tripod."
+    prompt_keywords: "200mm f2 telephoto, fast telephoto, extreme bokeh, compressed fashion, cream machine"
+
+  300mm_f2_8:
+    category: "super_telephoto"
+    full_frame_equiv: "300mm"
+    aps_c_equiv: "200mm"
+    field_of_view_degrees: 8
+    compression: "extreme"
+    distortion: "none"
+    working_distance: "very_far_10_30m"
+    perspective_effect: "Extreme compression and reach. Isolates subject from very far distance."
+    best_for:
+      - "sports and wildlife"
+      - "compressed landscape"
+      - "long-distance candid"
+      - "press and events"
+    notes: "Pro-level sports lens. Often used with 1.4x or 2x teleconverter."
+    prompt_keywords: "300mm f2.8 super telephoto, extreme reach, sports lens, compressed long distance"
+
+  35mm_anamorphic:
+    category: "specialty_anamorphic"
+    full_frame_equiv: "35mm_squeeze"
+    field_of_view_degrees: 64_horizontal_squeezed
+    compression: "anamorphic_squeeze"
+    distortion: "anamorphic_lens_character"
+    working_distance: "moderate"
+    perspective_effect: "2x horizontal squeeze, oval bokeh, horizontal flare lines, cinematic letterbox feel"
+    best_for:
+      - "cinematic feature film look"
+      - "high-end commercial"
+      - "period drama"
+      - "epic landscape and fashion"
+    avoid:
+      - "clinical clean look"
+      - "social media square format"
+    prompt_keywords: "anamorphic lens, 2x squeeze, oval bokeh, blue horizontal flare, cinematic widescreen"
+    notes: "Desqueezed to 2.39:1 or 2.35:1 aspect ratio. Oval bokeh and flare lines are signature characteristics."
+
+  24mm_tilt_shift:
+    category: "specialty_perspective_control"
+    full_frame_equiv: "24mm"
+    field_of_view_degrees: 84
+    compression: "perspective_controllable"
+    distortion: "correctable_via_shift"
+    perspective_effect: "Shift corrects converging verticals. Tilt rotates plane of focus for miniature effect."
+    best_for:
+      - "architecture (correct converging verticals)"
+      - "product tabletop (extend depth of field)"
+      - "miniature effect landscape"
+      - "creative focus plane manipulation"
+    prompt_keywords: "tilt shift lens, perspective control, corrected verticals, selective focus plane, miniature effect"
+    notes: "Manual focus only. Shift moves lens parallel to sensor. Tilt rotates lens relative to sensor."
+
+  15mm_fisheye:
+    category: "specialty_fisheye"
+    full_frame_equiv: "15mm"
+    field_of_view_degrees: 180
+    compression: "severe_curvilinear"
+    distortion: "extreme_fisheye_bowl"
+    perspective_effect: "180-degree field of view. Straight lines become curved. Extreme spherical distortion."
+    best_for:
+      - "creative extreme wide effect"
+      - "immersive interior spheres"
+      - "skate and action sport"
+      - "artistic distortion"
+    avoid:
+      - "natural-looking images"
+      - "commercial product"
+    prompt_keywords: "fisheye lens, 180 degree field of view, extreme barrel distortion, circular wide effect"
+    notes: "Full-frame fisheye produces circular image. Diagonal fisheye fills the frame."
+
+
+# =============================================================================
+# LENS FILTERS — effects on final image
+# =============================================================================
+lens_filters:
+  circular_polarizer_cpl:
+    description: "Rotating filter that blocks polarized light. Reduces reflections and enhances saturation."
+    effect_on_image:
+      - "removes reflections from water and glass"
+      - "deepens blue sky contrast"
+      - "reduces haze"
+      - "saturates foliage greens"
+    light_loss_stops: 1.5
+    prompt_keywords: "circular polarizer, polarized light removal, deep blue sky, reflection elimination"
+    notes: "Rotate to adjust effect. Most effective at 90 degrees to sun. Cannot be fixed in post."
+
+  nd_filter_3_stop:
+    description: "Neutral density filter reducing light by 3 stops. Mild light reduction."
+    use_case: "Shallow depth of field in bright conditions. Portrait at f/1.4 in sunlight."
+    light_loss_stops: 3
+    prompt_keywords: "ND filter 3 stop, mild neutral density, shallow depth of field in sunlight"
+
+  nd_filter_6_stop:
+    description: "Neutral density filter reducing light by 6 stops. Moderate light reduction."
+    use_case: "Motion blur in daylight. Water smooth at 1/4 second. Crowd removal."
+    light_loss_stops: 6
+    prompt_keywords: "ND filter 6 stop, moderate neutral density, motion blur daylight, smooth water"
+
+  nd_filter_10_stop:
+    description: "Neutral density filter reducing light by 10 stops. Extreme light reduction."
+    use_case: "Long exposure daytime. 30-second exposures in daylight for ghostly effects."
+    light_loss_stops: 10
+    prompt_keywords: "ND filter 10 stop, extreme neutral density, long exposure daytime, ghostly motion blur"
+    notes: "Requires tripod and remote shutter. Focus before attaching filter (viewfinder goes black)."
+
+  variable_nd:
+    description: "Adjustable neutral density filter. Rotate to change density continuously."
+    use_case: "Video where changing light conditions require quick ND adjustment."
+    light_loss_range: "2_to_8_stops"
+    prompt_keywords: "variable ND filter, adjustable neutral density, variable light reduction"
+    notes: "Quality varies significantly. Cheap variable ND creates X-shaped cross-polarization artifacts."
+
+  graduated_nd_soft:
+    description: "Partial ND filter that transitions from dark to clear. Soft edge transition."
+    use_case: "Landscape with bright sky and dark foreground. Balances exposure across scene."
+    light_loss_stops: "1_to_3"
+    prompt_keywords: "graduated ND filter, soft edge ND grad, sky foreground balance, landscape exposure balancing"
+    notes: "Soft edge suits uneven horizons (mountains, trees). Hard edge for flat horizons (sea, plains)."
+
+  black_pro_mist_1_4:
+    description: "Diffusion filter that reduces sharpness and blooms highlights. No color shift."
+    effect_on_image:
+      - "reduces perceived sharpness"
+      - "blooms highlights gently"
+      - "softens skin texture"
+      - "reduces contrast in highlights"
+    prompt_keywords: "black pro mist filter, highlight bloom, soft diffusion, cinematic softening, skin texture reduction"
+    notes: "The 1/4 strength is the most popular for cinematic use. Creates dreamy but not blurry image. Also available in 1/8, 1/2, 1, 2, 5 strengths."
+
+  diffusion_glimmerglass:
+    description: "Diffusion filter that adds subtle halation around highlights while retaining sharpness."
+    effect_on_image:
+      - "adds subtle glow to highlights"
+      - "retains core sharpness"
+      - "reduces digital clinical look"
+    prompt_keywords: "glimmerglass diffusion filter, subtle highlight glow, organic softening, filmic diffusion"
+    notes: "Subtler than black pro mist. Retains more sharpness. Good for commercial work needing filmic look without losing detail."
+
+  close_up_diopter:
+    description: "Filter-lens that allows closer focusing. Converts normal lens into macro."
+    strengths_available: "+1, +2, +3, +4, +5, +10"
+    use_case: "Quick macro capability without dedicated macro lens."
+    prompt_keywords: "close up diopter filter, macro conversion, extreme close focus, diopter lens attachment"
+
+  anamorphic_adapter:
+    description: "Front-mounted adapter that squeezes the image horizontally for an anamorphic look."
+    effect_on_image:
+      - "oval bokeh"
+      - "horizontal flare lines"
+      - "2x squeeze (desqueeze in post)"
+    prompt_keywords: "anamorphic adapter, squeeze lens, oval bokeh, horizontal flare, anamorphic character"
+
+
+# =============================================================================
+# LENS FILTERS EXPANSION — specialty character filters
+# =============================================================================
+lens_filters_expansion:
+  streak_filter_blue_orange:
+    description: "拉絲/條紋濾鏡。在圓形球面鏡頭前強行製造出類似 Anamorphic（變形鏡頭）的水平線條高光拉絲。"
+    effect_on_image: "將點光源（如車燈、路燈）轉化為向兩側延伸的科幻藍色或溫暖橙色水平光芒。"
+    best_for: "Cyberpunk nightscapes, sci-fi cinematography, fake anamorphic flares"
+    prompt_keywords: "horizontal blue streak flare, anamorphic flare simulator, sci-fi night anamorphic streak"
+
+  hollywood_black_magic:
+    description: "結合了 Black Pro Mist 的柔化與剪刀差擴散（1/4 BPM + HD Classic Soft）。"
+    effect_on_image: "在保持眼睛、睫毛絕對銳利的同時，讓面部皮膚如同抹了豬油般順滑，高光處有非常優雅的擴散，但暗部（Black crush）依然扎實。"
+    best_for: "High-end commercial beauty, luxury car interiors with specular highlights"
+    prompt_keywords: "hollywood black magic filter glow, sharp core with bloomed skin tones, premium commercial diffusion"
+
+
+# =============================================================================
+# LENS ACCESSORIES — focal length extenders and adapters
+# =============================================================================
+lens_accessories:
+  teleconverter_1_4x:
+    description: "Rear-mounted lens extender. Multiplies focal length by 1.4x. Loses 1 stop of light."
+    effect: "200mm becomes 280mm. f/2.8 becomes f/4."
+    quality_impact: "Slight loss of sharpness and contrast. Best on prime lenses."
+    prompt_keywords: "1.4x teleconverter, focal length extender, reach multiplier"
+
+  teleconverter_2x:
+    description: "Rear-mounted lens extender. Multiplies focal length by 2x. Loses 2 stops of light."
+    effect: "200mm becomes 400mm. f/2.8 becomes f/5.6."
+    quality_impact: "Moderate loss of sharpness and contrast. Autofocus may be slower."
+    prompt_keywords: "2x teleconverter, extreme focal length extender, reach doubler"
+
+  extension_tubes:
+    description: "Hollow tubes between camera and lens. Allows closer focusing. No optics inside = no light loss."
+    effect: "Reduces minimum focus distance. Turns any lens into macro."
+    prompt_keywords: "extension tubes, macro extension, reduced minimum focus distance, close focus adapter"
+    notes: "No image quality loss (no glass). More extension = closer focus = less working distance."
+
+  speed_booster_focal_reducer:
+    description: "Adapter for using full-frame lenses on APS-C cameras. Concentrates light into smaller sensor area."
+    effect: "Wider field of view (recovers crop factor). Gains 1 stop of light. Center light concentration."
+    prompt_keywords: "speed booster, focal reducer, APS-C wide adapter, light concentrator"
+
+
+# =============================================================================
+# LENS SELECTION QUICK GUIDE by subject
+# =============================================================================
+lens_selection_guide:
+  portrait_headshot: "85mm or 105mm f/1.4 — flattering perspective, maximum background separation"
+  beauty_macro: "100mm macro — flat compression, extreme detail on eyes/lips/skin"
+  editorial_fashion_full_body: "35mm for context, 135-200mm for compressed fashion look"
+  commercial_product_hero: "85mm or 100mm — natural perspective with minimal distortion"
+  architecture_interior: "16-24mm — wide angle for space, 24mm tilt-shift for straight verticals"
+  landscape: "16-35mm for expansive, 70-200mm for compressed layers"
+  food_tabletop: "50mm or 85mm — natural perspective, shallow depth for hero element"
+  food_overhead: "50mm macro or 100mm macro — flat lay perspective from above"
+  automotive_exterior: "24-35mm for dramatic lines, 70-200mm for compressed detail"
+  automotive_interior: "16-24mm — tight spaces, wide perspective"
+  product_packaging: "85-100mm — minimal distortion, accurate shape reproduction"
+  jewelry_detail: "100mm macro — extreme close-up with working distance"
+  group_portrait: "35-50mm — wide enough to include everyone without distortion"
+  sports_action: "200-300mm f/2.8 — fast telephoto for distant action"
+  macro_texture: "100mm macro with extension tubes — extreme magnification"
+  astrophotography: "14-24mm f/2.8 — wide fast lens for star fields"
+  video_gimbal: "24-70mm f/2.8 — versatile zoom, image stabilization, parfocal design preferred"
+  street_candid: "35mm or 50mm — natural field of view, compact, unobtrusive"
+
+
+# =============================================================================
+# CINEMA OPTICAL CHARACTERISTICS — beyond focal length & aperture
+# =============================================================================
+# These characteristics separate cinema lenses from still photography lenses.
+# They affect how the image feels during motion, not just at a single frame.
+# =============================================================================
+cinema_optical_characteristics:
+  lens_breathing:
+    characteristic: "鏡頭呼吸效應 (Lens Breathing)"
+    description: "在切換對焦點（Rack Focus）時，畫面邊緣因光學結構移動而產生類似變焦（Zoom）的視角縮放現象。"
+    cinematic_importance: "電影鏡頭（Cine Lenses）極度追求『零呼吸效應』，以確保觀眾的注意力完全留在演員角色的情緒轉變上，而不是被忽大忽小的畫面邊緣分心。"
+    prompt_keywords: "zero lens breathing, stable rack focus, optical cinematic focus pull, premium cinema prime"
+
+  t_stop_vs_f_stop:
+    characteristic: "光傳導率 T-Stop (Transmission Stop)"
+    description: "F-stop 是幾何光圈（焦距/孔徑），而 T-stop 是扣除鏡片玻璃反射、吸收損耗後，實際到達感光元件的真實光量。"
+    cinematic_importance: "電影拍攝更換鏡頭時，必須依據 T-stop 確保曝光完全一致。高階變焦鏡（如 Angénieux）即便 F-stop 標示 f/2.8，其 T-stop 可能是 T3.0。"
+    prompt_keywords: "calibrated T-stop exposure, consistent cinema light transmission"
+
+  parfocal_vs_varifocal:
+    characteristic: "同焦 (Parfocal) 與 變焦 (Varifocal)"
+    description: "同焦鏡頭在改變焦距（Zoom in/out）時，對焦點會絕對鎖定不變；變焦鏡頭則會在變焦時失焦，必須重新對焦。"
+    cinematic_importance: "商業與紀錄片中的動態推拉推焦（Zoom-and-Focus）必須依賴 Parfocal 設計。"
+    prompt_keywords: "true parfocal zoom, continuous focal locking, snap zoom cinematography"
+
+
+# =============================================================================
+# LENS EXAMPLES EXPANSION — specialty character lenses
+# =============================================================================
+lens_examples_expansion:
+  24mm_probe_lens:
+    category: "specialty_macro_probe"
+    full_frame_equiv: "24mm"
+    field_of_view_degrees: 84
+    aperture_range: "f/14 - f/40 (Requires extreme lighting)"
+    compression: "expansive_macro"
+    working_distance: "20mm_from_front_element (Bug-eye perspective)"
+    perspective_effect: "極致的『蟲眼視角』。擁有微距鏡頭的超近對焦能力，同時保有廣角鏡頭的宏大背景空間感。"
+    best_for:
+      - "food_commercial_interior (穿梭於漢堡、飲料冰塊縫隙)"
+      - "tabletop_tech_hero (穿梭於伺服器主機板、晶片電路)"
+      - "miniature_architecture_walkthrough (模型建築內部透視)"
+    prompt_keywords: "24mm probe lens, laowa probe perspective, bug-eye macro view, sliding through tight spaces, internal component macro photography"
+    notes: "前段為細長防水槍管設計。因為進光量極小（f/14起跳），實戰中必須搭配極高功率的 LED 條燈或高感光度。"
+
+  vintage_rehoused_cine:
+    category: "specialty_character_lens"
+    typical_focal_lengths: "35mm, 50mm, 58mm (e.g., Helios 44-2, Canon K35)"
+    compression: "organic_classic"
+    distortion: "swirly_bokeh_and_edge_falloff"
+    perspective_effect: "帶有強烈個性的老鏡靈魂。邊緣失光（Vignetting）、旋渦狀焦外（Swirly Bokeh）、迷人的色散與低對比度。"
+    best_for:
+      - "period_drama (時代劇/復古電影)"
+      - "dreamy_fashion_editorial (夢幻時尚大片)"
+      - "breaking_digital_clinical_look (消除數位感，增加生動故事感)"
+    prompt_keywords: "vintage rehoused cinema lens, helios 44-2 swirly bokeh, organic flares, vintage canon k35 rendering, soft contrast filmic texture"
+    notes: "現代電影（如《沙丘》、《蝙蝠俠》）大量使用改裝老鏡（Rehousing），利用物理瑕疵來打破現代數位感光元件過於銳利、呆板的『塑膠感』。"
+
+# =============================================================================
+# AUTOREVISE EXTENSION — generator-visible lens translation and decision support
+# =============================================================================
+# These sections convert cinematographer lens knowledge into image-model-visible
+# language. The human technical layer may keep focal length, aperture, and optical
+# vocabulary; the final prompt should emphasize visible perspective, distortion,
+# scale, subject separation, and focus hierarchy.
+# =============================================================================
+
+generator_visible_lens_translation:
+  purpose: "Translate focal length, aperture, lens character, and optical strategy into visible image effects that generators can render."
+  global_rules:
+    - "Use focal length only when it helps lock composition or perspective; otherwise describe the visible effect."
+    - "Do not stack multiple incompatible lens cues in one final prompt, such as ultra-wide perspective plus telephoto compression."
+    - "For human subjects, protect facial proportions before applying dramatic lens effects."
+    - "For architecture, prioritize straight verticals and coherent perspective before dramatic wide-angle impact."
+    - "For product images, prioritize accurate shape and label legibility before shallow depth of field."
+
+  focal_length_to_visible_effect:
+    ultra_wide_10_14mm:
+      human_reference: "10-14mm ultra-wide"
+      generator_prompt: "expansive ultra-wide perspective, exaggerated foreground scale, deep spatial depth, strong converging lines"
+      visible_effects:
+        - "foreground appears larger and more dramatic"
+        - "background feels vast and immersive"
+        - "edge distortion risk is visible near frame borders"
+      best_for:
+        - "dramatic architecture interior"
+        - "tight-space environmental scene"
+        - "surreal forced perspective"
+      corrective_terms:
+        - "important faces away from frame edges"
+        - "natural anatomy despite wide perspective"
+        - "straight verticals for architecture"
+      avoid_in_final_prompt_when_not_needed:
+        - "fisheye"
+        - "extreme distortion"
+
+    wide_16_35mm:
+      human_reference: "16-35mm wide-angle"
+      generator_prompt: "wide environmental framing with clear subject context, moderate perspective depth, room visible around the subject"
+      visible_effects:
+        - "subject and environment both readable"
+        - "space feels open without becoming surreal"
+        - "mild foreground emphasis"
+      best_for:
+        - "environmental portrait"
+        - "interior design"
+        - "street documentary"
+        - "establishing shot"
+      corrective_terms:
+        - "face not distorted"
+        - "hands and feet natural size"
+        - "vertical lines remain straight"
+
+    standard_35_50mm:
+      human_reference: "35-50mm standard perspective"
+      generator_prompt: "natural human-eye perspective, balanced proportions, believable spatial depth"
+      visible_effects:
+        - "minimal distortion"
+        - "subject proportions look truthful"
+        - "environment feels natural rather than compressed or exaggerated"
+      best_for:
+        - "lifestyle portrait"
+        - "full-body fashion"
+        - "documentary scene"
+        - "educational game illustration with natural camera feel"
+      corrective_terms:
+        - "natural proportions"
+        - "truthful perspective"
+
+    short_tele_85_105mm:
+      human_reference: "85-105mm short telephoto"
+      generator_prompt: "flattering portrait compression, softly separated background, natural face proportions, subject isolated from the environment"
+      visible_effects:
+        - "face and body proportions look elegant"
+        - "background appears closer and softly blurred"
+        - "subject becomes the clear focal point"
+      best_for:
+        - "beauty portrait"
+        - "fashion editorial portrait"
+        - "commercial product hero"
+        - "cosplay editorial"
+      corrective_terms:
+        - "sharp eyes"
+        - "natural facial structure"
+        - "background separation without losing outfit detail"
+
+    medium_tele_135_200mm:
+      human_reference: "135-200mm medium telephoto"
+      generator_prompt: "strong telephoto compression, flattened background layers, elegant subject isolation, compressed fashion look"
+      visible_effects:
+        - "background elements stack closer behind the subject"
+        - "depth planes feel flattened and graphic"
+        - "subject outline is strongly separated"
+      best_for:
+        - "runway or editorial fashion"
+        - "sports sidelines"
+        - "compressed city backdrop"
+        - "wildlife portrait"
+      corrective_terms:
+        - "full subject remains in frame"
+        - "background compressed but not pasted on"
+        - "clear silhouette"
+
+    super_tele_300_800mm:
+      human_reference: "300-800mm super telephoto"
+      generator_prompt: "extreme distant compression, stacked background layers, isolated subject with compressed atmosphere"
+      visible_effects:
+        - "distant elements appear huge behind the subject"
+        - "space feels flattened and monumental"
+        - "atmospheric haze becomes visible between layers"
+      best_for:
+        - "sports action"
+        - "wildlife"
+        - "sun or moon compression behind architecture"
+        - "distant candid scene"
+      corrective_terms:
+        - "distant subject remains sharp"
+        - "background layers remain believable"
+        - "no miniature look unless specified"
+
+  aperture_to_visible_depth:
+    f_1_2_to_f_1_4:
+      human_reference: "f/1.2-f/1.4"
+      generator_prompt: "extremely shallow depth of field, razor-sharp focus on the eyes or hero detail, creamy background melt"
+      visible_effects:
+        - "only one narrow focus plane is crisp"
+        - "background becomes abstract bokeh"
+        - "dreamy separation"
+      risks:
+        - "important outfit or product label may become unreadable"
+        - "second eye may appear soft in close-up"
+      corrective_terms:
+        - "both eyes sharp if face is frontal"
+        - "hero detail remains crisp"
+
+    f_1_8_to_f_2_8:
+      human_reference: "f/1.8-f/2.8"
+      generator_prompt: "shallow depth of field with strong subject separation, face or product crisp, background softly blurred"
+      visible_effects:
+        - "professional portrait separation"
+        - "usable facial detail"
+        - "soft bokeh without losing subject clarity"
+      best_for:
+        - "portrait"
+        - "fashion editorial"
+        - "cinematic close-up"
+
+    f_4_to_f_5_6:
+      human_reference: "f/4-f/5.6"
+      generator_prompt: "balanced depth of field, subject fully sharp with gentle background falloff"
+      visible_effects:
+        - "entire face or product is readable"
+        - "outfit and important props remain clear"
+        - "background still separates slightly"
+      best_for:
+        - "fashion three-quarter body"
+        - "product hero"
+        - "group portrait"
+
+    f_8_to_f_11:
+      human_reference: "f/8-f/11"
+      generator_prompt: "deep focus, architecture and spatial layers remain sharp, strong clarity across the frame"
+      visible_effects:
+        - "foreground and background readable"
+        - "structural details remain clear"
+        - "less dreamy blur, more design accuracy"
+      best_for:
+        - "architecture"
+        - "interior design"
+        - "hidden object scene"
+        - "educational game scene"
+
+    f_14_to_f_40:
+      human_reference: "f/14-f/40"
+      generator_prompt: "macro probe deep-focus look, tiny foreground detail and environment both visible, clinical miniature clarity"
+      visible_effects:
+        - "close object and surrounding environment share readable focus"
+        - "bug-eye macro scale"
+      best_for:
+        - "probe lens food shot"
+        - "miniature walkthrough"
+        - "technical internal component shot"
+
+lens_intent_selector:
+  purpose: "Select lens behavior from task intent, subject type, shot size, and failure risks."
+  selectors:
+    beauty_portrait:
+      preferred_lens_behavior: "short_tele_85_105mm"
+      depth_behavior: "f_1_8_to_f_2_8"
+      final_prompt_effect: "flattering portrait compression, sharp eyes, soft background separation, natural facial proportions"
+      protect:
+        - "eyes"
+        - "skin texture"
+        - "natural face shape"
+      avoid:
+        - "wide-angle facial distortion"
+        - "overblurred facial features"
+
+    full_body_fashion:
+      preferred_lens_behavior: "standard_35_50mm or medium_tele_135_200mm depending on context"
+      use_35_50_when: "environment and full outfit context matter"
+      use_135_200_when: "compressed luxury editorial look is desired with enough shooting distance"
+      depth_behavior: "f_4_to_f_5_6"
+      final_prompt_effect: "full-body readable silhouette, natural proportions or elegant telephoto compression, outfit and shoes fully visible"
+      protect:
+        - "feet inside frame"
+        - "outfit detail"
+        - "body proportions"
+
+    fashion_editorial:
+      description: "Premium fashion editorial with garment-first visual priority."
+      preferred_lens_behavior: "short_tele_85_105mm for beauty/editorial, medium_tele_135_200mm for compressed full-body editorial, standard_35_50mm for environmental fashion"
+      use_85_105_when: "beauty editorial, half-body fashion, garment detail focus, flattering face proportions"
+      use_135_200_when: "compressed full-length fashion, graphic silhouette, runway look, editorial background separation"
+      use_35_50_when: "environmental fashion story, location editorial, full outfit with context, lifestyle fashion"
+      depth_behavior: "f_1_8_to_f_2_8 for beauty/editorial close-up, f_4_to_f_5_6 for full-body fashion"
+      final_prompt_effect: "editorial fashion composition with garment-first visual hierarchy, controlled lens perspective supporting silhouette, elegant proportions and readable fabric detail"
+      protect:
+        - "garment silhouette"
+        - "fabric texture"
+        - "full outfit or silhouette readability"
+        - "natural body proportions"
+      avoid:
+        - "wide-angle distortion on full-body"
+        - "overblurred fabric detail"
+        - "unflattering facial proportions"
+        - "cropped garment edge"
+
+    luxury_editorial:
+      description: "Ultra-premium luxury fashion editorial. Uses lens character and compression as a premium differentiator."
+      preferred_lens_behavior: "medium_tele_135_200mm for maximum editorial compression, short_tele_85_105mm for intimate luxury"
+      use_135_200_when: "aspirational distance, voyeuristic luxury feel, graphic fashion statement"
+      use_85_105_when: "intimate luxury, close-up beauty editorial, garment detail hero"
+      depth_behavior: "f_2_to_f_2_8 for compressed editorial, f_1_4_to_f_2 for intimate luxury portrait"
+      lens_character: "prefer clinical sharpness for modern luxury (Zeiss Otus quality), or slight vintage character for heritage luxury feel"
+      working_distance: "far (5-12m) for editorial compression creates aspirational distance and exclusivity"
+      final_prompt_effect: "ultra-premium luxury editorial compression, elegant subject isolation, controlled background separation, refined proportions, aspirational distance, premium lens character visible in highlight rendering"
+      protect:
+        - "garment silhouette and fabric texture"
+        - "face proportions preserved despite compression"
+        - "premium material detail readable"
+        - "controlled depth of field does not hide garment"
+      avoid:
+        - "generic commercial look"
+        - "flat perspective without compression character"
+        - "garment texture lost in shallow depth"
+        - "cheap digital clinical look without lens character"
+
+    beauty_premium:
+      description: "High-end beauty and cosmetics editorial. Ultra-sharp skin and makeup detail with dreamy background separation."
+      preferred_lens_behavior: "short_tele_85_105mm for flattering face proportions, 100mm macro for extreme detail on eyes/lips/skin"
+      use_85_105_when: "standard beauty, half-face to half-body, natural proportions"
+      use_100mm_macro_when: "extreme close-up beauty, lip detail, eye detail, skin texture hero"
+      depth_behavior: "f_1_4_to_f_2 for dreamy separation with eyes sharp, f_2_8_to_f_4 for more fabric and makeup detail readable"
+      lens_character: "clinical razor-sharp preferred for beauty — every pore and lash must read clearly"
+      final_prompt_effect: "premium beauty editorial with razor-sharp eyes, creamy background melt, refined skin texture, natural face proportions, controlled depth where makeup detail remains crisp"
+      protect:
+        - "both eyes sharp"
+        - "skin texture and makeup detail"
+        - "natural facial proportions"
+        - "hair and eyebrow detail"
+      avoid:
+        - "second eye out of focus"
+        - "over-smoothed plastic skin"
+        - "wide-angle facial distortion"
+        - "makeup detail lost in blur"
+
+    environmental_portrait:
+      preferred_lens_behavior: "wide_16_35mm or standard_35_50mm"
+      depth_behavior: "f_4_to_f_5_6"
+      final_prompt_effect: "subject integrated with environment, natural context, readable background storytelling"
+      protect:
+        - "face not near frame edge"
+        - "hands natural size"
+        - "environment not overpowering subject"
+
+    product_hero:
+      preferred_lens_behavior: "short_tele_85_105mm or macro_100mm"
+      depth_behavior: "f_4_to_f_5_6"
+      final_prompt_effect: "accurate product geometry, crisp label, controlled reflections, slight background falloff"
+      protect:
+        - "label legibility"
+        - "true product shape"
+        - "material highlight control"
+      avoid:
+        - "wide-angle package distortion"
+        - "excessive shallow blur hiding label"
+
+    jewelry_macro:
+      preferred_lens_behavior: "macro_100mm"
+      depth_behavior: "f_8_to_f_11 or focus-stacked look"
+      final_prompt_effect: "extreme close-up detail, crisp gemstone facets, controlled sparkle, clean background falloff"
+      protect:
+        - "facet detail"
+        - "metal edge definition"
+        - "gemstone clarity"
+
+    architecture_interior:
+      preferred_lens_behavior: "wide_16_35mm or tilt_shift_24mm"
+      depth_behavior: "f_8_to_f_11"
+      final_prompt_effect: "wide spatial view, straight vertical lines, coherent one-point or two-point perspective, readable floor-wall-ceiling junctions"
+      protect:
+        - "straight verticals"
+        - "room proportions"
+        - "material joints"
+      avoid:
+        - "fisheye distortion"
+        - "warped ceiling lines"
+
+    architecture_exterior:
+      preferred_lens_behavior: "24mm tilt-shift, 35mm standard, or 70-200mm compression depending on facade goal"
+      depth_behavior: "f_8_to_f_11"
+      final_prompt_effect: "controlled perspective, consistent facade grid, straight verticals, accurate building scale"
+      protect:
+        - "window rhythm"
+        - "floor spacing"
+        - "vertical facade lines"
+
+    hidden_object_scene:
+      preferred_lens_behavior: "standard_35_50mm, slightly elevated or isometric-like view"
+      depth_behavior: "f_8_to_f_11"
+      final_prompt_effect: "deep focus, all object zones readable, no excessive bokeh, organized spatial layers"
+      protect:
+        - "small object readability"
+        - "zone separation"
+        - "no random blur"
+
+    educational_game_ui:
+      preferred_lens_behavior: "orthographic, standard, or isometric-like view rather than photographic lens realism"
+      depth_behavior: "deep_focus"
+      final_prompt_effect: "flat readable game-screen composition, large interactive elements, no lens distortion"
+      protect:
+        - "UI readability"
+        - "large tappable objects"
+        - "low cognitive load"
+
+    vehicle_hero:
+      preferred_lens_behavior: "24-35mm for dramatic hero lines, 70-200mm for compressed luxury detail"
+      depth_behavior: "f_4_to_f_8"
+      final_prompt_effect: "dramatic vehicle stance with controlled reflections, wheel proportions remain natural, body lines emphasized"
+      protect:
+        - "wheel shape"
+        - "body proportions"
+        - "brand grille/headlight details"
+      avoid:
+        - "stretched wheels"
+        - "toy-like scale"
+
+subject_specific_lens_guardrails:
+  human_faces:
+    risks:
+      - "wide-angle close-up enlarges nose, forehead, hands, or feet"
+      - "ultra-shallow depth may blur second eye or lips"
+    add_positive:
+      - "natural facial proportions"
+      - "face kept away from frame edges"
+      - "sharp eyes with believable depth falloff"
+    add_negative:
+      - "distorted face"
+      - "oversized nose"
+      - "warped hands near camera"
+
+  full_body_human:
+    risks:
+      - "wide lens can stretch legs or feet if subject touches frame edge"
+      - "telephoto compression may crop feet if framing is not explicit"
+    add_positive:
+      - "entire figure visible from head to toe"
+      - "feet fully inside frame with ground contact visible"
+      - "natural limb proportions"
+    add_negative:
+      - "cropped feet"
+      - "stretched limbs"
+      - "distorted body proportions"
+
+  architecture:
+    risks:
+      - "wide lenses may produce fisheye walls or leaning verticals"
+      - "dramatic perspective may break structural realism"
+    add_positive:
+      - "straight vertical lines"
+      - "controlled architectural perspective"
+      - "consistent facade grid"
+      - "realistic room scale"
+    add_negative:
+      - "fisheye distortion"
+      - "warped windows"
+      - "leaning walls"
+      - "impossible geometry"
+
+  product_packaging:
+    risks:
+      - "wide lenses distort rectangular packages and labels"
+      - "shallow depth of field can hide label text"
+    add_positive:
+      - "accurate product geometry"
+      - "front label faces camera and remains sharp"
+      - "edges remain straight"
+    add_negative:
+      - "warped label"
+      - "curved packaging unless specified"
+      - "unreadable text"
+
+  game_screen_or_ui:
+    risks:
+      - "photographic lens effects can reduce readability"
+      - "bokeh or dramatic perspective can hide interactive elements"
+    add_positive:
+      - "deep-focus readable layout"
+      - "orthographic or clean isometric perspective"
+      - "large clear interactive objects"
+    add_negative:
+      - "cinematic blur hiding UI"
+      - "fisheye game screen"
+
+lens_failure_taxonomy:
+  wide_angle_face_distortion:
+    symptoms:
+      - "large nose or forehead"
+      - "hands or feet appear oversized"
+      - "face stretched near frame edge"
+    likely_causes:
+      - "ultra-wide or wide lens used for close-up portrait"
+      - "subject placed too close to camera"
+    fix:
+      - "switch to short telephoto portrait compression"
+      - "keep face centered and away from edges"
+      - "describe natural facial proportions"
+    add_positive:
+      - "flattering portrait compression"
+      - "natural facial proportions"
+    add_negative:
+      - "wide-angle facial distortion"
+      - "oversized facial features"
+
+  architecture_fisheye_warp:
+    symptoms:
+      - "curved walls"
+      - "leaning vertical lines"
+      - "warped windows or ceiling"
+    likely_causes:
+      - "ultra-wide lens without perspective correction"
+      - "fisheye terms accidentally included"
+    fix:
+      - "use controlled wide-angle or tilt-shift language"
+      - "add straight verticals and coherent perspective"
+    add_positive:
+      - "straight vertical lines"
+      - "tilt-shift architectural perspective"
+    add_negative:
+      - "fisheye distortion"
+      - "curved walls"
+
+  overblurred_hero_detail:
+    symptoms:
+      - "product label unreadable"
+      - "both eyes not sharp"
+      - "outfit detail disappears"
+    likely_causes:
+      - "aperture too shallow for subject complexity"
+      - "bokeh terms overused"
+    fix:
+      - "switch to balanced depth of field"
+      - "lock hero element sharpness"
+    add_positive:
+      - "hero detail remains crisp"
+      - "balanced depth of field"
+    add_negative:
+      - "blurred label"
+      - "overly shallow focus"
+
+  flat_no_lens_character:
+    symptoms:
+      - "image looks generic"
+      - "no spatial perspective"
+      - "subject lacks separation"
+    likely_causes:
+      - "lens behavior unspecified"
+      - "composition and depth cues missing"
+    fix:
+      - "add visible perspective behavior, depth layering, and focus hierarchy"
+    add_positive:
+      - "clear foreground-midground-background separation"
+      - "visible lens perspective"
+
+  conflicting_lens_cues:
+    symptoms:
+      - "image feels visually incoherent"
+      - "wide foreground and telephoto background compression appear mixed unnaturally"
+    likely_causes:
+      - "prompt contains both ultra-wide perspective and telephoto compression"
+      - "multiple lens examples stacked without selection"
+    fix:
+      - "choose one dominant lens behavior based on task"
+    add_positive:
+      - "single coherent lens perspective"
+    add_negative:
+      - "mixed conflicting lens effects"
+
+lens_conflict_resolution:
+  purpose: "Resolve incompatible lens, depth, and perspective instructions before final prompt assembly."
+  rules:
+    wide_vs_telephoto:
+      conflict: "ultra-wide perspective and telephoto compression both requested"
+      resolution: "Choose based on subject goal: environment/context uses wide; flattering portrait or compressed fashion uses telephoto. Do not keep both as equal-weight lens cues."
+      final_prompt_pattern: "[chosen lens-visible effect], no conflicting perspective"
+
+    shallow_dof_vs_readability:
+      conflict: "strong bokeh requested but product label, UI, full outfit, or hidden objects must remain readable"
+      resolution: "Use balanced or deep focus. Keep background separation only where it does not hide required information."
+      final_prompt_pattern: "balanced depth of field, hero detail sharp, background gently separated"
+
+    dramatic_wide_vs_architecture_accuracy:
+      conflict: "dramatic wide angle requested but architecture must be accurate"
+      resolution: "Use controlled wide-angle or tilt-shift style, not fisheye. Preserve straight verticals."
+      final_prompt_pattern: "wide architectural view with straight vertical lines and controlled perspective"
+
+    macro_detail_vs_context:
+      conflict: "extreme macro requested but environment storytelling matters"
+      resolution: "Use probe-lens or close foreground detail with readable contextual background, not pure abstract macro."
+      final_prompt_pattern: "macro foreground detail with surrounding environment still visible"
+
+    realism_vs_stylized_lens:
+      conflict: "photorealistic realism with extreme stylized lens effects"
+      resolution: "Keep lens effects physically plausible unless the user explicitly requests surrealism."
+      final_prompt_pattern: "realistic lens rendering with subtle cinematic character"
+
+lens_compression_rules:
+  purpose: "Compress repeated lens and depth language for Phase 4.5 final prompt."
+  semantic_clusters:
+    portrait_compression_cluster:
+      redundant_terms:
+        - "85mm"
+        - "105mm"
+        - "short telephoto"
+        - "portrait lens"
+        - "flattering compression"
+        - "subject isolation"
+      compressed_as: "flattering short-telephoto portrait compression"
+
+    wide_environment_cluster:
+      redundant_terms:
+        - "wide angle"
+        - "environmental context"
+        - "expansive view"
+        - "room visible"
+        - "spatial depth"
+      compressed_as: "wide environmental perspective"
+
+    architecture_control_cluster:
+      redundant_terms:
+        - "tilt-shift"
+        - "straight verticals"
+        - "controlled perspective"
+        - "architectural correction"
+      compressed_as: "controlled architectural perspective with straight verticals"
+
+    shallow_depth_cluster:
+      redundant_terms:
+        - "shallow depth of field"
+        - "soft bokeh"
+        - "background blur"
+        - "subject separation"
+      compressed_as: "shallow depth with soft background separation"
+
+    deep_focus_cluster:
+      redundant_terms:
+        - "deep focus"
+        - "sharp foreground"
+        - "sharp background"
+        - "everything readable"
+      compressed_as: "deep-focus clarity across the scene"
+
+  remove_first:
+    - "multiple focal lengths listed without choosing one"
+    - "brand/model lens names unless user asked for a specific lens look"
+    - "technical aperture values when visible depth is already described"
+    - "redundant bokeh adjectives"
+
+model_output_mode_lens_style:
+  chatgpt_image:
+    preferred_language: "natural language describing visible perspective and depth"
+    example: "flattering portrait compression with sharp eyes and soft background separation"
+    avoid:
+      - "long comma-only lens keyword chains"
+      - "unnecessary exact lens model names"
+
+  stable_diffusion:
+    preferred_language: "compact lens tags plus visible effect and separate negative prompt"
+    example: "85mm portrait lens, shallow depth of field, sharp eyes, soft bokeh"
+    negative_prompt_support:
+      - "wide-angle distortion"
+      - "cropped feet"
+      - "fisheye"
+
+  midjourney:
+    preferred_language: "short aesthetic lens cues, fewer technical values"
+    example: "portrait telephoto compression, soft background, cinematic framing"
+
+  flux:
+    preferred_language: "clear semantic description with subject, framing, and depth order"
+    example: "natural portrait perspective, subject sharp, background gently out of focus"
+
+lens_quality_rubric:
+  scoring_dimensions:
+    perspective_coherence:
+      excellent: "One clear lens behavior supports the task without mixed perspective cues."
+      poor: "Wide-angle, telephoto, macro, and fisheye cues compete in the same prompt."
+    subject_protection:
+      excellent: "Faces, products, buildings, and UI remain proportionally accurate and readable."
+      poor: "Lens effect damages the primary subject or required details."
+    depth_control:
+      excellent: "Depth of field supports visual hierarchy and keeps hero details sharp."
+      poor: "Blur is decorative and hides important information."
+    task_fit:
+      excellent: "Lens behavior is selected from subject type and use case."
+      poor: "Lens terms are added randomly because they sound professional."
+
+prompt_assembly_hooks:
+  phase_2_generator_translation:
+    add_fields:
+      - "visible_lens_effect"
+      - "visible_depth_effect"
+      - "lens_model_risk"
+      - "lens_corrective_terms"
+  phase_3_5_prompt_package:
+    map_to:
+      style_and_lighting.lens: "Use visible_lens_effect + visible_depth_effect, not only focal length."
+      constraints.no_extra_elements: "Add lens-specific negative guardrails only when risk is high."
+  phase_4_self_review:
+    checklist:
+      - "Does the final prompt contain conflicting lens cues?"
+      - "Does the selected depth of field preserve the hero element?"
+      - "Are human faces protected from wide-angle distortion?"
+      - "Are architecture verticals protected if wide lens is used?"
+      - "Are product labels sharp and geometrically accurate?"
+
+lens_selection_logic:
+  purpose: "Route focal length by composition goal, room context, subject scale, action, and distortion risk."
+  if_room_context_is_important:
+    prefer: ["35mm", "50mm"]
+    reason: "keeps subject natural while preserving environment readability"
+  if_hero_portrait:
+    prefer: ["50mm", "85mm", "105mm"]
+    reason: "keeps facial proportions flattering and background controlled"
+  if_large_scale_architecture_or_mecha:
+    prefer: ["24mm", "28mm", "35mm"]
+    reason: "shows scale and foreground/background relationship"
+  if_full_body_reclining_pose:
+    avoid_extreme_wide_close_distance: true
+    prefer: ["35mm", "50mm", "70mm"]
+    reason: "reduces stretched limbs and pelvis/leg distortion"
+  if_group_selfie:
+    prefer: ["24mm", "28mm", "35mm"]
+    guardrail: "controlled edge distortion; all faces remain readable"
+  if_sports_action:
+    prefer: ["24mm", "35mm", "70-200mm depending distance"]
+    reason: "wide for immersive court action, telephoto for compressed sports coverage"
+  if_product_macro_or_detail:
+    prefer: ["85mm", "100mm macro", "105mm"]
+    reason: "clean geometry, label readability, detail isolation"
+
+focal_length_prompt_routing:
+  wide_24_35mm:
+    spatial_effect: "environment included, stronger foreground/background relationship"
+    portrait_suitability: "environmental portrait; avoid close face-only framing"
+    room_context_suitability: "high"
+    dynamic_action_suitability: "high"
+    background_storytelling_suitability: "high"
+    distortion_risk: "edge stretching, enlarged foreground hands/feet/face if too close"
+  standard_50mm:
+    spatial_effect: "natural human perspective"
+    portrait_suitability: "high for half-body/full-body"
+    room_context_suitability: "medium"
+    dynamic_action_suitability: "medium"
+    background_storytelling_suitability: "medium"
+    distortion_risk: "low"
+  portrait_85_105mm:
+    spatial_effect: "flattering compression and subject separation"
+    portrait_suitability: "very high"
+    room_context_suitability: "low_to_medium"
+    dynamic_action_suitability: "low unless enough distance"
+    background_storytelling_suitability: "medium through compressed layers"
+    distortion_risk: "low face distortion, possible loss of environment"
+  telephoto_135_200mm:
+    spatial_effect: "strong compression, stacked depth"
+    portrait_suitability: "high for distant/candid/fashion"
+    room_context_suitability: "low"
+    dynamic_action_suitability: "high for sports from distance"
+    background_storytelling_suitability: "low_to_medium"
+    distortion_risk: "flat depth, subject may feel detached"
+
+# =============================================================================
+# FASHION LENS PREMIUM STRATEGY — specialized lens behavior mapping for
+# high-end fashion editorial and luxury portrait photography.
+# =============================================================================
+
+fashion_lens_premium_strategy:
+  purpose: "Select lens behavior based on fashion tier, premium feel type, garment focus, and working distance psychology."
+  usage: "After task_profile and mood are selected, use this strategy to pick the lens behavior that maximizes premium fashion feel."
+
+  premium_feel_lens_mapping:
+    intimate_luxury:
+      description: "Close, personal, exclusive feel. Subject fills the frame. Viewer feels invited into a private editorial moment."
+      lens: "85-105mm short telephoto"
+      aperture: "f/1.4-f/2"
+      working_distance: "1.5-3m"
+      compression: "moderate — flattering face proportions, soft background separation"
+      perspective_effect: "subject dominates frame, environment barely visible, intimate proximity"
+      best_for:
+        - luxury_beauty_editorial
+        - premium_portrait
+        - intimate_fashion_close_up
+        - jewelry_fashion_detail
+      generator_compressed: "intimate short-telephoto compression, sharp eyes with creamy background melt, natural facial proportions, luxurious proximity"
+
+    aspirational_editorial:
+      description: "Distant, observational, voyeuristic luxury. Subject is seen from a distance, creating desire and exclusivity."
+      lens: "135-200mm medium telephoto"
+      aperture: "f/2-f/4"
+      working_distance: "5-15m"
+      compression: "strong — stacks background layers, flattens depth, graphic silhouette"
+      perspective_effect: "subject isolated against compressed background, voyeuristic distance, editorial remove"
+      best_for:
+        - haute_couture_editorial
+        - runway_fashion
+        - luxury_fashion_story
+        - editorial_statement
+      generator_compressed: "aspirational telephoto compression, stacked background layers, graphic fashion silhouette, editorial distance, detached luxury viewpoint"
+
+    editorial_context:
+      description: "Natural distance with environmental storytelling. Subject within their luxury context."
+      lens: "35-50mm standard"
+      aperture: "f/2.8-f/4"
+      working_distance: "2-4m"
+      compression: "none — natural human perspective"
+      perspective_effect: "subject and environment share visual weight, lifestyle storytelling, aspirational context"
+      best_for:
+        - luxury_lifestyle
+        - location_fashion_editorial
+        - brand_campaign
+        - environmental_fashion
+      generator_compressed: "natural standard perspective, subject integrated with luxury environment, truthful proportions, aspirational lifestyle context"
+
+    macro_precision:
+      description: "Extreme close-up detail for beauty, jewelry, and fabric texture hero shots."
+      lens: "100mm macro"
+      aperture: "f/2.8-f/5.6"
+      working_distance: "30cm-1m"
+      compression: "flat macro compression"
+      perspective_effect: "extreme detail magnification, flat perspective, clinical precision"
+      best_for:
+        - beauty_extreme_close_up
+        - jewelry_detail
+        - fabric_texture_hero
+        - makeup_detail_shot
+      generator_compressed: "macro precision detail, flat clinical compression, extreme surface texture readability, controlled depth for hero element sharpness"
+
+  lens_character_for_fashion:
+    purpose: "Choose lens 'personality' based on brand identity and fashion tier."
+    clinical_modern:
+      description: "Razor-sharp, high contrast, minimal aberrations. The modern luxury standard."
+      look: "ultra-clean, precise, technical perfection"
+      best_for:
+        - modern_luxury_brand
+        - tech_fashion
+        - minimal_editorial
+        - commercial_premium
+      generator_add: "clinically sharp rendering, high contrast edge definition, precise optical clarity"
+      avoid: "soft vintage glow, chromatic aberration, organic imperfection"
+
+    classic_character:
+      description: "Vintage rehoused lenses with soft falloff, gentle flares, and organic texture. Timeless luxury."
+      look: "warm, organic, filmic, textured"
+      best_for:
+        - heritage_luxury_brand
+        - vintage_fashion_editorial
+        - romantic_beauty
+        - fine_art_fashion
+      generator_add: "vintage lens character with soft highlight rolloff, gentle flares, organic texture, filmic warmth"
+      avoid: "clinical digital sharpness, cold modern rendering"
+
+    anamorphic_epic:
+      description: "Cinematic widescreen with oval bokeh and horizontal flares. Epic fashion statement."
+      look: "cinematic, wide, dramatic, expensive"
+      best_for:
+        - epic_fashion_campaign
+        - cinematic_editorial
+        - luxury_brand_film_still
+        - high_budget_editorial
+      generator_add: "anamorphic lens character, oval bokeh, horizontal blue flare streaks, cinematic widescreen compression"
+      avoid: "standard spherical lens rendering, clinical flat look"
+
+  fashion_depth_of_field_strategy:
+    purpose: "Control depth of field to create specific premium fashion feelings."
+    ultra_shallow_f_1_2_1_4:
+      premium_feel: "dreamy, exclusive, face-only world"
+      best_for: "beauty close-up, intimate editorial, makeup hero"
+      prompt: "extremely shallow depth with razor-sharp eyes, face isolated by creamy background melt"
+      risk: "garment and fabric detail lost in blur"
+      mitigation: "use only for face-focused beauty, not full-body fashion"
+    shallow_f_1_8_2_8:
+      premium_feel: "professional editorial separation, elegant focus hierarchy"
+      best_for: "half-body fashion, beauty editorial, portrait"
+      prompt: "shallow editorial depth, face and upper garment sharp, background softly separated"
+      risk: "lower garment or shoes soft"
+      mitigation: "use for three-quarter or closer framing"
+    moderate_f_2_8_4:
+      premium_feel: "full-outfit readability, editorial but inclusive"
+      best_for: "full-body fashion, editorial three-quarter, environmental editorial"
+      prompt: "balanced editorial depth, full silhouette readable, gentle background separation without losing garment detail"
+      risk: "background may be too sharp and distracting"
+      mitigation: "use controlled background or neutral environment"
+    deep_f_5_6_8:
+      premium_feel: "documentary fashion, authentic, all-detail-readable"
+      best_for: "location editorial, group fashion, lifestyle campaign"
+      prompt: "deep focus fashion clarity, entire outfit and environment equally sharp, editorial truthfulness"
+      risk: "flat, unedited look"
+      mitigation: "pair with strong lighting contrast and color grade"
+
+  working_distance_psychology:
+    purpose: "Working distance affects the perceived relationship between viewer and fashion subject."
+    intimate_1_2m:
+      feel: "personal, exclusive, VIP access"
+      effect: "viewer feels part of the editorial moment"
+      best_for: "beauty editorial, luxury portrait, detail shots"
+    editorial_2_4m:
+      feel: "professional, standard editorial distance"
+      effect: "viewer observes the fashion with comfortable detachment"
+      best_for: "standard fashion editorial, half-body to full-body"
+    aspirational_4_10m:
+      feel: "distant, exclusive, fashion as spectacle"
+      effect: "viewer desires what they cannot touch, voyeuristic luxury"
+      best_for: "haute couture editorial, runway, luxury brand statement"
+    monumental_10m_plus:
+      feel: "epic, larger than life, fashion as art"
+      effect: "subject becomes iconic figure within environment"
+      best_for: "epic fashion campaign, architectural fashion, statement editorial"
+
+  fashion_lens_failure_prevention:
+    garment_lost_in_blur:
+      trigger: "Ultra-shallow depth used for full-body fashion"
+      fix: "Stop down to f/4-f/5.6 for full-outfit readability, keep selective focus on face only as accent"
+      add_positive: "full garment silhouette readable, selective focus on face, fabric texture preserved"
+    wide_distortion_on_full_body:
+      trigger: "35mm or wider used for close full-body fashion"
+      fix: "Move to 85-135mm or increase working distance to 4m+ for 50mm"
+      add_positive: "natural body proportions, straight garment lines, no leg or foot distortion"
+    no_lens_character:
+      trigger: "Premium fashion feels generic or 'iPhone photo'"
+      fix: "Add visible lens compression effect and depth behavior"
+      add_positive: "visible lens perspective, intentional depth hierarchy, optical character in highlights"
+    conflicting_fashion_lens_signals:
+      trigger: "Wide environmental context + telephoto compression both requested"
+      fix: "Choose one dominant lens behavior — intimate: 85-105mm, editorial: 135-200mm, context: 35-50mm"
+      add_positive: "single coherent lens perspective supporting fashion intent"

@@ -1,0 +1,61 @@
+schema_version: 1.0.0
+character:
+  id: king_of_fighters--characters--vanessa
+  display_name: Vanessa
+  aliases:
+  - Vanessa
+  - 凡妮莎
+  - Vanessa (The King of Fighters)
+  - Vanessa (KoF)
+  source_title: King of Fighters
+  adult_status: confirmed_adult
+  adult_source_basis: The King of Fighters default appearance (KoF series)
+  identity_summary: Mature female boxer with short wavy dark brown or auburn hair, brown eyes, wearing a
+    white off-shoulder top or leotard that exposes her shoulders, blue boxing shorts, red boxing gloves,
+    and boxing boots. Toned athletic muscular build with a calm, experienced, and slightly detached
+    expression. A secret agent and member of the Agent Team with a no-nonsense professional attitude.
+  visual_anchors:
+  - short wavy dark brown or auburn hair
+  - brown eyes
+  - white off-shoulder crop top or leotard
+  - blue boxing shorts
+  - red boxing gloves
+  - boxing boots
+  - toned athletic build
+  - calm experienced expression
+  - exposed shoulders
+  - short wavy auburn hair
+  - wavy cropped crown
+  - short wavy fringe
+  - brown
+  - mature angular face with defined features
+  - athletic muscular female boxer
+  outfit_anchors:
+  - short wavy auburn hair
+  - brown eyes
+  - white off-shoulder top
+  - blue boxing shorts
+  - red boxing gloves
+  - boxing boots
+  - exposed shoulders
+  - Female boxer in white off-shoulder top, blue shorts, red boxing gloves, wavy auburn hair.
+    Mature professional boxer aesthetic.
+  style_anchors:
+  - calm experienced composure
+  - detached professional brown eyes
+  drift_guards:
+  - long hair
+  - wrong hair color (not auburn/dark brown)
+  - wrong eye color (not brown)
+  - generic attractive person
+  - young girlish expression
+  - missing boxing gloves
+  - missing boxing shorts
+  - covered shoulders
+  - dress or skirt
+  - elegant formal wear
+  - straight hair
+  - bright unnatural hair colors
+  - ponytail
+  - heavy youthful makeup
+  - thin fragile frame

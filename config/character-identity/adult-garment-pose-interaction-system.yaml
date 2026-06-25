@@ -1,0 +1,194 @@
+schema_version: "1.1.0"
+name: "adult-garment-pose-interaction-system"
+description: "Connects adult pose, garment fit, wetness, tension, drape, and body-surface materials to visible physical causes."
+
+adult_garment_pose_interaction:
+  fabric_response:
+    - shoulder_tension
+    - waist_wrinkle
+    - seated_compression
+    - reclining_fold
+    - damp_cling
+    - hand_pulled_fabric
+    - gravity_drape
+    - twist_diagonal_fold
+    - stretch_over_bent_joint
+    - compression_band
+    - suspension_bridge_wrinkle
+    - gathered_bunching
+    - stacking_folds_at_ankle
+    - hem_ride_up
+    - collar_stand_off
+    - placket_gap
+    - strap_tension_line
+    - waistband_roll
+    - fabric_catch_in_joint_crease
+    - gapping_at_curve
+
+  pose_effects:
+    raised_arm:
+      - armpit_fabric_tension
+      - shoulder_seam_stretch
+      - hem_lift_on_raised_side
+      - exposed_midriff_if_short_cut
+      - collar_asymmetry
+    both_arms_raised:
+      - full_hem_rise
+      - torso_fabric_stretched_taut
+      - exposed_ribcage_sides
+      - shoulder_fabric_pooling_at_armpits
+      - bra_band_visible_if_shirt_lifts
+    seated_pose:
+      - garment_compression_at_hips
+      - fabric_pooling_at_lap
+      - waistband_pressing_into_abdomen
+      - back_fabric_stretched_across_shoulders
+      - hem_rides_up_thighs
+      - skirt_fan_spread_on_seat
+      - seat_crease_across_back_skirt
+      - belt_buckle_gap
+    reclining_pose:
+      - folds_under_torso
+      - bedding_folds_around_body
+      - fabric_drapes_toward_gravity_low_point
+      - shirt_pulls_up_revealing_lower_back
+      - neckline_slides_to_one_side
+      - strap_slips_off_shoulder
+      - hem_tucks_under_body_weight
+      - waistband_roll_under_back_pressure
+      - fabric_stretched_across_hip_crest
+    side_lying:
+      - fabric_folds_cascade_downward
+      - top_shoulder_fabric_drapes_loose
+      - bottom_arm_compressed_under_body
+      - hip_dip_crease_on_support_side
+      - waistband_visible_on_exposed_side
+      - fabric_pooling_between_thighs
+    bending_over:
+      - shirt_front_hangs_away_from_body
+      - neckline_drops_revealing_cleavage
+      - back_fabric_stretched_taut
+      - hem_drops_lower_in_front
+      - waistband_gap_at_back
+      - pants_seat_stretches
+      - skirt_hem_rises_in_back
+    twisting_torso:
+      - diagonal_fabric_folds_across_midriff
+      - asymmetric_hem_line
+      - collar_pulls_to_one_side
+      - shoulder_blade_fabric_stretch
+      - waistband_rotates_asymmetrically
+      - button_placket_shifted
+    kneeling:
+      - fabric_stretched_across_forward_thigh
+      - back_thigh_fabric_bunched
+      - hem_pooling_on_ground
+      - waistband_tension_at_bend
+      - straps_slip_forward
+    squatting:
+      - deep_thigh_fabric_stretch
+      - waistband_gap_at_lower_back
+      - hem_rides_up_significantly
+      - fabric_bunching_at_knee_crook
+      - belt_shift
+    cross_legged_sitting:
+      - top_leg_fabric_stretched_across_thigh
+      - bottom_leg_fabric_compressed
+      - skirt_or_short_hem_rides_up_exposed_thigh
+      - fabric_bunching_at_inner_knee
+    lying_on_back:
+      - fabric_flattens_across_chest_and_abdomen
+      - neckline_drops_toward_ears
+      - hem_slides_down_toward_shoulders  # for shirts
+      - back_fabric_smooth_no_wrinkles
+      - hip_fabric_stretched
+    arm_behind_back:
+      - chest_fabric_stretched_diagonally
+      - one_side_collar_pulls_back
+      - shoulder_seam_visible_from_front
+      - sleeve_creases_at_elbow_bend
+    leaning_forward_on_hands:
+      - neckline_drops_maximally
+      - shirt_front_hangs_vertical
+      - back_fabric_tents_away_from_body
+      - hem_shifts_forward
+    wet_pose:
+      - damp_fabric_follows_body_contact
+      - translucency_requires_moisture_and_tension
+      - heavier_fabric_drape
+      - darker_wet_contact_zones
+      - fabric_adheres_to_skin_curves
+      - water_droplet_weight_pulling_fabric
+      - hem_drips
+      - saturated_color_deepening
+    partially_clothed:
+      - one_strap_down_exposing_shoulder
+      - shirt_hanging_off_one_shoulder
+      - unzipped_back_revealing_spine_line
+      - open_jacket_with_torso_visible
+      - towel_edge_diagonal_across_torso
+      - unbuttoned_shirt_hanging_open
+    body_paint:
+      - surface_finish_follows_skin
+      - no_cloth_folds_or_drape
+      - sharp_color_boundary_at_skin_edges
+      - glossy_or_matte_finish_matching_paint_type
+      - visible_brush_or_spray_texture
+      - no_fabric_shadow_or_crease
+    leaning_on_elbows:
+      - fabric_pulls_taut_across_upper_back
+      - collar_gaps_at_front_neck
+      - hemline_asymmetric
+      - sleeve_cuffs_push_up_forearms
+
+  garment_type_interactions:
+    swimwear:
+      strapless:
+        - "depends_on_chest_bone_anchor"
+        - "may_slip_down_with_arm_movement"
+        - "tension_line_along_upper_chest"
+      halter:
+        - "neck_strap_bears_tension"
+        - "side_fabric_gathers_toward_center"
+      bandeau:
+        - "relies_on_friction_and_fit"
+        - "may_roll_at_top_edge_with_movement"
+    lingerie:
+      bralette:
+        - "light_support"
+        - "fabric_follows_bust_shape_without_compression"
+      underwire_bra:
+        - "defined_cup_shape"
+        - "strap_tension_carries_breast_weight"
+      corset:
+        - "rigid_front_panel"
+        - "back_laces_can_loosen_or_tighten"
+        - "waist_compression_visible"
+    outerwear:
+      blazer:
+        - "shoulder_pad_keeps_shape"
+        - "lapel_lays_flat_or_rolls_with_movement"
+        - "single_button_may_stress_with_torso_twist"
+      leather_jacket:
+        - "holds_shape_at_shoulders"
+        - "creases_form_at_inner_elbow"
+        - "zipper_may_buckle_when_bent"
+
+rules:
+  - "Swimwear and lingerie straps follow shoulder, ribcage, and torso geometry."
+  - "Wetness changes clinging, fold weight, skin highlights, and hair behavior; it is not a global gloss overlay."
+  - "Fabric opacity and visibility must route through fabric-opacity-translucency-logic.yaml."
+  - "Hand-held fabric requires a grip point and tension direction."
+  - "Do not use cloth fold language for body paint or painted outfit effects."
+  - "Fabric response must match the garment's construction: structured garments resist draping, knits stretch, wovens fold."
+  - "Strap tension lines must originate from a load-bearing anchor point (shoulder, neck, ribcage, hip)."
+  - "Hem ride-up must be caused by limb movement, not random repositioning."
+  - "Reclining poses: fabric folds must flow toward the lowest gravitational point, not away from it."
+  - "Cross-legged poses: the top leg's fabric stretches; the bottom leg's fabric compresses and bunches."
+  - "Bending poses: shirt front hangs away from torso; neckline drops per gravity; back fabric stretches across shoulder blades."
+  - "Twisting poses: diagonal tension folds confirm torso rotation; hemline asymmetry confirms twist direction."
+  - "Partially clothed states require explicit anchor point (one strap remains on shoulder) or the garment would fully fall."
+  - "Wet fabric: translucency requires both moisture and mechanical tension — wet fabric in loose areas may be translucent but not form-fitting."
+  - "Body paint has zero fabric behavior: no folds, no bunching, no drape, no fabric shadows."
+  - "When a pose compresses one body side and stretches the other, fabric on the compressed side bunches; on the stretched side it flattens."
+  - "Avoid fabric behavior that contradicts the garment type: leather does not wrinkle like cotton; spandex does not drape like silk."

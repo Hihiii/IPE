@@ -1,0 +1,60 @@
+schema_version: 1.0.0
+character:
+  id: one_piece--characters--nico_robin
+  display_name: Nico Robin
+  aliases:
+  - Nico Robin
+  - 妮可·羅賓
+  - 妮可·羅賓 (航海王)
+  source_title: One Piece
+  adult_status: confirmed_adult
+  adult_source_basis: One Piece default character design (post-timeskip)
+  identity_summary: Archaeologist of the Straw Hat Pirates with long wavy black hair (often with small
+    flower accessories tucked in), calm blue eyes, a tall mature build, wearing a purple or violet
+    sleeveless top or jacket, white or light-colored pants or shorts, and brown high-heeled boots.
+    Carries a cross-body bag and books about history and poneglyphs. Possesses the Flower-Flower Fruit
+    (Hana Hana no Mi) powers, allowing her to sprout limbs anywhere. Composed scholarly poise with a
+    dark mysterious sense of humor.
+  visual_anchors:
+  - long wavy black hair
+  - small flower accessories in hair
+  - calm blue eyes
+  - tall mature build
+  - purple or violet sleeveless top
+  - white or light pants or shorts
+  - brown high-heeled boots
+  - cross-body bag
+  - history books or poneglyph rubbings
+  - long black wavy hair
+  - center-parted crown
+  - side-swept tendrils
+  - blue eyes
+  - elegant oval face
+  - tall scholarly build
+  outfit_anchors:
+  - long wavy black hair with flower accessories
+  - calm blue eyes
+  - purple or violet sleeveless top
+  - white or light pants
+  - brown high-heeled boots
+  - cross-body bag
+  - books or poneglyph motifs
+  - Straw Hat archaeologist with long wavy black hair, flower accessories, calm blue eyes, purple top,
+    light pants, high-heeled boots, and a composed scholarly poise.
+  style_anchors:
+  - calm composed scholarly wisdom
+  - dark mysterious humor
+  - elegant mature poise
+  drift_guards:
+  - short straight hair
+  - missing flower accessories in hair
+  - wrong hair color (not black)
+  - wrong eye color (not blue)
+  - generic attractive person
+  - wrong face impression
+  - casual modern clothing
+  - childish or immature expression
+  - missing book or poneglyph motifs
+  - overly revealing outfit
+  - blonde or light hair
+  - bright colorful outfit (should be darker palette)

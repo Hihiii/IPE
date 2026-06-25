@@ -1,0 +1,62 @@
+schema_version: 1.0.0
+character:
+  id: street_fighter--characters--chun_li
+  display_name: Chun-Li
+  aliases:
+  - Chun-Li
+  - 春麗
+  - 春麗 (快打旋風)
+  source_title: Street Fighter
+  adult_status: confirmed_adult
+  adult_source_basis: Street Fighter default character design
+  identity_summary: Chinese Interpol martial artist with ox-horn hair buns held by white ribbons and a
+    long braided strand flowing from the right bun, strong focused brown eyes, a blue Chinese qipao dress
+    with gold trim, white stockings, spiked wristbands and ankle bands, white combat boots with red trim,
+    and a muscular athletic build with powerful thighs. Fights with lightning-fast kicks and the signature
+    Spinning Bird Kick.
+  visual_anchors:
+  - ox-horn hair buns with white ribbons
+  - long braided strand flowing from right bun
+  - blue qipao with gold trim
+  - white stockings
+  - spiked wristbands
+  - spiked ankle bands
+  - white combat boots with red trim
+  - strong focused brown eyes
+  - muscular athletic build with powerful thighs
+  - long black hair
+  - smooth high crown
+  - side-swept bangs
+  - brown eyes
+  - soft oval face
+  - tall athletic martial artist
+  - confident justice-driven expression
+  outfit_anchors:
+  - ox-horn hair buns with white ribbons
+  - long braided strand from right bun
+  - blue qipao with gold trim
+  - white stockings
+  - spiked wristbands and ankle bands
+  - white combat boots with red trim
+  - Chinese Interpol martial artist with ox-horn hair buns, blue qipao with gold trim, white stockings,
+    spiked accessories, white combat boots, and a muscular athletic build with powerful thighs.
+  style_anchors:
+  - confident justice-driven determination
+  - focused fighting spirit
+  - warm righteous energy
+  drift_guards:
+  - short bob haircut
+  - single ponytail without buns
+  - missing long braided strand
+  - missing white ribbons
+  - qipao without gold trim
+  - missing white stockings
+  - wrong eye color (not brown)
+  - generic attractive person
+  - wrong face impression
+  - missing ox-horn hair buns
+  - missing blue qipao with gold trim
+  - missing spiked wristbands or ankle bands
+  - missing white combat boots
+  - slender fragile build
+  - passive shy demeanor

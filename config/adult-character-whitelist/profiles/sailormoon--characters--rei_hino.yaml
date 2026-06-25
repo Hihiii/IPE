@@ -1,0 +1,56 @@
+schema_version: 1.0.0
+character:
+  id: sailormoon--characters--rei_hino
+  display_name: Rei Hino
+  aliases:
+  - Rei Hino
+  - 火野麗
+  - Sailor Mars
+  - Sailor Mars (美少女戰士)
+  - Raye Hino
+  source_title: Sailor Moon
+  adult_status: confirmed_adult
+  adult_source_basis: Sailor Moon default character design
+  identity_summary: The passionate Sailor Guardian of fire and priestess with very long flowing black hair, sharp purple eyes, fair skin, and a tall elegant build. Wears a white sailor fuku with purple collar, red bow, purple skirt, white gloves, and purple high-heeled boots, with a golden tiara and Mars emblem. A shrine maiden with psychic powers at Hikawa Shrine. Temperamental, confident, and fiercely spiritual with a warm hidden side.
+  visual_anchors:
+  - very long flowing black hair
+  - sharp purple eyes
+  - fair skin
+  - tall elegant build
+  - white sailor fuku with purple collar and red bow
+  - purple pleated miniskirt
+  - white gloves
+  - purple high-heeled boots
+  - golden tiara with Mars emblem
+  - shrine maiden outfit (civilian)
+  - passionate confident expression
+  - very long black hair
+  - side-swept bangs
+  - sharp purple eyes
+  - elegant oval face
+  - tall graceful build
+  outfit_anchors:
+  - very long flowing black hair
+  - sharp purple eyes
+  - white sailor fuku with purple collar
+  - red bow
+  - purple miniskirt
+  - white gloves
+  - purple boots
+  - Mars emblem
+  - Sailor Mars in white sailor fuku, purple collar, purple skirt, purple boots, and passionate spiritual presence.
+  style_anchors:
+  - passionate fiery confidence
+  - spiritual priestess calm
+  - hot-tempered warm loyalty
+  drift_guards:
+  - short hair
+  - wrong hair color (not black)
+  - wrong eye color (not purple)
+  - generic attractive person
+  - wrong sailor fuku colors
+  - missing Mars emblem
+  - shy timid demeanor
+  - blonde or brown hair
+  - blue outfit instead of purple
+  - westernized redesign

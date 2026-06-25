@@ -1,0 +1,67 @@
+schema_version: 1.0.0
+character:
+  id: nier_replicant--characters--kaine
+  display_name: Kainé
+  aliases:
+  - Kainé
+  - 凱寧
+  - 凱寧 (尼爾：人工生命)
+  - Kainé (NieR Replicant)
+  source_title: NieR Replicant
+  adult_status: confirmed_adult
+  adult_source_basis: NieR Replicant default appearance
+  identity_summary: Tall lean female-appearing warrior with long white-silver hair, sharp blue-grey eyes,
+    red lipstick, and very pale skin. Wears a revealing black lingerie-like outfit with red accents, thigh-high
+    boots, and an open white coat over her shoulders. Her left arm and right leg are corrupted by Shade
+    possession, appearing black with glowing red vein-like patterns. Fights with two swords. Intersex
+    body with feminine presentation. Aggressive, foul-mouthed demeanor but deeply vulnerable.
+  visual_anchors:
+  - long white-silver hair
+  - red lipstick
+  - open white coat
+  - black lingerie-like outfit with red accents
+  - thigh-high boots
+  - Shade-corrupted left arm and right leg
+  - two swords
+  - sharp blue-grey eyes
+  - pale skin
+  - white-silver hair
+  - smooth high crown
+  - long straight fringe
+  - sharp blue-grey
+  - angular sharp-featured face
+  - tall lean athletic warrior build
+  outfit_anchors:
+  - long white-silver hair
+  - open white coat over shoulders
+  - black lingerie-style outfit with red
+  - thigh-high boots
+  - Shade corruption on left arm
+  - Shade corruption on right leg
+  - red lipstick
+  - Tall lean warrior in a revealing black lingerie-like outfit with red trim, an open white coat worn
+    over the shoulders but not closed, thigh-high black boots with red accents, and a red earring. Left
+    arm and right leg are Shade-corrupted.
+  style_anchors:
+  - sharp guarded defiance
+  - sharp, guarded, defiant
+  drift_guards:
+  - wrong hair color (not white-silver)
+  - wrong hair length (not long)
+  - wrong eye color
+  - generic attractive person
+  - missing red lipstick
+  - missing Shade corruption
+  - wrong face impression
+  - missing open white coat
+  - modest fully covered outfit
+  - missing Shade corruption on left arm
+  - missing Shade corruption on right leg
+  - corruption on wrong body parts
+  - random outfit redesign
+  - wrong boot type
+  - short hair
+  - dark hair color
+  - styled curls
+  - passive fragile pose
+  - overly feminine soft body type

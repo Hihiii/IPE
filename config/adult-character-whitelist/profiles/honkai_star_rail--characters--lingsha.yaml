@@ -1,0 +1,50 @@
+schema_version: 1.0.0
+character:
+  id: honkai_star_rail--characters--lingsha
+  display_name: Lingsha
+  aliases:
+  - Lingsha
+  - 靈砂
+  source_title: 'Honkai: Star Rail'
+  adult_status: confirmed_adult
+  adult_source_basis: 'Honkai: Star Rail official character design'
+  identity_summary: A serene healer with long dark brown-black hair, warm amber-gold eyes, wearing a traditional
+    amber-toned healer outfit with incense burner motifs, attending an ornate incense burner.
+  visual_anchors:
+  - long dark brown-black hair
+  - warm amber-gold eyes
+  - amber and cream traditional healer outfit
+  - ornate incense burner with smoke
+  - serene compassionate expression
+  - long dark hair
+  - dark brown-black
+  - smooth elegant crown
+  - soft waved side-swept
+  - warm amber-gold
+  - elegant oval face
+  - elegant slender healer build
+  outfit_anchors:
+  - long dark brown-black hair
+  - warm amber-gold eyes
+  - amber gold and cream traditional robes
+  - incense burner
+  - Serene healer in amber gold and cream traditional layered Chinese-inspired robes with wide sleeves,
+    incense and flame embroidery, and a decorative belt.
+  style_anchors:
+  - calm gentle serenity
+  - warm serene gaze
+  drift_guards:
+  - wrong hair color
+  - wrong eye color
+  - generic attractive person
+  - harsh expression
+  - missing serene quality
+  - missing incense burner
+  - casual outfit
+  - random outfit redesign
+  - wrong palette
+  - short bob
+  - light colored hair
+  - frizzy style
+  - slouching
+  - aggressive posture

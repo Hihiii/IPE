@@ -1,0 +1,52 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_vii--characters--tifa_lockhart
+  display_name: Tifa Lockhart
+  aliases:
+  - Tifa Lockhart
+  - 蒂法·洛克哈特
+  - 蒂法·洛克哈特 (Final Fantasy VII)
+  source_title: Final Fantasy VII
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy VII Remake default appearance
+  identity_summary: Athletic martial artist with very long black hair, warm reddish-brown eyes, a white
+    cropped top, black skirt-and-suspender silhouette, red gloves, and red combat boots.
+  visual_anchors:
+  - very long black hair
+  - white cropped top
+  - black skirt with suspenders
+  - red gloves
+  - red combat boots
+  - warm reddish-brown eyes
+  - long black hair
+  - black hair
+  - smooth high crown
+  - long parted fringe
+  - warm reddish-brown
+  - soft oval face
+  - tall athletic martial artist
+  outfit_anchors:
+  - very long black hair
+  - white cropped top
+  - black skirt with suspenders
+  - red gloves
+  - red combat boots
+  - Athletic martial artist with very long black hair, warm reddish-brown eyes, a white cropped top, black
+    skirt-and-suspender silhouette, red gloves, and red combat boots.
+  style_anchors:
+  - warm, attentive calm
+  drift_guards:
+  - short bob
+  - blond hair
+  - high twin tails
+  - generic attractive person
+  - wrong eye color
+  - wrong face impression
+  - missing very long black hair
+  - missing white cropped top
+  - missing black skirt with suspenders
+  - missing red gloves
+  - missing red combat boots
+  - random outfit redesign
+  - fragile passive pose
+  - impossible spinal twist

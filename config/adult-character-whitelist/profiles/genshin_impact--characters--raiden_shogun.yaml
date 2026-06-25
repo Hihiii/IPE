@@ -1,0 +1,64 @@
+schema_version: 1.0.0
+character:
+  id: genshin_impact--characters--raiden_shogun
+  display_name: Raiden Shogun
+  aliases:
+  - Raiden Shogun
+  - 雷電將軍
+  - 雷電將軍 (原神)
+  - Raiden Shogun (Genshin Impact)
+  - Ei
+  - Raiden Ei
+  source_title: Genshin Impact
+  adult_status: confirmed_adult
+  adult_source_basis: Genshin Impact Raiden Shogun default appearance
+  identity_summary: Stern Electro Archon with long dark purple hair in a thick braid, dark purple eyes,
+    a purple and black outfit with armor pieces and flowing fabric, Engulfing Lightning polearm, and the
+    ability to draw the Musou no Hitotachi sword from her chest.
+  visual_anchors:
+  - long dark purple hair in thick braid
+  - dark purple eyes with sharp intensity
+  - purple and black regal outfit with armor
+  - mole below left collarbone
+  - Engulfing Lightning polearm
+  - Musou no Hitotachi drawn from chest
+  - Electro archon presence
+  - stern regal demeanor
+  - dark purple hair with lighter purple inner strands
+  - smooth crown with braid starting at nape
+  - straight layered fringe with long side strands
+  - dark purple
+  - elegant angular face with aristocratic features
+  - tall regal feminine build
+  outfit_anchors:
+  - long dark purple hair in thick braid
+  - large asymmetrical right shoulder armor piece
+  - purple and black color scheme
+  - mole below left collarbone
+  - Engulfing Lightning polearm
+  - Purple and black regal outfit with a large armored shoulder piece on the right, purple bodice with
+    gold trim, flowing dark blue fabric panels, black gloves, leg armor, and a detached sleeve on the
+    left arm.
+  style_anchors:
+  - stern, regal composure
+  - sharp unwavering regal gaze
+  drift_guards:
+  - missing dark purple braid
+  - wrong hair color
+  - wrong eye color (not dark purple)
+  - generic attractive female replacement
+  - missing mole below collarbone
+  - warm or cheerful expression
+  - missing asymmetrical shoulder armor
+  - covered chest area
+  - symmetrical armor design
+  - wrong color palette (not purple/black)
+  - missing flowing fabric panels
+  - generic fantasy outfit
+  - short hair
+  - loose flowing hair
+  - light colored hair
+  - thin or wispy hair
+  - short petite build
+  - hunched or slouching posture
+  - casual relaxed posture

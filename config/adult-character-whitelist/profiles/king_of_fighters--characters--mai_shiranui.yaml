@@ -1,0 +1,64 @@
+schema_version: 1.0.0
+character:
+  id: king_of_fighters--characters--mai_shiranui
+  display_name: Mai Shiranui
+  aliases:
+  - Mai Shiranui
+  - 不知火舞
+  - 不知火舞 (格鬥天王)
+  source_title: King of Fighters
+  adult_status: confirmed_adult
+  adult_source_basis: The King of Fighters default character design
+  identity_summary: Voluptuous kunoichi with long brown hair in a high ponytail tied with a red ribbon,
+    confident brown eyes, a red and white sleeveless kunoichi leotard with mesh side panels and high-cut
+    legs, a thick white rope sash/obi tied at the waist, white wristbands, red and white shin guards or
+    tabi boots, and bare legs. Carries folding steel war fans that she uses in combat with her signature
+    flame attacks (Kageribi, Cho Hissatsu Shinobibachi). Known for her flirtatious confidence and
+    curvaceous feminine silhouette.
+  visual_anchors:
+  - long brown high ponytail with red ribbon
+  - confident brown eyes
+  - red and white sleeveless kunoichi leotard with mesh side panels
+  - high-cut leg openings (bare legs)
+  - thick white rope sash/obi
+  - white wristbands
+  - red and white shin guards or tabi boots
+  - folding steel war fans
+  - curvaceous voluptuous build
+  - long brown hair
+  - high ponytail with red ribbon
+  - side-swept bangs
+  - brown eyes
+  - flirtatious confident expression
+  outfit_anchors:
+  - long brown high ponytail with red ribbon
+  - red and white sleeveless kunoichi leotard with mesh side panels
+  - high-cut revealing leg line
+  - thick white rope sash
+  - white wristbands
+  - red and white shin guards
+  - folding steel war fans
+  - curvaceous voluptuous silhouette
+  - kunoichi with long brown high ponytail, red-and-white sleeveless kunoichi leotard with mesh panels,
+    thick white rope sash, steel war fans, and a curvaceous build. Flirtatious confident flame-wielding
+    ninja aesthetic.
+  style_anchors:
+  - flirtatious confident charm
+  - playful competitive grin
+  - bold seductive presence
+  drift_guards:
+  - short hair or bob
+  - missing red ribbon in hair
+  - wrong hair color (not brown)
+  - wrong eye color (not brown)
+  - generic attractive replacement
+  - wrong face impression
+  - missing red-and-white kunoichi outfit
+  - modest or covered outfit (no mesh panels)
+  - missing white rope sash
+  - missing folding fans
+  - slender flat build (must have curvaceous silhouette)
+  - shy timid demeanor
+  - covered legs (must have bare legs)
+  - missing flame effects
+  - westernized non-Japanese facial features

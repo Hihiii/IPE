@@ -1,0 +1,79 @@
+schema_version: "1.0.0"
+name: "crop-safety-rules"
+description: >
+  Crop safety and intentional crop rules for people, products, vehicles,
+  architecture, animals, and publication layouts.
+
+core_principle: >
+  Cropping should feel intentional. Avoid accidental cuts at joints, fingertips,
+  feet, product edges, wheels, text, and identity markers unless the crop is a
+  deliberate close-up or fashion/editorial crop.
+
+crop_safety_rules:
+  avoid_crop_points:
+    human:
+      - neck_center
+      - wrist
+      - elbow
+      - knee
+      - ankle
+      - fingertips
+      - toes
+      - mid-face
+      - top_of_head_too_tight
+    product:
+      - label_edge
+      - cap_or_lid
+      - hero_silhouette_edge
+      - handle
+    vehicle:
+      - wheels
+      - grille
+      - headlights
+      - tail
+      - roofline
+    architecture:
+      - doorway_top
+      - important_column_base
+      - window_grid_edge
+      - roofline_without_intent
+    typography:
+      - title_letters
+      - logo
+      - masthead
+      - barcode_or_issue_detail
+
+conditional_rules:
+  if_full_body:
+    feet_must_be_visible: true
+    add_breathing_room: "headroom and footroom"
+  if_half_body:
+    avoid_cutting_at: ["elbows", "wrists", "fingertips"]
+  if_close_portrait:
+    allow_deliberate_head_crop: true
+    require: ["eyes readable", "face crop intentional"]
+  if_fashion_crop:
+    allow_crop_points:
+      - "mid-thigh"
+      - "above knee only if intentional"
+      - "top of hair only if face remains elegant"
+  if_vehicle_editorial:
+    wheels_must_be_visible: true
+    keep_vehicle_silhouette_readable: true
+  if_cover_or_poster:
+    preserve_title_safe_zone: true
+    keep_subject_away_from_bleed_edges_unless_intentional: true
+
+prompt_phrases:
+  safe_full_body:
+    - "full-body framing with headroom and feet visible"
+    - "clean crop below the feet and above the head"
+  safe_hands:
+    - "hands fully visible with fingertips inside the frame"
+    - "no accidental crop through wrists or fingers"
+  intentional_close_crop:
+    - "intentional close crop with eyes and expression fully readable"
+    - "cinematic partial crop that does not cut through joints"
+  product_safe:
+    - "full product silhouette visible with breathing room"
+    - "label and edges remain inside the frame"

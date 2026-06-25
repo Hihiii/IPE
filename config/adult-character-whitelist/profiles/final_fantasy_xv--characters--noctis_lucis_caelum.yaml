@@ -1,0 +1,59 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xv--characters--noctis_lucis_caelum
+  display_name: Noctis Lucis Caelum
+  aliases:
+  - Noctis Lucis Caelum
+  - 諾克提斯·路希斯·切拉姆
+  - 諾克提斯·路希斯·切拉姆 (Final Fantasy XV)
+  source_title: Final Fantasy XV
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XV default appearance
+  identity_summary: Young prince of Lucis with black spiky hair swept back, deep blue eyes, wearing a
+    black asymmetrical zip-up jacket with silver zippers and stud details over a black shirt, black pants
+    with one leg rolled up, black combat boots, and a silver Lucian royal ring pendant on a chain around
+    his neck.
+  visual_anchors:
+  - black spiky hair swept back
+  - deep blue eyes
+  - black asymmetrical zip-up jacket with silver details
+  - black pants with one leg rolled up
+  - silver royal ring pendant on chain
+  - black combat boots
+  - black hair
+  - spiky swept-back crown
+  - some strands forward from swept-back base
+  - deep blue
+  - youthful defined face
+  - lean athletic slender but capable
+  outfit_anchors:
+  - black spiky hair swept back with some strands forward
+  - deep blue eyes
+  - black asymmetrical zip-up jacket with silver zippers
+  - black pants with one leg rolled up
+  - silver royal ring pendant on chain
+  - black combat boots
+  - Young prince of Lucis with black spiky hair swept back, deep blue eyes, wearing a black asymmetrical
+    zip-up jacket with silver zippers and stud details over a black shirt, black pants with one leg rolled
+    up, black combat boots, and a silver Lucian royal ring pendant on a chain around his neck.
+  style_anchors:
+  - aloof disinterested calm
+  drift_guards:
+  - long hair
+  - different hair color
+  - wrong eye color
+  - generic attractive person
+  - smiling as default expression
+  - bright-colored outfit
+  - missing Lucian royal pendant
+  - missing jacket asymmetry
+  - missing pendant on chain
+  - both pant legs same length
+  - missing black combat boots
+  - wrong jacket color
+  - shirt visible under jacket (should be black)
+  - metal armor replacing casual outfit
+  - missing fingerless gloves
+  - bald
+  - bulky muscular build
+  - frail weak build

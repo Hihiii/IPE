@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Phase 0 Config Resolution",
+  "type": "object",
+  "required": ["packet_id", "request", "compiled_context", "features", "phase_order"],
+  "properties": {
+    "packet_id": { "type": "string" },
+    "request": { "type": "string" },
+    "compiled_context": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["node_id", "claims", "sources"],
+        "properties": {
+          "node_id": { "type": "string" },
+          "claims": { "type": "array", "items": { "type": "string" } },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["path", "source_hash", "context_hash"],
+              "properties": {
+                "path": { "type": "string" },
+                "source_hash": { "type": "string" },
+                "context_hash": { "type": "string" },
+                "content_yaml": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "features": { "type": "array", "items": { "type": "string" } },
+    "phase_order": { "type": "array", "items": { "type": "string" } },
+    "configs_loaded": {
+      "type": "object",
+      "properties": {
+        "always_load": { "type": "array", "items": { "type": "string" } },
+        "conditional_load": { "type": "object" }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+schema_version: 1.0.0
+character:
+  id: honkai_star_rail--characters--kafka
+  display_name: Kafka
+  aliases:
+  - Kafka
+  - 卡芙卡
+  - 卡芙卡 (崩壞：星穹鐵道)
+  source_title: 'Honkai: Star Rail'
+  adult_status: confirmed_adult
+  adult_source_basis: 'Honkai: Star Rail default appearance'
+  identity_summary: Mysterious dominant Stellaron Hunter with long wavy purple hair, deep purple eyes,
+    sleek black coat with purple accents, dual pistols, spirit threads, and cool enigmatic demeanor.
+  visual_anchors:
+  - long wavy purple hair
+  - deep purple eyes
+  - sleek black coat with purple accents
+  - dual custom pistols
+  - mysterious dominant expression
+  - mysterious captivating smile
+  - rich deep purple
+  - full voluminous wavy crown
+  - long side-swept fringe
+  - deep purple
+  - elegant oval face with refined contours
+  - tall elegant dominant female
+  outfit_anchors:
+  - long wavy purple hair
+  - long black coat with purple lining
+  - black bodysuit
+  - dual pistols
+  - thigh holsters
+  - Mysterious Stellaron Hunter with long purple wavy hair, sleek black long coat with purple inner lining,
+    black bodysuit, thigh holsters, and high-heeled boots.
+  style_anchors:
+  - cool, mysterious composure
+  - cool, mysterious, and dominant
+  drift_guards:
+  - short hair
+  - straight flat hair
+  - bright pink hair
+  - blue hair
+  - wrong eye color (not deep purple)
+  - cheerful innocent expression
+  - generic attractive person
+  - missing long wavy purple hair
+  - missing long black coat with purple lining
+  - missing black bodysuit
+  - missing dual pistols
+  - random outfit redesign
+  - bright pastel outfit
+  - slouching posture
+  - fragile passive pose
+  - overly athletic build

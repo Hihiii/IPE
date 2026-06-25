@@ -1,0 +1,58 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xvi--characters--clive_rosfield
+  display_name: Clive Rosfield
+  aliases:
+  - Clive Rosfield
+  - 克萊夫·羅斯菲爾德
+  - 克萊夫·羅斯菲爾德 (Final Fantasy XVI)
+  source_title: Final Fantasy XVI
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XVI default appearance
+  identity_summary: Tall broad-shouldered warrior with dark brown hair swept back, reddish-brown eyes,
+    a scar across his left cheek, clad in black leather and crimson red attire with silver metal gauntlets
+    and a broadsword.
+  visual_anchors:
+  - dark brown swept-back hair
+  - reddish-brown eyes
+  - scarred left cheek
+  - black leather tunic with crimson red accents
+  - metal gauntlets on forearms
+  - broadsword in hand
+  - small scar across left cheek from lower eyelid to mid-cheek
+  - dark brown hair swept back
+  - light stubble shadow on jaw and chin
+  - dark brown hair
+  - thick medium-density crown
+  - swept-back fringe with natural movement
+  - reddish-brown
+  - strong angular face with defined jaw
+  - tall heavily built warrior
+  outfit_anchors:
+  - dark brown swept-back hair
+  - scar on left cheek
+  - black leather tunic with crimson red trim
+  - metal gauntlets on forearms
+  - broadsword
+  - Tall broad-shouldered warrior with dark brown swept-back hair, reddish-brown eyes, a scar across his
+    left cheek, wearing black leather tunic with crimson red trim, silver metal gauntlets, black trousers,
+    leather boots, and a broadsword.
+  style_anchors:
+  - stoic, guarded determination
+  drift_guards:
+  - blond hair
+  - very long hair
+  - missing facial scar
+  - wrong eye color
+  - generic attractive person
+  - wrong face impression
+  - youthful unmarked face
+  - missing black and red palette
+  - missing metal gauntlets
+  - missing leather tunic
+  - random armor redesign
+  - bright colorful fantasy armor
+  - long flowing hair
+  - spiked anime hair
+  - frail thin frame
+  - exaggerated bodybuilder proportions

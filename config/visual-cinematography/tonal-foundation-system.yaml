@@ -1,0 +1,37 @@
+version: 1
+purpose: "Select a coherent tonal foundation before lighting detail, exposure, or grading language is rendered."
+
+tonal_profile:
+  fields:
+    exposure_mood: [high_key, normal_key, low_key, readable_night, silhouette, backlit_glow]
+    black_point: [lifted, normal, crushed]
+    white_point: [soft, normal, bright, clipped]
+    midtone_priority: [skin, product, environment, silhouette]
+    contrast_curve: [soft, natural, strong, hard]
+    dynamic_range: [compressed, natural, expanded, hdr_like]
+    highlight_rolloff: [soft, cinematic, harsh, clipped]
+    shadow_detail: [open, controlled, deep, crushed]
+
+profiles:
+  high_key:
+    visible_result: "bright airy exposure, lifted shadows, clean luminous midtones, soft highlights"
+    use_for: [beauty, product, optimistic_editorial, clean_architecture]
+    guards: [avoid_muddy_shadows, avoid_harsh_contrast, keep_face_readable]
+  low_key:
+    visible_result: "deep controlled shadows, selective bright accents, clear subject separation"
+    use_for: [noir, luxury, dramatic_editorial, stage]
+    guards: [do_not_lose_face_in_darkness, preserve_subject_silhouette]
+  readable_night:
+    visible_result: "visible subject midtones, preserved practical lights, cinematic controlled shadows"
+    use_for: [night_city, cyberpunk, concert, street_documentary]
+    guards: [no_crushed_face, background_lights_do_not_outshine_subject]
+  backlit_glow:
+    visible_result: "soft backlit glow, gentle highlight bloom, preserved facial midtones, warm rim separation"
+    use_for: [window_portrait, sunset, dreamy_editorial]
+    guards: [no_blown_skin, no_uncontrolled_flare]
+
+selection_rules:
+  - "Prioritize skin or product midtones when identity, costume markers, logos, or material detail are task-critical."
+  - "Use readable_night instead of generic low_key when night context and subject readability are both required."
+  - "Use silhouette only when face or product detail is explicitly nonessential."
+  - "Do not combine high_key with crushed blacks, or backlit_glow with clipped skin."

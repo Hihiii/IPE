@@ -1,0 +1,55 @@
+schema_version: 1.0.0
+character:
+  id: honkai_star_rail--characters--silver_wolf
+  display_name: Silver Wolf
+  aliases:
+  - Silver Wolf
+  - 銀狼
+  - 銀狼 (崩壞：星穹鐵道)
+  source_title: 'Honkai: Star Rail'
+  adult_status: confirmed_adult
+  adult_source_basis: 'Honkai: Star Rail default appearance'
+  identity_summary: Playful gamer hacker with silver-white hair in twin tails with blue-purple highlights,
+    bright blue eyes, hooded jacket, holographic card, reality-hacking abilities, and confident playful
+    demeanor.
+  visual_anchors:
+  - silver-white hair with blue-purple highlights
+  - twin tail pigtails
+  - bright blue eyes
+  - hooded jacket with holographic accents
+  - holographic playing card
+  - confident playful smirk
+  - silver-white with blue and purple highlights
+  - rounded full crown
+  - straight blunt bangs
+  - bright blue
+  - youthful oval face with soft contours
+  - petite agile gamer
+  outfit_anchors:
+  - silver-white hair with blue-purple highlights
+  - twin tail pigtails
+  - black hooded jacket with holographic trim
+  - black crop top
+  - high-waisted black shorts
+  - Playful gamer hacker with silver-white twin tails, black hooded jacket with blue-purple holographic
+    trim, black crop top, shorts, and thigh-high boots.
+  style_anchors:
+  - cool, playful confidence
+  - cool, playful, confident
+  drift_guards:
+  - single ponytail
+  - dark hair color
+  - long flowing hair without pigtails
+  - bob cut
+  - wrong eye color (not bright blue)
+  - shy submissive expression
+  - generic attractive person
+  - missing silver-white twin tails
+  - missing black hooded jacket
+  - missing black crop top
+  - missing holographic card
+  - random outfit redesign
+  - elegant formal outfit
+  - overly muscular build
+  - elegant formal posture
+  - fragile passive pose

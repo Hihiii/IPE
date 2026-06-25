@@ -1,0 +1,51 @@
+schema_version: 1.0.0
+character:
+  id: honkai_star_rail--characters--jade
+  display_name: Jade
+  aliases:
+  - Jade
+  - 翡翠
+  source_title: 'Honkai: Star Rail'
+  adult_status: confirmed_adult
+  adult_source_basis: 'Honkai: Star Rail official character design'
+  identity_summary: A tall elegant IPC executive with long black hair with purple sheen, heterochromatic
+    green and red eyes, wearing a sophisticated emerald green and black business suit with gem motifs,
+    holding an elegant jade whip.
+  visual_anchors:
+  - long black hair with dark purple sheen
+  - heterochromatic eyes (green and red)
+  - emerald green and black elegant business suit
+  - jade and gold whip
+  - sophisticated commanding presence
+  - long black hair with purple sheen
+  - black with dark purple sheen
+  - smooth sleek crown
+  - elegant waved side-swept fringe
+  - green and red heterochromatic (one green, one red)
+  - elegant oval face
+  - tall elegant executive build
+  outfit_anchors:
+  - long black hair with purple sheen
+  - heterochromatic green and red eyes
+  - emerald green business jacket
+  - jade whip
+  - Sophisticated IPC executive in emerald green fitted business jacket, white blouse, black pencil skirt,
+    gem-encrusted accessories, and jade whip.
+  style_anchors:
+  - composed elegant calm
+  - cool assessing gaze
+  drift_guards:
+  - wrong hair color
+  - same-colored eyes (not heterochromatic)
+  - generic attractive person
+  - soft approachable expression
+  - wrong eye color
+  - missing whip
+  - casual outfit
+  - random outfit redesign
+  - wrong palette
+  - short bob
+  - light colored hair
+  - frizzy or unkempt style
+  - slouching
+  - casual relaxed posture

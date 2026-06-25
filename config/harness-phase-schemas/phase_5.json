@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Phase 5 Final Output",
+  "type": "object",
+  "required": ["z_image_positive_prompt", "z_image_negative_prompt", "suggest_resolution"],
+  "properties": {
+    "z_image_positive_prompt": { "type": "string", "minLength": 1 },
+    "z_image_negative_prompt": { "type": "string", "minLength": 1 },
+    "suggest_resolution": { "type": "string", "minLength": 1 }
+  }
+}

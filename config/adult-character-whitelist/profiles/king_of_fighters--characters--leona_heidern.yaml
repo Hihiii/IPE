@@ -1,0 +1,63 @@
+schema_version: 1.0.0
+character:
+  id: king_of_fighters--characters--leona_heidern
+  display_name: Leona Heidern
+  aliases:
+  - Leona
+  - Leona Heidern
+  - 蕾歐娜
+  - Leona (The King of Fighters)
+  - Leona Heidern (KoF)
+  source_title: King of Fighters
+  adult_status: confirmed_adult
+  adult_source_basis: The King of Fighters default appearance (KoF series)
+  identity_summary: Tall athletic female soldier with short blue or teal hair, sharp red or maroon eyes,
+    fair skin, wearing a green military-style tank top, white pants, a red headband, and combat boots.
+    Also wears a black choker. Lean muscular build with a cold, stoic expression. Has dormant Orochi
+    powers which manifest as a wilder side. Heidern's adopted daughter and an elite Ikari warrior.
+  visual_anchors:
+  - short blue or teal hair
+  - sharp red or maroon eyes
+  - fair skin
+  - green military tank top
+  - white fitted pants
+  - red headband
+  - black choker
+  - combat boots
+  - lean muscular build
+  - cold stoic expression
+  - short blue hair
+  - spiky cropped crown
+  - short uneven fringe
+  - red
+  - sharp angular face
+  - lean athletic soldier build
+  outfit_anchors:
+  - short blue hair
+  - red eyes
+  - red headband
+  - green military tank top
+  - white fitted pants
+  - black choker
+  - combat boots
+  - Ikari warrior in green tank top, white pants, red headband, combat boots, short blue hair.
+    Cold stoic military aesthetic.
+  style_anchors:
+  - cold stoic composure
+  - sharp intense red eyes
+  drift_guards:
+  - long hair
+  - wrong hair color (not blue)
+  - wrong eye color (not red)
+  - generic attractive person
+  - warm smiling expression
+  - missing headband
+  - missing choker
+  - feminine dress or skirt
+  - bright colored outfit
+  - dark or natural hair colors
+  - ponytail or long styles
+  - neat styled hair
+  - heavy makeup
+  - soft feminine build
+  - exaggerated curves

@@ -1,0 +1,58 @@
+schema_version: 1.0.0
+character:
+  id: genshin_impact--characters--yelan
+  display_name: Yelan
+  aliases:
+  - Yelan
+  - 夜兰
+  - 夜兰 (Genshin Impact)
+  - Yelan (Genshin Impact)
+  source_title: Genshin Impact
+  adult_status: confirmed_adult
+  adult_source_basis: Genshin Impact default appearance
+  identity_summary: Mysterious intelligence operative with long dark blue hair, dark blue eyes, a blue
+    and black form-fitting outfit, dice motif accessories, Hydro Vision, and a sleek dark blue bow.
+  visual_anchors:
+  - long dark blue hair
+  - dark blue eyes
+  - blue and black form-fitting outfit
+  - dice motif accessories
+  - Hydro Vision
+  - mysterious aura
+  - fox-like shrewd gaze
+  - very dark blue hair, deep navy
+  - smooth sleek crown
+  - long side-swept covering one eye
+  - dark blue eyes, deep sapphire
+  - elegant oval face with sharp refined features
+  - tall slender feminine build, elegant
+  outfit_anchors:
+  - long dark blue hair
+  - dark blue eyes
+  - dark blue and black fitted outfit
+  - dice motif accessories and patterns
+  - translucent dark blue coat
+  - Dark blue and black fitted sleeveless top with high collar, translucent dark blue outer coat with
+    dice-pattern details, fitted dark pants, dark heeled boots, dice motif hair ornaments and belt, Hydro
+    Vision at side.
+  style_anchors:
+  - mysterious calm with subtle knowing smile
+  - mysterious knowing gaze
+  drift_guards:
+  - short hair
+  - light colored hair
+  - wrong eye color
+  - generic attractive person
+  - warm naive expression
+  - missing dice motif
+  - wrong face impression
+  - missing dark blue and black outfit
+  - missing translucent coat
+  - random outfit redesign
+  - modern casual clothes
+  - generic fantasy armor
+  - curly hair
+  - ponytail
+  - short stature
+  - clumsy posture
+  - muscular bulk

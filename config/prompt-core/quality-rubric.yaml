@@ -1,0 +1,431 @@
+version: 1
+purpose: Score generated images before delivery and decide whether to iterate.
+scale:
+  0: missing or broken
+  1: present but unusable
+  2: weak, needs major correction
+  3: acceptable draft
+  4: commercially usable
+  5: portfolio-grade
+minimum_delivery_score: 28
+minimum_single_dimension_score: 3
+dimensions:
+  intent_match:
+    weight: 1.2
+    checks:
+    - Image clearly serves the stated business or creative purpose.
+    - Audience, usage context, and visual tone match the brief.
+  subject_priority:
+    weight: 1.3
+    checks:
+    - Viewer sees the primary subject first.
+    - Face, product, or hero object is not competing with background FX.
+  composition:
+    weight: 1.1
+    checks:
+    - Framing is intentional and not accidentally cropped.
+    - Negative space is preserved when requested.
+    - Visual weight feels balanced with a clear focal path.
+    - Composition rule from Phase 2 (e.g., thirds, centered, leading_lines) is respected.
+    - Standing human frame ratio, headroom, footroom, crop points, and subject occupancy match the intended shot scale.
+    sub_scores:
+      subject_readability: "0-5"
+      visual_hierarchy: "0-5"
+      action_direction_clarity: "0-5"
+      framing_quality: "0-5"
+      background_support: "0-5"
+      balance_and_spacing: "0-5"
+      crop_quality: "0-5"
+      depth_layering: "0-5"
+      lighting_hierarchy: "0-5"
+      narrative_support: "0-5"
+    composition_minimums:
+      subject_readability: 3
+      visual_hierarchy: 3
+      crop_quality: 3
+      background_support: 3
+  lighting:
+    weight: 1.3
+    checks:
+    - Key light, fill, rim, and shadow direction are coherent.
+    - Lighting supports hierarchy instead of flattening the subject.
+    - Light quality (hard/soft) matches the approved lighting diagram modifier.
+    - Shadow transition and contrast ratio match Phase 2 exposure strategy.
+  material_realism:
+    weight: 1.1
+    checks:
+    - Skin, food, fabric, metal, glass, or product material reads correctly.
+    - Surface details are specific, not generic glossy texture.
+    - Bath towel scenes show opaque terry thickness, damp fabric weight, believable folds, and contact shadows rather than
+      paper-thin or painted-on fabric.
+    - After-bath towel scenes show wet hair, wet skin, slightly damp or wet towel contact zones, and heavier folds from absorbed
+      water unless a dry staged towel is explicitly requested.
+  anatomy_or_structure:
+    weight: 1.2
+    checks:
+    - Human hands, face, eyes, limbs, and proportions are plausible.
+    - Product geometry or architectural structure is stable.
+  human_structure_quality:
+    weight: 1.3
+    checks:
+    - Human figure reads as one coherent structure from head, neck, shoulders, ribcage, pelvis, legs, ankles, and feet.
+    - Visible hands have natural finger structure, wrist alignment, and believable contact with face, clothing, props, or
+      other bodies.
+    - Full-body or dynamic poses have clear support, center of gravity, joint alignment, and grounded feet.
+    - Camera angle and fashion/glamour styling do not create impossible proportions or broken body mechanics.
+    - Reclining or semi-reclined poses preserve a coherent ribcage-pelvis-thigh-knee-shin-foot direction chain.
+    - Bed/sofa poses show body weight through hip, thigh, knee, palm, elbow, or foot contact instead of floating limbs.
+    - Hand-supported torsos show a believable shoulder-elbow-wrist/palm load path.
+    - Pool-edge exit poses preserve palms pressing downward on pool coping, elbows bent down, and upper-body weight supported
+      by the ledge rather than overhead gripping or lifting.
+    - 'Towel-slip poses preserve wrap logic: one edge slips, another point remains anchored, and the towel edge occludes the
+      body without clipping or floating.'
+    - Visible adult anatomical landmarks, including nipples/areolae and requested adult external genital anatomy, are correctly
+      placed according to chest volume, pelvis orientation, perspective, and occlusion.
+  expression_gaze_realism:
+    weight: 1.2
+    checks:
+    - Gaze target is explicit and matches the scene action or viewer engagement intent.
+    - Eyes, eyelids, brows, mouth corners, jaw, and head angle support one coherent emotion.
+    - Portraits keep natural skin texture, believable catchlights, and subtle human asymmetry.
+    - No dead eyes, forced grin, doll face, cross-eyed look, or expression-action mismatch.
+  text_integrity:
+    weight: 1.2
+    checks:
+    - Requested exact text is preserved verbatim with correct spelling, capitalization, punctuation, language/script, and
+      line breaks when specified.
+    - Prompt does not contain broad no-text suppression when a title, logo, label, poster, cover, signage, or UI copy is requested.
+    - Typography hierarchy, safe placement, and no-extra-text rules are clear.
+    - Random letters, fake logos, duplicated captions, misspellings, and watermark-like marks are suppressed.
+  professional_photography_quality:
+    weight: 1.2
+    checks:
+    - Camera position, subject scale, perspective, and background depth are consistent.
+    - Lighting has a believable motivation, coherent shadow direction, and subject separation.
+    - Material response is specific and visible, such as skin texture, fabric weave, glass reflection, metal edge highlights,
+      or label clarity.
+    - Professional camera/lighting language appears as visible image effects rather than unrelated equipment jargon.
+  expert_visual_synthesis:
+    weight: 1.3
+    checks:
+    - Photography, composition, anatomy, wardrobe, fabric physics, lighting, and material rendering describe one coherent
+      image rather than separate style fragments.
+    - Clothing opening, fit, translucency, wetness, fold direction, and anchor points have visible physical causes.
+    - Skin realism includes refined pores, tone variation, natural specular response, and environmental wetness when relevant
+      without plastic gloss.
+    - 3D/lookdev quality is expressed through roughness, specular behavior, contact shadows, ambient occlusion, stable geometry,
+      and material-specific highlights.
+    - Motion or animation cues include a physical cause and preserve face, anatomy, text, and hero subject readability.
+  multi_subject_action_physics:
+    weight: 1.3
+    checks:
+    - Multi-person images preserve the requested subject count and keep each person visually distinct.
+    - A shared action has a clear source subject, contact point, force direction, and group reaction.
+    - Each subject has a readable role, gaze target, hand purpose, and expression variation.
+    - Foreground effects such as water, spray, smoke, confetti, or motion blur partially occlude subjects without hiding or
+      fusing hands, faces, or limbs.
+    - Pool or water-play scenes show one consistent water plane, foot support, waterline, ripples, foam, and leg occlusion.
+    - Wet clothing, swimwear, hair, and skin highlights match the action and environment.
+  automotive_motion_physics:
+    weight: 1.25
+    checks:
+    - A speeding vehicle has a clear travel direction, camera tracking method, and speed cue hierarchy.
+    - For panning shots, the car body, grille, headlights, and body panels remain crisp while wheels, road lines, and background
+      carry controlled motion blur.
+    - Tires visibly contact the road surface; wet-road spray originates from contact patches and moves outward/backward relative
+      to vehicle motion.
+    - Headlight beams follow the vehicle's forward direction and scatter through rain, mist, or spray without crossing the
+      car body as an unrelated spotlight.
+    - Wet asphalt reflections follow the road plane and perspective, not random mirror patches.
+    - Brand or model cues such as grille, headlights, stance, coupe/sedan proportion, and wheel geometry remain readable and
+      symmetrical.
+    - Negative prompts avoid broad blur suppression that removes intended panning, wheel rotation, rain streaks, or road-line
+      motion.
+  ensemble_character_quality:
+    weight: 1.3
+    checks:
+    - Each key person has a distinct face, hair silhouette, wardrobe silhouette, color accent, accessory motif, expression,
+      and pose role.
+    - Differences between subjects feel designed, not random or cloned.
+    - A shared camera angle, lighting color script, environment, wetness/foam physics, and material quality unify the group.
+    - Wide-angle selfie perspective creates depth without warping faces, enlarging hands unnaturally, or covering important
+      faces.
+    - Costume, jewelry, fabric, leather, metal, foam, wet hair, skin droplets, and background lights add richness without
+      burying faces.
+    - 'Foreground, midground, and background detail density is controlled: faces first, outfits second, environment third.'
+  character_ip_recognition:
+    weight: 1.35
+    checks:
+    - Matched character uses per-IP aliases, base profile, and enhanced profile rather than name repetition alone.
+    - Silhouette, hair identity, face impression, palette hierarchy, costume markers, signature props, and archetype behavior
+      remain recognizable.
+    - Forbidden drift terms cover generic replacement, wrong hairstyle, wrong palette, missing prop/emblem, wrong mood, and
+      wrong background/IP motif.
+    - Reinterpretation mode preserves identity markers while allowing the requested styling transformation.
+  character_detail_layer:
+    weight: 1.3
+    checks:
+    - Maturity status is source-confirmed or explicitly unknown; it is never inferred from appearance, wardrobe, or style.
+    - Face shape, feature relationships, gaze target, eyelid tension, and expression are mutually coherent.
+    - Hairline, parting, crown, bangs, side locks, back silhouette, and accessories preserve recognizable hair structure.
+    - Skin finish and makeup placement are material-specific and do not replace face identity.
+    - Body proportion, center of gravity, pose, hands, and prop contact remain anatomically supported.
+    - Temperament is visible through posture, gaze, camera relationship, lighting, and environment behavior.
+    - Canonical wardrobe remains opt-in and retains verified silhouette, construction, material, and significant markers when requested.
+    sub_scores:
+      maturity_certainty: "0-5"
+      facial_specificity: "0-5"
+      gaze_specificity: "0-5"
+      hair_silhouette: "0-5"
+      skin_makeup_specificity: "0-5"
+      body_proportion_coherence: "0-5"
+      pose_hand_coherence: "0-5"
+      temperament_expression: "0-5"
+      wardrobe_specificity: "0-5"
+  image2_benchmark_transfer:
+    weight: 1.25
+    checks:
+    - If the user provides or describes a stronger Image 2.0 result, the prompt extracts its design decisions rather than
+      copying surface adjectives.
+    - Scene transfer defines camera distance, camera height, shot scale, crop safety, depth planes, and subject occupancy
+      before decorative detail.
+    - Lighting transfer defines motivated light source, direction, quality, exposure balance, rim/practical accents, and
+      highlight behavior on skin, fabric, water, glass, metal, or paper.
+    - Subject transfer defines gaze, expression, identity markers, pose support, action contact, and occlusion rules instead
+      of relying on generic beauty or style terms.
+    - "Material transfer explains visible cause and effect: wetness, condensation, fabric tension, satin/metal reflection,
+      glass diffusion, water caustics, sand/splash particles, ink/watercolor paper texture, or mechanical/object surface logic."
+    - Background transfer defines specific environment anchors and depth role, so background detail supports rather than
+      competes with the subject.
+    - Editorial or publication outputs define layout grid, reading order, hero zone, information/support panels, title/caption
+      zones, and post-layout text strategy before decorative detail.
+    - Character identity remains locked through visual anchors such as hair silhouette, face impression, palette hierarchy,
+      outfit markers, props, and archetype instead of drifting into an unrelated genre or generic redesign.
+    - Vehicle, product, or mecha objects preserve geometry and complexity through explicit parts, panels, decals, joints,
+      suspension, seams, material layers, and readable silhouette.
+    - Environment context is specific and plausible for the requested scene, rather than an unrelated generic background
+      genre unless requested.
+    - Palette discipline is explicit; unwanted single-color takeover or unrequested lighting/style drift is suppressed when
+      it conflicts with the benchmark.
+    - Z Image prompts use targeted drift negatives such as unrelated genre drift, simplified generic hero object, broken
+      editorial grid, duplicate support panels, random text, and wrong material response when relevant.
+  selfie_semantics:
+    weight: 1.15
+    checks:
+    - Plain `selfie` or `自拍` is interpreted as selfie perspective shot, not automatic visible phone, mirror, selfie stick,
+      or camera rig.
+    - A visible phone, selfie stick, mirror selfie, GoPro, or vlog camera appears only when explicitly requested.
+    - Selfie perspective shows close front-camera framing, controlled wide-angle proximity, and readable face/expression detail.
+    - Foreground arm or hand, if used, explains camera proximity without covering faces or becoming oversized.
+    - For group selfies, face cluster geometry, staggered depth, and close-camera perspective are clear while all key faces
+      remain readable.
+    - If a visible device is requested, the device hand, screen/lens direction, reflection plane, and occlusion limits are
+      physically coherent.
+  commercial_usability:
+    weight: 1.0
+    checks:
+    - Image can be used in the requested channel with minimal cleanup.
+    - No unreadable AI text, distracting artifacts, or unwanted logos.
+  fashion_premium_quality:
+    weight: 1.3
+    checks:
+    - Material quality matches or exceeds premium tier: skin has refined texture, fabric reads as specific premium material (silk, leather, cashmere, lace), not generic cloth.
+    - Lighting has editorial intent: directional key with controlled shadow, not flat catalog lighting; rim or separation light defines silhouette.
+    - Color palette is restrained and purposeful: no accidental oversaturation, single hero accent color if any, muted background supporting garment.
+    - Composition shows editorial awareness: decisive silhouette hierarchy, generous or intentional negative space, subject occupies frame with purpose.
+    - No cheap visual artifacts: no plastic skin, no gaudy decoration, no blown-out highlights, no crushed blacks hiding fabric detail, no oversaturated cheap colors.
+    - Garment silhouette and fabric texture are fully readable in the final image.
+    - Skin quality, garment quality, and background quality share the same premium tier.
+    sub_scores:
+      material_premium_tier: "0-5"
+      lighting_editorial_intent: "0-5"
+      color_restraint: "0-5"
+      composition_fashion_hierarchy: "0-5"
+      anti_cheap_guard: "0-5"
+      garment_readability: "0-5"
+
+  short_prompt_expansion:
+    weight: 1.1
+    checks:
+    - If the original user prompt is short or fragmentary, the final prompt expands it into a complete image brief.
+    - Expansion preserves the user's subject, identity, brand, era, wardrobe, content category, and hard constraints.
+    - Expansion adds missing but necessary composition, lighting, material, background, atmosphere, output, and avoid details.
+    - Expansion does not expose internal config names, equipment lists, or raw YAML.
+    - Expansion does not over-constrain mature content beyond underage or childlike sexual
+      framing.
+  comfyui_three_stage_prompting:
+    weight: 1.2
+    checks:
+    - When the workflow is Flux.2 Dev -> Z-Image Base -> Z-Image Turbo, the output provides one shared positive prompt and
+      one Z-Image-only negative prompt.
+    - The shared positive prompt contains no negative syntax, failure terms, artifact terms, or avoid-list language.
+    - The shared positive prompt orders composition and subject locks before material microdetail and polish.
+    - The Z-Image negative prompt is task-specific and is not used to censor requested adult content.
+    - 'Flux.2 Dev usage is clear: shared positive only, no negative prompt.'
+  lighting_modelling:
+    weight: 1.2
+    checks:
+    - Light modifier quality (soft/hard/diffused/specular) matches the intent.
+    - Key-to-fill ratio produces the intended shadow depth.
+    - Rim/separation light creates depth without overexposure.
+    - Color temperature strategy (matched/mixed/gelled) is executed as planned.
+    - Shadows have intentional shape and falloff, not accidental flatness.
+  color_grading:
+    weight: 1.1
+    checks:
+    - Color palette matches the approved scheme (complementary, analogous, etc.).
+    - Dominant and accent colors are correct and serve hierarchy.
+    - Color temperature (warm/cool/neutral) is consistent with the grading intent.
+    - Saturation strategy (selective/muted/vibrant) is executed correctly.
+    - No unintended color casts in neutral areas (whites, grays, skin tones).
+  depth_and_atmosphere:
+    weight: 1.0
+    checks:
+    - Depth of field matches the aperture intent (shallow/deep/medium).
+    - Bokeh quality (creamy/swirly/clinical) is appropriate for the lens strategy.
+    - Focus plane is correct — intended subject element is sharp.
+    - Atmosphere (haze, volumetric, grain) is intentional, not accidental.
+    - Foreground/midground/background layers are visibly separated.
+  lens_intentionality:
+    weight: 0.9
+    checks:
+    - Focal length produces the intended compression or expansiveness.
+    - Perspective distortion (or lack thereof) matches the lens choice.
+    - Working distance feels appropriate for the subject type.
+    - Camera height (low/eye/high/overhead) produces the intended power dynamic.
+  exposure_strategy:
+    weight: 1.0
+    checks:
+    - Overall exposure matches the strategy (high_key/low_key/middle_key/etc.).
+    - Contrast ratio produces the intended mood without losing critical detail.
+    - Dynamic range handling is appropriate (HDR/natural/film_rolloff).
+    - Highlight and shadow detail are preserved where the brief requires them.
+  costume_marker_integrity:
+    weight: 1.2
+    checks:
+    - Costume silhouette, color blocking, emblem/crest or safe motif, signature accessory/prop, garment structure, and material
+      language are ranked and preserved.
+    - Cosplay, fashion reinterpretation, photoreal conversion, or brand collaboration does not erase the IP signal.
+    - Garment construction, opacity, wetness, and mature-tier handling remain physically plausible.
+  pose_contact_physics:
+    weight: 1.25
+    checks:
+    - Standing poses show support leg, center of gravity, foot contact, knee alignment, pelvis/shoulder counterbalance, and
+      ground shadow.
+    - Reclining poses show load-bearing contact points, pelvis/spine/leg direction chain, hand/elbow support, surface response,
+      and occlusion order.
+    - Soft supports show compression, wrinkle direction, fabric tension, contact shadows, and deformation at load points.
+    - Object-dependent actions align gaze, hands, body orientation, object placement, and light/reflection response.
+  camera_technical_quality:
+    weight: 1.0
+    checks:
+    - Tonal control preserves the requested mood without contradicting subject readability.
+    - Exposure protects the face, product, exact text, and critical costume markers when relevant.
+    - Highlight roll-off and shadow detail retain important material information.
+    - Lens perspective suits the subject, scene scale, and required spatial context.
+    - Depth of field keeps the intended subject plane sharp and the required background readable.
+    - Motion treatment makes action direction clear; critical faces and labels remain sharp.
+    - Noise or grain supports the requested realism level without degrading commercial clarity.
+    sub_scores:
+      tonal_control: "0-5"
+      exposure_readability: "0-5"
+      highlight_management: "0-5"
+      shadow_detail: "0-5"
+      lens_choice_appropriateness: "0-5"
+      dof_appropriateness: "0-5"
+      motion_handling: "0-5"
+      noise_texture_control: "0-5"
+hard_reject:
+- primary subject is missing or unrecognizable
+- prompt combines photography, fabric, anatomy, lighting, or render instructions that physically contradict each other
+- face is distorted or eyes are unusable in a portrait
+- hands are prominent and anatomically broken
+- visible adult anatomical landmarks are misplaced, duplicated, floating, or contradicted by towel/fabric/body occlusion
+- full-body person has broken balance, disconnected pelvis/legs, reversed feet, or impossible joint alignment
+- pool-edge support request becomes arms raised overhead, hanging from an overhead ledge, or lifting the pool edge
+- multi-person action effect has no visible source subject or contact point
+- group pool scene has source-less water splash, unreadable hands, floating feet, or inconsistent water depth
+- ensemble group image repeats the same face, same hairstyle, same outfit silhouette, or random duplicated accessories across
+  key subjects
+- wide-angle selfie has warped central faces, foreground hand covering faces, or no clear camera-holder logic
+- bath towel slip request produces floating towel fabric, cutout-like exposure, or towel clipping through the body
+- after-bath towel scene shows a completely dry towel despite wet skin, wet hair, or steamy post-shower context
+- shared positive prompt for a Flux/Z-Image three-stage workflow contains negative syntax or failure terms intended only for
+  Z Image
+- central portrait has dead eyes, forced expression, cross-eyed gaze, or gaze that contradicts the scene action
+- product shape or key product detail is wrong
+- requested exact text, logo, label, title, signage, or UI copy is missing, misspelled, randomly altered, or contradicted
+  by no-text instructions
+- requested title area is occupied by important visual noise
+- image contains unwanted text, watermark-like marks, or fake logos
+- output file is missing, empty, corrupted, or under 1 MB
+- recognizable character prompt resolves to generic attractive replacement
+- pose depends on unsupported or floating body contact
+- costume marker hierarchy is lost in reinterpretation
+delivery_rule:
+  pass: All hard_reject checks are false, every dimension is >= 3, and weighted total is >= minimum_delivery_score.
+  iterate: If one or two dimensions fail, run a targeted iteration changing only the failing dimensions.
+  restart: If subject, intent, or structure fails badly, rebuild the scene blueprint before regenerating.
+mature_tier_quality:
+  importance: high
+  description: Mature styling should preserve requested adult content while enforcing underage / childlike blocking.
+  checks:
+    - Is the mature tier correctly classified?
+    - Is requested adult mature or explicit content preserved?
+    - Is fabric visibility physically plausible?
+    - Is nipple/areola visibility supported by fabric/light/wetness/artistic context if present?
+    - Does the output avoid underage or childlike sexual framing?
+mature_tier_hard_rejects:
+  - underage or childlike sexual framing
+  - over-censoring that erases requested adult mature or explicit content
+
+adult_pose_quality:
+  importance: high
+  sub_scores:
+    adult_age_clarity: "0-5"
+    non_underage_or_childlike_presentation: "0-5"
+    pose_tier_match: "0-5"
+    body_line_beauty: "0-5"
+    physical_support: "0-5"
+    pelvis_leg_alignment: "0-5"
+    hand_intent_quality: "0-5"
+    lens_pose_compatibility: "0-5"
+    garment_pose_interaction: "0-5"
+    fabric_physics_plausibility: "0-5"
+    adult_intent_preservation: "0-5"
+  checks:
+    - Adult pose tier, body language, and visual intensity remain faithful to the request.
+    - Support leg, seated support, or reclining load path is visible and plausible.
+    - Pelvis, thighs, knees, shins, feet, torso, and camera angle form a coherent body chain.
+    - Each visible hand has an intentional gesture, grip, frame, or support function.
+    - Garment, wetness, strap, fabric tension, or body-paint behavior matches the pose and material.
+    - Perspective supports the pose without oversized feet, stretched limbs, or distorted facial proportions.
+
+adult_pose_hard_rejects:
+  - childlike adult content
+  - underage subject
+
+wardrobe_explicitness_quality:
+  importance: high
+  sub_scores:
+    explicit_wardrobe_compliance: "0-5"
+    no_auto_clothing_inference: "0-5"
+    upper_slot_correctness: "0-5"
+    lower_slot_correctness: "0-5"
+    underwear_auto_addition_control: "0-5"
+    swimwear_auto_addition_control: "0-5"
+    material_attached_only_to_existing_garments: "0-5"
+    context_inference_blocking: "0-5"
+  checks:
+    - Only wardrobe items explicitly stated in the original prompt appear.
+    - Unspecified upper, lower, underwear, swimwear, outerwear, wrap, towel, footwear, accessory, and body-paint slots remain unfilled.
+    - Rain, beach, pool, bedroom, boudoir, office, school, fashion, selfie, and character identity do not invent clothing.
+    - Fabric effects, seams, straps, waistbands, hems, and wet cling attach only to explicit garments.
+
+wardrobe_explicitness_hard_failures:
+  - upper clothing appears without explicit prompt
+  - lower clothing appears without explicit prompt
+  - underwear or swimwear appears without explicit prompt
+  - fabric wrap or towel appears without explicit prompt
+  - canonical character outfit appears without a canonical outfit or cosplay request
+  - wet fabric, seams, straps, or waistband appears with no explicit garment

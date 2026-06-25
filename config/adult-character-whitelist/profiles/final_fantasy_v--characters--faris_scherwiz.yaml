@@ -1,0 +1,58 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_v--characters--faris_scherwiz
+  display_name: Faris Scherwiz
+  aliases:
+  - Faris Scherwiz
+  - 法莉絲·薛維茲
+  - 法莉絲 (Final Fantasy V)
+  - Sarisa Scherwil (original Japanese)
+  source_title: Final Fantasy V
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy V default pixel art and GBA/remake portraits
+  identity_summary: Pirate captain with long vibrant purple hair, a black leather eyepatch over the left
+    eye, wearing a navy blue pirate coat over a white shirt, brown boots, and carrying a cutlass and whip.
+  visual_anchors:
+  - long vibrant purple hair
+  - black leather eyepatch over left eye
+  - navy blue pirate captain coat
+  - white ruffled shirt beneath
+  - brown leather boots
+  - cutlass at hip
+  - vibrant purple hair
+  - light brown visible eye
+  - vibrant medium purple
+  - voluminous wavy crown
+  - sweeping asymmetrical side fringe
+  - light brown
+  - angular oval face with strong jawline
+  - athletic lean with wiry strength
+  outfit_anchors:
+  - long wavy purple hair
+  - black leather eyepatch over left eye
+  - navy blue pirate coat
+  - white ruffled shirt
+  - brown leather boots
+  - Pirate captain with long wavy purple hair, black leather eyepatch, navy blue pirate coat over white
+    ruffled shirt, brown belt with gold buckle, brown leather boots, cutlass at hip, whip coiled at belt.
+  style_anchors:
+  - bold, assertive calm
+  - bold and direct
+  drift_guards:
+  - short bob or cropped hair
+  - pink or unnatural non-purple hair
+  - missing eyepatch
+  - wrong eye color
+  - generic attractive person
+  - wrong face impression
+  - missing long purple hair
+  - missing navy blue pirate coat
+  - modern casual outfit
+  - random fantasy armor
+  - short cropped hair
+  - pink or red hair
+  - straight flat ironed hair
+  - drawn-up tight bun
+  - fragile delicate frame
+  - exaggerated hourglass proportions
+  - stiff mannequin posture

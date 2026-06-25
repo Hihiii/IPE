@@ -1,0 +1,1277 @@
+# =============================================================================
+# CORE KNOWLEDGE — consolidated essential rules for prompt enhancement
+# Purpose: Single always-loaded knowledge base replacing ~80 baseline config files.
+#
+# LOAD ORDER — Multi-Tier Loading:
+#   Phase 0:
+#     1. Tier S — config/core-knowledge.yaml    ← this file (always) — includes
+#        former PC-1 Foundation (semantic-priority-rules, subject-rules,
+#        output-specs) merged inline to reduce file reads.
+#     2. Tier M — config/_manifest.yaml         ← TOC + triggers (always)
+#     3. Tier I — character-ip index files      ← only if character detected
+#     4. Tier D+R — lazy-load from manifest     ← only when triggers match
+#     5. Tier P + PC-2 — NOT loaded yet         ← loaded JIT before each phase
+#
+# Do NOT load visual-cinematography/*.yaml, prompt-core/*.yaml,
+# or other specialized configs unless a trigger in _manifest.yaml fires.
+# Do NOT load skill-phase-*.yaml or PC-2 phase-bound files during Phase 0.
+# =============================================================================
+
+# Runtime-only phase-0 router. This is deliberately small: it selects RuleNodes
+# and deferred references; it is not a substitute for any phase-specific leaf.
+decision_pre_filter:
+  schema_version: "1.0.0"
+  purpose: "High-recall request classification before agent-visible leaf materialization."
+  required_decisions: [subject_kind, task_mode, safety_route, character_lookup, material_route, camera_route, style_route, pose_route, exposure_route]
+  feature_markers:
+    image_edit: [edit, revise, repair, replace, "change only", "reference image", "source image"]
+    named_character: [whitelist, "named character", "canonical character", "character profile"]
+    adult_human_scene: [adult, woman, man, human, humanoid, character, person, nude, nsfw]
+    dynamic_action_or_interaction: [motion, dynamic, turning, impact, peak, action, interaction, pose, movement, duo, pov, bdsm]
+    material_or_environment_response: [wet, damp, water, steam, rain, silk, latex, fabric, bedding, glass, reflective, moisture]
+    scene_and_visual_enrichment: [scene, interior, exterior, street, room, balcony, bathroom, shower, bedroom, environment]
+    visual_cinematography: [camera, lighting, light, portrait, wide, close-up, composition, cinematic]
+    style_realism: [anime, illustration, cel-shaded]
+    standing_pose: [standing, "stand ", "standing pose"]
+    seated_pose: [seated, sitting, "sit ", "on a sofa", "on a chair"]
+    reclining_pose: [reclining, lying, "lying down", "on bedding", "on a bed"]
+  deferred_reference_rule: "Activate every catalog reference_only source whose activate_when intersects the packet features, exactly at materialize_at_phase."
+  character_rule: "Use the runtime resolver sidecar for exact normalized alias lookup; do not load aliases or profile paths into agent context."
+
+core_knowledge:
+  version: "1.0"
+  updated: "2026-06-21"
+  # The `satisfies` list declares which baseline configs this file partially
+  # covers. The receipt validator uses this to satisfy SATISFIED_BY_CORE
+  # baselines when their full content is not needed. Only list files whose
+  # ESSENTIAL rules this file actually contains in condensed form.
+  #
+  # IMPORTANT: PC-1 Foundation (semantic-priority-rules.yaml, subject-rules.yaml,
+  # output-specs.yaml) content is now merged directly into this file below.
+  # These files no longer exist as separate entities — their full content is
+  # available in the "PC-1 FOUNDATION" sections at the end of this file.
+  # This file does NOT adequately replace:
+  #   - quality-rubric.yaml (0% coverage — Phase 4 JIT loaded)
+  #   - failure-taxonomy.yaml (0% coverage — Phase 4 JIT loaded)
+  #   - prompt-assembly-schema.yaml (0% coverage — Phase 3.1 JIT loaded)
+  #   - prompt-renderer.yaml (0% coverage — Phase 4.2 JIT loaded)
+  # These files are tracked via direct read_records, not via satisfies.
+  satisfies:
+    - config/prompt-core/task-profiles.yaml       # core has 5 task_goal_defaults (~15%)
+    - config/prompt-core/constraints-library.yaml  # core has 3 constraint tiers (~5%)
+  replaces_baseline:  # LEGACY — kept for reference; actual coverage varies
+    - config/visual-cinematography/composition-decision-engine.yaml
+    - config/visual-cinematography/visual-hierarchy-system.yaml
+    - config/visual-cinematography/shot-taxonomy.yaml
+    - config/visual-cinematography/crop-safety-rules.yaml
+    - config/character-identity/human-anatomy-guardrails.yaml
+    - config/character-identity/explicit-wardrobe-policy.yaml
+    - config/visual-cinematography/selfie-perspective-disambiguation.yaml
+    - config/safety-mature/mature-content-control.yaml
+    - config/visual-cinematography/lighting-diagrams.yaml          # translations only
+    - config/visual-cinematography/camera-lens-library.yaml         # translations only
+    - config/visual-cinematography/visual-richness-narrative-depth.yaml
+    - config/character-identity/anti-boring-pose-system.yaml # tier + rules
+
+# ===========================================================================
+# 1. PRIORITY CHAIN (from semantic-priority-rules.yaml)
+# ===========================================================================
+
+priority_chain:
+  description: "Conflict resolution hierarchy. No aesthetic enrichment overrides a higher-priority constraint."
+  order:
+    - tier: 1
+      priority: 100
+      name: "使用者意圖 (user_explicit_constraints)"
+      rule: "Never overwrite explicit user intent with aesthetic enrichment."
+    - tier: 2
+      priority: 99
+      name: "安全邊界 (safety / age_safety_boundary)"
+      rule: "Only block underage/childlike sexual framing. Preserve adult content."
+    - tier: 3
+      priority: 98
+      name: "任務模式 / 編輯鎖 (task_mode / identity_and_edit_locks)"
+      rule: "For edit/reference tasks, change only requested attributes."
+    - tier: 4
+      priority: 97
+      name: "主體核心定義 (subject_identity)"
+      rule: "The named subject is the primary anchor — action, framing, and scene serve it."
+    - tier: 5a
+      priority: 96
+      name: "明確動作 (explicit_user_action)"
+      rule: "Preserve requested action and required hand/prop/food visibility."
+    - tier: 5b
+      priority: 95
+      name: "明確鏡頭 / 構圖 / 裁切 (explicit_camera_or_framing)"
+      rule: "Preserve crop, selfie, close-up. Never widen for costume completion."
+    - tier: 5c
+      priority: 94
+      name: "明確場景 (explicit_scene_context)"
+      rule: "Preserve location, furniture, table setting, interaction objects."
+    - tier: 6
+      priority: 93
+      name: "姿勢設計 / 防僵硬 (pose_design / anti_boring)"
+      rule: "Every pose needs a reason — weight shift, asymmetry, hand purpose, gaze intention. Fix stiff symmetry before adding identity or clothing details."
+    - tier: 7
+      priority: 92
+      name: "角色身分 / 外觀 / 服裝 (character_ip / outfit)"
+      rule: "Preserve silhouette, hair, palette, costume markers, signature props."
+    - tier: 8
+      priority: 91
+      name: "解剖 / 結構 / 物理一致性 (anatomy / physical_structure)"
+      rule: "Joint logic, balance, hands, product geometry, architecture perspective."
+    - tier: 9
+      priority: 90
+      name: "畫面文字 / 標示內容 (exact_text / brand_copy)"
+      rule: "Preserve spelling, capitalization, punctuation, brand marks."
+    - tier: 10
+      priority: 88
+      name: "構圖可讀性 / 視覺層級 (composition / visual_hierarchy)"
+      rule: "Hero-first hierarchy, title-safe area, unobstructed face."
+    - tier: 11
+      priority: 85
+      name: "畫面豐富度 / 敘事層次 (visual_richness / narrative_depth)"
+      rule: "Controlled foreground/midground/background layering supports subject; do not add unrelated props, text, or characters."
+    - tier: 12
+      priority: 82
+      name: "燈光 / 材質 (lighting / material)"
+      rule: "Professional photography supports subject; avoid equipment jargon."
+    - tier: 13
+      priority: 70
+      name: "風格 / 氛圍 (style / mood)"
+      rule: "Applied last; remove/soften when conflicting with higher priorities."
+
+  conflict_prevention_stack:
+    - "P100 explicit_user_constraints"
+    - "P99  age_safety_boundary"
+    - "P98  identity_and_edit_locks"
+    - "P97  subject_identity"
+    - "P96  explicit_user_action"
+    - "P95  explicit_camera_or_framing"
+    - "P94  explicit_scene_context"
+    - "P93  pose_design_and_anti_boring"
+    - "P92  character_ip_identity_anchors"
+    - "P91  anatomy_and_physical_structure"
+    - "P90  exact_text_and_brand_copy"
+    - "P88  composition_and_readability"
+    - "P85  visual_richness_and_narrative_depth"
+    - "P82  lighting_material_and_camera_quality"
+    - "P70  style_mood_and_polish"
+
+  user_intent_execution_order:
+    - subject_identity
+    - explicit_user_action
+    - explicit_camera_or_framing
+    - explicit_scene_context
+    - pose_design_and_anti_boring
+    - character_identity
+    - visible_character_signature_details
+    - full_outfit_details_only_if_explicitly_requested
+    - visual_richness_layering
+    - optional_aesthetic_enhancement
+
+# ===========================================================================
+# 2. PHASE EXECUTION CONTRACT (from phase-execution-contract.yaml)
+# ===========================================================================
+
+phase_execution_contract:
+  mode: "audited_non_skippable"
+  phase_sequence:
+    - phase_0_config_resolution
+    - phase_1_intent_analysis
+    - phase_2_cinematic_enrichment
+    - phase_3_scene_blueprint
+    - phase_3_1_prompt_package
+    - phase_4_self_review
+    - phase_4_1_cleanup
+    - phase_4_2_renderer_selection
+    - phase_4_3_delivery_package
+    - phase_5_final_output
+
+  core_rules:
+    - "Run every phase in sequence. A phase may produce no changes but may not be omitted."
+    - "Read fixed baseline configs (core-knowledge.yaml + _manifest.yaml) before deciding relevance."
+    - "Read every YAML selected by direct user cues, matched router, or transitive dependency."
+    - "A selected config is complete only when the receipt records the visible fields or guardrails applied."
+    - "Do not enumerate or load every YAML in a domain merely to discover relevance."
+
+  phase_0_config_resolution:
+    mandatory_baseline:
+      - config/core-knowledge.yaml       # Tier S (includes full PC-1 Foundation merged inline)
+      - config/_manifest.yaml            # Tier M
+      - config/prompt-core/phase-execution-contract.yaml  # baseline contract
+    required_actions:
+      - "Tier S: Read core-knowledge.yaml (this file) — all essential rules + full PC-1 Foundation content merged inline."
+      - "Tier M: Read config/_manifest.yaml — lightweight TOC with triggers, policies, phase bindings."
+      - "Tier P: DO NOT load skill-phase-*.yaml during Phase 0. These are loaded JIT before each phase."
+      - "Tier I: Assess context first. Is character IP resolution genuinely needed? Only load character-ip indexes if the character is the main subject and IP-accurate identity matters. Do NOT load for casual name drops, style comparisons ('like Naruto-style'), or passing references. If needed: read character-ip index, then load only matched character tree."
+      - "Tier D + R: If manifest triggers match: lazy-load only those triggered YAMLs."
+      - "Create the internal phase_execution_receipt before Phase 1 begins."
+    prohibited:
+      - "Do not load visual-cinematography/*.yaml, prompt-core/*.yaml, or other specialized configs unless a trigger condition from _manifest.yaml fires."
+      - "Do not enumerate or load every YAML to discover relevance."
+      - "Do not load skill-phase-*.yaml during Phase 0 (Tier P — loaded JIT before each phase)."
+
+# ===========================================================================
+# 3. CONSTRAINT TIERS (from constraints-library.yaml)
+# ===========================================================================
+
+constraint_tiers:
+  hard_lock:
+    priority: 100
+    meaning: "Cannot be changed, softened, stylized, cropped, obscured, or replaced."
+    examples: ["same face", "logo must stay exact color", "no door handle", "full body feet visible"]
+  required_feature:
+    priority: 95
+    meaning: "Must appear clearly and remain readable, but may be aesthetically integrated."
+    examples: ["specific prop", "brand name", "glass panels", "sword"]
+  forbidden_element:
+    priority: 95
+    meaning: "Must not appear unless user explicitly requests later."
+    examples: ["no watermark", "no extra text", "no people"]
+
+# ===========================================================================
+# 4. COMPOSITION DECISION ORDER (from composition-decision-engine.yaml)
+# ===========================================================================
+
+composition_decision_order:
+  description: "14-step decision sequence for framing before style/detail polish. Camera relationship and shot scale are resolved early because gaze/action and layout depend on knowing the viewer's perspective and frame boundaries."
+
+  background_vs_negative_space_order:
+    description: "Conditional swap based on task type. Background role and negative space have a bidirectional dependency — the correct order depends on whether the background carries information responsibility."
+    publication_mode:
+      when: ["magazine_cover", "poster", "UI", "banner", "brand_ad", "publication", "cover", "text_overlay"]
+      order: ["determine_background_role", "determine_negative_space_policy"]
+      logic: "Background has information-carrying responsibility first (title-safe zone, cover-line columns). Negative space then serves the background's layout needs."
+    subject_mode:
+      when: ["portrait", "product_scene", "character", "action", "fashion", "architecture", "landscape", "food", "vehicle", "selfie"]
+      order: ["determine_negative_space_policy", "determine_background_role"]
+      logic: "Breathing room and visual pacing are set first. Background then conforms to the established negative space and composition rhythm."
+
+  steps:
+    - "1. determine_story_goal_and_image_use      — task type, output medium, first-read intent"
+    - "2. identify_primary_subject                  — who or what is the hero"
+    - "3. identify_secondary_subject                — additional subjects, props, or interaction partners"
+    - "4. determine_visual_hierarchy                — first/second/third read order; what wins attention"
+    - "5. determine_camera_relationship             — viewer engagement (observational/immersive/over-the-shoulder/selfie/POV)"
+    - "6. determine_camera_distance_and_shot_scale  — frame size (ECU/CU/bust/waist/half/3/4/full/wide/EWS)"
+    - "7. determine_crop_policy                     — safe-zone constraints: headroom, fingertips, joints, product edges, text area"
+    - "8. determine_gaze_action_flow                — gaze direction, action vector, lead room (now has camera context)"
+    - "9. determine_frame_layout                    — rule of thirds / centered / diagonal / golden ratio / symmetry / leading lines"
+    - "10a/11a. determine_background_role → determine_negative_space_policy   ← publication/poster/UI tasks"
+    - "10b/11b. determine_negative_space_policy → determine_background_role   ← portrait/product/scene tasks"
+    - "12. determine_depth_layers                   — foreground / midground / background / atmosphere"
+    - "13. determine_light_hierarchy                — key / fill / rim / separation / practical motivation"
+    - "14. determine_visual_balance                 — visual weight, counterbalance, asymmetry check"
+    - "+ apply_failure_guardrails"
+
+  task_goal_defaults:
+    character_portrait:
+      goal: "portrait_priority"
+      first_read: ["face", "eyes"]
+      frame: "medium close-up or half-body, eye-level"
+      background: "readable_secondary"
+    magazine_cover:
+      goal: "publication_layout"
+      first_read: ["title or face", "costume markers"]
+      frame: "medium to full-body with cover-safe zones"
+      background: "text_safe"
+    selfie:
+      goal: "viewer_engagement"
+      first_read: ["faces", "eyes", "expression"]
+      frame: "close wide-angle face cluster"
+      background: "readable_secondary"
+    product_ad:
+      goal: "product_priority"
+      first_read: ["product_shape", "label_or_logo", "material_highlight"]
+      frame: "close-up or medium hero"
+      background: "minimal or product_support"
+    architecture_shot:
+      goal: "world_scale"
+      first_read: ["geometry", "scale_cue", "light_path"]
+      frame: "wide with level verticals"
+      background: "worldbuilding_support"
+
+# ===========================================================================
+# 5. VISUAL HIERARCHY (from visual-hierarchy-system.yaml)
+# ===========================================================================
+
+visual_hierarchy:
+  core_principle: "A strong image has a planned first read. Face, eyes, product/logo, action target, or title must win the first second of attention."
+
+  first_read:
+    general_human: ["face", "eyes", "expression", "gesture", "silhouette"]
+    character_ip: ["face_and_hair_silhouette", "eyes_or_signature_expression", "signature_prop", "costume_marker", "palette_hierarchy"]
+    product: ["product_shape", "label_or_logo", "hero_material_highlight", "usage_context"]
+    action: ["action_subject", "action_target", "force_direction", "reaction_or_result"]
+    publication: ["masthead_or_title", "hero_subject", "support_copy_or_panel", "background_context"]
+
+  second_read:
+    - body_language
+    - main_action_target
+    - secondary_prop
+    - garment_or_material_detail
+    - environment_anchor
+
+  third_read:
+    - worldbuilding
+    - background_crowd
+    - decorative_atmosphere
+    - particles
+    - secondary_text
+
+  priority_controls:
+    face_priority: "Face remains the brightest/sharpest human focal area. Eyes have clean catchlights."
+    bright_focal_area: "Brightest area supports first-read target unless intentional silhouette."
+    high_contrast: "Highest contrast belongs to subject, title, or action target."
+    saturated_accent: "Use accent color as guide; prevent accent takeover."
+    action_target: "Action target must be visible or implied by gaze/body/lead room."
+    typography_suppression: "Suppress random text, fake logos unless text is part of task."
+    background_suppression: "Reduce background contrast/saturation/sharpness when competing with subject."
+
+  failure_guardrails:
+    - "first read is unclear"
+    - "background contrast exceeds subject contrast"
+    - "accent color dominates the whole image"
+    - "text appears when not requested"
+    - "action target is missing or visually weak"
+
+# ===========================================================================
+# 6. SHOT TAXONOMY (from shot-taxonomy.yaml)
+# ===========================================================================
+
+shot_taxonomy:
+  description: "Standard frame sizes. Choose exactly one dominant shot size."
+
+  types:
+    extreme_close_up:
+      crop: "tiny feature fills frame"
+      best_for: ["eyes", "lips", "jewelry", "macro texture"]
+      guardrails: "identity may be lost; use only when micro-detail matters"
+    close_up:
+      crop: "face or hero object fills frame"
+      best_for: ["beauty_portrait", "emotional_scene", "cosmetic_ad", "product_label"]
+      guardrails: "forehead and chin inside frame; eyes not too close to edge"
+    bust_portrait:
+      crop: "head, shoulders, upper chest"
+      best_for: ["character_portrait", "profile_image", "cosplay_portrait"]
+      guardrails: "neck and shoulders natural; hands only if intentionally posed"
+    waist_up:
+      crop: "head to waist"
+      best_for: ["fashion_editorial", "lifestyle_portrait", "cinematic_portrait"]
+      guardrails: "crop at or below waist; hands fully readable if included"
+    half_body:
+      crop: "head to mid-thigh"
+      best_for: ["fashion_campaign", "character_poster", "social_cover"]
+      guardrails: "avoid cutting through joints"
+    three_quarter_body:
+      crop: "head to knees/lower legs"
+      best_for: ["fashion_editorial", "action_pose", "cosplay_poster"]
+      guardrails: "do not cut through knees/wrists/fingers"
+    full_body:
+      crop: "head to toe"
+      best_for: ["character_design", "fashion_lookbook", "cosplay_poster"]
+      guardrails: "headroom above hair; feet fully inside; ground contact visible"
+    wide_shot:
+      crop: "subject in readable environment"
+      best_for: ["environmental_portrait", "travel", "cinematic_scene"]
+      guardrails: "subject remains identifiable as hero"
+    extreme_wide:
+      crop: "environment dominates; subject small"
+      best_for: ["cityscape", "fantasy_world", "establishing_shot"]
+      guardrails: "use only when environment is hero; not for outfit/expression/text"
+    over_the_shoulder:
+      crop: "foreground shoulder frames main subject"
+      best_for: ["dialogue", "mirror_scene", "reaction_shot"]
+      guardrails: "foreground frames, not covers; avoid extra heads/hands"
+
+  shot_conflict_resolution:
+    - "If user names a shot size, it overrides task default. Add guardrails only."
+    - "Full outfit request + close-up: prefer three-quarter body with face-readable lighting."
+    - "Product label + shallow depth: use balanced depth; keep label plane sharp."
+    - "Full body + 9:16 vertical: center or one-third; leave headroom and footroom."
+
+# ===========================================================================
+# 7. CROP SAFETY (from crop-safety-rules.yaml)
+# ===========================================================================
+
+crop_safety:
+  core_principle: "Cropping should feel intentional. Avoid accidental cuts at joints, fingertips, feet, product edges, and text."
+
+  avoid_crop_points:
+    human:
+      - neck_center
+      - wrist
+      - elbow
+      - knee
+      - ankle
+      - fingertips
+      - toes
+      - mid-face
+      - top_of_head_too_tight
+
+  conditional_rules:
+    if_full_body: "feet visible; headroom and footroom"
+    if_half_body: "avoid cutting at elbows, wrists, fingertips"
+    if_close_portrait: "allow head crop if intentional; eyes readable"
+    if_fashion_crop: "allow mid-thigh crop; top of hair if face remains elegant"
+
+# ===========================================================================
+# 8. LIGHTING TRANSLATIONS (from lighting-diagrams.yaml)
+# ===========================================================================
+
+lighting_translations:
+  core_rule: "Describe what light does to the subject, not the physical tool. Never use equipment names in final prompt."
+
+  equipment_to_visible_effect:
+    octabox_90cm: "large soft diffused key light with smooth shadow transition and rounded catchlights"
+    octabox_120cm: "broad wrap-around soft light with barely visible shadow edge"
+    small_softbox: "controlled soft directional light with compact smooth highlights"
+    strip_softbox: "narrow elongated edge highlight tracing subject contour"
+    beauty_dish: "glamorous semi-soft frontal light with crisp cheek highlights"
+    bare_bulb: "hard directional light with sharp shadow edges and strong specular highlights"
+    v_flat_bounce: "soft bounced fill gently opening shadow side without flattening contrast"
+    black_flag: "controlled shadow side with rich negative fill and sculpted contrast"
+    grid_or_snoot: "focused pool of light with minimal spill and controlled falloff"
+    practical_lamp: "warm practical lamp glow motivating the scene light"
+    window_light: "soft directional daylight entering from window with natural shadow falloff"
+    neon_sign: "colored neon glow casting cyan/magenta rim light on wet reflective surfaces"
+    ring_light: "even shadowless frontal light with circular catchlights in the eyes"
+
+  forbidden_equipment_terms:
+    - octabox
+    - softbox
+    - stripbox
+    - V-flat
+    - C-stand
+    - beauty dish
+    - snoot
+    - grid
+    - flag
+    - barn doors
+    - strobe
+
+  allowed_terms_when: "behind_the_scenes, studio_setup_diagram, photography_education, equipment_product_shot"
+
+# ===========================================================================
+# 9. LENS TRANSLATIONS (from camera-lens-library.yaml)
+# ===========================================================================
+
+lens_translations:
+  core_rule: "Use focal length only when it locks composition; otherwise describe visible effect. Never stack incompatible lens cues."
+
+  focal_length_to_effect:
+    ultra_wide_10_14mm: "expansive ultra-wide perspective, exaggerated foreground scale, strong converging lines"
+    wide_16_35mm: "wide environmental framing with clear subject context, moderate perspective depth"
+    standard_35_50mm: "natural human-eye perspective, balanced proportions, believable spatial depth"
+    short_tele_85_105mm: "flattering portrait compression, softly separated background, natural face proportions"
+    medium_tele_135_200mm: "strong telephoto compression, flattened background, elegant subject isolation"
+    super_tele_300_800mm: "extreme distant compression, stacked background layers, isolated subject"
+
+  aperture_to_depth:
+    f_1_2_to_1_4: "extremely shallow depth, razor-sharp eyes, creamy background melt"
+    f_1_8_to_2_8: "shallow depth, strong subject separation, face crisp, background softly blurred"
+    f_4_to_5_6: "balanced depth, subject sharp with gentle background falloff"
+    f_8_to_11: "deep focus, architecture and spatial layers sharp across frame"
+
+  compression_clusters:
+    portrait: "flattering short-telephoto portrait compression"
+    wide_environment: "wide environmental perspective"
+    architecture: "controlled architectural perspective with straight verticals"
+    shallow_depth: "shallow depth with soft background separation"
+    deep_focus: "deep-focus clarity across the scene"
+
+# ===========================================================================
+# 10. ANATOMY GUARDRAILS (from human-anatomy-guardrails.yaml)
+# ===========================================================================
+
+anatomy_guardrails:
+  core_principle: "Human anatomy quality is structure, not decoration. Use positive guardrails before negative prompts."
+
+  global_rules:
+    - "For full-body or lower-body-visible poses: specify pelvis, hip-to-thigh, knee, leg proportion, foot grounding."
+    - "For dynamic poses: specify the support leg and center of gravity."
+    - "Avoid: impossible balance, disconnected thighs, warped pelvis, twisted knees, mismatched leg lengths."
+    - "Hands: each visible hand has five fingers; finger lengths taper naturally; wrist matches forearm angle."
+    - "Hands and fingers require explicit natural gesture logic when near face, product, weapon, or clothing."
+
+  zone_requirements:
+    pelvis_hips:
+      - "pelvis volume structurally believable"
+      - "hip joints located plausibly"
+      - "pelvis rotation matches torso and leg placement"
+    upper_thighs:
+      - "femurs originate from plausible hip positions"
+      - "upper-thigh direction follows pelvis rotation"
+      - "glute-to-thigh connection remains smooth"
+    knees:
+      - "knee direction follows thigh rotation"
+      - "knees at believable height"
+      - "knee bend remains plausible"
+    feet_ankles:
+      - "support foot feels planted"
+      - "ankle aligns with support leg"
+      - "feet not floating or sliding"
+
+# ===========================================================================
+# 11. WARDROBE POLICY (from explicit-wardrobe-policy.yaml)
+# ===========================================================================
+
+wardrobe_policy:
+  core_rule: "Wardrobe items must be explicitly requested. Unspecified slots remain absent."
+  rules:
+    - "style, context, weather, or character identity cannot invent garments"
+    - "renderer default modesty cannot override prompt absence"
+    - "if item explicitly present: slot_state = worn"
+    - "if item explicitly absent: slot_state = absent; add conflict negatives"
+    - "if item unspecified: slot_state = unspecified_absent_by_default; do NOT auto-add"
+  no_context_inference_for: [rain, wet_scene, beach, pool, bedroom, boudoir, school, office, fashion_editorial, selfie]
+  applies_to_slots: [headwear, upper_body, bra_or_inner_top, outerwear, lower_body, underwear_bottom, swimwear, legwear, footwear, accessories, fabric_wrap, towel_wrap, body_paint]
+
+# ===========================================================================
+# 12. SELFIE RULES (from selfie-perspective-disambiguation.yaml)
+# ===========================================================================
+
+selfie_rules:
+  core_principle: "Selfie is camera relationship first. Phone, mirror, and selfie stick are explicit prop actions."
+
+  default_mapping:
+    "selfie": selfie_perspective
+    "自拍": selfie_perspective
+
+  selfie_perspective:
+    phone_visible: false
+    mirror_required: false
+    prop_required: false
+    renderer_positive: [front_facing_arm_length_camera_pov, intimate_near_camera, near_side_forearm_enters_from_frame_edge, camera_beyond_crop, subject_looking_into_lens, close_half_body_or_three_quarter]
+    renderer_negative: [visible_smartphone, holding_phone, selfie_stick, mirror_selfie, phone_covering_face, external_observer_full_body_view]
+
+  explicit_triggers:
+    phone_selfie:
+      triggers: [holding_phone, visible_phone, phone_in_hand, taking_selfie_with_phone, "拿手機自拍", "手機入鏡"]
+      require: [phone_visible, hand_phone_contact, finger_grip]
+    mirror_selfie:
+      triggers: [mirror_selfie, bathroom_mirror_selfie, "對鏡自拍", "鏡中自拍"]
+      require: [mirror_visible, phone_visible, reflection_logic]
+    selfie_stick:
+      triggers: [selfie_stick, "自拍棒"]
+      require: [selfie_stick_visible, hand_stick_contact]
+
+  cleanup_rule: "If selfie without explicit prop trigger: remove phone, mirror, selfie_stick. Keep camera relationship only."
+
+# ===========================================================================
+# 13. AGE SAFETY (from mature-content-control.yaml)
+# ===========================================================================
+
+age_safety:
+  core_principle: "Only underage/childlike sexual framing is blocked. Adult nudity, adult genital visibility, gore — preserve when requested."
+
+  hard_restrictions: [underage, childlike, youth_coded]
+  unrestricted_adult_content: [adult_nudity, adult_genital_visibility, adult_sexual_actions, blood_and_gore]
+
+  tiers:
+    mature_tier:
+      values: [neutral, sensual_glamour, implied_contour, plausible_translucency, adult_nude, explicit_adult_content, minor_blocked]
+    body_visibility:
+      values: [none, cleavage, implied_form, faint_silhouette, nude_form, explicit_adult, minor_blocked]
+
+  global_rules:
+    - "Do not suppress, downshift, or replace requested adult content."
+    - "Separate sensual mood, cleavage, implied contour, translucency, adult nude, and explicit into different tiers."
+    - "Adult genital exposure, sexual acts, nudity, and gore are NOT blocked by this module."
+    - "When sensual framing is present, require adult/21+/mature adult wording."
+
+# ===========================================================================
+# 14. OUTPUT FORMAT (from output-specs.yaml)
+# ===========================================================================
+
+output_format:
+  aspect_ratios:
+    square_1x1: { safe_zone: "center 80%" }
+    landscape_16x9: { safe_zone: "content within center 90%" }
+    portrait_4x5: { notes: "Standard print ratio" }
+    portrait_2x3: { notes: "Classic 35mm film ratio" }
+    cinematic_235x1: { notes: "Anamorphic widescreen" }
+    story_9x16: { safe_zone: "subject in top 60%, bottom 40% clear for UI" }
+    transparent_png: { notes: "No background lighting or environment" }
+
+  resolution_defaults:
+    chatgpt_image: { square: "1024x1024", portrait: "1024x1536", landscape: "1536x1024" }
+    z_image_turbo: { square: "1024x1024", portrait: "832x1216", landscape: "1216x832" }
+    stable_diffusion: { square: "1024x1024", portrait: "832x1216", landscape: "1216x832" }
+    midjourney: { use: "--ar flags" }
+
+# ===========================================================================
+# 15. PROMPT PHRASES — commonly usable template fragments
+# ===========================================================================
+
+prompt_phrases:
+  first_read_face: "face and eyes are the clear first-read focal point; background detail stays secondary"
+  first_read_product: "product silhouette and label are the strongest first read; support props remain lower contrast"
+  first_read_action: "the viewer reads the action direction immediately; action target remains visible"
+  first_read_title: "large clean title zone with clear hierarchy; subject placement supports readable typography"
+
+  safe_full_body: "full-body framing with headroom and feet visible"
+  safe_hands: "hands fully visible with fingertips inside the frame"
+  intentional_close_crop: "intentional close crop with eyes and expression fully readable"
+
+  anatomy_full_body: "realistic full-body anatomy, coherent pelvis, natural hip-to-thigh connection, grounded stance"
+  anatomy_one_leg: "weight balanced over planted support leg, free leg non-load-bearing, grounded foot contact"
+
+  no_watermark: "no watermark, logo stamp, or branding overlay"
+  no_extra_text: "no random extra text; only specified text if any"
+  no_anatomy_errors: "natural anatomy, correct hands and fingers, balanced body"
+
+# =============================================================================
+# PC-1 FOUNDATION — SEMANTIC PRIORITY RULES (merged from
+# config/prompt-core/semantic-priority-rules.yaml)
+# Full content preserved to eliminate a separate file read.
+# =============================================================================
+
+semantic_priority_rules:
+  user_intent_execution_order:
+    priority: 97
+    order:
+      - subject_identity
+      - explicit_user_action
+      - explicit_camera_or_framing
+      - explicit_scene_context
+      - character_identity
+      - visible_character_signature_details
+      - full_outfit_details_only_if_explicitly_requested
+      - optional_aesthetic_enhancement
+    rule: "First establish the subject, then execute the requested action, camera framing, and scene context. Character IP and outfit enrich the subject — they never replace it."
+
+  explicit_user_action:
+    priority: 96
+    rule: "Preserve the requested action and its required hand, prop, food, or interaction visibility before character or outfit enrichment."
+
+  explicit_camera_or_framing:
+    priority: 95
+    rule: "Preserve selfie, close-up, portrait, crop, camera distance, and body-visibility requests. Do not widen the shot to display character costume details."
+
+  explicit_scene_context:
+    priority: 94
+    rule: "Preserve the requested location, furniture, table setting, food, interaction objects, and context before character costume completion."
+
+  user_explicit_constraints:
+    priority: 100
+    rule: "Never override explicit user constraints."
+
+  subject_identity:
+    priority: 97
+    rule: "Preserve the named subject, character, product, building, or brand reference as the primary anchor before action, framing, or scene execution."
+
+  character_ip_identity_anchors:
+    priority: 93
+    rule: "For recognizable character IP or original character design, preserve identity within the requested shot: hair identity, face impression, palette hierarchy, visible costume markers, signature props/emblems, archetype behavior, and forbidden drift. Do not promote hidden full-outfit details into framing requirements."
+
+  inferred_character_outfit_details:
+    priority: 92
+    rule: "Canonical costume details are subordinate to subject identity, explicit action, framing, and scene context. Include only details visible in the requested crop unless the user explicitly requests a full outfit, full body, fashion showcase, poster, or character sheet."
+
+  requested_change_only:
+    priority: 98
+    triggers:
+      - "只改"
+      - "保持不變"
+      - "不要改"
+      - "same face"
+      - "same outfit"
+    rule: "Only modify the requested attributes. Preserve all other described features."
+
+  safety_and_policy:
+    priority: 100
+    rule: "Override all aesthetic instructions when safety constraints apply."
+
+  output_format:
+    priority: 85
+    rule: "Respect aspect ratio, resolution, medium, and deliverable format."
+
+  camera_technical_readability:
+    priority: 84
+    rule: "Lens, depth of field, exposure, motion, and noise are subordinate to required face, product, text, action, and spatial readability."
+
+  visual_decision_order:
+    priority: 87
+    rule: "Resolve intent → subject priority → visual hierarchy → camera relationship → shot scale → crop safety → gaze/action → frame layout → background/negative space (task-conditional) → depth → light hierarchy → visual balance → failure guards. Camera and shot resolved early because gaze and layout depend on knowing the viewer's perspective and frame boundaries."
+
+  explicit_lens_override:
+    priority: 95
+    rule: "An explicit user lens or optical-concept request wins over defaults, but must still preserve subject identity, action target, required context, anatomy, and readability."
+
+  selfie_semantic_priority:
+    priority: 95
+    rule: "Selfie is camera relationship first and prop action only after an explicit phone, mirror, or selfie-stick trigger."
+    priority_order: [explicit_mirror_selfie_trigger, explicit_phone_selfie_trigger, explicit_selfie_stick_trigger, selfie_perspective_default]
+    default: { selfie: selfie_perspective, "自拍": selfie_perspective }
+    phone_or_prop_requires_explicit_trigger: true
+
+  explicit_wardrobe_priority:
+    priority: 93
+    rule: "Wardrobe must be explicit in the original prompt. Unspecified slots remain absent by default; context, style, default modesty, and character identity cannot invent garments."
+    explicit_absence_wins_over: [context_style, renderer_default, identity_costume]
+    explicit_presence_wins_over: [context_style, renderer_default]
+
+wardrobe_conflict_resolution:
+  if_slot_unspecified_and_renderer_adds_clothing:
+    remove: [auto_added_clothing, associated_fabric_effects]
+  if_coverage_is_needed_but_wardrobe_is_unspecified:
+    use: [camera_crop, pose, object_occlusion, shadow]
+    do_not_use: [auto_added_clothing]
+  if_character_identity_has_no_costume_trigger:
+    preserve: [hair_identity, face_impression, archetype, palette_cues]
+    remove: [canonical_costume_inference]
+
+selfie_conflict_resolution:
+  if_selfie_and_no_phone_trigger:
+    remove: [holding_phone, visible_smartphone, selfie_stick, mirror_selfie, reflected_phone]
+  if_mirror_selfie_trigger:
+    require: [mirror_visible, phone_visible, reflection_logic]
+  if_phone_selfie_trigger:
+    require: [phone_visible, hand_phone_contact]
+  if_selfie_stick_trigger:
+    require: [selfie_stick_visible, hand_stick_contact]
+
+visual_style:
+    priority: 70
+    rule: "Apply selected style only after preserving subject and explicit constraints."
+
+conflict_prevention_stack:
+  purpose: >
+    Resolve common prompt conflicts before final rendering so the enhanced prompt remains
+    specific, long, and visually rich without contradicting user intent, anatomy, text,
+    or output requirements.
+  priority_order:
+    - id: explicit_user_constraints
+      priority: 100
+      preserve:
+        - "requested subject, identity, brand, character, location, era, wardrobe, pose, content category, and exact text"
+      rule: "Never overwrite explicit user intent with aesthetic enrichment."
+    - id: age_safety_boundary
+      priority: 99
+      preserve:
+        - "clearly adult mature or explicit intent when requested"
+      block_only:
+        - "childlike sexualized framing"
+        - "underage sexualized framing"
+      rule: "Only enforce the explicit age-safety boundary; do not use mature-content logic to censor adult nudity, adult genital visibility, gore, or blood."
+    - id: identity_and_edit_locks
+      priority: 98
+      preserve:
+        - "same face"
+        - "same outfit"
+        - "same product geometry"
+        - "same logo or typography"
+        - "same background if the user requested preservation"
+      rule: "For edit or reference tasks, change only requested attributes."
+    - id: subject_identity
+      priority: 97
+      preserve:
+        - "named person, character, product, building, or brand"
+        - "primary subject role"
+      rule: "The named subject is the primary anchor. Action, framing, and scene context serve the subject — they do not replace it."
+    - id: explicit_user_action
+      priority: 96
+      preserve:
+        - "requested action and interaction objects"
+        - "required hand, prop, food, or interaction visibility"
+      rule: "Preserve the action and its required visibility before character enrichment or scene completion."
+    - id: explicit_camera_or_framing
+      priority: 95
+      preserve:
+        - "selfie, close-up, portrait, crop distance"
+        - "body-visibility boundaries"
+      rule: "Preserve requested crop and camera distance. Do not widen for character costume or scene completion."
+    - id: explicit_scene_context
+      priority: 94
+      preserve:
+        - "requested location, furniture, table setting"
+        - "food, interaction objects, contextual props"
+      rule: "Preserve the scene context before character costume or background enrichment."
+    - id: character_ip_identity_anchors
+      priority: 93
+      preserve:
+        - "strong recognizable silhouette"
+        - "signature hair identity"
+        - "face impression and gaze style"
+        - "core palette hierarchy"
+        - "costume structure and color blocking"
+        - "signature props, emblems, ornaments, or markings"
+        - "archetype-consistent expression, pose, and camera relation"
+      rule: "Do not replace character IP anchors with generic beauty, random outfit redesign, or unrelated worldbuilding."
+    - id: anatomy_and_physical_structure
+      priority: 92
+      preserve:
+        - "joint logic"
+        - "body balance"
+        - "hand and finger count"
+        - "face structure"
+        - "product geometry"
+        - "architecture perspective"
+      rule: "Style, mood, camera angle, or pose complexity must not break physical structure."
+    - id: exact_text_and_brand_copy
+      priority: 91
+      preserve:
+        - "spelling"
+        - "capitalization"
+        - "punctuation"
+        - "line breaks"
+        - "language/script"
+        - "brand marks"
+      rule: "If text is requested, never add broad no-text suppression; suppress only random, fake, or extra text."
+    - id: composition_and_readability
+      priority: 88
+      preserve:
+        - "hero-first hierarchy"
+        - "title-safe area"
+        - "unobstructed face"
+        - "readable product label"
+        - "UI or hidden-object legibility"
+      rule: "Cinematic depth, bokeh, shadows, and foreground layers must not hide task-critical information."
+    - id: lighting_material_and_camera_quality
+      priority: 82
+      preserve:
+        - "motivated light direction"
+        - "material-specific response"
+        - "natural skin texture"
+        - "controlled reflections"
+        - "believable perspective"
+      rule: "Professional photography details should support the subject and material rather than adding random equipment jargon."
+    - id: style_mood_and_polish
+      priority: 70
+      preserve:
+        - "requested aesthetic"
+        - "genre mood"
+        - "cinematic polish"
+      rule: "Style and mood are applied last and must be removed or softened when they conflict with higher-priority structure, text, or readability."
+
+conflict_resolution_recipes_v2:
+  text_requested_vs_no_text:
+    detect_when:
+      - "title, logo, label, poster, cover, signage, masthead, UI copy, exact words, or brand text is requested"
+    winning_rule: "text intent wins over no-text cleanup"
+    final_prompt_strategy:
+      - "quote exact requested text"
+      - "define text placement and hierarchy"
+      - "avoid random extra text, misspellings, fake logos, and watermark artifacts"
+    forbidden_cleanup:
+      - "no text"
+      - "no typography"
+      - "text-free image"
+
+  anatomy_vs_dynamic_pose:
+    detect_when:
+      - "full body, dance, action, glamour pose, low angle, wide stance, crossed legs, visible hands, or fitted clothing"
+    winning_rule: "believable anatomy and body mechanics win over pose complexity"
+    final_prompt_strategy:
+      - "keep the pose intent but make balance, joint alignment, hand shape, and foot grounding explicit"
+      - "simplify impossible limb relationships before adding style terms"
+
+  expression_vs_mood:
+    detect_when:
+      - "portrait, character, beauty, fashion editorial, cinematic close-up, emotional scene"
+    winning_rule: "context-appropriate expression coherence wins over generic mood adjectives"
+    final_prompt_strategy:
+      - "define gaze target, eyelids, brows, mouth corners, jaw relaxation, and head angle as one coordinated expression"
+      - "avoid dead eyes, forced smile, doll face, mismatched eye-mouth emotion, and uncanny symmetry"
+
+  cinematic_vs_readability:
+    detect_when:
+      - "product label, cover title, poster typography, UI, educational graphic, architecture, hidden-object scene, or exact costume detail"
+    winning_rule: "readability and deliverable purpose win over cinematic darkness, shallow depth, and foreground obstruction"
+    final_prompt_strategy:
+      - "keep cinematic depth in background and atmosphere"
+      - "add selective highlights and clean negative space around critical information"
+
+  professional_camera_language_vs_generator_noise:
+    detect_when:
+      - "prompt contains many camera, lens, lighting, film stock, or equipment terms"
+    winning_rule: "visible image effect wins over equipment name density"
+    final_prompt_strategy:
+      - "translate equipment into perspective, compression, shadow softness, highlight behavior, depth, and material response"
+      - "remove redundant gear names unless the user explicitly requested them"
+
+mature_tier_balance_priority:
+  priority: 96
+  rule: >
+    Mature prompts should be tiered, not globally erased. Preserve requested adult glamour,
+    adult nudity, adult genital visibility, gore, implied contour, or physically plausible
+    translucency when the subject is clearly adult.
+
+underage_childlike_boundary_priority:
+  priority: 97
+  rule: >
+    Underage or childlike sexual framing is blocked.
+    Remove underage or childlike cues, make the subject clearly adult, and preserve the requested
+    adult mature or explicit intent.
+
+nipple_visibility_physical_context_priority:
+  priority: 95
+  rule: >
+    Preserve requested adult nipple/areola visibility only through
+    nsfw-local-anatomy-surface-controller.yaml and fabric-opacity-translucency-logic.yaml.
+    Local surface geometry, individual variation, material interface, pose, gravity, and key-light
+    direction must remain coherent; sheer fabric, wet cling, strong backlight, mesh/lace, or artistic
+    context cannot produce a decal-like or cutout-like result.
+
+# =============================================================================
+# PC-1 FOUNDATION — SUBJECT RULES (merged from
+# config/prompt-core/subject-rules.yaml)
+# Full content preserved to eliminate a separate file read.
+# =============================================================================
+
+subject_rules:
+  human_portrait:
+    must_define:
+      - age_category
+      - shot_size
+      - pose
+      - expression
+      - wardrobe
+      - hair
+      - facial_lighting
+      - focus_point
+    quality_boosters:
+      - "natural skin texture"
+      - "realistic hairline"
+      - "catchlights in the eyes"
+      - "subtle facial asymmetry"
+      - "anatomically natural hands"
+    common_failures:
+      - "plastic skin"
+      - "dead eyes"
+      - "extra fingers"
+      - "unclear pose"
+
+  architecture:
+    must_define:
+      - building_type
+      - facade_style
+      - material_palette
+      - time_of_day
+      - camera_height
+      - perspective_type
+    quality_boosters:
+      - "straight vertical lines"
+      - "consistent window rhythm"
+      - "realistic material joints"
+      - "accurate scale"
+      - "physically plausible structure"
+    common_failures:
+      - "warped windows"
+      - "impossible structure"
+      - "inconsistent floor heights"
+
+  product_design:
+    must_define:
+      - product_category
+      - view_angle
+      - material
+      - finish
+      - interface_or_surface_detail
+      - usage_context
+    quality_boosters:
+      - "precise industrial design edges"
+      - "controlled studio reflections"
+      - "clean seams"
+      - "realistic screen glow"
+      - "premium CMF design"
+
+  automotive_motion:
+    must_define:
+      - vehicle_identity
+      - vehicle_body_type
+      - travel_direction
+      - camera_tracking_method
+      - visible_wheel_state
+      - tire_contact_with_road
+      - headlight_direction
+      - road_surface_condition
+      - weather_effect_on_surfaces
+    quality_boosters:
+      - "recognizable vehicle proportions and front fascia"
+      - "correct grille and symmetrical headlight geometry"
+      - "sharp panned car body with background motion streaks"
+      - "spinning wheels with controlled circular blur"
+      - "tire spray thrown outward and backward from contact patches"
+      - "wet road reflections stretched along the road plane"
+      - "headlight beams aligned with the car's forward direction and diffused by rain mist"
+    common_failures:
+      - "static parked pose despite speed language"
+      - "diagonal spotlight crossing the vehicle"
+      - "floating car or dry tire contact"
+      - "water spray moving in the wrong direction"
+      - "warped wheels, melted grille, asymmetrical headlights"
+      - "broad blur applied to the car body instead of background and wheels"
+
+action_object_attention_subject_rules:
+  watching_tv:
+    positive_guardrails:
+      - "television or off-frame screen is the attention anchor"
+      - "eyes align toward the TV screen"
+      - "head and torso orientation support watching TV"
+      - "screen glow or composition implies the TV direction"
+    negative_guardrails:
+      - "direct viewer eye contact when watching TV"
+      - "TV missing from visual logic"
+      - "gaze unrelated to the screen"
+      - "generic sofa portrait"
+
+  general_object_attention:
+    positive_guardrails:
+      - "gaze, head angle, and body orientation align toward the action object"
+      - "object interaction remains visible or clearly implied"
+    negative_guardrails:
+      - "object ignored by subject"
+      - "action verb not visible in image"
+
+# =============================================================================
+# PC-1 FOUNDATION — OUTPUT SPECS (merged from
+# config/prompt-core/output-specs.yaml)
+# Full content preserved to eliminate a separate file read.
+# =============================================================================
+
+output_specs:
+  square_social_1x1:
+    aspect_ratio: "1:1"
+    resolution_hint: "2048x2048 or higher"
+    typical_use: "Instagram feed, product square, social media hero"
+    transparent_background: false
+    video_ready_frame: false
+    notes: "Most common social format. Subject should fit within center 80% to avoid crop issues."
+
+  landscape_16x9:
+    aspect_ratio: "16:9"
+    resolution_hint: "3840x2160 (4K) or 1920x1080"
+    typical_use: "video thumbnail, YouTube banner, cinematic still, hero banner"
+    transparent_background: false
+    video_ready_frame: true
+    notes: "Can be used as video freeze-frame. Leave bottom third clear for text overlay."
+
+  portrait_4x5:
+    aspect_ratio: "4:5"
+    resolution_hint: "1080x1350 or higher"
+    typical_use: "Instagram portrait, Facebook ad, print editorial"
+    transparent_background: false
+    video_ready_frame: false
+    notes: "Standard print ratio. Subject fills vertical space naturally."
+
+  portrait_2x3:
+    aspect_ratio: "2:3"
+    resolution_hint: "2400x3600 or higher"
+    typical_use: "print magazine full page, portrait print, book cover"
+    transparent_background: false
+    video_ready_frame: false
+    notes: "Classic 35mm film ratio. Tall vertical, generous headroom."
+
+  cinematic_235x1:
+    aspect_ratio: "2.35:1"
+    resolution_hint: "3840x1630 or higher"
+    typical_use: "cinematic still, film poster, epic landscape"
+    transparent_background: false
+    video_ready_frame: true
+    notes: "Anamorphic widescreen. Horizontal composition is critical."
+
+  story_9x16:
+    aspect_ratio: "9:16"
+    resolution_hint: "1080x1920 or higher"
+    typical_use: "Instagram story, TikTok, Reels, mobile-first"
+    transparent_background: false
+    video_ready_frame: true
+    notes: "Full mobile screen. Subject in top 60%, bottom 40% clear for UI elements."
+
+  transparent_png:
+    aspect_ratio: "variable"
+    resolution_hint: "as needed for intended use"
+    typical_use: "product cutout, e-commerce asset, compositing element"
+    transparent_background: true
+    video_ready_frame: false
+    notes: "Subject isolated on transparent background. No background lighting or environment. Edge detail must be clean."
+
+  print_300dpi:
+    aspect_ratio: "variable"
+    resolution_hint: "300 DPI at final print size"
+    typical_use: "print catalog, billboard, brochure, magazine ad"
+    transparent_background: false
+    video_ready_frame: false
+    notes: "Print requires higher resolution and CMYK-aware color. Check brand color accuracy."
+
+  wide_banner_3x1:
+    aspect_ratio: "3:1"
+    resolution_hint: "3000x1000 or higher"
+    typical_use: "website hero banner, email header, billboard wide"
+    transparent_background: false
+    video_ready_frame: false
+    notes: "Extremely wide. Subject on left or center third. Right area for text or CTA."
+
+  square_ui_icon_bg:
+    aspect_ratio: "1:1"
+    resolution_hint: "1024x1024"
+    typical_use: "app icon background, UI element, thumbnail base"
+    transparent_background: false
+    video_ready_frame: false
+    notes: "Simple background with clear center focus. Avoid fine detail that reads as noise at small size."
+
+delivery_guidelines:
+  transparent_background:
+    description: "Subject isolated on alpha channel. No background, no environment, no shadows beyond subject."
+    technical_requirements:
+      - "no background gradient or color"
+      - "clean edge between subject and transparency"
+      - "no partial transparency on edges unless specified"
+    prompt_approach: "Shoot subject against solid chroma key background or with clean edge lighting for extraction."
+
+  video_ready:
+    description: "Frame that matches video production standards for use as freeze-frame, thumbnail, or insert."
+    technical_requirements:
+      - "must not have film grain exceeding video noise floor"
+      - "aspect ratio must match video project (typically 16:9 or 2.35:1)"
+      - "safe zone: keep content within center 90% for broadcast safety"
+    prompt_approach: "Compose for the full video frame. No critical content in outer 5% margin."
+
+  print_ready:
+    description: "Image prepared for physical printing. Color accuracy and resolution are critical."
+    technical_requirements:
+      - "minimum 300 DPI at final dimensions"
+      - "color accuracy: use brand color values, not relative"
+      - "sharpening: output sharpen for paper, not screen"
+
+typography_output_specs:
+  chatgpt_image:
+    include:
+      - "layout type"
+      - "text hierarchy"
+      - "exact short text if requested"
+      - "typography reserve zones"
+      - "subject-safe placement"
+    exclude:
+      - "random extra text"
+      - "long copy blocks unless user specifically requests it"
+  stable_diffusion:
+    include:
+      - "layout tags"
+      - "negative text artifact tags"
+  image_edit:
+    include:
+      - "preserve or replace exact text target"
+      - "do not alter subject outside text region"
+
+multi_subject_output_specs:
+  include:
+    - "explicit subject count"
+    - "subject roles and positions"
+    - "group formation"
+    - "gaze / interaction logic"
+    - "identity separation guardrails"
+    - "collision and occlusion guardrails when needed"
+
+suggest_resolution_rules:
+  purpose: "Choose the suggested resolution written into Phase 5 final prompts and the timestamped TXT export."
+  priority_order:
+    - "explicit user resolution"
+    - "explicit aspect ratio"
+    - "output medium or platform"
+    - "model_target native preference"
+    - "task_profile default"
+  defaults_by_model_target:
+    chatgpt_image:
+      square: "1024x1024 or 2048x2048 upscale target"
+      portrait: "1024x1536 or 1536x2048 upscale target"
+      landscape: "1536x1024 or 2048x1152 upscale target"
+    z_image_base:
+      square: "1024x1024"
+      portrait: "1024x1536 or nearest workflow-native portrait size"
+      landscape: "1536x1024 or nearest workflow-native landscape size"
+    z_image_turbo:
+      square: "1024x1024"
+      portrait: "832x1216 or 1024x1536 depending on VRAM"
+      landscape: "1216x832 or 1536x1024 depending on VRAM"
+    comfyui_flux2_zimage_3stage:
+      square: "1024x1024 shared canvas through Flux.2 Dev, Z-Image Base, and Z-Image Turbo"
+      portrait: "1024x1536 shared canvas; upscale after Turbo if needed"
+      landscape: "1536x1024 shared canvas; upscale after Turbo if needed"
+    stable_diffusion:
+      square: "1024x1024"
+      portrait: "832x1216 or model-native portrait bucket"
+      landscape: "1216x832 or model-native landscape bucket"
+    midjourney:
+      square: "use --ar 1:1; final pixel size handled by Midjourney"
+      portrait: "use --ar 2:3 or 4:5; final pixel size handled by Midjourney"
+      landscape: "use --ar 16:9 or 3:2; final pixel size handled by Midjourney"
+    flux:
+      square: "1024x1024"
+      portrait: "1024x1536 or nearest workflow-native portrait size"
+      landscape: "1536x1024 or nearest workflow-native landscape size"
+    image_edit:
+      default: "match source image resolution unless the user requests resizing"
+    video_prompt:
+      vertical: "1080x1920"
+      landscape: "1920x1080"
+      cinematic: "1920x816 or 3840x1632"
+
+phase_5_txt_export:
+  required: true
+  filename_pattern: "final_YYYYMMDD_HHMMSS.txt"
+  output_directory: "ABSOLUTE_USER_DESKTOP/comfyui_prompt"
+  desktop_resolution: "Resolve the real user Desktop first, then append comfyui_prompt. Use XDG_DESKTOP_DIR from ~/.config/user-dirs.dirs on Linux when available; otherwise use the user's standard Desktop folder."
+  forbid_relative_output_directory: true
+  forbidden_output_directories:
+    - "skill folder"
+    - "repository folder"
+    - "current working directory"
+    - "relative desktop/comfyui_prompt"
+  if_filename_exists: "create a new suffixed file such as final_YYYYMMDD_HHMMSS_01.txt; do not overwrite"
+  create_output_directory_if_missing: true
+  writer_script: "scripts/write_final_prompt_txt.py"
+  export_selected_renderer_only: false
+  export_family_variants: true
+  enable_family_variants_only_when_explicitly_requested: false
+  family_variant_targets: [chatgpt_image, flux, z_image_base, z_image_turbo, comfyui_flux2_zimage_3stage, stable_diffusion, midjourney, image_edit]
+  include_requested_workflow_target: true
+  collapse_identical_outputs: true
+  dedupe_key:
+    - "Positive Prompt"
+    - "Negative Prompt"
+    - "Suggested Resolution"
+  fields_per_model_target:
+    - "Positive Prompt"
+    - "Negative Prompt"
+    - "Suggested Resolution"
+  prompt_field_mapping:
+    chatgpt_image:
+      positive_prompt: "prompt"
+      negative_prompt: "avoid"
+    z_image_base:
+      positive_prompt: "positive_prompt"
+      negative_prompt: "negative_prompt"
+    z_image_turbo:
+      positive_prompt: "positive_prompt"
+      negative_prompt: "negative_prompt"
+    comfyui_flux2_zimage_3stage:
+      positive_prompt: "shared_positive_prompt"
+      negative_prompt: "z_image_negative_prompt"
+      stage_usage: "Flux.2 Dev uses shared_positive_prompt only; Z-Image Base and Z-Image Turbo use shared_positive_prompt plus z_image_negative_prompt."
+    stable_diffusion:
+      positive_prompt: "positive_prompt"
+      negative_prompt: "negative_prompt"
+    midjourney:
+      positive_prompt: "prompt"
+      negative_prompt: "no_terms or --no segment"
+    flux:
+      positive_prompt: "prompt"
+      negative_prompt: "negative_prompt or avoid"
+    image_edit:
+      positive_prompt: "edit_instruction"
+      negative_prompt: "forbidden_changes"
+    video_prompt:
+      positive_prompt: "scene_prompt + motion_prompt + camera_motion"
+      negative_prompt: "negative_prompt"
+  missing_negative_policy: "Write '(not specified)' if the selected renderer has no true negative prompt instead of inventing one."
+  identical_output_policy: "If several model targets produce exactly the same positive prompt, negative prompt, and suggested resolution, write one section and join their model_target labels instead of duplicating content."
+
+prompt_assembly_hooks:
+  phase_4_6_renderer_selection:
+    action: "Select model_target before choosing suggest_resolution so resolution follows the renderer and workflow."
+  phase_5_final_prompt:
+    action: "Add suggest_resolution to final_prompt and export ALL model targets. Generate family variants for all renderers: chatgpt_image, flux, z_image_base, z_image_turbo, comfyui_flux2_zimage_3stage, stable_diffusion, midjourney, image_edit. Generate final_YYYYMMDD_HHMMSS.txt under the resolved absolute user Desktop/comfyui_prompt folder containing each model_target output's Positive Prompt, Negative Prompt, and Suggested Resolution. collapse_identical_outputs deduplicates sections when multiple models share the same positive/negative content. Never write this TXT under the skill folder, repository folder, current working directory, or a relative desktop/comfyui_prompt path."

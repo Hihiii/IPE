@@ -1,0 +1,1228 @@
+version: 1
+purpose: "Visual language, medium, and mood lexicon for cinematic and commercial photography."
+
+# =============================================================================
+# VISUAL LANGUAGE — overall aesthetic categories
+# =============================================================================
+visual_languages:
+  premium_commercial:
+    description: "High-end product photography with clinical precision, controlled lighting, perfect sharpness."
+    best_for: "luxury product, beauty, automotive, jewelry"
+    medium: "photography"
+    prompt_keywords: "premium commercial photography, luxury studio aesthetic, editorial quality, sharp focus"
+
+  cinematic_dramatic:
+    description: "Film-inspired lighting with deep shadows, rich contrast, intentional color grading."
+    best_for: "editorial, fashion, film poster, storytelling"
+    medium: "photography"
+    prompt_keywords: "cinematic lighting, dramatic contrast, film grade, chiaroscuro, moody atmosphere"
+
+  minimalist_clean:
+    description: "Sparse composition, generous negative space, subtle lighting, restrained palette."
+    best_for: "minimalist product, modern interior, tech, luxury minimal"
+    medium: "photography"
+    prompt_keywords: "minimalist photography, clean composition, restrained palette, soft even light"
+
+  natural_documentary:
+    description: "Available light feel, organic shadows, unposed subjects, authentic texture."
+    best_for: "lifestyle, food, travel, editorial reportage"
+    medium: "photography"
+    prompt_keywords: "natural light photography, documentary style, authentic texture, available light"
+
+  futuristic_tech:
+    description: "Clean lines, cool color palette, hard rim lights, metallic reflections, precise geometry."
+    best_for: "tech product, automotive futuristic, sci-fi editorial"
+    medium: "photography_or_3D"
+    prompt_keywords: "futuristic aesthetic, cool blue tone, hard rim light, metallic reflection, tech precision"
+
+  editorial_fashion:
+    description: "Bold composition, unconventional framing, high contrast, creative color grading."
+    best_for: "fashion editorial, magazine cover, avant-garde"
+    medium: "photography"
+    prompt_keywords: "editorial fashion, bold composition, creative grading, avant-garde styling"
+
+  fine_art:
+    description: "Painterly quality, soft diffused light, muted palette, classical composition."
+    best_for: "fine art print, gallery, still life, art portrait"
+    medium: "photography"
+    prompt_keywords: "fine art photography, painterly light, classical composition, muted tones, museum quality"
+
+  lifestyle_warm:
+    description: "Inviting, natural, relatable. Soft warm light, casual composition, human-centered."
+    best_for: "family, food, interior, travel, brand lifestyle"
+    medium: "photography"
+    prompt_keywords: "warm lifestyle photography, natural inviting light, candid feel, relatable scene"
+
+  outdoor_action:
+    description: "Dynamic outdoor activity with natural light, motion, and environmental context."
+    best_for: "pet action, sport outdoor, kids playing, beach activity, hiking"
+    medium: "photography"
+    prompt_keywords: "outdoor action photography, natural sunlight, dynamic motion, environmental activity, candid action"
+
+  wildlife_nature:
+    description: "Animal in natural habitat, patient observation, no artificial lighting, authentic behavior."
+    best_for: "wildlife, bird, pet portrait, zoo, nature documentary"
+    medium: "photography"
+    prompt_keywords: "wildlife photography, natural habitat, animal portrait, authentic behavior, telephoto compression"
+
+  sport_action:
+    description: "Fast motion, frozen or motion-blurred action, peak moment capture, athletic intensity."
+    best_for: "sports, athletics, dance, action sports, pet agility"
+    medium: "photography"
+    prompt_keywords: "sports photography, frozen action, peak motion, fast shutter, athletic dynamic"
+
+
+# =============================================================================
+# MEDIUM — the technical nature of the output
+# =============================================================================
+mediums:
+  photography:
+    description: "Photorealistic, lens-based capture. Physical camera artifacts (bokeh, lens flare, depth of field)."
+    default_lens_character: "true"
+    prompt_keywords: "photography, lens-based, camera capture, photorealistic"
+
+  photorealistic_3D:
+    description: "Computer-generated but indistinguishable from photography. Perfect lighting, no physical limits."
+    default_lens_character: "simulated"
+    prompt_keywords: "photorealistic 3D render, CGI, physically based rendering, ray traced"
+
+  illustration:
+    description: "Artistic interpretation. Visible brushwork or stylized rendering."
+    default_lens_character: "false"
+    prompt_keywords: "illustration, digital painting, artistic rendering"
+
+  hybrid_photo_3D:
+    description: "Photography base with 3D enhancement. Used when physical photography is extended with CGI elements."
+    default_lens_character: "true"
+    prompt_keywords: "photography with CGI enhancement, photo-real composite"
+
+
+# =============================================================================
+# MOOD LEXICON — emotional tone with lighting/color tendencies
+# =============================================================================
+moods:
+  luxurious_calm:
+    description: "Wealthy, refined, serene. Warm golds, deep neutrals, soft directional light."
+    lighting_tendency: "soft directional key, moderate contrast, gentle shadow"
+    color_tendency: "warm gold, amber, charcoal, deep brown"
+    prompt_keywords: "luxurious calm mood, elegant refined tone, warm sophisticated lighting"
+
+  dramatic_intense:
+    description: "High stakes, powerful, bold. Hard light, deep shadows, high contrast."
+    lighting_tendency: "hard key light, deep shadows, high contrast ratio 8:1+"
+    color_tendency: "cool shadows with warm accent, desaturated with selective pop"
+    prompt_keywords: "dramatic intense mood, high contrast lighting, bold shadows, powerful tone"
+
+  warm_intimate:
+    description: "Personal, cozy, inviting. Warm color temperature, soft wrap light, close subject distance."
+    lighting_tendency: "warm soft light, close proximity, gentle falloff, wrap-around"
+    color_tendency: "warm 3200K-4000K, amber honey tones, golden highlights"
+    prompt_keywords: "warm intimate mood, cozy inviting light, soft warm glow, close personal feel"
+
+  cold_distant:
+    description: "Clinical, isolated, detached. Cool blues, hard shadows, minimal warmth."
+    lighting_tendency: "cool hard light, minimal fill, harsh shadow, stark"
+    color_tendency: "cool blue, cyan, cold white, steel gray"
+    prompt_keywords: "cold distant mood, cool clinical lighting, isolated feel, stark blue tone"
+
+  mysterious_dark:
+    description: "Hidden, suspenseful, intriguing. Low key, minimal fill, selective illumination."
+    lighting_tendency: "single hard source, minimal or no fill, deep shadows, rim accent"
+    color_tendency: "desaturated, shadow-weighted, cool or neutral"
+    prompt_keywords: "mysterious dark mood, low key lighting, selective illumination, deep shadow"
+
+  energetic_vibrant:
+    description: "Lively, exciting, dynamic. High saturation, colorful gels, hard directional light."
+    lighting_tendency: "hard directional, colored gels, high contrast, multiple sources"
+    color_tendency: "high saturation, complementary color contrast, vibrant primaries"
+    prompt_keywords: "energetic vibrant mood, colorful dynamic lighting, high saturation, lively atmosphere"
+
+  soft_dreamy:
+    description: "Ethereal, gentle, romantic. Very soft light, pastel palette, shallow depth of field."
+    lighting_tendency: "extremely soft light, large diffused source, low contrast, wrap-around"
+    color_tendency: "pastel, muted, warm white, soft pink, lavender"
+    prompt_keywords: "soft dreamy mood, ethereal light, romantic soft focus, pastel gentle tone"
+
+  nostalgic_vintage:
+    description: "Old-fashioned, sentimental, warm memory. Warm tones, soft halation, film grain implied."
+    lighting_tendency: "soft diffused, warm, slight underexposure, natural window light feel"
+    color_tendency: "warm amber, faded color, sepia tone, filmic green shadows"
+    prompt_keywords: "nostalgic vintage mood, warm faded tones, filmic quality, memory-like softness"
+
+  edgy_rebellious:
+    description: "Bold, unconventional, raw. Hard light, extreme angles, desaturated with color pop."
+    lighting_tendency: "hard single source, extreme angle, high contrast, underlighting or cross"
+    color_tendency: "desaturated base with single saturated accent, monochrome with pop"
+    prompt_keywords: "edgy rebellious mood, harsh unconventional lighting, raw attitude, bold contrast"
+
+  peaceful_serene:
+    description: "Calm, balanced, harmonious. Soft even light, natural palette, open space."
+    lighting_tendency: "soft even light, north window quality, minimal shadow, open"
+    color_tendency: "natural muted, earth tones, soft blue sky, gentle green"
+    prompt_keywords: "peaceful serene mood, calm balanced light, natural harmony, open tranquil space"
+
+  joyful_playful:
+    description: "Happy, carefree, fun. Bright warm light, high saturation, candid moment, natural smile."
+    lighting_tendency: "bright natural light, open sun, minimal shadow, golden hour warmth"
+    color_tendency: "warm golden, vibrant green, bright blue sky, saturated primaries"
+    prompt_keywords: "joyful playful mood, carefree fun, bright warm light, candid happy moment"
+
+  energetic_action:
+    description: "Fast, dynamic, powerful. Hard directional light, motion blur accent, high contrast."
+    lighting_tendency: "hard sunlight, directional side or back light, high contrast, motion emphasis"
+    color_tendency: "high saturation, warm-cool contrast (blue sky + golden sand), vibrant"
+    prompt_keywords: "energetic action mood, dynamic motion, powerful movement, fast pace, athletic energy"
+
+  outdoor_natural:
+    description: "Open air, natural environment, weather-influenced light. Uncontrolled but authentic."
+    lighting_tendency: "available natural light, cloud-diffused sun, golden hour, open shade"
+    color_tendency: "natural spectrum, sky blue, foliage green, earth brown, skin tone accurate"
+    prompt_keywords: "outdoor natural mood, available light, open environment, authentic outdoor feel"
+
+  tender_affection:
+    description: "Gentle, loving, warm bond between subject and human/companion. Soft intimate light."
+    lighting_tendency: "soft warm light, open shade or window light, gentle shadow, close proximity"
+    color_tendency: "warm neutral, soft gold, gentle cream, muted green background"
+    prompt_keywords: "tender affectionate mood, gentle bond, soft warm light, loving connection, pet human bond"
+
+  editorial_luxury:
+    description: "Premium editorial fashion mood with controlled contrast, refined palette, and decisive silhouette hierarchy. The quintessential high-fashion studio feel."
+    lighting_tendency: "controlled directional key, medium contrast, clean rim separation, defined shadow"
+    color_tendency: "restrained with selective saturation, muted neutrals with single garment accent, warm or cool minimal"
+    prompt_keywords: "editorial luxury fashion mood, refined high-fashion tone, controlled editorial lighting, premium studio aesthetic"
+# =============================================================================
+# AUTOREVISE EXTENSIONS — mood decision, translation, conflict resolution
+# =============================================================================
+# These sections extend the mood lexicon from a vocabulary list into a decision
+# system for prompt enhancement. They are intended to be used by the cinematic
+# prompt enhancer after task_profile, subject_rules, color, lighting, lens, and
+# composition have been selected.
+
+generator_visible_mood_translation:
+  purpose: "Translate abstract mood words into visible choices the image model can render."
+  principle:
+    - "Do not send abstract mood words alone."
+    - "For every mood, express visible lighting, palette, composition, material, and atmosphere behavior."
+    - "Keep mood secondary to hard user constraints and subject identity."
+    - "If a mood conflicts with readability, preserve readability and express the mood through background, color, or lighting accents."
+
+  abstract_to_visible:
+    luxurious:
+      weak_prompt_terms:
+        - "luxurious"
+        - "premium"
+        - "high-end"
+        - "expensive"
+      generator_visible_prompt: "restrained luxury editorial aesthetic, precise material highlights, generous negative space, controlled warm highlights, deep neutral shadows"
+      visual_controls:
+        lighting: "soft directional key with controlled specular highlights"
+        color: "champagne, charcoal, warm ivory, muted gold"
+        composition: "minimal clutter, hero-first hierarchy, generous negative space"
+        material: "crisp surface response, refined texture, no cheap oversaturation"
+      avoid:
+        - "random gold everywhere"
+        - "busy background"
+        - "overly glossy plastic look"
+
+    cinematic:
+      weak_prompt_terms:
+        - "cinematic"
+        - "movie-like"
+        - "film look"
+      generator_visible_prompt: "cinematic film-still composition, motivated light direction, layered foreground-midground-background depth, controlled color grade, subtle atmosphere"
+      visual_controls:
+        lighting: "motivated practical or directional light"
+        color: "consistent filmic grade with protected skin or product color"
+        composition: "storytelling frame with clear visual hierarchy"
+        atmosphere: "subtle haze or bloom only when useful"
+      avoid:
+        - "flat studio look"
+        - "random lens flare"
+        - "excessive smoke"
+        - "unmotivated lighting"
+
+    dreamy:
+      weak_prompt_terms:
+        - "dreamy"
+        - "ethereal"
+        - "soft"
+        - "romantic"
+      generator_visible_prompt: "soft diffused glow, low contrast shadows, pastel highlight roll-off, gentle background falloff, delicate atmospheric softness"
+      visual_controls:
+        lighting: "large soft source, smooth shadow transition"
+        color: "pastel cream, blush, lavender, warm white"
+        lens: "soft background separation, gentle falloff"
+        composition: "open breathing room, relaxed visual flow"
+      avoid:
+        - "blurred face"
+        - "washed-out subject"
+        - "loss of clothing or material detail"
+
+    dramatic:
+      weak_prompt_terms:
+        - "dramatic"
+        - "intense"
+        - "powerful"
+        - "bold"
+      generator_visible_prompt: "strong directional light, deep readable shadows, decisive rim separation, high contrast focal point, bold silhouette"
+      visual_controls:
+        lighting: "hard or semi-hard key, negative fill, edge separation"
+        exposure: "low-to-middle key with preserved hero detail"
+        composition: "diagonal tension or centered hero dominance"
+      avoid:
+        - "unreadable black shadows"
+        - "overly theatrical random contrast"
+        - "face lost in darkness"
+
+    warm_intimate:
+      weak_prompt_terms:
+        - "warm"
+        - "cozy"
+        - "intimate"
+        - "inviting"
+      generator_visible_prompt: "warm close-range atmosphere, soft amber practical light, gentle facial shadows, natural texture, close personal framing"
+      visual_controls:
+        lighting: "warm practical or window-like soft source"
+        color: "amber, cream, honey, soft brown"
+        composition: "closer framing, human-scale details"
+      avoid:
+        - "orange skin contamination"
+        - "overly dark interior"
+        - "fake fireplace glow unless specified"
+
+    cold_clinical:
+      weak_prompt_terms:
+        - "cold"
+        - "clinical"
+        - "distant"
+        - "sterile"
+      generator_visible_prompt: "cool clean light, steel-blue shadows, precise geometry, minimal warmth, crisp surfaces and isolated spatial feeling"
+      visual_controls:
+        lighting: "cool directional or even light"
+        color: "cyan, cold white, steel gray, blue shadow"
+        composition: "open distance, symmetry or strict geometry"
+      avoid:
+        - "dead flat lighting"
+        - "skin becoming gray unless intended"
+        - "unreadable dark blues"
+
+    playful:
+      weak_prompt_terms:
+        - "playful"
+        - "fun"
+        - "joyful"
+        - "cute"
+      generator_visible_prompt: "bright friendly lighting, rounded shapes, saturated but clean color accents, readable silhouettes, cheerful spatial rhythm"
+      visual_controls:
+        lighting: "bright open light with soft shadows"
+        color: "clear warm primaries, pastel accents, clean contrast"
+        composition: "large readable elements, active but organized layout"
+      avoid:
+        - "visual clutter"
+        - "tiny details"
+        - "overly mature dark palette"
+
+    mysterious:
+      weak_prompt_terms:
+        - "mysterious"
+        - "dark"
+        - "suspenseful"
+        - "hidden"
+      generator_visible_prompt: "selective illumination, shadow-weighted frame, visible rim outline, partial reveal of key features, controlled darkness"
+      visual_controls:
+        lighting: "single motivated source or rim edge light"
+        exposure: "low-key with hero detail preserved"
+        composition: "frame-within-frame, partial occlusion, negative space"
+      avoid:
+        - "subject completely hidden"
+        - "muddy black frame"
+        - "loss of face or product label"
+
+    editorial_fashion:
+      weak_prompt_terms:
+        - "editorial fashion"
+        - "fashion editorial"
+        - "high-fashion"
+        - "haute couture"
+        - "editorial"
+      generator_visible_prompt: "editorial fashion aesthetic, controlled directional key light, clean silhouette separation, restrained palette with selective garment saturation, defined shadow hierarchy, premium studio finish"
+      visual_controls:
+        lighting: "controlled directional key with defined shadow edge and clean rim separation"
+        color: "restrained neutrals with selective saturation on hero garment, muted background"
+        composition: "decisive silhouette hierarchy, negative space, full-length or three-quarter frame"
+        material: "premium fabric texture, refined surface response, no cheap flat texture"
+      avoid:
+        - "flat catalog lighting"
+        - "oversaturated background"
+        - "generic beauty lighting"
+        - "garment lost in shadow"
+
+    natural_authentic:
+      weak_prompt_terms:
+        - "natural"
+        - "authentic"
+        - "documentary"
+        - "candid"
+      generator_visible_prompt: "available-light realism, organic shadows, natural posture, imperfect lived-in details, believable environment"
+      visual_controls:
+        lighting: "window light, open shade, cloud-diffused sun, or practical light"
+        color: "natural white balance with mild filmic treatment"
+        composition: "slightly imperfect but intentional framing"
+      avoid:
+        - "overposed fashion stiffness"
+        - "plastic skin"
+        - "overly polished CGI"
+
+mood_intent_selector:
+  purpose: "Select mood direction based on task profile, subject type, audience, and risk flags."
+  selection_rules:
+    - "Use one primary mood and at most one secondary mood."
+    - "For commercial product images, mood must support product legibility and brand color accuracy."
+    - "For human portraits, mood must not corrupt skin tone, facial readability, or anatomy."
+    - "For educational/game UI, readability outranks cinematic atmosphere."
+    - "For architecture, spatial clarity and material truth outrank mood stylization."
+
+  by_task_profile:
+    beauty_portrait:
+      default_primary_mood: soft_dreamy
+      optional_secondary_mood:
+        - luxurious_calm
+        - warm_intimate
+      visible_prompt: "soft flattering mood with clean facial light, natural skin tone, gentle highlight roll-off, refined editorial calm"
+      protect:
+        - "eyes"
+        - "skin tone"
+        - "facial structure"
+      avoid:
+        - "colored light covering the entire face"
+        - "muddy shadows under eyes"
+
+    fashion_editorial:
+      default_primary_mood: editorial_fashion
+      optional_secondary_mood:
+        - dramatic_intense
+        - luxurious_calm
+        - edgy_rebellious
+      visible_prompt: "fashion editorial mood with decisive pose hierarchy, controlled contrast, refined styling, strong silhouette"
+      protect:
+        - "outfit shape"
+        - "pose readability"
+        - "face"
+      avoid:
+        - "background stealing attention from clothing"
+        - "overly generic beauty look"
+
+    product_ad:
+      default_primary_mood: premium_commercial
+      optional_secondary_mood:
+        - luxurious_calm
+        - futuristic_tech
+        - minimalist_clean
+      visible_prompt: "premium commercial mood with product-first clarity, controlled reflections, precise material highlights, clean negative space"
+      protect:
+        - "label"
+        - "product silhouette"
+        - "brand colors"
+      avoid:
+        - "mood lighting obscuring label"
+        - "random props"
+
+    architecture_interior:
+      default_primary_mood: minimalist_clean
+      optional_secondary_mood:
+        - peaceful_serene
+        - lifestyle_warm
+        - luxurious_calm
+      visible_prompt: "calm architectural mood with straight perspective, material clarity, soft daylight, uncluttered spatial rhythm"
+      protect:
+        - "straight verticals"
+        - "room scale"
+        - "material joints"
+      avoid:
+        - "overly dark cinematic shadows hiding space"
+        - "warped walls"
+
+    architecture_exterior:
+      default_primary_mood: cinematic_dramatic
+      optional_secondary_mood:
+        - luxurious_calm
+        - peaceful_serene
+        - futuristic_tech
+      visible_prompt: "clear architectural mood with controlled sky exposure, facade rhythm, readable massing, refined environmental atmosphere"
+      protect:
+        - "facade geometry"
+        - "vertical lines"
+        - "window rhythm"
+      avoid:
+        - "fisheye drama"
+        - "unreal material colors"
+
+    educational_game_ui:
+      default_primary_mood: joyful_playful
+      optional_secondary_mood:
+        - peaceful_serene
+      visible_prompt: "friendly educational mood, bright readable layout, rounded shapes, cheerful accents, low cognitive load"
+      protect:
+        - "large interactive objects"
+        - "readable UI"
+        - "age-appropriate clarity"
+      avoid:
+        - "cinematic darkness"
+        - "tiny decorative clutter"
+        - "adult luxury palette"
+
+    hidden_object_scene:
+      default_primary_mood: energetic_vibrant
+      optional_secondary_mood:
+        - joyful_playful
+        - outdoor_natural
+      visible_prompt: "busy but organized discovery mood, many readable details, clear visual zones, colorful accents separated by silhouette"
+      protect:
+        - "object readability"
+        - "zone organization"
+        - "visual search clarity"
+      avoid:
+        - "random clutter"
+        - "overdark shadows"
+        - "objects too tiny to identify"
+
+    cinematic_movie_poster:
+      default_primary_mood: cinematic_dramatic
+      optional_secondary_mood:
+        - mysterious_dark
+        - luxurious_calm
+        - energetic_action
+      visible_prompt: "poster-grade cinematic mood with hero-first hierarchy, strong silhouette, atmospheric depth, controlled color contrast"
+      protect:
+        - "main character silhouette"
+        - "title-safe space"
+        - "face or hero object"
+      avoid:
+        - "overcrowded background"
+        - "unreadable hero face"
+
+    anime_realism_character:
+      default_primary_mood: cinematic_dramatic
+      optional_secondary_mood:
+        - soft_dreamy
+        - energetic_vibrant
+        - luxurious_calm
+      visible_prompt: "anime-realism mood with stylized facial design, cinematic lighting, readable costume silhouette, polished illustration realism"
+      protect:
+        - "character identity cues"
+        - "costume silhouette"
+        - "clean stylization"
+      avoid:
+        - "chibi proportions"
+        - "raw documentary realism"
+        - "muddy hybrid style"
+
+mood_to_cinematography_mapping:
+  purpose: "Map mood selections into visible decisions across lighting, color, composition, lens, exposure, and atmosphere."
+  luxurious_calm:
+    lighting: "soft directional light with controlled highlight edges"
+    color: "warm champagne, charcoal, ivory, muted gold"
+    composition: "generous negative space, balanced hero placement, minimal clutter"
+    lens: "natural-to-short telephoto compression for refined proportions"
+    exposure: "middle-key or low-key with readable material detail"
+    atmosphere: "clean air, subtle glow only on highlights"
+    compression_phrase: "restrained champagne-gold luxury mood"
+
+  editorial_luxury:
+    lighting: "controlled directional key with clean rim separation, medium contrast, defined shadow edge"
+    color: "restrained neutrals with selective garment saturation, muted background, single hero accent"
+    composition: "decisive silhouette hierarchy, generous negative space, three-quarter or full-length fashion frame, subject occupies 60-80% of frame"
+    lens: "short-to-medium telephoto compression (85-135mm) for elegant proportions, or 35-50mm for environmental editorial"
+    exposure: "middle-key with controlled highlight on garment texture and readable shadow detail"
+    atmosphere: "clean editorial air, no haze, subtle background separation, fabric texture fully readable"
+    compression_phrase: "editorial luxury fashion mood"
+
+  cinematic_dramatic:
+    lighting: "motivated directional key, rim separation, controlled shadows"
+    color: "filmic warm-cool contrast or genre-specific grade"
+    composition: "layered depth, foreground framing, decisive silhouette"
+    lens: "natural perspective or mild telephoto compression depending on subject"
+    exposure: "middle-to-low key with preserved hero detail"
+    atmosphere: "subtle haze, bloom, or volumetric separation when context supports it"
+    compression_phrase: "cinematic film-still mood"
+
+  minimalist_clean:
+    lighting: "soft even light, gentle shadow, no distracting light effects"
+    color: "neutral whites, soft grays, muted accent color"
+    composition: "large negative space, clear geometry, minimal props"
+    lens: "natural perspective, accurate proportions"
+    exposure: "bright but not clipped, clean tonal separation"
+    atmosphere: "no haze, no grain, no clutter"
+    compression_phrase: "clean minimalist mood"
+
+  natural_documentary:
+    lighting: "available-light realism with organic shadows"
+    color: "natural white balance, restrained grading"
+    composition: "candid framing, believable environment, subtle imperfection"
+    lens: "natural perspective or observational telephoto"
+    exposure: "natural dynamic range with preserved skin and environment detail"
+    atmosphere: "lived-in texture, no over-polish"
+    compression_phrase: "authentic documentary mood"
+
+  futuristic_tech:
+    lighting: "cool rim edges, clean reflections, precise geometry"
+    color: "cyan, steel blue, cold white, black, silver"
+    composition: "symmetry, hard diagonals, clean product or architecture geometry"
+    lens: "controlled wide or natural perspective, no warped product geometry"
+    exposure: "crisp highlights, deep but readable blacks"
+    atmosphere: "subtle glow from interfaces, no messy neon overload"
+    compression_phrase: "cool futuristic tech mood"
+
+  lifestyle_warm:
+    lighting: "warm practical or window light, gentle falloff"
+    color: "cream, honey, amber, soft wood, natural skin"
+    composition: "human-scale framing, relaxed negative space, environmental warmth"
+    lens: "natural perspective with modest background separation"
+    exposure: "warm middle key, readable shadows"
+    atmosphere: "cozy lived-in softness"
+    compression_phrase: "warm lifestyle mood"
+
+  soft_dreamy:
+    lighting: "large diffused source, soft glow, low contrast"
+    color: "pastel cream, blush, lavender, warm white"
+    composition: "open breathing room, gentle flow, soft background falloff"
+    lens: "shallow but controlled depth, face or hero detail sharp"
+    exposure: "high-to-middle key with preserved texture"
+    atmosphere: "soft bloom or delicate haze"
+    compression_phrase: "soft dreamy pastel mood"
+
+  mysterious_dark:
+    lighting: "selective low-key illumination, rim outline, deep shadow"
+    color: "cool neutrals, desaturated shadows, small warm accent if needed"
+    composition: "partial reveal, frame-within-frame, shadow-weighted negative space"
+    lens: "natural or telephoto isolation depending on subject"
+    exposure: "low key with readable hero detail"
+    atmosphere: "controlled darkness, no muddy blacks"
+    compression_phrase: "mysterious low-key mood"
+
+  joyful_playful:
+    lighting: "bright open light, soft friendly shadows"
+    color: "clean saturated accents, warm primaries, soft pastels"
+    composition: "large readable shapes, active rhythm, clear spacing"
+    lens: "natural perspective, no intimidating distortion"
+    exposure: "bright high-key but texture preserved"
+    atmosphere: "clear cheerful air, no heavy haze"
+    compression_phrase: "bright playful mood"
+
+mood_conflict_resolution:
+  purpose: "Resolve incompatible emotional or style directions before final prompt assembly."
+  general_rules:
+    - "Use one dominant mood. Secondary mood may modify lighting or color only."
+    - "If the user uses correction language such as 'but', 'instead', '不要', '更接近', 'rather than', the later corrective mood overrides earlier mood references."
+    - "Medium-defining style beats mood. For example, photorealistic photography must not become painterly just because the mood is dreamy."
+    - "Readability beats mood for text, product labels, UI, educational content, and hidden-object scenes."
+    - "Natural subject color beats mood color for skin, brand colors, food, animals, and architecture materials."
+
+  conflicts:
+    luxury_vs_playful:
+      symptoms: "premium minimal aesthetic conflicts with cheerful saturated child-friendly design."
+      resolution: "Choose luxury for product/fashion/architecture; choose playful for children's UI, educational games, toys."
+      final_prompt_strategy: "Use restrained palette for luxury; use clean bright accents and rounded shapes for playful."
+
+    cinematic_dark_vs_readability:
+      symptoms: "dark mood risks hiding product label, face, UI, hidden objects, or architecture detail."
+      resolution: "Keep dark atmosphere in background and shadows, add selective hero illumination."
+      final_prompt_strategy: "dark cinematic atmosphere with readable hero detail and clear rim separation"
+
+    dreamy_vs_sharp_detail:
+      symptoms: "soft dreamy mood risks blurring face, label, jewelry, fabric, or UI text."
+      resolution: "Keep dreamy softness in background and highlights; keep hero element sharp."
+      final_prompt_strategy: "soft dreamy atmosphere with sharp eyes / crisp label / readable UI"
+
+    neon_vs_skin_tone:
+      symptoms: "colored mood contaminates full face or body skin color."
+      resolution: "Keep colored neon on rim edges, hair, background, or reflective surfaces; protect natural facial skin tone."
+      final_prompt_strategy: "natural skin tone with colored rim light on edges"
+
+    natural_documentary_vs_premium_commercial:
+      symptoms: "authentic candid feel conflicts with polished luxury studio perfection."
+      resolution: "If product/ad campaign, choose premium commercial; if lifestyle/travel/family, choose documentary."
+      final_prompt_strategy: "polished lifestyle realism" # bridge phrase when both are requested
+
+    minimalist_vs_complex_scene:
+      symptoms: "minimal mood conflicts with hidden-object, market, classroom, city, or game-map density."
+      resolution: "Use organized complexity instead of true minimalism."
+      final_prompt_strategy: "dense but organized layout with clean visual zones"
+
+    warm_intimate_vs_cold_clinical:
+      symptoms: "opposing temperature cues make palette muddy."
+      resolution: "Pick mood based on task: warm for human/lifestyle/food; cold for tech/medical/sci-fi."
+      final_prompt_strategy: "dominant temperature with small controlled accent only if needed"
+
+mood_guardrails_by_subject:
+  human_portrait:
+    protect:
+      - "skin tone remains believable"
+      - "eyes remain first read"
+      - "face stays sharp unless user requests obscurity"
+      - "mood lighting does not erase facial structure"
+    add_positive:
+      - "natural skin tone protected"
+      - "clean catchlights"
+      - "mood expressed through background and edge light"
+    add_negative:
+      - "color cast covering the entire face"
+      - "dead eyes"
+      - "plastic skin"
+
+  fashion_full_body:
+    protect:
+      - "outfit silhouette"
+      - "pose readability"
+      - "fabric material"
+      - "feet and hands if full body"
+    add_positive:
+      - "mood supports the garment shape"
+      - "full outfit remains readable"
+      - "background atmosphere does not overpower styling"
+    add_negative:
+      - "costume lost in shadow"
+      - "motion or haze hiding clothing details"
+
+  product:
+    protect:
+      - "label"
+      - "brand color"
+      - "product geometry"
+      - "material surface response"
+    add_positive:
+      - "mood lighting preserves label clarity"
+      - "controlled reflections"
+      - "brand color remains accurate"
+    add_negative:
+      - "mood color changing the product color"
+      - "glare across label"
+      - "random decorative props"
+
+  architecture:
+    protect:
+      - "straight verticals"
+      - "material color"
+      - "spatial depth"
+      - "scale"
+    add_positive:
+      - "mood expressed through daylight, shadow, and atmosphere without warping geometry"
+      - "material palette remains natural"
+    add_negative:
+      - "overly theatrical lighting hiding space"
+      - "unreal wall colors"
+      - "fisheye distortion"
+
+  game_ui:
+    protect:
+      - "readability"
+      - "large interactive objects"
+      - "age-appropriate visual clarity"
+      - "consistent icon style"
+    add_positive:
+      - "friendly mood with clear UI hierarchy"
+      - "large separated tappable elements"
+      - "bright readable colors"
+    add_negative:
+      - "cinematic darkness"
+      - "tiny unreadable elements"
+      - "busy texture behind UI"
+
+  hidden_object_scene:
+    protect:
+      - "object discoverability"
+      - "zoned complexity"
+      - "silhouette readability"
+      - "balanced density"
+    add_positive:
+      - "busy but organized mood"
+      - "clear visual zones"
+      - "small objects remain identifiable"
+    add_negative:
+      - "random clutter"
+      - "overly dark corners"
+      - "unreadable tiny objects"
+
+mood_failure_taxonomy:
+  mood_word_only:
+    symptoms:
+      - "Prompt says cinematic/luxury/dreamy but gives no visible cue."
+      - "Output becomes generic or inconsistent."
+    likely_causes:
+      - "Mood not translated into lighting, palette, composition, material, or atmosphere."
+    fix:
+      - "Convert mood into visible decisions using generator_visible_mood_translation."
+    add_positive:
+      - "mood expressed through lighting, color palette, composition, and material response"
+
+  mood_overload:
+    symptoms:
+      - "Prompt contains many emotional adjectives with no hierarchy."
+      - "Image becomes visually muddy or overstyled."
+    likely_causes:
+      - "Too many primary moods selected."
+    fix:
+      - "Select one dominant mood and one optional modifier."
+    add_negative:
+      - "conflicting mixed mood"
+
+  skin_color_contamination:
+    symptoms:
+      - "Face becomes blue, green, purple, orange, or gray unintentionally."
+    likely_causes:
+      - "Mood palette applied globally instead of to background/rim/shadows."
+    fix:
+      - "Protect natural skin tone, apply colored light to edges/background."
+    add_positive:
+      - "natural skin tone protected, colored accent only on rim edges and background"
+
+  luxury_becomes_gaudy:
+    symptoms:
+      - "Luxury mood becomes excessive gold, diamonds, random ornaments, or shiny plastic."
+    likely_causes:
+      - "Luxury described only as gold/expensive without restraint."
+    fix:
+      - "Use restrained palette, negative space, precise material highlights."
+    add_positive:
+      - "restrained luxury editorial aesthetic, controlled gold accents, minimal clutter"
+    add_negative:
+      - "gaudy decorations"
+      - "cheap shiny plastic"
+
+  editorial_becomes_flat_catalog:
+    symptoms:
+      - "Fashion editorial mood looks like generic e-commerce catalog."
+      - "No editorial contrast, shadow depth, or silhouette definition."
+    likely_causes:
+      - "Editorial described as vague style word without lighting or composition direction."
+      - "Key light direction and contrast unspecified."
+    fix:
+      - "Add controlled directional key, rim separation, defined shadow hierarchy."
+      - "Add decisive silhouette and garment-first composition."
+    add_positive:
+      - "editorial fashion lighting with controlled contrast and clean rim separation"
+      - "decisive silhouette hierarchy"
+    add_negative:
+      - "flat even catalog lighting"
+      - "generic commercial look"
+      - "no shadow depth"
+
+  editorial_garment_lost_in_shadow:
+    symptoms:
+      - "Dark editorial mood hides garment texture, silhouette, or fabric detail."
+      - "Fashion subject becomes a dark blob."
+    likely_causes:
+      - "Dramatic low-key applied without selective garment illumination."
+      - "No rim or edge light on clothing."
+    fix:
+      - "Add selective rim or key light on garment."
+      - "Keep fabric texture readable even in shadow zones."
+    add_positive:
+      - "garment texture readable in controlled shadow"
+      - "selective illumination on fashion silhouette"
+    add_negative:
+      - "garment lost in darkness"
+      - "flat black clothing with no texture"
+
+  editorial_fabric_loses_texture:
+    symptoms:
+      - "Premium fabric looks flat, printed, or plastic."
+      - "Silk, lace, leather, or wool texture not visible."
+    likely_causes:
+      - "Mood or lighting language focuses on atmosphere instead of material."
+      - "Fabric-specific specular behavior not described."
+    fix:
+      - "Add fabric-specific highlight behavior."
+      - "Use material_rendering_library fabric prompts."
+    add_positive:
+      - "fabric texture fully readable with appropriate specular behavior"
+      - "material-specific highlight response"
+    add_negative:
+      - "flat printed fabric texture"
+      - "plastic fabric sheen"
+      - "generic unspecified fabric"
+
+  cinematic_becomes_random_fx:
+    symptoms:
+      - "Unmotivated lens flare, smoke, sparks, bloom, or dramatic light beams appear."
+    likely_causes:
+      - "Cinematic mood not grounded in scene logic."
+    fix:
+      - "Use motivated light sources and subtle atmosphere."
+    add_positive:
+      - "motivated lighting, subtle atmosphere, controlled bloom"
+    add_negative:
+      - "random lens flare"
+      - "excessive smoke"
+      - "unmotivated special effects"
+
+  dark_mood_loses_readability:
+    symptoms:
+      - "Hero subject, label, face, or UI disappears into darkness."
+    likely_causes:
+      - "Low-key mood applied without selective hero illumination."
+    fix:
+      - "Add readable hero detail and rim separation."
+    add_positive:
+      - "low-key atmosphere with readable hero detail and clean rim separation"
+    add_negative:
+      - "crushed black shadows"
+
+  playful_becomes_childish_for_luxury:
+    symptoms:
+      - "Premium product or architecture looks toy-like."
+    likely_causes:
+      - "Playful color and rounded shape logic applied to luxury subject."
+    fix:
+      - "Restrict playful accents or switch to refined warmth."
+    add_positive:
+      - "refined warm accents instead of toy-like colors"
+    add_negative:
+      - "toy-like cartoon palette unless requested"
+
+mood_compression_rules:
+  purpose: "Compress mood language for Phase 4.5 without losing visible intent."
+  rules:
+    - "Keep one compressed mood phrase in final prompt."
+    - "Remove repeated emotional adjectives after they have been converted to visible lighting/color/composition."
+    - "Prefer visible mood phrases over abstract adjectives."
+    - "Cut mood words before cutting hard constraints, subject identity, composition, or lighting."
+
+  semantic_clusters:
+    luxury_cluster:
+      redundant_terms:
+        - "luxurious"
+        - "premium"
+        - "high-end"
+        - "elegant"
+        - "sophisticated"
+        - "refined"
+        - "expensive"
+      compressed_as: "restrained luxury editorial mood"
+
+    editorial_fashion_cluster:
+      redundant_terms:
+        - "editorial"
+        - "fashion editorial"
+        - "high-fashion"
+        - "haute couture"
+        - "editorial fashion"
+        - "fashion spread"
+        - "runway look"
+      compressed_as: "editorial fashion mood"
+
+    beauty_portrait_cluster:
+      redundant_terms:
+        - "beauty portrait"
+        - "beauty shot"
+        - "glamour"
+        - "cosmetic"
+        - "skincare"
+        - "beauty editorial"
+      compressed_as: "premium beauty editorial mood"
+
+    cinematic_cluster:
+      redundant_terms:
+        - "cinematic"
+        - "filmic"
+        - "movie-like"
+        - "dramatic film still"
+        - "film grade"
+      compressed_as: "cinematic film-still mood"
+
+    dreamy_cluster:
+      redundant_terms:
+        - "dreamy"
+        - "ethereal"
+        - "soft"
+        - "romantic"
+        - "gentle"
+        - "delicate"
+      compressed_as: "soft dreamy pastel mood"
+
+    warm_cluster:
+      redundant_terms:
+        - "warm"
+        - "cozy"
+        - "intimate"
+        - "inviting"
+        - "honey"
+        - "amber glow"
+      compressed_as: "warm intimate mood"
+
+    dark_cluster:
+      redundant_terms:
+        - "dark"
+        - "mysterious"
+        - "moody"
+        - "suspenseful"
+        - "shadowy"
+      compressed_as: "mysterious low-key mood"
+
+    playful_cluster:
+      redundant_terms:
+        - "playful"
+        - "joyful"
+        - "fun"
+        - "cute"
+        - "cheerful"
+        - "happy"
+      compressed_as: "bright playful mood"
+
+    authentic_cluster:
+      redundant_terms:
+        - "natural"
+        - "authentic"
+        - "candid"
+        - "documentary"
+        - "real"
+        - "unposed"
+      compressed_as: "authentic documentary mood"
+
+    nsfw_explicit_cluster:
+      redundant_terms:
+        - "nsfw"
+        - "NSFW"
+        - "not safe for work"
+        - "explicit"
+        - "adult explicit"
+        - "porn"
+        - "pornographic"
+        - "xxx"
+      compressed_as: "explicit adult glamour editorial with bright high-key fashion lighting"
+      note: "Do NOT compress to dark/moody/editorial — NSFW intent requires bright explicit glamour by default."
+
+scene_mood_presets:
+  editorial_studio_fashion:
+    primary_mood: editorial_luxury
+    secondary_mood: minimalist_clean
+    visible_prompt: "clean editorial studio fashion mood, controlled directional key light, neutral seamless background, decisive silhouette hierarchy, restrained palette with garment color as the only saturated element, premium fabric texture fully readable"
+    protect:
+      - "garment silhouette"
+      - "fabric texture"
+      - "skin tone"
+      - "full outfit readability"
+    avoid:
+      - "flat catalog lighting"
+      - "oversaturated background"
+      - "garment detail lost in shadow"
+      - "busy distracting background"
+
+  luxury_portrait_classic:
+    primary_mood: luxurious_calm
+    secondary_mood: editorial_luxury
+    visible_prompt: "classic luxury portrait mood, warm directional key light, deep charcoal or warm ivory background, soft Rembrandt or loop lighting pattern, refined skin texture, elegant facial modeling with controlled shadow"
+    protect:
+      - "face and eyes"
+      - "natural skin tone"
+      - "facial structure"
+      - "refined skin texture"
+    avoid:
+      - "flat even lighting"
+      - "face too dark in shadow side"
+      - "oversaturated skin"
+      - "plastic skin texture"
+
+  editorial_location_fashion:
+    primary_mood: editorial_luxury
+    secondary_mood: natural_documentary
+    visible_prompt: "location fashion editorial mood, natural light harmonized with garment palette, environmental context supporting the fashion silhouette, subject confident within the scene, controlled color temperature balance between environment and wardrobe"
+    protect:
+      - "garment color accuracy"
+      - "face and skin tone"
+      - "full-body silhouette"
+      - "environment does not overpower subject"
+    avoid:
+      - "environmental color cast contaminating skin"
+      - "busy background competing with garment"
+      - "subject lost in environment"
+
+  editorial_high_fashion_drama:
+    primary_mood: editorial_luxury
+    secondary_mood: dramatic_intense
+    visible_prompt: "dramatic high-fashion editorial mood, high-contrast directional key, deep shadows with selective illumination, clean rim separation on silhouette, dark background, garment texture revealed by edge light, avant-garde editorial atmosphere"
+    protect:
+      - "garment silhouette"
+      - "face remains readable in shadow"
+      - "garment texture in highlight zones"
+      - "controlled shadow detail"
+    avoid:
+      - "subject completely black"
+      - "face unreadable"
+      - "garment lost entirely in shadow"
+      - "messy uncontrolled shadows"
+
+  luxury_beauty_editorial:
+    primary_mood: soft_dreamy
+    secondary_mood: editorial_luxury
+    visible_prompt: "luxury beauty editorial mood, soft diffused key light with pearl-ivory palette, luminous skin finish, gentle highlight rolloff, refined skin texture, champagne-glow catchlights, clean editorial framing with generous negative space"
+    protect:
+      - "skin texture and tone"
+      - "eyes sharp with clean catchlights"
+      - "natural facial proportions"
+      - "soft but not blurred skin"
+    avoid:
+      - "over-smoothed plastic skin"
+      - "washed-out face"
+      - "blown-out highlights"
+      - "clinical sterile beauty look"
+
+  parisian_bridal_golden_hour:
+    primary_mood: soft_dreamy
+    secondary_mood: luxurious_calm
+    visible_prompt: "romantic Parisian bridal mood, soft golden-hour backlight, champagne-ivory palette, gentle lace texture, warm rim glow around hair and veil"
+    protect:
+      - "white dress texture"
+      - "skin tone"
+      - "face and eyes"
+    avoid:
+      - "overexposed white dress"
+      - "plastic skin"
+      - "excessive lens flare"
+
+  wabi_sabi_lobby:
+    primary_mood: peaceful_serene
+    secondary_mood: minimalist_clean
+    visible_prompt: "quiet modern wabi-sabi mood, soft daylight, warm plaster texture, muted earth palette, calm negative space, natural material imperfections"
+    protect:
+      - "spatial scale"
+      - "wall texture"
+      - "straight verticals"
+    avoid:
+      - "expensive glossy marble look"
+      - "overdecorated luxury"
+      - "dark cramped lobby"
+
+  cyberpunk_rainy_night:
+    primary_mood: futuristic_tech
+    secondary_mood: mysterious_dark
+    visible_prompt: "rainy cyberpunk night mood, cool cyan-magenta reflections on wet surfaces, natural face or product color protected, deep readable shadows"
+    protect:
+      - "hero silhouette"
+      - "skin or product color"
+      - "readable signage if specified"
+    avoid:
+      - "neon color covering entire face"
+      - "muddy black streets"
+      - "excessive bloom"
+
+  luxury_black_gold_product:
+    primary_mood: luxurious_calm
+    secondary_mood: mysterious_dark
+    visible_prompt: "restrained black-and-gold luxury mood, deep charcoal shadows, controlled metallic gold highlights, clean product-first negative space"
+    protect:
+      - "label"
+      - "gold material"
+      - "product geometry"
+    avoid:
+      - "flat yellow instead of metallic gold"
+      - "glare across label"
+      - "gaudy decorations"
+
+  educational_low_grade_math_game:
+    primary_mood: joyful_playful
+    secondary_mood: peaceful_serene
+    visible_prompt: "bright friendly learning mood, soft colors, rounded shapes, large readable objects, low cognitive load, cheerful but uncluttered"
+    protect:
+      - "readable numbers"
+      - "large tappable objects"
+      - "simple layout"
+    avoid:
+      - "tiny UI"
+      - "cinematic dark mood"
+      - "busy background clutter"
+
+  hidden_object_city_day:
+    primary_mood: energetic_vibrant
+    secondary_mood: joyful_playful
+    visible_prompt: "sunny hidden-object city mood, dense but organized visual zones, lively color accents, many small readable details, clear silhouettes"
+    protect:
+      - "discoverable objects"
+      - "zone separation"
+      - "clear object outlines"
+    avoid:
+      - "random clutter"
+      - "unreadably tiny objects"
+      - "overdark alleys"
+
+  anime_realism_fashion_poster:
+    primary_mood: cinematic_dramatic
+    secondary_mood: luxurious_calm
+    visible_prompt: "polished anime-realism fashion mood, clean stylized face, realistic body proportions, refined cinematic lighting, readable high-fashion silhouette"
+    protect:
+      - "character identity cues"
+      - "outfit design"
+      - "face clarity"
+    avoid:
+      - "chibi"
+      - "flat cartoon"
+      - "raw photo mismatch"
+
+model_output_mode_mood_style:
+  chatgpt_image:
+    style: "Natural language with visible mood behavior. Avoid long mood keyword chains."
+    example: "restrained luxury editorial mood with soft directional light, champagne-gold accents, and clean negative space"
+
+  stable_diffusion:
+    style: "Use compact mood tags plus visible effects and separate negatives."
+    example_positive: "restrained luxury editorial mood, soft directional light, champagne gold palette, clean negative space"
+    example_negative: "gaudy, oversaturated, cheap plastic, cluttered background"
+
+  midjourney:
+    style: "Use a short high-impact mood phrase and one or two visible modifiers."
+    example: "restrained luxury editorial mood, champagne-gold highlights, clean negative space"
+
+  flux:
+    style: "Use direct semantic sentences with subject and mood placed early."
+    example: "The scene has a restrained luxury editorial mood, using soft directional light and clean negative space to keep the product dominant."
+
+mood_quality_rubric:
+  score_5:
+    description: "Mood is visible, coherent, and supports the subject without reducing readability."
+    signs:
+      - "One dominant mood is clear."
+      - "Lighting, color, composition, and material all support the same emotional direction."
+      - "Hard constraints, skin tones, labels, UI, or architecture remain protected."
+      - "No redundant mood adjectives in final prompt."
+
+  score_3:
+    description: "Mood is understandable but partly generic or weakly translated."
+    signs:
+      - "Mood words appear but not all are converted into visible cues."
+      - "Some redundancy remains."
+      - "Subject readability is mostly preserved."
+
+  score_1:
+    description: "Mood conflicts with the task or becomes vague adjective stuffing."
+    signs:
+      - "Multiple incompatible moods compete."
+      - "Subject, label, face, UI, or architecture becomes unreadable."
+      - "Prompt relies on abstract words like cinematic/luxury/dreamy without visual behavior."
+
+prompt_assembly_hooks:
+  phase_1:
+    extract:
+      - "reference_mood"
+      - "emotional_curve"
+      - "audience expectation"
+      - "mood conflicts from user wording"
+  phase_2:
+    use:
+      - "mood_intent_selector"
+      - "mood_to_cinematography_mapping"
+      - "generator_visible_mood_translation"
+  phase_3_5:
+    insert_into:
+      style_and_lighting: "compressed mood phrase + visible lighting/color/composition behavior"
+      atmosphere: "only mood-related haze, bloom, grain, weather, or softness that has visible purpose"
+      constraints: "mood guardrails by subject"
+  phase_4:
+    check:
+      - "mood supports task_profile"
+      - "mood does not conflict with style_realism_mode"
+      - "mood does not reduce readability"
+      - "mood not repeated as adjective stuffing"
+  phase_4_5:
+    compress_with:
+      - "mood_compression_rules"
+      - "semantic_clusters"

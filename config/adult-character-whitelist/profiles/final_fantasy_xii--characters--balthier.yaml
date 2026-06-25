@@ -1,0 +1,55 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xii--characters--balthier
+  display_name: Balthier
+  aliases:
+  - Balthier
+  - 巴爾弗雷
+  - 巴爾弗雷 (Final Fantasy XII)
+  - Sky Pirate
+  - The Leading Man
+  source_title: Final Fantasy XII
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XII default appearance
+  identity_summary: Sky pirate leader with short brown hair, light grey-blue eyes, light stubble, a tan
+    long coat with fur collar, white shirt, brown vest, brown trousers, and boots, carrying a flintlock
+    pistol.
+  visual_anchors:
+  - short brown hair
+  - light grey-blue eyes
+  - light stubble
+  - tan long coat with fur collar
+  - white shirt with open collar
+  - flintlock pistol (Altair)
+  - short brown hair with stubble
+  - natural tousled crown
+  - side-swept fringe
+  - light grey-blue
+  - defined angular face
+  - tall lean sky pirate build
+  outfit_anchors:
+  - short brown hair
+  - light stubble
+  - tan long coat with fur collar
+  - white open-collar shirt
+  - flintlock pistol
+  - Sky pirate with short brown hair and stubble, tan long coat with brown fur collar, white button-up
+    shirt with open collar, brown vest, brown trousers, leather boots, and a holstered flintlock pistol.
+  style_anchors:
+  - confident, charming smirk
+  - confident, charming engagement
+  drift_guards:
+  - long hair
+  - blonde hair
+  - clean-shaven face
+  - wrong eye color
+  - generic attractive person
+  - wrong face impression
+  - missing tan coat
+  - missing white shirt
+  - missing fur collar
+  - missing gun
+  - random outfit redesign
+  - styled neatly back
+  - hunched posture
+  - overly muscular build

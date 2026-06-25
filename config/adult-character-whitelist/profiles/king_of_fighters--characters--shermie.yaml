@@ -1,0 +1,60 @@
+schema_version: 1.0.0
+character:
+  id: king_of_fighters--characters--shermie
+  display_name: Shermie
+  aliases:
+  - Shermie
+  - 雪魯米
+  - Shermie (The King of Fighters)
+  - Shermie (KoF)
+  source_title: King of Fighters
+  adult_status: confirmed_adult
+  adult_source_basis: The King of Fighters default appearance (KoF series)
+  identity_summary: Tall glamorous female fighter with very long flowing purple or lavender hair, sharp
+    golden-yellow eyes, fair skin, wearing a revealing purple dress or bodysuit with a high slit, a choker
+    necklace, and high heels. Voluptuous feminine build with a sultry, confident demeanor. A member of the
+    Cipher team with a mysterious connection to Orochi. Often has a seductive smile.
+  visual_anchors:
+  - very long flowing purple or lavender hair
+  - sharp golden-yellow eyes
+  - fair skin
+  - revealing purple dress or bodysuit
+  - high slit on dress
+  - choker necklace
+  - high heels
+  - voluptuous feminine build
+  - sultry seductive expression
+  - long purple hair
+  - full flowing crown
+  - long sweeping fringe
+  - golden-yellow
+  - elegant angular face
+  - tall voluptuous feminine build
+  outfit_anchors:
+  - long flowing purple hair
+  - golden-yellow eyes
+  - purple dress or bodysuit with high slit
+  - choker necklace
+  - high heels
+  - voluptuous build
+  - Glamorous fighter in purple dress with high slit, choker, long purple hair flowing, golden eyes.
+    Sultry mysterious feminine aesthetic.
+  style_anchors:
+  - sultry seductive confidence
+  - mysterious golden-eyed gaze
+  drift_guards:
+  - wrong hair color (not purple)
+  - short hair
+  - wrong eye color (not golden-yellow)
+  - generic attractive person
+  - modest covered outfit
+  - missing choker
+  - missing high slit
+  - flat shoes instead of heels
+  - wrong hair length (not long)
+  - dark hair colors
+  - natural hair colors
+  - ponytail or updo
+  - casual athletic wear
+  - muscular bulky build
+  - masculine frame

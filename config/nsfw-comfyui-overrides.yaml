@@ -1,0 +1,28 @@
+schema_version: "1.0.0"
+name: nsfw-comfyui-overrides
+precedence: "Overrides only conflicting legacy target-selection, delivery, export, and adult-boundary rules."
+
+override_rules:
+  - Adult eligibility is determined only by adult-content-policy.yaml and adult-character-whitelist.
+  - For every eligible human or humanoid subject, nsfw-baseline-resolver.yaml applies adult_nude before ordinary intent preservation, pose selection, material selection, or rendering.
+  - Age safety and real-person blocking override the always-NSFW baseline; nonhuman-only inputs remain unchanged.
+  - Preserve the original enhancer's composition, camera, lighting, material, scene, anatomy, pose, and quality-review rules.
+  - nsfw-visual-director.yaml overrides generic face-first visual hierarchy for eligible adult scenes: the declared sensory or readable interaction primary focus wins unless the user explicitly selects another focus.
+  - nsfw-local-anatomy-surface-controller.yaml governs visible relevant adult local surface detail and must not be used to force a chest close-up or bypass fabric-physics rules.
+  - Legacy renderer targets are not selectable for this skill, even if their config files remain available as historical enhancement references.
+  - The only delivery renderer is config/comfyui-prompt-pack.yaml.
+  - The only final fields are z_image_positive_prompt, z_image_negative_prompt, and suggest_resolution.
+  - Do not automatically export files. A TXT export requires an explicit absolute path from the user.
+  - For an eligible human image edit, adultize the source before applying the requested edit, then preserve all unrequested source attributes after adultization in the Z-Image positive prompt.
+
+disabled_delivery_targets:
+  - chatgpt_image
+  - chatgpt_image_2
+  - z_image_base
+  - z_image_turbo
+  - flux
+  - comfyui_flux2_zimage_3stage
+  - stable_diffusion
+  - midjourney
+  - image_edit
+  - video_prompt

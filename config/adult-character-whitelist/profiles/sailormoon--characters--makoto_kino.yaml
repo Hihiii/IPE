@@ -1,0 +1,56 @@
+schema_version: 1.0.0
+character:
+  id: sailormoon--characters--makoto_kino
+  display_name: Makoto Kino
+  aliases:
+  - Makoto Kino
+  - 木野真琴
+  - Sailor Jupiter
+  - Sailor Jupiter (美少女戰士)
+  - Lita Kino
+  source_title: Sailor Moon
+  adult_status: confirmed_adult
+  adult_source_basis: Sailor Moon default character design
+  identity_summary: The powerful Sailor Guardian of lightning and strength with long brown hair worn in a high ponytail with a flower-shaped hair accessory, large warm green eyes, fair skin, and a tall athletic muscular build. Wears a white sailor fuku with green collar, red bow, green skirt, white gloves, and green high-heeled boots, with a golden tiara and Jupiter emblem. A gentle giant who loves cooking and gardening but possesses incredible physical strength.
+  visual_anchors:
+  - long brown hair in high ponytail with flower accessory
+  - large warm green eyes
+  - fair skin
+  - tall athletic muscular build
+  - white sailor fuku with green collar and red bow
+  - green pleated miniskirt
+  - white gloves
+  - green high-heeled boots
+  - golden tiara with Jupiter emblem
+  - flower-shaped hair accessory
+  - gentle warm expression
+  - long brown ponytail
+  - side-swept bangs
+  - warm green eyes
+  - strong oval face
+  - tall athletic build
+  outfit_anchors:
+  - long brown ponytail with flower accessory
+  - warm green eyes
+  - white sailor fuku with green collar
+  - red bow
+  - green miniskirt
+  - white gloves
+  - green boots
+  - Jupiter emblem
+  - Sailor Jupiter in white sailor fuku, green collar, green skirt, green boots, and warm powerful presence.
+  style_anchors:
+  - gentle caring warmth
+  - fierce protective strength
+  - romantic hopeful nature
+  drift_guards:
+  - short hair
+  - wrong hair color (not brown)
+  - wrong eye color (not green)
+  - generic attractive person
+  - wrong sailor fuku colors
+  - missing flower hair accessory
+  - slender fragile build
+  - blonde or black hair
+  - blue outfit instead of green
+  - cold unfriendly demeanor

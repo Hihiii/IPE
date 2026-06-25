@@ -1,0 +1,332 @@
+# ============================================================
+# micro-detail-priority-system.yaml
+# Micro-detail priority, detail-budget allocation, and over-detail control
+# Version: 1.0.0
+# Purpose:
+#   Control which details should be preserved or enriched in different image types,
+#   and prevent detail overload that makes prompts noisy, chaotic, or visually unstable.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "micro-detail-priority-system"
+description: >
+  A micro-detail allocation module for prompt enhancement. It decides which details
+  deserve priority based on subject type, framing, task intent, and visual hierarchy.
+  It prevents important details from being lost while avoiding excessive, random,
+  or contradictory micro-detail accumulation.
+
+core_principle: >
+  Not every detail can be equally important. A strong prompt assigns a detail budget:
+  protect details that support the hero subject, identity, construction, readability,
+  and task goal; reduce details that clutter the scene, confuse the model, or compete
+  with the focal hierarchy.
+
+global_rules:
+  - "Define detail priority based on the image task, framing, and hero subject."
+  - "Full-body images should protect face readability, hands, feet, outfit silhouette, and key costume details, but should not overload tiny facial micro-detail."
+  - "Close-up portraits should prioritize eyes, skin texture, lips, hairline, and expression detail."
+  - "Fashion images should prioritize garment construction, seams, fit, fabric behavior, and styling details."
+  - "Architecture-relevant scenes should preserve facade rhythm, window grid, vertical lines, and material joints."
+  - "Concert scenes should include a few readable stage-production anchors, not random gear everywhere."
+  - "Avoid adding too many competing details that reduce composition clarity."
+  - "Detailer LoRA is a polish option, not the first solution for structure problems."
+
+micro_detail_schema:
+  image_framing: "close_up | bust | half_body | three_quarter | full_body | wide_scene | environment_primary | product_closeup"
+  hero_subject_type: "person | group | product | vehicle | architecture | mecha | landscape | stage_performance | custom"
+  detail_budget: "minimal | balanced | rich | ultra_rich"
+  protected_detail_zones: []
+  secondary_detail_zones: []
+  suppressed_detail_zones: []
+  detail_density_distribution: "hero_weighted | balanced_scene | background_weighted | design_layout_weighted"
+  over_detail_risk: "low | medium | high"
+  workflow_hint: "prompt_only | upscale_refine | local_detailer | lora_optional | inpaint_repair"
+
+framing_detail_priorities:
+  close_up_portrait:
+    protect:
+      - "eye symmetry and iris alignment"
+      - "catchlights"
+      - "skin texture"
+      - "lip shape and finish"
+      - "hairline and face-framing strands"
+      - "micro-expression"
+    reduce:
+      - "distant background details"
+      - "unnecessary clothing micro-detail outside frame"
+
+  full_body_person:
+    protect:
+      - "face readability"
+      - "hands and fingers if visible"
+      - "feet and ground contact"
+      - "outfit silhouette"
+      - "major garment construction"
+      - "pose balance"
+    reduce:
+      - "excessive tiny face detail beyond available resolution"
+      - "overloaded fabric micro-patterns"
+      - "background details that compete with the subject"
+
+  fashion_editorial:
+    protect:
+      - "garment silhouette"
+      - "seam lines"
+      - "layered panels"
+      - "fabric drape and wrinkle source"
+      - "accessory integration"
+      - "model pose and styling intent"
+    reduce:
+      - "random decorative seams"
+      - "conflicting garment features"
+
+  stage_performance_full_body:
+    protect:
+      - "performer face readability"
+      - "eye harmony if face is visible"
+      - "microphone and hand contact"
+      - "performance costume construction"
+      - "feet and stage contact"
+      - "key stage light separation"
+      - "a few live-show production anchors"
+    secondary:
+      - "audience phone lights"
+      - "LED glow"
+      - "stage monitors"
+      - "floor lights"
+      - "background venue architecture"
+    reduce:
+      - "too many random cables"
+      - "stage gear clutter"
+      - "overpowering background detail"
+
+  architecture_background_readable:
+    protect:
+      - "facade geometry"
+      - "window grid"
+      - "vertical and horizontal alignment"
+      - "material joints"
+      - "building scale cues"
+    reduce:
+      - "excessive bokeh"
+      - "random facade noise"
+      - "overly sharp background that steals hero attention"
+
+  product_or_vehicle:
+    protect:
+      - "silhouette"
+      - "edge highlights"
+      - "surface material"
+      - "logo/text if requested"
+      - "contact shadow"
+      - "key design lines"
+    reduce:
+      - "random background texture"
+      - "unrelated decorative detail"
+
+  character_ip_design:
+    protect:
+      - "silhouette readability"
+      - "hair identity and hair ornament"
+      - "face impression and eye shape"
+      - "core palette and color blocking"
+      - "costume structure and emblem"
+      - "signature prop silhouette"
+      - "archetype-specific expression and pose"
+      - "worldbuilding motif if identity-relevant"
+    reduce:
+      - "random decorative details that do not support identity"
+      - "overloaded micro-accessories"
+      - "background motifs that compete with the character"
+      - "generic beauty polish that erases character specificity"
+
+detail_budget_profiles:
+  minimal:
+    use_when:
+      - "clean graphic poster"
+      - "minimalist product image"
+      - "simple web hero"
+    rule: "Only protect hero-subject essentials; suppress ornamental micro-detail."
+
+  balanced:
+    use_when:
+      - "standard photorealistic image"
+      - "portrait with environment"
+      - "commercial scene"
+    rule: "Protect hero subject and important secondary context."
+
+  rich:
+    use_when:
+      - "fashion editorial"
+      - "concert stage"
+      - "architecture background matters"
+      - "mecha/vehicle/product detail matters"
+      - "character IP identity markers matter"
+    rule: "Add details in hierarchy: hero first, supporting context second."
+
+  ultra_rich:
+    use_when:
+      - "high-detail poster"
+      - "luxury campaign"
+      - "wide environment with important background"
+    rule: "Use only when composition can support it; include over-detail safeguards."
+
+priority_examples:
+  kpop_cathedral_concert:
+    detail_budget: "rich"
+    protected_detail_zones:
+      - "idol face readability and eye harmony"
+      - "stage costume seams, layered panels, and trim"
+      - "microphone hand contact"
+      - "feet and stage contact"
+      - "spotlight rim separation"
+    secondary_detail_zones:
+      - "cathedral facade window grid and pointed arches"
+      - "stage monitors and floor lights"
+      - "audience phone-light points"
+      - "subtle LED concert atmosphere"
+    suppressed_detail_zones:
+      - "random cables"
+      - "overly dense stage hardware"
+      - "architecture overpowering the idol"
+    prompt_positive:
+      - "detail priority favors the idol face, costume construction, and stage presence"
+      - "background cathedral remains readable but secondary"
+      - "stage production elements are visible but not cluttered"
+    prompt_negative:
+      - "overloaded stage clutter"
+      - "background detail overpowering the performer"
+      - "random micro-detail noise"
+
+  exterior_architecture_portrait:
+    detail_budget: "balanced"
+    protected_detail_zones:
+      - "person face and pose"
+      - "outfit construction"
+      - "readable facade geometry"
+    suppressed_detail_zones:
+      - "excessive background bokeh"
+      - "random facade noise"
+
+  close_up_idol_face:
+    detail_budget: "rich"
+    protected_detail_zones:
+      - "eye harmony"
+      - "catchlights"
+      - "skin texture"
+      - "stage makeup"
+      - "hairline and face-framing strands"
+    suppressed_detail_zones:
+      - "background architecture detail"
+
+over_detail_control:
+  symptoms:
+    - "too many small objects competing with the hero subject"
+    - "fabric seams become random noise"
+    - "background becomes sharper than the subject"
+    - "stage equipment overwhelms performer"
+    - "micro-detail causes anatomy or garment structure to break"
+  repair_language:
+    - "detail hierarchy favors the hero subject"
+    - "supporting details remain secondary"
+    - "clean detail distribution"
+    - "avoid random micro-detail clutter"
+    - "preserve composition clarity"
+
+workflow_diagnosis:
+  structure_problem:
+    examples:
+      - "wrong clothing construction"
+      - "bad anatomy"
+      - "warped building geometry"
+    first_actions:
+      - "fix prompt structure"
+      - "increase base generation quality"
+      - "local inpaint repair"
+    not_first:
+      - "detailer LoRA"
+
+  local_detail_problem:
+    examples:
+      - "eyes lack crispness"
+      - "fabric texture too soft"
+      - "background facade lacks readable windows"
+    first_actions:
+      - "add protected detail-zone language"
+      - "upscale + low denoise refine"
+      - "local detailer"
+    optional:
+      - "detailer LoRA at low weight"
+
+  texture_polish_problem:
+    examples:
+      - "image looks slightly soft overall"
+      - "surface lacks premium finish"
+    first_actions:
+      - "Turbo refine"
+      - "upscale refine"
+      - "moderate sharpening/detail prompt"
+    optional:
+      - "domain-specific LoRA after structure is stable"
+
+prompt_enrichment_language:
+  positive:
+    - "detail hierarchy favors the hero subject"
+    - "protected detail zones remain clear"
+    - "supporting background details remain readable but secondary"
+    - "clean micro-detail distribution"
+    - "rich detail without clutter"
+  negative:
+    - "random micro-detail clutter"
+    - "overloaded detail"
+    - "background detail overpowering subject"
+    - "noisy fabric seams"
+    - "stage gear clutter"
+    - "facade noise"
+
+self_review_checklist:
+  - "What is the hero subject?"
+  - "Which details must be protected?"
+  - "Which details are secondary?"
+  - "Which details should be suppressed?"
+  - "Does detail density support or harm the composition?"
+  - "Is the problem structural, local detail, repair, or polish?"
+
+model_specific_rendering:
+  chatgpt_image:
+    guidance: >
+      Use detail hierarchy and protected-detail-zone language. State which details matter,
+      which are secondary, and what clutter should be avoided.
+  z_image_turbo:
+    positive_template: >
+      clean detail hierarchy, hero subject detail priority, protected detail zones,
+      rich detail without clutter, readable secondary details
+    negative_template: >
+      random micro-detail clutter, overloaded detail, noisy seams, background overpowering subject
+  stable_diffusion:
+    positive_template: >
+      detail hierarchy, protected details, clean microdetails, readable background,
+      rich but controlled detail
+    negative_template: >
+      clutter, noisy detail, overdetail, bad seams, background stealing focus
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - micro_detail_schema
+    action: "Detect framing, hero subject, and detail-budget needs."
+  phase_2_cinematic_enrichment:
+    action: "Allocate detail priority to hero, secondary, and suppressed zones."
+  phase_3_scene_blueprint:
+    action: "Coordinate details with composition, wardrobe, face, architecture, and stage systems."
+  phase_4_self_review:
+    checks:
+      - "Check protected detail zones."
+      - "Check over-detail risk."
+      - "Check whether detail supports hero hierarchy."
+  phase_4_5_cleanup:
+    action: "Do not remove protected detail-zone constraints."
+  phase_4_6_renderer_selection:
+    action: "Render detail hierarchy in model-appropriate language."
+  phase_5_final_prompt:
+    action: "Include concise detail-priority and anti-clutter instructions when detail risk is high."

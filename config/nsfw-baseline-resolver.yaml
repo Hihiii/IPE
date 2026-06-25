@@ -1,0 +1,99 @@
+schema_version: "1.0.0"
+name: nsfw-baseline-resolver
+purpose: >
+  Enforce the product's always-NSFW baseline for eligible human or humanoid
+  subjects while preserving age safety, real-person blocking, nonhuman
+  exceptions, and the cinematic enhancement pipeline.
+
+product_mode:
+  id: always_nsfw
+  applies_to: [generate, image_edit]
+  default_human_tier: adult_nude
+  default_style: cinematic_photoreal
+  rule: "Every accepted human or humanoid subject is rendered as a clearly adult NSFW subject even when the input has no mature wording."
+
+subject_resolution:
+  human_or_humanoid:
+    action: apply_adult_nude_baseline
+    required_subject_markers: [clearly_adult, mature_body_proportions, adult_presentation]
+  named_whitelist_character:
+    action: apply_adult_nude_baseline_after_unique_whitelist_resolution
+  nonhuman_or_object_or_landscape:
+    action: preserve_non_nsfw_input
+    rule: "Do not add an adult character or NSFW element to a nonhuman-only prompt."
+  blocked:
+    action: reject_before_baseline
+    subjects: [minor, age_ambiguous, youth_coded_sexualized, identifiable_real_person]
+
+tier_resolution:
+  priority:
+    - safety_or_real_person_block
+    - explicit_adult_user_tier
+    - always_nsfw_adult_nude_baseline
+  rules:
+    - "Explicit adult content can raise adult_nude to explicit_adult but never lowers it."
+    - "Neutral, conservative, fully covered, or nonsexual user wording does not disable the human baseline."
+    - "The resolver establishes NSFW presentation before pose, material, lighting, and renderer selection."
+
+nsfw_outfit_library:
+  source: config/nsfw-outfit-library.yaml
+  rule: "30 revealing NSFW outfit variants for auto-selection. Each variant has triggers for user-directed selection and anchors for prompt injection."
+
+nude_triggers:
+  keywords: [全裸, 裸體, 不穿, nude, naked, fully nude, completely nude, bare]
+  rule: "When the original prompt contains any nude trigger keyword, resolve full nudity instead of auto-selecting an outfit."
+
+wardrobe_transformation:
+  unspecified_wardrobe:
+    check: "IF prompt matches any nude trigger keyword → resolve adult_nude_baseline. ELSE → resolve auto_outfit_selected."
+    rule: "Unspecified wardrobe defaults to a revealing NSFW outfit variant instead of nudity. Nudity only when explicitly requested via nude trigger keywords."
+  auto_outfit_selected:
+    result: auto_outfit
+    rule: "Randomly select one outfit variant from config/nsfw-outfit-library.yaml. If any variant trigger matches prompt text, prefer that variant. Pass the selected anchors to phase_2 as the wardrobe specification. The outfit provides partial-nudity exposure through the visible exposure contract."
+    match_type: "triggers"
+    library_path: config/nsfw-outfit-library.yaml
+  explicit_wardrobe:
+    preserve: [garment_type, color, signature_design, character_markers]
+    presentation:
+      - "dynamic fabric tension or grip with a clear physical cause"
+      - "partially removed, loosened, opened, or displaced garment state that visibly exposes the selected evidence target"
+      - "partial adult reveal through a concrete garment action, pose, camera placement, and readable occlusion geometry"
+      - "fabric folds, anchors, and coverage follow contact and gravity"
+    rule: "Wardrobe identity remains visible, but an intact covering outfit cannot suppress the always-NSFW adult presentation or the visible exposure contract."
+  explicit_modesty_or_full_coverage:
+    result: apply_explicit_wardrobe_transformation
+    rule: "The product baseline overrides non-NSFW wardrobe presentation while retaining recognizable design details."
+
+image_edit_transformation:
+  eligible_human_source:
+    order:
+      - validate_adult_eligibility
+      - apply_adult_nude_baseline_or_wardrobe_transformation
+      - apply_user_requested_edit
+      - preserve_identity_camera_scene_and_non_target_locks_after_adultization
+    rule: "A narrow edit, including lighting-only, adultizes an eligible human source before applying the requested change."
+  nonhuman_source:
+    action: preserve_existing_edit_only_behavior
+
+renderer_injection:
+  z_image:
+    placement: "Open the positive prompt with clearly adult status and resolved adult-nude or transformed-wardrobe presentation."
+  negative:
+    rule: "Keep age-safety terms and targeted failures only; never negate the resolved NSFW baseline."
+
+visible_exposure_contract:
+  source: config/nsfw-visible-exposure-contract.yaml
+  rule: "Every eligible human or humanoid scene resolves a visible exposure contract after eligibility and before pose, material, camera, or renderer decisions."
+  female_feminine_rule: "Use nipple or vulva as the selected evidence target; wetness, translucency, body curves, or sensual styling alone do not satisfy the contract."
+  wardrobe_rule: "Unspecified wardrobe (no nude trigger) resolves auto_outfit → partial_nudity_required with a revealing NSFW outfit variant. Unspecified wardrobe (nude trigger present) resolves full_nudity_required. Explicit wardrobe resolves partial_nudity_required with a concrete transformation action and a readable evidence target."
+
+exposure_action_controller:
+  source: config/nsfw-exposure-action-controller.yaml
+  rule: "Bind the selected target to one compatible garment zone, physical action or sheer-material route, unambiguous end state, and camera proof before prompt rendering."
+  recovery: "If Phase 4 finds that the target remains covered, obscured, out of frame, physically unsupported, back-facing, ray-occluded, unreachable, or outside crop, recompose from Phase 2 at most twice before blocking delivery."
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis: "Classify subject kind, resolve baseline, then record the visible exposure contract before interpreting a neutral mature tier."
+  phase_2_cinematic_enrichment: "Use baseline result, visible exposure contract, and exposure action controller to select adult pose, material, camera, lighting, and garment interaction."
+  phase_3_scene_blueprint: "Record baseline_tier, wardrobe_transformation, visible_exposure_contract, exposure_action_plan, exposure_geometry_plan, and baseline_application_reason."
+  phase_4_self_review: "Reject or recompose an eligible human output that lacks a valid visible exposure contract, feasible target-action-end-state-camera geometry relationship, or readable NSFW baseline evidence."

@@ -1,0 +1,56 @@
+schema_version: "1.0.0"
+name: "negative-space-policy"
+description: >
+  Controls breathing room, luxury feel, typography zones, motion lead room, and
+  scale through intentional empty or low-detail space.
+
+core_principle: >
+  Negative space is active composition. It can hold typography, suggest motion,
+  create premium restraint, isolate a subject, or show world scale.
+
+negative_space_policy:
+  modes:
+    poster_negative_space:
+      reserve: ["title", "subtitle", "tagline"]
+      typical_locations: ["top", "bottom", "side column"]
+      prompt: "clean poster negative space reserved for title and subtitle"
+    editorial_negative_space:
+      reserve: ["breathing room", "caption", "layout rhythm"]
+      typical_locations: ["left column", "right column", "upper third", "around subject"]
+      prompt: "generous editorial negative space with controlled layout rhythm"
+    cover_design_negative_space:
+      reserve: ["masthead", "cover lines", "issue details"]
+      typical_locations: ["top band", "left or right side", "bottom strip"]
+      prompt: "cover-safe title area and side cover-line space"
+    lonely_mood_negative_space:
+      reserve: ["emotional isolation", "scale"]
+      typical_locations: ["large sky", "empty wall", "open landscape", "dark surrounding space"]
+      prompt: "large empty space emphasizes scale and isolation"
+    product_hero_negative_space:
+      reserve: ["logo", "headline", "commercial copy", "premium breathing room"]
+      typical_locations: ["opposite product", "top corner", "clean side area"]
+      prompt: "product remains hero with clean copy-safe negative space"
+    action_lead_room:
+      reserve: ["movement direction", "gaze direction", "impact zone"]
+      typical_locations: ["ahead of subject", "toward gaze/action target"]
+      prompt: "clear lead room in the direction of movement"
+
+conditional_rules:
+  if_magazine_cover:
+    reserve_top_space_for_title: true
+    reserve_side_space_for_cover_lines: true
+  if_minimal_editorial:
+    allow_large_empty_area: true
+  if_subject_is_small_in_world:
+    use_negative_space_to_emphasize_scale: true
+  if_subject_looks_or_moves_sideways:
+    reserve_lead_room_on_that_side: true
+  if_exact_text_required:
+    background_behind_text: "low detail, high contrast, uncluttered"
+
+failure_guardrails:
+  - "negative space filled with random detail"
+  - "text zone too busy"
+  - "lead room on wrong side"
+  - "subject crowded against frame edge without intent"
+  - "empty area feels accidental rather than composed"

@@ -1,0 +1,56 @@
+schema_version: 1.0.0
+character:
+  id: sailormoon--characters--ami_mizuno
+  display_name: Ami Mizuno
+  aliases:
+  - Ami Mizuno
+  - 水野亞美
+  - Sailor Mercury
+  - Sailor Mercury (美少女戰士)
+  - Amy Anderson
+  source_title: Sailor Moon
+  adult_status: confirmed_adult
+  adult_source_basis: Sailor Moon default character design
+  identity_summary: The genius Sailor Guardian of intelligence and water with short neat blue hair, calm blue eyes, fair skin, and a slender studious build. Wears glasses in civilian form, and transforms into Sailor Mercury with a white sailor fuku with blue collar, red bow, blue skirt, white gloves, and blue high-heeled boots, with a blue visor and mercury emblem. The brains of the team with a shy, reserved demeanor and deep loyalty to her friends.
+  visual_anchors:
+  - short neat blue hair
+  - calm blue eyes
+  - fair skin
+  - slender studious build
+  - round glasses (civilian)
+  - white sailor fuku with blue collar and red bow
+  - blue pleated miniskirt
+  - white gloves
+  - blue high-heeled boots
+  - blue visor (transformed)
+  - Mercury emblem
+  - shy intelligent expression
+  - short blue hair
+  - side-swept bangs
+  - calm blue eyes
+  - intellectual oval face
+  - slender build
+  outfit_anchors:
+  - short blue hair
+  - calm blue eyes
+  - white sailor fuku
+  - blue collar with red bow
+  - blue miniskirt
+  - white gloves
+  - blue boots
+  - Mercury emblem
+  - Sailor Mercury in white sailor fuku, blue collar, blue skirt, blue boots, and intelligent studious presence.
+  style_anchors:
+  - shy intelligent calm
+  - quiet determined loyalty
+  - warm caring wisdom
+  drift_guards:
+  - long hair
+  - wrong hair color (not blue)
+  - wrong eye color (not calm blue)
+  - generic attractive person
+  - missing glasses in civilian form
+  - wrong sailor fuku colors
+  - outgoing boisterous demeanor
+  - black or brown hair
+  - cold unfriendly expression

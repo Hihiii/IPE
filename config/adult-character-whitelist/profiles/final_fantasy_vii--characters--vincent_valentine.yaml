@@ -1,0 +1,61 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_vii--characters--vincent_valentine
+  display_name: Vincent Valentine
+  aliases:
+  - Vincent Valentine
+  - 文森特·瓦倫丁
+  - 文森特·瓦倫丁 (Final Fantasy VII)
+  source_title: Final Fantasy VII
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy VII default appearance
+  identity_summary: Mysterious former Turk with long dark red hair swept back, intense red eyes, pale
+    skin, wearing a dark red floor-length cape with a high collar over a dark purple leather vest, white
+    ruffled dress shirt with loose cravat, dark trousers with a silver chain and red jewel buckle, black
+    leather gloves with claw-like metal gauntlets, and black knee-high boots, carrying a three-barreled
+    pistol.
+  visual_anchors:
+  - long dark red hair swept back
+  - pale skin with dark circles under eyes
+  - deep red eyes
+  - dark red floor-length cape with high collar
+  - black leather gloves with metal claw gauntlets
+  - three-barreled pistol Cerberus
+  - pale near-white skin
+  - dark circles under eyes
+  - dark red hair
+  - wild brushed-back crown
+  - strands falling forward
+  - deep red
+  - sharp refined angular face
+  - tall lean elegant build
+  outfit_anchors:
+  - long dark red hair swept back
+  - pale skin with red eyes
+  - dark red floor-length cape with high collar
+  - black leather gloves with claw gauntlets
+  - Cerberus three-barreled pistol
+  - Mysterious former Turk with long dark red hair swept back, intense red eyes, pale skin, wearing a
+    dark red floor-length cape with a high collar over a dark purple or black leather vest, white ruffled
+    dress shirt with loose cravat, dark trousers with silver chain and red jewel buckle, black leather
+    gloves with claw-like metal gauntlets, and black knee-high boots, carrying Cerberus.
+  style_anchors:
+  - silent brooding
+  drift_guards:
+  - short cropped hair
+  - black or non-red hair
+  - missing red eyes
+  - non-pale skin
+  - cheerful bright expression
+  - generic attractive person
+  - brown or blue eyes
+  - missing dark red floor-length cape
+  - missing claw-like metal gauntlets
+  - missing Cerberus gun
+  - casual modern outfit
+  - bright colored outfit
+  - missing high collar cape
+  - black or brown hair
+  - styled neat hair
+  - short stocky build
+  - casual relaxed posture

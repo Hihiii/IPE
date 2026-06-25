@@ -1,0 +1,63 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_x--characters--kimahri_ronso
+  display_name: Kimahri Ronso
+  aliases:
+  - Kimahri Ronso
+  - 奇馬利·朗索
+  - 奇馬利·朗索 (Final Fantasy X)
+  - Kimahri
+  source_title: Final Fantasy X
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy X default appearance
+  identity_summary: Tall blue-furred Ronso warrior with a lion-like face, two prominent curved horns,
+    yellow feline eyes, tribal red and purple markings on face and body, minimal combat gear including
+    a leather waist-wrap and shoulder armor, carrying a long spear/lance.
+  visual_anchors:
+  - blue fur
+  - lion face
+  - two horns
+  - tribal markings
+  - spear
+  - lion-like face
+  - two curved horns
+  - yellow slit-pupil eyes
+  - broad nose bridge
+  - prominent feline muzzle
+  - not applicable — blue fur covering
+  - domed fur-covered head with two horns
+  - not applicable
+  - bright yellow
+  - lion-like feline face
+  - very tall massive muscular build
+  outfit_anchors:
+  - blue fur
+  - lion face
+  - two curved horns
+  - long spear
+  - tribal red and purple markings
+  - tall stature
+  - Tall blue-furred Ronso warrior with minimal gear — leather strap across chest, single pauldron on
+    left shoulder, leather loincloth wrap, no shoes, tribal red and purple body markings.
+  style_anchors:
+  - silent watchful
+  - steady feline stare
+  drift_guards:
+  - human face
+  - smooth skin
+  - no fur
+  - no horns
+  - wrong color fur
+  - short stature
+  - missing lion-like features
+  - wrong eye color
+  - full armor covering fur
+  - clothing that covers tribal markings
+  - shoes
+  - modern clothing
+  - pants or shorts
+  - shirt covering chest
+  - human hairstyle
+  - long flowing hair
+  - head hair of any kind
+  - smooth human skin

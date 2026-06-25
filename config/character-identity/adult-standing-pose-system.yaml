@@ -1,0 +1,33 @@
+schema_version: "1.0.0"
+name: "adult-standing-pose-system"
+description: "Adult standing glamour, swimwear, lingerie, and power-pose templates with balance and camera-aware body lines."
+
+adult_standing_pose_schema:
+  pose_mode: [glamour_contrapposto, swimwear_editorial, power_glamour, relaxed_full_body, back_view_turn]
+  support_leg: "left | right | both"
+  free_leg_action: "soft_bend | toe_point | crossed_ankle | extended"
+  hip_line: "subtle_raise | contrapposto | level"
+  shoulder_line: "counterbalanced | open_power | relaxed"
+  neck_and_chin: "elongated_relaxed | chin_lowered | chin_lifted"
+  hand_intent: []
+  camera_relation: "eye_level | low_angle | three_quarter | full_body"
+
+templates:
+  glamour_contrapposto:
+    visible_pose: "subtle S-curve through neck, waist, and hips; weight on one leg; free leg softly bent; counterbalanced shoulders; relaxed elongated neck"
+    hand_options: [hand_on_waist, hand_in_hair, hand_on_thigh]
+    checks: [support_foot_grounded, knees_follow_hips, clean_leg_line]
+  swimwear_editorial:
+    visible_pose: "elongated torso, one hip subtly raised, long clean leg line, relaxed shoulders, intentional framing hands"
+    hand_options: [hand_on_waist, hand_on_thigh, hand_adjusting_garment]
+    checks: [full_body_crop_safe, straps_follow_body, no_collapsed_ankle]
+  power_glamour:
+    visible_pose: "stable grounded legs, open chest, strong shoulder line, controlled direct gaze, elegant confident posture"
+    hand_options: [hand_on_waist, hand_holding_prop, relaxed_side_hand]
+    checks: [stable_center_of_gravity, face_readable_at_low_angle]
+
+guards:
+  - "Define one support leg and a plausible center of gravity."
+  - "Keep knees, feet, pelvis, and shoulder counterline coherent."
+  - "At low angle, retain proportional legs and a readable face."
+  - "Keep the adult body-language tier; do not flatten it into a neutral mannequin stance."

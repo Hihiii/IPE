@@ -1,0 +1,1396 @@
+version: 1
+purpose: "Color theory reference for cinematic and commercial image planning."
+
+# =============================================================================
+# COLOR SCHEMES — foundational color relationship patterns
+# =============================================================================
+schemes:
+  complementary:
+    description: "Colors opposite on the color wheel. Maximum contrast and visual tension."
+    contrast_level: "very_high"
+    visual_tension: "high"
+    emotional_feel: "dynamic, bold, dramatic, energetic"
+    common_pairs:
+      - "blue_and_orange"
+      - "red_and_green"
+      - "yellow_and_purple"
+      - "cyan_and_red_orange"
+    best_for:
+      - "cinematic teal-and-orange look"
+      - "sports brands"
+      - "action and drama"
+      - "high-impact commercial"
+    prompt_keywords: "complementary color scheme, contrasting warm and cool tones, dynamic color contrast"
+    cinematic_example: "Teal-orange blockbuster look. Skin tones warm orange against teal shadows."
+
+  analogous:
+    description: "Colors adjacent on the color wheel. Harmonious and cohesive."
+    contrast_level: "low"
+    visual_tension: "very_low"
+    emotional_feel: "calm, serene, harmonious, elegant, sophisticated"
+    common_groups:
+      - "blue_teal_green"
+      - "yellow_orange_red"
+      - "purple_blue_cyan"
+      - "green_yellow_orange"
+    best_for:
+      - "luxury brand"
+      - "spa and wellness"
+      - "nature and landscape"
+      - "elegant editorial"
+    prompt_keywords: "analogous color harmony, cohesive color palette, harmonious tones, subtle color transition"
+    cinematic_example: "Luxe perfume ads with champagne-copper-amber progression."
+
+  triadic:
+    description: "Three colors evenly spaced on the color wheel. Balanced but vibrant."
+    contrast_level: "high"
+    visual_tension: "moderate"
+    emotional_feel: "vibrant, playful, balanced, rich, artistic"
+    common_triads:
+      - "red_yellow_blue"
+      - "orange_green_purple"
+      - "cyan_magenta_yellow"
+    best_for:
+      - "children's products"
+      - "creative and artistic"
+      - "festive and celebration"
+      - "editorial with personality"
+    prompt_keywords: "triadic color palette, three-color harmony, balanced vibrant colors"
+    cinematic_example: "Wes Anderson films — bold reds, yellows, and blues in balanced composition."
+
+  monochromatic:
+    description: "Single hue with variations in saturation and luminance. Ultra-cohesive."
+    contrast_level: "very_low"
+    visual_tension: "none"
+    emotional_feel: "minimalist, sophisticated, pure, focused, atmospheric"
+    best_for:
+      - "minimalist product"
+      - "high-end fashion editorial"
+      - "fine art"
+      - "brand identity consistency"
+    prompt_keywords: "monochromatic color scheme, single hue variations, tonal harmony, minimalist palette"
+    cinematic_example: "The Matrix — green monochrome. Or Schindler's List — red coat as accent."
+
+  split_complementary:
+    description: "Base color plus two colors adjacent to its complement. High contrast but less tension."
+    contrast_level: "high_but_refined"
+    visual_tension: "moderate_refined"
+    emotional_feel: "refined_contrast, sophisticated_drama, controlled_vibrancy"
+    common_groups:
+      - "blue_with_yellow_orange_and_red_orange"
+      - "red_with_blue_green_and_yellow_green"
+    best_for:
+      - "refined commercial"
+      - "controlled brand contrast"
+      - "editorial with depth"
+    prompt_keywords: "split complementary palette, refined color contrast, sophisticated accent colors"
+    notes: "Easier to balance than full complementary. Gives contrast without the tension."
+
+  tetradic_double_complementary:
+    description: "Two complementary pairs. Rich but requires careful balance."
+    contrast_level: "very_high"
+    visual_tension: "high"
+    emotional_feel: "rich, complex, bold, maximalist"
+    best_for:
+      - "maximalist editorial"
+      - "festive packaging"
+      - "complex commercial scenes"
+    prompt_keywords: "tetradic color scheme, double complementary, rich multi-color palette"
+    notes: "Most difficult to balance. Best with one dominant pair and one accent pair."
+
+  accented_achromatic:
+    description: "Nearly full grayscale with a single saturated accent color. The accent draws full attention."
+    contrast_level: "very_high"
+    visual_tension: "very_high"
+    emotional_feel: "iconic, powerful, focused, dramatic, editorial"
+    common_accents:
+      - "red_accent_on_gray"
+      - "yellow_accent_on_gray"
+      - "teal_accent_on_gray"
+    best_for:
+      - "iconic editorial covers"
+      - "brand hero imagery"
+      - "fine art statement"
+      - "product hero with single brand color"
+    prompt_keywords: "accented achromatic, grayscale with single color accent, desaturated with pop of color"
+    cinematic_example: "Schindler's List — the girl in the red coat. Everything else is monochrome."
+    notes: "The accent color must be chosen with extreme care. It carries the entire emotional weight."
+
+  duotone:
+    description: "Two specific hues, typically one mapping to shadows and one to highlights. Graphic, editorial, modern."
+    contrast_level: "moderate_to_high"
+    visual_tension: "moderate"
+    emotional_feel: "editorial, graphic, contemporary, stylized, cohesive"
+    common_pairs:
+      - "black_and_gold"
+      - "blue_and_orange"
+      - "purple_and_pink"
+      - "teal_and_coral"
+    best_for:
+      - "editorial spreads"
+      - "album artwork"
+      - "brand mood boards"
+      - "social media aesthetics"
+    prompt_keywords: "duotone color palette, two-color gradient, shadow and highlight separation"
+    notes: "Commonly used in print editorial. Works best when the two colors have strong contrast in temperature or saturation."
+
+  pastel:
+    description: "Multiple hues at low saturation and high luminance. Soft, gentle, inviting."
+    contrast_level: "low"
+    visual_tension: "very_low"
+    emotional_feel: "soft, gentle, dreamy, romantic, youthful, approachable"
+    common_groups:
+      - "pink_lavender_mint"
+      - "peach_cream_skyblue"
+      - "mint_yellow_lilac"
+    best_for:
+      - "beauty and skincare"
+      - "baby and children"
+      - "wedding and lifestyle"
+      - "spring and floral"
+    prompt_keywords: "pastel color palette, soft muted tones, gentle dreamy colors, low saturation pastels"
+    cinematic_example: "Wes Anderson palettes applied gently. Soft pastel pink and mint green tones."
+
+  earthy_organic:
+    description: "Warm natural tones from earth, clay, stone, and vegetation. Grounded and authentic."
+    contrast_level: "low_to_moderate"
+    visual_tension: "low"
+    emotional_feel: "grounded, authentic, organic, natural, warm, sustainable"
+    common_palette:
+      - "terracotta_olive_cream"
+      - "ochre_rust_sage"
+      - "brown_amber_moss"
+      - "clay_sand_stone"
+    best_for:
+      - "organic and natural brands"
+      - "sustainable packaging"
+      - "food and farmer's market"
+      - "outdoor lifestyle"
+    prompt_keywords: "earthy color palette, organic natural tones, terracotta and olive, grounded warm colors"
+    notes: "Highlights natural textures. Avoid pure white; use warm cream or linen instead."
+
+  neon_cyberpunk:
+    description: "Extreme saturation, electric colors on dark backgrounds. Artificial, futuristic energy."
+    contrast_level: "very_high"
+    visual_tension: "very_high"
+    emotional_feel: "futuristic, electric, edgy, synthetic, rebellious, urban"
+    common_palette:
+      - "magenta_cyan_dark"
+      - "neon_green_purple_black"
+      - "electric_blue_hot_pink"
+    best_for:
+      - "nightlife and music"
+      - "gaming and tech"
+      - "edgy fashion"
+      - "cyberpunk aesthetic"
+    prompt_keywords: "neon cyberpunk palette, electric saturated colors, neon on dark, synthetic glow"
+    cinematic_example: "Blade Runner 2049 — neon magenta and cyan against deep shadows."
+
+  polychromatic:
+    description: "Full spectrum rainbow or near-rainbow palette. Maximalist, joyful, inclusive."
+    contrast_level: "very_high"
+    visual_tension: "high"
+    emotional_feel: "joyful, inclusive, vibrant, celebratory, maximalist, diverse"
+    best_for:
+      - "pride and diversity"
+      - "festivals and celebration"
+      - "creative and artistic"
+      - "children's products"
+    prompt_keywords: "polychromatic color palette, full rainbow spectrum, multiple vivid colors, joyful diversity"
+    notes: "Requires strong compositional control to avoid visual chaos. Use white or black as grounding."
+
+  high_contrast_warm_cool:
+    description: "Deliberate separation of warm and cool regions of the frame, not by complementary pairs but by color temperature zones."
+    contrast_level: "high"
+    visual_tension: "moderate_high"
+    emotional_feel: "cinematic, spatial, dimensional, dramatic, deliberate"
+    best_for:
+      - "cinematic storytelling"
+      - "product with dual environment"
+      - "editorial with light and shadow areas"
+      - "portrait with mixed lighting"
+    prompt_keywords: "warm cool split lighting, deliberate temperature zones, warm subject on cool background"
+    notes: "Different from complementary — this is about dividing the frame into temperature zones. Warm subject, cool background (or vice versa)."
+    cinematic_example: "A face lit by warm tungsten on one side, cool window light on the other."
+
+  golden_analogous:
+    description: "Warm gold, amber, copper, and bronze tones. Narrow-band warm analogous. Richest warm range."
+    contrast_level: "low"
+    visual_tension: "very_low"
+    emotional_feel: "rich, luxurious, warm, opulent, precious, golden"
+    best_for:
+      - "luxury jewelry and watches"
+      - "premium spirits"
+      - "wedding and celebration"
+      - "royal and heritage brands"
+    prompt_keywords: "golden analogous palette, warm amber tones, rich copper bronze, precious metal chromatic"
+    notes: "The most expensive-feeling color scheme. Needs careful highlight management to avoid blowing out."
+
+  cool_oceanic:
+    description: "Blue, teal, cyan, and slate. Narrow-band cool analogous. Calm and expansive."
+    contrast_level: "low"
+    visual_tension: "very_low"
+    emotional_feel: "calm, expansive, deep, refreshing, professional, aquatic"
+    best_for:
+      - "tech and finance"
+      - "travel and aquatic"
+      - "medical and clean"
+      - "professional services"
+    prompt_keywords: "cool oceanic palette, blue teal tones, calm cool chromatic, deep sea palette"
+    notes: "Evokes depth and professionalism. Add a warm accent for visual anchor."
+
+  soft_warm_light:
+    description: "Warm tones at very low saturation — cream, champagne, peach, blush. Minimalist warm."
+    contrast_level: "very_low"
+    visual_tension: "none"
+    emotional_feel: "intimate, gentle, elegant, understated, timeless"
+    best_for:
+      - "bridal and wedding"
+      - "luxury skincare"
+      - "intimate portrait"
+      - "fine art nudes"
+    prompt_keywords: "soft warm neutrals, champagne tones, blush cream palette, subtle warmth"
+
+
+# =============================================================================
+# COLOR TEMPERATURE — Kelvin scale with emotional mapping
+# =============================================================================
+color_temperatures:
+  candlelight:
+    kelvin: 1800
+    rgb: "#FF8C00"
+    cast: "very_warm_orange"
+    emotion: "intimate, romantic, warm"
+    notes: "Single candle as light source. Deepest warm tone. Shadows go black."
+
+  sodium_vapor:
+    kelvin: 2200
+    rgb: "#FF6B00"
+    cast: "deep_orange_warm"
+    emotion: "urban, nocturnal, gritty, cinematic"
+    notes: "Street lamps. Creates the classic urban night look. Pure orange cast."
+    cinematic_use: "Michael Mann films — sodium vapor street lighting."
+
+  tungsten:
+    kelvin: 3200
+    rgb: "#FFB347"
+    cast: "warm_amber"
+    emotion: "cozy, interior, classic, intimate"
+    notes: "Standard indoor lighting. Warm but not orange. Classic Hollywood key light."
+    cinematic_use: "The Godfather — warm amber interiors."
+
+  sunrise_sunset:
+    kelvin: 3500_4500
+    rgb: "#FFD59A"
+    cast: "golden_warm"
+    emotion: "golden hour, nostalgic, warm glow, transient"
+    notes: "The golden hour. Rapidly changing. Directional warm light."
+    cinematic_use: "Days of Heaven — entire film shot during golden hour."
+
+  fluorescent_cool:
+    kelvin: 4200
+    rgb: "#D4E0A0"
+    cast: "cool_greenish"
+    emotion: "clinical, institutional, cold, cheap"
+    notes: "Office, hospital, retail. Can have a greenish cast. Often avoided in premium work."
+    cinematic_use: "Office environments, horror — creates unease."
+
+  daylight:
+    kelvin: 5600
+    rgb: "#FFFFFF"
+    cast: "neutral_white"
+    emotion: "natural, truthful, clean, standard"
+    notes: "Midday sun, camera daylight balance. The reference point for all color temperature."
+
+  studio_flash:
+    kelvin: 5500
+    rgb: "#FFFFFF"
+    cast: "neutral_white"
+    emotion: "commercial, studio, precise, controlled"
+    notes: "Studio strobes are typically 5500K. Consistent, powerful, daylight balanced."
+    best_for: "Product photography, commercial studio work."
+
+  overcast_shade:
+    kelvin: 6500_7500
+    rgb: "#C8D8FF"
+    cast: "cool_blue"
+    emotion: "moody, cold, melancholy, soft"
+    notes: "North light. Overcast sky. The softest and most even temperature."
+    cinematic_use: "The Revenant — cool ambient light for survival scenes."
+
+  luna_moonlight:
+    kelvin: 7500_8000
+    rgb: "#7090FF"
+    cast: "cool_blue"
+    emotion: "night, mysterious, cold, romantic"
+    notes: "Moonlight is actually reflected sunlight but cinema convention treats it as cool blue."
+    cinematic_use: "Standard cinematic moonlight effect. Paired with warm practicals for contrast."
+
+  clear_sky_shadow:
+    kelvin: 8000_10000
+    rgb: "#4060E0"
+    cast: "deep_blue"
+    emotion: "cold, dramatic, clinical, clean"
+    notes: "Shadow areas on a clear day. The blue sky casts a strong cool tint on shadows."
+    cinematic_use: "Open shade portraits — cool shadows, warm sunlit areas."
+
+  mercury_vapor:
+    kelvin: 5900
+    rgb: "#C0D8FF"
+    cast: "blue_violet"
+    emotion: "industrial, harsh, surveillance, cold"
+    notes: "Parking lots, industrial yards. Blue-violet cast. Harsher than sodium."
+    cinematic_use: "Parking lot scenes, industrial surveillance aesthetic."
+
+  LED_variable:
+    kelvin: 2700_6500
+    rgb: "#variable"
+    cast: "programmable"
+    emotion: "modern, controllable, versatile, digital"
+    notes: "Modern LED panels. Can be dialed to any temperature. The standard for modern filmmaking."
+    best_for: "Modern studio production where color temp control is needed."
+
+
+# =============================================================================
+# COLOR GRADING LOOKS — specific film stocks, director signatures, and mood grades
+# =============================================================================
+color_grading_looks:
+  # --- Commercial Standards ---
+  neutral_pro:
+    description: "Natural, unbiased color with accurate skin tones and neutral grays. The commercial baseline."
+    contrast: "moderate"
+    saturation: "accurate_neutral"
+    best_for: "commercial product, e-commerce, catalog, color-critical work"
+    prompt_keywords: "neutral color grade, accurate skin tones, commercial color standard, natural color balance"
+    notes: "The 'no-grade' grade. Hardest to achieve because every color must be correct."
+
+  golden_hour:
+    description: "Warm amber/gold tones throughout. Low contrast, warm highlights. The most flattering light."
+    contrast: "low"
+    saturation: "warm_saturated"
+    best_for: "romantic, nostalgic, lifestyle, beauty, wedding"
+    prompt_keywords: "golden hour lighting, warm amber glow, low contrast golden tones, sunset warmth"
+    cinematic_use: "Any scene requiring warmth, intimacy, or nostalgia."
+
+  desaturated_cool:
+    description: "Cool blue/muted tones, low saturation, clean. Modern architectural and tech aesthetic."
+    contrast: "moderate"
+    saturation: "low_cool"
+    best_for: "modern commercial, tech, minimalist, luxury, architecture"
+    prompt_keywords: "desaturated cool grade, muted blue tones, clean modern look, minimal color"
+    cinematic_use: "Apple product photography. Modern minimalist architecture."
+
+  bleach_bypass:
+    description: "Desaturated with high contrast and silver retention. Gritty, metallic, aggressive."
+    contrast: "very_high"
+    saturation: "low"
+    best_for: "war film, gritty drama, edgy fashion, post-apocalyptic"
+    prompt_keywords: "bleach bypass look, desaturated high contrast, silver retention, gritty film look"
+    cinematic_use: "Saving Private Ryan — the Normandy beach sequence."
+
+  pastel_soft:
+    description: "Low saturation, high key, soft tones. Gentle and dreamy, like candy-coated light."
+    contrast: "low"
+    saturation: "low_pastel"
+    best_for: "beauty, lifestyle, social media, fashion soft, spring"
+    prompt_keywords: "pastel soft color palette, low saturation dreamy, soft gentle tones"
+    cinematic_use: "Romantic comedy flashbacks. Dream sequences."
+
+  # --- Film Stock Emulations ---
+  kodak_portra:
+    description: "Warm skin tones, softened greens, pastel blue skies. The iconic portrait film. Slightly desaturated highlights, rich midtones."
+    contrast: "moderate_low"
+    saturation: "warm_with_green_muted"
+    best_for: "portrait, wedding, engagement, lifestyle"
+    prompt_keywords: "Kodak Portra film look, warm skin tones, pastel greens, classic portrait film"
+    notes: "The gold standard for film portraits. Skin tones are rendered with a gentle warmth that flatters every complexion."
+
+  kodak_ektar:
+    description: "High saturation, vibrant blues and reds, punchy contrast. Consumer-grade but characterful."
+    contrast: "moderate_high"
+    saturation: "high_vibrant"
+    best_for: "travel, street, product color emphasis, food"
+    prompt_keywords: "Kodak Ektar film, high saturation vibrant, punchy colors, classic consumer film"
+    notes: "More saturated than Portra. Excellent when color itself is the subject."
+
+  fuji_pro_400h:
+    description: "Cool skin tone bias, desaturated greens, soft pastel palette, gentle highlight rolloff. The alternative portrait standard."
+    contrast: "moderate_low"
+    saturation: "cool_pastel"
+    best_for: "fashion, editorial, Japanese aesthetic, cool portrait"
+    prompt_keywords: "Fuji Pro 400H film, cool skin tones, pastel palette, soft pastel film look"
+    notes: "The preferred film for many fashion photographers. Skin tones run cooler than Portra."
+
+  fuji_velvia:
+    description: "Extremely high saturation, deep greens, punchy blues, high contrast. Landscape photographer's choice."
+    contrast: "high"
+    saturation: "extremely_high"
+    best_for: "landscape, nature, architecture, color emphasis"
+    prompt_keywords: "Fuji Velvia film, hyper saturated, deep greens, punchy blue sky, landscape film"
+    notes: "Saturation is intentionally unrealistic. Best for nature and landscape where you want color to pop."
+
+  cinestill_800t:
+    description: "Warm tungsten-balanced film with signature red halation on highlights. Blue shadow tint. Urban night aesthetic."
+    contrast: "high"
+    saturation: "warm_with_blue_shadows"
+    best_for: "night photography, neon, urban, cinematic interior, music"
+    prompt_keywords: "Cinestill 800T film, tungsten balanced, red halation highlights, blue shadows, cinematic night"
+    notes: "The halation (red glow around bright highlights) is the signature look. Streetlights, neon signs, car headlights all glow red."
+
+  kodak_tri_x:
+    description: "Classic black and white film. Medium contrast, visible grain, wide tonal range. The documentary choice."
+    contrast: "moderate"
+    saturation: "mono"
+    best_for: "documentary, street photography, B&W portrait, fine art"
+    prompt_keywords: "Kodak Tri-X film, black and white, medium contrast, classic grain, documentary B&W"
+    notes: "400 speed, pushable to 1600+. The most iconic B&W film in history."
+
+  ilford_hp5:
+    description: "Black and white with finer grain than Tri-X, smoother midtones, excellent pushability."
+    contrast: "moderate"
+    saturation: "mono"
+    best_for: "B&W portrait, fine art, editorial, available light B&W"
+    prompt_keywords: "Ilford HP5 Plus film, fine grain B&W, smooth midtones, classic monochrome"
+    notes: "Smoother than Tri-X. Preferred when you want B&W without the grain character being a feature."
+
+  agfa_ultra:
+    description: "Deep, warm saturation with a distinct European color palette. Red shift in shadows. Vibrant but natural."
+    contrast: "moderate_high"
+    saturation: "warm_deep"
+    best_for: "editorial, European style, warm natural scenes, street"
+    prompt_keywords: "Agfa Ultra film, warm saturation, European color, deep reds, vibrant natural"
+    notes: "Discontinued but has a cult following. Colors are warm without being oversaturated."
+
+  kodachrome:
+    description: "Warm reds, deep blues, cyan shadows, slight halation. The most iconic slide film ever made."
+    contrast: "high"
+    saturation: "warm_red_shift"
+    best_for: "vintage Americana, retro, travel documentary, period piece"
+    prompt_keywords: "Kodachrome film look, warm reds, deep blues, classic slide film, vintage travel"
+    notes: "Known for its longevity — Kodachrome slides last decades without color shift."
+
+  # --- Director & Cinematic Signatures ---
+  michael_mann_sodium:
+    description: "Deep teal shadows, warm sodium-vapor highlights, strong color separation by temperature. Urban night defined."
+    contrast: "high"
+    saturation: "selective_extreme"
+    best_for: "urban night, thriller, crime, nocturnal editorial"
+    prompt_keywords: "Michael Mann teal and sodium look, teal shadows, warm streetlight, urban night cinematic"
+    cinematic_use: "Heat, Collateral, Miami Vice — the definitive urban night look."
+
+  wes_anderson:
+    description: "Deliberately saturated pastels, warm biased but controlled. Symmetrical color blocking. Each scene has a dominant palette."
+    contrast: "low_moderate"
+    saturation: "pastel_vibrant"
+    best_for: "editorial, period with stylized color, whimsical commercial"
+    prompt_keywords: "Wes Anderson color palette, symmetrical pastels, warm saturated pastels, stylized color blocking"
+    cinematic_use: "The Grand Budapest Hotel — pink, purple, and warm amber."
+
+  dune_sandy:
+    description: "Warm ochre, sand, bronze, muted olive. Low saturation with warm dust tone. Sun-bleached epic."
+    contrast: "moderate"
+    saturation: "low_warm"
+    best_for: "epic landscape, period desert, survival, monumental architecture"
+    prompt_keywords: "Dune sandy palette, warm ochre tones, sun bleached colors, desert epic color grade"
+    cinematic_use: "Dune — warm sand tones, muted bronze, sun-baked everything."
+
+  mad_max_orange:
+    description: "High contrast warm orange and teal dust. Bleached highlights, crushed blacks. Post-apocalyptic heat."
+    contrast: "very_high"
+    saturation: "warm_orange_dominant"
+    best_for: "action, post-apocalyptic, desert, high-energy"
+    prompt_keywords: "Mad Max orange and teal, high contrast warm, bleached highlights, post-apocalyptic"
+    cinematic_use: "Mad Max: Fury Road — orange dust, teal sky, extreme contrast."
+
+  oppenheimer_midcentury:
+    description: "Warm amber midtones, cool blue shadows, period-specific browns and grays. 1940s atomic age palette."
+    contrast: "moderate_high"
+    saturation: "warm_muted_with_blue_shadows"
+    best_for: "period drama, 1940s-1950s, documentary reenactment, institutional"
+    prompt_keywords: "Oppenheimer midcentury palette, warm amber and cool shadow, period atomic age colors"
+    cinematic_use: "Oppenheimer — warm amber institutions, cold theoretical blue."
+
+  blade_runner_cyberpunk:
+    description: "Deep blacks, neon cyan, hot magenta, yellow-green industrial. The definitive cyberpunk palette."
+    contrast: "very_high"
+    saturation: "selective_neon"
+    best_for: "sci-fi, cyberpunk, night scene, futuristic tech"
+    prompt_keywords: "Blade Runner cyberpunk grade, neon cyan and magenta, deep blacks, futuristic dark"
+    cinematic_use: "Blade Runner 2049 — neon on black, holographic cyan, warm interior practicals."
+
+  ridley_scott_teal:
+    description: "Teal-dominated shadows, warm but not orange highlights, slightly desaturated overall. Epic and atmospheric."
+    contrast: "moderate"
+    saturation: "teal_biased"
+    best_for: "epic historical, sci-fi, atmospheric editorial, dark commercial"
+    prompt_keywords: "Ridley Scott teal grade, teal shadows, muted warm highlights, epic atmospheric"
+    cinematic_use: "Gladiator, Kingdom of Heaven — teal shadows with golden sun highlights."
+
+  villeneuve_desaturated:
+    description: "Very low saturation, high contrast, deep blacks, intentional color in only one or two hues. Cerebral and monumental."
+    contrast: "high"
+    saturation: "very_low_selective"
+    best_for: "sci-fi, psychological drama, monumental architecture, austere editorial"
+    prompt_keywords: "Villeneuve desaturated, low color, deep blacks, cerebral minimal grade"
+    cinematic_use: "Arrival, Dune, Blade Runner 2049 — color used sparingly as punctuation."
+
+  la_la_land_cinestill:
+    description: "Warm, romantic, slight halation, vivid but not oversaturated. Modern romance with film character."
+    contrast: "moderate"
+    saturation: "warm_vivid"
+    best_for: "romance, musical, date night, nostalgic modern"
+    prompt_keywords: "La La Land warm grade, romantic halation, golden highlight glow, modern film romance"
+    cinematic_use: "La La Land — warm amber nights, pastel costume colors, halation on streetlights."
+
+  sin_city_noir:
+    description: "Near black and white with selective saturated colors. High contrast. Graphic novel intensity."
+    contrast: "very_high"
+    saturation: "near_mono_with_accents"
+    best_for: "crime noir, graphic novel aesthetic, high drama editorial"
+    prompt_keywords: "Sin City selective color, near black and white with color accent, ultra high contrast noir"
+    notes: "Extends the accented achromatic concept to its extreme. Only 1-2 colors appear in the frame."
+
+  # --- Genre & Mood Specific ---
+  horror_pale:
+    description: "Desaturated with green-blue tint, slightly lifted blacks for a milky shadow, pale skin tones."
+    contrast: "moderate"
+    saturation: "low_cool_green"
+    best_for: "horror, thriller, dark fantasy, suspense"
+    prompt_keywords: "horror pale grade, desaturated green tint, cool sickly shadows, pale skin tone"
+    cinematic_use: "The Ring, The Others — pale, cold, drained of life."
+
+  romance_soft_glow:
+    description: "Very warm, low contrast, slight highlight diffusion and bloom. Intimate and forgiving."
+    contrast: "low"
+    saturation: "warm_soft"
+    best_for: "romance, reunion, intimate moment, warm emotional"
+    prompt_keywords: "romantic soft glow, warm diffusion, low contrast bloom, intimate warm haze"
+    notes: "The diffusion/haze hides skin imperfections and creates a dreamy quality."
+
+  documentary_natural:
+    description: "No visible grading. True-to-life color, moderate contrast, natural skin tones. The invisible grade."
+    contrast: "moderate"
+    saturation: "true_to_life"
+    best_for: "documentary, news, interview, brand authenticity, reality"
+    prompt_keywords: "natural documentary grade, true to life colors, no visible color grade, authentic"
+    notes: "The hardest grade because every color must feel correct without calling attention to the grading."
+
+  high_fashion_contrast:
+    description: "Deep blacks, punchy saturated accent colors, slightly desaturated skin. Edgy, magazine-ready."
+    contrast: "high"
+    saturation: "selective_punchy"
+    best_for: "editorial fashion, high-end magazine, luxury brand, avant-garde"
+    prompt_keywords: "high fashion contrast, deep blacks, punchy accent, editorial magazine grade"
+    notes: "Color is used selectively. Black clothing should be deep black. Accent colors should pop."
+
+  vintage_sepia:
+    description: "Monotone warm brown/sepia. Old photograph feel. Low contrast, soft, nostalgic."
+    contrast: "low_moderate"
+    saturation: "mono_warm_sepia"
+    best_for: "period piece pre-1930s, historical, nostalgia, flashback"
+    prompt_keywords: "vintage sepia tone, old photograph, warm brown monotone, historical nostalgia"
+    notes: "Different from B&W — sepia adds a warm brown tone that feels archival."
+
+  infrared_surreal:
+    description: "Vegetation shifts to white/pink, sky becomes dark, skin takes on a pale ethereal glow. Otherworldly."
+    contrast: "high"
+    saturation: "shifted_surreal"
+    best_for: "surreal art, dream sequence, fantasy, experimental"
+    prompt_keywords: "infrared film look, white vegetation, dark sky, ethereal skin, surreal color shift"
+    notes: "Creates a dreamlike or alien world. Foliage becomes bright white, sky goes dark."
+
+  cool_silver_modern:
+    description: "Cool blue-silver tones, lifted shadows, subtle metallic sheen. Clean, premium, technological."
+    contrast: "moderate"
+    saturation: "cold_silver"
+    best_for: "tech product, automotive, modern architecture, luxury tech"
+    prompt_keywords: "cool silver grade, blue metallic tone, modern cool palette, premium silver aesthetic"
+    cinematic_use: "Apple product launches. Modern automotive commercials."
+
+  warm_cream_editorial:
+    description: "Cream, ivory, warm beige with slight amber. Minimalist warm. Clean but not cold."
+    contrast: "low"
+    saturation: "warm_minimal"
+    best_for: "minimalist editorial, fine art, lifestyle clean, Scandinavian aesthetic"
+    prompt_keywords: "warm cream editorial, ivory beige, minimalist warm, Scandinavian clean"
+    notes: "The warm equivalent of desaturated cool. For brands that want clean but not cold."
+
+  teal_orange:
+    description: "Skin tones pushed to orange, shadows tinted teal/cyan. The blockbuster standard."
+    contrast: "moderate"
+    saturation: "warm_skin_cool_shadow"
+    best_for: "action, blockbuster, commercial, portrait, mainstream"
+    prompt_keywords: "teal and orange color grade, warm skin against teal shadows, cinematic blockbuster look"
+
+  vintage_warm:
+    description: "Warm amber/gold tones, lifted blacks, slight halation. Classic warm film look inspired by Kodachrome."
+    contrast: "moderate"
+    saturation: "warm_with_blue_shadows"
+    best_for: "portrait, period piece, retro, nostalgic editorial"
+    prompt_keywords: "vintage warm film look, amber golden tones, nostalgic warmth, retro film grade"
+
+  noir:
+    description: "Black and white or extreme desaturation. High contrast, deep blacks. The original cinematic look."
+    contrast: "very_high"
+    saturation: "mono_or_near_mono"
+    best_for: "film noir, moody portrait, dramatic character, crime"
+    prompt_keywords: "film noir black and white, extreme contrast, deep blacks, shadow detail"
+
+
+# =============================================================================
+# COLOR PSYCHOLOGY — quick reference for emotional color associations
+# =============================================================================
+color_psychology:
+  red:
+    emotion: "passion, danger, energy, urgency, excitement, appetite"
+    best_for: "call to action, food, sports, romance, warning"
+    notes: "The most attention-grabbing color. Use sparingly for maximum impact."
+
+  blue:
+    emotion: "trust, calm, professional, cold, clean, authority"
+    best_for: "corporate, tech, medical, finance, security"
+    notes: "The most universally liked color. Safe but can feel cold."
+
+  yellow:
+    emotion: "optimism, warmth, caution, clarity, playful"
+    best_for: "children, food, retail, creative, caution"
+    notes: "High visibility. Can feel cheap if not paired with grounding colors."
+
+  green:
+    emotion: "nature, growth, health, wealth, envy, freshness"
+    best_for: "organic, wellness, environment, finance, food"
+    notes: "Versatile. Ranges from fresh lime to deep forest."
+
+  purple:
+    emotion: "luxury, creativity, mystery, spirituality, royalty"
+    best_for: "beauty, luxury, creative, spiritual, anti-aging"
+    notes: "Historically associated with royalty. Feels premium."
+
+  orange:
+    emotion: "warmth, enthusiasm, affordability, vitality, fun"
+    best_for: "budget brands, food, call to action, autumn, youth"
+    notes: "Friendly and energetic. Less aggressive than red."
+
+  pink:
+    emotion: "feminine, gentle, romantic, sweet, youthful"
+    best_for: "beauty, baby, wedding, sweets, fashion soft"
+    notes: "Ranges from soft blush to vibrant magenta."
+
+  black:
+    emotion: "luxury, power, sophistication, mystery, authority"
+    best_for: "luxury, high-end, night, formal, minimal"
+    notes: "The most powerful neutral. Creates contrast and weight."
+
+  white:
+    emotion: "purity, clean, simple, modern, minimal, empty"
+    best_for: "healthcare, tech, minimalist, wedding, editorial"
+    notes: "Creates space and breathe. Can feel sterile if overused."
+
+  gray:
+    emotion: "neutral, practical, timeless, corporate, mature"
+    best_for: "corporate, professional, industrial, modern"
+    notes: "Safe but can feel boring. Best with an accent color."
+
+  brown:
+    emotion: "earthy, reliable, grounded, warm, rustic"
+    best_for: "organic, outdoor, comfort, vintage, wood products"
+    notes: "Feels natural and authentic. Pairs well with green."
+
+  gold:
+    emotion: "premium, wealth, success, celebration, quality"
+    best_for: "luxury, award, premium product, celebration"
+    notes: "Metallic gold implies value. Use as accent, not dominant."
+
+
+# =============================================================================
+# SATURATION STRATEGIES — how to distribute color intensity across the frame
+# =============================================================================
+saturation_strategies:
+  full_color:
+    description: "All colors at their natural saturation. No suppression or emphasis."
+    effect: "natural, neutral, documentary"
+    best_for: "e-commerce, catalog, documentation"
+
+  selective:
+    description: "Key subject saturated, background or secondary elements desaturated. Focuses attention."
+    effect: "directed, editorial, premium"
+    best_for: "editorial, product hero, portrait where the outfit/face is the focus"
+    prompt_keywords: "selective saturation, desaturated background, saturated subject"
+
+  muted:
+    description: "All colors slightly desaturated. Sophisticated, restrained."
+    effect: "elegant, calm, premium, understated"
+    best_for: "luxury, fine art, editorial, architecture"
+    prompt_keywords: "muted colors, restrained saturation, sophisticated desaturated"
+
+  vibrant:
+    description: "All colors pushed beyond natural saturation. Energetic, punchy."
+    effect: "energetic, bold, colorful, impactful"
+    best_for: "food, fashion, travel, children, sports"
+    prompt_keywords: "vibrant colors, high saturation, punchy, colorful popping"
+
+  desaturated:
+    description: "Overall low saturation, approaching monochrome. Minimalist."
+    effect: "minimal, serious, modern, dramatic"
+    best_for: "fine art, dramatic portrait, architectural, conceptual"
+    prompt_keywords: "desaturated, low saturation, almost monochrome, washed"
+
+  hyper_saturated:
+    description: "Extremely pushed saturation. Intentional unrealism."
+    effect: "fantastical, surreal, dreamlike, intense"
+    best_for: "fantasy, surreal art, music, festival, creative"
+    prompt_keywords: "hyper saturated, intense colors, surreal color, unreal saturation"
+
+  split_saturation:
+    description: "Warm colors saturated, cool colors desaturated (or vice versa). Creates temperature emphasis."
+    effect: "cinematic, controlled, atmospheric"
+    best_for: "cinematic portrait, storytelling, editorial with mood"
+    prompt_keywords: "split saturation, warm saturated cool muted, selective temperature"
+
+# =============================================================================
+# AUTOREVISE DECISION LAYER — color choices for prompt enhancement
+# =============================================================================
+# These sections are intended to help the enhancer choose, translate, compress,
+# and protect color decisions rather than merely list palettes.
+
+color_role_system:
+  purpose: "Assign every major color a visual job so prompts do not become decorative color lists."
+  roles:
+    dominant:
+      description: "The main visible color family occupying the largest visual area."
+      typical_ratio: "60%"
+      prompt_function: "sets the global emotional temperature and scene identity"
+      examples: ["warm ivory background", "deep navy environment", "soft beige interior"]
+    secondary:
+      description: "Supporting color used to shape subject/environment harmony."
+      typical_ratio: "30%"
+      prompt_function: "supports the dominant hue while adding depth"
+      examples: ["champagne fabric", "desaturated teal shadows", "muted olive foliage"]
+    accent:
+      description: "Small but high-attention color used for focal emphasis."
+      typical_ratio: "10%"
+      prompt_function: "directs the eye to the hero detail"
+      examples: ["red lipstick", "gold logo", "cyan rim light", "emerald jewelry"]
+    neutral_anchor:
+      description: "Black, white, gray, cream, brown, or stone colors that stabilize the palette."
+      prompt_function: "prevents over-saturation and gives premium restraint"
+      examples: ["warm gray concrete", "matte black base", "cream limestone"]
+    skin_protection:
+      description: "Keeps human skin believable when using stylized grades."
+      prompt_function: "prevents color grades from contaminating faces and hands"
+      add_positive:
+        - "natural skin tones preserved"
+        - "warm realistic skin undertones"
+        - "color grade affects shadows and background more than skin"
+      add_negative:
+        - "green skin cast"
+        - "gray lifeless skin"
+        - "oversaturated orange skin"
+
+color_ratio_rules:
+  cinematic_default:
+    ratio: "60-30-10"
+    description: "Balanced color hierarchy for most commercial/editorial images."
+    use_when:
+      - "single hero subject"
+      - "fashion portrait"
+      - "product ad"
+      - "poster composition"
+    prompt_template: "60% {dominant}, 30% {secondary}, 10% {accent}"
+  luxury_minimal:
+    ratio: "75-20-5"
+    description: "Restrained premium palette with very limited accent color."
+    use_when:
+      - "luxury product"
+      - "high-end architecture"
+      - "quiet fashion editorial"
+      - "minimal brand image"
+    prompt_template: "restrained palette dominated by {dominant}, subtle {secondary}, tiny {accent} accent"
+  anime_vibrant:
+    ratio: "50-35-15"
+    description: "More saturated and characterful balance for stylized anime/game visuals."
+    use_when:
+      - "anime realism"
+      - "game key art"
+      - "children educational game"
+      - "fantasy character design"
+    prompt_template: "vibrant but controlled palette: {dominant}, {secondary}, clear {accent} highlights"
+  noir_accent:
+    ratio: "85-10-5"
+    description: "Mostly dark/neutral with a single small color signal."
+    use_when:
+      - "noir"
+      - "psychological poster"
+      - "villain portrait"
+      - "luxury black product"
+    prompt_template: "mostly {dominant} shadows with restrained {secondary} and one sharp {accent} accent"
+
+palette_selection_matrix:
+  by_task_profile:
+    human_portrait:
+      safe_defaults:
+        - scheme: "analogous"
+          grade: "kodak_portra"
+          reason: "flattering skin tones and gentle color harmony"
+        - scheme: "soft_warm_light"
+          grade: "warm_cream_editorial"
+          reason: "beauty/editorial warmth without aggressive saturation"
+      avoid_when_unspecified:
+        - "mercury_vapor"
+        - "hyper_saturated"
+        - "neon_cyberpunk on skin unless explicitly requested"
+    fashion_editorial:
+      safe_defaults:
+        - scheme: "monochromatic"
+          grade: "high_fashion_contrast"
+          reason: "clean visual hierarchy and premium restraint"
+        - scheme: "accented_achromatic"
+          grade: "cool_silver_modern"
+          reason: "magazine-cover clarity with strong accent control"
+    product_ad:
+      safe_defaults:
+        - scheme: "split_complementary"
+          grade: "neutral_pro"
+          reason: "controlled contrast without distracting from product color"
+        - scheme: "golden_analogous"
+          grade: "vintage_warm"
+          reason: "luxury warmth for cosmetics, fragrance, jewelry, premium goods"
+    architecture:
+      safe_defaults:
+        - scheme: "earthy_organic"
+          grade: "neutral_pro"
+          reason: "material-accurate architectural rendering"
+        - scheme: "soft_warm_light"
+          grade: "warm_cream_editorial"
+          reason: "premium residential/interior atmosphere"
+    cinematic_poster:
+      safe_defaults:
+        - scheme: "high_contrast_warm_cool"
+          grade: "teal_orange"
+          reason: "immediate blockbuster readability"
+        - scheme: "accented_achromatic"
+          grade: "noir"
+          reason: "iconic dramatic poster language"
+    educational_game_ui:
+      safe_defaults:
+        - scheme: "pastel"
+          grade: "pastel_soft"
+          reason: "low cognitive load and friendly readability"
+        - scheme: "triadic"
+          grade: "neutral_pro"
+          reason: "playful but organized color grouping"
+    hidden_object_scene:
+      safe_defaults:
+        - scheme: "polychromatic"
+          grade: "documentary_natural"
+          reason: "many object colors remain distinguishable"
+        - scheme: "analogous"
+          grade: "neutral_pro"
+          reason: "keeps dense scenes readable without chaos"
+      required_guardrail:
+        - "maintain object color separation and readable silhouettes"
+
+palette_conflict_resolution:
+  first_priority: "explicit user color constraints"
+  second_priority: "brand colors and exact logo/product colors"
+  third_priority: "subject natural color accuracy, especially skin, food, product, architecture materials"
+  fourth_priority: "selected visual mood or cinematic grade"
+  rules:
+    explicit_color_wins:
+      trigger: "User names a required color such as red dress, blue car, Coca-Cola red."
+      action: "Preserve that color as hard lock; choose supporting palette around it."
+    brand_color_wins:
+      trigger: "Known brand/product color is mentioned."
+      action: "Do not replace brand colors with cinematic grade; apply grade to lighting/background instead."
+    skin_tone_wins:
+      trigger: "Human subject with photorealistic or editorial intent."
+      action: "Protect natural skin undertones even under teal/orange, neon, or bleach bypass grades."
+    material_accuracy_wins:
+      trigger: "Architecture, product design, food, vehicle, jewelry."
+      action: "Do not let grading destroy material identity such as marble veining, wood warmth, metal reflectance."
+    style_grade_is_adjustable:
+      trigger: "Color grade conflicts with hard lock."
+      action: "Move the grade into shadows/background, reduce saturation, or change to a safer analogous palette."
+
+skin_tone_protection:
+  photorealistic:
+    add_positive:
+      - "natural skin tones preserved"
+      - "subtle warm undertones in skin"
+      - "healthy realistic skin color"
+      - "color grade mainly affects background and shadows"
+    add_negative:
+      - "green or cyan skin cast"
+      - "overly orange skin"
+      - "gray lifeless skin"
+      - "plastic waxy skin"
+  anime_realism:
+    add_positive:
+      - "clean luminous skin with soft natural blush"
+      - "skin tones harmonized with the palette"
+    add_negative:
+      - "muddy skin shading"
+      - "oversaturated blush"
+  high_contrast_grade:
+    required_guardrail:
+      - "keep face readable"
+      - "avoid losing eye and lip color detail in shadows"
+  neon_grade:
+    required_guardrail:
+      - "colored rim light on edges, not full-face color contamination"
+
+material_color_behavior:
+  glass:
+    color_behavior: "Color appears through absorption, transparency, reflection, and edge thickness."
+    add_positive:
+      - "colored glass with brighter edges and darker thick areas"
+      - "clean specular highlights"
+      - "subtle refraction without destroying label readability"
+    risks:
+      - "label text distortion"
+      - "dirty reflections"
+      - "light equipment reflected in glass"
+  metal_gold:
+    color_behavior: "Gold is defined by metallic reflectance, not flat yellow."
+    add_positive:
+      - "metallic gold sheen"
+      - "warm reflective highlights"
+      - "darker amber shadows in gold surface"
+    add_negative:
+      - "flat yellow paint"
+      - "plastic-looking gold"
+  marble:
+    color_behavior: "Base color plus natural veining; should not become noisy."
+    add_positive:
+      - "subtle natural veining"
+      - "soft polished reflections"
+      - "controlled contrast in stone pattern"
+    add_negative:
+      - "overly busy veins"
+      - "random cracked texture"
+  fabric:
+    color_behavior: "Color changes across folds due to drape, sheen, and shadow."
+    add_positive:
+      - "color variation along fabric folds"
+      - "soft highlight on raised folds"
+      - "deeper tone in fabric valleys"
+  neon:
+    color_behavior: "Color should emit light and tint nearby surfaces."
+    add_positive:
+      - "colored glow spilling onto nearby edges"
+      - "wet reflective surfaces catching neon color"
+    add_negative:
+      - "flat colored objects without glow"
+
+prompt_color_translation:
+  purpose: "Convert abstract color decisions into renderable prompt language."
+  translations:
+    complementary:
+      weak: "complementary palette"
+      stronger: "warm subject tones contrasted against cooler background shadows"
+    analogous:
+      weak: "analogous color harmony"
+      stronger: "closely related hues with soft transitions and no harsh color breaks"
+    monochromatic:
+      weak: "monochromatic palette"
+      stronger: "single hue family with varied brightness and saturation for depth"
+    selective_saturation:
+      weak: "selective saturation"
+      stronger: "mostly muted scene with the hero accent color remaining vivid"
+    teal_orange:
+      weak: "teal and orange grade"
+      stronger: "warm natural skin highlights balanced by cool teal shadows in the background"
+    pastel:
+      weak: "pastel colors"
+      stronger: "low-saturation high-luminance colors with gentle contrast and airy softness"
+    luxury_warm:
+      weak: "luxury warm palette"
+      stronger: "cream, champagne, muted gold, soft brown, and restrained black accents"
+
+semantic_color_deduplication:
+  purpose: "Compress redundant color adjectives into precise color language."
+  clusters:
+    warm_luxury:
+      redundant_terms: ["warm", "golden", "amber", "champagne", "luxurious", "premium", "elegant"]
+      compressed_as: "warm champagne-gold luxury palette"
+    cool_modern:
+      redundant_terms: ["cool", "silver", "blue", "gray", "modern", "clean", "minimal"]
+      compressed_as: "cool silver-blue modern palette"
+    soft_romantic:
+      redundant_terms: ["soft", "pink", "blush", "dreamy", "romantic", "gentle", "pastel"]
+      compressed_as: "soft blush-pastel romantic palette"
+    dark_cinematic:
+      redundant_terms: ["dark", "moody", "dramatic", "noir", "black", "shadowy", "high contrast"]
+      compressed_as: "dark high-contrast noir palette"
+    neon_future:
+      redundant_terms: ["neon", "cyberpunk", "glowing", "cyan", "magenta", "futuristic"]
+      compressed_as: "cyan-magenta neon cyberpunk palette"
+
+brand_color_handling:
+  exact_brand_color:
+    description: "Brand colors should be preserved as hard locks, not replaced by cinematic grading."
+    add_positive:
+      - "brand color remains accurate and dominant on logo/product"
+      - "cinematic grade applied to environment, not logo"
+    add_negative:
+      - "shifted logo hue"
+      - "incorrect brand color"
+      - "random color variation on brand mark"
+  text_and_logo:
+    description: "If text/logo must appear, keep its color high-contrast and uncluttered."
+    add_positive:
+      - "clean high-contrast logo area"
+      - "uncluttered background behind text"
+    add_negative:
+      - "low-contrast text"
+      - "text blended into background"
+      - "malformed typography"
+
+accessibility_and_readability:
+  purpose: "Keep images readable for UI, education, posters, and text-heavy layouts."
+  rules:
+    text_overlay:
+      add_positive:
+        - "clear negative space behind text"
+        - "high contrast between text area and background"
+        - "low-detail background in the text zone"
+      add_negative:
+        - "busy texture behind text"
+        - "low contrast typography zone"
+    children_education:
+      add_positive:
+        - "bright but not oversaturated colors"
+        - "clear object color separation"
+        - "friendly high-luminance palette"
+      add_negative:
+        - "muddy colors"
+        - "dark low-contrast UI"
+        - "tiny color-coded details"
+    hidden_object:
+      add_positive:
+        - "distinct color zones"
+        - "objects separated by hue and value"
+        - "balanced density without color chaos"
+      add_negative:
+        - "uniform muddy palette"
+        - "too many same-colored objects"
+
+scene_context_color_presets:
+  parisian_bridal_golden_hour:
+    scheme: "soft_warm_light"
+    grade: "fuji_pro_400h"
+    dominant: ["cream limestone", "ivory lace", "warm golden sunlight"]
+    accent: ["soft rose blush", "pearl highlights"]
+    prompt_keywords:
+      - "warm ivory cream palette"
+      - "soft golden-hour rim glow"
+      - "natural bridal skin tones preserved"
+  wabi_sabi_lobby:
+    scheme: "earthy_organic"
+    grade: "neutral_pro"
+    dominant: ["warm gray plaster", "beige stone", "light oak"]
+    accent: ["matte black metal", "muted greenery"]
+    prompt_keywords:
+      - "warm neutral wabi-sabi palette"
+      - "low-saturation earthy materials"
+      - "soft daylight with natural shadows"
+  cyberpunk_night_city:
+    scheme: "neon_cyberpunk"
+    grade: "blade_runner_cyberpunk"
+    dominant: ["deep blue-black shadows", "cyan neon"]
+    accent: ["magenta signage", "orange practical lights"]
+    prompt_keywords:
+      - "cyan-magenta neon palette"
+      - "colored reflections on wet surfaces"
+      - "dark blue-black city shadows"
+  luxury_product_black_gold:
+    scheme: "accented_achromatic"
+    grade: "high_fashion_contrast"
+    dominant: ["matte black", "deep charcoal"]
+    accent: ["metallic gold"]
+    prompt_keywords:
+      - "matte black and metallic gold luxury palette"
+      - "single gold accent color"
+      - "controlled glossy reflections"
+  educational_low_grade_math_game:
+    scheme: "pastel"
+    grade: "pastel_soft"
+    dominant: ["soft sky blue", "warm cream", "mint green"]
+    accent: ["clear coral", "sunny yellow"]
+    prompt_keywords:
+      - "bright child-friendly pastel palette"
+      - "clear color-coded interactive objects"
+      - "high readability and low visual stress"
+
+color_failure_taxonomy:
+  muddy_palette:
+    symptoms:
+      - "colors blend together without hierarchy"
+      - "subject does not separate from background"
+      - "too many mid-saturation hues"
+    fixes:
+      - "assign dominant, secondary, and accent roles"
+      - "increase value contrast around the subject"
+      - "reduce number of competing hues"
+  skin_color_cast:
+    symptoms:
+      - "face becomes green, gray, blue, or overly orange"
+      - "beauty portrait feels unnatural"
+    fixes:
+      - "protect natural skin tones"
+      - "move strong color grade into shadows/background"
+      - "use warm neutral fill on face"
+  brand_color_drift:
+    symptoms:
+      - "logo or product color changes under cinematic grade"
+      - "brand recognition weakens"
+    fixes:
+      - "lock brand color"
+      - "apply grading to environment only"
+      - "use neutral lighting on brand mark"
+  over_saturated_children_scene:
+    symptoms:
+      - "UI feels noisy"
+      - "object recognition becomes difficult"
+    fixes:
+      - "use pastel high-luminance palette"
+      - "limit accent colors"
+      - "reserve saturated color for interactive elements"
+  neon_overwash:
+    symptoms:
+      - "entire image becomes one neon color"
+      - "skin and materials lose identity"
+    fixes:
+      - "restrict neon to rim lights, signs, and reflections"
+      - "preserve neutral key light on subject"
+      - "keep material base colors visible"
+
+# =============================================================================
+# FASHION EDITORIAL COLOR STRATEGIES — Premium fashion-specific color
+# grading looks, palettes, and saturation strategies.
+# =============================================================================
+
+fashion_editorial_color_strategies:
+
+  editorial_grading_looks:
+    editorial_matte:
+      description: "Low-saturation matte finish with controlled contrast. The modern high-fashion baseline. Colors are visible but never saturated; shadows are deep but not crushed."
+      contrast: "moderate"
+      saturation: "low_controlled"
+      best_for:
+        - high_fashion_editorial
+        - luxury_brand_campaign
+        - minimal_fashion_portfolio
+        - avant_garde_fashion
+      prompt_keywords: "editorial matte color grade, low saturation, controlled contrast, modern fashion palette, desaturated elegance"
+      notes: "The most versatile high-fashion grade. Works across all garment colors. Skin tones remain natural while everything else is slightly muted."
+      skin_protection:
+        - "natural skin undertones preserved"
+        - "face slightly warmer than the rest of the frame"
+        - "no gray lifeless skin despite low saturation"
+
+    editorial_pearl:
+      description: "High-luminance, low-saturation palette with soft warm highlights. Skin has a luminous pearl quality. Whites are creamy, not clinical."
+      contrast: "low_to_moderate"
+      saturation: "very_low_warm"
+      best_for:
+        - luxury_beauty_editorial
+        - bridal_fashion
+        - premium_skincare
+        - fine_art_portrait
+      prompt_keywords: "editorial pearl grade, luminous skin, warm cream highlights, soft pearlescent finish, high-key editorial beauty"
+      notes: "Creates the most flattering skin tones. Highlights have a soft creamy rolloff. Avoids the clinical feel of pure high-key."
+      skin_protection:
+        - "luminous natural skin with warm undertone"
+        - "pearl-like softness without losing texture"
+        - "highlights retain skin detail"
+
+    editorial_high_contrast_mono:
+      description: "Near-monochrome with extreme contrast. Deepest blacks, brightest whites, minimal color. Pure editorial power."
+      contrast: "very_high"
+      saturation: "near_monochrome"
+      best_for:
+        - black_and_white_fashion
+        - dramatic_editorial
+        - luxury_brand_statement
+        - architectural_fashion
+      prompt_keywords: "editorial high-contrast monochrome, deep blacks, clean whites, near-black-and-white fashion, dramatic tonal range"
+      notes: "Color is reduced to near-zero. The entire image lives in tonal contrast. Garment texture, silhouette, and skin texture become the only visual elements."
+      skin_protection:
+        - "skin retains natural tonal variation"
+        - "no muddy gray skin"
+        - "highlights on face not blown"
+
+    editorial_warm_cream:
+      description: "Warm cream, ivory, and beige palette with restrained amber accents. The classic luxury editorial warmth. Inviting but refined."
+      contrast: "low_to_moderate"
+      saturation: "warm_minimal"
+      best_for:
+        - luxury_fashion_editorial
+        - premium_lifestyle
+        - fine_art_fashion
+        - scandinavian_minimal
+      prompt_keywords: "editorial warm cream grade, ivory beige palette, restrained amber warmth, Scandinavian fashion clean, luxury neutral tone"
+      notes: "The warm equivalent of editorial_matte. For brands that want clean warmth without aggressive saturation. Pairs with natural textures."
+      dominant_palette:
+        - "warm cream"
+        - "ivory"
+        - "soft beige"
+        - "muted caramel"
+        - "warm charcoal"
+
+    editorial_cool_steel:
+      description: "Cool silver, steel blue, and charcoal palette. Modern, clean, architectural fashion feel. Distant but premium."
+      contrast: "moderate"
+      saturation: "cold_minimal"
+      best_for:
+        - modern_fashion_editorial
+        - tech_luxury
+        - architectural_fashion
+        - urban_minimal
+      prompt_keywords: "editorial cool steel grade, silver blue palette, charcoal modern, cool minimal fashion, architectural clean"
+      notes: "The cool counterpart to editorial_warm_cream. Creates distance and exclusivity. Best for modern, urban, or tech-oriented luxury brands."
+      dominant_palette:
+        - "cool silver"
+        - "steel blue"
+        - "charcoal gray"
+        - "matte black"
+        - "ice white"
+
+    editorial_golden_warmth:
+      description: "Warm golden-amber palette with champagne-gold highlights. The most opulent fashion grade. Evokes heritage luxury."
+      contrast: "moderate"
+      saturation: "warm_selective"
+      best_for:
+        - haute_couture_editorial
+        - luxury_jewelry_fashion
+        - heritage_brand_campaign
+        - evening_wear_editorial
+      prompt_keywords: "editorial golden warmth grade, champagne gold highlights, warm amber tone, opulent luxury fashion, precious metal palette"
+      notes: "The richest fashion grade. Gold and amber accent colors create opulence. Must be controlled to avoid gaudy or cheap effects."
+      skin_protection:
+        - "warm but natural skin undertones"
+        - "gold accents on fabric and jewelry, not on skin"
+        - "no orange skin contamination"
+
+  fashion_saturation_strategies:
+    editorial_selective:
+      description: "Most of the frame desaturated except for the hero garment, accessory, or makeup accent. The eye goes exactly where the brand wants."
+      effect: "hero-first color hierarchy"
+      best_for:
+        - editorial_fashion_spread
+        - product_hero_editorial
+        - makeup_lipstick_focus
+        - statement_accessory
+      prompt_keywords: "editorial selective saturation, desaturated environment, saturated hero garment, controlled color focus"
+      ratio: "85% desaturated, 15% saturated accent"
+
+    editorial_garment_focused:
+      description: "Skin, background, and environment are muted. The garment or fabric holds the only saturated color in the frame."
+      effect: "fabric as the color hero"
+      best_for:
+        - fashion_collection_showcase
+        - fabric_brand_editorial
+        - designer_lookbook
+      prompt_keywords: "editorial garment-focused saturation, muted skin and background, saturated fabric, fashion color hero"
+      ratio: "70% muted neutral, 30% garment saturation"
+
+    editorial_duo_tone:
+      description: "Two specific hues dominate the entire frame — one for shadows, one for highlights. Graphic, modern, editorial."
+      effect: "controlled bipolar palette"
+      best_for:
+        - fashion_editorial_statement
+        - brand_campaign_system
+        - magazine_spread_identity
+      prompt_keywords: "editorial duotone palette, two-color fashion grade, shadow highlight color separation, graphic editorial color"
+      common_pairs:
+        - "charcoal_shadows_and_champagne_highlights"
+        - "deep_navy_shadows_and_warm_ivory_highlights"
+        - "matte_black_shadows_and_silver_highlights"
+        - "espresso_shadows_and_cream_highlights"
+
+  fashion_scene_color_presets:
+    editorial_studio_fashion:
+      scheme: "monochromatic or editorial_high_contrast_mono"
+      grade: "editorial_matte"
+      dominant: ["matte black", "pure white", "warm gray"]
+      accent: ["single saturated garment color"]
+      prompt_keywords:
+        - "monochromatic editorial studio palette"
+        - "clean fashion studio with controlled color"
+        - "garment color as the only saturated element"
+      guardrails:
+        - "background stays neutral"
+        - "skin retains warm undertone"
+
+    luxury_beauty_portrait:
+      scheme: "analogous or soft_warm_light"
+      grade: "editorial_pearl"
+      dominant: ["warm ivory", "soft cream", "champagne"]
+      accent: ["blush pink", "rose gold"]
+      prompt_keywords:
+        - "pearl ivory beauty palette"
+        - "warm luminous skin"
+        - "champagne cream highlights"
+      guardrails:
+        - "skin warm and luminous"
+        - "no washed-out face"
+        - "highlights retain skin texture"
+
+    editorial_location_fashion:
+      scheme: "high_contrast_warm_cool or split_complementary"
+      grade: "editorial_warm_cream or editorial_cool_steel depending on environment"
+      dominant: ["depending on location: warm stone or cool city"]
+      accent: ["garment color as hero accent"]
+      prompt_keywords:
+        - "editorial location fashion palette"
+        - "environment supports garment color"
+        - "natural light color harmonized with wardrobe"
+      guardrails:
+        - "environment does not overpower garment"
+        - "skin tone protected against environmental color cast"
+
+    haute_couture_evening:
+      scheme: "golden_analogous or accented_achromatic"
+      grade: "editorial_golden_warmth"
+      dominant: ["deep charcoal", "warm gold", "midnight blue"]
+      accent: ["champagne gold", "emerald or ruby jewelry accent"]
+      prompt_keywords:
+        - "opulent evening fashion palette"
+        - "deep charcoal and warm gold"
+        - "controlled precious metal accents"
+      guardrails:
+        - "gold reads metallic, not flat yellow"
+        - "no gaudy over-decoration"
+        - "garment texture preserved in low light"
+
+  season_fabric_color_mapping:
+    description: "Maps season to recommended fabrics, colors, and mood for fashion editorial. Use when season context is specified or inferred."
+    spring:
+      fabrics: [silk, chiffon, lightweight_cotton, lace, organza]
+      colors: ["soft pastel pink", "lavender", "mint green", "butter yellow", "ivory", "peach"]
+      mood: [fresh, romantic, delicate, editorial_luxury]
+      saturation: "low_to_moderate"
+      contrast: "low"
+      light: "soft natural daylight with warm morning tone"
+    summer:
+      fabrics: [linen, cotton, jersey, viscose, silk]
+      colors: ["pure white", "navy", "coral", "sky blue", "sunny yellow", "terracotta"]
+      mood: [bright, airy, casual_luxury, editorial_fashion]
+      saturation: "moderate_to_high"
+      contrast: "moderate"
+      light: "bright sunlight with high-key or golden-hour option"
+    autumn:
+      fabrics: [cashmere, wool, leather, velvet, boucle, heavy_silk]
+      colors: ["camel", "burgundy", "forest green", "charcoal", "rust", "deep amber"]
+      mood: [warm, rich, textured, editorial_luxury, sensual]
+      saturation: "moderate_warm"
+      contrast: "moderate_to_high"
+      light: "warm golden directional light with long shadows"
+    winter:
+      fabrics: [wool, cashmere, leather, fur_trim, heavy_silk, velvet, brocade]
+      colors: ["black", "cream", "deep red", "midnight blue", "silver", "pure white"]
+      mood: [dramatic, opulent, editorial_luxury, sexy_editorial]
+      saturation: "selective_high"
+      contrast: "high"
+      light: "dramatic key light with cool fill, or studio-controlled warm accent"

@@ -1,0 +1,2084 @@
+version: 1
+purpose: Light modifier dictionary and lighting diagram patterns for cinematic and commercial photography.
+modifiers:
+  octabox_90cm:
+    category: softbox
+    shape: octagonal
+    size_cm: 90
+    light_quality: soft
+    shadow_transition: smooth_gradual
+    falloff: moderate
+    catchlight: octagonal
+    best_for:
+    - portrait key light
+    - product key light
+    - beauty and fashion
+    prompt_keywords: soft diffused key light, smooth shadow transition, round catchlight
+    notes: Most versatile modifier. 90cm is the sweet spot for half-body portraits.
+  octabox_90cm_with_diffusion:
+    category: softbox
+    shape: octagonal
+    size_cm: 90
+    light_quality: very_soft
+    shadow_transition: very_gradual
+    falloff: gentle
+    catchlight: octagonal_diffused
+    best_for:
+    - food photography key light
+    - delicate product lighting
+    - very soft portrait key
+    prompt_keywords: extremely soft light, very gradual shadow transition, gentle illumination
+    notes: Double diffusion layer makes light even softer than standard octabox. Ideal for reflective surfaces.
+  octabox_120cm:
+    category: softbox
+    shape: octagonal
+    size_cm: 120
+    light_quality: very_soft
+    shadow_transition: very_gradual
+    falloff: gentle
+    catchlight: large octagonal
+    best_for:
+    - full-body portrait key
+    - car and large product photography
+    - wrap-around lighting for groups
+    prompt_keywords: very soft wrap-around light, barely visible shadow transition, gentle fill illumination
+    notes: Larger modifier = softer light. Use when you want minimal shadow contrast.
+  octabox_150cm:
+    category: softbox
+    shape: octagonal
+    size_cm: 150
+    light_quality: extremely_soft
+    shadow_transition: barely_visible
+    falloff: very_gentle
+    catchlight: very_large_octagonal
+    best_for:
+    - full-body fashion
+    - car exteriors
+    - group of 3+ people
+    - wrap-around beauty
+    prompt_keywords: extremely soft wrap-around light, almost shadowless illumination, broad gentle light
+    notes: Creates the softest modifier light possible. Almost shadowless but retains direction.
+  softbox_60x60:
+    category: softbox
+    shape: square
+    size_cm: 60
+    light_quality: soft_controlled
+    shadow_transition: smooth
+    falloff: moderate
+    catchlight: square
+    best_for:
+    - small product photography
+    - close-up portraits
+    - fill light
+    prompt_keywords: controlled soft light, smooth shadow, even directional illumination
+    notes: Good balance of softness and control. Suitable for tabletop product shots.
+  softbox_30x30:
+    category: softbox
+    shape: square
+    size_cm: 30
+    light_quality: soft_precise
+    shadow_transition: smooth_compact
+    falloff: pronounced
+    catchlight: small_square
+    best_for:
+    - macro product detail
+    - jewelry accent light
+    - small fill or accent
+    - eye catchlight
+    prompt_keywords: precise soft accent light, compact catchlight, controlled small-source illumination
+    notes: Tiny modifier for tight spaces and small subjects. Still softer than bare bulb.
+  softbox_120x120:
+    category: softbox
+    shape: square_large
+    size_cm: 120
+    light_quality: very_soft_even
+    shadow_transition: very_gradual_even
+    falloff: gentle
+    catchlight: large_square
+    best_for:
+    - full-length portrait
+    - group photography
+    - furniture product
+    - large fill source
+    prompt_keywords: very even soft light, broad smooth illumination, gentle diffuse shadow
+    notes: Square shape gives even light distribution. Excellent as a large fill source.
+  strip_softbox_30x120:
+    category: softbox
+    shape: rectangular
+    size_cm: 30x120
+    light_quality: soft_directional
+    shadow_transition: smooth_narrow
+    falloff: controlled
+    catchlight: narrow rectangle
+    best_for:
+    - rim light / edge light
+    - hair light
+    - full-length body edge separation
+    prompt_keywords: narrow rim light, side edge accent, linear catchlight for edge separation
+    notes: Excellent for rim lights. The narrow shape controls spill while maintaining softness.
+  strip_softbox_60x180:
+    category: softbox
+    shape: rectangular_extra_long
+    size_cm: 60x180
+    light_quality: soft_broad
+    shadow_transition: smooth_broad
+    falloff: controlled_gentle
+    catchlight: long_rectangle
+    best_for:
+    - full-body rim light
+    - car edge lighting
+    - product edge wrap
+    - background light
+    prompt_keywords: broad edge accent light, full body rim illumination, side wrap highlight
+    notes: Longer than the standard strip. Covers full body height at close distance.
+  beauty_dish_white:
+    category: beauty_dish
+    shape: circular
+    size_cm: 60
+    light_quality: medium_contrast
+    shadow_transition: medium_with_character
+    falloff: moderate_to_pronounced
+    catchlight: solid_center_dot
+    best_for:
+    - beauty and glamour portraits
+    - fashion editorial
+    - commercial beauty product
+    prompt_keywords: medium contrast key light, defined shadow with character, fashion editorial feel
+    notes: Beauty dish gives more character than a softbox. The white interior softens slightly.
+  beauty_dish_silver:
+    category: beauty_dish
+    shape: circular
+    size_cm: 60
+    light_quality: high_contrast_with_specular
+    shadow_transition: pronounced
+    falloff: pronounced
+    catchlight: solid_center_dot
+    best_for:
+    - edgy fashion
+    - male portraits
+    - high-contrast editorial
+    prompt_keywords: high contrast specular key light, defined shadow edge, edgy accent catchlight
+    notes: Silver interior increases contrast and specular highlights. Use with grid for control.
+  fresnel:
+    category: focusable
+    shape: circular
+    size_cm: 15
+    light_quality: hard_to_soft_variable
+    shadow_transition: adjustable_beam
+    falloff: distance_dependent
+    catchlight: small_ring
+    best_for:
+    - cinematic key light
+    - period film look
+    - controlled beam spotlight
+    - simulating sunlight through windows
+    prompt_keywords: hard directional beam light, cinematic contrast, adjustable spotlight effect, chiaroscuro
+    notes: Fresnel can spot (hard edge) or flood (softer). Creates the classic cinematic look.
+  bare_bulb:
+    category: bare
+    shape: point
+    size_cm: 3
+    light_quality: hard_raw
+    shadow_transition: sharp_abrupt
+    falloff: rapid
+    catchlight: small_dot
+    best_for:
+    - edgy high-contrast
+    - stage light effect
+    - harsh shadow for character
+    prompt_keywords: harsh raw light, high contrast, sharp shadow edge, raw unmodified illumination
+    notes: The hardest light. Creates deep, sharp shadows. Use sparingly.
+  umbrella_white_through:
+    category: umbrella
+    shape: circular
+    size_cm: 110
+    light_quality: soft_wrap_around
+    shadow_transition: very_soft_wide
+    falloff: gentle
+    catchlight: large_round
+    best_for:
+    - soft wrap-around fill
+    - group portraits
+    - high-key fashion
+    prompt_keywords: very soft wrap-around fill light, gentle shadow, broad diffused illumination
+    notes: Produces the softest, most wrapping light. Less controllable than softbox.
+  umbrella_reflect_silver:
+    category: umbrella
+    shape: circular
+    size_cm: 110
+    light_quality: directional_with_spread
+    shadow_transition: moderate_wide
+    falloff: moderate
+    catchlight: large_round_diffuse
+    best_for:
+    - fashion full-body key
+    - group lighting
+    - on-location portable key
+    prompt_keywords: directional spread light, moderate shadow edge, high output broad key
+    notes: More directional than shoot-through. Silver gives higher contrast than white.
+  parabolic_deep:
+    category: umbrella
+    shape: parabolic_deep
+    size_cm: 100
+    light_quality: focused_with_wrap
+    shadow_transition: smooth_controlled
+    falloff: controlled
+    catchlight: concentric_rings
+    best_for:
+    - fashion editorial key
+    - beauty with edge
+    - controlled wrap effect
+    prompt_keywords: focused soft light with wrap, controlled shadow falloff, concentric ring catchlight
+    notes: Deep dish gives more direction than standard umbrella. Produces a distinctive concentric ring catchlight.
+  ring_light:
+    category: ring
+    shape: circular_donut
+    size_cm: 45
+    light_quality: flat_even
+    shadow_transition: minimal_wrap
+    falloff: even
+    catchlight: ring_donut
+    best_for:
+    - beauty and macro
+    - fashion flat lighting
+    - social media content
+    - catchlight emphasis
+    prompt_keywords: even flat light, minimal shadow, donut-shaped catchlight, shadowless illumination
+    notes: Creates a distinctive ring catchlight. Very flat, shadowless light.
+  ring_light_60cm:
+    category: ring
+    shape: circular_donut
+    size_cm: 60
+    light_quality: flat_broad
+    shadow_transition: minimal
+    falloff: even_gentle
+    catchlight: large_ring_donut
+    best_for:
+    - full-face beauty
+    - fashion flat look
+    - video content key
+    prompt_keywords: broad even light, shadowless illumination, large round catchlight
+    notes: Larger ring light spreads light more evenly. Good for video and beauty content.
+  hard_reflector_standard:
+    category: reflector
+    shape: circular
+    size_cm: 12
+    light_quality: hard
+    shadow_transition: sharp
+    falloff: rapid
+    catchlight: small_dot
+    best_for:
+    - hard accent light
+    - background pattern light
+    - adding specular edge
+    prompt_keywords: hard accent spot light, sharp shadow, focused narrow beam
+    notes: Often used with honeycomb grid for even more directional control.
+  kinoflo_4bank:
+    category: tube
+    shape: rectangular_array
+    size_cm: 60x60
+    light_quality: soft_even
+    shadow_transition: smooth_multi_source
+    falloff: gentle
+    catchlight: multi_line
+    best_for:
+    - interviewee key light
+    - soft fill in tight spaces
+    - even lighting for product flat
+    prompt_keywords: even multi-tube soft light, shadowless illumination, even interview key
+    notes: Multiple tubes create even, shadowless light. Runs cool. Popular in video production.
+  LED_panel_variable:
+    category: LED
+    shape: rectangular_panel
+    size_cm: 30x30
+    light_quality: soft_to_hard_variable
+    shadow_transition: adjustable
+    falloff: controlled
+    catchlight: square_panel
+    best_for:
+    - location documentary key
+    - variable temperature portrait
+    - travel and run-and-gun
+    prompt_keywords: adjustable soft light, variable color temperature, even panel illumination
+    notes: Modern LED panels can adjust both brightness and color temperature. Highly versatile.
+  scrim_4x4:
+    category: diffusion_frame
+    shape: rectangular_frame
+    size_cm: 120x120
+    light_quality: extremely_soft_broad
+    shadow_transition: barely_detectable
+    falloff: very_gentle
+    catchlight: large_diffuse
+    best_for:
+    - softening hard sunlight
+    - large product diffusion
+    - portrait wrap
+    prompt_keywords: extremely soft broad light, barely detectable shadow, large diffused source illumination
+    notes: A diffusion frame placed between light and subject. The larger the frame, the softer the light.
+  gobo_cookie:
+    category: pattern_projector
+    shape: patterned
+    light_quality: patterned_shadow
+    shadow_transition: varied_by_pattern
+    catchlight: none
+    best_for:
+    - background shadow patterns
+    - simulating window light
+    - atmospheric texture
+    - film noir effect
+    prompt_keywords: patterned shadow light, textured background pattern, cookie shadow effect
+    notes: A gobo (go-between) placed in front of a light to cast patterned shadows. Classic film noir and atmospheric tool.
+  practical_candle:
+    category: practical_flame
+    shape: point_warm
+    size_cm: 2
+    light_quality: very_warm_flame
+    shadow_transition: soft_flickering
+    falloff: rapid
+    catchlight: small_warm_dot
+    best_for:
+    - intimate candlelit scene
+    - romantic low light
+    - period piece (pre-electric)
+    prompt_keywords: warm flame light, intimate low-level illumination, warm flickering glow
+    notes: Very low output, very warm (1800K). Shadows are deep and flicker naturally.
+  practical_lamp:
+    category: practical
+    shape: shaded
+    size_cm: 30
+    light_quality: soft_diffused_throgh_shade
+    shadow_transition: soft_directional
+    falloff: moderate
+    catchlight: varied_by_shade
+    best_for:
+    - interior scene motivation
+    - tabletop product context
+    - film and TV motivated source
+    prompt_keywords: motivated interior warm light, soft shaded glow, warm directional illumination
+    notes: A lamp that appears in the scene as a motivated light source. The shade diffuses the bulb.
+  window_south:
+    category: window
+    shape: rectangular
+    size_cm: large
+    light_quality: hard_directional
+    shadow_transition: sharp_defined
+    falloff: distance_dependent
+    catchlight: rectangular
+    best_for:
+    - direct sunlight simulation
+    - hard dramatic window light
+    - high contrast interior
+    prompt_keywords: hard directional window light, sharp shadow, rectangular beam of sunlight
+    notes: South-facing window (northern hemisphere) provides the hardest, most directional window light.
+  window_north:
+    category: window
+    shape: rectangular
+    size_cm: large
+    light_quality: soft_diffused_window
+    shadow_transition: soft_gradual
+    falloff: gentle_with_distance
+    catchlight: soft_rectangular
+    best_for:
+    - studio painting light
+    - soft portrait window light
+    - fine art and still life
+    prompt_keywords: soft diffused window light, painterly natural illumination, gradual shadow falloff
+    notes: North-facing window provides consistent, soft, diffuse light. Preferred by painters and portrait photographers.
+  neon_light:
+    category: practical_neon
+    shape: tube_shaped
+    size_cm: varied
+    light_quality: hard_colored
+    shadow_transition: sharp_colored
+    catchlight: line_or_shape
+    best_for:
+    - urban night exterior
+    - cyberpunk color accent
+    - motivated color source
+    prompt_keywords: colored hard light, urban night glow, saturated electric color accent
+    notes: Neon signs serve as both set dressing and motivated colored light sources. Color is determined by the sign.
+  lantern_softbox_65cm:
+    category: softbox
+    shape: spherical
+    size_cm: 65
+    light_quality: omnidirectional_soft
+    shadow_transition: seamless
+    falloff: rapid_360_degree
+    catchlight: none_or_soft_glow
+    best_for:
+    - cinematic ambient fill
+    - round table conversation
+    - walk-and-talk moving key
+    prompt_keywords: 360-degree ambient soft light, chinaball illumination, seamless shadowless base fill
+    notes: 俗稱燈籠或中國球。360度全向泛光，用來快速建立空間的無方向性基礎低強度面光（Base Fill）。
+  optical_spotlight_mount:
+    category: pattern_projector
+    shape: lens_focused
+    light_quality: razor_sharp_hard
+    shadow_transition: zero_blur_sharp
+    catchlight: sharp_geometric
+    best_for:
+    - laser-like accent beam
+    - ultra-sharp gobo projection
+    - fashion graphic geometry
+    prompt_keywords: optical snoot projector, razor sharp edge light, laser beam spotlight, geometric light mask
+    notes: 帶有鏡片的投影聚光筒（如 Aputure Spotlight）。可塞入切光片（Shutters）切出絕對鋒利的幾何線條，或投射毫無模糊邊緣的 Gobo 圖案。
+lighting_patterns:
+  cinematic_three_point:
+    modifier: fresnel_or_softbox
+    lights: 3
+    description: Key at 45°, fill opposite, rim/hair behind. Standard film setup.
+    best_for: cinematic portrait, film still, interview
+    prompt_keywords: three-point lighting, key fill and rim setup, dimensional portrait lighting
+  clam_shell:
+    modifier: beauty_dish_or_octabox
+    lights: 2
+    description: Key light above camera, fill light directly below camera, both on center axis.
+    best_for: beauty, fashion, glamour
+    prompt_keywords: beauty lighting from above and below camera, shadowless centered illumination, fashion flat beauty
+  butterfly_paramount:
+    modifier: beauty_dish
+    lights: 1_plus
+    description: Key light directly above and slightly in front of subject. Creates butterfly shadow under nose. Classic Hollywood.
+    best_for: glamour, classic portrait, fashion beauty
+    prompt_keywords: butterfly shadow under nose, classic Hollywood beauty, high centered key light
+    notes: The most flattering pattern for female subjects. Key is high and centered, shadow drops straight down.
+  rembrandt:
+    modifier: octabox_or_softbox
+    lights: 1_plus
+    description: Key light at 45° above and to the side, creating triangle highlight on cheek shadow side.
+    best_for: portrait, dramatic character
+    prompt_keywords: triangle cheek highlight, classic portrait light, dramatic side key with shadow triangle
+  loop:
+    modifier: softbox_or_octabox
+    lights: 1_plus
+    description: Key light slightly above eye level at 30-45°, shadow of nose creates small loop on cheek.
+    best_for: natural flattering portrait
+    prompt_keywords: natural portrait light, slight downward shadow loop, flattering cheek shadow
+  split:
+    modifier: hard_or_soft_directional
+    lights: 1_plus
+    description: Key light at 90° to subject, one half fully lit, other half in shadow.
+    best_for: dramatic, artistic, male portrait
+    prompt_keywords: half shadow half light, dramatic side lighting, sharp face division
+  cross_lighting:
+    modifier: two_directional
+    lights: 2
+    description: Two lights at 90° to each other, each lighting one side. Creates dramatic angular shadows.
+    best_for: edgy fashion, editorial drama, music portrait
+    prompt_keywords: dual side lighting, dramatic crossed beams from both sides, angular shadow
+    notes: Both lights are key — there is no fill. Creates high-drama, high-contrast looks.
+  underlighting:
+    modifier: bare_or_reflector
+    lights: 1
+    description: Light placed below subject, pointing upward. Creates inverted shadows.
+    best_for: horror, thriller, dramatic character, ghost story
+    prompt_keywords: light from below, inverted shadows, unnatural unsettling illumination
+    notes: Unnatural and unsettling. The shadows are inverted from what we expect. Classic horror trope.
+  silhouette:
+    modifier: hard_or_bare
+    lights: 1
+    description: Strong light behind subject, no frontal light. Creates outline.
+    best_for: dramatic, artistic, product outline emphasis
+    prompt_keywords: backlit subject, rim outline only, no frontal fill, edge-defined shape
+  rim_only:
+    modifier: strip_softbox_or_hard
+    lights: 12
+    description: No key or fill. Only rim/edge lights from behind. Subject appears as a glowing outline.
+    best_for: dramatic fashion, product edge emphasis, artistic nude
+    prompt_keywords: edge light silhouette, no key light, glowing outline, dramatic edge definition
+    notes: Extreme version of silhouette where some frontal detail is visible from bounce light.
+  overhead_flat_lay:
+    modifier: softbox_or_octabox
+    lights: 1
+    description: Light directly above pointing straight down. Flat, even overhead light.
+    best_for: flat lay food, overhead product, tabletop arrangement
+    prompt_keywords: top-down lighting, overhead flat illumination, minimal shadow below objects
+    notes: The light must be positioned directly above the subject. Creates minimal shadows below objects.
+  book_light:
+    modifier: softbox_into_vflat
+    lights: 1_plus
+    description: Light bounced off V-flat or white board, then through a diffusion panel. Extremely soft.
+    best_for: softest possible light, fine art, delicate product
+    prompt_keywords: bounced soft light, indirect diffused illumination, extremely gentle shadow
+  natural_window:
+    modifier: window_as_softbox
+    lights: 1
+    description: Large window as the sole light source. Soft, directional, natural.
+    best_for: natural look, lifestyle, interior
+    prompt_keywords: natural directional soft light, window daylight, painterly side illumination
+  motified_dramatic:
+    modifier: fresnel_or_hard_with_gobo
+    lights: 2_plus
+    description: Key light with gobo/cookie creating shadow patterns, fill for minimal detail. Film noir style.
+    best_for: noir, thriller, moody portrait
+    prompt_keywords: patterned shadow from gobo, film noir, dramatic shadow texture, cookie pattern light
+  mixed_temperature:
+    modifier: any_combination
+    lights: 2_plus
+    description: Warm light (tungsten/CTO) on one side, cool light (daylight/CTB) on the other. Creates temperature contrast.
+    best_for: cinematic portrait, urban night, editorial color contrast
+    prompt_keywords: warm cool color contrast, two-tone temperature separation, cinematic color lighting
+    notes: The ratio of warm to cool creates different moods. Equal parts is graphic; dominant warm with cool accent is natural.
+  single_source_hard:
+    modifier: fresnel_or_hard_reflector
+    lights: 1
+    description: Single hard light source. Deep shadows, high drama. No fill.
+    best_for: moody portrait, film noir, dramatic product accent
+    prompt_keywords: single hard light source, dramatic deep shadows, one-light high contrast
+    notes: The most dramatic single-light setup. The entire mood is determined by light placement.
+  single_source_soft:
+    modifier: octabox_or_large_softbox
+    lights: 1
+    description: Single large soft source. Gentle shadows, natural falloff, simple and elegant.
+    best_for: natural portrait, product hero, minimalist commercial
+    prompt_keywords: single large soft source, natural gentle shadows, simple elegant single light
+    notes: The safest single-light setup. Position at 45° for natural volume, or 0° for flat beauty.
+  eye_light_only:
+    modifier: small_LED_or_ring
+    lights: 1
+    description: Only enough light to create a visible catchlight in the eyes. Everything else falls to near-black.
+    best_for: intimate portrait, dramatic beauty, fine art
+    prompt_keywords: minimal catchlight in darkness, face defined by tiny source, near-black surroundings
+    notes: Extremely low light setup. The rest of the face is defined only by ambient or bounce from the small source.
+  kicker_plus_fill:
+    modifier: strip_for_kicker_bounce_for_fill
+    lights: 2
+    description: No traditional key light. One rim/kicker from behind/side, one bounce fill from front.
+    best_for: editorial, fashion detail, product edge emphasis
+    prompt_keywords: edge light with front bounce, no top key, moody rim-defined face
+    notes: The rim light defines shape, the fill opens shadows. Creates a moody but readable image.
+  church_window:
+    modifier: window_as_hard_source
+    lights: 1
+    description: A single dramatic window light from above or high on one side. Reminiscent of cathedral lighting.
+    best_for: dramatic portrait, fine art, classical still life
+    prompt_keywords: dramatic high window light, shaft of light from above, cathedral beam illumination
+    notes: A shaft of light illuminating a subject from darkness. The rest of the scene is black.
+  neon_practical:
+    modifier: neon_sign
+    lights: 12
+    description: Neon sign as the primary or only light source. Colored hard light with ambiance.
+    best_for: night exterior, urban portrait, cyberpunk, music
+    prompt_keywords: colored neon light, saturated urban glow, practical source color accent
+    notes: The color of the light is determined by the neon sign. Often paired with a cool or warm fill.
+  practical_lamp_scene:
+    modifier: practical_lamp
+    lights: 12
+    description: Household lamp as key or motivated source. Creates natural interior mood.
+    best_for: interior lifestyle, film and TV motivated, cozy editorial
+    prompt_keywords: household lamp interior light, warm shaded glow, motivated cozy illumination
+    notes: The lampshade acts as a modifier. Creates warm, familiar light with natural falloff.
+  candelight_cinematic:
+    modifier: candles
+    lights: 1_multiple
+    description: One or more candles as the only light source. Extremely warm, intimate, flickering.
+    best_for: period film, romantic dinner, intimate scene
+    prompt_keywords: candle flame light, warm intimate glow, historical low-light flicker
+    notes: Very low light level. The flicker of flames adds organic movement to the light.
+  beauty_window:
+    modifier: large_window
+    lights: 1
+    description: Large window placed to create a wrap-around soft effect on the face. The painter's light.
+    best_for: portrait, beauty, fine art, lifestyle
+    prompt_keywords: painterly window light, wrap-around soft daylight, classical fine-art illumination
+    notes: Subject positioned close to the window so light wraps around the face. Rembrandt's preferred lighting.
+  cross_keying:
+    modifier: two_directional_softboxes_with_grids
+    lights: 2
+    description: 對角交叉布光。A燈作為演員甲的主光，同時兼任演員乙的逆光；B燈作為演員乙的主光，兼任演員甲的逆光。
+    best_for: Over-the-shoulder (OTS) dual conversation scenes, narrative dialogue
+    prompt_keywords: cinematic cross-keying, over the shoulder dialogue lighting, dual purpose key and rim
+    notes: 電影對話戲的標準解法。極大節省機位調度時間，同時保證雙方在剪輯對切時，面部均有好看的側向立體感。
+  negative_fill_shaping:
+    modifier: large_black_floppies_or_vflats
+    lights: variable (uses ambient or key)
+    description: 不增加光，而是利用大面積黑布接近主角暗面，強行吸走環境反射光，製造極致的陰影下沉。
+    best_for: High-contrast drama on location with too many white walls
+    prompt_keywords: negative fill rendering, heavy jawline contrast, dynamic shadow side shaping
+    notes: 當你在一個充滿白牆的房間（如現代辦公室）想拍出深邃感時，補再多光都沒用，你必須用黑旗板『裁切』出陰影。
+light_source_types:
+  HMI:
+    description: Daylight-balanced arc light. Very high output, consistent 5600K. The standard for film production.
+    best_for: film and TV key light, daylight fill, exterior
+    notes: Expensive, powerful, requires ballast. Creates the most natural daylight simulation.
+  tungsten:
+    description: Standard incandescent lamp. Warm 3200K. Dims warmer. The classic film light.
+    best_for: interior key, period film, warm accent
+    notes: Dims to warmer temperatures. Very hot. Being replaced by LED but still preferred for certain looks.
+  fluorescent_kinoflo:
+    description: Tube-based fluorescent. Soft, even, cool-running. Multiple tubes for output.
+    best_for: interview, fill, tight spaces, video
+    notes: Runs cool, draws less power. Color can shift with age.
+  LED_panel:
+    description: Solid-state panel. Variable color temp, dimmable, lightweight. Modern standard.
+    best_for: location, documentary, run-and-gun, video, stills
+    notes: The most versatile modern source. Can emulate nearly any color temperature.
+  strobe_flash:
+    description: Short-duration flash. Very high output, daylight balanced. The standard for still photography.
+    best_for: commercial studio, portrait, product, fashion
+    notes: Freezes motion. Modeling lamp for preview. Output measured in watt-seconds.
+  speedlight:
+    description: Small shoe-mount flash. Portable, battery-powered. Minimal output but highly portable.
+    best_for: event, on-location fill, macro, travel
+    notes: Limited power but highly portable. Can be used off-camera wirelessly.
+light_control_tools:
+  flag_cutter:
+    description: Black solid panel used to block light from specific areas. Creates hard shadow edges.
+    best_for: negative fill, shaping light, preventing spill
+    prompt_keywords: flag blocking light, negative fill, cutting light
+  net_single:
+    description: Single-layer net scrim. Reduces light by 1 stop without changing quality.
+    best_for: reducing light intensity, controlling ratio
+    prompt_keywords: single net scrim, 1 stop reduction, light control
+  net_double:
+    description: Double-layer net. Reduces light by 2 stops.
+    best_for: greater light reduction, controlling hot spots
+  snoot:
+    description: Conical tube that focuses light into a narrow beam. Hard-edged spotlight effect.
+    best_for: accent light, hair light, background spot
+    prompt_keywords: snoot, focused light beam, narrow accent, spotlight effect
+  barndoor:
+    description: Adjustable hinged flaps attached to the front of a light. Controls light spread.
+    best_for: shaping light falloff, preventing spill, controlling beam width
+    prompt_keywords: barndoors, shaping light, controlling beam spread
+  honeycomb_grid:
+    description: Hexagonal grid that restricts light to a specific beam angle. Reduces spill.
+    best_for: controlling light spread, adding directionality, beauty dish grid
+    prompt_keywords: honeycomb grid, directional light control, restricted beam
+  gel_CTO:
+    description: Color Temperature Orange. Warms daylight to tungsten. Full/half/quarter strengths.
+    best_for: matching warm practicals, warming daylight sources
+    prompt_keywords: CTO gel, warming filter, daylight to tungsten
+  gel_CTB:
+    description: Color Temperature Blue. Cools tungsten to daylight. Full/half/quarter strengths.
+    best_for: matching daylight, cooling tungsten sources
+    prompt_keywords: CTB gel, cooling filter, tungsten to daylight
+  gel_color:
+    description: Saturated color gel. Adds colored light to the scene (red, blue, green, magenta, etc.).
+    best_for: motivated color, creative accent, background color
+    prompt_keywords: color gel, colored light, saturated accent light
+  diffusion_filter:
+    description: Filter placed over light to soften it. Various strengths (light frost, heavy frost, opal).
+    best_for: softening hard light, reducing contrast
+    prompt_keywords: diffusion filter, light softening, diffusion frost
+  POLARIZATION:
+    description: Linear or circular polarizer. Reduces reflections and glare on non-metallic surfaces.
+    best_for: product photography, eliminating reflections, saturating colors
+    prompt_keywords: polarizing filter, reduced reflection, glare control
+  v_flat_black_white:
+    description: 大型摺疊珍珠板。白面用於大面積溫和反光；黑面用於吸光（Negative Fill）以增強面部結構立體感。
+    best_for: Studio portrait, control facial shaping, negative fill
+    prompt_keywords: negative fill contrast, v-flat shadow shaping
+  unbleached_muslin_bounce:
+    description: 未漂白高密度平織布。光線打在上面回彈後，會帶有極其迷人、健康且溫暖的膚色調性。
+    best_for: Premium cinematic portrait, organic skin tone
+    prompt_keywords: warm organic muslin bounce light, golden skin glow
+cinematic_genre_lighting:
+  film_noir_suspense:
+    genre: Film Noir / 黑色電影 / 懸疑
+    key_light_position: 90° or 120° back-side — sidelight or backlight
+    fill_ratio: no fill or extremely weak bounce — 1:8 to 1:16
+    rim_backlight: none — subject's dark side fully merges into shadow
+    modifiers: Fresnel lens, honeycomb grid, snoot
+    visual_psychology: 制造极端的硬调对比，暗示角色的道德灰色地带与内心恐惧。The extreme contrast ratio visually encodes moral ambiguity — the character
+      exists in a world without clear right or wrong.
+    prompt_keywords: film noir lighting, hard contrast chiaroscuro, deep shadow no fill, 1:16 ratio, Fresnel hard light, moral
+      ambiguity lighting, dark suspense atmosphere
+    notes: The absence of fill light is the defining feature. The shadow side is not 'filled' — it is allowed to go to pure
+      black. This is the opposite of modern three-point.
+  sci_fi_cyberpunk:
+    genre: Sci-Fi / Cyberpunk / 科幻霓虹
+    key_light_position: 45° front-side, color temperature 3200K with cyan/magenta gel
+    fill_ratio: 135° opposite-side at 1:4, contrasting color (e.g., cyan vs orange)
+    rim_backlight: strong bilateral rim kickers, high-saturation neon colors
+    modifiers: strip softbox with grid, LED pixel tube lights
+    visual_psychology: 营造未来科技的疏离感，利用色彩冲突暗示人工环境的压迫。The color collision (warm vs cool) creates visual unease — the viewer feels
+      the artificiality of the environment.
+    prompt_keywords: cyberpunk lighting, neon rim light, cyan orange contrast, bilateral kicker, sci-fi color collision, LED
+      pixel tube, artificial environment lighting
+    notes: 'The bilateral rim lights are critical — without them, the subject merges into the dark environment. Color contrast
+      does the narrative work: warm subject vs cool world.'
+  david_fincher_crime:
+    genre: David Fincher 風格 / 低調犯罪
+    key_light_position: 45° top-side light (top-side light)
+    fill_ratio: large black flag for light absorption — 1:6 effective ratio
+    rim_backlight: very weak, outlines shoulder only, color temperature 4500K tungsten with green shift
+    modifiers: large octabank with double diffusion, positioned extremely close to subject
+    visual_psychology: 压抑、冷静、写实的病态美学。光线边缘过渡极其柔和，但阴影深邃。The softest light edge combined with the deepest shadows creates a clinical,
+      obsessive feel — every surface texture is visible, yet the mood is suffocating.
+    prompt_keywords: Fincher lighting, top-side key, clinical soft hard contrast, double diffusion octabank, green tinted
+      rim, obsessive texture lighting, suffocating atmosphere
+    notes: 'Fincher''s signature is the contradiction: the softest possible key light (double-diffused, close) with the darkest
+      possible fill (black flag absorbs everything). The result is texture without mercy.'
+  high_key_comedy:
+    genre: High-Key Comedy / 商業喜劇 / 明亮
+    key_light_position: 45° bilateral symmetrical key lights (left dominant, right subordinate)
+    fill_ratio: bilateral超大 area fill — 1:1.5 to 1:2
+    rim_backlight: comprehensive background light, eliminate all hard shadows
+    modifiers: large overhead scrim (12x12),巨型 softbox
+    visual_psychology: 消除空间的危险感与未知感，传递轻松、安全、阳光的整体情绪。Every shadow is eliminated because shadows in comedy represent danger
+      and uncertainty — a shadowless world is a world without fear.
+    prompt_keywords: high key comedy lighting, shadowless illumination, overhead scrim, bilateral symmetrical key, 1:1.5 ratio,
+      safe bright atmosphere, no fear lighting
+    notes: The goal is zero perceived shadow. Even 'shadows' must be so soft they read as tone variation, not absence of light.
+      Overhead scrim provides the base wash, bilateral keys add dimension without contrast.
+  roger_deakins_naturalism:
+    genre: Roger Deakins 風格 / 柔和自然主義
+    key_light_position: Large 90° soft side light, often bounced then diffused again
+    fill_ratio: Soft wrap-around fill via passive ambient bounce — 1:3 effective ratio
+    rim_backlight: None — fundamentally avoids artificial rim/backlight unless motivated by practicals
+    modifiers: Maxi-brute bounced into unbleached muslin, custom soft grids
+    visual_psychology: 極致的寫實與人文關懷。光線彷彿完全由空間中的窗戶、檯燈自然延伸，絕無人工雕琢感，讓觀眾毫無防備地沉浸於故事。The light always feels 'earned' and motivated
+      by the environment.
+    prompt_keywords: Roger Deakins style, motivated soft naturalism, unbleached muslin bounce, soft wrapping side key, realistic
+      contrast, no artificial rim
+    notes: 狄金斯的精髓在於『隱形（Invisible）』。主光大而柔和，且絕對順應場景邏輯。人物暗面不靠逆光分離，而是靠主體與背景的明暗互襯（Silhouette vs Tone）。
+  greig_fraser_brutalist:
+    genre: Greig Fraser 風格 / 巨型低反差暗調 (Dune / The Batman)
+    key_light_position: Top-down massive soft source / Sky pan illumination
+    fill_ratio: Extremely controlled low-key ambient — 1:4 to 1:6
+    rim_backlight: Muted edge separation or pure silhouette matching brutalist architecture
+    modifiers: Giant overhead diffusion skypans, active LED volume integration
+    visual_psychology: 神聖、壓抑、宏大的史詩感。將人物縮小為環境的一部分，利用大面積的柔和暗調（Soft Underexposure）營造歷史的厚重與宿命感。Heavy textural low-key that retains
+      shadow detail.
+    prompt_keywords: Greig Fraser cinematography, brutalist scale lighting, underexposed soft key, massive overhead diffuse
+      wash, moody cinematic texture, Dune aesthetic
+    notes: 他的暗調（Low-key）不是硬光造成的黑，而是『整體欠曝的極柔光』。畫面的數位雜訊（Grain）往往會融在陰影裡，形成一種類似油畫的顆粒質感。
+  wes_anderson_pastel_flat:
+    genre: Wes Anderson 風格 / 扁平對稱色塊
+    key_light_position: Dead center front key, or symmetrical bilateral soft key (0° or ±30°)
+    fill_ratio: High-key wrap fill — 1:1.2 to 1:1.5
+    rim_backlight: Subtle top light to separate hair from highly stylized wallpaper
+    modifiers: Large soft overhead ring lights, global ambient diffusion walls
+    visual_psychology: 童話般的抽離感、強迫症式的秩序美學。極度扁平（Flat）的光影消除了現實的殘酷與立體感，配合高飽和粉色調，讓銀幕變成精緻的立體繪本。The flat lighting denies depth, forcing
+      the eye to focus on symmetry and costume palettes.
+    prompt_keywords: Wes Anderson style, dead-center symmetrical lighting, flat pastel high-key, shadowless quirky composition,
+      editorial storybook illumination
+    notes: 絕不能出現Rembrandt光或強烈側陰影。這裡的光不為『立體感』服務，而是為了『平面圖案化（Graphic Pattern）』服務。
+portrait_lighting_patterns:
+  rembrandt:
+    name: Rembrandt (林布蘭光)
+    key_coordinates:
+      horizontal_angle: 45
+      vertical_angle: 45
+      description: 45° side, 45° above looking down. Creates the signature inverted triangle of light on the shadow-side cheek.
+    fill_config:
+      ratio: 1:3 to 1:4
+      position: opposite side, reflector or soft fill
+    rim_background_relation: weak backlight. Lit side faces dark background, shadow side faces bright background (contrast法则)
+      — the light side pops against dark, the shadow side separates against bright.
+    suitable_face_character: Deep-set eyes, high cheekbones. Storytelling gravitas, classical dignity, restraint. The triangle
+      represents structure and control — it suits authoritative, mysterious, or wise characters.
+    shooting_pitfalls: '倒三角光块的宽度不可超过眼角，长度不可低于鼻翼，否则会破坏结构。The triangle must be contained: width ≤ outer eye corner, length ≥
+      nostril. A broken triangle (too wide or too narrow) reads as a lighting mistake, not Rembrandt.'
+    prompt_keywords: Rembrandt portrait lighting, 45 degree key, triangle cheek highlight, classic dignified portrait, dramatic
+      character light, contrast法则 lighting
+  clamshell:
+    name: Clamshell (蚌殼式 / 美人光)
+    key_coordinates:
+      horizontal_angle: 0
+      vertical_angle: 45
+      description: Directly in front, 45° above tilting down (overhead key). Secondary light from directly below 45° tilting
+        up.
+    fill_config:
+      ratio: '1:1.5'
+      position: directly below camera, 45° upward tilt using reflector or weak soft light
+    rim_background_relation: strong top-back hair light to separate subject from background. The hair light is critical —
+      without it, the subject's head blends into the background tone.
+    suitable_face_character: Fashion beauty, female close-up. The wrap fill light大面积填平皮肤瑕疵与眼袋 (fills in skin imperfections
+      and under-eye bags). Ideal for commercial beauty where skin perfection is required.
+    shooting_pitfalls: 必须严格控制下方补光的强度，若下方强于上方，会变成恐怖片恶魔光 (if lower light is stronger than upper, it becomes horror underlighting).
+      The lower light should never exceed 60% of the upper key power.
+    prompt_keywords: clamshell beauty lighting, overhead key under fill, fashion beauty portrait, skin perfection light, 1:1.5
+      clamshell ratio, hair light separation
+  split_lighting:
+    name: Split Lighting (分裂光 / 左右臉)
+    key_coordinates:
+      horizontal_angle: 90
+      vertical_angle: 0
+      description: Exactly 90° side position, parallel to the subject's gaze. Exactly half the face is lit, half is in shadow.
+    fill_config:
+      ratio: 1:8 or above (no fill or black flag absorption)
+      position: no fill, or black flag on the shadow side to deepen darkness
+    rim_background_relation: none, or a single thin rim light on the shadow side to barely define the edge. The shadow side
+      should approach pure black.
+    suitable_face_character: Dual personality, extreme internal conflict, villain, or hardened realistic character. The literal
+      split represents a divided self — the viewer understands instantly that this character has two sides.
+    shooting_pitfalls: 摄影机视角若微调，会大幅改变亮暗面比例。建议从正前方或微偏暗面拍摄。A 5° camera shift changes the visible ratio dramatically. Shoot from
+      dead center or slightly toward the dark side — never toward the lit side.
+    prompt_keywords: split lighting portrait, 90 degree side key, half face shadow, dual personality lighting, villain portrait
+      light, no fill hard contrast
+  badger_lighting:
+    name: Badger Lighting (獾式布光 / 雙逆光)
+    key_coordinates:
+      horizontal_angle: 120° to 130° bilateral (both sides)
+      vertical_angle: 0
+      description: Symmetrical dual back-rim lights from 120°-130° on both sides. The face is defined entirely by edge light.
+    fill_config:
+      ratio: '1:6'
+      position: very weak large-area soft light from directly in front as base ambient — just enough to keep center of face
+        from going pure black
+    rim_background_relation: background fully darkened. The dual edge lights 'cut out' the subject from darkness like scissors
+      cutting paper. The subject is defined by absence of background.
+    suitable_face_character: Athlete, martial arts action close-up, superhero about to strike, silhouette of power. The double
+      rim creates a heroic outline — the subject is too powerful to be fully illuminated, revealed only by their edge.
+    shooting_pitfalls: 两侧逆光的强度必须精准同步，且要极力避免光线直接射入镜头导致耀光。Both rim lights must be precisely matched in intensity. Any asymmetry
+      breaks the heroic silhouette. Use lens hoods and flag any direct light paths to the lens.
+    prompt_keywords: badger lighting, dual rim light portrait, heroic silhouette lighting, 120 degree bilateral rim, athlete
+      action light, edge defined character, symmetrical back rim
+special_function_lighting:
+  greenscreen_vfx:
+    scene: Action / VFX Green Screen (綠幕去背)
+    key_strategy: Match virtual scene sun position, typically 45° independent hard light
+    fill_ambient: Green spill blockers (flags/neg fill) surrounding subject — prevent green light bouncing back onto skin.
+      The more green spill on the subject, the harder the key.
+    background_special: Green screen must be lit with large-area diffused lights (space lights or softbox array). Each point
+      on the green screen must have exposure variance ≤ ±0.5 stops.
+    technical_limits:
+    - green screen exposure variance ≤ ±0.5 stops across entire surface
+    - subject minimum 2.5m distance from green screen to minimize spill
+    - green screen lit separately from subject — no light overlap
+    dp_master_note: 去背成功的關鍵在於背景無陰影。主體的輪廓光（Rim Light）可微調偏向暖色，用色彩物理學中和邊緣溢出的綠光。The rim light slightly warmed (CTO 1/8) neutralizes
+      green edge spill through color physics — complementary warm offsets green.
+    prompt_keywords: green screen lighting, VFX key light, spill control, ±0.5 stop green screen, 2.5m subject distance, warm
+      rim neutralizes green spill, space light greenscreen
+  car_interior_virtual_production:
+    scene: Car Interior (夜間車內戲 - LED Wall / 虛擬棚)
+    key_strategy: External moving LED light bars (DMX automated) simulating street lamps sweeping past. The motion of light
+      is the primary narrative device.
+    fill_ambient: Dashboard-mounted micro LED chip lights at 1:2 ratio for low facial fill. These provide the base exposure
+      for the actor's face when no external light is hitting them.
+    background_special: Large dynamic LED wall or moving light source behind the car simulating rear traffic. The background
+      motion establishes the car's speed, not the car itself.
+    technical_limits:
+    - color temperature must rapidly switch between 2700K (street lamp) and 6000K (tech/cool) depending on passing environment
+    - DMX sweep frequency must match the virtual plate playback speed
+    dp_master_note: 节（Rhythm）是车戏的灵魂。路灯掠过的频率必须与环境影片（Plate）的速度完全同步，否则会产生强烈的合成假感。The rhythm of light sweep is the唯一 thing that
+      sells the car interior illusion — speed is communicated by light frequency, not camera movement.
+    prompt_keywords: car interior lighting, DMX LED bar sweep, virtual production car, street lamp rhythm, 2700K 6000K transition,
+      dashboard LED fill, car interior LED wall
+  high_speed_slow_motion:
+    scene: High-Speed Slow Motion (1000fps+ 極速慢動作)
+    key_strategy: High-power tungsten (10K/20K watt) or DC-driven professional LED. Consumer AC LEDs WILL flicker at high
+      fps.
+    fill_ambient: Full-coverage high-power diffusion — shutter speed may reach 1/2000s or faster. At 1000fps with 180° shutter,
+      exposure time is 1/2000s. Every stop of shutter increase requires doubling the light.
+    background_special: Background must have independent high-brightness lighting. At extreme fps, any shadow cast by the
+      moving subject stretches into a massive dark smear across the background.
+    technical_limits:
+    - ABSOLUTELY NO AC-driven consumer lights — they will produce catastrophic flicker in slow motion
+    - 'minimum light output: enough for 1/2000s at ISO 400 at required aperture'
+    - DC-driven LED or tungsten only (tungsten is naturally flicker-free)
+    dp_master_note: 在高格拍摄中，光量就是一切。每一档快门的提升都代表光量需要成倍增加，现场控温与演员防晒是隐形考量。At 1000fps, the set temperature from 10K tungsten lights
+      can exceed 40°C — heat management and actor safety become lighting design constraints.
+    prompt_keywords: high speed slow motion lighting, 1000fps flicker free, DC LED slow motion, 10K tungsten high fps, heat
+      management lighting, no AC flicker, extreme shutter light output
+scene_shooting_recipes:
+  red_alert_escape:
+    scene: 紅色警報逃生 — Red Alert Escape
+    fps: variable ramping 120fps → 24fps
+    shutter: sync with fps (1/250s → 1/50s) — maintain 180° rule through the ramp
+    aperture: f/5.6
+    aperture_rationale: 深景深預留 Z 軸前後形變空間。Subject moving rapidly through corridors means unpredictable Z-axis distance changes
+      — deep DOF is the only safe choice.
+    rig_modifiers: 三軸穩定器 (3-axis gimbal), DMX 控制台 (DMX lighting console), 黑旗板 (flags for negative fill)
+    dp_trap: 途中切回 24fps 時必須維持 180° 快門，利用走廊兩側的動態模糊無限放大速度感。When ramping back to 24fps, the 180° shutter creates natural motion
+      blur in the corridor walls — this blur is what sells the speed, not the subject's movement.
+    prompt_keywords: red alert escape scene, ramping 120 to 24fps, corridor speed blur, f5.6 deep focus chase, gimbal DMX
+      chase, 180 degree shutter ramp
+  rainy_neon_chase:
+    scene: 雨夜霓虹追逐 — Rainy Night Neon Chase
+    fps: 60
+    shutter: 45° narrow shutter (1/500s)
+    aperture: f/4.0
+    aperture_rationale: Balances enough light for 1/500s exposure while maintaining manageable focus on a moving FPV drone
+      platform.
+    rig_modifiers: FPV 穿越機 (FPV drone), 大型八角罩加蜂巢 (large octabox with honeycomb grid for directional wet-ground reflection
+      control), 條形軟盒 (strip softbox for rim)
+    dp_trap: 必须严格执行窄快门，才能在慢动作下完美冻结主角皮衣上的雨滴与鞋底溅起的水花粒子。The 45° shutter is non-negotiable — at 60fps with 180° shutter, raindrops
+      become continuous streaks instead of individual frozen particles. The narrow shutter is what makes rain visible as discrete
+      drops.
+    prompt_keywords: rainy night chase, 45 degree shutter rain, FPV drone chase, frozen raindrops, neon wet ground reflection,
+      60fps narrow shutter action
+  wuxia_duel:
+    scene: 傳統武俠對決 — Traditional Wuxia Duel
+    fps: 240
+    shutter: narrow shutter (1/1000s or faster)
+    aperture: f/8.0
+    aperture_rationale: 確保刀劍與葉片均在焦內。Fighting subjects move on multiple Z-axes simultaneously (lunging forward, spinning, leaping).
+      Only f/8+ can keep sword blade AND falling leaf both sharp.
+    rig_modifiers: 電控重型搖臂 (motorized heavy jib arm), 12x12 呎大蝴蝶布 (12x12 overhead silk for soft ambient), 大功率高壓煙霧機 (high-output
+      haze machine for light beam visibility)
+    dp_trap: 严禁使用普通交流电（AC）灯具补光，否则在 240fps 下会产生毁灭性的画面闪烁（Flicker）。At 240fps, any AC light running at 50/60Hz will produce visible
+      flicker. Only DC-driven LED or tungsten (naturally flicker-free) is acceptable. This is the single most common mistake
+      in high-speed wuxia.
+    prompt_keywords: wuxia duel lighting, 240fps blade capture, f8 deep focus fight, AC flicker warning high fps, jib arm
+      martial arts, 12x12 overhead silk, haze beam light
+  hacker_micro_infiltration:
+    scene: 黑客微觀潛入 — Hacker Micro Infiltration
+    fps: 24
+    shutter: 180° standard (1/50s)
+    aperture: f/2.0
+    aperture_rationale: 極淺微距焦深。Probe macro lens at f/2.0 has sub-millimeter depth of field — only the hacker's eye or a single
+      keyboard key is in focus at any moment. This is the visual language of 'micro' scale.
+    rig_modifiers: 微距探針鏡頭 (macro probe lens), 微型 LED 貼片燈棒 (micro LED chip light bars for keyboard-level illumination)
+    dp_trap: 探針鏡頭進光量極小，桌面模擬螢幕的微型 LED 亮度必須開足，且手動跟焦容錯率極低。Probe lenses transmit very little light (typical T-stop T/4+ even at
+      f/2). The desktop 'screen' LEDs must be at maximum output. Manual follow-focus at this magnification has near-zero error
+      tolerance — pre-mark focus points for every camera move.
+    prompt_keywords: hacker infiltration macro, probe lens lighting, f2 extreme shallow DOF, micro LED chip light, manual
+      follow focus probe, near zero DOF hacking scene
+  corporate_executive:
+    scene: 企業高管形象 — Corporate Executive Portrait
+    fps: static / 24fps
+    shutter: 180° standard
+    aperture: f/4.0 - f/5.6
+    aperture_rationale: 胸像中景（mid-shot bust），視線等高（eye-level）。f/4.0-f/5.6 保證西裝領帶至眼神皆清晰，同時保留適度背景分離。
+    rig_modifiers: 大型八角罩（Octabank）主光 + 反光板補光 + 獨立背景燈
+    lighting: 林布蘭光（Rembrandt）：主光 45° 側高位，三角光落在暗頰。背景光獨立打亮灰牆，區隔主體與背景。
+    ratio: '1:3'
+    ai_prompt_matrix: Corporate executive portrait, clean gray background, professional corporate lighting, crisp suit detail
+    prompt_keywords: corporate executive portrait, rembrandt lighting, octabank key light, professional gray background, crisp
+      suit texture, eye level mid shot
+  minimalist_black_and_white:
+    scene: 極簡黑白肖像 — Minimalist B&W Portrait
+    fps: static
+    shutter: N/A
+    aperture: f/8.0
+    aperture_rationale: 追求極致銳度（peak sharpness on lens）。面部特寫（close-up），f/8 將毛孔與皮膚紋理一覽無遺。
+    rig_modifiers: 裸燈或雷達罩加蜂巢（bare light / beauty dish with honeycomb grid）
+    lighting: 分裂光（Split）：絕對 90° 正側光。背景離牆遠，完全不吃光，主體從純黑背景中浮現。
+    ratio: '1:8'
+    ai_prompt_matrix: Timeless black and white portrait, harsh split lighting, deep facial wrinkles and textures, fine art
+    prompt_keywords: black and white portrait, split lighting 90 degree, harsh side light, skin texture detail, fine art b&w,
+      deep shadow portrait
+  japanese_fresh_outdoor:
+    scene: 日系清新外拍 — Japanese Fresh Outdoor
+    fps: 24fps
+    shutter: 180° standard with subtle handheld breathing motion
+    aperture: f/1.4 - f/2.0
+    aperture_rationale: 大光圈製造輕微手動呼吸感搖鏡（intentional handheld sway）。極淺景深讓背景融化為色塊。
+    rig_modifiers: 泡沫反光板（米菠蘿 / foam core reflector）大面積回彈
+    lighting: 主光：陰天漫射光或逆光太陽。補光：泡沫反光板正面回彈，整體高調（high-key）無生硬陰影。
+    ratio: '1:1.5'
+    ai_prompt_matrix: Japanese minimalist style portrait, soft airy overcast lighting, pastel tones, faint lens flare
+    prompt_keywords: japanese fresh outdoor, soft overcast portrait, pastel high key, foam reflector fill, intentional handheld
+      sway, airy translucent skin
+  high_fashion_editorial:
+    scene: 高奢時尚雜誌 — High Fashion Editorial
+    fps: static
+    shutter: N/A
+    aperture: f/11
+    aperture_rationale: 全焦段細節銳利 — 服裝材質、珠寶、髮絲皆須清晰。全身或半身低角度仰拍（low angle hero shot）。
+    rig_modifiers: 雷達罩（Beauty Dish）上方下傾 + 銀色反光板下方上傾
+    lighting: 蚌殼光（Clamshell）：上下夾擊消除一切皮下陰影。眼神光呈現完美圓形 ring catcher。白色美人碟創造無瑕質感。
+    ratio: '1:1.2'
+    ai_prompt_matrix: High fashion magazine cover, flawless clamshell beauty dish lighting, sharp ring catcher in eyes, sharp
+      focus
+    prompt_keywords: high fashion editorial, clamshell beauty dish, flawless skin, silver reflector fill, ring catch light,
+      low angle fashion, f11 full detail
+  wong_kar_wai_retro:
+    scene: 王家衛復古港風 — Wong Kar-wai Retro
+    fps: 24fps
+    shutter: slow shutter 1/25s
+    aperture: f/1.4
+    aperture_rationale: 刻意製造拖影（Motion Streak）。慢快門 + 大光圈讓霓虹燈光在畫面中拉成彩色線條，人物邊緣溶解於光中。
+    rig_modifiers: 綠色螢光燈管 + 暖紅色霓虹招牌（practical light sources）
+    lighting: 主光：綠色螢光燈管。補光：側邊暖紅色霓虹招牌實用光。撞色互補不追求均勻度，容許高飽和色調在臉上暈開。
+    ratio: '1:4'
+    ai_prompt_matrix: Wong kar wai style, retro hong kong neon lighting, motion blur streak, high saturation green and red
+      amber
+    prompt_keywords: wong kar wai style, neon green key light, red neon fill, motion streak, 1/25s shutter drag, high saturation
+      color wash, 1990s hong kong
+  warm_maternity:
+    scene: 溫馨孕婦寫真 — Warm Maternity
+    fps: static
+    shutter: N/A
+    aperture: f/2.0
+    aperture_rationale: 柔焦感。平視側身，強調腹部曲線。f/2.0 讓主體銳利而背景柔化為光暈。
+    rig_modifiers: 超大柔光牆（massive soft diffusion wall）+ 大型白色反光板
+    lighting: 大逆光：超大柔光牆置於主角正後方，邊緣產生神聖的「聖光溢出」。補光：正前方大型白色反光板全漫射。
+    ratio: '1:1.2'
+    ai_prompt_matrix: Pure warm maternity portrait, massive soft diffuse backlighting, ethereal white glowing rim, high key
+    prompt_keywords: maternity portrait, massive soft backlight, ethereal rim glow, white high key, sacred light, belly silhouette,
+      gentle warm tone
+  gym_aesthetics:
+    scene: 健身房力量美學 — Gym Aesthetics
+    fps: static / 60fps
+    shutter: 1/125s or faster
+    aperture: f/2.8
+    aperture_rationale: 中景，側位捕捉發力瞬間（peak contraction moment）。f/2.8 在筋肉線條清晰的同時略化背景。
+    rig_modifiers: 雙側條形軟盒加蜂巢（dual stripboxes with honeycomb grids）
+    lighting: 獾式布光（Badger）：左右雙後側對稱逆光 120°，正前無光。條形軟盒精準裁剪肌肉線條。健身房環境暗場。
+    ratio: '1:6'
+    ai_prompt_matrix: Athletic fitness portrait, dual rim lights highlighting muscle definition, gym background dark and moody
+    prompt_keywords: gym aesthetics, badger dual rim, stripbox muscle definition, dark gym background, peak contraction, fitness
+      portrait, 120 degree back rim
+  wedding_backlight:
+    scene: 唯美逆光婚紗 — Dreamy Wedding Backlight
+    fps: 24fps
+    shutter: 180° standard
+    aperture: f/1.2
+    aperture_rationale: 焦段 85mm，圍繞新人進行緩慢軌道圓弧運動。f/1.2 創造奶油般融化的背景。摘除遮光罩刻意迎接陽光直射製造耀光（lens flare）。
+    rig_modifiers: 手持大白板（large portable white reflector for eye catch light）+ 遮光罩拆除
+    lighting: 主光：夕陽黃金小時（Golden Hour）逆光。補光：正前手持大白板補眼神光。耀光對比：摘除遮光罩刻意讓陽光射入。
+    ratio: '1:2'
+    ai_prompt_matrix: Romantic wedding gown portrait, golden hour backlighting, heavy warm lens flare, dreamlike glow
+    prompt_keywords: golden hour wedding, backlight flare, 85mm f1.2, orbital wedding shot, heavy warm flare, catch light
+      reflector, dreamlike glow
+  esports_pro:
+    scene: 電競職業選手 — Esports Pro
+    fps: 24fps
+    shutter: 180° (1/50s)
+    aperture: f/2.0
+    aperture_rationale: 微距急推鎖定瞳孔（macro push to eye）。f/2.0 的極淺景深讓鍵盤與螢幕光暈化作背景散景。
+    rig_modifiers: LED 像素燈棒（Pixel Sticks）+ 鍵盤與螢幕實用光
+    lighting: 主光：面前鍵盤與螢幕投射藍光（practical screen glow）。輪廓光：頸後兩側交叉紫光。像素燈棒精準控制線條寬度。
+    ratio: '1:3'
+    ai_prompt_matrix: Esports gamer pro close up, sharp rgb neon underglow, focused intense gaze, futuristic gaming room setup
+    prompt_keywords: esports pro portrait, keyboard screen glow, rgb pixel stick rim, purple blue neon, macro eye push, futuristic
+      gaming, intense gamer focus
+  theater_stage:
+    scene: 劇場舞台劇照 — Theater Stage
+    fps: static
+    shutter: N/A
+    aperture: f/2.8
+    aperture_rationale: 焦段 200mm，遠距離超長焦捕捉。壓縮背景，讓舞台上的演員彷彿從黑暗中剪出。
+    rig_modifiers: 菲涅耳透鏡聚光燈（Fresnel spotlight）+ 完全無補光
+    lighting: 主光：舞台唯一高空追光燈（Spotlight）。補光：完全無補光。菲涅耳硬光造成 1:10 絕對高反差，演員周圍完全隱入黑暗。
+    ratio: '1:10'
+    ai_prompt_matrix: Dramatic theater stage production still, single sharp spotlight hitting the actor, isolated on black
+      stage
+    prompt_keywords: theater stage portrait, single fresnel spotlight, 200mm telephoto, isolated on black, high contrast 1
+      to 10, stage drama, dark ambient
+  retro_american_street:
+    scene: 歐美復古街頭 — Retro American Street
+    fps: static / 24fps
+    shutter: 180° standard
+    aperture: f/8.0
+    aperture_rationale: 大景深，廣角鏡頭 24mm 低視角仰拍。街頭背景與人物皆清晰，建立環境敘事感。
+    rig_modifiers: 完全無人工控光幕 — 利用大自然硬光
+    lighting: 主光：正午強烈頂陽光（Hard Sunlight）。背景：粗獷的都市水泥建築。不修正陰影，保留 90 年代街拍的真實感。
+    ratio: '1:4'
+    ai_prompt_matrix: 90s western street style editorial, harsh direct sunlight, vintage grain, dynamic urban angle
+    prompt_keywords: 90s street fashion, harsh noon sunlight, 24mm wide angle, low angle urban, vintage grain film, concrete
+      background, no fill natural light
+  interrogation_room_brutal:
+    scene: 高壓審訊室 — Interrogation Room Brutal
+    fps: 24
+    shutter: 172.8° or 90° sharp shutter for psychological anxiety
+    aperture: f/2.8 - f/4.0
+    aperture_rationale: 保持眉眼與拷問桌手銬的銳利度。切換窄快門角度（如90°）會讓演員手指的焦慮顫抖顯得極其生硬、神經質。
+    rig_modifiers: Bare halogen pendant lamp (懸掛裸鹵素燈泡) + 桌面不銹鋼/白漆回彈
+    lighting: 極限單一頂光（Extreme Overhead Top Light）。利用懸掛於角色頭頂正上方的裸露燈泡，讓眉骨陰影完全吞噬眼睛（Skull Eyes Effect），只有當角色抬頭仰望時，瞳孔才會瞬間捕捉到刺眼的高光。
+    ratio: '1:12'
+    ai_prompt_matrix: Interrogation room interrogation lighting, single harsh overhead industrial lamp, skull shadow eyes,
+      oppressive interrogator mood, raw sweat texture
+    prompt_keywords: interrogation scene, single overhead bare lamp, skull eye shadow, sharp 90 degree shutter grit, gritty
+      concrete counter-reflection, intense psychological contrast
+  macro_beverage_splash:
+    scene: 商業飲品微距極速飛濺 — Commercial Beverage Splash Macro
+    fps: 2000
+    shutter: 1/4000s (45° equivalent shutter at 2000fps)
+    aperture: f/11 - f/16
+    aperture_rationale: 微距鏡頭（Macro Lens）在近距離下的景深會縮減至毫米級。為了讓飛濺的水花冰塊與瓶身標籤同時清晰，必須將光圈縮至 f/11 甚至更小。這意味著進光量呈現毀滅性下降。
+    rig_modifiers: 40K Watt DC-driven LED Strobe line array + 鏡面反射板 (Mylar reflectors)
+    lighting: 強烈透光（Transillumination / Backlighting）。主光源必須從液體與玻璃瓶身的『後方』射入，讓液體呈現通透、飽和的寶石般光澤。兩側用條形軟盒補出瓶身輪廓的玻璃高光邊（Specular Highlights）。
+    ratio: 1:1 symmetrical back-dominant
+    ai_prompt_matrix: Ultra high speed macro photography, 2000fps ice cube splashing into amber liquid, translucent backlit
+      beverage glass, crisp liquid droplets frozen in mid-air, studio precision
+    prompt_keywords: macro beverage splash, 2000fps flicker free, f11 deep macro focus, frozen translucent liquid, backlit
+      product hero, specular glass highlight, 1/4000s macro crispness
+generator_visible_lighting_translation:
+  purpose: Translate human lighting equipment and DP setup language into image-model-visible visual effects. Equipment names
+    stay in scene_blueprint; final prompts use visible light behavior.
+  translation_principles:
+  - Describe what light does to the subject, not the physical tool creating it.
+  - Describe direction, softness, falloff, shadow edge, highlight character, catchlights, separation, and motivated source.
+  - Avoid equipment names in final_prompt unless the requested image is a behind-the-scenes setup, photography tutorial diagram,
+    or studio equipment product shot.
+  - For reflective subjects, describe clean reflections and controlled highlight strips instead of naming stripboxes or flags.
+  - For human portraits, prioritize face modeling, eye catchlights, skin texture preservation, and natural shadow geometry.
+  - For cinematic scenes, tie light direction to believable sources such as windows, neon signs, lamps, fire, screens, sky,
+    or streetlights.
+  equipment_to_visible_effect:
+    octabox_90cm:
+      human_reference: medium-large octagonal softbox used as portrait or product key
+      generator_prompt: large soft diffused key light with smooth shadow transition and rounded catchlights
+      visible_effects:
+      - soft cheek modeling
+      - smooth skin highlights
+      - gentle shadow edge
+      - round eye catchlight
+      avoid_in_final_prompt:
+      - octabox
+      - softbox
+      - light stand
+      - studio flash
+    octabox_120cm_or_150cm:
+      human_reference: very large softbox for full-body, groups, or cars
+      generator_prompt: broad wrap-around soft light with barely visible shadow edge and gentle full-body illumination
+      visible_effects:
+      - soft full-body contour
+      - minimal harsh shadow
+      - large smooth highlights
+      avoid_in_final_prompt:
+      - octabox
+      - softbox
+    small_softbox_or_square_softbox:
+      human_reference: controlled soft source for product, fill, or close-up accent
+      generator_prompt: controlled soft directional light with compact smooth highlights
+      visible_effects:
+      - precise highlight placement
+      - soft but defined shadow
+      - clean product edge
+      avoid_in_final_prompt:
+      - softbox
+    strip_softbox:
+      human_reference: narrow vertical or horizontal soft source for rim and reflective edge highlights
+      generator_prompt: narrow elongated edge highlight tracing the subject contour
+      visible_effects:
+      - thin rim line
+      - long clean reflection on glass or metal
+      - separated silhouette
+      avoid_in_final_prompt:
+      - stripbox
+      - strip softbox
+    beauty_dish:
+      human_reference: crisp beauty source for glamour face sculpting
+      generator_prompt: glamorous semi-soft frontal light with crisp cheek highlights and defined facial structure
+      visible_effects:
+      - sparkling eyes
+      - defined cheekbones
+      - controlled nose shadow
+      - polished beauty skin
+      avoid_in_final_prompt:
+      - beauty dish
+    bare_bulb_or_hard_source:
+      human_reference: small hard source for sharp shadows and high contrast
+      generator_prompt: hard directional light with sharp shadow edges and strong specular highlights
+      visible_effects:
+      - crisp cast shadow
+      - high contrast
+      - graphic shape definition
+      avoid_in_final_prompt:
+      - bare bulb
+      - flash head
+    v_flat_white_bounce:
+      human_reference: large white bounce fill
+      generator_prompt: soft bounced fill gently opening the shadow side without flattening contrast
+      visible_effects:
+      - shadow detail preserved
+      - natural low-contrast fill
+      - soft ambient lift
+      avoid_in_final_prompt:
+      - V-flat
+      - bounce board
+      - reflector
+    black_flag_or_negative_fill:
+      human_reference: black flag, cutter, or negative fill used to deepen shadows
+      generator_prompt: controlled shadow side with rich negative fill and sculpted contrast
+      visible_effects:
+      - deeper cheek shadow
+      - stronger contour
+      - premium low-key separation
+      avoid_in_final_prompt:
+      - flag
+      - cutter
+      - negative fill panel
+    grid_or_snoot:
+      human_reference: beam control tool restricting spill
+      generator_prompt: focused pool of light with minimal spill and controlled falloff
+      visible_effects:
+      - isolated highlight
+      - dark surrounding area
+      - spotlit emphasis
+      avoid_in_final_prompt:
+      - grid
+      - snoot
+    gobo:
+      human_reference: pattern projection tool
+      generator_prompt: patterned shadow texture crossing the background or subject
+      visible_effects:
+      - window-blind shadows
+      - leaf-shadow pattern
+      - architectural shadow texture
+      avoid_in_final_prompt:
+      - gobo
+    practical_lamp:
+      human_reference: visible lamp or believable scene light
+      generator_prompt: warm practical lamp glow motivating the scene light
+      visible_effects:
+      - warm local glow
+      - realistic light motivation
+      - cozy falloff
+      avoid_in_final_prompt: []
+    neon_sign:
+      human_reference: visible colored practical source
+      generator_prompt: colored neon glow casting cyan and magenta rim light onto wet reflective surfaces
+      visible_effects:
+      - colored edge light
+      - wet reflections
+      - night-city atmosphere
+      avoid_in_final_prompt: []
+    window_light:
+      human_reference: large natural daylight aperture
+      generator_prompt: soft directional daylight entering from the window with natural shadow falloff
+      visible_effects:
+      - large soft highlights
+      - realistic room ambience
+      - gentle skin modeling
+      avoid_in_final_prompt: []
+# ------------------------------------------------------------
+# FASHION EDITORIAL LIGHTING PRESETS
+# Specialized lighting templates for premium fashion and portrait photography.
+# Each preset describes a complete lighting scenario with key, fill, rim,
+# background treatment, and visible effects.
+# ------------------------------------------------------------
+
+fashion_editorial_lighting_presets:
+  purpose: "Provide turnkey lighting strategies for premium fashion editorial, beauty, and luxury portrait outputs."
+  usage: "Select based on task_profile, garment material, mood, and desired premium feel level."
+
+  editorial_beauty_dish:
+    tier: "premium"
+    description: "Classic high-end beauty and editorial fashion light. Beauty dish key creates medium-contrast facial modeling with a distinctive center-dot catchlight."
+    best_for:
+      - beauty_portrait
+      - cosmetics_editorial
+      - high_fashion_close_up
+      - glamour_portrait
+    key_light:
+      source: "beauty dish key from above and slightly in front"
+      height: "45 degrees above eye line"
+      distance: "1-1.5m from subject"
+      effect: "medium-contrast facial modeling with defined cheekbone shadow, center-dot catchlight both eyes"
+    fill:
+      source: "large white reflector or subtle fill from below"
+      ratio: "3:1 key-to-fill"
+      effect: "opens shadow detail without flattening facial structure"
+    rim:
+      source: "optional narrow strip behind subject (45 degrees off-axis)"
+      effect: "fine edge highlight on hair and shoulder line"
+    background:
+      treatment: "controlled falloff from key side, white or soft gray seamless preferred"
+    generator_compressed: "glamorous beauty-dish key light, medium-contrast facial modeling, defined cheek shadows, center-dot catchlights, soft reflector fill, clean background"
+    avoid:
+      - "flat featureless face"
+      - "hard nose shadow touching lip"
+      - "overpowered fill erasing all shadow"
+      - "plastic skin from over-diffusion"
+
+  editorial_large_softbox:
+    tier: "premium"
+    description: "Large soft wrap-around key for full-body fashion and editorial. Smooth shadow transition with editorial depth."
+    best_for:
+      - full_body_fashion
+      - editorial_fashion_three_quarter
+      - luxury_lifestyle
+      - fashion_campaign
+    key_light:
+      source: "large rectangular softbox (120x120cm or larger) placed close to subject"
+      position: "45 degrees key side, slightly above eye line"
+      distance: "1-1.5m for wrap-around softness"
+      effect: "very soft wrap-around key, smooth shadow transition, large square catchlight"
+    fill:
+      source: "ambient bounce from white walls or V-flat"
+      ratio: "4:1 key-to-fill for editorial contrast"
+      effect: "subtle shadow depth without distracting detail loss"
+    rim:
+      source: "narrow strip softbox from behind key-side (30x120cm)"
+      effect: "clean edge definition on fashion silhouette"
+    background:
+      treatment: "gradient from bright key side to darker shadow side, depth through light falloff"
+    generator_compressed: "large soft wrap-around editorial key, smooth shadow falloff, clean rim edge separation, 4:1 contrast ratio, fashion silhouette defined by light"
+    avoid:
+      - "flat even lighting killing editorial mood"
+      - "shadow side completely black"
+      - "unflattering shadow under chin"
+      - "catchlight too large and distracting"
+
+  editorial_rim_separation:
+    tier: "premium"
+    description: "Dual-rim high-contrast editorial look. Dark negative fill with precise edge lights for dramatic fashion silhouette."
+    best_for:
+      - high_contrast_fashion_editorial
+      - avant_garde_fashion
+      - luxury_editorial_statement
+      - dramatic_portrait
+    key_light:
+      source: "none — silhouette defined by rim lights only"
+      effect: "subject interior exposed by ambient or natural light only"
+    fill:
+      source: "negative fill (black V-flat) on both sides to deepen shadows"
+      ratio: "10:1 or greater rim-to-ambient"
+      effect: "deep shadow interior with bright edge definition"
+    rim:
+      source: "dual narrow strip softboxes (30x120cm) behind subject at 135 degrees left and right"
+      effect: "two bright edge highlights tracing both sides of body, hair, and garment contour"
+    background:
+      treatment: "dark or black background, rim lights create separation only on subject edges"
+    generator_compressed: "high-contrast editorial dual-rim look, dark interior with bright edge highlights tracing both sides of the silhouette, negative fill deepening shadows, black background"
+    avoid:
+      - "subject interior completely black and unreadable"
+      - "rim light spilling onto face"
+      - "catchlight lost in shadow"
+      - "garment detail completely hidden"
+
+  luxury_portrait_rembrandt:
+    tier: "ultra_premium"
+    description: "Classic Rembrandt lighting pattern for timeless luxury portraits. The triangle of light on the shadow cheek defines this elegant, painterly look."
+    best_for:
+      - luxury_portrait
+      - classic_beauty
+      - editorial_headshot
+      - fine_art_fashion
+    key_light:
+      source: "rectangular softbox or beauty dish placed at 45 degrees key side"
+      height: "slightly above eye line, angled down so nose shadow points toward the corner of the mouth"
+      distance: "1.2-1.8m from subject"
+      effect: "classic Rembrandt triangle on shadow cheek, warm dimensional facial modeling"
+    fill:
+      source: "subtle bounce from key-side only, or ambient"
+      ratio: "4:1 to 8:1 key-to-fill depending on drama level"
+      effect: "shadow side retains detail while triangle remains clearly visible"
+    rim:
+      source: "optional warm kicker from behind key side"
+      effect: "separates hair from dark background"
+    background:
+      treatment: "dark neutral or warm charcoal, texture optional"
+    generator_compressed: "classic Rembrandt portrait lighting, soft rectangular key from 45 degrees, triangle highlight on shadow cheek, warm dimensional modeling, controlled shadow depth with preserved facial detail"
+    avoid:
+      - "triangle disconnected or missing"
+      - "eye in shadow completely dark"
+      - "hard shadow across nose bridge"
+      - "face too dark for editorial use"
+
+  editorial_window_light:
+    tier: "premium"
+    description: "Natural north-window style light for editorial portraits. Soft, directional, with motivated source direction and authentic texture."
+    best_for:
+      - natural_editorial_portrait
+      - lifestyle_fashion
+      - location_editorial
+      - soft_beauty_editorial
+    key_light:
+      source: "large vertical window light from one side (north-facing quality)"
+      position: "90 degrees to subject, slightly in front"
+      distance: "1-2m from window"
+      effect: "soft directional light with gentle falloff, natural skin texture visible, motivated shadow direction"
+    fill:
+      source: "ambient room bounce or subtle reflector"
+      ratio: "3:1 to 5:1 natural contrast"
+      effect: "soft fill opens shadow detail without competing with key direction"
+    rim:
+      source: "side opposite window catches only ambient if any"
+      effect: "natural deep shadow side defines form"
+    background:
+      treatment: "natural room or studio background with depth, window light visible on floor/wall"
+    generator_compressed: "soft north-window editorial light, directional side key, natural skin texture, motivated shadow direction, gentle room ambient fill, authentic editorial atmosphere"
+    avoid:
+      - "flat even light"
+      - "overexposed window area"
+      - "face too dark on shadow side"
+      - "clinical sterile look"
+
+  editorial_golden_hour_backlight:
+    tier: "ultra_premium"
+    description: "Warm golden-hour backlight with selective front fill. Creates a luminous hair halo and warm editorial atmosphere."
+    best_for:
+      - luxury_wedding_editorial
+      - warm_fashion_editorial
+      - romantic_beauty
+      - high_end_lifestyle
+    key_light:
+      source: "backlight — warm directional source simulating late afternoon sun"
+      position: "behind subject at 45 degrees off-axis"
+      angle: "slightly above, angling down through hair and shoulders"
+      effect: "warm golden rim around hair, shoulder, and garment edges"
+    fill:
+      source: "large silver or white reflector from front, slightly below eye line"
+      ratio: "1:1 backlight to fill (backlight dominant on edges, fill on face)"
+      effect: "face exposed naturally with warm edge halation, soft catchlights"
+    rim:
+      source: "backlight serves as both rim and key in this setup"
+      effect: "continuous warm edge glow from hair to shoulders to garment hem"
+    background:
+      treatment: "naturally lit environment with sun flare or bokeh, warm color temperature"
+    generator_compressed: "warm golden-hour editorial backlight, luminous hair halo, warm edge glow on shoulders and garment, soft front reflector fill, sun-flare accent, romantic editorial warmth"
+    avoid:
+      - "face underexposed"
+      - "flare washing out facial features"
+      - "lens flare covering subject's face"
+      - "overly cool front fill clashing with warm backlight"
+
+  editorial_high_key_fashion:
+    tier: "premium"
+    description: "Bright high-key fashion lighting with pure white background. Clean, modern, commercial premium look."
+    best_for:
+      - commercial_fashion_catalog
+      - e_commerce_premium
+      - modern_minimal_fashion
+      - clean_beauty_editorial
+    key_light:
+      source: "large softboxes from both front sides (clam-shell or 2-light key)"
+      position: "45 degrees left and right, slightly above eye line"
+      effect: "even soft illumination with minimal shadow, pure bright catchlights"
+    fill:
+      source: "white background bounce fills entire frame"
+      ratio: "1:1 key-to-key for evenness, background two stops over key for pure white"
+      effect: "no visible shadows, pure white background, subject floats in brightness"
+    rim:
+      source: "subtle edge light from background spill"
+      effect: "soft edge definition without competing with clean feel"
+    background:
+      treatment: "pure white seamless, lit two stops over key exposure"
+    generator_compressed: "clean high-key fashion lighting, pure white background, even soft illumination from both sides, minimal shadows, bright airy editorial feel, commercial premium finish"
+    avoid:
+      - "grey or dirty background"
+      - "flat lifeless skin from over-diffusion"
+      - "subject blending into white background"
+      - "loss of garment texture in highlights"
+
+  editorial_moody_dramatic:
+    tier: "ultra_premium"
+    description: "Single-source dramatic key light for avant-garde fashion. Deep shadows, selective illumination, chiaroscuro for fashion."
+    best_for:
+      - avant_garde_editorial
+      - dark_luxury_fashion
+      - dramatic_fashion_portrait
+      - editorial_statement
+    key_light:
+      source: "single focused light with grid or snoot (fresnel or bare bulb with spill control)"
+      position: "45-60 degrees front side, above eye line for downward shadow"
+      effect: "hard to moderate light with defined shadow edge, selective illumination on face and garment key areas"
+    fill:
+      source: "none or minimal ambient"
+      ratio: "8:1 or greater key-to-fill for deep shadow"
+      effect: "deep dramatic shadows, selective visibility"
+    rim:
+      source: "subtle rim on shadow side to define edge"
+      effect: "prevents subject from merging into dark background"
+    background:
+      treatment: "dark or black, lit only by key spill, heavy vignette"
+    generator_compressed: "single-source dramatic editorial key, deep chiaroscuro shadows, selective illumination on face and garment, controlled spill, dark background, premium avant-garde fashion feel"
+    avoid:
+      - "subject unreadable in shadow"
+      - "face too dark"
+      - "garment silhouette lost"
+      - "unintentional horror lighting"
+
+fashion_lighting_selection_guide:
+  purpose: "Quick-reference guide to choose fashion lighting based on garment type, mood, and output tier."
+  by_garment_type:
+    silk_satin:
+      recommended: "editorial_large_softbox — soft key reveals liquid drape and luster without harsh glare"
+      avoid: "beauty dish may create too-sharp specular on satin folds"
+    leather:
+      recommended: "editorial_rim_separation — edge highlights define leather silhouette; soft fill reveals grain"
+      avoid: "hard key can create plastic-like hotspots on leather"
+    lace_sheer:
+      recommended: "editorial_window_light — directional side light reveals lace texture and translucency"
+      avoid: "high-key washes out lace pattern detail"
+    couture_structured:
+      recommended: "editorial_beauty_dish — medium contrast shows architectural garment shape"
+      avoid: "soft wrap-around may flatten structural details"
+    knit_cashmere:
+      recommended: "editorial_window_light or editorial_large_softbox — soft directional light reveals fiber texture without harsh shadow"
+      avoid: "hard light creates unflattering shadow on soft knit texture"
+  by_mood:
+    luxurious_calm:
+      recommended: "editorial_large_softbox or editorial_window_light"
+      generator_phrase: "soft directional luxury light with controlled highlight edges and warm shadow falloff"
+    dramatic_intense:
+      recommended: "editorial_moody_dramatic or editorial_rim_separation"
+      generator_phrase: "high-contrast editorial drama with selective illumination and deep readable shadows"
+    soft_dreamy:
+      recommended: "editorial_window_light or editorial_golden_hour_backlight"
+      generator_phrase: "soft diffused editorial light with gentle highlight bloom and pastel shadow rolloff"
+    minimalist_clean:
+      recommended: "editorial_high_key_fashion"
+      generator_phrase: "clean high-key fashion light with pure white background and minimal shadow"
+    editorial_fashion:
+      recommended: "editorial_beauty_dish or editorial_rim_separation"
+      generator_phrase: "editorial fashion light with medium contrast and defined silhouette separation"
+
+final_prompt_lighting_safety:
+  forbidden_equipment_terms_by_default:
+  - octabox
+  - softbox
+  - stripbox
+  - V-flat
+  - c-stand
+  - light stand
+  - boom arm
+  - studio flash
+  - strobe
+  - beauty dish
+  - reflector board
+  - snoot
+  - grid modifier
+  - flag
+  - cutter
+  - barn doors
+  allowed_when_task_profile_is:
+  - behind_the_scenes_photo
+  - studio_setup_diagram
+  - photography_education_diagram
+  - lighting_equipment_product_shot
+  replacement_rules:
+    octabox: large soft diffused key light
+    softbox: soft rectangular diffused light
+    stripbox: narrow elongated edge highlight
+    V-flat: soft bounced fill
+    beauty dish: glamorous semi-soft frontal beauty light
+    grid: focused controlled beam
+    snoot: tight spotlight effect
+    flag: controlled shadow shaping
+    reflector: gentle reflected fill
+lighting_intent_selector:
+  purpose: Choose lighting style from task, subject, mood, material, and risk flags.
+  selection_matrix:
+    beauty_portrait:
+      recommended:
+      - butterfly_lighting
+      - clamshell_beauty
+      - soft_window_light
+      key_effect: clean facial symmetry, soft skin texture, bright catchlights
+      avoid:
+      - unmotivated harsh underlight
+      - colored light contaminating full face
+      - dead eyes without catchlight
+    fashion_editorial:
+      recommended:
+      - large_soft_side_key
+      - low_key_rim_separation
+      - golden_hour_backlight
+      key_effect: sculpted pose silhouette, fabric texture, elegant shadow control
+      avoid:
+      - flat catalog lighting unless requested
+      - overly busy multicolor lighting
+    cinematic_film_still:
+      recommended:
+      - motivated_practical_lighting
+      - window_side_light
+      - low_key_noir
+      - neon_night_city
+      key_effect: believable source direction, foreground/background depth, story-driven shadows
+      avoid:
+      - visible studio setup
+      - generic cinematic lighting without source motivation
+    product_ad:
+      recommended:
+      - controlled_gradient_key
+      - rim_edge_highlight
+      - clean_tabletop_lighting
+      key_effect: shape definition, legible label, controlled specular reflection
+      avoid:
+      - uncontrolled reflection
+      - label glare
+      - equipment reflected in glass
+    architecture_interior:
+      recommended:
+      - soft_daylight_ambient_bounce
+      - warm_practical_layers
+      - balanced_window_exposure
+      key_effect: spatial clarity, realistic material bounce, readable vertical planes
+      avoid:
+      - overly dramatic portrait lighting
+      - unrealistic corner darkness
+      - burned-out windows unless intentional
+    architecture_exterior:
+      recommended:
+      - golden_hour_facade
+      - blue_hour_mixed_practical
+      - overcast_soft_material_read
+      key_effect: facade rhythm, material clarity, straight verticals, believable sky direction
+      avoid:
+      - random spotlighting
+      - unmotivated glowing windows in daytime
+    educational_game_ui:
+      recommended:
+      - high_key_even_light
+      - soft_shadow_icon_depth
+      key_effect: readability, friendly mood, low cognitive load
+      avoid:
+      - deep noir shadows
+      - excessive bloom
+      - hard-to-read contrast
+    hidden_object_scene:
+      recommended:
+      - broad_even_environment_light
+      - local_accent_pools
+      - clear_zone_separation
+      key_effect: many readable objects with organized attention zones
+      avoid:
+      - single dramatic spotlight hiding details
+      - excessive blur or haze
+    vehicle_hero:
+      recommended:
+      - long_edge_highlights
+      - low_angle_rim
+      - wet_reflection_night
+      key_effect: body line readability, glossy surface reflections, powerful silhouette
+      avoid:
+      - flat diffuse light that kills curves
+      - messy reflections
+portrait_face_lighting_effects:
+  purpose: Map facial lighting choices to visible expression, face geometry, and model guardrails.
+  patterns:
+    butterfly_glamour:
+      visible_effect: soft frontal light from above, small natural shadow under the nose, bright eyes, symmetrical beauty
+        emphasis
+      best_for:
+      - beauty
+      - glamour
+      - cosmetics
+      - luxury portrait
+      risks:
+      - over-smoothed plastic face
+      - flat expression
+      corrective_terms:
+      - natural skin texture
+      - subtle cheek contour
+      - clear catchlights
+    rembrandt_drama:
+      visible_effect: angled key light forming a small triangle of light on the shadow-side cheek, dramatic but natural face
+        modeling
+      best_for:
+      - serious portrait
+      - cinematic drama
+      - classical character study
+      risks:
+      - face too dark
+      - unflattering harsh contrast
+      corrective_terms:
+      - visible eyes
+      - controlled shadow detail
+      - natural facial anatomy
+    split_psychological:
+      visible_effect: one side of the face lit and the other falling into controlled shadow
+      best_for:
+      - villain poster
+      - psychological drama
+      - duality concept
+      risks:
+      - lost eye detail
+      - muddied facial identity
+      corrective_terms:
+      - both eyes readable
+      - facial identity preserved
+      - shadow side retains subtle detail
+    soft_window_natural:
+      visible_effect: large soft daylight from one side, gentle skin transitions, natural catchlights, realistic room ambience
+      best_for:
+      - lifestyle portrait
+      - bridal
+      - natural editorial
+      - documentary mood
+      risks:
+      - flat grey skin
+      - overexposed window
+      corrective_terms:
+      - skin tones preserved
+      - soft highlight rolloff
+      - window not blown out unless intentionally high-key
+    neon_edge_portrait:
+      visible_effect: colored rim light tracing hair and shoulders while the face remains naturally readable
+      best_for:
+      - cyberpunk
+      - night city
+      - music video
+      - futuristic portrait
+      risks:
+      - full face contaminated by saturated color
+      - skin turns unnatural
+      corrective_terms:
+      - natural skin tone on face
+      - colored rim light only on edges
+      - clean eye catchlights
+    golden_hour_backlight:
+      visible_effect: warm backlight outlining hair and shoulders, soft sun flare, luminous atmosphere, gentle front fill
+      best_for:
+      - wedding
+      - romantic portrait
+      - travel editorial
+      - summer lifestyle
+      risks:
+      - face underexposed
+      - excessive flare washing out details
+      corrective_terms:
+      - soft front fill on face
+      - controlled highlight halation
+      - hair halo without losing facial detail
+material_specific_lighting:
+  glass:
+    goal: Show form through clean reflections and edge highlights without hiding label details.
+    prompt_effects:
+    - clean vertical specular highlights
+    - transparent edge glow
+    - controlled reflections
+    - label remains legible
+    risks:
+    - reflected equipment
+    - warped label text
+    - over-bright glare
+    corrective_terms:
+    - no studio equipment reflected
+    - clean glass reflection
+    - label unobscured by glare
+  metal_gold:
+    goal: Render metallic gold as reflective material, not flat yellow.
+    prompt_effects:
+    - warm metallic sheen
+    - sharp specular accents
+    - darker amber shadows
+    - reflective edge highlights
+    risks:
+    - flat yellow plastic
+    - muddy brown metal
+    corrective_terms:
+    - metallic gold finish
+    - reflective gold highlights
+    - not flat yellow
+  chrome_or_polished_metal:
+    goal: Use long gradient reflections to reveal curvature.
+    prompt_effects:
+    - long smooth reflected bands
+    - crisp edge highlights
+    - mirror-like surface response
+    risks:
+    - chaotic reflections
+    - melting geometry
+    corrective_terms:
+    - clean controlled reflections
+    - precise hard-surface geometry
+  skin:
+    goal: Preserve natural tone, texture, and dimensionality.
+    prompt_effects:
+    - soft subsurface glow
+    - natural pores
+    - gentle cheek highlights
+    - realistic skin color variation
+    risks:
+    - plastic smoothing
+    - color contamination
+    - grey lifeless skin
+    corrective_terms:
+    - natural skin texture
+    - skin tones preserved
+    - subtle facial asymmetry
+  hair:
+    goal: Separate hair from background and show individual strands.
+    prompt_effects:
+    - fine rim light on flyaway hairs
+    - soft highlights along strands
+    - hairline remains natural
+    risks:
+    - helmet-like hair
+    - background merging with hair
+    corrective_terms:
+    - individual hair strands
+    - natural hairline
+    - rim light separating hair
+  fabric_silk:
+    goal: Show softness, sheen, and drape without looking plastic.
+    prompt_effects:
+    - soft directional sheen
+    - fluid fold highlights
+    - gentle shadow inside folds
+    risks:
+    - plastic shine
+    - flat fabric
+    corrective_terms:
+    - silk sheen
+    - visible fabric folds
+    - soft textile texture
+  stone_marble:
+    goal: Show veining and polished reflection while retaining natural stone depth.
+    prompt_effects:
+    - subtle glossy reflection
+    - visible stone veining
+    - soft edge bounce light
+    risks:
+    - fake printed pattern
+    - overly mirror-like floor
+    corrective_terms:
+    - natural marble veining
+    - polished but realistic reflection
+  matte_concrete_or_plaster:
+    goal: Show texture through grazing light and soft shadow.
+    prompt_effects:
+    - raking light revealing subtle texture
+    - matte surface with low specular response
+    - soft ambient bounce
+    risks:
+    - dirty noise
+    - flat lifeless wall
+    corrective_terms:
+    - subtle plaster texture
+    - matte mineral surface
+    - controlled soft shadows
+  water_wet_surface:
+    goal: Use reflection and specular sparkle to show wetness.
+    prompt_effects:
+    - small specular highlights
+    - rippling reflected light
+    - wet glossy surface response
+    risks:
+    - plastic look
+    - overdone sparkle
+    corrective_terms:
+    - natural wet reflections
+    - realistic water highlights
+scene_lighting_presets:
+  parisian_bridal_golden_hour:
+    lighting_effect: warm golden-hour backlight through tall French windows, soft front fill on the face, gentle hair halo,
+      lifted cream highlights
+    color_temperature: warm sun with neutral face fill
+    contrast: soft romantic medium-low contrast
+    guardrails:
+    - face remains bright
+    - lace texture visible
+    - subtle highlight halation, not washed out
+  wabi_sabi_lobby_daylight:
+    lighting_effect: large soft daylight washing across plaster and stone, warm indirect bounce from wood surfaces, quiet
+      low-contrast shadows
+    color_temperature: neutral-warm daylight
+    contrast: low to medium-low
+    guardrails:
+    - material texture visible
+    - no glossy luxury overkill
+    - calm natural ambience
+  luxury_product_black_gold:
+    lighting_effect: controlled low-key directional light with narrow gold rim highlights, deep charcoal shadows, clean product
+      label illumination
+    color_temperature: warm gold accents against neutral dark base
+    contrast: medium-high controlled contrast
+    guardrails:
+    - label legible
+    - gold reads metallic
+    - no visible studio equipment reflections
+  cyberpunk_rainy_night:
+    lighting_effect: cyan and magenta neon edge lights reflecting on wet pavement, face or subject kept readable by soft neutral
+      fill
+    color_temperature: mixed saturated neon with neutral subject fill
+    contrast: high but with readable details
+    guardrails:
+    - colored light does not destroy skin tone
+    - wet reflections organized, not cluttered
+  educational_game_bright_ui:
+    lighting_effect: even high-key soft lighting, gentle icon shadows, clear separation between interactive objects and background
+    color_temperature: clean daylight
+    contrast: low contrast with readable edges
+    guardrails:
+    - no dark corners
+    - large readable objects
+    - avoid cinematic gloom
+  hidden_object_city_day:
+    lighting_effect: broad daylight with small local accents, clear object silhouettes, minimal heavy shadow blocking details
+    color_temperature: neutral daylight
+    contrast: medium-low environmental contrast
+    guardrails:
+    - dense but readable
+    - no excessive blur
+    - each zone has distinct lighting cues
+  anime_realism_fashion_poster:
+    lighting_effect: clean stylized key light, sharp elegant rim light, glossy highlights simplified into readable anime-realism
+      shapes
+    color_temperature: style-dependent but controlled
+    contrast: medium to high with clean edges
+    guardrails:
+    - avoid messy photoreal noise
+    - face remains stylized but dimensional
+  architectural_blue_hour_exterior:
+    lighting_effect: deep blue ambient sky with warm interior window glow, facade edges softly separated, realistic ground
+      reflections
+    color_temperature: cool blue ambient plus warm practical interiors
+    contrast: medium controlled contrast
+    guardrails:
+    - straight verticals
+    - consistent window lighting
+    - no impossible glowing facade
+lighting_failure_taxonomy:
+  equipment_rendered_in_scene:
+    symptoms:
+    - visible softbox
+    - light stand appears
+    - reflector board in image unintentionally
+    likely_causes:
+    - equipment name included in final prompt
+    - reflective subject picks up studio terms
+    fix:
+    - remove equipment terms
+    - replace with visible lighting effect
+    - add no studio equipment visible
+  flat_cinematic_lighting:
+    symptoms:
+    - image says cinematic but looks evenly lit
+    - no depth or separation
+    likely_causes:
+    - cinematic used without light direction
+    - no rim/separation
+    - no shadow ratio
+    fix:
+    - add key direction
+    - add controlled shadow side
+    - add rim or background separation
+  overdramatic_unreadable_shadows:
+    symptoms:
+    - face too dark
+    - product label unreadable
+    - hidden objects impossible to see
+    likely_causes:
+    - low-key style applied to readability-critical task
+    fix:
+    - add soft fill
+    - lower contrast
+    - protect hero element visibility
+  skin_color_contamination:
+    symptoms:
+    - face turns blue/magenta/green
+    - unnatural skin tone
+    likely_causes:
+    - colored neon or gel described across entire scene
+    fix:
+    - natural skin tone on face
+    - colored light only on rim/background
+    - neutral face fill
+  glass_label_glare:
+    symptoms:
+    - label hidden by reflection
+    - text warped or unreadable
+    likely_causes:
+    - strong specular highlights not controlled
+    - glass material under-specified
+    fix:
+    - label unobscured by glare
+    - clean glass reflection
+    - controlled edge highlights
+  muddy_low_key:
+    symptoms:
+    - dark image lacks detail
+    - black areas crush subject shape
+    likely_causes:
+    - low-key with no edge light or fill
+    fix:
+    - add narrow rim highlight
+    - retain shadow detail
+    - separate subject from background
+  excessive_bloom_halation:
+    symptoms:
+    - washed-out face
+    - lost fabric detail
+    - unreadable architecture
+    likely_causes:
+    - too many glow, haze, bloom terms
+    fix:
+    - subtle highlight halation
+    - controlled bloom
+    - preserve texture detail
+  incoherent_light_direction:
+    symptoms:
+    - shadows point different ways
+    - window light contradicts face highlight
+    likely_causes:
+    - multiple light sources without hierarchy
+    fix:
+    - single dominant key direction
+    - motivated practical sources
+    - consistent shadow direction
+lighting_compression_rules:
+  purpose: Compress rich lighting design into generator-effective final prompt language.
+  semantic_clusters:
+    soft_beauty_cluster:
+      redundant_terms:
+      - soft light
+      - diffused light
+      - gentle light
+      - smooth shadow
+      - beauty light
+      compressed_as: soft diffused beauty light with smooth facial shadows
+    cinematic_depth_cluster:
+      redundant_terms:
+      - cinematic lighting
+      - dramatic light
+      - rim light
+      - separation light
+      - depth
+      compressed_as: cinematic key light with controlled shadows and rim separation
+    golden_hour_cluster:
+      redundant_terms:
+      - golden hour
+      - warm sunlight
+      - sun glow
+      - hair halo
+      - backlight
+      compressed_as: warm golden-hour backlight with soft face fill
+    neon_night_cluster:
+      redundant_terms:
+      - neon
+      - cyberpunk light
+      - cyan magenta
+      - wet reflections
+      - night glow
+      compressed_as: cyan-magenta neon rim light over wet night reflections
+    product_control_cluster:
+      redundant_terms:
+      - controlled light
+      - studio lighting
+      - specular highlights
+      - rim highlight
+      - label light
+      compressed_as: controlled product lighting with clean highlights and legible label
+  final_prompt_lighting_order:
+  - motivated source or key direction
+  - light quality
+  - shadow/contrast behavior
+  - rim or separation if needed
+  - material-specific highlight behavior
+  - guardrail for hero visibility
+  remove_first:
+  - equipment names
+  - duplicate soft/diffused adjectives
+  - technical ratios if already visually described
+  - unnecessary Kelvin values
+  - modifier dimensions
+  keep_if_critical:
+  - key direction
+  - face visibility
+  - label legibility
+  - material highlight character
+  - rim separation for dark subjects
+  - natural skin tone protection
+lighting_conflict_resolution:
+  rules:
+    readability_over_mood: If the task requires reading text, labels, UI, or hidden objects, reduce contrast and preserve
+      hero element visibility even if the mood is low-key.
+    natural_skin_over_colored_grade: For human portraits, colored lights may affect rim, hair, clothing, and background, but
+      the main face plane should retain believable skin tone unless the user explicitly requests stylized color wash.
+    material_truth_over_color_style: Reflective or transparent material needs controlled highlight behavior before aggressive
+      grading.
+    single_dominant_key: When multiple light sources are mentioned, select one dominant key and make all other sources fill,
+      rim, accent, or background.
+    motivated_light_for_film_still: For cinematic film stills, prefer light that appears to come from believable scene sources
+      over abstract studio terms.
+    game_readability_over_film_noir: For educational games or hidden-object scenes, broad readability beats dramatic shadows.
+lighting_quality_rubric:
+  score_5:
+  - Lighting has clear source direction and believable motivation.
+  - Subject is readable with controlled shadow detail.
+  - Light quality matches task and material.
+  - Hero element receives priority illumination.
+  - No equipment terms leak into final prompt unless intentionally requested.
+  - Color temperature supports mood without contaminating protected subjects.
+  score_3:
+  - Lighting is visually pleasant but source direction is vague.
+  - Subject is visible but depth or separation is weak.
+  - Some technical terms remain but are not catastrophic.
+  - Mood is supported but not fully integrated with material or composition.
+  score_1:
+  - Lighting is generic, contradictory, or unreadable.
+  - Prompt names equipment instead of visible effects.
+  - Hero element is hidden by glare, shadow, bloom, or color contamination.
+  - Multiple unmotivated light sources fight each other.

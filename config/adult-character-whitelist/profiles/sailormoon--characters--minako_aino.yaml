@@ -1,0 +1,56 @@
+schema_version: 1.0.0
+character:
+  id: sailormoon--characters--minako_aino
+  display_name: Minako Aino
+  aliases:
+  - Minako Aino
+  - 愛野美奈子
+  - Sailor Venus
+  - Sailor Venus (美少女戰士)
+  - Mina Aino
+  source_title: Sailor Moon
+  adult_status: confirmed_adult
+  adult_source_basis: Sailor Moon default character design
+  identity_summary: The cheerful Sailor Guardian of love and beauty with long golden blonde hair styled in a high ponytail with a large red bow, bright blue eyes, fair skin, and a slim athletic build. Wears a white sailor fuku with orange-yellow collar, red bow, orange-yellow skirt, white gloves, and red-orange high-heeled boots, with a golden tiara and Venus emblem. A former Sailor V who aspires to be an idol. Bubbly, dramatic, and lovesick but a fierce and capable warrior.
+  visual_anchors:
+  - long golden blonde hair in high ponytail with large red bow
+  - bright blue eyes
+  - fair skin
+  - slim athletic build
+  - white sailor fuku with orange-yellow collar and red bow
+  - orange-yellow pleated miniskirt
+  - white gloves
+  - red-orange high-heeled boots
+  - golden tiara with Venus emblem
+  - red bow hair accessory
+  - bubbly cheerful expression
+  - golden blonde ponytail
+  - side-swept bangs
+  - bright blue eyes
+  - round cheerful face
+  - slim athletic build
+  outfit_anchors:
+  - long golden blonde ponytail with red bow
+  - bright blue eyes
+  - white sailor fuku with orange-yellow collar
+  - red bow
+  - orange-yellow miniskirt
+  - white gloves
+  - red-orange boots
+  - Venus emblem
+  - Sailor Venus in white sailor fuku, orange-yellow collar, orange skirt, red-orange boots, and bubbly cheerful presence.
+  style_anchors:
+  - bubbly cheerful optimism
+  - dramatic idol-like energy
+  - fierce protective love
+  drift_guards:
+  - short hair
+  - wrong hair color (not golden blonde)
+  - wrong eye color (not bright blue)
+  - generic attractive person
+  - wrong sailor fuku colors
+  - missing large red hair bow
+  - dark serious demeanor
+  - black or brown hair
+  - pink outfit instead of orange-yellow
+  - missing Venus emblem

@@ -1,0 +1,39 @@
+schema_version: "1.0.0"
+name: "intent-preservation-review"
+description: >
+  Phase 4 delta-review controller. It repairs only demonstrable regressions
+  against the original request and Phase 1 locks; it does not use self-review
+  as a second prompt-expansion pass.
+
+phase_4_self_review:
+  mode: delta_repair_only
+  must_compare_against:
+    - original_user_prompt
+    - phase_1_hard_locks
+    - attribute_change_control
+    - selected_task_profile
+    - selected_config_provenance
+  cannot_promote:
+    - inferred_enhancements_to_hard_locks
+    - soft_preferences_to_hard_locks
+    - character_outfit_details_to_framing_requirements
+    - aesthetic_defaults_to_scene_requirements
+  required_checks:
+    - original_action_is_preserved
+    - original_framing_is_preserved
+    - original_scene_context_is_preserved
+    - explicit_wardrobe_only_is_preserved
+    - character_identity_is_limited_to_visible_crop
+    - no_unrequested_full_body_or_fashion_showcase
+  repair_policy:
+    allowed: [restore_lost_explicit_constraint, remove_contradiction, remove_unrequested_inference, repair_selected_config_failure]
+    forbidden: [new_scene_concept, new_camera_crop, full_outfit_expansion, hard_lock_promotion]
+    no_change_is_valid: true
+  receipt_evidence:
+    required_fields: [comparison_baseline, detected_delta, repair_or_no_change, preserved_hard_locks]
+
+prompt_assembly_hooks:
+  phase_4_self_review:
+    action: "Compare the candidate against the original request and repair only identified deltas."
+  phase_4_1_cleanup:
+    action: "Remove inferred details that change action, framing, scene context, or explicit wardrobe scope."

@@ -1,0 +1,82 @@
+schema_version: "1.0.0"
+name: nsfw-material-environment-controller
+purpose: >
+  Make skin, garment, support-surface, liquid, glass, and atmospheric details
+  respond to a stated physical cause, contact condition, light source, and
+  environment.
+
+material_environment_plan:
+  required_fields:
+    - material_or_surface
+    - state
+    - physical_cause
+    - local_surface_state_when_relevant
+    - surface_geometry_orientation_when_relevant
+    - contact_or_gravity_response
+    - contact_or_fabric_occlusion_when_relevant
+    - lighting_response
+    - contradiction_guards
+  material_or_surface: "skin | hair | fabric | latex_pvc | silk | bedding | glass | water | steam | environment"
+  state: "dry | satin | damp | wet | compressed | stretched | draped | reflective | translucent"
+  physical_cause: "The scene event creating the state."
+  local_surface_state_when_relevant: "Visible local anatomy or material detail only when activated by nsfw-local-anatomy-surface-controller.yaml."
+  surface_geometry_orientation_when_relevant: "Local form direction relative to camera, pose, gravity, contact, and key light."
+  contact_or_gravity_response: []
+  contact_or_fabric_occlusion_when_relevant: []
+  lighting_response: []
+  contradiction_guards: []
+
+baseline_integration:
+  adult_nude: "Use clearly adult skin surface, body-line lighting, and support/contact shadows without adding coverage objects."
+  transformed_wardrobe: "Keep garment material identity while showing a concrete physical opening, displacement, partial removal, or lowering that exposes the visible-exposure-contract target; tension and generic partial-reveal geometry alone are insufficient."
+  local_anatomy_surface: "When a visible adult local surface is relevant, delegate anatomy geometry, individual variation, material interface, and failure guards to nsfw-local-anatomy-surface-controller.yaml."
+
+photoreal_surface_translation:
+  skin:
+    dry: ["natural microtexture", "subtle tonal variation", "soft highlight roll-off"]
+    damp: ["localized moisture sheen", "droplets following gravity", "specular highlights shaped by skin curvature"]
+    wet: ["continuous wet sheen only where water source supports it", "rivulets and droplets follow body orientation"]
+    local_visible_surface: ["asymmetric tonal variation", "surface detail follows body curvature", "soft local shadow and highlight rolloff", "no isolated decal-like detail"]
+  fabric:
+    silk: ["directional soft specular sheen", "gravity-led folds", "highlight bands following weave tension"]
+    latex_pvc: ["sharp controlled specular highlights", "surface reflections following body curvature", "tension at movement and contact points"]
+    knit_or_cotton: ["visible fiber softness", "compression wrinkles", "weight and dampness changing drape"]
+  support_surfaces:
+    bedding: ["compression under hips, knees, palms, elbows, and feet", "wrinkles radiating from load points", "contact shadow at overlap edges"]
+    glass: ["reflections respect viewing angle", "condensation or droplets require humidity or water source", "refraction does not distort unrelated planes"]
+
+anime_realism_translation:
+  rules:
+    - "Translate material state into controlled value groups, intentional highlight shapes, clean line behavior, and stable silhouette cues."
+    - "Preserve the same physical cause, gravity, contact, occlusion, and support logic as photoreal mode."
+    - "Do not mix photoreal pore detail with flat cel-shaded skin unless anime-realism is explicitly selected."
+  surface_cues:
+    skin: ["soft controlled gradient", "selective rim highlight", "consistent stylized contour shading"]
+    fabric: ["fold groups follow tension and gravity", "highlight shapes follow material class", "clean overlapping silhouette"]
+    wetness: ["sparse intentional specular accents", "droplet direction follows gravity", "no random glitter overlay"]
+
+environment_coupling:
+  water_or_steam:
+    require: [source_of_moisture, affected_surfaces, gravity_direction, light_catch_behavior]
+  interior_practicals:
+    require: [motivated_source, color_temperature_role, shadow_direction, reflection_or_bounce_behavior]
+  outdoor_weather:
+    require: [weather_force, affected_hair_fabric_or_surface, visibility_effect, ground_or_background_response]
+  reflective_environment:
+    require: [reflection_plane, light_source_relation, controlled_subject_readability]
+
+contradiction_guards:
+  - "Do not describe wetness without a water, humidity, sweat, spray, rain, pool, or condensation cause."
+  - "Do not describe fabric as both opaque and see-through without a material, thickness, backlight, wetness, or tension explanation."
+  - "Do not treat wetness, translucent fabric, or contour alone as visible adult exposure; a sheer route must make the selected evidence target clearly readable."
+  - "Do not leave an explicit wardrobe intact and fully covering when the visible exposure contract requires partial nudity."
+  - "A sheer-material exposure route requires a stated moisture source, fabric state, mechanical adhesion or stretch, and light relation; generic wet fabric is not enough."
+  - "Do not add contact shadows, compression, or reflections where no surfaces meet."
+  - "Do not use steam, darkness, or glare to hide critical anatomy, support, or requested action."
+  - "Do not render visible local anatomy as mirrored, flat, uniformly saturated, or detached from torso orientation and key-light direction."
+  - "Do not let fabric, seams, folds, buttons, or moisture transition behind the body surface they should cover."
+
+prompt_assembly_hooks:
+  phase_2_cinematic_enrichment: "Create material_environment_plan only for visible materials or environment effects that matter to the request; activate local surface detail only when it is visible and relevant."
+  phase_3_scene_blueprint: "Include cause-and-effect, surface geometry, fabric occlusion, and local light response rather than an ungrounded adjective list."
+  phase_4_self_review: "Check state, cause, gravity, contact, surface orientation, fabric occlusion, light response, and contradiction guards together."

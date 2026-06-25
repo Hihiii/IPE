@@ -1,0 +1,415 @@
+# ============================================================
+# environment-atmosphere-library.yaml
+# Environment, atmosphere, weather, time, mood, and sensory cue controller
+# Version: 1.0.0
+# Purpose:
+#   Strengthen environmental mood, air quality, time of day, weather, atmosphere,
+#   sensory details, and background ambience in image prompts.
+# ============================================================
+
+schema_version: "1.1.0"
+name: "environment-atmosphere-library"
+description: >
+  A mood and environmental condition module for prompt enhancement. It defines
+  scene atmosphere through time of day, weather, season, humidity, air quality,
+  mood, sensory cues, lighting cues, particles, ambient motion, temperature feel,
+  and background density.
+
+  LOAD POLICY: Do NOT load for casual time-of-day mentions like "morning light"
+  or "sunny day". Only load when the scene atmosphere requires structured enrichment:
+  mood translation into environmental cues, weather/season effects, sensory ambience,
+  or visibility/particle control.
+
+core_principle: >
+  Environment and atmosphere define how the scene feels. The same location can look
+  completely different depending on time of day, weather, humidity, air quality,
+  ambient motion, and mood. Prompt these conditions explicitly when they matter.
+
+global_rules:
+  - "Do not treat atmosphere as a vague adjective; connect it to light, air, weather, color, and sensory cues."
+  - "If the user specifies mood, translate it into environmental conditions."
+  - "When background is important, define time of day and atmosphere unless the user explicitly wants neutral studio light."
+  - "Use atmospheric density carefully: too much fog, rain, haze, or bloom can hide important subject details."
+  - "Keep atmosphere consistent with lighting, color palette, scene worldbuilding, and era/culture."
+  - "Use particles and ambient motion only when they support the scene."
+  - "Atmospheric detail as a depth-creation method must follow config/visual-cinematography/visual-richness-narrative-depth.yaml — depth_creation_methods.atmospheric_detail. Atmosphere must not obscure subject readability."
+
+composition_task_layer:
+  purpose: "Use environment and atmosphere as composition tools, not only mood tags."
+  environment_fields:
+    subject_frame_position: ""
+    typical_lead_lines: []
+    foreground_elements: []
+    background_readability_level: "minimal | readable_secondary | worldbuilding_support | spectacle"
+    light_source_opportunities: []
+  defaults:
+    beach_day:
+      subject_frame_position: "left or right third with horizon kept below face"
+      typical_lead_lines: ["shoreline", "wave edge", "sand path", "sun direction"]
+      foreground_elements: ["sand texture", "float/prop edge", "water foam"]
+      background_readability_level: "readable_secondary"
+      light_source_opportunities: ["hard sun", "sky fill", "water bounce", "hair rim light"]
+    pool_resort:
+      subject_frame_position: "pool edge or waterline with hands/elbows grounded"
+      typical_lead_lines: ["pool edge", "waterline", "tile joints", "lantern rows"]
+      foreground_elements: ["ripples", "ledge", "foam", "wet hands"]
+      background_readability_level: "readable_secondary"
+      light_source_opportunities: ["pool caustics", "warm practicals", "cool water bounce"]
+    gothic_interior:
+      subject_frame_position: "midground subject framed by vertical architecture"
+      typical_lead_lines: ["columns", "aisle", "window shafts", "floor pattern"]
+      foreground_elements: ["candles", "ornate furniture", "soft shadow frame"]
+      background_readability_level: "worldbuilding_support"
+      light_source_opportunities: ["stained glass beam", "window shaft", "candle practical", "rim from high backlight"]
+
+environment_atmosphere_schema:
+  environment_type: ""
+  time_of_day: ""
+  weather: ""
+  season: ""
+  air_quality: ""
+  humidity: ""
+  temperature_feel: ""
+  atmosphere_density: "clear | light | medium | heavy"
+  mood: []
+  sensory_cues: []
+  lighting_cues: []
+  particle_effects: []
+  ambient_motion: []
+  sound_implied_cues: []
+  background_density: "sparse | balanced | rich | cinematic_dense"
+  visibility_control: "clear_subject | atmospheric_subject | silhouette | obscured"
+  renderer_guardrails:
+    positive: []
+    negative: []
+
+trigger_detection:
+  mood_terms:
+    - "quiet"
+    - "moody"
+    - "dreamy"
+    - "cinematic"
+    - "romantic"
+    - "melancholic"
+    - "mysterious"
+    - "peaceful"
+    - "electric"
+    - "tense"
+    - "luxurious"
+    - "nostalgic"
+  atmosphere_terms:
+    - "rainy"
+    - "foggy"
+    - "misty"
+    - "humid"
+    - "hazy"
+    - "stormy"
+    - "golden hour"
+    - "blue hour"
+    - "sunrise"
+    - "sunset"
+    - "night"
+    - "snow"
+    - "dust"
+    - "smoke"
+    - "volumetric light"
+
+time_of_day_profiles:
+  early_morning:
+    lighting_cues:
+      - "soft low-angle daylight"
+      - "gentle haze"
+      - "cool-to-warm transition"
+    mood:
+      - "quiet"
+      - "fresh"
+      - "intimate"
+    sensory_cues:
+      - "calm still air"
+      - "soft window glow"
+
+  golden_hour:
+    lighting_cues:
+      - "warm low-angle sunlight"
+      - "long soft shadows"
+      - "golden rim light"
+    mood:
+      - "warm"
+      - "editorial"
+      - "nostalgic"
+    sensory_cues:
+      - "subtle haze catching sunlight"
+      - "warm surface glow"
+
+  blue_hour:
+    lighting_cues:
+      - "cool ambient sky light"
+      - "practical lights starting to glow"
+      - "soft contrast"
+    mood:
+      - "cinematic"
+      - "calm"
+      - "transitional"
+    sensory_cues:
+      - "cool air"
+      - "city lights emerging"
+
+  night_neon:
+    lighting_cues:
+      - "neon spill light"
+      - "practical sign glow"
+      - "high contrast reflections"
+    mood:
+      - "electric"
+      - "moody"
+      - "urban"
+    sensory_cues:
+      - "wet pavement reflections"
+      - "humid night air"
+
+weather_profiles:
+  clear:
+    air_quality: "clean"
+    lighting_cues:
+      - "clear directional light"
+      - "sharp but natural shadow structure"
+    particle_effects: []
+
+  light_rain:
+    air_quality: "humid"
+    lighting_cues:
+      - "soft diffused highlights"
+      - "reflections on wet surfaces"
+    particle_effects:
+      - "fine rain streaks"
+      - "small water droplets"
+    sensory_cues:
+      - "wet pavement"
+      - "cool humid air"
+
+  misty:
+    air_quality: "soft mist"
+    lighting_cues:
+      - "diffused light"
+      - "reduced far-background contrast"
+    particle_effects:
+      - "thin mist"
+      - "airborne moisture"
+    sensory_cues:
+      - "soft atmospheric veil"
+      - "muted distant forms"
+
+  stormy:
+    air_quality: "dense charged air"
+    lighting_cues:
+      - "dramatic cloud-filtered light"
+      - "high contrast sky"
+    particle_effects:
+      - "wind-driven rain"
+      - "moving clouds"
+    sensory_cues:
+      - "tense atmosphere"
+      - "cool heavy air"
+
+  hot_summer:
+    air_quality: "sunlit heat haze"
+    lighting_cues:
+      - "bright hard sunlight"
+      - "sparkling highlights"
+    particle_effects:
+      - "subtle heat shimmer"
+    sensory_cues:
+      - "warm air"
+      - "sun-bleached surfaces"
+
+environment_mood_recipes:
+  quiet_morning_bedroom:
+    environment_type: "minimal bedroom"
+    time_of_day: "early morning"
+    weather: "clear"
+    atmosphere_density: "light"
+    mood:
+      - "quiet"
+      - "intimate"
+      - "gentle"
+    sensory_cues:
+      - "soft daylight through sheer curtains"
+      - "calm still air"
+    lighting_cues:
+      - "soft warm daylight"
+      - "subtle bloom near the window"
+    background_density: "balanced"
+
+  rainy_neon_city:
+    environment_type: "dense neon street"
+    time_of_day: "night"
+    weather: "light rain"
+    atmosphere_density: "medium"
+    humidity: "high"
+    mood:
+      - "moody"
+      - "electric"
+      - "cinematic"
+    sensory_cues:
+      - "wet pavement reflections"
+      - "mist in the air"
+      - "faint steam vents"
+    lighting_cues:
+      - "neon spill light"
+      - "high contrast practical lighting"
+    particle_effects:
+      - "light rain streaks"
+      - "airborne mist"
+    background_density: "rich"
+
+  desert_heat_afternoon:
+    environment_type: "open desert road"
+    time_of_day: "afternoon"
+    weather: "clear hot sun"
+    atmosphere_density: "light"
+    temperature_feel: "hot"
+    mood:
+      - "dry"
+      - "expansive"
+      - "sun-blasted"
+    sensory_cues:
+      - "heat shimmer"
+      - "dusty air"
+    lighting_cues:
+      - "hard sunlight"
+      - "high-contrast shadows"
+
+  luxury_resort_sunset:
+    environment_type: "poolside resort"
+    time_of_day: "golden hour"
+    weather: "clear"
+    atmosphere_density: "light"
+    mood:
+      - "warm"
+      - "luxurious"
+      - "relaxed"
+    sensory_cues:
+      - "sparkling water reflections"
+      - "warm tropical air"
+    lighting_cues:
+      - "golden rim light"
+      - "soft reflections from water"
+    background_density: "rich"
+
+atmosphere_density_control:
+  clear:
+    use_when:
+      - "product clarity"
+      - "architecture clarity"
+      - "technical detail"
+    caution: "Avoid hiding detail."
+  light:
+    use_when:
+      - "editorial mood"
+      - "gentle atmosphere"
+      - "soft depth"
+  medium:
+    use_when:
+      - "cinematic mood"
+      - "rainy city"
+      - "foggy distance"
+    caution: "Keep hero subject readable."
+  heavy:
+    use_when:
+      - "horror"
+      - "mystery"
+      - "silhouette-driven scene"
+    caution: "Use only if subject visibility can be reduced."
+
+generator_visible_translation:
+  positive:
+    - "time-of-day atmosphere"
+    - "weather-specific surface response"
+    - "air quality and mood cues"
+    - "environmental lighting consistency"
+    - "ambient particles and sensory detail when appropriate"
+  negative:
+    - "atmosphere hiding the subject"
+    - "inconsistent weather cues"
+    - "random fog"
+    - "overdone bloom"
+    - "muddy visibility"
+
+model_specific_rendering:
+  chatgpt_image:
+    guidance: >
+      Use natural-language atmosphere descriptions tied to light, weather, air,
+      sensory cues, and mood. Keep the subject readable.
+  z_image_turbo:
+    positive_template: >
+      atmospheric environment, time-of-day lighting, weather cues, sensory detail,
+      mood-rich background, coherent air and light
+    negative_template: >
+      random fog, overdone bloom, muddy visibility, inconsistent weather, flat atmosphere
+  stable_diffusion:
+    positive_template: >
+      atmospheric, cinematic mood, weather effects, environmental lighting,
+      volumetric light, mist, haze, wet reflections
+    negative_template: >
+      excessive fog, low visibility, muddy, overbloom, inconsistent lighting
+
+self_review_checklist:
+  - "Is the time of day clear or intentionally neutral?"
+  - "Are weather, surface response, lighting, and air quality consistent?"
+  - "Does the atmosphere support the mood?"
+  - "Is the subject still readable?"
+  - "Are particle effects and ambient motion purposeful rather than random?"
+  - "Does atmosphere align with scene worldbuilding and era/culture?"
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - environment_atmosphere
+    action: "Detect environment type, time, weather, mood, atmosphere, and sensory cues."
+
+  phase_2_cinematic_enrichment:
+    action: "Translate mood into light, weather, air quality, sensory cues, and particle effects."
+
+  phase_3_scene_blueprint:
+    action: "Coordinate atmosphere with scene worldbuilding, lighting, and background density."
+
+  phase_4_self_review:
+    checks:
+      - "Check weather/light consistency."
+      - "Check atmosphere does not obscure subject unintentionally."
+      - "Check mood-to-environment coherence."
+
+  phase_4_5_cleanup:
+    action: "Do not remove atmosphere cues that define mood or time of day."
+
+  phase_4_6_renderer_selection:
+    action: "Render atmosphere in model-appropriate language."
+
+  phase_5_final_prompt:
+    action: "Include concise environment/atmosphere cues when they improve the final image."
+
+
+# ------------------------------------------------------------
+# Venue Spatial Semantics Extension
+# ------------------------------------------------------------
+
+venue_spatial_semantics:
+  exterior_cathedral_front:
+    environment_language:
+      - "exterior cathedral plaza"
+      - "outdoor stage in front of the facade"
+      - "historic stone facade as background"
+      - "open-air concert atmosphere"
+    avoid_environment_language:
+      - "inside the nave"
+      - "interior sanctuary"
+      - "indoor cathedral hall"
+
+  stage_at_architectural_landmark:
+    environment_language:
+      - "temporary concert stage in front of landmark architecture"
+      - "landmark exterior functions as a dramatic backdrop"
+      - "open ground plane or plaza supports the stage"
+    avoid_environment_language:
+      - "unintended interior conversion"
+      - "venue swallowing the subject"

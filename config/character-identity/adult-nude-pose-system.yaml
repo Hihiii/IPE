@@ -1,0 +1,23 @@
+schema_version: "1.0.0"
+name: "adult-nude-pose-system"
+description: "Clearly adult implied-nude, artistic figure, and adult-focused pose routing with anatomy, coverage, and support quality controls."
+
+adult_nude_pose_system:
+  required: [adult_subject, mature_body_proportions, adult_context]
+  pose_modes: [implied_nude, artistic_nude, explicit_adult]
+  quality_focus: [body_line, anatomy, lighting, camera_angle, physical_support, mature_presentation]
+
+templates:
+  implied_nude:
+    visible_pose: "clearly adult implied-nude pose with strategic fabric, hair, arm, or camera angle forming intentional coverage; relaxed shoulders and natural hand placement"
+    required: [coverage_follows_contact_and_gravity, elegant_body_line, mature_expression]
+  artistic_nude:
+    visible_pose: "clearly adult figure-study pose with classical contrapposto or reclining form, sculptural light, and anatomically natural support"
+    required: [mature_presentation, physical_support, composed_lighting]
+  explicit_adult:
+    routing: "preserve adult tier and renderer capability while enforcing age clarity, anatomy, support points, and camera intent"
+
+rules:
+  - "Strategic coverage must follow hand, hair, fabric, object, shadow, or camera geometry rather than floating concealment."
+  - "Do not downgrade requested adult pose tier during cleanup."
+  - "Use the age-maturity guardrail before rendering any adult-focused figure pose."

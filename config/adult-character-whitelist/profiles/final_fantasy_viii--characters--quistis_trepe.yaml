@@ -1,0 +1,65 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_viii--characters--quistis_trepe
+  display_name: Quistis Trepe
+  aliases:
+  - Quistis Trepe
+  - 奎斯提斯·特利普
+  - 奎斯提斯·特利普 (Final Fantasy VIII)
+  - Quistis
+  source_title: Final Fantasy VIII
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy VIII default appearance
+  identity_summary: Elegant SeeD instructor with long blonde hair in a low ponytail, blue eyes, wearing
+    a white jacket with gold trim and high collar, a black sleeveless turtleneck bodysuit underneath,
+    a black pleated miniskirt, white thigh-high heeled boots, white gloves, and a black leather whip coiled
+    at her hip.
+  visual_anchors:
+  - long blonde hair in low ponytail
+  - white jacket with gold trim
+  - black sleeveless turtleneck bodysuit
+  - black pleated miniskirt
+  - white thigh-high heeled boots
+  - white gloves
+  - whip at hip
+  - blue eyes
+  - long blonde ponytail
+  - blonde
+  - smooth high crown
+  - side-swept bangs across forehead
+  - blue
+  - elegant refined oval face
+  - tall slender athletic build
+  outfit_anchors:
+  - long blonde low ponytail
+  - white jacket with gold trim and high collar
+  - black sleeveless turtleneck bodysuit
+  - black pleated miniskirt
+  - white thigh-high heeled boots
+  - white long gloves
+  - chain whip at hip
+  - Elegant SeeD instructor with long blonde hair in a low ponytail, blue eyes, wearing a white jacket
+    with gold trim and high collar, a black sleeveless turtleneck bodysuit underneath, a black pleated
+    miniskirt, white thigh-high heeled boots, white gloves, and a black leather whip coiled at her hip.
+  style_anchors:
+  - stern professional
+  drift_guards:
+  - short hair
+  - missing whip
+  - wrong eye color
+  - generic attractive person
+  - wrong face impression
+  - blonde hair not in low ponytail
+  - no short hair
+  - no missing whip
+  - no casual outfit
+  - no cheerful bouncy attitude
+  - no dark/casual jacket
+  - missing white jacket with gold trim
+  - missing white gloves
+  - missing white thigh-high boots
+  - loose hair not in ponytail
+  - high ponytail
+  - twin tails
+  - slouching posture
+  - clumsy awkward stance

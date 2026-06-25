@@ -1,0 +1,131 @@
+# ============================================================
+# reference-image-control.yaml
+# Reference role assignment, preserve/reinterpret control, and visual-source hierarchy
+# Version: 1.0.0
+# Purpose:
+#   Control how reference images are used: identity, pose, composition, lighting,
+#   style, color, material, environment, or product reference.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "reference-image-control"
+description: >
+  A prompt-enhancement module for reference-based generation and editing.
+  It clarifies what each reference image is for, what should be preserved,
+  what may be reinterpreted, and which references have higher priority.
+
+core_principle: >
+  Reference-based prompting works best when each reference has a defined role.
+  The system should tell the model whether a reference is used for identity,
+  pose, lighting, composition, style, color, material, or environment,
+  and whether the result should closely match or loosely reinterpret it.
+
+global_rules:
+  - "Assign an explicit role to each reference image."
+  - "Do not treat all references equally; define priority when multiple references exist."
+  - "Separate 'preserve closely' attributes from 'use as inspiration' attributes."
+  - "When the reference contains identity-sensitive content, state whether identity should be preserved."
+  - "When the reference contains copyrighted or official visual material, use it for grounded inspiration or transformation only within platform-safe constraints."
+  - "When multiple references conflict, priority should resolve the conflict."
+  - "Avoid accidental copying of irrelevant elements from a reference."
+
+reference_control_schema:
+  reference_count: 0
+  reference_roles: []
+  preserve_closely: []
+  reinterpret_freely: []
+  priority_order: []
+  conflict_resolution_rules: []
+  prohibited_borrowing: []
+
+reference_role_types:
+  identity_reference:
+    purpose: "Preserve the same person/character identity or product identity."
+  pose_reference:
+    purpose: "Borrow body pose, hand pose, or action gesture."
+  composition_reference:
+    purpose: "Borrow framing, crop, negative space, angle, or composition logic."
+  lighting_reference:
+    purpose: "Borrow lighting direction, contrast ratio, or mood."
+  style_reference:
+    purpose: "Borrow rendering style or visual language."
+  color_reference:
+    purpose: "Borrow palette or grading mood."
+  material_reference:
+    purpose: "Borrow surface finish, texture, or product material cues."
+  environment_reference:
+    purpose: "Borrow setting, props, or environmental tone."
+  typography_reference:
+    purpose: "Borrow text layout or graphic treatment."
+
+priority_rules:
+  - "Identity reference usually overrides style reference for facial or product identity."
+  - "Pose reference should affect pose, not identity."
+  - "Composition reference should affect framing, not wardrobe or styling unless stated."
+  - "Lighting reference should affect light behavior, not subject identity."
+  - "Style reference should affect rendering language, not necessarily object placement."
+  - "When exact preservation is needed, explicitly use preserve_closely language."
+
+preserve_vs_reinterpret:
+  preserve_closely_examples:
+    - "face identity"
+    - "hairstyle family"
+    - "product silhouette"
+    - "camera angle"
+    - "poster layout grid"
+  reinterpret_freely_examples:
+    - "background details"
+    - "secondary props"
+    - "micro-texture styling"
+    - "minor color nuances"
+
+conflict_examples:
+  - "If Image A is identity and Image B is style, preserve the person from Image A while rendering in the style/mood suggested by Image B."
+  - "If Image A is composition and Image B is lighting, keep the framing from A but apply light direction and mood from B."
+  - "If Image A is a product reference and Image B is a brand-style reference, preserve the product identity from A while borrowing the commercial visual language from B."
+
+self_review_checklist:
+  - "Does each reference have a defined role?"
+  - "Is the priority order clear?"
+  - "Is it clear what must be preserved vs reinterpreted?"
+  - "Could irrelevant reference details leak into the result?"
+  - "If multiple references exist, is conflict resolution explicit enough?"
+
+model_specific_rendering:
+  chatgpt_image:
+    guidance: >
+      Explain each reference role explicitly in natural language.
+      Keep preserve/reinterpret distinctions clear and concise.
+  z_image_turbo:
+    positive_template: >
+      identity reference, pose reference, style reference, preserve key traits,
+      use other references as inspiration only, clear priority order
+    negative_template: >
+      mixed identity, reference confusion, unwanted copied elements, style drift
+  stable_diffusion:
+    positive_template: >
+      reference for identity, reference for pose, reference for lighting,
+      preserve core features, reinterpret secondary details
+    negative_template: >
+      blended references, copied clutter, identity confusion, pose/lighting conflict
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - reference_control_schema
+    action: "Detect reference-driven prompting and classify each reference role."
+  phase_2_cinematic_enrichment:
+    action: "Convert references into preserve/reinterpret instructions and priority rules."
+  phase_3_scene_blueprint:
+    action: "Coordinate reference usage with identity, style, typography, and edit systems."
+  phase_4_self_review:
+    checks:
+      - "Check reference-role clarity."
+      - "Check preserve vs reinterpret clarity."
+      - "Check conflict resolution."
+  phase_4_5_cleanup:
+    action: "Do not compress away reference role distinctions."
+  phase_4_6_renderer_selection:
+    action: "Render reference usage instructions in model-appropriate language."
+  phase_5_final_prompt:
+    action: "Include concise role-based reference instructions whenever references are involved."

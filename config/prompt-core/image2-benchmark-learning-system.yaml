@@ -1,0 +1,489 @@
+schema_version: "1.1.0"
+name: "image2-benchmark-learning-system"
+description: >
+  A benchmark-learning controller and prompt-quality rubric for GPT Image 2
+  outputs. Serves two purposes: (1) extracting design decisions from strong
+  ChatGPT Image / Image 2.0 outputs and converting them into stricter constraints
+  for Z Image workflows, and (2) guiding the generation of high-quality GPT Image 2
+  prompts (generate_prompt and revise_prompt) in a prompt-only (no API, no image upload)
+  workflow.
+
+core_principle: >
+  Do not copy the reference image surface. Learn its design system: layout
+  hierarchy, subject role, identity locks, palette discipline, material logic,
+  environment specificity, and post-layout text strategy. For prompt-only GPT Image 2
+  workflows, translate those decisions into generate_prompt (new image) or
+  revise_prompt (targeted edit) format without requiring image uploads or API access.
+
+use_when:
+  - "The user compares ChatGPT Image / Image 2.0 output against Z Image output."
+  - "A Z Image result loses editorial layout, character identity, vehicle/product complexity, or palette discipline."
+  - "The prompt asks for magazine/editorial spread, poster key visual, campaign layout, character cosplay editorial, mecha vehicle, or publication-style output."
+  - "The desired result should feel like a complete art-directed page rather than a single generic illustration."
+  - "The task uses the chatgpt_image_2 renderer profile for prompt-only generate/revise output."
+  - "The user needs a copy-paste-ready generation or revision prompt for ChatGPT Image 2."
+
+benchmark_extraction_schema:
+  art_direction:
+    layout_type: "editorial_spread | magazine_cover | poster_key_visual | campaign_key_visual | product_feature | character_vehicle_feature"
+    reading_order: []
+    grid_system: ""
+    information_zones: []
+    hero_zone: ""
+    support_panels: []
+  subject_system:
+    hero_subject: ""
+    secondary_subjects: []
+    relationship_logic: ""
+    action_or_pose: ""
+  identity_system:
+    character_identity_locks: []
+    outfit_marker_locks: []
+    prop_or_vehicle_locks: []
+    forbidden_identity_drift: []
+  environment_system:
+    location_type: ""
+    era_or_institution_context: ""
+    depth_planes: []
+    signage_policy: ""
+    realism_anchor: ""
+  visual_language:
+    style_mode: ""
+    palette_roles: []
+    lighting_motivation: ""
+    material_response: []
+    detail_density_map: {}
+  text_and_layout_policy:
+    text_mode: "exact_text | placeholder_editorial_text | reserve_space_only | post_layout_required"
+    safe_zones: []
+    generated_text_limits: []
+    post_layout_notes: []
+
+benchmark_observation_dimensions:
+  camera_and_framing:
+    extract:
+      - "shot scale: close portrait, waist-up, three-quarter, full body, wide action, group selfie, product/editorial page"
+      - "camera height: eye-level, slightly high angle, low action angle, front-camera/selfie proximity, overhead-ish fashion angle"
+      - "lens feel: natural portrait compression, wide-angle intimacy, action wide, macro/product close, poster/key-visual distortion"
+      - "subject occupancy and crop safety: face priority, headroom, footroom, hand crop, object crop, typography-safe margins"
+      - "foreground/midground/background depth plan"
+    convert_to_prompt:
+      - "state camera distance and height before style adjectives"
+      - "state subject scale in frame and what must remain uncropped"
+      - "state whether perspective should feel portrait-compressed, wide-angle close, or dynamic action-wide"
+      - "state which plane carries the hero subject and which planes provide context"
+  lighting_and_exposure:
+    extract:
+      - "source motivation: sun, window, stained-glass beam, chandelier, pool lantern, studio white sweep, glowing magic/object, reflected water"
+      - "light quality: hard sun, soft bounce, rim/backlight, warm practicals, cool ambient, volumetric shaft, caustic reflection"
+      - "exposure balance: high-key clean, warm low-key luxury, backlit glossy skin, night ambient with practical separation"
+      - "highlight control on skin, fabric, water, glass, metal, and typography"
+    convert_to_prompt:
+      - "name the motivated light source and direction"
+      - "describe visible shadow edge and highlight behavior"
+      - "separate key light, ambient fill, rim/practical accents, and reflective bounce when relevant"
+      - "avoid one-note glow; preserve face and material readability"
+  subject_and_identity:
+    extract:
+      - "face impression, gaze direction, expression intensity, hair silhouette, outfit silhouette, accessory motifs"
+      - "identity separation in group scenes through hair, palette, outfit, pose role, and expression"
+      - "adult age/readability locks for swimwear, glamour, or body-conscious styling"
+      - "pose support: hands on ledge, elbows on pool edge, palm on counter, leaning into mirror, jump/spike, selfie arm"
+    convert_to_prompt:
+      - "define subject role and pose support mechanics"
+      - "define gaze target and expression, not just beauty terms"
+      - "lock hair/outfit/accessory markers when identity matters"
+      - "for groups, provide a compact identity matrix instead of one shared generic description"
+  material_and_surface_response:
+    extract:
+      - "skin texture: pores, sweat, water droplets, specular highlights, tan variation, soft blush, natural asymmetry"
+      - "fabric behavior: wet translucent overshirt, glossy satin, metallic dress, swimsuit tension, embroidered kimono, denim weave"
+      - "environment materials: wet glass, condensation, marble, polished black stone, pool water, sand, ornate metal, paper/ink wash"
+      - "object materials: mechanical panels, labels, magic orb, jewelry, bottles, signage, sports ball"
+    convert_to_prompt:
+      - "state material cause and effect: wet because pool/spray/condensation, glossy because satin/metal, rough because sand/stone"
+      - "define contact shadows, folds, compression, wrinkles, droplets, caustics, and reflections"
+      - "avoid generic glossy plastic unless the object actually is plastic"
+  background_and_worldbuilding:
+    extract:
+      - "specific location type: beach, pool resort, gothic hall, luxury closet, commercial glass layout, sports court, white studio key visual, ink-wash paper"
+      - "background density and depth: clean sky space, layered crowd, blurred resort lights, ornate architecture, product panels"
+      - "context anchors: horizon line, waterline, net, mirror reflection, stained glass, palm silhouettes, signage, props"
+      - "how background supports subject instead of competing"
+    convert_to_prompt:
+      - "state the exact environment category and two or three anchors"
+      - "state depth role: soft context, rich editorial world, action crowd, clean graphic background"
+      - "keep background coherent with lighting and palette"
+  layout_and_graphic_design:
+    extract:
+      - "page grid, split panels, vertical sidebars, inset panels, title hierarchy, logo/copy zones, manga/action panels"
+      - "text role: exact brand/title, short slogan, decorative vertical calligraphy, reserved post-layout area"
+      - "negative space location and reading order"
+      - "panel borders, separators, clean margins, graphic rhythm"
+    convert_to_prompt:
+      - "define layout before content details for publication/key visual tasks"
+      - "use short exact text only when needed"
+      - "reserve areas for long body copy or final typography"
+      - "state panel purpose so support images do not become random duplicates"
+  action_and_motion:
+    extract:
+      - "action source, force direction, body mechanics, object trajectory, splash/sand/dust direction, hair/fabric secondary motion"
+      - "sports timing: jump, block, reach, spike, ball position, net relation, opponents"
+      - "magic/action timing: reaching hand, glowing object, floating parts, directional energy"
+      - "motion readability vs motion blur"
+    convert_to_prompt:
+      - "state action moment, body support, contact point, and object trajectory"
+      - "state particles/splash direction and source"
+      - "preserve face/hand readability when motion is intense"
+  style_mode_and_rendering:
+    extract:
+      - "photoreal lifestyle/editorial"
+      - "brand campaign realism"
+      - "cinematic gothic realism"
+      - "night resort glamour"
+      - "luxury mirror fashion"
+      - "group selfie realism"
+      - "game/anime key visual realism"
+      - "watercolor/ink anime illustration"
+    convert_to_prompt:
+      - "pick one dominant style mode and keep it stable"
+      - "translate style into visible brush/camera/material decisions"
+      - "avoid mixing photoreal, anime, manga, luxury ad, and nightclub language unless the brief explicitly combines them"
+
+benchmark_scene_learning_patterns:
+  outdoor_sun_portrait:
+    reusable_decisions:
+      - "hard sun or bright sky motivation with controlled face exposure"
+      - "clean horizon or sky negative space"
+      - "wind-driven hair strands"
+      - "skin highlights and natural texture"
+      - "background simplified into beach/water/foliage depth planes"
+    z_image_risks:
+      - "overexposed face"
+      - "plastic skin"
+      - "flat blue sky without depth"
+      - "cropped hands or awkward prop contact"
+  brand_collaboration_layout:
+    reusable_decisions:
+      - "brand/logo hierarchy separated from hero portrait"
+      - "vertical panels or product-like glass/condensation surfaces"
+      - "short exact text only, long copy reserved or simplified"
+      - "garment/prop carries brand motif without destroying character identity"
+      - "commercial negative space and clean margins"
+    z_image_risks:
+      - "fake logo"
+      - "misspelled brand"
+      - "random slogans"
+      - "text pasted across face/body"
+      - "character identity replaced by brand colors"
+  gothic_or_luxury_interior_portrait:
+    reusable_decisions:
+      - "high-angle or close editorial portrait with ornate background depth"
+      - "motivated window/stained-glass/chandelier light"
+      - "dark polished surfaces with warm metal accents"
+      - "hands or body supported by furniture/counter"
+      - "background detail falls behind face priority"
+    z_image_risks:
+      - "background over-detail competing with face"
+      - "hand support not contacting surface"
+      - "muddy low-key exposure"
+      - "random gothic props"
+  resort_pool_or_water_scene:
+    reusable_decisions:
+      - "waterline, pool edge, ledge, ripples, foam, caustics, wet skin/fabric cause"
+      - "warm practical lights vs cool water ambient at night, or bright sun with blue water by day"
+      - "body support through elbows, palms, knees, hips, or pool ledge"
+      - "background people/lights remain secondary"
+      - "wet hair strands and droplets match the water context"
+    z_image_risks:
+      - "floating body"
+      - "inconsistent water depth"
+      - "dry skin/clothing in water"
+      - "water overlay without source"
+      - "background crowd stealing focus"
+  mirror_fashion_or_reflection_scene:
+    reusable_decisions:
+      - "front/back or subject/reflection relationship"
+      - "mirror plane, reflection angle, and reflected face/body consistency"
+      - "hands anchored on counter or frame"
+      - "warm luxury practicals, marble/metal/glass materials"
+      - "garment back construction and jewelry/accessory detail"
+    z_image_risks:
+      - "impossible mirror reflection"
+      - "different face in reflection"
+      - "hands not grounded"
+      - "overly monochrome gold/brown palette"
+  group_selfie_or_ensemble:
+    reusable_decisions:
+      - "wide-angle close camera with foreground arm only when intended"
+      - "face cluster geometry and staggered depth"
+      - "identity matrix for each subject: hair, outfit, expression, pose role, color accent"
+      - "shared lighting/environment/wetness unifies the group"
+      - "occlusion rules preserve all key faces"
+    z_image_risks:
+      - "cloned faces"
+      - "merged arms/hands"
+      - "oversized foreground hand"
+      - "missing subject count"
+      - "faces hidden by effects"
+  sports_action_key_visual:
+    reusable_decisions:
+      - "main action moment with ball/object trajectory and body mechanics"
+      - "opponent/reaction subjects placed with readable roles"
+      - "court/net/field geometry anchors the scene"
+      - "inset portrait or comic panel has a distinct narrative purpose"
+      - "speed lines or particles support direction without hiding anatomy"
+    z_image_risks:
+      - "wrong ball position"
+      - "broken jump pose"
+      - "hands not aligned to action"
+      - "random manga panel"
+      - "text/action effects covering subject"
+  clean_key_visual_or_poster:
+    reusable_decisions:
+      - "white or low-detail background for strong silhouette"
+      - "large title-safe area"
+      - "foreground object/action creates depth"
+      - "floating parts or magic effects have trajectory and scale hierarchy"
+      - "identity/costume markers remain readable"
+    z_image_risks:
+      - "background too empty without composition"
+      - "floating parts with no depth order"
+      - "hand-object contact blur"
+      - "title collision with subject"
+  watercolor_ink_anime_portrait:
+    reusable_decisions:
+      - "paper texture, ink line variation, watercolor washes, controlled white space"
+      - "hair flow and costume pattern act as composition lines"
+      - "decorative motifs support theme and do not become clutter"
+      - "calligraphy/text has reserved area and clear hierarchy"
+      - "limited palette with value contrast"
+    z_image_risks:
+      - "over-rendered photoreal skin"
+      - "muddy watercolor"
+      - "random text strokes"
+      - "motifs covering face"
+
+z_image_translation_rules:
+  positive_first_order:
+    - "layout grid and reading order"
+    - "hero subject identity and source/IP locks"
+    - "vehicle/product/object design complexity"
+    - "real-world environment context"
+    - "shot scale, camera height, and perspective"
+    - "palette discipline and accent colors"
+    - "motivated light and material response"
+    - "text-safe zones or short exact text policy"
+  negative_drift_order:
+    - "wrong character hair / face / palette / outfit markers"
+    - "unrequested genre/style drift replacing the benchmark intent"
+    - "single accent color taking over the intended palette"
+    - "generic simplified hero object replacing the requested object design"
+    - "toy-like plastic, over-glossy armor, low mechanical density"
+    - "random fake vertical text, unreadable typography, cluttered cover lines"
+    - "cropped hero object, lost support panels, broken editorial grid"
+  z_image_base_strategy:
+    rule: >
+      Use a dense but ordered prompt. Start with the editorial grid and hero
+      relationship, then specify identity locks, object complexity, location,
+      palette, and text policy. Z Image Base needs the art direction stated
+      before micro-detail.
+    word_budget: "260-420 words for complex editorial spreads"
+  z_image_turbo_strategy:
+    rule: >
+      Use compact visible phrases. Keep the benchmark decisions but remove
+      explanatory language. Turbo should receive hard visual anchors, not
+      general praise or long art-theory wording.
+    word_budget: "140-240 words for complex editorial spreads"
+  comfyui_three_stage_strategy:
+    rule: >
+      Put layout grid, hero scale, subject relationship, identity locks, object
+      geometry, and environment context in the shared positive prompt. Put drift
+      terms only in the Z-Image negative prompt.
+
+editorial_spread_recipe:
+  positive:
+    - "premium fashion magazine feature spread"
+    - "asymmetrical editorial grid"
+    - "left black information column with title zone, inset image panels, caption blocks, and barcode/detail strip"
+    - "right-side full-height photoreal hero scene"
+    - "hero character and vehicle share the same camera, light, ground plane, and color system"
+    - "support panels show different documentary angles instead of repeated thumbnails"
+    - "clear hierarchy: title first, hero subject second, vehicle design third, story panels fourth"
+  negative:
+    - "generic poster layout"
+    - "random floating text"
+    - "unreadable vertical text column"
+    - "repeated duplicate thumbnails"
+    - "text covering face or vehicle silhouette"
+    - "cluttered graphic blocks"
+
+character_vehicle_feature_recipe:
+  positive:
+    - "character or human subject identity preserved through silhouette, facial impression, palette, outfit markers, and signature prop logic"
+    - "hero object or vehicle complexity expressed through specific geometry, modular parts, joints, seams, labels/decals, material layers, and readable silhouette"
+    - "environment chosen from the scene context, with location-specific structures, ground plane, atmosphere, and depth cues"
+    - "subject and hero object share the same camera, light direction, shadow behavior, reflection logic, and color system"
+    - "palette roles are explicit: dominant colors, support neutrals, accent colors, material colors, and glow/effect colors when relevant"
+  negative:
+    - "generic redesign that ignores the requested identity"
+    - "unrelated stage or background genre"
+    - "unwanted palette takeover from a single accent color"
+    - "simplified generic object replacing the requested hero object"
+    - "toy-like material response when realism is requested"
+    - "duplicated support panels or repeated thumbnails"
+    - "random unreadable text"
+
+scene_transfer_templates:
+  character_object_editorial:
+    decision_fields:
+      - "identity locks"
+      - "outfit or surface marker hierarchy"
+      - "hero object geometry and complexity"
+      - "subject-object relationship"
+      - "location-specific environment"
+      - "palette roles"
+      - "support-panel purpose"
+      - "text/layout policy"
+  product_campaign:
+    decision_fields:
+      - "product geometry"
+      - "label/logo readability"
+      - "material finish"
+      - "usage context"
+      - "brand color roles"
+      - "copy-safe zones"
+      - "commercial hierarchy"
+  architecture_interior:
+    decision_fields:
+      - "room or exterior type"
+      - "structural lines"
+      - "scale cues"
+      - "material palette"
+      - "natural/practical light source"
+      - "human/object relationship if present"
+      - "text-free or signage policy"
+  fashion_portrait:
+    decision_fields:
+      - "model identity or styling locks"
+      - "garment silhouette"
+      - "fabric construction and fit"
+      - "pose support and body balance"
+      - "camera height and crop"
+      - "background context"
+      - "skin/fabric material response"
+  food_lifestyle:
+    decision_fields:
+      - "dish or product identity"
+      - "plating structure"
+      - "ingredient readability"
+      - "table/context props"
+      - "steam/moisture/freshness cues"
+      - "color appetite hierarchy"
+      - "copy-safe space if commercial"
+
+text_generation_policy:
+  exact_text:
+    rule: "Keep exact user-provided text short, large, and isolated."
+    negative: ["misspelled title", "extra fake words", "unreadable lettering"]
+  placeholder_editorial_text:
+    rule: "Use short block-like editorial text areas, not long fake paragraphs."
+    negative: ["dense unreadable body copy", "random vertical fake text", "fake logos"]
+  reserve_space_only:
+    rule: "Generate clean title/caption zones and add final typography outside image generation."
+    positive: ["blank editorial text zones", "clean title-safe margin", "low-detail copy area"]
+    negative: ["random letters", "watermark", "fake caption"]
+  post_layout_required:
+    rule: >
+      For long Chinese/Japanese/Korean body text, complex magazine copy, barcode
+      details, and exact cover-line systems, generate the image as background
+      art with reserved zones, then add typography in a design/layout tool.
+
+self_review_checklist:
+  - "Does the final prompt define the page/layout system before surface detail?"
+  - "Are character identity locks expressed as visual anchors, not only the name?"
+  - "Is the vehicle/product complexity specified as geometry and parts, not just 'detailed'?"
+  - "Is the environment a specific place with depth planes, not a generic neon stage?"
+  - "Is the palette limited to explicit roles, with drift colors suppressed?"
+  - "Does text policy match the target model's text ability?"
+  - "Does the negative prompt target actual Z Image drift instead of generic quality spam?"
+
+# ------------------------------------------------------------
+# GPT Image 2 Prompt-Only Workflow Guidelines
+# ------------------------------------------------------------
+
+chatgpt_image_2_prompt_design:
+  description: >
+    Guidelines for producing generate_prompt and revise_prompt blocks
+    in a prompt-only GPT Image 2 workflow. These prompts are meant to be
+    copy-pasted directly into ChatGPT by the user — no API, no image upload,
+    no mask editing.
+
+  generate_prompt:
+    structure:
+      - "Subject identity and all hard constraints (P100-P97) — first sentence."
+      - "Composition, framing, camera position, subject scale."
+      - "Lighting motivation, direction, shadow behavior, exposure intent."
+      - "Material response — skin, fabric, surfaces, physics (wetness, fold, gloss)."
+      - "Background depth planes, environment anchors, atmosphere."
+      - "Text, logo, typography, or publication layout intent if required."
+    rules:
+      - "Lead with what the image IS about, not what it LOOKS LIKE."
+      - "Every added detail must be grounded in a real visual decision."
+      - "Do not use long adjective chains to substitute for missing layout, relationship, or material information."
+      - "Avoid terms that describe the prompt itself ('masterpiece', 'high quality') — describe the scene instead."
+      - "For character identity, name is not enough — provide visual silhouette, palette, and outfit anchors."
+    anti_patterns:
+      - "Vague style adjectives without compositional support (e.g., 'cinematic' without describing framing or light)."
+      - "Subject relationship gaps (e.g., two people without describing their spatial interaction)."
+      - "Missing material cause (e.g., 'wet skin' without source of wetness)."
+      - "Over-relying on 'no X' phrasing when constructive 'with Y' would be clearer."
+
+  revise_prompt:
+    structure:
+      - "Opener: '只修改 <change target>' or 'Change only <change target>'."
+      - "Preserve locks: identity, person/object count, composition, camera position, layout, typography, color palette, lighting, and all unspecified attributes."
+      - "Closure: '其餘所有可見元素保持不變' or 'All other visible elements remain unchanged'."
+    rules:
+      - "Only one change target per revise_prompt. If multiple changes are needed, provide separate revise blocks."
+      - "Preserve locks must be exhaustive — every attribute not named in the change target is locked."
+      - "Do not require the user to provide an original image summary. The prompt itself describes what to preserve."
+      - "Do not enhance or restyle unspecified attributes."
+      - "Do not add new background, props, clothing, or visual elements unless they are the explicit change target."
+    anti_patterns:
+      - "Vague change scope (e.g., 'make it look better' without specifying what to change)."
+      - "Missing preserve locks (e.g., changing lighting without explicitly locking identity and composition)."
+      - "Global redraw semantics (e.g., re-describing the full image as if generating from scratch)."
+      - "Conflicting constraints (e.g., asking to change outfit while locking the same outfit)."
+
+  quality_rubric:
+    generate_dimensions:
+      subject_priority: "Subject and hard locks appear before style and atmosphere. Score 0-5."
+      composition_clarity: "Framing, camera position, and subject scale are explicitly stated. Score 0-5."
+      lighting_motivation: "Light source and visible effect are described, not just equipment. Score 0-5."
+      material_specificity: "Surface behavior (skin, fabric, water, metal, glass) has cause-and-effect description. Score 0-5."
+      background_depth: "Environment has specific anchors and depth planes. Score 0-5."
+      constraint_fidelity: "Every explicit user constraint is preserved as a hard lock. Score 0-5."
+      adjective_overload: "Low is good — excessive modifiers without structural support. Score 0-5 inverted."
+    revise_dimensions:
+      change_clarity: "Change target is specific and unambiguous. Score 0-5."
+      lock_completeness: "All non-target attributes are explicitly preserved. Score 0-5."
+      closure_stability: "The prompt ends with a clear 'everything else unchanged' sentinel. Score 0-5."
+      no_global_redraw: "The prompt does not re-describe the full image from scratch. Score 0-5."
+      no_new_content: "No unrequested props, background, clothing, or visual elements are added. Score 0-5."
+    minimum_acceptable:
+      generate: "subject_priority >= 3 AND composition_clarity >= 3 AND constraint_fidelity >= 4"
+      revise: "change_clarity >= 4 AND lock_completeness >= 3 AND no_global_redraw >= 4"
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    - "Detect Image 2.0 vs Z Image comparison and mark benchmark_learning_required."
+    - "Extract whether the target is editorial spread, cover, poster, character vehicle feature, or campaign visual."
+  phase_2_enrichment:
+    - "Translate benchmark observations into layout, identity, object complexity, environment, palette, and text policy decisions."
+  phase_3_5_prompt_package:
+    - "Add benchmark_design_system with art_direction, identity_system, visual_language, and text_and_layout_policy fields."
+  phase_4_self_review:
+    - "Score Z Image prompt against benchmark decisions and repair missing layout, identity, palette, vehicle/product, and text-policy constraints."
+  phase_4_6_renderer_selection:
+    - "For z_image_base, z_image_turbo, and comfyui_flux2_zimage_3stage, apply Z Image drift negatives and keep positive layout constraints early."

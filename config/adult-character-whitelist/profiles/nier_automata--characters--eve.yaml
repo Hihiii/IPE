@@ -1,0 +1,62 @@
+schema_version: 1.0.0
+character:
+  id: nier_automata--characters--eve
+  display_name: Eve
+  aliases:
+  - Eve
+  - 夏娃
+  - 夏娃 (尼爾：自動人形)
+  - Eve (NieR:Automata)
+  source_title: NieR:Automata
+  adult_status: confirmed_adult
+  adult_source_basis: NieR:Automata Eve machine lifeform default appearance
+  identity_summary: Machine lifeform with chalk-white skin, long straight white hair flowing to shoulders,
+    pale ice-blue grey eyes, no glasses, wearing a black suit with open shirt exposing chest.
+  visual_anchors:
+  - chalk-white skin
+  - long straight white hair
+  - pale ice-blue grey eyes
+  - no glasses
+  - black suit jacket
+  - open black shirt exposing chest
+  - emotional volatile expression
+  - no weapons visible
+  - identical face to Adam with longer hair
+  - longer white hair than Adam
+  - identical face to Adam but with longer hair
+  - pure white hair
+  - smooth flowing crown
+  - long side-swept fringe
+  - pale ice-blue grey
+  - slender angular oval (same as Adam)
+  outfit_anchors:
+  - chalk-white skin
+  - long white hair
+  - no glasses
+  - black suit with open shirt
+  - exposed chest
+  - Machine lifeform with chalk-white skin, long straight white hair, no glasses, wearing a black suit
+    jacket with open black shirt exposing chest and black pants.
+  style_anchors:
+  - intense emotional volatility
+  - intense emotional stare
+  drift_guards:
+  - warm skin tones
+  - dark hair
+  - short hair
+  - glasses
+  - calm collected expression
+  - friendly warm demeanor
+  - facial hair
+  - white suit (Adam's outfit)
+  - closed shirt
+  - glasses added
+  - armor or combat gear
+  - missing open shirt
+  - wrong suit color
+  - bob cut
+  - dark colored hair
+  - bulky or muscular build
+  - android mechanical parts
+  - weapons visible
+  - combat armor

@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Phase 1 Intent Analysis",
+  "type": "object",
+  "required": [
+    "task_profile", "subject_type", "subject_role", "usage_context",
+    "audience", "aspect_ratio", "output_medium", "model_target",
+    "mature_content", "anatomy_risk", "collision_risk",
+    "visual_hierarchy", "narrative_context", "hero_element", "secondary_elements",
+    "constraint_model", "risk_flags"
+  ],
+  "properties": {
+    "task_profile": { "type": "string", "minLength": 1 },
+    "subject_type": { "type": "string", "minLength": 1 },
+    "subject_role": { "type": "string", "enum": ["hero", "context", "accent", "environment"] },
+    "usage_context": { "type": "string" },
+    "audience": { "type": "string" },
+    "aspect_ratio": { "type": "string" },
+    "output_medium": { "type": "string", "enum": ["print", "digital", "social", "unspecified"] },
+    "model_target": {
+      "type": "string",
+      "enum": ["z_image", "unspecified"]
+    },
+    "publication_layout": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["none", "magazine_cover", "poster", "book_cover", "album_cover", "movie_poster"] },
+        "publication_mode": { "type": "string", "enum": ["none", "exact_text_mode", "implied_cover_text_mode", "text_safe_layout_only_mode"] },
+        "masthead_required": { "type": "boolean" },
+        "cover_lines_required": { "type": "boolean" },
+        "exact_text": { "type": "array", "items": { "type": "string" } },
+        "text_policy": { "type": "string", "enum": ["none", "generate_text", "placeholder_editorial_text", "reserve_space_only"] }
+      }
+    },
+    "mature_content": {
+      "type": "object",
+      "required": ["level", "adult_age_lock", "style_intent", "wardrobe_coverage", "pose_safety"],
+      "properties": {
+        "level": { "type": "string", "enum": ["safe", "adult_mature", "adult_explicit", "requires_adult_age_lock", "minor_blocked"] },
+        "adult_age_lock": { "type": "boolean" },
+        "style_intent": { "type": "string" },
+        "wardrobe_coverage": { "type": "string", "enum": ["fashion_full_coverage", "body_conscious_fashion", "swimsuit_editorial", "lingerie_inspired_fashion", "body_paint_inspired_fashion", "minimal_or_nude"] },
+        "pose_safety": { "type": "string", "enum": ["adult_allowed", "minor_blocked"] },
+        "renderer_guardrails": {
+          "type": "object",
+          "properties": {
+            "positive": { "type": "array", "items": { "type": "string" } },
+            "negative": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "anatomy_risk": {
+      "type": "object",
+      "required": ["level"],
+      "properties": {
+        "level": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "lower_body_visible": { "type": "boolean" },
+        "support_leg_required": { "type": "boolean" },
+        "pose_biomechanics_required": { "type": "boolean" },
+        "renderer_guardrails_required": { "type": "boolean" }
+      }
+    },
+    "collision_risk": {
+      "type": "object",
+      "required": ["level"],
+      "properties": {
+        "level": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "contact_logic_required": { "type": "boolean" },
+        "occlusion_required": { "type": "boolean" },
+        "material_interaction_required": { "type": "boolean" }
+      }
+    },
+    "visual_hierarchy": { "type": "array", "items": { "type": "string" } },
+    "narrative_context": { "type": "string" },
+    "hero_element": { "type": "string" },
+    "secondary_elements": { "type": "array", "items": { "type": "string" } },
+    "constraint_model": {
+      "type": "object",
+      "required": ["hard_locks", "soft_preferences", "inferred_enhancements"],
+      "properties": {
+        "hard_locks": { "type": "array", "items": { "type": "string" } },
+        "soft_preferences": { "type": "array", "items": { "type": "string" } },
+        "inferred_enhancements": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "risk_flags": { "type": "array", "items": { "type": "string" } },
+    "sex_characteristics": { "type": "object" },
+    "pose_boring_risk": { "type": "object" },
+    "scene_enrichment": { "type": "object" },
+    "face_expression_gaze": { "type": "object" },
+    "text_rendering": { "type": "object" },
+    "reference_mood": { "type": "string" },
+    "attribute_change_control": { "type": "object" }
+  }
+}

@@ -1,0 +1,555 @@
+version: 1
+purpose: Map visual failures to targeted prompt and generation fixes.
+failures:
+  weak_subject_priority:
+    symptoms:
+    - background is more noticeable than the subject
+    - subject blends into environment
+    - viewer cannot identify focal point in one second
+    fixes:
+    - increase subject contrast against background
+    - add rim light or controlled key light on subject
+    - simplify background details
+    - move subject to a stronger focal position
+  bad_crop:
+    symptoms:
+    - important body, product, or object parts are cut off
+    - composition feels accidental
+    fixes:
+    - specify full object visible inside square frame
+    - add breathing room around the subject
+    - use medium shot or product three-quarter view
+  unclear_subject_hierarchy:
+    symptoms:
+    - viewer cannot tell what to look at first
+    - face, product, action target, and background compete equally
+    - brightest or sharpest area is not the intended focal point
+    fixes:
+    - define first-read target and second-read target
+    - increase subject contrast, sharpness, or lighting priority
+    - reduce background detail and saturation
+    - place subject on center, third, or clear compositional axis
+  background_overpowering_subject:
+    symptoms:
+    - background is sharper, brighter, or more saturated than the subject
+    - worldbuilding details hide the hero subject
+    - bokeh, signage, lights, crowd, or architecture becomes the first read
+    fixes:
+    - assign background role as readable_secondary or minimal
+    - reduce background contrast, saturation, and sharpness
+    - add subject rim light or face/product key light
+    - keep background anchors but lower their visual weight
+  insufficient_lead_room:
+    symptoms:
+    - subject looks or moves into the frame edge
+    - action direction feels cramped
+    - gaze target has no visual space
+    fixes:
+    - reserve lead room toward gaze or movement
+    - place subject on the opposite third
+    - widen the frame or shift camera direction
+  action_target_missing:
+    symptoms:
+    - subject points, reaches, attacks, watches, or aims but the target is absent
+    - body orientation and gaze imply different targets
+    - motion particles have no source or destination
+    fixes:
+    - make target visible or clearly off-frame through gaze, body angle, and lead room
+    - align hands, eyes, torso, and object direction
+    - define action contact point and force direction
+  awkward_crop_at_joint:
+    symptoms:
+    - crop cuts through wrists, elbows, knees, ankles, fingertips, toes, or neck
+    - full-body shot cuts off feet
+    - product, wheel, logo, or important prop is clipped
+    fixes:
+    - use crop-safety rules and specify safe headroom/footroom
+    - avoid cutting at joints and fingertips
+    - keep full object or vehicle silhouette visible
+  excessive_bokeh_hiding_context:
+    symptoms:
+    - background context is requested but completely unreadable
+    - scene loses location, architecture, or story anchors
+    fixes:
+    - use moderate readable background depth instead of extreme bokeh
+    - preserve two or three background anchors
+    - keep subject sharp while background remains softly legible
+  subject_too_small_in_frame:
+    symptoms:
+    - primary subject is lost in environment
+    - face/product/action target lacks detail
+    fixes:
+    - increase subject occupancy
+    - move from wide to medium or three-quarter shot
+    - add compositional lines leading to subject
+  visual_weight_imbalance:
+    symptoms:
+    - image feels lopsided without intentional asymmetry
+    - empty bright area or heavy text block pulls attention away
+    fixes:
+    - add counterbalance with light mass, architecture, negative space, typography, or secondary prop
+    - reduce competing bright area
+    - adjust subject position to a stable third or axis
+  no_depth_layering:
+    symptoms:
+    - scene feels flat or pasted together
+    - foreground, subject, and background have no spatial relationship
+    fixes:
+    - define foreground, midground subject, and background role
+    - add contact shadows, atmospheric depth, or scale cues
+    - choose shallow, moderate, or deep focus intentionally
+  excessive_foreground_obstruction:
+    symptoms:
+    - foreground object hides face, hands, product label, or action target
+    - particles/splash/fabric block the story
+    fixes:
+    - keep foreground as framing support only
+    - reduce opacity, size, or position of obstruction
+    - preserve first-read subject features
+  face_not_readable:
+    symptoms:
+    - face is too dark, too small, covered, overblurred, or blocked by effects
+    fixes:
+    - prioritize face light and eye catchlights
+    - reduce foreground/effects around face
+    - choose closer shot or cleaner angle
+  composition_contradicts_action:
+    symptoms:
+    - body faces one direction while action/motion implies another
+    - lead room is opposite the movement
+    - object trajectory conflicts with pose
+    fixes:
+    - align body orientation, gaze, hands, and action target
+    - reserve lead room in action direction
+    - define object trajectory and contact source
+  flat_lighting:
+    symptoms:
+    - image looks cheap or generic
+    - subject has no dimensional form
+    - shadows are absent or incoherent
+    fixes:
+    - add soft key light, controlled fill, and rim light
+    - describe shadow direction and contrast
+    - use commercial studio lighting or cinematic side light
+  overdone_fx:
+    symptoms:
+    - glow, fog, bokeh, or particles distract from subject
+    - image looks like a style demo rather than a usable asset
+    fixes:
+    - reduce atmospheric effects
+    - describe clean background separation
+    - make FX subtle and behind the focal plane
+  plastic_skin:
+    symptoms:
+    - skin looks waxy, airbrushed, or doll-like
+    - face lacks pores and natural texture
+    fixes:
+    - add visible pores, natural skin texture, subtle imperfections
+    - reduce beauty retouching language
+    - use realistic portrait photography language
+  broken_anatomy:
+    symptoms:
+    - hands, fingers, eyes, teeth, or limbs are malformed
+    - pose is physically impossible
+    fixes:
+    - reduce pose complexity
+    - hide hands naturally or make hands non-prominent
+    - use 3/4 view and natural relaxed pose
+    - add natural human anatomy and correct proportions
+  wrong_material:
+    symptoms:
+    - food does not look appetizing
+    - metal, glass, fabric, or product surface is ambiguous
+    - product looks like plastic when it should not
+    fixes:
+    - name the exact material and surface behavior
+    - add lighting that reveals texture
+    - describe micro details such as condensation, grain, weave, reflection, or crisp edges
+  bad_title_area:
+    symptoms:
+    - reserved text area is visually busy
+    - contrast is too low for later typography
+    - subject occupies the whole frame
+    fixes:
+    - reserve clean negative space on the specified side
+    - place subject opposite the title area
+    - use smooth gradient-free background with low detail in title region
+  ai_text_artifacts:
+    symptoms:
+    - fake letters, logos, watermarks, signage, or unreadable typography appear
+    fixes:
+    - use clean surfaces with no typography
+    - describe label-free packaging unless text is required
+    - plan typography as post-production
+  inconsistent_reference:
+    symptoms:
+    - person, product, room, or style does not match reference
+    - identity or product shape drifts across iterations
+    fixes:
+    - request or use reference image
+    - lock subject descriptors and seed
+    - only vary lighting, camera, or background between attempts
+  structural_pose_failure:
+    symptoms:
+    - head, neck, shoulders, torso, pelvis, legs, or feet do not connect as one coherent body
+    - support foot, balance, or center of gravity is unclear
+    - hands, fingers, wrists, or contact points are malformed
+    - camera angle makes body proportions impossible
+    - reclining or semi-reclined body has pelvis, thighs, shins, and feet pointing in unrelated directions
+    - bed, sofa, or soft-surface pose shows floating legs or unsupported torso
+    fixes:
+    - define a coherent head-neck-shoulder-ribcage-pelvis-leg-foot structure chain
+    - identify the support leg and grounded foot when standing
+    - use natural relaxed hands with clear finger structure and believable contact points
+    - reduce pose complexity or use controlled perspective
+    - for semi-reclined poses, define pelvis direction, folded-leg direction, soft-surface contact, and arm-support load path
+    - add sheet or cushion compression and contact shadows under hips, thighs, knees, palms, or elbows
+  soft_surface_support_failure:
+    symptoms:
+    - person appears to hover above bed, sofa, cushion, or blanket
+    - hips, thighs, knees, palms, or elbows touch a soft surface without pressure, wrinkles, or contact shadow
+    - hands are posed as support but upper-body weight does not transfer into the surface
+    - foreground shin or foot appears stretched or floating because the support plane is unclear
+    fixes:
+    - make the bed or sofa visibly support the body weight
+    - add subtle mattress or cushion depression, sheet wrinkles, fabric tension, and contact shadows
+    - align shoulders, elbows, wrists, and palms when arms prop the torso
+    - simplify mixed side-lying, kneeling, and half-sitting leg directions into one coherent pelvis-to-foot chain
+  pool_edge_support_semantic_drift:
+    symptoms:
+    - hands supporting on pool edge becomes arms raised overhead
+    - subject grips an overhead ledge instead of pressing down on the pool coping
+    - pool edge appears above the head like a ceiling bar or tile ledge
+    - upper body rises without visible weight transfer through palms into the pool edge
+    fixes:
+    - state that both palms press downward on top of the pool coping at the waterline
+    - add fingers curled over the near pool edge, elbows bent downward, and shoulders loaded
+    - place the pool edge beside or in front of the subject, not above the head
+    - negative prompt overhead grip, arms raised overhead, lifting pool edge, underside tile grip, and hanging pose
+  towel_slip_reveal_physics_failure:
+    symptoms:
+    - bath towel slip does not follow gravity, wrap tension, or body contact
+    - towel appears glued to the chest, floating, or clipping through the torso
+    - breast exposure appears as a cutout instead of a lowered towel edge
+    - towel has no tuck, hand hold, underarm catch, or other anchor point
+    - wet towel lacks thickness, weight, folds, or contact shadows
+    - post-shower towel looks completely dry despite wet hair, wet skin, or steamy bathroom context
+    fixes:
+    - define the towel as opaque thick terry fabric wrapped around the torso
+    - state which edge slips diagonally downward and which edge remains anchored
+    - add visible top-edge thickness, overlap seam, heavy damp folds, and soft contact shadows
+    - add slightly damp terry texture, darker wet contact zones, and water absorption weight
+    - make exposure follow the lowered towel edge, not transparency or cutout geometry
+    - negative prompt floating towel, towel clipping through chest, painted-on towel, cutout reveal, dry towel in a just-showered
+      scene, and fabric glued to skin
+  adult_anatomical_landmark_misplacement:
+    symptoms:
+    - visible nipple or areola appears too high, too low, too lateral, duplicated, floating, or detached from chest volume
+    - nipple or areola appears on top of towel, clothing, shadow, or unrelated texture
+    - visible adult external anatomy is displaced from the pelvic region or conflicts with pelvis orientation
+    - male/female external anatomy is duplicated, mismatched, or wrong for the specified adult subject
+    - occlusion by towel, thighs, hands, fabric, or crop boundaries contradicts visible anatomy
+    fixes:
+    - align nipple and areola placement with natural chest anatomy, breast volume, ribcage turn, and camera perspective
+    - keep covered landmarks hidden behind opaque towel or fabric unless fabric physics supports visibility
+    - place visible adult external anatomy in the correct pelvic region following pelvis orientation and leg position
+    - define correct occlusion between skin, towel edge, hands, thighs, and body landmarks
+    - negative prompt misplaced nipple, floating areola, duplicated nipple, nipple on towel, displaced external anatomy, duplicated
+      genital anatomy, and wrong intimate anatomy
+  automotive_rain_motion_physics_failure:
+    symptoms:
+    - car requested as speeding but appears parked, slow, or posed
+    - car body is blurred while the background remains too static
+    - wheel rotation, lane streaks, and background motion do not support speed
+    - headlight beam crosses the car diagonally like a spotlight instead of pointing forward
+    - water spray floats, moves in the wrong direction, or has no tire contact source
+    - wet road reflections ignore the road plane or look like random glossy texture
+    - brand-defining grille, headlight symmetry, wheel geometry, or coupe proportions drift
+    fixes:
+    - 'use sharp panning automotive language: crisp car body, horizontally streaked background, spinning wheel blur'
+    - define travel direction, camera tracking direction, and low three-quarter or side-tracking viewpoint
+    - align headlight beams with the vehicle's forward path and diffuse them through rain mist
+    - state that tire contact patches cut through shallow standing water and throw spray outward and backward
+    - lock recognizable vehicle proportions, correct grille, symmetrical headlights, clean wheel shape, and visible tire contact
+    - replace broad 'blurry subject' negatives with 'blurred car body, soft grille, melted headlights, warped wheels'
+  uncanny_expression_or_gaze:
+    symptoms:
+    - face looks blank, doll-like, over-smoothed, or emotionally wrong
+    - eyes, brows, mouth, jaw, and head angle express different emotions
+    - subject looks at viewer when the action implies attention elsewhere
+    - smile, parted lips, or teeth look forced or physically odd
+    fixes:
+    - define gaze target and attention anchor
+    - coordinate eyes, eyelids, brows, mouth corners, jaw relaxation, and head angle
+    - use subtle asymmetric micro-expression for realistic portrait work
+    - avoid dead eyes, forced grin, uncanny symmetry, and expression-action mismatch
+  character_ip_identity_drift:
+    symptoms:
+    - character becomes a generic attractive person or generic anime/game character
+    - recognizable silhouette, hair outline, costume outline, or prop outline is weak or missing
+    - hair color, bang shape, side locks, hair ornament, or hairstyle family changes
+    - face impression, eye shape, gaze style, expression default, or markings drift
+    - core palette, accent color, eye color, glow color, or costume color blocking changes
+    - signature costume markers, emblem, weapon, accessory, or prop disappears
+    - pose, expression, or camera relation contradicts the intended character archetype
+    - worldbuilding motifs are replaced by unrelated random background elements
+    fixes:
+    - build a character_ip_profile with silhouette, hair, face, palette, costume, props, personality, worldbuilding, locked
+      traits, allowed variations, and forbidden drift
+    - state strong recognizable silhouette, signature hair identity, recognizable face impression, locked palette hierarchy,
+      iconic costume structure, and signature prop visible
+    - separate locked traits from allowed variations so lighting, pose, or outfit variants do not overwrite identity anchors
+    - translate personality into visible gaze, expression, posture, gesture, and camera relation
+    - 'add targeted negatives: generic character, weak silhouette, changed hairstyle, wrong palette, missing emblem, missing
+      signature prop, face identity drift, costume drift'
+  selfie_semantic_drift:
+    symptoms:
+    - plain selfie or 自拍 prompt adds a visible phone, selfie stick, mirror, or camera rig that the user did not request
+    - visible phone covers the face, eyes, mouth, outfit, product, or other important detail
+    - selfie becomes mirror selfie without a requested mirror
+    - foreground arm or hand becomes oversized, duplicated, or fused with an imaginary device
+    - wide-angle selfie perspective warps faces or makes edge faces unattractive
+    - group selfie has no clear close-camera perspective or face cluster logic
+    fixes:
+    - interpret plain selfie as selfie perspective shot, not visible phone
+    - use close front-camera perspective, intimate arm-length framing, controlled wide-angle face perspective, and no visible
+      phone unless requested
+    - for group selfies, define face cluster geometry, staggered heights, close camera perspective, and optional foreground
+      arm without covering faces
+    - only add a visible phone, mirror selfie, selfie stick, GoPro, or vlog camera when explicitly requested
+    - if visible device is requested, define device hand, screen/lens direction, reflection plane if any, and occlusion limits
+    - for plain selfie, require front-facing arm-length camera POV, one near-side forearm toward the lens, device beyond crop, and close half-body or three-quarter framing
+    - remove external-observer full-body framing when it conflicts with plain selfie perspective
+  text_conflict_or_bad_copy:
+    symptoms:
+    - requested title, logo, label, signage, or UI copy is missing
+    - prompt includes no-text language while text was requested or implied
+    - text is misspelled, duplicated, translated unintentionally, or replaced with random letters
+    - fake cover lines, pseudo logos, or watermarks appear
+    fixes:
+    - quote exact requested text and preserve capitalization, punctuation, language, and line breaks
+    - define text hierarchy and safe placement
+    - replace broad no-text cleanup with no random extra text, no gibberish lettering, no fake logos
+    - reserve clean text zones when exact long copy is unreliable
+  amateur_flat_shot:
+    symptoms:
+    - image looks generic, flat, or like an unplanned snapshot
+    - lighting has no motivation or shadow shape
+    - background is either empty, busy, or unrelated to the subject
+    - materials look glossy or plastic without believable surface behavior
+    fixes:
+    - choose one master-level shooting recipe for the task
+    - define camera position, subject scale, light motivation, background depth, and material response
+    - translate gear terms into visible effects instead of stacking equipment names
+    - keep professional polish subordinate to readability, anatomy, text, and product accuracy
+  expert_visual_synthesis_failure:
+    symptoms:
+    - prompt stacks photography, render, fabric, and lighting adjectives without clear physical cause
+    - standing human framing has unclear subject occupancy, headroom, footroom, or crop logic
+    - clothing openness, fit, translucency, wetness, or fold direction lacks anchor points or material cause
+    - skin realism is reduced to generic beauty words without pores, tone variation, or coherent highlight behavior
+    - 3D render language appears as engine jargon rather than visible roughness, specular response, contact shadows, and stable
+      geometry
+    - motion, wetness, steam, hair, or fabric changes occur without a physical source
+    fixes:
+    - route through expert visual synthesis and define subject scale, camera perspective, light motivation, material response,
+      and physical causes
+    - state frame scale and subject occupancy for standing human images
+    - define garment opening degree, anchor, fit/contact zones, opacity cause, fold direction, and wetness source
+    - translate realism into refined pores, skin tone variation, specular highlights, wet hair grouping, and environmental
+      effects
+    - translate 3D/lookdev into roughness, specular behavior, contact shadows, ambient occlusion, stable perspective, and
+      clean geometry
+    - state what caused motion or fabric change and keep critical subject details sharp
+  group_action_source_failure:
+    symptoms:
+    - multi-person image contains a central action effect but no subject visibly causes it
+    - water, spray, confetti, smoke, or motion effect appears as an overlay
+    - subjects react in unrelated directions or all perform the same generic pose
+    - hands are hidden or fused by the effect instead of partially occluded
+    fixes:
+    - define the event source subject and action cause
+    - place the effect origin at the hand, foot, prop, or contact point
+    - give each subject a distinct reaction, gaze target, and hand role
+    - keep hands readable through partial occlusion
+    - negative prompt source-less effect, floating overlay, cloned expressions, merged hands, and fused fingers
+  pool_group_water_physics_failure:
+    symptoms:
+    - pool splash has no clear origin, force direction, droplet scale, or gravity falloff
+    - subjects in the same pool appear to stand at different water depths
+    - feet, ankles, ripples, foam, and leg occlusion do not share one support plane
+    - swimwear looks dry despite active water play
+    - background window, dark shape, or foliage competes with the water spray and main faces
+    fixes:
+    - state which subject creates the splash and how the hands move
+    - describe splash origin, upward arc, large near droplets, fine mist, and falling spray
+    - define one shallow-water plane with planted feet, ankle-level waterline, foam, ripples, and refraction
+    - add wet swimwear cling, darker damp zones, skin droplets, and sunlit water highlights
+    - separate water spray from background with clean contrast and background softness
+  character_identity_drift:
+    symptoms:
+    - generic attractive character replacement
+    - face identity drift
+    - wrong archetype mood
+    - over-designed but unrecognizable
+    fixes:
+    - load per-IP base_profiles and enhanced_profiles
+    - restore silhouette, hair identity, face impression, palette, costume markers, signature props
+    - add character-specific negative drift terms
+    route_to:
+    - config/character-ip/character-ip-lookup-index.yaml
+    - config/character-identity/character-ip-identity-system.yaml
+    - config/character-identity/character-archetype-visual-system.yaml
+  costume_marker_loss:
+    symptoms:
+    - wrong costume color blocking
+    - wrong top / wrong skirt / wrong armor
+    - missing gloves, belt, emblem, crest, or signature prop
+    - garment construction collapse
+    fixes:
+    - rank markers with costume-marker-priority-system
+    - restore silhouette, color blocking, emblem/safe motif, signature accessories, and material language
+    - avoid random outfit redesign
+    route_to:
+    - config/character-identity/costume-marker-priority-system.yaml
+    - config/character-identity/wardrobe-outfit-construction.yaml
+  pose_physics_failure:
+    symptoms:
+    - twisted pelvis
+    - floating limbs
+    - unsupported reclining pose
+    - broken knee alignment
+    - hands not supporting body weight
+    - soft surface has no compression
+    fixes:
+    - define support leg or reclining load path
+    - add contact points, surface compression, contact shadows, pelvis/spine/knee alignment
+    - use narrow pose-specific negative guardrails
+    route_to:
+    - config/character-identity/reclining-pose-physics.yaml
+    - config/character-identity/standing-pose-balance-system.yaml
+    - config/scene-environment/soft-surface-contact-physics.yaml
+  action_target_ignored:
+    symptoms:
+    - screen or object is present but ignored
+    - gaze points away from stated target
+    - hand floats near object
+    - tool/weapon direction contradicts body orientation
+    fixes:
+    - align gaze target, hand contact, body orientation, object placement, and light/reflection response
+    - define grip/contact/occlusion order
+    route_to:
+    - config/scene-environment/action-object-attention-system.yaml
+    - config/scene-environment/physical-collision-guardrails.yaml
+  mature_fabric_logic_failure:
+    symptoms:
+    - over-censored glamour
+    - explicit escalation
+    - unrealistic transparency
+    - visibility without fabric/light cause
+    - fabric physics ignored
+    fixes:
+    - route through mature tier and fabric opacity logic
+    - define opacity class, wetness/backlight/tension cause, reveal intensity, and prohibited visibility language
+    route_to:
+    - config/safety-mature/mature-content-tiering-system.yaml
+    - config/character-identity/fabric-opacity-translucency-logic.yaml
+mature_tiering_failures:
+  over_censored_mature_prompt:
+    severity: medium_high
+    symptoms:
+    - adult mature prompt becomes plain fashion portrait
+    - requested adult nudity, genital visibility, gore, cleavage, or implied contour removed unnecessarily
+    - adult boudoir-inspired mood erased
+    repair_prompt:
+    - classify mature tier instead of blocking all mature cues
+    - preserve requested adult mature or explicit content if subject is clearly adult
+    - use implied contour or physically plausible translucency where appropriate, but do not censor adult explicit intent
+  minor_coded_boundary_violation:
+    severity: high
+    symptoms:
+      - underage or childlike sexual framing appears
+      - adult age lock is missing when mature/explicit styling is present
+    repair_prompt:
+      - make the subject clearly adult
+      - remove underage and childlike cues
+      - preserve requested adult mature or explicit content after age-safety correction
+  nipple_visibility_without_context:
+    severity: medium_high
+    symptoms:
+    - nipple/areola visibility appears through fabric without physical support
+    - dry opaque clothing shows sharp anatomical detail
+    repair_prompt:
+    - add semi-sheer, backlight, wet cling, mesh/lace, or artistic context if visibility is intended
+    - otherwise reduce to implied contour or faint silhouette
+
+camera_technical_failures:
+  wrong_lens_for_scene:
+    symptoms: ["perspective contradicts scene scale", "room relationship is flattened", "close face is distorted"]
+    fixes: ["select lens by environment importance and face priority", "use practical lens routing and edge safety"]
+  excessive_background_blur:
+    symptoms: ["requested context is unreadable", "worldbuilding anchors disappear"]
+    fixes: ["use moderate or deep focus", "preserve two or three readable background anchors"]
+  unreadable_night_subject:
+    symptoms: ["face is crushed into shadow", "neon is brighter than the subject"]
+    fixes: ["use readable night exposure", "preserve practical lights and lift subject midtones"]
+  blown_critical_highlights:
+    symptoms: ["white fabric, skin, paint, screen, or logo loses detail"]
+    fixes: ["protect highlights", "use soft roll-off and controlled specular shape"]
+  wrong_motion_treatment:
+    symptoms: ["face is blurred when identity matters", "static scene has arbitrary speed streaks"]
+    fixes: ["select one motion intent", "keep critical subject plane sharp"]
+  inappropriate_noise_texture:
+    symptoms: ["beauty or product work has heavy digital noise", "night image looks plastically clean"]
+    fixes: ["route ISO texture by commercial cleanliness and realism intent"]
+
+adult_pose_failures:
+  over_censored_adult_pose:
+    symptoms: ["adult intent removed", "glamour becomes plain portrait", "pose becomes unnecessarily conservative"]
+    repair: ["restore adult pose tier", "restore body line and mature body language", "preserve garment or fabric interaction"]
+  anatomically_bad_adult_pose:
+    symptoms: ["broken spine", "twisted pelvis", "unsupported hips", "impossible leg angle"]
+    repair: ["restore weight support", "align pelvis and legs", "add surface compression", "use natural S-curve"]
+  adult_hand_intent_failure:
+    symptoms: ["floating hand", "merged fingers", "hand has no gesture or support role", "fabric grip lacks tension"]
+    repair: ["assign hand intent", "add contact target and shadow", "define grip point and wrinkle direction"]
+  adult_lens_pose_mismatch:
+    symptoms: ["wide-angle stretched limbs", "high-angle broken leg proportions", "low-angle oversized feet or unreadable face"]
+    repair: ["select compatible lens and camera distance", "move limbs away from frame edge", "preserve support chain"]
+  adult_material_pose_failure:
+    symptoms: ["wet fabric ignores gravity", "body paint has cloth folds", "straps float away from torso"]
+    repair: ["route through adult garment-pose interaction", "apply wetness, tension, and surface-material logic"]
+
+technical_decision_order_failure:
+  symptoms:
+    - "prompt starts with a default lens before intent, subject, action, or composition is resolved"
+    - "lens choice forces a layout that contradicts background, action, or camera-distance needs"
+    - "depth, exposure, motion, or noise terms contradict required readability"
+  repair:
+    - "rebuild in visual-decision order: intent, subject, hierarchy, action/gaze, composition, camera angle/distance, lens, depth, exposure/tone, guards"
+    - "retain explicit optical-concept requests only as a lens-priority override"
+    - "run technical-conflict cleanup before renderer output"
+  route_to:
+    - config/visual-cinematography/composition-decision-engine.yaml
+    - config/visual-cinematography/camera-technical-router.yaml
+    - config/core-knowledge.yaml  # includes semantic_priority_rules
+    - config/prompt-core/prompt-renderer.yaml
+
+auto_wardrobe_failures:
+  auto_added_upper_clothing:
+    symptoms: [shirt_appears_without_prompt, bra_appears_without_prompt, bikini_top_appears_without_prompt, jacket_appears_without_prompt]
+    repair: [remove_upper_garment_terms, set_upper_body_unspecified_absent_by_default, add_no_auto_upper_clothing_guard]
+  auto_added_lower_clothing:
+    symptoms: [underwear_appears_without_prompt, bikini_bottom_appears_without_prompt, shorts_skirt_or_pants_appear_without_prompt]
+    repair: [remove_lower_garment_terms, set_lower_body_unspecified_absent_by_default, add_no_auto_lower_clothing_guard]
+  context_inferred_outfit:
+    symptoms: [beach_creates_bikini, rain_creates_wet_shirt, bedroom_creates_lingerie, school_creates_uniform, character_ip_creates_canonical_outfit]
+    repair: [disable_context_wardrobe_inference, keep_only_explicit_wardrobe_items, use_pose_crop_object_or_shadow_for_coverage]
+  material_without_garment:
+    symptoms: [seams_without_clothing, waistband_without_clothing, wet_fabric_cling_without_garment]
+    repair: [remove_material_layer, restrict_material_logic_to_explicit_garments]
+  route_to:
+    - config/character-identity/explicit-wardrobe-policy.yaml
+    - config/character-identity/wardrobe-slot-occupancy-system.yaml
+    - config/character-identity/context-wardrobe-inference-blocker.yaml
+    - config/character-identity/wardrobe-conflict-resolver.yaml

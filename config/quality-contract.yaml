@@ -1,0 +1,48 @@
+schema_version: "1.0.0"
+name: nsfw-comfyui-quality-non-regression-contract
+mode: fixed_complete_semantic_closure
+
+performance:
+  minimum_context_reduction_percent: 60
+  measurement: "Compare compiled agent-visible YAML lines against the complete active catalog source set for the same request profile."
+  minimum_initial_context_reduction_percent: 25
+  initial_measurement: "Compare initial inline packet context against the same packet's complete inline-plus-required-deferred semantic closure. Deferred rules may reduce initial loading only when every required source is materialized at its declared phase."
+
+quality:
+  rule: "A context reduction is invalid if it drops a legacy required claim, delivery field, required renderer decision, or benchmark score."
+  required_preservation: [visual_claims, physics_claims, identity_claims, adult_safety_claims, renderer_claims]
+
+benchmark:
+  score_range: [1, 5]
+  existing_categories:
+    - composition_and_crop
+    - pose_and_contact
+    - motion_and_impact
+    - material_and_tactile_response
+    - lighting_and_environment
+    - style_consistency
+    - identity_and_adult_eligibility
+  new_categories:
+    - local_anatomy_and_surface_continuity
+    - focus_hierarchy_and_camera_grammar
+    - visible_adult_exposure_compliance
+    - action_to_exposure_feasibility
+  minimum_new_category_score: 3
+  non_regression_rule: "Every existing candidate score must be greater than or equal to its paired baseline score with the same workflow, model, seed, resolution, and control inputs."
+  hard_gates:
+    visible_adult_exposure_compliance:
+      applies_when_required_claim: visible_adult_exposure
+      required_value: pass
+      rule: "A candidate adult-human benchmark fails when the selected visible exposure evidence is absent, merely suggested, fully covered, or lost to crop or occlusion; no other score can compensate."
+    exposure_action_feasibility:
+      applies_when_required_claim: exposure_action_plan
+      required_value: pass
+      rule: "A candidate adult-human benchmark fails when the selected target, garment/material route, action anchor, end state, or camera proof cannot physically produce the stated visible exposure."
+    exposure_geometry_feasibility:
+      applies_when_required_claim: exposure_geometry_plan
+      required_value: pass
+      rule: "A candidate adult-human benchmark fails when the recorded camera ray, target-facing surface, occluder set, garment-action reach, or crop bounds cannot geometrically support the claimed visible exposure."
+
+failure_trace:
+  persist_only_on_failure: true
+  required_fields: [packet_id, catalog_hash, request_fingerprint, failures, selected_nodes, source_hashes]

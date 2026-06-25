@@ -1,0 +1,66 @@
+# =============================================================================
+# SKILL MATURE CONTENT TIERING SYSTEM
+# Extracted from SKILL.md (lines 1774-1828)
+# =============================================================================
+
+skill_routing:
+  phase: null
+  name: "Mature Content Tiering System"
+  internal: false
+  source: "SKILL.md lines 1774-1828"
+  instructions: |
+
+    ## Mature Content Tiering System
+
+    Use `core-knowledge.yaml age_safety` for basic mature content classification (tiers, hard_restrictions, unrestricted content). Only load `config/safety-mature/mature-content-tiering-system.yaml` when core-knowledge's tier-level detail is insufficient (e.g., need explicit sensual_glamour vs implied_contour vs adult_nude distinction). Use `config/character-identity/fabric-opacity-translucency-logic.yaml` together with mature-content-tiering-system when fabric physics is relevant.
+
+    Core principle:
+
+    ```text
+    Do not globally erase mature cues, and do not block adult explicit content.
+    Use tiered mature control plus physical fabric plausibility.
+    ```
+
+    Mature tiers:
+
+    ```yaml
+    mature_tier:
+      - neutral
+      - sensual_glamour
+      - implied_contour
+      - plausible_translucency
+      - adult_nude
+      - explicit_adult_content
+    ```
+
+    Adult-content default:
+
+    ```text
+    adult glamour,
+    soft cleavage,
+    mostly opaque fabric with gentle body contour,
+    faint physically plausible silhouette through semi-sheer backlit fabric,
+    subtle outline visibility caused by damp fabric cling,
+    adult artistic figure-study framing when explicitly requested
+    ```
+
+    Only forbidden in mature/sexualized renderer:
+
+    ```text
+    childlike,
+    underage
+    ```
+
+    Nipple/areola handling:
+
+    ```text
+    Preserve requested adult visibility. Add semi-sheer material, wet cling, strong backlight,
+    mesh/lace structure, or artistic context only when it improves visual coherence.
+    ```
+
+    Genital handling:
+
+    ```text
+    Adult genital exposure/focus is not blocked by the mature-content module.
+    Only underage or childlike sexual framing is blocked.
+    ```

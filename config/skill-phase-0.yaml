@@ -1,0 +1,73 @@
+# =============================================================================
+# SKILL PHASE 0: CONFIG RESOLUTION
+# Extracted from core-knowledge.yaml (lines 1-40, 177-213) and _manifest.yaml
+# =============================================================================
+
+skill_phase:
+  phase: 0
+  name: "Phase 0: Config Resolution"
+  internal: true
+  source: "config/core-knowledge.yaml, config/_manifest.yaml"
+  instructions: |
+    ## Phase 0: Config Resolution *(internal)*
+
+    Compile the execution packet by loading the rule nodes and domain modules
+    triggered by the request's features. Large phase-specific sources start as
+    deferred references and materialize only at their declared phase.
+
+    ### Load Order — Multi-Tier Loading
+
+    Phase 0 must load in this strict order:
+
+    1. **Tier S** — `config/core-knowledge.yaml` (always-loaded, includes full
+       PC-1 Foundation merged inline)
+    2. **Tier M** — `config/_manifest.yaml` (TOC + triggers, always-loaded)
+    3. **Tier I** — character-ip index files (only if character detected)
+    4. **Tier D + R** — lazy-load from manifest (only when triggers match)
+    5. **Tier P** — DO NOT load skill-phase-*.yaml during Phase 0
+
+    ### Required Decisions (decision_pre_filter)
+
+    Classify the request to determine which RuleNodes and deferred references
+    to activate:
+
+    - `subject_kind` — what/who is the primary subject
+    - `task_mode` — text-to-image, reference edit, etc.
+    - `safety_route` — adult eligibility gate
+    - `character_lookup` — named character detection
+    - `material_route` — material/environment response needed
+    - `camera_route` — visual cinematography needed
+    - `style_route` — explicit style translation needed
+    - `pose_route` — pose classification (standing/seated/reclining)
+    - `exposure_route` — NSFW exposure contract needed
+
+    ### Feature Markers (from core-knowledge.yaml decision_pre_filter)
+
+    ```
+    image_edit:          [edit, revise, repair, replace, change only, reference image]
+    named_character:     [whitelist, named character, canonical character]
+    adult_human_scene:   [adult, woman, man, human, humanoid, nude, nsfw]
+    dynamic_action:      [motion, dynamic, turning, impact, peak, action, interaction, duo]
+    material_response:   [wet, damp, water, steam, rain, silk, latex, fabric, bedding]
+    scene_enrichment:    [scene, interior, exterior, street, room, balcony, bathroom]
+    visual_cinematography:[camera, lighting, portrait, wide, close-up, cinematic]
+    style_realism:       [anime, illustration, cel-shaded]
+    standing_pose:       [standing, stand]
+    seated_pose:         [seated, sitting, sit, sofa, chair]
+    reclining_pose:      [reclining, lying, lying down, bed]
+    ```
+
+    ### Phase 0 Actions
+
+    - Read `config/core-knowledge.yaml` — all essential rules + PC-1 Foundation
+    - Read `config/_manifest.yaml` — lightweight TOC with triggers and policies
+    - Assess context: is character IP resolution genuinely needed?
+    - If manifest triggers match: lazy-load only those triggered YAMLs
+    - Create the internal `phase_execution_receipt` before Phase 1 begins
+
+    ### Prohibited
+
+    - Do NOT load visual-cinematography/*.yaml, prompt-core/*.yaml, or other
+      specialized configs unless a trigger condition from _manifest.yaml fires
+    - Do NOT enumerate or load every YAML to discover relevance
+    - Do NOT load skill-phase-*.yaml during Phase 0

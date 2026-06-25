@@ -1,0 +1,69 @@
+schema_version: "1.0.0"
+name: "framing-layout-templates"
+description: >
+  Reusable framing and layout templates for prompt assembly. These are starting
+  points, not fixed recipes.
+
+framing_layout_templates:
+  centered_hero:
+    subject_position: "center"
+    subject_scale: "medium_to_large"
+    background_role: "minimal_or_symmetrical"
+    crop_policy: "safe_subject_crop"
+    best_for: ["hero portrait", "product", "poster", "architecture axis"]
+  left_third_portrait:
+    subject_position: "left_third"
+    negative_space: "right side"
+    background_role: "readable_secondary_or_text_safe"
+    crop_policy: "portrait_safe"
+    best_for: ["editorial portrait", "cover line space", "lifestyle"]
+  right_third_portrait:
+    subject_position: "right_third"
+    negative_space: "left side"
+    background_role: "readable_secondary_or_text_safe"
+    crop_policy: "portrait_safe"
+    best_for: ["editorial portrait", "title space", "brand ad"]
+  symmetrical_architecture:
+    subject_position: "center_axis_or_scale_cue"
+    negative_space: "balanced"
+    background_role: "architectural_landmark"
+    crop_policy: "preserve verticals and structural edges"
+    best_for: ["cathedral", "luxury interior", "hallway", "temple"]
+  performance_stage_wide:
+    subject_position: "center_or_lower_third"
+    negative_space: "stage scale around performer"
+    background_role: "concert_stage"
+    crop_policy: "gesture and limbs visible"
+    best_for: ["performance", "concert", "idol stage", "festival"]
+  magazine_cover_vertical:
+    subject_position: "center_or_left_third"
+    typography_space: "top_and_side_negative_space"
+    subject_scale: "medium_to_large"
+    crop_policy: "clean_cover_safe_crop"
+    best_for: ["magazine cover", "poster", "commercial key visual"]
+  fashion_editorial_half_body:
+    subject_position: "slightly_off_center"
+    typography_space: "optional side space"
+    subject_scale: "half_body"
+    crop_policy: "avoid wrists/fingertips; preserve garment silhouette"
+    best_for: ["fashion", "glamour", "portrait editorial"]
+  cinematic_over_shoulder:
+    subject_position: "foreground shoulder frame plus midground target"
+    depth_strategy: "foreground_occlusion_midground_target"
+    crop_policy: "foreground does not hide target face/action"
+    best_for: ["dialogue", "screen viewing", "duo interaction", "mystery"]
+  reclining_interior_composition:
+    subject_position: "diagonal across frame"
+    depth_strategy: "support surface foreground, body midground, room background"
+    crop_policy: "avoid joint crops; show support contact"
+    best_for: ["sofa", "bed", "lounge", "boudoir-inspired editorial"]
+  duo_interaction_layout:
+    subject_position: "two subjects with gaze/action bridge"
+    depth_strategy: "shared midground or staggered depth"
+    crop_policy: "both faces and interaction point readable"
+    best_for: ["conversation", "romance", "conflict", "handoff"]
+  group_lineup_layout:
+    subject_position: "staggered row or triangle"
+    depth_strategy: "face cluster or full-body lineup"
+    crop_policy: "all key faces visible; no edge-face distortion"
+    best_for: ["group portrait", "team", "ensemble", "cosplay lineup"]

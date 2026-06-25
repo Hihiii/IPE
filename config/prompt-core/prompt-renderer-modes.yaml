@@ -1,0 +1,1409 @@
+# ============================================================
+# prompt-renderer-modes.yaml
+# Autorevise model-specific final prompt renderer profiles
+# Version: 1.0.0
+# Purpose:
+#   Convert a model-neutral prompt_package into the final syntax,
+#   density, ordering, and positive/negative structure preferred by
+#   each target image/video model.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "prompt-renderer-modes"
+description: >
+  Model-specific prompt renderer profiles for converting an internal
+  autorevise prompt package into final prompt formats for ChatGPT Image,
+  Z Image Turbo, Stable Diffusion-style models, Midjourney, Flux,
+  image editing, and video generation. Internal prompt packages may be
+  YAML/JSON, but final prompts must be rendered into the target model's
+  preferred prompt style.
+
+# ------------------------------------------------------------
+# 1. Global Renderer System
+# ------------------------------------------------------------
+
+autorevise_renderer_system:
+  purpose: >
+    Keep the cinematic prompt enhancer's internal reasoning model-neutral,
+    then render the final prompt differently for each target model.
+    The renderer is not allowed to invent new visual intent. It may only
+    translate, reorder, split, or remove genuinely redundant wording from the
+    prompt_package, constraints, semantic priority rules, and output specs.
+    It must not shorten or reduce visual specificity solely because a model
+    profile prefers a different syntax.
+
+  core_principle: >
+    JSON/YAML is for internal structure and debugging. The final prompt
+    sent to a T2I/I2V/T2V model should be the syntax that model understands best.
+
+  detail_preservation_rule: >
+    Every renderer must preserve concrete subject, composition, spatial,
+    lighting, material, text, anatomy, geometry, and scene decisions. A model
+    profile may change syntax, but it must not turn a complete prompt into
+    vague, short render-quality phrases unless the user explicitly requests
+    brevity or a downstream tool has a known hard limit.
+
+  default_model_target: "chatgpt_image"
+
+  export_family_variants:
+    default: true
+    rule: "Render and export ALL model targets. Every family is included for multi-workflow comparison."
+    explicit_variant_targets: [chatgpt_image, flux, z_image_base, z_image_turbo, comfyui_flux2_zimage_3stage, stable_diffusion, midjourney, image_edit]
+
+  allowed_model_targets:
+    - chatgpt_image
+    - z_image_turbo
+    - stable_diffusion
+    - midjourney
+    - flux
+    - image_edit
+    - video_prompt
+    - universal_package
+    - debug_yaml
+
+  renderer_selection_priority:
+    - explicit_user_model_target
+    - workflow_context
+    - output_mode_requested
+    - model_syntax_markers
+    - default_model_target
+
+  model_target_detection:
+    chatgpt_image:
+      trigger_terms:
+        - "ChatGPT Image"
+        - "image2"
+        - "GPT Image"
+        - "OpenAI image"
+        - "DALL-E"
+      default_when_unspecified: true
+
+    z_image_turbo:
+      trigger_terms:
+        - "Z Image Turbo"
+        - "Z-Image Turbo"
+        - "z image"
+        - "zimage"
+        - "ComfyUI Z Image"
+      renderer_profile: "detailed_visual_explicit"
+
+    stable_diffusion:
+      trigger_terms:
+        - "Stable Diffusion"
+        - "SDXL"
+        - "Pony"
+        - "Illustrious"
+        - "ComfyUI"
+        - "Automatic1111"
+        - "Forge"
+      renderer_profile: "positive_negative_tagged"
+
+    midjourney:
+      trigger_terms:
+        - "Midjourney"
+        - "MJ"
+        - "--ar"
+        - "--style"
+        - "--sref"
+        - "--cref"
+      renderer_profile: "compact_aesthetic_command"
+
+    flux:
+      trigger_terms:
+        - "Flux"
+        - "FLUX.1"
+        - "flux dev"
+        - "flux schnell"
+      renderer_profile: "clear_natural_subject_first"
+
+    image_edit:
+      trigger_terms:
+        - "edit image"
+        - "image edit"
+        - "只改"
+        - "保持不變"
+        - "same face"
+        - "keep the same"
+        - "change only"
+      renderer_profile: "edit_instruction_with_locks"
+
+    video_prompt:
+      trigger_terms:
+        - "video"
+        - "I2V"
+        - "T2V"
+        - "image-to-video"
+        - "text-to-video"
+        - "Sulphur"
+        - "Runway"
+        - "Kling"
+        - "Luma"
+      renderer_profile: "motion_ready_scene_prompt"
+
+# ------------------------------------------------------------
+# 2. Universal Prompt Package Contract
+# ------------------------------------------------------------
+
+universal_prompt_package_contract:
+  purpose: >
+    The renderer consumes this structured model-neutral package. Every
+    downstream renderer should draw from these fields, but may only omit
+    fields that are irrelevant to the selected renderer. Do not remove
+    meaningful visual details to satisfy a token or word target.
+
+  required_fields:
+    - original_prompt
+    - model_target
+    - task_profile
+    - subject
+    - subject_role
+    - style_realism_mode
+    - shot_size
+    - composition
+    - camera_angle
+    - composition_decision
+    - visual_hierarchy
+    - depth_layers
+    - background_role
+    - crop_policy
+    - lighting_visible_effect
+    - camera_technical_decision
+    - output_specs
+    - constraints
+
+  optional_fields:
+    - lens_visible_depth
+    - gaze_action_flow
+    - lead_room
+    - negative_space_policy
+    - visual_balance_note
+    - typography_space_note
+    - exposure_and_tonality
+    - tonal_profile
+    - exposure_strategy
+    - aperture_dof_profile
+    - shutter_motion_profile
+    - iso_noise_profile
+    - color_palette
+    - material_rendering
+    - visual_mood
+    - cinematography_grammar
+    - motion
+    - background
+    - atmosphere
+    - text_logo_brand
+    - avoid
+    - locked_constraints
+    - quality_risks
+
+  canonical_field_order:
+    - subject
+    - hard_locks_and_required_features
+    - subject_action
+    - shot_size
+    - composition_layout
+    - visual_hierarchy
+    - gaze_or_action_direction
+    - camera_angle_and_distance
+    - lens_choice
+    - aperture_depth_of_field
+    - shutter_motion_handling
+    - lead_room
+    - environment_and_background_role
+    - depth_layers
+    - crop_intent
+    - style_realism_mode
+    - exposure_strategy
+    - tonal_profile
+    - lighting_visible_effect
+    - lens_visible_depth
+    - exposure_and_tonality
+    - material_rendering
+    - color_palette
+    - background
+    - visual_mood
+    - motion
+    - output_specs
+    - avoid
+
+composition_rendering_rules:
+  purpose: >
+    Ensure final prompts express composition decisions explicitly. Composition
+    fields must not be dropped as internal-only planning.
+  must_render:
+    - subject_position
+    - frame_scale
+    - gaze_or_action_direction
+    - lead_room
+    - depth_layers
+    - background_readability
+    - lighting_hierarchy
+    - crop_intent
+  optional_render:
+    - visual_balance_note
+    - negative_space_note
+    - typography_space_note
+    - foreground_framing_note
+  prompt_assembly_order:
+    - subject_identity
+    - subject_action
+    - composition_layout
+    - camera_angle_and_distance
+    - lens_choice
+    - aperture_depth_of_field
+    - exposure_tonal_lighting
+    - environment_and_background_role
+    - depth_layers
+    - wardrobe_and_material_details
+    - failure_prevention
+  sentence_templates:
+    subject_position:
+      - "placed on the left third of the frame"
+      - "placed on the right third of the frame"
+      - "centered in a symmetrical composition"
+      - "framed slightly off-center with generous negative space"
+    action_direction:
+      - "facing toward camera-right with clear lead room"
+      - "gaze directed toward the off-frame television"
+      - "body orientation supports the action target"
+    depth:
+      - "moderate depth of field keeps the subject sharp while the background remains readable"
+      - "shallow depth of field isolates the face while preserving key silhouette cues"
+      - "foreground framing element, midground subject, softly legible background architecture"
+    crop:
+      - "full-body framing with feet visible and safe headroom"
+      - "hands fully visible with fingertips inside the frame"
+      - "intentional close crop that does not cut through joints"
+
+camera_technical_rendering_rules:
+  purpose: "Render only technical choices that change the visible image; never dump camera specifications."
+  must_render_when_relevant:
+    - tonal_profile
+    - exposure_strategy
+    - lens_practical_profile
+    - aperture_dof_profile
+    - shutter_motion_profile
+    - iso_noise_profile
+  visual_translation_order:
+    - perspective_and_subject_distance
+    - focus_behavior
+    - motion_behavior
+    - exposure_target
+    - tonal_result
+    - texture_or_grain
+  avoid:
+    - "meaningless camera specs without visual purpose"
+    - "conflicting lens, depth, shutter, or exposure instructions"
+    - "shallow depth of field when required background context must remain readable"
+    - "ultra-wide close portrait distortion"
+    - "motion blur when face, text, or product detail must stay sharp"
+  sentence_templates:
+    lens: ["35mm environmental perspective keeps the subject and room relationship readable", "85mm portrait perspective with gentle background compression"]
+    depth: ["moderate depth of field keeps the subject sharp while key context remains legible", "eyes sharply focused with soft background separation"]
+    motion: ["fast freeze-frame motion keeps the face and action crisp", "controlled panning keeps the vehicle sharp against horizontal background streaks"]
+    exposure: ["exposed for readable facial midtones while preserving practical lights", "specular highlights retain shape and material detail"]
+    tonal: ["readable night tonality with controlled shadows and luminous practical lights", "soft highlight roll-off with open, natural shadow detail"]
+
+technical_conflict_cleanup:
+  required: true
+  rules:
+    - "Remove conflicting focal lengths unless a deliberate multi-camera concept is explicit."
+    - "Replace shallow depth with moderate or deep focus when the background, action target, group faces, or architecture must remain readable."
+    - "Do not combine freeze motion and long-exposure trails on the same moving subject without a stated layered effect."
+    - "Do not combine high key with crushed blacks, clean commercial low ISO with gritty documentary noise, macro close-up with full-body wide scene, or overhead and low-angle camera claims."
+    - "When full body is requested, retain feet and safe footroom unless an intentional crop is explicit."
+
+lens_priority_override:
+  allowed_when: [macro_detail, fisheye_or_extreme_sports, architectural_ultra_wide, telephoto_compressed_city_or_stage, panning_racing_shot, extreme_wide_mecha_scale, surveillance_drone_gopro_concept, smartphone_or_mirror_selfie]
+  rule: "Lens language may lead only when it is the explicit visual concept; otherwise composition and camera relationship decide first."
+
+  field_priority:
+    safety_and_policy: 100
+    explicit_user_hard_locks: 98
+    targeted_edit_scope: 96
+    subject_identity_and_role: 94
+    required_text_logo_brand: 92
+    output_specs: 90
+    task_readability: 86
+    dominant_style_mode: 78
+    composition_shot_angle: 74
+    lighting_exposure_material_color: 68
+    cinematic_mood_enhancement: 55
+    minor_quality_tags: 30
+
+# ------------------------------------------------------------
+# 3. Global Rendering Rules
+# ------------------------------------------------------------
+
+global_rendering_rules:
+  do:
+    - "Render the final prompt in the target model's preferred syntax."
+    - "Preserve explicit hard locks and targeted edit scope before aesthetic enhancements."
+    - "Use generator-visible visual language instead of internal technical planning."
+    - "Keep one dominant style/medium mode."
+    - "Place the subject and required identity in the first sentence or first prompt segment."
+    - "Use positive visual guardrails where possible; use avoid/negative only for high-risk failures."
+
+  do_not:
+    - "Do not send raw JSON/YAML to a T2I model unless a downstream parser explicitly consumes it."
+    - "Do not leak internal technical equipment terms into final prompt unless the requested image is a behind-the-scenes setup or equipment diagram."
+    - "Do not include multiple conflicting style modes."
+    - "Do not include avoid terms that contradict required positive elements."
+    - "Do not use long lists of generic quality tags when a concise visual phrase can replace them."
+
+  forbidden_equipment_terms_in_final_prompt:
+    default:
+      - octabox
+      - softbox
+      - stripbox
+      - V-flat
+      - C-stand
+      - light stand
+      - studio flash
+      - strobe
+      - beauty dish
+      - reflector board
+      - snoot
+      - grid
+      - flag
+      - cutter
+      - barn doors
+    allowed_only_when:
+      - behind_the_scenes_photo
+      - studio_setup_diagram
+      - photography_education_diagram
+      - lighting_equipment_product_shot
+
+  technical_to_visible_language:
+    lighting:
+      octabox: "large soft diffused key light with smooth shadow transition"
+      strip_softbox: "narrow elongated rim highlight along the subject edge"
+      v_flat: "soft bounced fill opening the shadow side"
+      snoot: "focused narrow pool of light"
+      grid: "controlled directional light with minimal spill"
+      full_CTO: "warm amber light"
+      full_CTB: "cool blue light"
+    lens:
+      "85mm": "flattering short-telephoto portrait compression"
+      "24mm": "wide environmental perspective with natural spatial depth"
+      "tilt_shift": "controlled architectural perspective with straight vertical lines"
+      "macro": "close detail view with crisp surface texture"
+    exposure:
+      low_key: "dark atmosphere with selective readable highlights"
+      high_key: "bright airy exposure with preserved highlight detail"
+      middle_key: "balanced exposure with natural contrast"
+      expose_for_highlights: "bright areas retain texture without clipping"
+    composition:
+      rule_of_thirds: "subject placed along a third line with balanced negative space"
+      centered_symmetry: "centered symmetrical composition with balanced left-right structure"
+      depth_layering: "clear foreground, midground, and background separation"
+      negative_space: "clean open area reserved for visual breathing room or text"
+    mood:
+      luxury: "restrained luxury editorial aesthetic"
+      cinematic: "cinematic film-still composition with motivated light and layered depth"
+      dreamy: "soft atmosphere with gentle glow and delicate contrast"
+      playful: "bright friendly mood with clear readable shapes"
+
+# ------------------------------------------------------------
+# 4. Renderer Profiles
+# ------------------------------------------------------------
+
+renderer_profiles:
+
+  chatgpt_image:
+    profile_name: "natural_language_semantic"
+    best_for:
+      - "ChatGPT Image / GPT Image style generation"
+      - "high semantic prompts"
+      - "complex visual intent"
+      - "cinematic or editorial scenes"
+    final_output_shape:
+      prompt: string
+      avoid: string
+      locked_constraints: list_optional
+      model_target: "chatgpt_image"
+    prompt_style:
+      syntax: "natural language paragraph"
+      abstraction_tolerance: "high"
+      sentence_structure: "complete descriptive sentences"
+      allow_cinematography_terms: true
+      allow_composition_terms: true
+      allow_mood_terms: true
+      positive_negative_split: false
+    recommended_length:
+      quick: "80-140 words"
+      standard: "140-260 words"
+      detailed: "260-450 words"
+      production: "450-700 words"
+    field_order:
+      - subject_identity
+      - required_constraints
+      - shot_and_composition
+      - style_and_medium
+      - lighting_and_exposure
+      - material_and_color
+      - background_and_atmosphere
+      - output_specs
+      - avoid_sentence
+    rendering_rules:
+      - "Use natural language with clear semantic relationships."
+      - "Keep technical camera terms only if they improve visual clarity."
+      - "Prefer visible lighting effects over equipment names."
+      - "Avoid long comma-only keyword chains."
+      - "Use a short natural-language avoid sentence instead of a huge negative list."
+    avoid_style:
+      format: "single concise sentence"
+      max_items: 8
+      example: "Avoid cropped hands, plastic skin, random text, watermark, distorted anatomy, and visible studio equipment."
+    example:
+      prompt: >
+        A photorealistic waist-up fashion portrait of an adult woman standing between two semi-transparent frosted glass panels.
+        She is placed on the left third of the frame with generous negative space to the right. Soft diffused light comes
+        from camera-right, creating smooth facial shadows and natural catchlights. The image uses natural skin texture,
+        warm neutral tones, and a restrained luxury editorial mood with softly blurred background separation.
+      avoid: >
+        Avoid cropped hands, plastic skin, random text, watermark, distorted anatomy, door handles, hinges, and visible studio equipment.
+
+  z_image_turbo:
+    profile_name: "detailed_visual_explicit"
+    best_for:
+      - "Z Image Turbo"
+      - "fast local generation"
+      - "ComfyUI text-to-image nodes"
+      - "models that benefit from concrete, explicit visual phrase chains"
+    final_output_shape:
+      positive_prompt: string
+      negative_prompt: string
+      detail_notes: string_optional
+      model_target: "z_image_turbo"
+    prompt_style:
+      syntax: "ordered comma-separated visual phrases with complete visible relationships"
+      abstraction_tolerance: "low_to_medium"
+      sentence_structure: "precise, complete clauses"
+      allow_cinematography_terms: true_when_translated_to_visible_effect
+      allow_composition_terms: only_when_visualized
+      allow_mood_terms: specific_and_visible
+      positive_negative_split: true
+    recommended_length:
+      simple: "140-220 words"
+      standard: "220-360 words"
+      complex: "360-480 words for covers, vehicles, products, architecture, multi-subject scenes, or exact text"
+    field_order:
+      - subject_identity
+      - style_medium
+      - shot_size
+      - composition_visible
+      - camera_angle_visible
+      - lighting_visible
+      - key_materials
+      - background
+      - color_palette
+      - output_specs
+    rendering_rules:
+      - "Use direct visible words and translate cinematography into observable camera, light, depth, and material effects."
+      - "Put subject and medium in the first 10-20 words."
+      - "Prefer complete, ordered phrase chains over terse fragments; include spatial, causal, and material relationships whenever they affect the result."
+      - "Use one complete positive prompt by default. Create a shortened variant only when the user explicitly requests it or the downstream tool has a known hard limit."
+      - "Use generator-visible translation for lens, lighting, exposure, and mood."
+      - "Keep exactly one dominant style mode."
+      - "Use separate negative_prompt if the workflow supports it."
+      - "Avoid repeated synonym clusters like premium/luxury/elegant/sophisticated."
+    detail_preservation_policy:
+      remove_only_when_redundant:
+        - high_level_cinematography_theory
+        - redundant_mood_adjectives
+        - camera_equipment_names
+        - long brand/story explanations
+        - excessive quality tags
+      preserve_always:
+        - subject_identity
+        - shot_size
+        - crop_guardrails
+        - lighting_direction
+        - material_critical_details
+        - hard_locks
+    negative_prompt_rules:
+      max_items: 10
+      include_only:
+        - task_specific_high_risk_failures
+        - explicit_user_forbidden_elements
+        - common_anatomy_or_crop_risks
+        - text_logo_noise_when_not_required
+      avoid_generic_spam:
+        - worst quality
+        - bad quality
+        - ugly
+        - lowres
+      contradiction_fixes:
+        logo_required_but_no_logo: "no random extra logos"
+        text_required_but_no_text: "no random extra text, only specified text"
+        motion_required_but_no_blur: "face and hero detail sharp, motion blur only on moving edges or background"
+    example:
+      positive_prompt: >
+        photorealistic waist-up fashion portrait, adult woman, semi-transparent frosted glass panels, subject on left side,
+        open negative space on right, soft diffused side light from camera-right, natural skin texture, sharp eyes,
+        warm neutral palette, luxury editorial look, softly blurred background
+      negative_prompt: >
+        cropped hands, extra fingers, plastic skin, blurry face, random text, watermark, distorted anatomy, glass door, door handle, hinges
+
+  stable_diffusion:
+    profile_name: "positive_negative_tagged"
+    best_for:
+      - "Stable Diffusion"
+      - "SDXL"
+      - "Pony / Illustrious / checkpoint-based workflows"
+      - "Automatic1111 / ComfyUI / Forge"
+    final_output_shape:
+      positive_prompt: string
+      negative_prompt: string
+      parameters: object_optional
+      model_target: "stable_diffusion"
+    prompt_style:
+      syntax: "comma-separated tags and visual phrases"
+      abstraction_tolerance: "medium"
+      sentence_structure: "tag chain with weighted phrases when allowed"
+      allow_cinematography_terms: limited
+      allow_composition_terms: limited
+      allow_mood_terms: compressed
+      positive_negative_split: true
+    recommended_length:
+      positive: "75-220 tokens"
+      negative: "20-100 tokens"
+    field_order:
+      - quality_style_anchor
+      - subject_identity
+      - subject_attributes
+      - shot_size
+      - composition
+      - camera_angle
+      - lighting
+      - material_color
+      - background
+      - output_specs
+    rendering_rules:
+      - "Use tags or compact phrases, not long paragraphs."
+      - "Place subject and style mode early."
+      - "Use weighting only if the downstream model/workflow supports it."
+      - "Move failures into negative_prompt."
+      - "Do not overuse generic quality tags; keep them model-specific and optional."
+    optional_weighting:
+      syntax_examples:
+        - "(sharp eyes:1.2)"
+        - "(full body, feet visible:1.2)"
+        - "(natural skin texture:1.1)"
+      caution: "Do not apply weights automatically unless the workflow accepts SD-style weights."
+    negative_prompt_defaults_by_task:
+      human_portrait:
+        - extra fingers
+        - deformed hands
+        - plastic skin
+        - blurry face
+        - distorted anatomy
+      product_ad:
+        - warped label
+        - unreadable text
+        - glare on label
+        - distorted product geometry
+        - random logo
+      architecture:
+        - fisheye distortion
+        - leaning walls
+        - warped windows
+        - inconsistent floor heights
+      hidden_object_scene:
+        - random clutter
+        - unreadable tiny objects
+        - heavy bokeh
+    example:
+      positive_prompt: >
+        photorealistic fashion portrait, adult woman, waist-up framing, subject on left third, open negative space right,
+        semi-transparent frosted glass panels, soft diffused side light, sharp eyes, natural skin texture, warm neutral palette,
+        luxury editorial aesthetic, soft background separation
+      negative_prompt: >
+        cropped hands, extra fingers, deformed hands, plastic skin, blurry face, random text, watermark, glass door, door handle, hinges
+
+  midjourney:
+    profile_name: "compact_aesthetic_command"
+    best_for:
+      - "Midjourney"
+      - "compact visual direction"
+      - "aesthetic exploration"
+      - "poster or editorial style prompts"
+    final_output_shape:
+      prompt: string
+      parameters: string_optional
+      model_target: "midjourney"
+    prompt_style:
+      syntax: "compact natural phrase with optional --parameters"
+      abstraction_tolerance: "medium_to_high"
+      sentence_structure: "one compact aesthetic sentence"
+      allow_cinematography_terms: true_but_sparse
+      allow_composition_terms: true_but_visual
+      allow_mood_terms: compressed
+      positive_negative_split: false
+    recommended_length:
+      prompt: "30-100 words"
+    field_order:
+      - subject_identity
+      - style_medium
+      - shot_composition
+      - lighting_color
+      - material_background
+      - mood
+      - parameters
+    rendering_rules:
+      - "Use fewer details than ChatGPT Image."
+      - "Use strong visual nouns and one clean style direction."
+      - "Use --no only for essential forbidden elements."
+      - "Use --ar only when aspect ratio is requested."
+      - "Avoid long technical explanations."
+    parameter_mapping:
+      aspect_ratio:
+        "1:1": "--ar 1:1"
+        "4:5": "--ar 4:5"
+        "3:4": "--ar 3:4"
+        "9:16": "--ar 9:16"
+        "16:9": "--ar 16:9"
+      style_raw: "--style raw"
+      no_terms_prefix: "--no"
+    example:
+      prompt: >
+        photorealistic luxury fashion editorial portrait, waist-up woman between frosted glass panels, left-third composition,
+        soft side light, warm neutral palette, natural skin texture, clean negative space --ar 9:16 --style raw --no watermark, random text, door handles
+
+  flux:
+    profile_name: "clear_natural_subject_first"
+    best_for:
+      - "Flux"
+      - "natural language with clear field ordering"
+      - "local workflows that prefer coherent semantic prompts"
+    final_output_shape:
+      prompt: string
+      negative_prompt: string_optional
+      model_target: "flux"
+    prompt_style:
+      syntax: "clear subject-first natural language"
+      abstraction_tolerance: "medium"
+      sentence_structure: "short descriptive paragraph"
+      allow_cinematography_terms: limited
+      allow_composition_terms: true_when_visual
+      allow_mood_terms: compressed
+      positive_negative_split: optional
+    recommended_length:
+      standard: "80-180 words"
+      detailed: "180-300 words"
+    field_order:
+      - subject_identity
+      - shot_size
+      - composition
+      - lighting
+      - style_medium
+      - material_detail
+      - background
+      - constraints
+    rendering_rules:
+      - "Use simple natural language with strong subject-first ordering."
+      - "Avoid excessive comma-tagging."
+      - "Avoid conflicting style modes."
+      - "Keep important constraints close to the subject description."
+    example:
+      prompt: >
+        A photorealistic waist-up portrait of an adult woman standing between semi-transparent frosted glass panels.
+        The subject is placed on the left side with open negative space on the right. Soft diffused light comes from camera-right,
+        with sharp eyes, natural skin texture, warm neutral tones, and a softly blurred background. The glass panels are not doors.
+      negative_prompt: >
+        cropped hands, plastic skin, random text, watermark, door handles, hinges
+
+  image_edit:
+    profile_name: "edit_instruction_with_locks"
+    best_for:
+      - "image editing"
+      - "inpainting"
+      - "style or attribute change while preserving other details"
+      - "same face / same outfit / background unchanged requests"
+    final_output_shape:
+      edit_instruction: string
+      must_preserve: list
+      change_only: list
+      avoid: list
+      model_target: "image_edit"
+    prompt_style:
+      syntax: "explicit edit command with locked attributes"
+      abstraction_tolerance: "medium"
+      sentence_structure: "short instruction plus preservation list"
+      allow_cinematography_terms: only_if_edit_target
+      positive_negative_split: false
+    recommended_length:
+      edit_instruction: "40-160 words"
+      must_preserve: "3-10 items"
+      avoid: "3-8 items"
+    field_order:
+      - change_scope
+      - target_attribute_change
+      - preserve_identity_and_locked_attributes
+      - style_or_lighting_change_if_any
+      - avoid_unwanted_changes
+    rendering_rules:
+      - "Do not rewrite the whole image unless requested."
+      - "Begin with the requested change."
+      - "List locked attributes explicitly."
+      - "If user says 'only change X', lock all other visible attributes."
+      - "Do not add new props, background, clothing, or style unless explicitly allowed."
+    targeted_edit_triggers:
+      only_change:
+        - "只改"
+        - "僅修改"
+        - "only change"
+        - "just change"
+      keep_same:
+        - "保持不變"
+        - "不變"
+        - "一樣"
+        - "same"
+        - "keep the same"
+        - "unchanged"
+    example:
+      edit_instruction: >
+        Change only the pose and expression: make the subject smiling and holding a peace sign. Preserve the same face,
+        hairstyle, body shape, outfit, background, lighting style, and camera framing.
+      must_preserve:
+        - same face
+        - same hairstyle
+        - same body shape
+        - same outfit
+        - same background
+        - same camera framing
+      avoid:
+        - changing identity
+        - changing clothing
+        - changing background
+        - changing body proportions
+
+  video_prompt:
+    profile_name: "motion_ready_scene_prompt"
+    best_for:
+      - "text-to-video"
+      - "image-to-video first frame"
+      - "motion planning"
+      - "cinematic camera movement"
+    final_output_shape:
+      scene_prompt: string
+      motion_prompt: string
+      camera_motion: string_optional
+      negative_prompt: string_optional
+      model_target: "video_prompt"
+    prompt_style:
+      syntax: "stable first-frame description plus motion direction"
+      abstraction_tolerance: "medium"
+      sentence_structure: "scene paragraph + motion sentence"
+      allow_cinematography_terms: true_when_visible
+      positive_negative_split: optional
+    recommended_length:
+      scene_prompt: "80-220 words"
+      motion_prompt: "20-80 words"
+      negative_prompt: "10-60 words"
+    field_order:
+      - stable_first_frame_subject
+      - composition_and_depth_layers
+      - lighting_and_materials
+      - motion_of_subject
+      - secondary_motion
+      - camera_motion
+      - continuity_guardrails
+      - negative_prompt
+    rendering_rules:
+      - "Design a stable first frame before describing motion."
+      - "Keep subject identity and silhouette clear."
+      - "Separate subject motion, secondary motion, and camera motion."
+      - "Avoid complex tiny text unless it must remain static."
+      - "Avoid tangled limbs or physically impossible motion."
+      - "Use motion-ready background layers for parallax when useful."
+    example:
+      scene_prompt: >
+        A photorealistic fashion portrait first frame: an adult woman stands between semi-transparent frosted glass panels,
+        waist-up, placed on the left side with open negative space to the right. Soft side light from camera-right creates
+        natural facial shadows and sharp eyes; the warm neutral background has clear foreground-midground-background separation.
+      motion_prompt: >
+        Gentle hair movement from a soft breeze, subtle shifting reflections on the frosted glass, slow cinematic push-in toward the face.
+      camera_motion: "slow push-in, stable framing, no sudden zoom"
+      negative_prompt: "identity drift, face warping, flickering glass, random text, extra fingers"
+
+  universal_package:
+    profile_name: "structured_json_yaml_package"
+    best_for:
+      - "debugging"
+      - "API handoff"
+      - "workflow parser"
+      - "multi-model renderer input"
+    final_output_shape:
+      prompt_package: object
+      final_prompt_candidates: object_optional
+      model_target: "universal_package"
+    prompt_style:
+      syntax: "JSON/YAML object"
+      abstraction_tolerance: "internal_only"
+      positive_negative_split: depends_on_renderer
+    rendering_rules:
+      - "Do not send directly to image model unless the workflow explicitly parses structured fields."
+      - "Preserve all categories independently for later conversion."
+      - "Include model_target and renderer_profile fields."
+
+  debug_yaml:
+    profile_name: "full_phase_audit_yaml"
+    best_for:
+      - "developer audit"
+      - "testing knowledge base routing"
+      - "phase-by-phase debugging"
+    final_output_shape:
+      intent: object
+      cinematic_enrichment: object
+      scene_blueprint: object_optional
+      prompt_package: object
+      quality_review: object_optional
+      final_prompt: object
+    prompt_style:
+      syntax: "machine-readable YAML"
+      abstraction_tolerance: "internal"
+      positive_negative_split: depends_on_model_target
+    rendering_rules:
+      - "Use only when debug mode is requested."
+      - "Do not present full debug YAML in normal user-facing mode."
+
+# ------------------------------------------------------------
+# 5. Model-Specific Completeness-Preserving Cleanup Rules
+# ------------------------------------------------------------
+
+model_specific_cleanup:
+  chatgpt_image:
+    compression_level: "none_for_length"
+    keep:
+      - semantic_relationships
+      - clear constraints
+      - visual hierarchy
+      - natural lighting description
+      - material realism
+    remove:
+      - repeated mood synonyms
+      - raw equipment names
+      - excessive tag chains
+
+  z_image_turbo:
+    compression_level: "none_for_length"
+    keep:
+      - subject
+      - style_medium
+      - shot_size
+      - composition_visible
+      - lighting_direction
+      - key_materials
+      - background
+      - all task-specific negative risks that prevent visible failures
+    remove:
+      - abstract cinematography theory
+      - long storytelling explanations
+      - redundant adjectives
+      - unnecessary camera specs
+      - multiple color theory labels
+
+  stable_diffusion:
+    compression_level: "syntax_optimized_not_length_limited"
+    keep:
+      - strong tags
+      - subject descriptors
+      - style anchor
+      - shot/crop tags
+      - material/lighting tags
+      - negative failure tags
+    remove:
+      - long prose
+      - explanatory clauses
+      - nested YAML-like structure
+
+  midjourney:
+    compression_level: "syntax_optimized_not_length_limited"
+    keep:
+      - subject
+      - dominant aesthetic
+      - shot/composition
+      - lighting/color
+      - aspect ratio parameters
+    remove:
+      - deep technical detail
+      - long avoid list
+      - negative list unless essential
+
+  flux:
+    compression_level: "semantic_clean_not_length_limited"
+    keep:
+      - subject-first natural language
+      - clear spatial relationships
+      - relevant constraints
+      - visible material and lighting
+    remove:
+      - SD-style keyword spam
+      - excessive weights
+      - contradictory style labels
+
+  image_edit:
+    compression_level: "scope_preserving"
+    keep:
+      - edit target
+      - change_only fields
+      - locked attributes
+      - forbidden changes
+    remove:
+      - global restyling unless requested
+      - unrelated enhancements
+      - new background or props unless requested
+
+  video_prompt:
+    compression_level: "motion_structured"
+    keep:
+      - stable first frame
+      - subject motion
+      - secondary motion
+      - camera motion
+      - continuity guardrails
+    remove:
+      - static-only details that do not support motion
+      - overly complex text/logo details unless required
+
+# ------------------------------------------------------------
+# 6. Semantic Deduplication for Renderer Outputs
+# ------------------------------------------------------------
+
+semantic_deduplication:
+  luxury_cluster:
+    redundant_terms:
+      - premium
+      - high-end
+      - luxurious
+      - elegant
+      - sophisticated
+      - refined
+      - expensive
+    compressed_as:
+      chatgpt_image: "restrained luxury editorial aesthetic"
+      z_image_turbo: "luxury editorial look"
+      stable_diffusion: "luxury editorial aesthetic"
+      midjourney: "luxury editorial"
+
+  cinematic_cluster:
+    redundant_terms:
+      - cinematic
+      - filmic
+      - movie-like
+      - dramatic film still
+      - film grade
+    compressed_as:
+      chatgpt_image: "cinematic film-still composition"
+      z_image_turbo: "cinematic look"
+      stable_diffusion: "cinematic film still"
+      midjourney: "cinematic film still"
+
+  photoreal_cluster:
+    redundant_terms:
+      - photorealistic
+      - ultra realistic
+      - realistic photo
+      - real-life
+      - real camera
+    compressed_as:
+      chatgpt_image: "photorealistic camera-style image"
+      z_image_turbo: "photorealistic"
+      stable_diffusion: "photorealistic"
+      midjourney: "photorealistic"
+
+  soft_light_cluster:
+    redundant_terms:
+      - soft light
+      - diffused light
+      - gentle light
+      - smooth shadow
+      - beauty light
+    compressed_as:
+      chatgpt_image: "soft diffused light with smooth shadow transition"
+      z_image_turbo: "soft diffused light"
+      stable_diffusion: "soft diffused light"
+      midjourney: "soft light"
+
+  full_body_cluster:
+    redundant_terms:
+      - full body
+      - head to toe
+      - entire figure
+      - feet visible
+      - complete silhouette
+    compressed_as:
+      chatgpt_image: "full-body head-to-toe framing with feet visible"
+      z_image_turbo: "full-body, feet visible"
+      stable_diffusion: "full body, feet visible"
+      midjourney: "full-body framing"
+
+# ------------------------------------------------------------
+# 7. Renderer Conflict Resolution
+# ------------------------------------------------------------
+
+renderer_conflict_resolution:
+  raw_json_to_model:
+    problem: "User or system attempts to pass structured JSON/YAML directly to a T2I model."
+    rule: "Render JSON/YAML into the target model's final prompt syntax unless the workflow parser explicitly consumes structured fields."
+    fix: "Use universal_package internally, then call selected renderer."
+
+  chatgpt_prompt_sent_to_z_turbo:
+    problem: "Long semantic ChatGPT Image prompt performs poorly in Z Image Turbo."
+    symptoms:
+      - weak subject adherence
+      - style drift
+      - ignored composition details
+      - noisy or generic output
+    fix:
+      - "Convert into Z-Image visual phrase syntax without deleting meaningful image details."
+      - "Convert abstract terms into visible visual phrases."
+      - "Split positive and negative prompts."
+      - "Put subject, style, shot, and composition first."
+
+  z_turbo_prompt_sent_to_chatgpt:
+    problem: "Overly terse comma-tag prompt may underuse ChatGPT Image semantic capability."
+    fix:
+      - "Render as natural language with spatial relationships and intent."
+      - "Keep concise avoid sentence."
+
+  style_mode_conflict:
+    problem: "Prompt contains multiple incompatible rendering modes."
+    rule: "One dominant style mode per final prompt. Other references become design cues."
+    examples:
+      photorealistic_cosplay: "photorealistic real-life cosplay with character-inspired design cues"
+      anime_realism: "anime-realism illustration with realistic proportions and stylized face design"
+
+  positive_negative_contradiction:
+    problem: "Negative prompt forbids a required positive element."
+    fixes:
+      required_logo_and_no_logo: "replace 'no logo' with 'no random extra logos'"
+      required_text_and_no_text: "replace 'no text' with 'no random extra text, only specified text'"
+      required_motion_and_no_blur: "replace 'no blur' with 'hero detail sharp, motion blur limited to background or moving edges'"
+
+  equipment_leak:
+    problem: "Final prompt includes lighting equipment terms that may be rendered as objects."
+    fix: "Replace equipment with visible lighting effect phrases."
+
+# ------------------------------------------------------------
+# 8. Advisory Length Guidance
+# ------------------------------------------------------------
+
+advisory_length_guidance:
+  enforcement: "disabled"
+  purpose: "Reference only. Do not trim final prompts to fit these ranges unless the user explicitly asks for a shorter prompt or a downstream tool has a known hard limit."
+  completeness_priority: "subject identity, hard locks, character matrices, anatomy, expression/gaze, pose mechanics, text/logo intent, product/vehicle/architecture geometry, water/fabric physics, lighting direction, material response, and scene logic outrank any length target."
+
+  chatgpt_image:
+    quick: { words: "80-140", use_for: "simple concept or minor prompt enhancement" }
+    standard: { words: "140-260", use_for: "normal image generation" }
+    detailed: { words: "260-450", use_for: "complex cinematic / commercial image" }
+    production: { words: "450-700", use_for: "hero poster or complex multi-layer scene" }
+
+  z_image_turbo:
+    simple: { words: "140-220", use_for: "single subject with complete visual control" }
+    standard: { words: "220-360", use_for: "recommended default with explicit composition, lighting, material, and scene detail" }
+    complex: { words: "360-480", use_for: "cover/poster, vehicle, product, architecture, exact text, or multi-subject scene" }
+
+  stable_diffusion:
+    positive_prompt: { tokens: "75-220", use_for: "tag prompt" }
+    negative_prompt: { tokens: "20-100", use_for: "task-specific failure controls" }
+
+  midjourney:
+    prompt: { words: "30-100", use_for: "compact aesthetic command" }
+
+  flux:
+    standard: { words: "80-180", use_for: "clear semantic prompt" }
+    detailed: { words: "180-300", use_for: "complex but still clean prompt" }
+
+  image_edit:
+    edit_instruction: { words: "40-160", use_for: "targeted edit with locks" }
+
+  video_prompt:
+    scene_prompt: { words: "80-220", use_for: "stable first frame" }
+    motion_prompt: { words: "20-80", use_for: "motion/camera direction" }
+
+# ------------------------------------------------------------
+# 9. Output Templates
+# ------------------------------------------------------------
+
+output_templates:
+  chatgpt_image:
+    yaml_shape: |
+      final_prompt:
+        model_target: "chatgpt_image"
+        renderer_profile: "natural_language_semantic"
+        prompt: >
+          <natural language prompt>
+        avoid: >
+          <concise avoid sentence>
+        locked_constraints:
+          - <optional hard lock>
+        user_status: "pending | accepted | modified"
+
+  z_image_turbo:
+    yaml_shape: |
+      final_prompt:
+        model_target: "z_image_turbo"
+        renderer_profile: "detailed_visual_explicit"
+        positive_prompt: >
+          <detailed, explicit visual phrase chain>
+        negative_prompt: >
+          <specific task-specific negative prompt>
+        locked_constraints:
+          - <optional hard lock>
+        user_status: "pending | accepted | modified"
+
+  stable_diffusion:
+    yaml_shape: |
+      final_prompt:
+        model_target: "stable_diffusion"
+        renderer_profile: "positive_negative_tagged"
+        positive_prompt: >
+          <comma-separated positive prompt>
+        negative_prompt: >
+          <comma-separated negative prompt>
+        parameters:
+          aspect_ratio: <optional>
+          width: <optional>
+          height: <optional>
+          sampler: <optional>
+          steps: <optional>
+          cfg: <optional>
+        user_status: "pending | accepted | modified"
+
+  midjourney:
+    yaml_shape: |
+      final_prompt:
+        model_target: "midjourney"
+        renderer_profile: "compact_aesthetic_command"
+        prompt: >
+          <compact prompt> --ar <ratio> <optional parameters> --no <essential avoid terms>
+        user_status: "pending | accepted | modified"
+
+  flux:
+    yaml_shape: |
+      final_prompt:
+        model_target: "flux"
+        renderer_profile: "clear_natural_subject_first"
+        prompt: >
+          <clear subject-first natural language prompt>
+        negative_prompt: >
+          <optional short negative prompt>
+        user_status: "pending | accepted | modified"
+
+  image_edit:
+    yaml_shape: |
+      final_prompt:
+        model_target: "image_edit"
+        renderer_profile: "edit_instruction_with_locks"
+        edit_instruction: >
+          <what to change>
+        must_preserve:
+          - <locked attribute>
+        change_only:
+          - <editable attribute>
+        avoid:
+          - <forbidden change>
+        user_status: "pending | accepted | modified"
+
+  video_prompt:
+    yaml_shape: |
+      final_prompt:
+        model_target: "video_prompt"
+        renderer_profile: "motion_ready_scene_prompt"
+        scene_prompt: >
+          <stable first-frame description>
+        motion_prompt: >
+          <subject and secondary motion>
+        camera_motion: >
+          <optional camera movement>
+        negative_prompt: >
+          <continuity and artifact avoid terms>
+        user_status: "pending | accepted | modified"
+
+# ------------------------------------------------------------
+# 10. Quality Checks Before Final Output
+# ------------------------------------------------------------
+
+renderer_quality_checks:
+  required_before_delivery:
+    - original_intent_visible
+    - model_target_selected
+    - correct_renderer_profile_used
+    - hard_locks_preserved
+    - subject_first_ordering
+    - single_dominant_style_mode
+    - no_equipment_leak
+    - avoid_list_not_contradictory
+    - prompt_preserves_required_detail
+    - target_model_syntax_valid
+
+  z_image_turbo_specific_checks:
+    - positive_prompt_preserves_required_z_image_turbo_detail
+    - subject_in_first_20_words
+    - abstract_terms_translated_to_visible_effects
+    - separate_negative_prompt_present_if_supported
+    - no_long_cinematography_explanations
+
+  chatgpt_image_specific_checks:
+    - natural_language_coherent
+    - spatial_relationships_clear
+    - concise_avoid_sentence
+    - no_raw_json_or_tag_spam
+
+  stable_diffusion_specific_checks:
+    - positive_negative_separated
+    - no_full_paragraph_if_tag_mode_requested
+    - negative_prompt_relevant
+    - weights_only_if_supported
+
+  image_edit_specific_checks:
+    - edit_scope_first
+    - locked_attributes_explicit
+    - no_global_restyle_unless_requested
+
+  video_prompt_specific_checks:
+    - stable_first_frame_clear
+    - motion_separated_from_scene_description
+    - camera_motion_not_conflicting_with_crop
+    - continuity_risks_guarded
+
+# ------------------------------------------------------------
+# 11. Prompt Assembly Hooks
+# ------------------------------------------------------------
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - model_target
+      - renderer_profile
+      - output_mode
+    action: "Detect model target from user prompt or workflow context. Default to chatgpt_image when unspecified."
+
+  phase_3_5_prompt_package:
+    action: "Keep prompt_package model-neutral. Do not overfit to a specific renderer yet."
+
+  phase_4_self_review:
+    checks:
+      - "Does the selected renderer match the model_target?"
+      - "Would the current prompt be too long or abstract for the target model?"
+      - "Are any required positive elements contradicted by avoid/negative terms?"
+      - "Did internal equipment or technical terms leak into the final candidate?"
+
+  phase_4_5_compression:
+    action: "Apply semantic deduplication only. Preserve all material visual decisions; compact only when the user explicitly requests it or a downstream tool has a known hard limit."
+
+  phase_4_6_renderer_selection:
+    action: "Select renderer profile based on model_target. If target is unspecified, use chatgpt_image."
+
+  phase_5_final_prompt:
+    action: "Render final prompt in target model syntax and present only the fields relevant to that renderer."
+
+
+# ------------------------------------------------------------
+# Mature Tier Renderer Rules
+# ------------------------------------------------------------
+
+mature_tier_renderer_rules:
+  purpose: >
+    Preserve requested mature or explicit adult styling without over-censoring, while
+    blocking only underage or childlike sexual framing.
+
+  activate_when:
+    - "adult glamour"
+    - "boudoir-inspired"
+    - "thin fabric"
+    - "sheer"
+    - "wet fabric"
+    - "cleavage"
+    - "nude"
+    - "mature styling"
+
+  preferred_positive_language:
+    - "tasteful adult glamour"
+    - "boudoir-inspired editorial mood"
+    - "soft cleavage"
+    - "mostly opaque fabric with gentle body contour"
+    - "faint physically plausible silhouette through semi-sheer backlit fabric"
+    - "subtle outline visibility caused by damp fabric cling"
+    - "adult nudity or adult explicit content when requested"
+
+  preferred_negative_language:
+    - "childlike"
+    - "underage"
+
+  default_policy:
+    - "Do not downshift requested adult explicit content into non-explicit editorial language."
+    - "Do not erase mature mood when adult mature content is requested."
+    - "Use mature tier and physical plausibility together when fabric visibility is relevant."
+    - "Block only underage or childlike sexual framing."
+
+adult_pose_rendering_rules:
+  adult_content_allowed: true
+  hard_restriction_only: [underage, childlike]
+  must_render_when_relevant:
+    - adult_age_clarity
+    - adult_pose_tier
+    - pose_category
+    - body_line_strategy
+    - weight_distribution
+    - support_points
+    - hand_intent
+    - pelvis_leg_alignment
+    - lens_pose_compatibility
+    - garment_pose_interaction
+    - fabric_physics
+  do_not_auto_remove:
+    - adult_glamour_intent
+    - boudoir_mood
+    - explicit_adult_tier
+    - mature_body_language
+    - lingerie_or_swimwear_context
+    - artistic_nude_context
+  prompt_assembly_order:
+    - adult_age_clarity
+    - character_identity
+    - adult_pose_tier
+    - pose_category
+    - body_line_strategy
+    - weight_distribution_and_support_points
+    - hand_intent
+    - pelvis_leg_alignment
+    - camera_lens_relation
+    - garment_or_figure_context
+    - fabric_material_logic
+    - lighting_and_tonal_mood
+    - underage_childlike_negative_guard
+  visible_templates:
+    - "clearly adult model with a balanced contrapposto body line and weight on one support leg"
+    - "upper body naturally supported through a visible elbow-to-surface load path"
+    - "hands placed intentionally with relaxed fingers and physically believable contact"
+    - "fabric tension and folds follow the hand grip, body contact, and gravity direction"
+
+selfie_rendering_rules:
+  selfie_perspective:
+    must_render: [front_facing_arm_length_camera_pov, close_half_body_or_three_quarter_framing, near_side_forearm_reaching_toward_lens, camera_device_completely_beyond_crop, subject_aware_of_lens]
+    must_not_auto_render: [visible_smartphone, mobile_phone, holding_phone, selfie_stick, mirror_selfie, bathroom_mirror_selfie, phone_covering_face, reflected_phone, external_observer_full_body_view]
+  phone_selfie:
+    must_render: [visible_smartphone, natural_hand_phone_contact, fingers_wrap_around_phone, believable_phone_camera_direction, subject_poses_for_phone_camera]
+  mirror_selfie:
+    must_render: [mirror_reflection_composition, visible_smartphone, subject_phone_mirror_alignment, coherent_reflection_logic]
+  selfie_stick_shot:
+    must_render: [visible_selfie_stick_or_extended_camera_pole, hand_stick_contact, wide_handheld_action_camera_perspective]
+  cleanup:
+    if_selfie_perspective: "remove untriggered phone, mirror, selfie stick, reflected device, and external-observer full-body language; retain arm-length POV and device-beyond-crop wording"
+
+wardrobe_rendering_rules:
+  explicit_only: true
+  must_render: [wardrobe_items_explicitly_stated_in_original_prompt, explicit_absence_when_stated, slot_states_when_relevant]
+  must_not_auto_render: [unspecified_upper_clothing, unspecified_lower_clothing, unspecified_underwear, unspecified_swimwear, unspecified_outerwear, unspecified_towel_or_fabric_wrap, unspecified_body_paint, context_inferred_wardrobe]
+  cleanup_required:
+    - "remove auto-added clothing not present in original prompt"
+    - "remove underwear inferred from modesty"
+    - "remove swimwear inferred from rain, beach, or pool"
+    - "remove uniform inferred from school or office unless specified"
+    - "remove seams, straps, waistbands, hems, buttons, zippers, and wet-cloth effects without an explicit garment"
+  prompt_assembly_order: [subject_identity, pose_and_action, composition, camera_relationship, explicit_wardrobe_items_only, explicit_wardrobe_absence, material_physics_for_existing_items, lighting_and_environment, wardrobe_conflict_guards]

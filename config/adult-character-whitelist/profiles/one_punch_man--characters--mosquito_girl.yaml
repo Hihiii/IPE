@@ -1,0 +1,53 @@
+schema_version: 1.0.0
+character:
+  id: one_punch_man--characters--mosquito_girl
+  display_name: Mosquito Girl
+  aliases:
+  - Mosquito Girl
+  - 蚊少女
+  - Mosquito Girl (One Punch Man)
+  - 蚊の少女
+  source_title: One Punch Man
+  adult_status: confirmed_adult
+  adult_source_basis: One Punch Man default character design
+  identity_summary: A vampire-like monster created by the House of Evolution with very long dark purple-black hair, glowing crimson red eyes, extremely pale skin, and a tall voluptuous build. Wears a revealing dark purple dress or bikini-like outfit with black opera gloves, and has large translucent mosquito-like wings on her back, a mosquito-like proboscis, and dark insectoid leg armor. Can control swarms of mosquitos and drain blood from victims. Seductive and cruel with a haughty monstrous arrogance.
+  visual_anchors:
+  - very long dark purple-black hair
+  - glowing crimson red eyes
+  - extremely pale skin
+  - tall voluptuous build
+  - revealing dark purple dress or bikini outfit
+  - black opera gloves
+  - large translucent mosquito wings on back
+  - mosquito proboscis
+  - dark insectoid leg armor
+  - seductive cruel expression
+  - very long dark purple hair
+  - crimson red eyes
+  - pale angular face
+  - tall voluptuous monster build
+  - mosquito wings
+  outfit_anchors:
+  - very long dark purple-black hair
+  - crimson red eyes
+  - dark purple revealing dress
+  - black opera gloves
+  - mosquito wings
+  - mosquito proboscis
+  - insectoid leg armor
+  - Mosquito monster with dark purple hair, crimson eyes, mosquito wings, and seductive cruel presence.
+  style_anchors:
+  - seductive cruel arrogance
+  - haughty monstrous confidence
+  - bloodthirsty predatory calm
+  drift_guards:
+  - missing mosquito wings
+  - missing proboscis
+  - wrong hair color (not dark purple-black)
+  - wrong eye color (not crimson red)
+  - generic attractive person
+  - bright colorful outfit
+  - heroic kind demeanor
+  - blonde or brown hair
+  - non-insectoid legs
+  - human normal appearance

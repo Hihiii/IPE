@@ -1,0 +1,45 @@
+schema_version: "1.0.0"
+name: "character-sheet-multiview-system"
+description: >
+  Character sheet and multi-view controller for preserving identity across front,
+  side, back, expression, outfit, and prop views.
+
+view_set_schema:
+  required_views:
+    - front_view
+    - side_view
+    - back_view
+  optional_views:
+    - expression_sheet
+    - prop_callout
+    - costume_detail_callout
+    - material_swatches
+  identity_locks:
+    - silhouette
+    - hair_identity
+    - face_impression
+    - palette
+    - costume_structure
+    - signature_props
+
+layout_rules:
+  - "Use consistent proportions and costume marker placement across all views."
+  - "Do not change hairstyle, emblem, belt, glove, footwear, or prop shape between views."
+  - "Use neutral pose for turnaround views unless action sheet is requested."
+  - "Keep labels minimal; exact text only when requested."
+
+failure_modes:
+  - "front and side views look like different characters"
+  - "back view loses costume markers"
+  - "expression sheet changes face identity"
+  - "prop callout uses wrong weapon or accessory"
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    action: "Detect character sheet, turnaround, model sheet, expression sheet, and multi-view requests."
+  phase_2_cinematic_enrichment:
+    action: "Lock identity and costume markers across each requested view."
+  phase_4_self_review:
+    checks:
+      - "Do all views share the same silhouette, hair, face, palette, and costume markers?"
+      - "Are prop and material callouts consistent with the main character?"

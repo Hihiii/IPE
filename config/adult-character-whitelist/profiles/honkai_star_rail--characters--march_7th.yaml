@@ -1,0 +1,57 @@
+schema_version: 1.0.0
+character:
+  id: honkai_star_rail--characters--march_7th
+  display_name: March 7th
+  aliases:
+  - March 7th
+  - 三月七
+  - 三月七 (崩壞：星穹鐵道)
+  source_title: 'Honkai: Star Rail'
+  adult_status: confirmed_adult
+  adult_source_basis: 'Honkai: Star Rail default appearance'
+  identity_summary: Cheerful photographer and archer with light blue braided pigtails, ice blue eyes,
+    a pink and white photo-themed outfit, ice bow, and energetic friendly demeanor.
+  visual_anchors:
+  - light blue braided pigtails
+  - ice blue eyes
+  - pink and white photo-themed outfit
+  - Six-Phase Ice Bow
+  - cheerful energetic expression
+  - bright ice blue eyes
+  - perpetually cheerful expression
+  - light pastel icy blue
+  - rounded full crown
+  - straight blunt bangs above eyebrows
+  - bright ice blue
+  - soft oval face with gentle contours
+  - athletic archer build
+  outfit_anchors:
+  - light blue braided pigtails
+  - off-shoulder white crop top with pink
+  - high-waisted asymmetric white skirt
+  - Six-Phase Ice Bow
+  - knee-high white boots
+  - Cheerful archer with light blue braided pigtails, pink/white photo-themed outfit with asymmetrical
+    hem, camera accessory pack at hip, and knee-high boots.
+  style_anchors:
+  - bright, cheerful calm
+  - bright, curious, and engaged
+  drift_guards:
+  - short bob cut
+  - dark hair color
+  - single ponytail
+  - loose unbraided hair
+  - wrong eye color (not ice blue)
+  - generic attractive person
+  - cold emotionless expression
+  - wrong face impression
+  - missing light blue braided pigtails
+  - missing off-shoulder white crop top
+  - missing asymmetric white skirt
+  - missing ice bow
+  - missing knee-high white boots
+  - random outfit redesign
+  - dark or gothic outfit palette
+  - fragile passive pose
+  - overly muscular build
+  - slouching posture

@@ -1,0 +1,597 @@
+# =============================================================================
+# fashion-silhouette-library.yaml
+# Fashion editorial silhouette system — maps garment shapes, fabric types, pose
+# geometry, camera framing, and construction vocabulary for editorial fashion
+# photography, including daring/sexy editorial silhouettes.
+# =============================================================================
+
+schema_version: "1.0.0"
+name: "fashion-silhouette-library"
+description: >
+  A fashion editorial silhouette system that maps garment shapes, fabric types,
+  pose geometry, camera framing, construction vocabulary, and sexy editorial
+  styling for high-end fashion and premium portrait enhancement.
+
+core_principle: >
+  A silhouette defines the garment's visual impact before any detail.
+  The same fabric in a different silhouette communicates a completely
+  different mood. Silhouette choice precedes fabric choice, which precedes
+  color and accessory decisions. For sexy/daring editorial, the silhouette
+  should reveal skin through deliberate construction — cut-outs, strappy binding,
+  deep plunges, or sheer layering — not through accidental exposure.
+
+# ===========================================================================
+# SECTION 1: SILHOUETTE DEFINITIONS
+# ===========================================================================
+
+silhouette_definitions:
+  # --- CLASSIC / EDITORIAL SILHOUETTES ---
+
+  a_line:
+    description: "Fitted at shoulders, gradually widening to a broad hem — classic feminine, elegant, and flowy."
+    best_fabrics: [silk, satin, chiffon, lightweight_wool, cotton_broadcloth]
+    best_pose_geometry: s_curve
+    mood_affinity: [editorial_luxury, romantic, elegant, classic]
+    construction_vocabulary:
+      neckline: "sweetheart, bateau, jewel, v-neck"
+      shoulder: "natural, set-in, dropped"
+      sleeve_type: "cap, three-quarter, bishop, sleeveless"
+      waistline: "natural, empire, dropped"
+      hemline: "wide sweep, floor-length, tea-length, knee"
+      closure: "back zip, side zip, button-front"
+    camera_affinity:
+      best_crop: full_body
+      detail_focus: "hem flare and waist-to-hip transition"
+    pose_strategy: "Continuous s-curve with one hand lightly skimming the hip or holding the hem. Avoid angular breaks that interrupt the fabric's flow."
+    renderer_positive: "a-line silhouette, fitted shoulders flowing into a gradually widening hem, fabric draping naturally from waist"
+    renderer_negative: "stiff bell shape, collapsed hem, static curtain-like drape"
+
+  hourglass:
+    description: "Fitted bodice with defined waist and equal bust/hip width — emphasizes curves and tailoring."
+    best_fabrics: [stretch_silk, knit_jersey, cotton_poplin, tailored_wool]
+    best_pose_geometry: s_curve
+    mood_affinity: [sensual, editorial_luxury, classic, powerful, sexy_editorial]
+    construction_vocabulary:
+      neckline: "v-neck, sweetheart, square, portrait"
+      shoulder: "natural, puff, cap"
+      sleeve_type: "fitted, bracelet, three-quarter, sleeveless"
+      waistline: "nipped natural waist, corseted, belted"
+      hemline: "pencil, trumpet, mermaid, knee-length"
+      closure: "back zip, side zip, corset lacing"
+    camera_affinity:
+      best_crop: waist_up or three_quarter
+      detail_focus: "waist cinching, hip-to-waist ratio, bodice fit"
+    pose_strategy: "Emphasize waist-to-hip contrast with one hand on hip or waist. S-curve with slight contrapposto. One shoulder slightly back to show bodice fit from multiple angles."
+    renderer_positive: "hourglass silhouette, fitted bodice with defined waist, natural waist emphasis, fitted hip line"
+    renderer_negative: "boxy shape, undefined waist, fabric hiding the waistline"
+
+  column:
+    description: "Straight narrow silhouette from shoulder to hem — sleek, minimalist, architectural."
+    best_fabrics: [silk_crepe, jersey, matte_satin, fine_wool, double_knit]
+    best_pose_geometry: s_curve
+    mood_affinity: [minimalist, editorial_luxury, modern, cool]
+    construction_vocabulary:
+      neckline: "jewel, high-neck, turtleneck, bateau, asymmetric"
+      shoulder: "natural, narrow, dropped"
+      sleeve_type: "long fitted, dolman, sleeveless"
+      waistline: "none or subtle natural"
+      hemline: "straight, floor-length, ankle, midi, mini"
+      closure: "back zip, side invisible zip"
+    camera_affinity:
+      best_crop: full_body
+      detail_focus: "continuous vertical line from shoulder to hem"
+    pose_strategy: "Soft s-curve with minimal limb disruption. One hand at hem pinch or behind the back. Avoid wide stances that break the narrow vertical line."
+    renderer_positive: "column silhouette, straight narrow line from shoulder to hem, clean vertical drape, sleek minimalist shape"
+    renderer_negative: "bell-shaped hem, excess fabric bunching at waist, broken vertical line"
+
+  cocoon:
+    description: "Oversized, rounded silhouette that wraps around the body — relaxed, modern, sculptural."
+    best_fabrics: [cashmere, wool, heavy_knit, boucle, boiled_wool]
+    best_pose_geometry: broken_line
+    mood_affinity: [editorial_luxury, avant_garde, cozy, relaxed]
+    construction_vocabulary:
+      neckline: "wide crew, cowl, shawl collar, asymmetric drape"
+      shoulder: "extended dropped, raglan, dolman"
+      sleeve_type: "dolman, batwing, three-quarter, wide cuff"
+      waistline: "undefined or dropped"
+      hemline: "curved, asymmetric, midi, full-length"
+      closure: "open front, toggle, single button, wrap belt"
+    camera_affinity:
+      best_crop: full_body
+      detail_focus: "overall volume, shoulder-to-hem rounded line"
+    pose_strategy: "One hand in pocket to create fabric tension at one side. Broken-line limbs inside the volume. Avoid stiff arms that compress the cocoon shape."
+    renderer_positive: "cocoon silhouette, rounded oversize shape, soft volume, fabric gathering naturally at shoulders and hem"
+    renderer_negative: "collapsed volume, deflated shape, compressed fabric, silhouette losing its rounded line"
+
+  trapeze:
+    description: "Flared silhouette wider at hem than A-line — dramatic, swinging, liberated."
+    best_fabrics: [chiffon, organza, tulle, cotton_lawn, crepe]
+    best_pose_geometry: s_curve
+    mood_affinity: [editorial_luxury, dramatic, playful, romantic]
+    construction_vocabulary:
+      neckline: "round, boat, bateau, scoop"
+      shoulder: "dropped, extended"
+      sleeve_type: "cap, short flutter, sleeveless"
+      waistline: "empire or no defined waist"
+      hemline: "wide swing, mini, knee, midi"
+      closure: "back zip, side zip"
+    camera_affinity:
+      best_crop: full_body
+      detail_focus: "hem width and swing, fabric movement"
+    pose_strategy: "Movement-based pose: mid-walk or turning to show hem swing. One arm raised or extended to create diagonal tension across the flare."
+    renderer_positive: "trapeze silhouette, wide flared shape from bust to hem, swinging movement, fabric catching air"
+    renderer_negative: "flat bell shape, no hem movement, collapsed flare"
+
+  fit_and_flare:
+    description: "Fitted bodice with waist seam, full flared skirt — structured, feminine, editorial."
+    best_fabrics: [cotton_broadcloth, taffeta, silk_dupioni, organza, brocade]
+    best_pose_geometry: s_curve
+    mood_affinity: [editorial_luxury, romantic, classic, dramatic]
+    construction_vocabulary:
+      neckline: "sweetheart, square, bateau, off-shoulder"
+      shoulder: "natural, puff, cap"
+      sleeve_type: "short puff, three-quarter, sleeveless, long fitted"
+      waistline: "defined at natural waist, seamed, belted"
+      hemline: "knee-length, tea-length, mini"
+      closure: "back zip, side zip, button-front"
+    camera_affinity:
+      best_crop: three_quarter or full_body
+      detail_focus: "waist seam, skirt volume transition, bodice fit"
+    pose_strategy: "One hand at waist to emphasize the transition point. Skirt should have space — avoid compressed poses. Weight on back leg with front toe pointing outward."
+    renderer_positive: "fit-and-flare silhouette, fitted bodice with defined waist seam, full flared skirt maintaining shape"
+    renderer_negative: "collapsed skirt, waist seam invisible, bodice and skirt merging"
+
+  asymmetrical:
+    description: "Uneven hem, shoulder, neckline, or waist — modern, edgy, avant-garde."
+    best_fabrics: [leather, couture_fabric, heavyweight_silk, neoprene, mixed_materials]
+    best_pose_geometry: broken_line
+    mood_affinity: [avant_garde, edgy, editorial_fashion, modern, sexy_editorial]
+    construction_vocabulary:
+      neckline: "one-shoulder, asymmetric drape, diagonal cowl"
+      shoulder: "one-shoulder, cut-out, asymmetric cap"
+      sleeve_type: "one sleeve only, asymmetric lengths, detached"
+      waistline: "diagonal seam, asymmetric belt, half-corset"
+      hemline: "high-low, diagonal, handkerchief, sculptural"
+      closure: "asymmetric zip, hidden snap, single button offset"
+    camera_affinity:
+      best_crop: three_quarter or full_body
+      detail_focus: "the asymmetry point, hem break, diagonal line"
+    pose_strategy: "Angled stance emphasizing the asymmetrical line. The longer side of the hem should be visible. Broken-line geometry to complement the irregular silhouette."
+    renderer_positive: "asymmetrical silhouette, deliberate uneven lines, modern sculptural shape, one-shoulder or diagonal hem"
+    renderer_negative: "symmetrical shaping that contradicts the design, random unevenness without intention"
+
+  bodycon:
+    description: "Tight, body-hugging from shoulder to hem — emphasizes every curve."
+    best_fabrics: [stretch_knit, ribbed_cotton, spandex_mix, viscose_jersey]
+    best_pose_geometry: s_curve
+    mood_affinity: [sensual, editorial_fashion, sporty, modern, sexy_editorial]
+    construction_vocabulary:
+      neckline: "turtleneck, mock, scoop, v-neck, off-shoulder"
+      shoulder: "natural, cap"
+      sleeve_type: "long fitted, three-quarter, sleeveless"
+      waistline: "natural, dropped"
+      hemline: "mini, midi, floor-length, straight"
+      closure: "back zip, none (pull-on)"
+    camera_affinity:
+      best_crop: three_quarter or full_body
+      detail_focus: "continuous body line, fabric stretch response"
+    pose_strategy: "Contrapposto with visible weight shift creates tension lines on the fabric. S-curve emphasizing hip-to-waist transition. One hand on hip breaks the silhouette with a garment tension point."
+    renderer_positive: "bodycon silhouette, form-fitting stretch fabric following body contours, continuous body line"
+    renderer_negative: "loose baggy areas, compression wrinkles at wrong points, fabric not following body shape"
+
+  high_low:
+    description: "Hem shorter in front, longer in back — dramatic, modern, movement-oriented."
+    best_fabrics: [silk, chiffon, organza, crepe, lightweight_wool]
+    best_pose_geometry: s_curve
+    mood_affinity: [editorial_fashion, dramatic, modern, romantic]
+    construction_vocabulary:
+      neckline: "v-neck, scoop, halter, one-shoulder"
+      shoulder: "natural, cap, dropped"
+      sleeve_type: "short, three-quarter, sleeveless, capelet"
+      waistline: "natural, empire"
+      hemline: "high-low, curved, diagonal"
+      closure: "back zip, side zip"
+    camera_affinity:
+      best_crop: three_quarter or full_body
+      detail_focus: "hem transition from short front to long back"
+    pose_strategy: "Standing with slight back-turn to reveal the long back hem. One hand lifting the front hem for a dynamic line. Avoid sitting or crouching that hides the hem differential."
+    renderer_positive: "high-low silhouette, shorter front hem sweeping into longer back, dramatic hem arc, fabric flowing from front to back"
+    renderer_negative: "flat even hem, front and back merging into one length, hem drag"
+
+  cape:
+    description: "Shoulder-draped silhouette with fabric falling from shoulders or arms — regal, architectural, editorial."
+    best_fabrics: [wool, cashmere, heavy_silk, velvet, boucle]
+    best_pose_geometry: broken_line
+    mood_affinity: [editorial_luxury, dramatic, avant_garde, powerful]
+    construction_vocabulary:
+      neckline: "open front, shawl, crew, hooded"
+      shoulder: "extended, dropped, structured"
+      sleeve_type: "none (arm slits), dolman, wide bell"
+      waistline: "undefined or belted over cape"
+      hemline: "floor-length, midi, asymmetric"
+      closure: "single clasp, neck button, open front"
+    camera_affinity:
+      best_crop: full_body
+      detail_focus: "cape fall from shoulders, fabric volume, back drape"
+    pose_strategy: "Wide stance with one arm raised or extended to open the cape silhouette. The cape needs space — avoid compressed poses. Shoulders back to show the full span."
+    renderer_positive: "cape silhouette, fabric flowing from shoulders, dramatic volume, architectural drape, fabric opening with movement"
+    renderer_negative: "collapsed cape, fabric clinging flat to body, cape and outfit merging visually"
+
+  peplum:
+    description: "Fitted bodice with a flared fabric ruffle at the waist — structured, feminine, waist-emphasizing."
+    best_fabrics: [cotton_broadcloth, wool_crepe, silk_dupioni, brocade, taffeta]
+    best_pose_geometry: s_curve
+    mood_affinity: [editorial_luxury, classic, romantic, powerful]
+    construction_vocabulary:
+      neckline: "scoop, v-neck, jewel, bateau"
+      shoulder: "natural, cap, puff"
+      sleeve_type: "fitted, three-quarter, bracelet, sleeveless"
+      waistline: "defined natural waist (peplum attaches here)"
+      hemline: "peplum flare at waist, pencil or A-line below, knee-length"
+      closure: "back zip, side zip, front button"
+    camera_affinity:
+      best_crop: waist_up
+      detail_focus: "peplum flare at waist, waist-to-hip transition"
+    pose_strategy: "One hand at waist to highlight the peplum flare. S-curve with weight on back leg — the peplum should not compress against the body. The flare should maintain its shape."
+    renderer_positive: "peplum silhouette, fitted bodice with structured waist peplum, flared detail at waist, clean waist-to-hip transition"
+    renderer_negative: "flattened peplum, peplum compressed against body, undefined waist seam"
+
+  deconstructed:
+    description: "Intentional unfinished, cut, layered, or reconstructed elements — avant-garde, conceptual, fashion-forward."
+    best_fabrics: [leather, cotton_denim, mixed_materials, neoprene, heavyweight_cotton]
+    best_pose_geometry: broken_line
+    mood_affinity: [avant_garde, edgy, editorial_fashion, conceptual]
+    construction_vocabulary:
+      neckline: "raw edge, cut-out, asymmetric, strappy"
+      shoulder: "cut-out, exposed seam, detached"
+      sleeve_type: "detached, cut, strappy, single"
+      waistline: "exposed seam, half-belt, corset panel"
+      hemline: "raw edge, cut, frayed, layered strips"
+      closure: "exposed zip, strappy, asymmetric fastening"
+    camera_affinity:
+      best_crop: full_body or three_quarter
+      detail_focus: "construction reveals, layering breaks, raw edges"
+    pose_strategy: "Edgy angular poses with broken-line geometry. Reveal the construction details through pose — expose a cut-out, show raw hem, separate the layers with limb position."
+    renderer_positive: "deconstructed silhouette, intentional unfinished edges, layered fragments, exposed construction seams, avant-garde structural details"
+    renderer_negative: "random torn clothing without intention, messy construction reads as damage, missing coherence"
+
+  # --- DARING / SEXY EDITORIAL SILHOUETTES ---
+
+  cut_out:
+    description: "Strategic fabric removal at waist, ribs, back, or shoulders — reveals skin through geometric cut-out construction rather than transparency. The body is framed by the garment's negative space."
+    best_fabrics: [leather, neoprene, stretch_cotton, couture_fabric, mixed_materials]
+    best_pose_geometry: broken_line
+    mood_affinity: [sexy_editorial, edgy, avant_garde, modern, sensual]
+    construction_vocabulary:
+      neckline: "cut-out plunge, strappy, asymmetric, high-neck with chest cut-out"
+      shoulder: "cut-out shoulder cap, detached strap over bare shoulder"
+      sleeve_type: "cut-out sleeve, detached cuff, strap-only sleeve"
+      waistline: "side cut-out, midriff cut-out, ribcage cut-out panels"
+      hemline: "mini with side cut-out, high-low with exposed hip"
+      closure: "visible zip, strap and buckle, lace-up, snap fasteners"
+    camera_affinity:
+      best_crop: three_quarter or full_body
+      detail_focus: "cut-out geometry, skin framing by fabric, negative space pattern"
+      close_up_can_show: "cut-out edge finish, strap tension on skin"
+    pose_strategy: "Broken-line geometry that opens or emphasizes the cut-out. Twist the torso to expose the side cut-out. Raise arm to reveal rib cut-out. One hand near the cut-out edge draws attention to the skin reveal."
+    renderer_positive: "cut-out silhouette, strategic fabric removal creating geometric negative space, skin framed by structured garment edges, deliberate reveal through construction"
+    renderer_negative: "random hole in fabric, torn appearance, accidental exposure, cut-out collapsing into wrinkle"
+    wardrobe_coverage: "body_paint_inspired_fashion or minimal_or_nude when large cut-outs expose multiple zones"
+
+  strappy:
+    description: "Minimal fabric held by straps, chains, rings, or binding — body-harness inspired with bondage visual language translated into high-fashion editorial. The straps define the silhouette, not the fabric panels."
+    best_fabrics: [leather, patent_leather, nylon_webbing, chain_metal, stretch_latex]
+    best_pose_geometry: broken_line
+    mood_affinity: [sexy_editorial, edgy, avant_garde, powerful, sensual]
+    construction_vocabulary:
+      neckline: "strap collar, chain choker, Y-strap, multi-strap harness"
+      shoulder: "single strap, crossed straps, chain over shoulder"
+      waistline: "waist harness, chain belt, strappy corset"
+      hemline: "strap hem, micro-mini with strap details, chain fringe"
+      closure: "buckle, clip ring, O-ring, lace-up, snap"
+      body_coverage: "minimal fabric panels connected by strap network"
+    camera_affinity:
+      best_crop: full_body or three_quarter
+      detail_focus: "strap geometry across body, tension lines, skin-between-straps contrast"
+      close_up_can_show: "buckle hardware, strap texture on skin"
+    pose_strategy: "Sharp angular poses that emphasize strap tension lines. Arms slightly away from body to show the strap network. One hand pulling a strap adds dynamic tension. The pose should make the strap structure readable."
+    renderer_positive: "strappy silhouette, minimal fabric connected by deliberate straps, body harness geometry, skin exposed between tensioned straps, high-fashion bondage-inspired construction"
+    renderer_negative: "messy strap arrangement, straps floating away from body, unexplained hardware, costume-like bondage"
+    wardrobe_coverage: "body_paint_inspired_fashion"
+
+  plunge:
+    description: "Extreme décolletage via deep v-neck, full open back, or dramatic side slits — fabric exists only at the structural anchor points. The silhouette is defined by what it reveals."
+    best_fabrics: [silk, satin, stretch_jersey, crepe, chiffon]
+    best_pose_geometry: s_curve
+    mood_affinity: [sexy_editorial, sensual, dramatic, editorial_luxury]
+    construction_vocabulary:
+      neckline: "deep plunge to navel, extreme v, deep sweetheart"
+      shoulder: "off-shoulder, one-shoulder, strapless"
+      sleeve_type: "sleeveless, sheer bishop, detached cuff"
+      waistline: "natural with waist stay, corset internal structure"
+      hemline: "floor-length with thigh slit, mini, mermaid"
+      back: "full open back to waist, drop-waist back, keyhole back"
+      closure: "invisible zip, back lace-up, waist stay"
+    camera_affinity:
+      best_crop: three_quarter or full_body
+      detail_focus: "plunge depth, fabric anchoring points, back openness"
+      close_up_can_show: "plunge neckline construction, fabric tension at bust"
+    pose_strategy: "S-curve that emphasizes the plunge line. One hand near the neckline or along the slit draws the eye. Back-facing shots to reveal open back. Avoid hunched shoulders that hide the décolletage."
+    renderer_positive: "plunge silhouette, deep revealing neckline secured at structural anchor points, fabric existing only where needed, dramatic skin exposure through deliberate design"
+    renderer_negative: "wardrobe malfunction appearance, insecure fit, fabric gaping without intention"
+    wardrobe_coverage: "body_paint_inspired_fashion or lingerie_inspired_fashion"
+
+  sheer_layering:
+    description: "Multiple translucent layers that reveal the body beneath — combines fabric-opacity-translucency logic with editorial fashion. The reveal is through material, not cut."
+    best_fabrics: [chiffon, organza, mesh, lace, sheer_silk, tulle]
+    best_pose_geometry: s_curve
+    mood_affinity: [sexy_editorial, sensual, romantic, ethereal, editorial_luxury]
+    construction_vocabulary:
+      neckline: "sheer high-neck, lace yoke, mesh inset"
+      shoulder: "sheer cap, transparent puff, mesh panel"
+      sleeve_type: "sheer bishop, mesh long sleeve, lace bell"
+      waistline: "sheer panel at waist, transparent midriff"
+      hemline: "layered sheer tiers, lace-edged, floating"
+      layering: "opaque mini under sheer floor-length, lace overlay on bare skin, mesh over bralette"
+    camera_affinity:
+      best_crop: full_body or three_quarter
+      detail_focus: "translucency gradient, layer depth, body visible through fabric"
+      close_up_can_show: "sheer texture, weave pattern, skin visible through mesh"
+    pose_strategy: "S-curve with fabric-stretching pose that reveals translucency. Backlight is essential — position body between light and camera. One hand pulling fabric taut reveals more translucency at the tension point."
+    renderer_positive: "sheer layering silhouette, translucent fabric layers revealing body beneath, deliberate opacity gradient, fabric texturing visible over skin, ethereal editorial sensuality"
+    renderer_negative: "flat opaque layers, no translucency logic, accidental nudity appearance, fabric opacity contradiction"
+    wardrobe_coverage: "body_paint_inspired_fashion or lingerie_inspired_fashion"
+
+# ===========================================================================
+# SECTION 2: SILHOUETTE × MATERIAL MAP
+# ===========================================================================
+
+silhouette_material_map:
+  purpose: "Maps each fabric tier to recommended and avoid silhouettes."
+  references: "Fabric tiers defined in config/visual-cinematography/material-rendering-library.yaml (fashion_material_quality_ladder)."
+
+  silk_ultra_premium:
+    recommended: [a_line, column, fit_and_flare, high_low, hourglass, plunge]
+    acceptable: [trapeze, bodycon, peplum, sheer_layering]
+    avoid: [cocoon, cape, deconstructed, strappy, cut_out]
+
+  silk_premium:
+    recommended: [a_line, column, fit_and_flare, high_low, trapeze, plunge]
+    acceptable: [hourglass, peplum, bodycon, sheer_layering]
+    avoid: [cocoon, deconstructed, cape, strappy, cut_out]
+
+  silk_standard:
+    recommended: [a_line, trapeze, fit_and_flare, bodycon]
+    acceptable: [column, peplum, high_low, plunge]
+    avoid: [cocoon, deconstructed, cape, strappy, cut_out, asymmetrical]
+
+  cashmere_ultra_premium:
+    recommended: [cocoon, column, cape, hourglass]
+    acceptable: [a_line, peplum, bodycon]
+    avoid: [trapeze, deconstructed, high_low, cut_out, strappy, plunge]
+
+  cashmere_premium:
+    recommended: [cocoon, column, hourglass, a_line]
+    acceptable: [peplum, bodycon, cape]
+    avoid: [trapeze, deconstructed, asymmetrical, cut_out, strappy, plunge]
+
+  cashmere_standard:
+    recommended: [column, cocoon, a_line, bodycon]
+    acceptable: [hourglass, peplum]
+    avoid: [trapeze, deconstructed, cape, asymmetrical, high_low, cut_out, strappy]
+
+  leather_premium:
+    recommended: [asymmetrical, deconstructed, bodycon, peplum, hourglass, cut_out, strappy]
+    acceptable: [column, fit_and_flare, plunge]
+    avoid: [a_line, trapeze, cape, cocoon]
+
+  leather_standard:
+    recommended: [bodycon, asymmetrical, deconstructed, peplum, cut_out, strappy]
+    acceptable: [hourglass, column, plunge]
+    avoid: [a_line, trapeze, cape, cocoon, fit_and_flare]
+
+  satin_premium:
+    recommended: [a_line, column, hourglass, fit_and_flare, high_low, plunge]
+    acceptable: [peplum, bodycon, trapeze, sheer_layering]
+    avoid: [cocoon, deconstructed, cape, strappy, cut_out]
+
+  satin_standard:
+    recommended: [a_line, trapeze, bodycon, fit_and_flare]
+    acceptable: [column, hourglass, high_low, plunge]
+    avoid: [cocoon, deconstructed, cape, asymmetrical, strappy, cut_out]
+
+  lace_tulle_organza_premium:
+    recommended: [a_line, trapeze, fit_and_flare, high_low, cape, sheer_layering]
+    acceptable: [hourglass, column, peplum, plunge]
+    avoid: [deconstructed, bodycon, asymmetrical, cocoon, cut_out, strappy]
+
+  lace_tulle_organza_standard:
+    recommended: [a_line, trapeze, fit_and_flare, peplum, sheer_layering]
+    acceptable: [column, high_low, hourglass, plunge]
+    avoid: [cocoon, deconstructed, cape, asymmetrical, bodycon, cut_out, strappy]
+
+# ===========================================================================
+# SECTION 3: SILHOUETTE × CAMERA CROP
+# ===========================================================================
+
+silhouette_crop_affinity:
+  a_line:
+    best_crop: full_body
+    detail_focus: "hem flare and waist-to-hip transition"
+  hourglass:
+    best_crop: waist_up or three_quarter
+    detail_focus: "waist cinching and bodice fit"
+  column:
+    best_crop: full_body
+    detail_focus: "continuous vertical line and fabric texture"
+  cocoon:
+    best_crop: full_body
+    detail_focus: "overall volume and shoulder-to-hem rounded line"
+  trapeze:
+    best_crop: full_body
+    detail_focus: "hem width and fabric movement"
+  fit_and_flare:
+    best_crop: three_quarter or full_body
+    detail_focus: "waist seam and skirt volume transition"
+  asymmetrical:
+    best_crop: three_quarter or full_body
+    detail_focus: "the asymmetry point and hem break"
+  bodycon:
+    best_crop: three_quarter or full_body
+    detail_focus: "continuous body line and fabric stretch response"
+  high_low:
+    best_crop: three_quarter or full_body
+    detail_focus: "hem transition from short front to long back"
+  cape:
+    best_crop: full_body
+    detail_focus: "fabric fall and volume from shoulders"
+  peplum:
+    best_crop: waist_up
+    detail_focus: "peplum flare at waist and bodice fit"
+  deconstructed:
+    best_crop: full_body or three_quarter
+    detail_focus: "construction reveals, layering breaks, raw edges"
+  cut_out:
+    best_crop: three_quarter or full_body
+    detail_focus: "cut-out geometry and skin-framing by fabric"
+    close_up_can_show: "cut-out edge finish and strap tension on skin"
+  strappy:
+    best_crop: full_body or three_quarter
+    detail_focus: "strap geometry across body and tension lines"
+    close_up_can_show: "buckle hardware and strap texture on skin"
+  plunge:
+    best_crop: three_quarter or full_body
+    detail_focus: "plunge depth and fabric anchoring points"
+    close_up_can_show: "neckline construction and fabric tension at bust"
+  sheer_layering:
+    best_crop: full_body or three_quarter
+    detail_focus: "translucency gradient and layer depth"
+    close_up_can_show: "sheer texture and weave pattern over skin"
+
+# ===========================================================================
+# SECTION 4: FASHION CONSTRUCTION VOCABULARY
+# ===========================================================================
+
+fashion_construction_vocabulary:
+  neckline_types:
+    halter: "Straps from front neck wrap behind the neck, leaving shoulders and back bare."
+    sweetheart: "Curved neckline resembling the top of a heart, emphasizes décolletage."
+    bateau: "Wide horizontal neckline running from shoulder to shoulder."
+    cowl: "Draped fabric that falls in soft folds at the front."
+    keyhole: "Small opening at the front neckline with a button or clasp."
+    asymmetric: "One-shoulder or diagonal neckline, modern and edgy."
+    off_shoulder: "Neckline sits below shoulders, exposing shoulders and collarbone."
+    portrait: "Wide neckline that frames the shoulders."
+    v_neck: "V-shaped neckline, depth varies."
+    high_neck: "Covers neck fully — turtleneck, mock neck, funnel neck."
+    jewel: "Rounded neckline at base of neck, simple and clean."
+    square: "Straight horizontal and vertical lines forming a square."
+    scoop: "Rounded U-shape neckline."
+    plunge: "Deep v-neck extending to or below the bust line, revealing décolletage."
+    deep_v: "Extreme v-neck that reaches the navel or waist."
+    strappy: "Multiple thin straps across the chest, no solid fabric panel."
+    keyhole_extreme: "Large open keyhole exposing sternum to mid-chest."
+
+  back_styles:
+    full_open: "Open back that extends from shoulders to waist."
+    keyhole_back: "Small opening in the back, usually at shoulder-blade level."
+    low_back: "Back neckline drops below the shoulder blades."
+    lace_up: "Crossed lacing across the open back, can be tightened."
+    cut_out_back: "Geometric cut-out shapes on the back."
+    strappy_back: "Multiple straps crossing the exposed back."
+
+  sleeve_types:
+    bishop: "Long sleeve gathered at the cuff, creating rounded volume."
+    puff: "Gathered at the cap and/or cuff."
+    dolman: "Wide sleeve cut as one piece with the bodice."
+    cap: "Short sleeve covering only the shoulder cap."
+    three_quarter: "Sleeve ending between elbow and wrist."
+    bell: "Fitted at armhole, flaring from elbow to wrist."
+    lantern: "Voluminous sleeve gathered at both ends."
+    butterfly: "Wide short sleeve that opens like wings."
+    raglan: "Sleeve extending in one piece from collar to underarm."
+    set_in: "Sleeve sewn into the armhole, clean shoulder line."
+    batwing: "Extremely wide dolman creating a wing-like shape."
+    bracelet: "Fitted sleeve ending at wrist bone."
+
+  waist_treatments:
+    natural: "Waist seam at the body's natural waistline."
+    dropped: "Waistline below natural waist."
+    empire: "Waistline just below the bust."
+    basque: "Extended bodice below natural waist."
+    corseted: "Structured waist with boning or lacing."
+    draped: "Fabric gathered or draped at the waist."
+    belted: "Belt defines the waist."
+    half_belt: "Partial belt only at front or back."
+    side_cut_out: "Fabric removed at the side waist, exposing midriff."
+    rib_cut_out: "Cut-out panels at ribcage level."
+
+  hem_types:
+    lettuce: "Stretched zigzag or rolled hem creating wavy edge."
+    handkerchief: "Asymmetric pointed hem panels at different lengths."
+    scalloped: "Rounded scallop shapes along the hem edge."
+    horsehair: "Stiff hem with horsehair braid for volume."
+    raw_edge: "Unfinished cut edge."
+    bonded: "Heat-sealed hem edge."
+    curved: "Hem following a curved line."
+    straight: "Clean horizontal hem line."
+    asymmetrical: "Deliberate uneven hem lengths."
+    thigh_slit: "Vertical opening along the leg, extending mid-thigh or higher."
+    side_split: "Opening at the side seam."
+    front_split: "Opening at the front center seam."
+
+  garment_openings:
+    thigh_high_slit: "Slit extending to upper thigh, reveals leg."
+    side_seam_slit: "Slit along the side seam from hem upward."
+    front_split: "Opening at front of skirt or dress."
+    open_back: "Back of garment fully open from shoulders to waist."
+    cut_out_waist: "Fabric removed at waist area."
+    cut_out_ribs: "Fabric removed at ribcage area."
+    cut_out_shoulders: "Shoulder area exposed through geometric cut."
+
+  seam_types:
+    princess: "Vertical curved seam shaping the bodice."
+    french: "Enclosed seam with fabric folded inside."
+    lapped: "One fabric layer overlapping another."
+    exposed: "Seam visible on the outside as design element."
+    contrast_stitch: "Thread color contrasts with fabric."
+    flat_felled: "Strong durable seam with raw edges enclosed."
+    bias: "Seam joining fabric cut on the bias."
+
+# ===========================================================================
+# SECTION 5: SEXY EDITORIAL RULES
+# ===========================================================================
+
+sexy_editorial_rules:
+  purpose: "Coordinates sexy/daring silhouettes with the NSFW mapping pipeline and ensures the output matches bold sexy intent."
+  light_and_color:
+    rule: "When cut_out, strappy, plunge, or sheer_layering silhouette is active, default to bright high-key fashion lighting (not dark moody). Skin should be well-lit and fabric details fully visible."
+    cross_reference: "See prompt-renderer.yaml nsfw_trigger_rendering for lighting rules."
+  wardrobe_coverage:
+    rule: "Map sexy silhouette to the corresponding wardrobe_coverage level. cut_out and strappy → body_paint_inspired_fashion. plunge → lingerie_inspired_fashion or body_paint_inspired_fashion. sheer_layering → lingerie_inspired_fashion."
+    cross_reference: "See skill-phase-1.yaml mature_content.wardrobe_coverage values."
+  pose_geometry:
+    rule: "Match silhouette to pose geometry: cut_out and strappy require broken-line angular poses. plunge and sheer_layering work best with s-curve flowing poses."
+    cross_reference: "See anti-boring-pose-system.yaml fashion_pose_geometry."
+  age_safety:
+    rule: "Sexy editorial silhouettes always require adult age lock. All silhouettes in this library are adult/editorial only — never apply to underage or childlike framing."
+  lighting_preference:
+    rule: "For cut_out and strappy: dramatic directional light with sharp shadow lines emphasizes the strap/cut-out geometry. For plunge and sheer_layering: soft diffused key light with rim light emphasizes the revealed skin and fabric translucency."
+  mood_inheritance:
+    rule: "When mature_content.level is adult_explicit from NSFW mapping, prefer cut_out, strappy, plunge, or sheer_layering over classic silhouettes. When level is adult_mature, prefer hourglass, bodycon, asymmetrical."
+
+# ===========================================================================
+# SECTION 6: RULES
+# ===========================================================================
+
+rules:
+  - "Silhouette choice precedes fabric choice. Select the silhouette first, then match fabric and color."
+  - "When a silhouette is active, match pose_geometry to the silhouette's recommended type (s-curve or broken-line) from anti-boring-pose-system.yaml fashion_pose_geometry."
+  - "When garment_interaction hand purpose is active from anti-boring-pose-system.yaml, select the interaction point based on silhouette: column → hem pinch, cocoon → fabric gather at shoulder, asymmetrical → adjust irregular hem, cut_out → touch strap edge, strappy → pull strap, plunge → trace neckline edge."
+  - "When mature_content.level is adult_explicit or NSFW-triggered, prefer sexy silhouettes (cut_out, strappy, plunge, sheer_layering) and apply sexy_editorial_rules lighting and pose defaults."
+  - "Cross-reference fashion_construction_vocabulary with garment-structure-failure-diagnosis.yaml for failure prevention."
+  - "Cross-reference silhouette_crop_affinity with crop-aware-character-outfit-policy.yaml when camera framing is decided."
+  - "Cross-reference silhouette_material_map with material-rendering-library.yaml when fabric tier is active."
+  - "Do not force a silhouette that contradicts the user's specified garment type."
+  - "When no silhouette is specified, infer from garment type + fabric + intended mood."
+  - "All silhouettes in this library are adult/editorial only — do not apply underage or childlike framing."

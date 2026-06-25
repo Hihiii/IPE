@@ -1,0 +1,46 @@
+schema_version: "1.0.0"
+name: image-edit-policy
+purpose: "Adultize eligible human image sources, then apply the requested edit without post-baseline global drift."
+
+mode_detection:
+  edit_triggers: ["edit", "revise", "change only", "replace", "repair", "preserve", "修改", "只改", "修復"]
+  default_mode: generate
+
+edit_contract:
+  required_analysis:
+    - source_subject_kind
+    - baseline_application
+    - requested_changes
+    - affected_visual_focus_or_surface_area
+    - preservation_locks
+    - source_aspect_ratio_or_resolution_if_known
+  rules:
+    - "For eligible human or humanoid sources: validate adult eligibility, apply adult_nude baseline or wardrobe transformation, then apply the requested change."
+    - "For nonhuman-only sources: preserve the existing edit-only behavior and do not add NSFW elements."
+    - "After baseline application, preserve identity, adult status, body proportions, pose, composition, lighting, and background unless explicitly changed."
+    - "Keep user-requested edits localized after adultization; never redesign unrelated source attributes."
+    - "Recalculate visual_focus_plan or local_anatomy_surface_contract only when the requested edit affects the visible focus, crop, pose, fabric/skin state, contact, or lighting of that area."
+    - "When local anatomy remains outside the edit scope, preserve its existing focal role and visible surface state rather than globally retouching the source."
+    - "Re-run adult-subject eligibility checks after baseline and requested changes."
+    - Use the same Z-Image output contract as generation.
+
+default_preservation_locks:
+  - identity and adult presentation
+  - facial structure and hairstyle
+  - body proportions and visible anatomy
+  - pose and camera framing
+  - scene lighting and background
+
+baseline_transformation_locks:
+  - clearly adult presentation
+  - resolved adult_nude tier or transformed wardrobe state
+  - visible pose support, contact, and material response
+  - declared visual focus and visible local anatomy surface state when not targeted by the edit
+
+self_review:
+  - requested_change_is_explicit
+  - eligible_human_source_has_adult_nude_baseline
+  - unrequested_attributes_are_locked
+  - no_global_redesign
+  - affected_focus_or_surface_change_is_localized
+  - adult_policy_still_passes

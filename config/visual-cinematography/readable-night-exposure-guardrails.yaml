@@ -1,0 +1,289 @@
+# ============================================================
+# readable-night-exposure-guardrails.yaml
+# Readable night, controlled darkness, and exposure-readability controller
+# Version: 1.0.0
+# Purpose:
+#   Prevent cinematic night scenes from becoming too dark while preserving
+#   dramatic mood, contrast, moonlight, firelight, atmosphere, and silhouette power.
+# ============================================================
+
+schema_version: "1.0.0"
+name: "readable-night-exposure-guardrails"
+description: >
+  A night-exposure and subject-readability module for prompt enhancement. It balances
+  cinematic darkness with visibility of the hero subject, action point, mechanical detail,
+  product detail, architecture detail, or scene-critical targets.
+
+core_principle: >
+  Night scenes can be dark, but the subject, primary action, and important targets
+  must remain readable unless the user explicitly requests silhouette-only or near-black mood.
+  Cinematic darkness should preserve midtones, rim light, bounce light, and protected detail zones.
+
+global_rules:
+  - "Prefer readable-night rendering over silhouette-heavy darkness for action, mecha, product, architecture, destruction, and detailed character scenes."
+  - "Do not let moonlight, smoke, haze, or deep shadows erase the hero subject."
+  - "Use lifted midtones on the main subject while keeping the environment dark."
+  - "Use rim light, bounce light, firelight, street fill, or reflected light to preserve detail."
+  - "Protect critical detail zones: face/head, torso, hands, legs, impact point, target object, product surface, or architectural focal feature."
+  - "Use controlled deep shadows, not crushed blacks."
+  - "Smoke, fog, or dust should be translucent enough to preserve action readability unless concealment is requested."
+
+readable_night_schema:
+  brightness_intent:
+    mode: "bright | balanced | dark_cinematic | readable_night | silhouette_driven"
+    subject_midtone_priority: "low | medium | high"
+    shadow_floor: "deep | controlled | lifted"
+    silhouette_only: false
+    protected_detail_zones: []
+    key_visibility_targets: []
+    highlight_source_priority: []
+    ambient_fill_strategy: []
+    smoke_or_haze_opacity_limit: "clear | light | medium | heavy"
+  exposure_readability:
+    overall_scene_brightness: "low | balanced | medium"
+    hero_subject_detail_visibility: "low | medium | high"
+    impact_point_visibility: "low | medium | high"
+    target_visibility: "low | medium | high"
+    background_visibility: "low | medium | high"
+    midtone_lift_required: false
+    rim_light_required: false
+    bounce_light_required: false
+  renderer_guardrails:
+    positive: []
+    negative: []
+
+activation_rules:
+  activate_when:
+    - "night scene"
+    - "moonlight"
+    - "dark city"
+    - "firelight"
+    - "smoke or haze"
+    - "mecha or giant subject at night"
+    - "destruction or action scene at night"
+    - "detailed product or architecture in dark environment"
+    - "black armor, dark clothing, dark vehicle, or dark building facade"
+  do_not_activate_when:
+    - "user explicitly requests pure silhouette"
+    - "user explicitly requests near-black horror darkness"
+    - "subject is intentionally hidden"
+
+brightness_intent_profiles:
+  readable_night:
+    positive_language:
+      - "readable night scene"
+      - "cinematic but not underexposed"
+      - "lifted midtones on the main subject"
+      - "controlled deep shadows without crushed blacks"
+      - "rim light separates the subject from the dark background"
+      - "secondary bounce light preserves important detail"
+      - "dark environment with readable subject structure"
+    negative_language:
+      - "underexposed hero subject"
+      - "crushed blacks hiding important detail"
+      - "subject lost in darkness"
+      - "silhouette-only lighting unless requested"
+      - "muddy shadows"
+      - "opaque smoke hiding the action"
+
+  dark_cinematic:
+    positive_language:
+      - "deep cinematic shadows"
+      - "selective highlights on important forms"
+      - "readable silhouette and key details"
+      - "low-key contrast with preserved focal detail"
+    negative_language:
+      - "flat black image"
+      - "unreadable focal point"
+      - "dead shadow areas hiding the subject"
+
+  silhouette_driven:
+    positive_language:
+      - "intentional graphic silhouette"
+      - "clear outline against brighter background"
+      - "minimal internal detail by design"
+    negative_language:
+      - "accidental detail loss"
+      - "uncontrolled underexposure"
+    rule: "Use only when explicitly requested or when silhouette is the actual concept."
+
+night_mecha_action_defaults:
+  brightness_intent:
+    mode: "readable_night"
+    subject_midtone_priority: "high"
+    shadow_floor: "controlled"
+    silhouette_only: false
+    protected_detail_zones:
+      - "head and faceplate"
+      - "torso armor"
+      - "arms and hands"
+      - "legs and feet"
+      - "impact point"
+      - "primary destruction target"
+    key_visibility_targets:
+      - "armor panel separation"
+      - "mechanical joints"
+      - "crushed vehicles"
+      - "damaged building contact point"
+      - "debris source"
+    highlight_source_priority:
+      - "moon rim light on upper body"
+      - "firelight bounce on lower armor"
+      - "streetlight or urban ambient fill"
+      - "reflected light from smoke or wet pavement"
+    ambient_fill_strategy:
+      - "subtle blue urban fill on torso"
+      - "warm reflected firelight on legs"
+      - "thin rim light along shoulders and head"
+    smoke_or_haze_opacity_limit: "medium"
+  prompt_positive:
+    - "Gundam remains readable beyond silhouette"
+    - "armor panel details visible on torso, arms, and legs"
+    - "moonlight outlines the head, shoulders, and upper armor"
+    - "firelight and reflected bounce light reveal lower armor and crushed vehicles"
+    - "controlled deep shadows without crushed blacks"
+    - "impact point remains clearly visible"
+  prompt_negative:
+    - "subject lost in darkness"
+    - "underexposed armor detail"
+    - "unreadable torso"
+    - "unreadable legs"
+    - "firelight only in the background"
+    - "opaque smoke hiding the subject"
+
+night_architecture_defaults:
+  brightness_intent:
+    mode: "readable_night"
+    subject_midtone_priority: "medium"
+    shadow_floor: "controlled"
+    protected_detail_zones:
+      - "facade rhythm"
+      - "entry or focal architectural feature"
+      - "material transitions"
+      - "window grid"
+    highlight_source_priority:
+      - "interior window glow"
+      - "street-level lighting"
+      - "moon or sky fill"
+  prompt_positive:
+    - "night architecture remains readable with controlled facade detail"
+    - "deep shadows preserve material and window-grid readability"
+    - "interior glow and street fill reveal the building form"
+
+night_product_defaults:
+  brightness_intent:
+    mode: "readable_night"
+    subject_midtone_priority: "high"
+    shadow_floor: "controlled"
+    protected_detail_zones:
+      - "brand/product silhouette"
+      - "surface finish"
+      - "logo or key details if text is requested"
+      - "contact shadow"
+    highlight_source_priority:
+      - "controlled rim highlight"
+      - "soft reflection"
+      - "small key light"
+  prompt_positive:
+    - "product remains clearly readable in low-key lighting"
+    - "surface texture and edges are preserved"
+    - "controlled highlights define the shape"
+
+positive_prompt_recipes:
+  readable_night_mecha:
+    - "readable night scene, cinematic but not underexposed"
+    - "lifted midtones on the Gundam armor"
+    - "controlled deep shadows without crushed blacks"
+    - "moonlight clearly outlines the head, shoulders, and upper armor"
+    - "firelight and reflected bounce light reveal the torso, legs, and crushed vehicles"
+    - "armor panel details remain readable throughout the body"
+    - "the street remains dark but not completely blacked out"
+    - "the primary impact point remains clearly visible"
+
+  readable_night_city_action:
+    - "night city remains moody but readable"
+    - "key action point is illuminated by practical light and reflected firelight"
+    - "foreground remains dark but not fully crushed"
+    - "smoke and haze stay semi-transparent"
+
+negative_prompt_recipes:
+  general:
+    - "underexposed hero subject"
+    - "crushed blacks"
+    - "subject lost in darkness"
+    - "silhouette-only lighting unless requested"
+    - "unreadable torso"
+    - "unreadable legs"
+    - "opaque smoke hiding the subject"
+    - "muddy shadows"
+    - "firelight only in the background"
+    - "important details hidden in black"
+
+model_specific_rendering:
+  chatgpt_image:
+    positive_template: >
+      Keep the scene dark and cinematic, but not underexposed. Preserve readable
+      midtones on the main subject, controlled deep shadows without crushed blacks,
+      rim light separation, and enough bounce light to reveal the important detail zones.
+    avoid_template: >
+      Avoid losing the subject in darkness, silhouette-only lighting unless requested,
+      crushed blacks, muddy shadows, opaque smoke hiding the action, and background-only firelight.
+
+  z_image_turbo:
+    positive_template: >
+      readable night scene, cinematic but not underexposed, lifted midtones, controlled shadows,
+      rim light, bounce light, visible subject detail, clear impact point
+    negative_template: >
+      underexposed subject, crushed blacks, subject lost in darkness, unreadable torso,
+      unreadable legs, opaque smoke, muddy shadows, background-only firelight
+
+  stable_diffusion:
+    positive_template: >
+      readable night, lifted midtones, rim light, controlled shadows, visible armor detail,
+      bounce light, clear focal point
+    negative_template: >
+      underexposed, crushed blacks, black shadows, unreadable subject, opaque smoke,
+      muddy shadows, silhouette only
+
+quality_scoring:
+  night_visibility_high:
+    - "subject is readable beyond silhouette"
+    - "key protected detail zones are visible"
+    - "mood remains dark but information is not lost"
+    - "action point and target remain readable"
+  night_visibility_medium:
+    - "silhouette readable but some internal detail lost"
+    - "main action is visible but target detail is weak"
+  night_visibility_low:
+    - "hero subject disappears into darkness"
+    - "important action or target hidden by shadows or smoke"
+
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+      - brightness_intent
+      - exposure_readability
+    action: "Detect night/dark-scene risk and whether readable-night mode should override silhouette-heavy darkness."
+
+  phase_2_cinematic_enrichment:
+    action: "Translate night mood into controlled shadows, rim light, bounce light, lifted midtones, and protected detail zones."
+
+  phase_3_scene_blueprint:
+    action: "Place light sources so the hero subject, action point, and target remain readable."
+
+  phase_4_self_review:
+    checks:
+      - "Can the hero subject be read beyond silhouette?"
+      - "Are torso, limbs, or product details visible when needed?"
+      - "Are shadows deep but not crushed?"
+      - "Is the action point readable?"
+      - "Is smoke or fog too opaque?"
+
+  phase_4_5_cleanup:
+    action: "Do not remove readable-night or protected-detail-zone safeguards from dark scenes."
+
+  phase_4_6_renderer_selection:
+    action: "Apply target-model night-readability wording."
+
+  phase_5_final_prompt:
+    action: "Include concise readable-night exposure safeguards when dark scenes require visible structure."

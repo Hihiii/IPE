@@ -1,0 +1,64 @@
+schema_version: 1.0.0
+character:
+  id: final_fantasy_xiv--characters--estinien_varlineau
+  display_name: Estinien Varlineau
+  aliases:
+  - Estinien Varlineau
+  - 埃斯蒂尼安
+  - 埃斯蒂尼安 (Final Fantasy XIV)
+  source_title: Final Fantasy XIV
+  adult_status: confirmed_adult
+  adult_source_basis: Final Fantasy XIV default appearance (Heavensward/Endwalker era)
+  identity_summary: Grim Elezen dragoon with long silver-white hair in a high ponytail, sharp blue eyes,
+    a stern scarred face, wearing dark blue and black dragon-scale armor with intricate silver plate shoulder
+    guards, a red cloth accent across the chest or tied at waist, leather bracers, armored leggings, and
+    spiked boots, carrying a long barbed dragon lance.
+  visual_anchors:
+  - long silver-white hair in a high ponytail
+  - sharp piercing blue eyes
+  - stern scarred face
+  - dark blue and black dragon-scale armor with silver pauldrons
+  - long barbed dragon lance
+  - long silver-white hair in high ponytail
+  - scarred face
+  - permanent grim expression
+  - pointed Elezen ears
+  - silver-white
+  - smooth high crown pulled back
+  - long face-framing bangs
+  - sharp blue
+  - stern defined face with a strong jawline
+  - tall broad-shouldered Elezen dragoon build
+  outfit_anchors:
+  - long silver-white ponytail
+  - Elezen ears
+  - dragon armor with red accent
+  - dragon lance
+  - scarred face
+  - Grim Elezen dragoon with long silver-white hair in a high ponytail, dark blue and black dragon-scale
+    armor with intricate silver plate shoulder guards, a red cloth accent across the chest or tied at
+    waist, leather bracers, armored leggings, spiked boots, carrying a long barbed dragon lance.
+  style_anchors:
+  - grim determined
+  drift_guards:
+  - no short hair
+  - no missing ponytail
+  - no missing dragoon armor
+  - no light armor
+  - no smiling expression
+  - no missing lance
+  - no missing Elezen ears
+  - no bright cheerful palette
+  - missing long silver-white ponytail
+  - missing Elezen ears
+  - missing dragon armor
+  - missing red cloth accent
+  - missing pauldrons
+  - missing lance
+  - random outfit redesign
+  - missing armor plating
+  - short hair
+  - missing ponytail
+  - dark hair
+  - styled hair not fitting dragoon
+  - slender weak build

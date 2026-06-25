@@ -1,0 +1,63 @@
+schema_version: 1.0.0
+character:
+  id: genshin_impact--characters--shenhe
+  display_name: Shenhe
+  aliases:
+  - Shenhe
+  - 申鹤
+  - 申鹤 (Genshin Impact)
+  - Shenhe (Genshin Impact)
+  source_title: Genshin Impact
+  adult_status: confirmed_adult
+  adult_source_basis: Genshin Impact default appearance
+  identity_summary: Tall reserved adeptus disciple with very long dark grey-black hair with a vivid red
+    streak, pale ice-blue eyes, pale skin, red ropes/bindings across her arms and body, a white and dark
+    outfit with fur trim, and Cryo Vision.
+  visual_anchors:
+  - very long dark hair with red streak
+  - pale ice-blue eyes
+  - red ropes/bindings on body
+  - white and dark outfit with fur
+  - pale white skin
+  - cold reserved expression
+  - long dark hair with red streak
+  - red ropes/bindings across skin
+  - pale skin
+  - very dark grey-black hair with a vivid red streak on left side
+  - smooth straight crown
+  - long side-swept fringe
+  - pale ice-blue eyes, cold blue
+  - elegant oval face with refined features
+  - tall slender feminine build, elegant
+  outfit_anchors:
+  - very long dark hair with red streak
+  - pale ice-blue eyes
+  - red ropes/bindings on arms and body
+  - white bodice with fur trim
+  - detached dark sleeves
+  - White fitted bodice with dark grey under layer, fur-trimmed shoulders and hem, detached dark grey
+    sleeves with red ropes binding around arms, dark wrap skirt with red accents and fur trim, red ropes/bindings
+    across body and limbs, Cryo Vision at waist.
+  style_anchors:
+  - cold reserved neutral expression
+  - cold distant gaze
+  drift_guards:
+  - no red streak in hair
+  - warm friendly expression
+  - wrong eye color
+  - generic attractive person
+  - wrong face impression
+  - missing red ropes
+  - short hair
+  - missing red ropes/bindings
+  - missing fur trim
+  - missing white bodice
+  - generic fantasy armor
+  - random outfit redesign
+  - missing detached sleeves
+  - wavy or curly hair
+  - no red streak
+  - bright colored hair
+  - short stature
+  - hunched posture
+  - muscular bulk

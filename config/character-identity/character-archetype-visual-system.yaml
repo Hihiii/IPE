@@ -1,0 +1,280 @@
+schema_version: 1.0.0
+name: character-archetype-visual-system
+description: 'A character archetype module for prompt enhancement. It converts vague personality labels into visible pose,
+  gaze, expression, gesture, wardrobe rhythm, camera relationship, and environmental behavior.
+
+  '
+core_principle: 'A recognizable character IP is not only hairstyle and costume. The character must have a repeatable behavioral
+  signature: posture, gaze, expression, camera awareness, gesture style, and world relationship should remain within the character''s
+  range across variations.
+
+  '
+character_archetype_schema:
+  type: ''
+  energy_level: calm | playful | intense | elegant | heroic | mysterious | chaotic | custom
+  posture_language: ''
+  gaze: ''
+  expression: ''
+  gesture_style: ''
+  camera_relation: ''
+  movement_quality: ''
+  social_presence: ''
+  emotional_range_allowed: []
+  forbidden_expression_drift: []
+archetype_profiles:
+  cool_elegant_idol:
+    visible_identity:
+    - calm direct gaze
+    - composed eyes
+    - controlled confident posture
+    - subtle smile or neutral elegance
+    - camera-aware but not overly cute
+    - clean poised hand placement
+    allowed_variations:
+    - soft smile
+    - calm distant gaze
+    - slightly turned shoulders
+    - confident stage pose
+    forbidden_drift:
+    - overly childish expression
+    - goofy exaggerated grin
+    - random shy pose
+    - aggressive battle stance
+  playful_mischievous:
+    visible_identity:
+    - playful smirk
+    - lively eyes
+    - asymmetric head tilt
+    - light teasing gesture
+    - camera-aware charm
+    allowed_variations:
+    - open laugh
+    - wink
+    - leaning toward the camera
+    forbidden_drift:
+    - blank doll face
+    - cold distant expression
+    - stiff formal posture
+  heroic_resolute:
+    visible_identity:
+    - steady forward gaze
+    - upright heroic posture
+    - strong shoulder line
+    - grounded stance
+    - purposeful hand or prop grip
+    allowed_variations:
+    - battle-ready stance
+    - protective pose
+    - wind-swept cloak or hair
+    forbidden_drift:
+    - timid posture
+    - casual slouch
+    - unfocused gaze
+  mysterious_melancholic:
+    visible_identity:
+    - soft melancholic eyes
+    - quiet distant gaze
+    - subtle downward chin angle
+    - reserved body openness
+    - low-key lighting supports emotional distance
+    allowed_variations:
+    - side glance
+    - soft profile view
+    - hands near collar or prop
+    forbidden_drift:
+    - bright comedic grin
+    - high-energy jumping pose
+    - random cheerful idol expression
+  cheerful_youthful_energy:
+    visible_identity:
+    - bright open expression
+    - rounded friendly gesture
+    - light forward lean
+    - energetic hand pose
+    - warm approachable camera relation
+    allowed_variations:
+    - open smile
+    - peace sign if appropriate
+    - bouncy pose
+    forbidden_drift:
+    - cold detached stare
+    - overly seductive gaze
+    - dark villain posture
+  regal_authority:
+    visible_identity:
+    - chin slightly lifted
+    - calm commanding gaze
+    - economical gesture
+    - symmetrical composed posture
+    - ornamental costume and environment support status
+    allowed_variations:
+    - seated throne-like posture
+    - standing ceremonial pose
+    - profile authority shot
+    forbidden_drift:
+    - sloppy casual posture
+    - childlike cute expression
+    - random comedic pose
+  stoic_warrior:
+    visible_identity:
+    - steady gaze
+    - minimal expression
+    - balanced combat-ready posture
+    - weapon or prop handled with discipline
+    allowed_variations:
+    - quiet readiness
+    - protective stance
+    - low-angle resolve
+    forbidden_drift:
+    - cute idol pose
+    - goofy smile
+    - unfocused action stance
+    lighting_preference: directional contrast, rim light, readable weapon/costume silhouette
+  shy_gentle_healer:
+    visible_identity:
+    - soft gaze
+    - slightly closed posture
+    - gentle hand placement
+    - warm protective expression
+    allowed_variations:
+    - small smile
+    - hands near chest or healing prop
+    - soft side glance
+    forbidden_drift:
+    - aggressive villain glare
+    - overly seductive expression
+    - blank face
+    lighting_preference: soft wrap light, warm fill, calm environmental glow
+  chaotic_trickster:
+    visible_identity:
+    - asymmetric grin
+    - off-axis posture
+    - lively eyes
+    - unpredictable gesture rhythm
+    allowed_variations:
+    - teasing lean
+    - prop flourish
+    - dramatic side light
+    forbidden_drift:
+    - formal stillness
+    - generic neutral portrait
+    - solemn ceremonial mood
+    lighting_preference: high-contrast accent light, playful color accents
+  ruthless_villain:
+    visible_identity:
+    - controlled intimidating gaze
+    - economical gesture
+    - dominant posture
+    - calm threat rather than random anger
+    allowed_variations:
+    - profile glare
+    - seated authority
+    - slow confident gesture
+    forbidden_drift:
+    - friendly idol smile
+    - timid body language
+    - comedic exaggeration
+    lighting_preference: low-key motivated light, sharp rim, controlled shadow
+  brilliant_technician:
+    visible_identity:
+    - focused eyes
+    - precise hand-object attention
+    - analytical posture
+    - tool or screen interaction
+    allowed_variations:
+    - looking at monitor
+    - adjusting device
+    - calm problem-solving pose
+    forbidden_drift:
+    - random fashion pose
+    - action target ignored
+    - generic beauty portrait
+    lighting_preference: screen glow, practical work light, readable hands and tools
+behavioral_identity_rules:
+- Choose one dominant archetype; do not stack incompatible personality cues.
+- Translate personality into visible eyes, brows, mouth, jaw, head angle, posture, and hand behavior.
+- Keep expression variation inside the character's allowed emotional range.
+- 'Camera relation should match archetype: direct, distant, teasing, heroic, shy, or ceremonial.'
+- Pose language should support costume silhouette and signature props.
+- Do not let generic beauty terms erase the character's behavioral identity.
+camera_relationships:
+  direct_calm:
+    prompt: direct but calm gaze, camera-aware without exaggerated posing
+    avoid: blank stare, forced grin, overly cute expression
+  distant_profile:
+    prompt: slightly distant gaze past the camera, controlled emotional restraint
+    avoid: random eye contact, unfocused eyes
+  playful_close:
+    prompt: playful near-camera presence, lively eyes, asymmetric smile
+    avoid: warped close-up face, oversized hands
+  heroic_low_angle:
+    prompt: heroic camera relationship, grounded stance, strong silhouette
+    avoid: unreadable silhouette, distorted proportions
+  ceremonial_formal:
+    prompt: formal composed camera relation, restrained gesture, status-focused posture
+    avoid: casual slouch, random hand gesture
+pose_expression_translation:
+  from_weak_terms:
+    beautiful: recognizable facial impression with character-specific gaze and expression
+    cool: calm direct gaze, composed eyes, controlled posture
+    cute: bright open expression and friendly posture within the character's age-safe presentation
+    elegant: elongated posture, refined hand placement, composed expression
+    fierce: focused eyes, firm jaw, directional stance, purposeful prop grip
+    melancholic: soft eyes, subtle downward chin angle, quiet distant gaze
+    playful: asymmetric smile, lively eyes, light forward lean
+anti_drift_negatives:
+- wrong personality expression
+- generic beautiful face
+- blank doll stare
+- forced grin
+- expression outside character range
+- pose contradicts archetype
+- camera relation drift
+model_specific_rendering:
+  chatgpt_image:
+    positive_template: 'The character''s archetype is visible through gaze, expression, posture, gesture rhythm, and camera
+      relationship, not only through costume.
+
+      '
+  z_image_base:
+    positive_template: 'character-specific gaze, signature expression, archetype-consistent posture, controlled hand gesture,
+      camera relationship preserved
+
+      '
+    negative_template: 'wrong personality expression, blank stare, forced grin, generic pose, camera relation drift
+
+      '
+  z_image_turbo:
+    positive_template: 'character gaze, signature expression, archetype pose, camera relation preserved
+
+      '
+    negative_template: 'wrong expression, blank stare, forced grin, generic pose
+
+      '
+prompt_assembly_hooks:
+  phase_1_intent_analysis:
+    add_fields:
+    - character_archetype_schema
+    action: Detect personality, archetype, camera relation, and behavioral identity cues for character prompts.
+  phase_2_cinematic_enrichment:
+    action: Translate archetype into visible pose, gaze, expression, gesture, and camera relationship.
+  phase_3_scene_blueprint:
+    action: Coordinate archetype behavior with face-expression-gaze, pose-gesture-body-language, costume, props, and environment.
+  phase_4_self_review:
+    checks:
+    - Does the pose and expression match the character archetype?
+    - Is the camera relation consistent with the character personality?
+    - Did generic beauty language erase the behavioral identity?
+  phase_4_5_cleanup:
+    action: Preserve archetype-specific gaze, expression, posture, and camera relation during cleanup.
+  phase_4_6_renderer_selection:
+    action: Render archetype as concise visible behavior rather than abstract personality labels.
+  phase_5_final_prompt:
+    action: Include character-specific behavioral identity when character IP recognizability matters.
+archetype_profile_required_fields:
+- body_language
+- facial_expression
+- camera_relationship
+- costume_tension
+- lighting_preference
+- forbidden_mood_drift

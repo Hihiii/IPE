@@ -1,0 +1,61 @@
+schema_version: 1.0.0
+character:
+  id: street_fighter--characters--juri
+  display_name: Juri
+  aliases:
+  - Juri
+  - Juri Han
+  - 茱莉
+  - Juri (Street Fighter)
+  - Juri Han (Street Fighter)
+  source_title: Street Fighter
+  adult_status: confirmed_adult
+  adult_source_basis: Street Fighter IV default appearance
+  identity_summary: Korean Taekwondo fighter with long black hair in a side ponytail with purple streaks,
+    one green eye (right) and one brown eye (left), fair skin, wearing a purple and black revealing bodysuit
+    with sheer mesh panels, long black gloves, knee-high boots, and a Feng Shui Engine implant in her left
+    eye socket that glows green. Sadistic, mocking personality with constant cruel smirk.
+  visual_anchors:
+  - long black hair in side ponytail with purple streaks
+  - mismatched eyes (right green, left brown)
+  - green glowing Feng Shui Engine in left eye socket
+  - cruel mocking smirk
+  - fair skin
+  - purple and black bodysuit
+  - long black gloves
+  - knee-high black boots
+  - revealing sheer mesh panels on bodysuit
+  - lean athletic Taekwondo fighter build
+  - purple-streaked black hair
+  - high side ponytail
+  - long side-swept fringe
+  - green (right) / brown (left) heterochromia
+  - angular sharp-featured face
+  - lean athletic martial artist
+  outfit_anchors:
+  - long black hair in side ponytail with purple streaks
+  - green glowing left eye (Feng Shui Engine)
+  - purple and black revealing bodysuit
+  - sheer mesh panels on bodysuit
+  - long black gloves
+  - knee-high black boots
+  - Korean Taekwondo fighter in a purple and black bodysuit with sheer mesh panels, long black gloves,
+    knee-high boots, and glowing green Feng Shui Engine implant. Sadistic mocking expression.
+  style_anchors:
+  - cruel mocking sadistic smirk
+  - vicious taunting expression
+  drift_guards:
+  - both eyes same color
+  - no eye implant
+  - happy cheerful expression
+  - generic attractive person
+  - modest covered outfit
+  - missing side ponytail
+  - missing purple streaks in hair
+  - wrong outfit color
+  - long flowing loose hair
+  - twin ponytails
+  - wrong hair color
+  - shy timid demeanor
+  - soft feminine build
+  - frail weak frame

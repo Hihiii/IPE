@@ -1,0 +1,59 @@
+schema_version: 1.0.0
+character:
+  id: genshin_impact--characters--ganyu
+  display_name: Ganyu
+  aliases:
+  - Ganyu
+  - 甘雨
+  - 甘雨 (Genshin Impact)
+  - Ganyu (Genshin Impact)
+  source_title: Genshin Impact
+  adult_status: confirmed_adult
+  adult_source_basis: Genshin Impact default appearance
+  identity_summary: Half-adeptus female with very long light blue hair with a prominent red streak, light
+    blue eyes, two curved horns on head, a blue and white qipao-style outfit with gold trim, red ribbon
+    with bell ornament, and a Cryo Vision.
+  visual_anchors:
+  - long light blue hair with red streak
+  - two curved horns on head
+  - light blue eyes
+  - blue and white qipao dress
+  - red ribbon with bell
+  - Cryo Vision
+  - blue hair with red streak
+  - two curved horns on head (adeptus)
+  - red bell-shaped hair ornament on ribbon
+  - light blue hair with a prominent red streak on left side
+  - smooth high crown
+  - side-swept with long fringe
+  - light blue eyes, pale sapphire
+  - soft oval face with gentle features
+  - slender feminine build, graceful
+  outfit_anchors:
+  - very long light blue hair with red streak
+  - two curved horns on head
+  - blue and white qipao dress
+  - red ribbon with bell ornament
+  - detached floating sleeves
+  - Blue and white qipao-style dress with gold trim, detached light blue sleeves, black thigh-high stockings,
+    heeled ankle boots, red ribbon with bell, and Cryo Vision on ribbon.
+  style_anchors:
+  - soft calm attentive expression
+  - soft calm gaze
+  drift_guards:
+  - short hair
+  - no red streak in hair
+  - missing horns
+  - wrong eye color
+  - generic attractive person
+  - wrong face impression
+  - missing bell ornament
+  - missing blue and white qipao
+  - missing floating sleeves
+  - random outfit redesign
+  - generic fantasy armor
+  - missing red ribbon bell
+  - blond or bright pink hair
+  - no red streak
+  - muscular build
+  - hunched posture

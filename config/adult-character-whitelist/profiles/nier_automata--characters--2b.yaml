@@ -1,0 +1,74 @@
+schema_version: 1.0.0
+character:
+  id: nier_automata--characters--2b
+  display_name: 2B
+  aliases:
+  - 2B
+  - 2B (尼爾：自動人形)
+  - "2B (Nier: Automata)"
+  - "2B (NieR:Automata)"
+  - "2B (Nier Automata)"
+  - YoRHa No.2 Type B
+  - YoRHa 2B
+  - Nier 2B
+  - 2B YoRHa
+  source_title: NieR:Automata
+  adult_status: confirmed_adult
+  adult_source_basis: NieR:Automata YoRHa No.2 Type B default appearance
+  identity_summary: YoRHa android with platinum white bob haircut, black combat visor covering eyes, black
+    gothic battle dress with detached sleeves, long black gloves, black thigh-high boots with heels, and
+    floating Pod 042 support unit.
+  visual_anchors:
+  - platinum white shoulder-length bob haircut
+  - black opaque combat visor
+  - black gothic battle dress with keyhole back
+  - long black gloves reaching above elbow
+  - black thigh-high stiletto boots
+  - floating Pod 042
+  - katana at hip (Virtuous Contract)
+  - black combat visor covering eyes
+  - elegant lower face with reserved expression
+  - pale flawless skin
+  - visor never removed
+  - platinum white hair
+  - compact rounded crown
+  - short straight fringe, blunt cut
+  - refined oval proportion
+  - slender athletic android combat model
+  outfit_anchors:
+  - platinum white bob haircut
+  - black combat visor
+  - black gothic battle dress
+  - long black gloves
+  - black thigh-high boots
+  - Pod 042
+  - Virtuous Contract katana
+  - YoRHa android with platinum white bob haircut, black combat visor, black gothic battle dress with
+    detached sleeves, long black gloves, black thigh-high boots with heels, and Pod 042 floating companion.
+  style_anchors:
+  - stoic controlled calm
+  - visor-forward neutral orientation
+  drift_guards:
+  - visor removed or lifted showing eyes
+  - long flowing hair instead of bob
+  - blonde brown or black hair
+  - generic attractive female face
+  - wrong eye color (eyes should not be visible)
+  - cheerful bright expression
+  - android mechanical parts exposed
+  - missing white bob haircut
+  - missing black combat visor
+  - missing black gothic dress
+  - missing long black gloves
+  - missing thigh-high boots
+  - missing Pod 042
+  - armor instead of dress
+  - random outfit redesign
+  - wrong dress color
+  - long flowing hair
+  - ponytail
+  - blonde or brown hair
+  - curly hair
+  - fragile or passive pose
+  - excessive curves
+  - mannequin stiffness
