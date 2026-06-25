@@ -3,6 +3,26 @@ name: adult-character-whitelist
 eligibility: legacy profile maturity_profile.status == confirmed_adult
 character_count: 130
 characters:
+- name: Makima
+  game: Chainsaw Man
+- name: Power
+  game: Chainsaw Man
+- name: Android 18
+  game: Dragon Ball Z
+- name: Bulma
+  game: Dragon Ball Z
+- name: Chi-Chi
+  game: Dragon Ball Z
+- name: Videl
+  game: Dragon Ball Z
+- name: Asuka Langley Soryu
+  game: Evangelion
+- name: Misato Katsuragi
+  game: Evangelion
+- name: Rei Ayanami
+  game: Evangelion
+- name: Ritsuko Akagi
+  game: Evangelion
 - name: Izayoi
   game: Final Fantasy IV
 - name: Luca
@@ -141,50 +161,88 @@ characters:
   game: Genshin Impact
 - name: Yun Jin
   game: Genshin Impact
-- name: Kainé
-  game: NieR Replicant
+- name: Acheron
+  game: 'Honkai: Star Rail'
+- name: Black Swan
+  game: 'Honkai: Star Rail'
+- name: Bronya
+  game: 'Honkai: Star Rail'
+- name: Feixiao
+  game: 'Honkai: Star Rail'
+- name: Firefly
+  game: 'Honkai: Star Rail'
+- name: Fu Xuan
+  game: 'Honkai: Star Rail'
+- name: Himeko
+  game: 'Honkai: Star Rail'
+- name: Jade
+  game: 'Honkai: Star Rail'
+- name: Jingliu
+  game: 'Honkai: Star Rail'
+- name: Kafka
+  game: 'Honkai: Star Rail'
+- name: Lingsha
+  game: 'Honkai: Star Rail'
+- name: March 7th
+  game: 'Honkai: Star Rail'
+- name: Rappa
+  game: 'Honkai: Star Rail'
+- name: Robin
+  game: 'Honkai: Star Rail'
+- name: Ruan Mei
+  game: 'Honkai: Star Rail'
+- name: Seele
+  game: 'Honkai: Star Rail'
+- name: Silver Wolf
+  game: 'Honkai: Star Rail'
+- name: Sparkle
+  game: 'Honkai: Star Rail'
+- name: Blue Mary
+  game: King of Fighters
+- name: King
+  game: King of Fighters
+- name: Leona Heidern
+  game: King of Fighters
+- name: Mai Shiranui
+  game: King of Fighters
+- name: Shermie
+  game: King of Fighters
+- name: Vanessa
+  game: King of Fighters
 - name: 2B
   game: NieR:Automata
 - name: A2
   game: NieR:Automata
 - name: Eve
   game: NieR:Automata
-- name: March 7th
-  game: 'Honkai: Star Rail'
-- name: Himeko
-  game: 'Honkai: Star Rail'
-- name: Kafka
-  game: 'Honkai: Star Rail'
-- name: Silver Wolf
-  game: 'Honkai: Star Rail'
-- name: Seele
-  game: 'Honkai: Star Rail'
-- name: Bronya
-  game: 'Honkai: Star Rail'
-- name: Fu Xuan
-  game: 'Honkai: Star Rail'
-- name: Jingliu
-  game: 'Honkai: Star Rail'
-- name: Ruan Mei
-  game: 'Honkai: Star Rail'
-- name: Black Swan
-  game: 'Honkai: Star Rail'
-- name: Sparkle
-  game: 'Honkai: Star Rail'
-- name: Acheron
-  game: 'Honkai: Star Rail'
-- name: Robin
-  game: 'Honkai: Star Rail'
-- name: Firefly
-  game: 'Honkai: Star Rail'
-- name: Jade
-  game: 'Honkai: Star Rail'
-- name: Feixiao
-  game: 'Honkai: Star Rail'
-- name: Lingsha
-  game: 'Honkai: Star Rail'
-- name: Rappa
-  game: 'Honkai: Star Rail'
+- name: Kainé
+  game: NieR Replicant
+- name: Boa Hancock
+  game: One Piece
+- name: Carrot
+  game: One Piece
+- name: Nami
+  game: One Piece
+- name: Nefertari Vivi
+  game: One Piece
+- name: Nico Robin
+  game: One Piece
+- name: Fubuki
+  game: One Punch Man
+- name: Mosquito Girl
+  game: One Punch Man
+- name: Tatsumaki
+  game: One Punch Man
+- name: Ami Mizuno
+  game: Sailor Moon
+- name: Makoto Kino
+  game: Sailor Moon
+- name: Minako Aino
+  game: Sailor Moon
+- name: Rei Hino
+  game: Sailor Moon
+- name: Usagi Tsukino
+  game: Sailor Moon
 - name: Cammy
   game: Street Fighter
 - name: Chun-Li
@@ -199,67 +257,9 @@ characters:
   game: Street Fighter
 - name: Rose
   game: Street Fighter
-- name: Blue Mary
-  game: King of Fighters
-- name: King
-  game: King of Fighters
-- name: Leona Heidern
-  game: King of Fighters
-- name: Mai Shiranui
-  game: King of Fighters
-- name: Shermie
-  game: King of Fighters
-- name: Vanessa
-  game: King of Fighters
-- name: Nami
-  game: One Piece
-- name: Nico Robin
-  game: One Piece
-- name: Makima
-  game: Chainsaw Man
-- name: Power
-  game: Chainsaw Man
-- name: Boa Hancock
-  game: One Piece
-- name: Nefertari Vivi
-  game: One Piece
-- name: Carrot
-  game: One Piece
-- name: Bulma
-  game: Dragon Ball Z
-- name: Android 18
-  game: Dragon Ball Z
-- name: Chi-Chi
-  game: Dragon Ball Z
-- name: Videl
-  game: Dragon Ball Z
-- name: Rei Ayanami
-  game: Evangelion
-- name: Asuka Langley Soryu
-  game: Evangelion
-- name: Misato Katsuragi
-  game: Evangelion
-- name: Ritsuko Akagi
-  game: Evangelion
-- name: Usagi Tsukino
-  game: Sailor Moon
-- name: Ami Mizuno
-  game: Sailor Moon
-- name: Rei Hino
-  game: Sailor Moon
-- name: Makoto Kino
-  game: Sailor Moon
-- name: Minako Aino
-  game: Sailor Moon
 - name: Botan
   game: Yu Yu Hakusho
 - name: Keiko Yukimura
   game: Yu Yu Hakusho
 - name: Shizuru Kuwabara
   game: Yu Yu Hakusho
-- name: Tatsumaki
-  game: One Punch Man
-- name: Fubuki
-  game: One Punch Man
-- name: Mosquito Girl
-  game: One Punch Man

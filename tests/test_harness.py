@@ -46,6 +46,7 @@ def test_harness_writes_resumable_progress_and_real_materialized_context(tmp_pat
     assert status["waiting_for_input"] is True
     assert prompt["materialized_context"]["sources"]
     assert prompt["materialized_context"]["reference_access"]
+    assert prompt["response_template"]["task_profile"] == "custom"
 
 
 def test_harness_schema_failure_is_terminal_and_visible(tmp_path: Path) -> None:
@@ -57,6 +58,8 @@ def test_harness_schema_failure_is_terminal_and_visible(tmp_path: Path) -> None:
     status = json.loads((session / "_status.json").read_text(encoding="utf-8"))
     assert status["state"] == "failed"
     assert status["failure_code"] == "schema_validation_failed"
+    assert '"path": "$"' in status["error"]
+    assert '"required"' in status["error"]
     assert not (session / "checkpoint_phase_1_intent_analysis.json").exists()
 
 
@@ -81,6 +84,8 @@ def test_harness_can_finalize_a_valid_nonhuman_zimage_session(tmp_path: Path) ->
     }
     (session / "response_phase_1_intent_analysis.json").write_text(json.dumps(phase_1), encoding="utf-8")
     run_harness("--resume", str(session))
+    phase_2_prompt = json.loads((session / "prompt_phase_2_composition_and_cinematography.json").read_text(encoding="utf-8"))
+    assert phase_2_prompt["response_template"]["color_script"]["palette_type"] == "complementary"
     phase_2 = {
         "color_script": {"palette_type": "analogous", "dominant_colors": ["blue"], "saturation_strategy": "muted", "color_grading_intent": "natural"},
         "lighting_intent": {"key_quality": "soft", "key_modifier": "sky", "ratio": "low", "color_temperature_strategy": "matched"},
@@ -91,6 +96,8 @@ def test_harness_can_finalize_a_valid_nonhuman_zimage_session(tmp_path: Path) ->
     }
     (session / "response_phase_2_composition_and_cinematography.json").write_text(json.dumps(phase_2), encoding="utf-8")
     run_harness("--resume", str(session))
+    phase_4_prompt = json.loads((session / "prompt_phase_4_self_review.json").read_text(encoding="utf-8"))
+    assert phase_4_prompt["response_template"] == {"no_changes_needed": True}
     (session / "response_phase_4_self_review.json").write_text(json.dumps({"no_changes_needed": True}), encoding="utf-8")
     result = run_harness("--resume", str(session))
     assert result.returncode == 0

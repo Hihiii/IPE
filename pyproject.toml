@@ -7,7 +7,7 @@ name = "nsfw-comfyui-zimage-prompt-enhancer"
 version = "3.6.0"
 description = "Adult-only fictional/original character prompt enhancement rules for ComfyUI Z-Image."
 requires-python = ">=3.11"
-dependencies = ["PyYAML>=6.0"]
+dependencies = ["PyYAML>=6.0", "jsonschema>=4.0"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
@@ -20,6 +20,9 @@ nsfw-check-exposure-geometry = "scripts.check_exposure_geometry:main"
 nsfw-resolve-adult-character = "scripts.resolve_adult_character:main"
 nsfw-validate-quality = "scripts.validate_quality_gate:main"
 nsfw-benchmark-execution = "scripts.benchmark_execution_packets:main"
+
+[tool.setuptools]
+packages = ["scripts"]
 
 [tool.pytest.ini_options]
 minversion = "8.0"

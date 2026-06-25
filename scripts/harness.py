@@ -12,6 +12,7 @@ import argparse
 import json
 import sys
 import time
+from copy import deepcopy
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Callable
@@ -69,6 +70,74 @@ SCHEMA_FILENAMES = {
     "phase_4_2_comfyui_renderer": "phase_4_2.json",
     "phase_4_3_delivery_package": "phase_4_3.json",
     "phase_5_final_output": "phase_5.json",
+}
+
+_RESPONSE_TEMPLATES: dict[str, dict[str, Any]] = {
+    "phase_1_intent_analysis": {
+        "task_profile": "custom",
+        "subject_type": "adult_human",
+        "subject_role": "hero",
+        "usage_context": "generation",
+        "audience": "adult",
+        "aspect_ratio": "2:3",
+        "output_medium": "digital",
+        "model_target": "z_image",
+        "mature_content": {
+            "level": "adult_explicit",
+            "adult_age_lock": True,
+            "style_intent": "adult NSFW cinematic prompt enhancement",
+            "wardrobe_coverage": "minimal_or_nude",
+            "pose_safety": "adult_allowed",
+        },
+        "anatomy_risk": {"level": "medium"},
+        "collision_risk": {"level": "low"},
+        "visual_hierarchy": ["adult subject", "cinematic composition"],
+        "narrative_context": "adult cinematic scene",
+        "hero_element": "clearly adult subject",
+        "secondary_elements": [],
+        "constraint_model": {"hard_locks": [], "soft_preferences": [], "inferred_enhancements": []},
+        "risk_flags": [],
+    },
+    "phase_2_composition_and_cinematography": {
+        "color_script": {
+            "palette_type": "complementary",
+            "dominant_colors": ["warm skin tones", "neutral background"],
+            "saturation_strategy": "selective",
+            "color_grading_intent": "cinematic natural contrast",
+        },
+        "lighting_intent": {
+            "key_quality": "soft",
+            "key_modifier": "large diffused source",
+            "ratio": "medium",
+            "color_temperature_strategy": "matched",
+            "rim_or_separation": True,
+            "background_treatment": "textured",
+        },
+        "lens_strategy": {
+            "focal_length_category": "short_telephoto",
+            "compression": "moderate",
+            "aperture_intent": "medium",
+            "working_distance": "moderate",
+            "camera_height": "eye_level",
+            "distortion_character": "natural",
+        },
+        "exposure_strategy": {"style": "middle_key", "contrast_ratio": "medium"},
+        "composition": {
+            "rule": "balanced cinematic portrait composition",
+            "depth_layers": 3,
+            "focal_priority": ["adult subject", "primary action", "environment"],
+            "breathing_room": "comfortable",
+        },
+        "generator_translation": {
+            "visible_lighting_effect": "soft cinematic light with readable subject detail",
+            "visible_depth_effect": "layered depth with controlled background falloff",
+            "visible_material_effect": "natural skin and fabric surface response",
+            "visible_composition_effect": "balanced frame with clear focal priority",
+        },
+    },
+    "phase_4_self_review": {
+        "no_changes_needed": True,
+    },
 }
 
 
@@ -190,6 +259,9 @@ def execute_phase(phase: dict[str, str]) -> None:
         "request_schema": schema,
         "telemetry": {"materialized_sources": len(context.get("sources", []))},
     }
+    response_template = _response_template(phase_id)
+    if response_template is not None:
+        prompt_payload["response_template"] = response_template
     if instructions:
         prompt_payload["phase_instructions"] = instructions
     cp.write_prompt(phase_id, prompt_payload)
@@ -214,7 +286,7 @@ def execute_phase(phase: dict[str, str]) -> None:
         try:
             jsonschema.validate(response, schema)
         except jsonschema.ValidationError as error:
-            _fail("schema_validation_failed", f"{phase_id}: {error.message}")
+            _fail("schema_validation_failed", _format_schema_error(phase_id, error))
     cp.clear_response(phase_id)
 
     if phase_id == "phase_1_intent_analysis":
@@ -233,6 +305,35 @@ def execute_phase(phase: dict[str, str]) -> None:
 def _load_schema(phase_id: str) -> dict[str, Any] | None:
     path = SCHEMA_DIR / SCHEMA_FILENAMES[phase_id]
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def _response_template(phase_id: str) -> dict[str, Any] | None:
+    template = _RESPONSE_TEMPLATES.get(phase_id)
+    return deepcopy(template) if template is not None else None
+
+
+def _format_schema_error(phase_id: str, error: jsonschema.ValidationError) -> str:
+    path = "$" + "".join(f"[{item}]" if isinstance(item, int) else f".{item}" for item in error.absolute_path)
+    schema_path = "$" + "".join(
+        f"[{item}]" if isinstance(item, int) else f".{item}" for item in error.absolute_schema_path
+    )
+    details = {
+        "phase": phase_id,
+        "path": path,
+        "schema_path": schema_path,
+        "message": error.message,
+    }
+    if error.validator == "enum":
+        details["expected"] = list(error.validator_value)
+        details["actual"] = error.instance
+    elif error.validator == "required":
+        present = sorted(error.instance) if isinstance(error.instance, dict) else []
+        details["required"] = list(error.validator_value)
+        details["present"] = present
+    elif error.validator in {"type", "minimum", "maximum", "minItems", "minLength"}:
+        details["expected"] = error.validator_value
+        details["actual"] = error.instance
+    return json.dumps(details, ensure_ascii=False, sort_keys=True)
 
 
 @lru_cache(maxsize=None)

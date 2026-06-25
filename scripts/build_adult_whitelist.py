@@ -161,7 +161,7 @@ def build_whitelist(output_dir: Path) -> int:
     for profile in profiles:
         character = profile["character"]
         unique_aliases = [
-            alias for alias in character["aliases"] if alias_counts[alias.casefold()] == 1
+            alias for alias in character["aliases"] if alias_counts[normalize_alias(alias)] == 1
         ]
         if not unique_aliases:
             unique_aliases = [f"{character['display_name']} ({character['source_title']})"]

@@ -1,55 +1,61 @@
 {
   "aliases": {
+    "18號": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--android_18",
+      "name": "Android 18",
+      "profile": "profiles/dragon_ball_z--characters--android_18.yaml"
+    },
     "2b": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--2b",
       "name": "2B",
       "profile": "profiles/nier_automata--characters--2b.yaml"
     },
     "2b (nier automata)": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--2b",
       "name": "2B",
       "profile": "profiles/nier_automata--characters--2b.yaml"
     },
     "2b (nier: automata)": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--2b",
       "name": "2B",
       "profile": "profiles/nier_automata--characters--2b.yaml"
     },
     "2b (nier:automata)": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--2b",
       "name": "2B",
       "profile": "profiles/nier_automata--characters--2b.yaml"
     },
     "2b (尼爾：自動人形)": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--2b",
       "name": "2B",
       "profile": "profiles/nier_automata--characters--2b.yaml"
     },
     "2b yorha": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--2b",
       "name": "2B",
       "profile": "profiles/nier_automata--characters--2b.yaml"
     },
     "a2": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--a2",
       "name": "A2",
       "profile": "profiles/nier_automata--characters--a2.yaml"
     },
     "a2 (nier:automata)": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--a2",
       "name": "A2",
       "profile": "profiles/nier_automata--characters--a2.yaml"
     },
     "a2 (尼爾：自動人形)": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--a2",
       "name": "A2",
       "profile": "profiles/nier_automata--characters--a2.yaml"
@@ -78,11 +84,47 @@
       "name": "Albedo",
       "profile": "profiles/genshin_impact--characters--albedo.yaml"
     },
+    "ami mizuno": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--ami_mizuno",
+      "name": "Ami Mizuno",
+      "profile": "profiles/sailormoon--characters--ami_mizuno.yaml"
+    },
+    "amy anderson": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--ami_mizuno",
+      "name": "Ami Mizuno",
+      "profile": "profiles/sailormoon--characters--ami_mizuno.yaml"
+    },
+    "android 18": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--android_18",
+      "name": "Android 18",
+      "profile": "profiles/dragon_ball_z--characters--android_18.yaml"
+    },
+    "android 18 (dragon ball)": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--android_18",
+      "name": "Android 18",
+      "profile": "profiles/dragon_ball_z--characters--android_18.yaml"
+    },
     "ardyn izunia": {
       "game": "Final Fantasy XV",
       "id": "final_fantasy_xv--characters--ardyn_izunia",
       "name": "Ardyn Izunia",
       "profile": "profiles/final_fantasy_xv--characters--ardyn_izunia.yaml"
+    },
+    "asuka (evangelion)": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--asuka_langley",
+      "name": "Asuka Langley Soryu",
+      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
+    },
+    "asuka langley soryu": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--asuka_langley",
+      "name": "Asuka Langley Soryu",
+      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
     },
     "auron": {
       "game": "Final Fantasy X",
@@ -132,23 +174,59 @@
       "name": "Black Swan",
       "profile": "profiles/honkai_star_rail--characters--black_swan.yaml"
     },
+    "blizzard": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--fubuki",
+      "name": "Fubuki",
+      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
+    },
+    "blizzard of breeze": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--fubuki",
+      "name": "Fubuki",
+      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
+    },
     "blue mary": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--blue_mary",
       "name": "Blue Mary",
       "profile": "profiles/king_of_fighters--characters--blue_mary.yaml"
     },
     "blue mary (kof)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--blue_mary",
       "name": "Blue Mary",
       "profile": "profiles/king_of_fighters--characters--blue_mary.yaml"
     },
     "blue mary (the king of fighters)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--blue_mary",
       "name": "Blue Mary",
       "profile": "profiles/king_of_fighters--characters--blue_mary.yaml"
+    },
+    "boa hancock": {
+      "game": "One Piece",
+      "id": "one_piece--characters--boa_hancock",
+      "name": "Boa Hancock",
+      "profile": "profiles/one_piece--characters--boa_hancock.yaml"
+    },
+    "boa hancock (one piece)": {
+      "game": "One Piece",
+      "id": "one_piece--characters--boa_hancock",
+      "name": "Boa Hancock",
+      "profile": "profiles/one_piece--characters--boa_hancock.yaml"
+    },
+    "botan": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--botan",
+      "name": "Botan",
+      "profile": "profiles/yu_yu_hakusho--characters--botan.yaml"
+    },
+    "botan (yu yu hakusho)": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--botan",
+      "name": "Botan",
+      "profile": "profiles/yu_yu_hakusho--characters--botan.yaml"
     },
     "bronya": {
       "game": "Honkai: Star Rail",
@@ -156,8 +234,26 @@
       "name": "Bronya",
       "profile": "profiles/honkai_star_rail--characters--bronya.yaml"
     },
+    "bulma": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--bulma",
+      "name": "Bulma",
+      "profile": "profiles/dragon_ball_z--characters--bulma.yaml"
+    },
+    "bulma (dragon ball)": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--bulma",
+      "name": "Bulma",
+      "profile": "profiles/dragon_ball_z--characters--bulma.yaml"
+    },
+    "bulma briefs": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--bulma",
+      "name": "Bulma",
+      "profile": "profiles/dragon_ball_z--characters--bulma.yaml"
+    },
     "cammy": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--cammy",
       "name": "Cammy",
       "profile": "profiles/street_fighter--characters--cammy.yaml"
@@ -167,6 +263,24 @@
       "id": "final_fantasy_xii--characters--basch_fon_ronsenburg",
       "name": "Basch fon Ronsenburg",
       "profile": "profiles/final_fantasy_xii--characters--basch_fon_ronsenburg.yaml"
+    },
+    "captain katsuragi": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--misato_katsuragi",
+      "name": "Misato Katsuragi",
+      "profile": "profiles/evangelion--characters--misato_katsuragi.yaml"
+    },
+    "carrot": {
+      "game": "One Piece",
+      "id": "one_piece--characters--carrot",
+      "name": "Carrot",
+      "profile": "profiles/one_piece--characters--carrot.yaml"
+    },
+    "carrot (one piece)": {
+      "game": "One Piece",
+      "id": "one_piece--characters--carrot",
+      "name": "Carrot",
+      "profile": "profiles/one_piece--characters--carrot.yaml"
     },
     "celes": {
       "game": "Final Fantasy VI",
@@ -180,8 +294,20 @@
       "name": "Celes Chere",
       "profile": "profiles/final_fantasy_vi--characters--celes_chere.yaml"
     },
+    "chi-chi": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--chi_chi",
+      "name": "Chi-Chi",
+      "profile": "profiles/dragon_ball_z--characters--chi_chi.yaml"
+    },
+    "chi-chi (dragon ball)": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--chi_chi",
+      "name": "Chi-Chi",
+      "profile": "profiles/dragon_ball_z--characters--chi_chi.yaml"
+    },
     "chun-li": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--chun_li",
       "name": "Chun-Li",
       "profile": "profiles/street_fighter--characters--chun_li.yaml"
@@ -216,6 +342,12 @@
       "name": "Cloud Strife",
       "profile": "profiles/final_fantasy_vii--characters--cloud_strife.yaml"
     },
+    "dr. akagi": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--ritsuko_akagi",
+      "name": "Ritsuko Akagi",
+      "profile": "profiles/evangelion--characters--ritsuko_akagi.yaml"
+    },
     "edea": {
       "game": "Final Fantasy VIII",
       "id": "final_fantasy_viii--characters--edea_kramer",
@@ -247,13 +379,13 @@
       "profile": "profiles/final_fantasy_xiv--characters--estinien_varlineau.yaml"
     },
     "eve": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--eve",
       "name": "Eve",
       "profile": "profiles/nier_automata--characters--eve.yaml"
     },
     "eve (nier:automata)": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--eve",
       "name": "Eve",
       "profile": "profiles/nier_automata--characters--eve.yaml"
@@ -270,11 +402,23 @@
       "name": "Feixiao",
       "profile": "profiles/honkai_star_rail--characters--feixiao.yaml"
     },
+    "ferry girl of the river styx": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--botan",
+      "name": "Botan",
+      "profile": "profiles/yu_yu_hakusho--characters--botan.yaml"
+    },
     "firefly": {
       "game": "Honkai: Star Rail",
       "id": "honkai_star_rail--characters--firefly",
       "name": "Firefly",
       "profile": "profiles/honkai_star_rail--characters--firefly.yaml"
+    },
+    "first children": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--rei_ayanami",
+      "name": "Rei Ayanami",
+      "profile": "profiles/evangelion--characters--rei_ayanami.yaml"
     },
     "focalors": {
       "game": "Genshin Impact",
@@ -299,6 +443,18 @@
       "id": "honkai_star_rail--characters--fu_xuan",
       "name": "Fu Xuan",
       "profile": "profiles/honkai_star_rail--characters--fu_xuan.yaml"
+    },
+    "fubuki": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--fubuki",
+      "name": "Fubuki",
+      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
+    },
+    "fubuki (one punch man)": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--fubuki",
+      "name": "Fubuki",
+      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
     },
     "furina": {
       "game": "Genshin Impact",
@@ -403,25 +559,25 @@
       "profile": "profiles/final_fantasy_xvi--characters--joshua_rosfield.yaml"
     },
     "juri": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--juri",
       "name": "Juri",
       "profile": "profiles/street_fighter--characters--juri.yaml"
     },
     "juri (street fighter)": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--juri",
       "name": "Juri",
       "profile": "profiles/street_fighter--characters--juri.yaml"
     },
     "juri han": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--juri",
       "name": "Juri",
       "profile": "profiles/street_fighter--characters--juri.yaml"
     },
     "juri han (street fighter)": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--juri",
       "name": "Juri",
       "profile": "profiles/street_fighter--characters--juri.yaml"
@@ -456,6 +612,18 @@
       "name": "Kamisato Ayaka",
       "profile": "profiles/genshin_impact--characters--kamisato_ayaka.yaml"
     },
+    "keiko (yu yu hakusho)": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--keiko_yukimura",
+      "name": "Keiko Yukimura",
+      "profile": "profiles/yu_yu_hakusho--characters--keiko_yukimura.yaml"
+    },
+    "keiko yukimura": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--keiko_yukimura",
+      "name": "Keiko Yukimura",
+      "profile": "profiles/yu_yu_hakusho--characters--keiko_yukimura.yaml"
+    },
     "keqing": {
       "game": "Genshin Impact",
       "id": "genshin_impact--characters--keqing",
@@ -481,19 +649,19 @@
       "profile": "profiles/final_fantasy_x--characters--kimahri_ronso.yaml"
     },
     "king": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--king",
       "name": "King",
       "profile": "profiles/king_of_fighters--characters--king.yaml"
     },
     "king (kof)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--king",
       "name": "King",
       "profile": "profiles/king_of_fighters--characters--king.yaml"
     },
     "king (the king of fighters)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--king",
       "name": "King",
       "profile": "profiles/king_of_fighters--characters--king.yaml"
@@ -516,50 +684,62 @@
       "name": "Kuki Shinobu",
       "profile": "profiles/genshin_impact--characters--kuki_shinobu.yaml"
     },
+    "kuwabara shizuru": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--shizuru_kuwabara",
+      "name": "Shizuru Kuwabara",
+      "profile": "profiles/yu_yu_hakusho--characters--shizuru_kuwabara.yaml"
+    },
     "laura": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--laura",
       "name": "Laura",
       "profile": "profiles/street_fighter--characters--laura.yaml"
     },
     "laura (street fighter)": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--laura",
       "name": "Laura",
       "profile": "profiles/street_fighter--characters--laura.yaml"
     },
     "laura matsuda": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--laura",
       "name": "Laura",
       "profile": "profiles/street_fighter--characters--laura.yaml"
     },
     "laura matsuda (street fighter)": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--laura",
       "name": "Laura",
       "profile": "profiles/street_fighter--characters--laura.yaml"
     },
+    "lazuli": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--android_18",
+      "name": "Android 18",
+      "profile": "profiles/dragon_ball_z--characters--android_18.yaml"
+    },
     "leona": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--leona_heidern",
       "name": "Leona Heidern",
       "profile": "profiles/king_of_fighters--characters--leona_heidern.yaml"
     },
     "leona (the king of fighters)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--leona_heidern",
       "name": "Leona Heidern",
       "profile": "profiles/king_of_fighters--characters--leona_heidern.yaml"
     },
     "leona heidern": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--leona_heidern",
       "name": "Leona Heidern",
       "profile": "profiles/king_of_fighters--characters--leona_heidern.yaml"
     },
     "leona heidern (kof)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--leona_heidern",
       "name": "Leona Heidern",
       "profile": "profiles/king_of_fighters--characters--leona_heidern.yaml"
@@ -575,6 +755,12 @@
       "id": "honkai_star_rail--characters--lingsha",
       "name": "Lingsha",
       "profile": "profiles/honkai_star_rail--characters--lingsha.yaml"
+    },
+    "lita kino": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--makoto_kino",
+      "name": "Makoto Kino",
+      "profile": "profiles/sailormoon--characters--makoto_kino.yaml"
     },
     "luca": {
       "game": "Final Fantasy IV",
@@ -613,16 +799,22 @@
       "profile": "profiles/genshin_impact--characters--lynette.yaml"
     },
     "mai shiranui": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--mai_shiranui",
       "name": "Mai Shiranui",
       "profile": "profiles/king_of_fighters--characters--mai_shiranui.yaml"
     },
     "makima": {
-      "game": "鏈鋸人",
+      "game": "Chainsaw Man",
       "id": "chainsaw_man--characters--makima",
       "name": "Makima",
       "profile": "profiles/chainsaw_man--characters--makima.yaml"
+    },
+    "makoto kino": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--makoto_kino",
+      "name": "Makoto Kino",
+      "profile": "profiles/sailormoon--characters--makoto_kino.yaml"
     },
     "march 7th": {
       "game": "Honkai: Star Rail",
@@ -631,10 +823,46 @@
       "profile": "profiles/honkai_star_rail--characters--march_7th.yaml"
     },
     "mary": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--blue_mary",
       "name": "Blue Mary",
       "profile": "profiles/king_of_fighters--characters--blue_mary.yaml"
+    },
+    "milk": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--chi_chi",
+      "name": "Chi-Chi",
+      "profile": "profiles/dragon_ball_z--characters--chi_chi.yaml"
+    },
+    "mina aino": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--minako_aino",
+      "name": "Minako Aino",
+      "profile": "profiles/sailormoon--characters--minako_aino.yaml"
+    },
+    "minako aino": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--minako_aino",
+      "name": "Minako Aino",
+      "profile": "profiles/sailormoon--characters--minako_aino.yaml"
+    },
+    "misato (evangelion)": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--misato_katsuragi",
+      "name": "Misato Katsuragi",
+      "profile": "profiles/evangelion--characters--misato_katsuragi.yaml"
+    },
+    "misato katsuragi": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--misato_katsuragi",
+      "name": "Misato Katsuragi",
+      "profile": "profiles/evangelion--characters--misato_katsuragi.yaml"
+    },
+    "miss wednesday": {
+      "game": "One Piece",
+      "id": "one_piece--characters--nefertari_vivi",
+      "name": "Nefertari Vivi",
+      "profile": "profiles/one_piece--characters--nefertari_vivi.yaml"
     },
     "mona": {
       "game": "Genshin Impact",
@@ -648,8 +876,20 @@
       "name": "Mona",
       "profile": "profiles/genshin_impact--characters--mona.yaml"
     },
+    "mosquito girl": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--mosquito_girl",
+      "name": "Mosquito Girl",
+      "profile": "profiles/one_punch_man--characters--mosquito_girl.yaml"
+    },
+    "mosquito girl (one punch man)": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--mosquito_girl",
+      "name": "Mosquito Girl",
+      "profile": "profiles/one_punch_man--characters--mosquito_girl.yaml"
+    },
     "nami": {
-      "game": "航海王",
+      "game": "One Piece",
       "id": "one_piece--characters--nami",
       "name": "Nami",
       "profile": "profiles/one_piece--characters--nami.yaml"
@@ -666,14 +906,20 @@
       "name": "Navia",
       "profile": "profiles/genshin_impact--characters--navia.yaml"
     },
+    "nefertari vivi": {
+      "game": "One Piece",
+      "id": "one_piece--characters--nefertari_vivi",
+      "name": "Nefertari Vivi",
+      "profile": "profiles/one_piece--characters--nefertari_vivi.yaml"
+    },
     "nico robin": {
-      "game": "航海王",
+      "game": "One Piece",
       "id": "one_piece--characters--nico_robin",
       "name": "Nico Robin",
       "profile": "profiles/one_piece--characters--nico_robin.yaml"
     },
     "nier 2b": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--2b",
       "name": "2B",
       "profile": "profiles/nier_automata--characters--2b.yaml"
@@ -709,25 +955,25 @@
       "profile": "profiles/final_fantasy_x--characters--paine.yaml"
     },
     "poison": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--poison",
       "name": "Poison",
       "profile": "profiles/street_fighter--characters--poison.yaml"
     },
     "poison (street fighter)": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--poison",
       "name": "Poison",
       "profile": "profiles/street_fighter--characters--poison.yaml"
     },
     "power": {
-      "game": "鏈鋸人",
+      "game": "Chainsaw Man",
       "id": "chainsaw_man--characters--power",
       "name": "Power",
       "profile": "profiles/chainsaw_man--characters--power.yaml"
     },
     "power (chainsaw man)": {
-      "game": "鏈鋸人",
+      "game": "Chainsaw Man",
       "id": "chainsaw_man--characters--power",
       "name": "Power",
       "profile": "profiles/chainsaw_man--characters--power.yaml"
@@ -737,6 +983,12 @@
       "id": "final_fantasy_xii--characters--ashe",
       "name": "Ashe",
       "profile": "profiles/final_fantasy_xii--characters--ashe.yaml"
+    },
+    "princess serenity": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--usagi_tsukino",
+      "name": "Usagi Tsukino",
+      "profile": "profiles/sailormoon--characters--usagi_tsukino.yaml"
     },
     "prompto argentum": {
       "game": "Final Fantasy XV",
@@ -763,13 +1015,13 @@
       "profile": "profiles/final_fantasy_viii--characters--quistis_trepe.yaml"
     },
     "r. mika": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--rainbow_mika",
       "name": "R. Mika",
       "profile": "profiles/street_fighter--characters--rainbow_mika.yaml"
     },
     "r. mika (street fighter)": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--rainbow_mika",
       "name": "R. Mika",
       "profile": "profiles/street_fighter--characters--rainbow_mika.yaml"
@@ -793,13 +1045,13 @@
       "profile": "profiles/genshin_impact--characters--raiden_shogun.yaml"
     },
     "rainbow mika": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--rainbow_mika",
       "name": "R. Mika",
       "profile": "profiles/street_fighter--characters--rainbow_mika.yaml"
     },
     "rainbow mika (street fighter)": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--rainbow_mika",
       "name": "R. Mika",
       "profile": "profiles/street_fighter--characters--rainbow_mika.yaml"
@@ -810,11 +1062,47 @@
       "name": "Rappa",
       "profile": "profiles/honkai_star_rail--characters--rappa.yaml"
     },
+    "raye hino": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--rei_hino",
+      "name": "Rei Hino",
+      "profile": "profiles/sailormoon--characters--rei_hino.yaml"
+    },
+    "rei ayanami": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--rei_ayanami",
+      "name": "Rei Ayanami",
+      "profile": "profiles/evangelion--characters--rei_ayanami.yaml"
+    },
+    "rei ayanami (evangelion)": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--rei_ayanami",
+      "name": "Rei Ayanami",
+      "profile": "profiles/evangelion--characters--rei_ayanami.yaml"
+    },
+    "rei hino": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--rei_hino",
+      "name": "Rei Hino",
+      "profile": "profiles/sailormoon--characters--rei_hino.yaml"
+    },
     "rikku": {
       "game": "Final Fantasy X",
       "id": "final_fantasy_x--characters--rikku",
       "name": "Rikku",
       "profile": "profiles/final_fantasy_x--characters--rikku.yaml"
+    },
+    "ritsuko (evangelion)": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--ritsuko_akagi",
+      "name": "Ritsuko Akagi",
+      "profile": "profiles/evangelion--characters--ritsuko_akagi.yaml"
+    },
+    "ritsuko akagi": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--ritsuko_akagi",
+      "name": "Ritsuko Akagi",
+      "profile": "profiles/evangelion--characters--ritsuko_akagi.yaml"
     },
     "robin": {
       "game": "Honkai: Star Rail",
@@ -841,13 +1129,13 @@
       "profile": "profiles/final_fantasy_iv--characters--rosa_farrell.yaml"
     },
     "rose": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--rose",
       "name": "Rose",
       "profile": "profiles/street_fighter--characters--rose.yaml"
     },
     "rose (street fighter)": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--rose",
       "name": "Rose",
       "profile": "profiles/street_fighter--characters--rose.yaml"
@@ -876,6 +1164,66 @@
       "name": "Rydia",
       "profile": "profiles/final_fantasy_iv--characters--rydia.yaml"
     },
+    "sailor jupiter": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--makoto_kino",
+      "name": "Makoto Kino",
+      "profile": "profiles/sailormoon--characters--makoto_kino.yaml"
+    },
+    "sailor jupiter (美少女戰士)": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--makoto_kino",
+      "name": "Makoto Kino",
+      "profile": "profiles/sailormoon--characters--makoto_kino.yaml"
+    },
+    "sailor mars": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--rei_hino",
+      "name": "Rei Hino",
+      "profile": "profiles/sailormoon--characters--rei_hino.yaml"
+    },
+    "sailor mars (美少女戰士)": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--rei_hino",
+      "name": "Rei Hino",
+      "profile": "profiles/sailormoon--characters--rei_hino.yaml"
+    },
+    "sailor mercury": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--ami_mizuno",
+      "name": "Ami Mizuno",
+      "profile": "profiles/sailormoon--characters--ami_mizuno.yaml"
+    },
+    "sailor mercury (美少女戰士)": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--ami_mizuno",
+      "name": "Ami Mizuno",
+      "profile": "profiles/sailormoon--characters--ami_mizuno.yaml"
+    },
+    "sailor moon": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--usagi_tsukino",
+      "name": "Usagi Tsukino",
+      "profile": "profiles/sailormoon--characters--usagi_tsukino.yaml"
+    },
+    "sailor moon (美少女戰士)": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--usagi_tsukino",
+      "name": "Usagi Tsukino",
+      "profile": "profiles/sailormoon--characters--usagi_tsukino.yaml"
+    },
+    "sailor venus": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--minako_aino",
+      "name": "Minako Aino",
+      "profile": "profiles/sailormoon--characters--minako_aino.yaml"
+    },
+    "sailor venus (美少女戰士)": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--minako_aino",
+      "name": "Minako Aino",
+      "profile": "profiles/sailormoon--characters--minako_aino.yaml"
+    },
     "sangonomiya kokomi": {
       "game": "Genshin Impact",
       "id": "genshin_impact--characters--sangonomiya_kokomi",
@@ -900,6 +1248,12 @@
       "name": "Sazh Katzroy",
       "profile": "profiles/final_fantasy_xiii--characters--sazh_katzroy.yaml"
     },
+    "second children": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--asuka_langley",
+      "name": "Asuka Langley Soryu",
+      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
+    },
     "seele": {
       "game": "Honkai: Star Rail",
       "id": "honkai_star_rail--characters--seele",
@@ -911,6 +1265,12 @@
       "id": "final_fantasy_vii--characters--sephiroth",
       "name": "Sephiroth",
       "profile": "profiles/final_fantasy_vii--characters--sephiroth.yaml"
+    },
+    "serena tsukino": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--usagi_tsukino",
+      "name": "Usagi Tsukino",
+      "profile": "profiles/sailormoon--characters--usagi_tsukino.yaml"
     },
     "shenhe": {
       "game": "Genshin Impact",
@@ -925,22 +1285,34 @@
       "profile": "profiles/genshin_impact--characters--shenhe.yaml"
     },
     "shermie": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--shermie",
       "name": "Shermie",
       "profile": "profiles/king_of_fighters--characters--shermie.yaml"
     },
     "shermie (kof)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--shermie",
       "name": "Shermie",
       "profile": "profiles/king_of_fighters--characters--shermie.yaml"
     },
     "shermie (the king of fighters)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--shermie",
       "name": "Shermie",
       "profile": "profiles/king_of_fighters--characters--shermie.yaml"
+    },
+    "shizuru (yu yu hakusho)": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--shizuru_kuwabara",
+      "name": "Shizuru Kuwabara",
+      "profile": "profiles/yu_yu_hakusho--characters--shizuru_kuwabara.yaml"
+    },
+    "shizuru kuwabara": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--shizuru_kuwabara",
+      "name": "Shizuru Kuwabara",
+      "profile": "profiles/yu_yu_hakusho--characters--shizuru_kuwabara.yaml"
     },
     "silver wolf": {
       "game": "Honkai: Star Rail",
@@ -953,6 +1325,12 @@
       "id": "final_fantasy_xii--characters--balthier",
       "name": "Balthier",
       "profile": "profiles/final_fantasy_xii--characters--balthier.yaml"
+    },
+    "snake princess": {
+      "game": "One Piece",
+      "id": "one_piece--characters--boa_hancock",
+      "name": "Boa Hancock",
+      "profile": "profiles/one_piece--characters--boa_hancock.yaml"
     },
     "snow villiers": {
       "game": "Final Fantasy XIII",
@@ -978,6 +1356,18 @@
       "name": "Sparkle",
       "profile": "profiles/honkai_star_rail--characters--sparkle.yaml"
     },
+    "tatsumaki": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--tatsumaki",
+      "name": "Tatsumaki",
+      "profile": "profiles/one_punch_man--characters--tatsumaki.yaml"
+    },
+    "tatsumaki (one punch man)": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--tatsumaki",
+      "name": "Tatsumaki",
+      "profile": "profiles/one_punch_man--characters--tatsumaki.yaml"
+    },
     "thancred waters": {
       "game": "Final Fantasy XIV",
       "id": "final_fantasy_xiv--characters--thancred_waters",
@@ -1002,29 +1392,65 @@
       "name": "Tifa Lockhart",
       "profile": "profiles/final_fantasy_vii--characters--tifa_lockhart.yaml"
     },
+    "tornado": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--tatsumaki",
+      "name": "Tatsumaki",
+      "profile": "profiles/one_punch_man--characters--tatsumaki.yaml"
+    },
+    "tornado of terror": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--tatsumaki",
+      "name": "Tatsumaki",
+      "profile": "profiles/one_punch_man--characters--tatsumaki.yaml"
+    },
     "urianger augurelt": {
       "game": "Final Fantasy XIV",
       "id": "final_fantasy_xiv--characters--urianger_augurelt",
       "name": "Urianger Augurelt",
       "profile": "profiles/final_fantasy_xiv--characters--urianger_augurelt.yaml"
     },
+    "usagi tsukino": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--usagi_tsukino",
+      "name": "Usagi Tsukino",
+      "profile": "profiles/sailormoon--characters--usagi_tsukino.yaml"
+    },
     "vanessa": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--vanessa",
       "name": "Vanessa",
       "profile": "profiles/king_of_fighters--characters--vanessa.yaml"
     },
     "vanessa (kof)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--vanessa",
       "name": "Vanessa",
       "profile": "profiles/king_of_fighters--characters--vanessa.yaml"
     },
     "vanessa (the king of fighters)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--vanessa",
       "name": "Vanessa",
       "profile": "profiles/king_of_fighters--characters--vanessa.yaml"
+    },
+    "videl": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--videl",
+      "name": "Videl",
+      "profile": "profiles/dragon_ball_z--characters--videl.yaml"
+    },
+    "videl (dragon ball)": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--videl",
+      "name": "Videl",
+      "profile": "profiles/dragon_ball_z--characters--videl.yaml"
+    },
+    "videl satan": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--videl",
+      "name": "Videl",
+      "profile": "profiles/dragon_ball_z--characters--videl.yaml"
     },
     "viera": {
       "game": "Final Fantasy XII",
@@ -1037,6 +1463,12 @@
       "id": "final_fantasy_vii--characters--vincent_valentine",
       "name": "Vincent Valentine",
       "profile": "profiles/final_fantasy_vii--characters--vincent_valentine.yaml"
+    },
+    "vivi": {
+      "game": "One Piece",
+      "id": "one_piece--characters--nefertari_vivi",
+      "name": "Nefertari Vivi",
+      "profile": "profiles/one_piece--characters--nefertari_vivi.yaml"
     },
     "wakka": {
       "game": "Final Fantasy X",
@@ -1075,22 +1507,28 @@
       "profile": "profiles/genshin_impact--characters--yelan.yaml"
     },
     "yorha 2b": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--2b",
       "name": "2B",
       "profile": "profiles/nier_automata--characters--2b.yaml"
     },
     "yorha no.2 type b": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--2b",
       "name": "2B",
       "profile": "profiles/nier_automata--characters--2b.yaml"
     },
     "yorha type a no.2": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--a2",
       "name": "A2",
       "profile": "profiles/nier_automata--characters--a2.yaml"
+    },
+    "yukimura keiko": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--keiko_yukimura",
+      "name": "Keiko Yukimura",
+      "profile": "profiles/yu_yu_hakusho--characters--keiko_yukimura.yaml"
     },
     "yun jin": {
       "game": "Genshin Impact",
@@ -1123,7 +1561,7 @@
       "profile": "profiles/final_fantasy_xiv--characters--zenos_yae_galvus.yaml"
     },
     "七川美華": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--rainbow_mika",
       "name": "R. Mika",
       "profile": "profiles/street_fighter--characters--rainbow_mika.yaml"
@@ -1141,13 +1579,13 @@
       "profile": "profiles/honkai_star_rail--characters--march_7th.yaml"
     },
     "不知火舞": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--mai_shiranui",
       "name": "Mai Shiranui",
       "profile": "profiles/king_of_fighters--characters--mai_shiranui.yaml"
     },
     "不知火舞 (格鬥天王)": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--mai_shiranui",
       "name": "Mai Shiranui",
       "profile": "profiles/king_of_fighters--characters--mai_shiranui.yaml"
@@ -1193,6 +1631,12 @@
       "id": "final_fantasy_xii--characters--ashe",
       "name": "Ashe",
       "profile": "profiles/final_fantasy_xii--characters--ashe.yaml"
+    },
+    "人造人18號": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--android_18",
+      "name": "Android 18",
+      "profile": "profiles/dragon_ball_z--characters--android_18.yaml"
     },
     "伊札尤": {
       "game": "Final Fantasy IV",
@@ -1297,7 +1741,7 @@
       "profile": "profiles/final_fantasy_xiii--characters--snow_villiers.yaml"
     },
     "凡妮莎": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--vanessa",
       "name": "Vanessa",
       "profile": "profiles/king_of_fighters--characters--vanessa.yaml"
@@ -1326,6 +1770,18 @@
       "name": "Keqing",
       "profile": "profiles/genshin_impact--characters--keqing.yaml"
     },
+    "加洛特": {
+      "game": "One Piece",
+      "id": "one_piece--characters--carrot",
+      "name": "Carrot",
+      "profile": "profiles/one_piece--characters--carrot.yaml"
+    },
+    "加洛特 (航海王)": {
+      "game": "One Piece",
+      "id": "one_piece--characters--carrot",
+      "name": "Carrot",
+      "profile": "profiles/one_piece--characters--carrot.yaml"
+    },
     "卡芙卡": {
       "game": "Honkai: Star Rail",
       "id": "honkai_star_rail--characters--kafka",
@@ -1350,17 +1806,29 @@
       "name": "Jill Warrick",
       "profile": "profiles/final_fantasy_xvi--characters--jill_warrick.yaml"
     },
+    "吹雪": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--fubuki",
+      "name": "Fubuki",
+      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
+    },
     "嘉米": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--cammy",
       "name": "Cammy",
       "profile": "profiles/street_fighter--characters--cammy.yaml"
     },
     "嘉米 (快打旋風)": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--cammy",
       "name": "Cammy",
       "profile": "profiles/street_fighter--characters--cammy.yaml"
+    },
+    "地獄的吹雪": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--fubuki",
+      "name": "Fubuki",
+      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
     },
     "埃斯蒂尼安": {
       "game": "Final Fantasy XIV",
@@ -1375,13 +1843,13 @@
       "profile": "profiles/final_fantasy_xiv--characters--estinien_varlineau.yaml"
     },
     "夏娃": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--eve",
       "name": "Eve",
       "profile": "profiles/nier_automata--characters--eve.yaml"
     },
     "夏娃 (尼爾：自動人形)": {
-      "game": "尼爾：自動人形",
+      "game": "NieR:Automata",
       "id": "nier_automata--characters--eve",
       "name": "Eve",
       "profile": "profiles/nier_automata--characters--eve.yaml"
@@ -1410,6 +1878,12 @@
       "name": "Kimahri Ronso",
       "profile": "profiles/final_fantasy_x--characters--kimahri_ronso.yaml"
     },
+    "奈菲特·薇薇": {
+      "game": "One Piece",
+      "id": "one_piece--characters--nefertari_vivi",
+      "name": "Nefertari Vivi",
+      "profile": "profiles/one_piece--characters--nefertari_vivi.yaml"
+    },
     "奎斯提斯·特利普": {
       "game": "Final Fantasy VIII",
       "id": "final_fantasy_viii--characters--quistis_trepe",
@@ -1435,13 +1909,13 @@
       "profile": "profiles/final_fantasy_x--characters--auron.yaml"
     },
     "妮可·羅賓": {
-      "game": "航海王",
+      "game": "One Piece",
       "id": "one_piece--characters--nico_robin",
       "name": "Nico Robin",
       "profile": "profiles/one_piece--characters--nico_robin.yaml"
     },
     "妮可·羅賓 (航海王)": {
-      "game": "航海王",
+      "game": "One Piece",
       "id": "one_piece--characters--nico_robin",
       "name": "Nico Robin",
       "profile": "profiles/one_piece--characters--nico_robin.yaml"
@@ -1483,13 +1957,13 @@
       "profile": "profiles/genshin_impact--characters--navia.yaml"
     },
     "娜美": {
-      "game": "航海王",
+      "game": "One Piece",
       "id": "one_piece--characters--nami",
       "name": "Nami",
       "profile": "profiles/one_piece--characters--nami.yaml"
     },
     "娜美 (航海王)": {
-      "game": "航海王",
+      "game": "One Piece",
       "id": "one_piece--characters--nami",
       "name": "Nami",
       "profile": "profiles/one_piece--characters--nami.yaml"
@@ -1542,8 +2016,20 @@
       "name": "Bronya",
       "profile": "profiles/honkai_star_rail--characters--bronya.yaml"
     },
+    "布瑪": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--bulma",
+      "name": "Bulma",
+      "profile": "profiles/dragon_ball_z--characters--bulma.yaml"
+    },
+    "布瑪 (七龍珠)": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--bulma",
+      "name": "Bulma",
+      "profile": "profiles/dragon_ball_z--characters--bulma.yaml"
+    },
     "布魯瑪莉": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--blue_mary",
       "name": "Blue Mary",
       "profile": "profiles/king_of_fighters--characters--blue_mary.yaml"
@@ -1561,13 +2047,13 @@
       "profile": "profiles/honkai_star_rail--characters--seele.yaml"
     },
     "帕瓦": {
-      "game": "鏈鋸人",
+      "game": "Chainsaw Man",
       "id": "chainsaw_man--characters--power",
       "name": "Power",
       "profile": "profiles/chainsaw_man--characters--power.yaml"
     },
     "帕瓦 (鏈鋸人)": {
-      "game": "鏈鋸人",
+      "game": "Chainsaw Man",
       "id": "chainsaw_man--characters--power",
       "name": "Power",
       "profile": "profiles/chainsaw_man--characters--power.yaml"
@@ -1584,6 +2070,12 @@
       "name": "Cid Highwind",
       "profile": "profiles/final_fantasy_vii--characters--cid_highwind.yaml"
     },
+    "式波·明日香·蘭格雷": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--asuka_langley",
+      "name": "Asuka Langley Soryu",
+      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
+    },
     "愛梅特賽爾克": {
       "game": "Final Fantasy XIV",
       "id": "final_fantasy_xiv--characters--emet_selch",
@@ -1595,6 +2087,18 @@
       "id": "final_fantasy_xiv--characters--emet_selch",
       "name": "Emet-Selch",
       "profile": "profiles/final_fantasy_xiv--characters--emet_selch.yaml"
+    },
+    "愛野美奈子": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--minako_aino",
+      "name": "Minako Aino",
+      "profile": "profiles/sailormoon--characters--minako_aino.yaml"
+    },
+    "戰慄的龍卷": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--tatsumaki",
+      "name": "Tatsumaki",
+      "profile": "profiles/one_punch_man--characters--tatsumaki.yaml"
     },
     "提達": {
       "game": "Final Fantasy X",
@@ -1632,14 +2136,20 @@
       "name": "Urianger Augurelt",
       "profile": "profiles/final_fantasy_xiv--characters--urianger_augurelt.yaml"
     },
+    "明日香": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--asuka_langley",
+      "name": "Asuka Langley Soryu",
+      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
+    },
     "春麗": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--chun_li",
       "name": "Chun-Li",
       "profile": "profiles/street_fighter--characters--chun_li.yaml"
     },
     "春麗 (快打旋風)": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--chun_li",
       "name": "Chun-Li",
       "profile": "profiles/street_fighter--characters--chun_li.yaml"
@@ -1655,6 +2165,18 @@
       "id": "final_fantasy_xv--characters--prompto_argentum",
       "name": "Prompto Argentum",
       "profile": "profiles/final_fantasy_xv--characters--prompto_argentum.yaml"
+    },
+    "月野兔": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--usagi_tsukino",
+      "name": "Usagi Tsukino",
+      "profile": "profiles/sailormoon--characters--usagi_tsukino.yaml"
+    },
+    "木野真琴": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--makoto_kino",
+      "name": "Makoto Kino",
+      "profile": "profiles/sailormoon--characters--makoto_kino.yaml"
     },
     "札克斯·菲爾": {
       "game": "Final Fantasy VII",
@@ -1692,6 +2214,18 @@
       "name": "Thancred Waters",
       "profile": "profiles/final_fantasy_xiv--characters--thancred_waters.yaml"
     },
+    "桑原靜流": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--shizuru_kuwabara",
+      "name": "Shizuru Kuwabara",
+      "profile": "profiles/yu_yu_hakusho--characters--shizuru_kuwabara.yaml"
+    },
+    "桑原靜流 (幽遊白書)": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--shizuru_kuwabara",
+      "name": "Shizuru Kuwabara",
+      "profile": "profiles/yu_yu_hakusho--characters--shizuru_kuwabara.yaml"
+    },
     "歐爾芭·雲·牙": {
       "game": "Final Fantasy XIII",
       "id": "final_fantasy_xiii--characters--oerba_yun_fang",
@@ -1703,6 +2237,24 @@
       "id": "final_fantasy_xiii--characters--oerba_yun_fang",
       "name": "Oerba Yun Fang",
       "profile": "profiles/final_fantasy_xiii--characters--oerba_yun_fang.yaml"
+    },
+    "比黛兒": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--videl",
+      "name": "Videl",
+      "profile": "profiles/dragon_ball_z--characters--videl.yaml"
+    },
+    "比黛兒 (七龍珠)": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--videl",
+      "name": "Videl",
+      "profile": "profiles/dragon_ball_z--characters--videl.yaml"
+    },
+    "水野亞美": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--ami_mizuno",
+      "name": "Ami Mizuno",
+      "profile": "profiles/sailormoon--characters--ami_mizuno.yaml"
     },
     "法莉絲 (final fantasy v)": {
       "game": "Final Fantasy V",
@@ -1717,10 +2269,16 @@
       "profile": "profiles/final_fantasy_v--characters--faris_scherwiz.yaml"
     },
     "波伊森": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--poison",
       "name": "Poison",
       "profile": "profiles/street_fighter--characters--poison.yaml"
+    },
+    "波雅·漢考克": {
+      "game": "One Piece",
+      "id": "one_piece--characters--boa_hancock",
+      "name": "Boa Hancock",
+      "profile": "profiles/one_piece--characters--boa_hancock.yaml"
     },
     "派茵": {
       "game": "Final Fantasy X-2",
@@ -1740,8 +2298,32 @@
       "name": "Firefly",
       "profile": "profiles/honkai_star_rail--characters--firefly.yaml"
     },
+    "海賊女帝": {
+      "game": "One Piece",
+      "id": "one_piece--characters--boa_hancock",
+      "name": "Boa Hancock",
+      "profile": "profiles/one_piece--characters--boa_hancock.yaml"
+    },
+    "火野麗": {
+      "game": "Sailor Moon",
+      "id": "sailormoon--characters--rei_hino",
+      "name": "Rei Hino",
+      "profile": "profiles/sailormoon--characters--rei_hino.yaml"
+    },
+    "牡丹": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--botan",
+      "name": "Botan",
+      "profile": "profiles/yu_yu_hakusho--characters--botan.yaml"
+    },
+    "牡丹 (幽遊白書)": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--botan",
+      "name": "Botan",
+      "profile": "profiles/yu_yu_hakusho--characters--botan.yaml"
+    },
     "玫瑰": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--rose",
       "name": "Rose",
       "profile": "profiles/street_fighter--characters--rose.yaml"
@@ -1757,6 +2339,18 @@
       "id": "genshin_impact--characters--sangonomiya_kokomi",
       "name": "Sangonomiya Kokomi",
       "profile": "profiles/genshin_impact--characters--sangonomiya_kokomi.yaml"
+    },
+    "琪琪": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--chi_chi",
+      "name": "Chi-Chi",
+      "profile": "profiles/dragon_ball_z--characters--chi_chi.yaml"
+    },
+    "琪琪 (七龍珠)": {
+      "game": "Dragon Ball Z",
+      "id": "dragon_ball_z--characters--chi_chi",
+      "name": "Chi-Chi",
+      "profile": "profiles/dragon_ball_z--characters--chi_chi.yaml"
     },
     "琳妮特": {
       "game": "Genshin Impact",
@@ -1819,13 +2413,13 @@
       "profile": "profiles/genshin_impact--characters--shenhe.yaml"
     },
     "真紀真": {
-      "game": "鏈鋸人",
+      "game": "Chainsaw Man",
       "id": "chainsaw_man--characters--makima",
       "name": "Makima",
       "profile": "profiles/chainsaw_man--characters--makima.yaml"
     },
     "真紀真 (鏈鋸人)": {
-      "game": "鏈鋸人",
+      "game": "Chainsaw Man",
       "id": "chainsaw_man--characters--makima",
       "name": "Makima",
       "profile": "profiles/chainsaw_man--characters--makima.yaml"
@@ -1871,6 +2465,18 @@
       "id": "final_fantasy_xvi--characters--joshua_rosfield",
       "name": "Joshua Rosfield",
       "profile": "profiles/final_fantasy_xvi--characters--joshua_rosfield.yaml"
+    },
+    "綾波零": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--rei_ayanami",
+      "name": "Rei Ayanami",
+      "profile": "profiles/evangelion--characters--rei_ayanami.yaml"
+    },
+    "綾波零 (福音戰士)": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--rei_ayanami",
+      "name": "Rei Ayanami",
+      "profile": "profiles/evangelion--characters--rei_ayanami.yaml"
     },
     "羅莎·法雷爾": {
       "game": "Final Fantasy IV",
@@ -1993,7 +2599,7 @@
       "profile": "profiles/honkai_star_rail--characters--sparkle.yaml"
     },
     "茱莉": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--juri",
       "name": "Juri",
       "profile": "profiles/street_fighter--characters--juri.yaml"
@@ -2040,6 +2646,18 @@
       "name": "Mona",
       "profile": "profiles/genshin_impact--characters--mona.yaml"
     },
+    "葛城美里": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--misato_katsuragi",
+      "name": "Misato Katsuragi",
+      "profile": "profiles/evangelion--characters--misato_katsuragi.yaml"
+    },
+    "葛城美里 (福音戰士)": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--misato_katsuragi",
+      "name": "Misato Katsuragi",
+      "profile": "profiles/evangelion--characters--misato_katsuragi.yaml"
+    },
     "蒂法·洛克哈特": {
       "game": "Final Fantasy VII",
       "id": "final_fantasy_vii--characters--tifa_lockhart",
@@ -2053,10 +2671,16 @@
       "profile": "profiles/final_fantasy_vii--characters--tifa_lockhart.yaml"
     },
     "蕾歐娜": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--leona_heidern",
       "name": "Leona Heidern",
       "profile": "profiles/king_of_fighters--characters--leona_heidern.yaml"
+    },
+    "薇薇 (航海王)": {
+      "game": "One Piece",
+      "id": "one_piece--characters--nefertari_vivi",
+      "name": "Nefertari Vivi",
+      "profile": "profiles/one_piece--characters--nefertari_vivi.yaml"
     },
     "薩茲·卡茲羅伊": {
       "game": "Final Fantasy XIII",
@@ -2071,10 +2695,22 @@
       "profile": "profiles/final_fantasy_xiii--characters--sazh_katzroy.yaml"
     },
     "蘿拉": {
-      "game": "快打旋風",
+      "game": "Street Fighter",
       "id": "street_fighter--characters--laura",
       "name": "Laura",
       "profile": "profiles/street_fighter--characters--laura.yaml"
+    },
+    "蚊の少女": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--mosquito_girl",
+      "name": "Mosquito Girl",
+      "profile": "profiles/one_punch_man--characters--mosquito_girl.yaml"
+    },
+    "蚊少女": {
+      "game": "One Punch Man",
+      "id": "one_punch_man--characters--mosquito_girl",
+      "name": "Mosquito Girl",
+      "profile": "profiles/one_punch_man--characters--mosquito_girl.yaml"
     },
     "諾克提斯·路希斯·切拉姆": {
       "game": "Final Fantasy XV",
@@ -2112,8 +2748,20 @@
       "name": "Sephiroth",
       "profile": "profiles/final_fantasy_vii--characters--sephiroth.yaml"
     },
+    "赤木律子": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--ritsuko_akagi",
+      "name": "Ritsuko Akagi",
+      "profile": "profiles/evangelion--characters--ritsuko_akagi.yaml"
+    },
+    "赤木律子 (福音戰士)": {
+      "game": "Evangelion",
+      "id": "evangelion--characters--ritsuko_akagi",
+      "name": "Ritsuko Akagi",
+      "profile": "profiles/evangelion--characters--ritsuko_akagi.yaml"
+    },
     "金": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--king",
       "name": "King",
       "profile": "profiles/king_of_fighters--characters--king.yaml"
@@ -2184,8 +2832,20 @@
       "name": "Y'shtola Rhul",
       "profile": "profiles/final_fantasy_xiv--characters--y_shtola_rhul.yaml"
     },
+    "雪村螢子": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--keiko_yukimura",
+      "name": "Keiko Yukimura",
+      "profile": "profiles/yu_yu_hakusho--characters--keiko_yukimura.yaml"
+    },
+    "雪村螢子 (幽遊白書)": {
+      "game": "Yu Yu Hakusho",
+      "id": "yu_yu_hakusho--characters--keiko_yukimura",
+      "name": "Keiko Yukimura",
+      "profile": "profiles/yu_yu_hakusho--characters--keiko_yukimura.yaml"
+    },
     "雪魯米": {
-      "game": "格鬥天王",
+      "game": "King of Fighters",
       "id": "king_of_fighters--characters--shermie",
       "name": "Shermie",
       "profile": "profiles/king_of_fighters--characters--shermie.yaml"
@@ -2274,545 +2934,11 @@
       "name": "Black Swan",
       "profile": "profiles/honkai_star_rail--characters--black_swan.yaml"
     },
-    "boa hancock": {
-      "game": "航海王",
-      "id": "one_piece--characters--boa_hancock",
-      "name": "Boa Hancock",
-      "profile": "profiles/one_piece--characters--boa_hancock.yaml"
-    },
-    "boa hancock (one piece)": {
-      "game": "航海王",
-      "id": "one_piece--characters--boa_hancock",
-      "name": "Boa Hancock",
-      "profile": "profiles/one_piece--characters--boa_hancock.yaml"
-    },
-    "boa hancock (航海王)": {
-      "game": "航海王",
-      "id": "one_piece--characters--boa_hancock",
-      "name": "Boa Hancock",
-      "profile": "profiles/one_piece--characters--boa_hancock.yaml"
-    },
-    "snake princess": {
-      "game": "航海王",
-      "id": "one_piece--characters--boa_hancock",
-      "name": "Boa Hancock",
-      "profile": "profiles/one_piece--characters--boa_hancock.yaml"
-    },
-    "波雅·漢考克": {
-      "game": "航海王",
-      "id": "one_piece--characters--boa_hancock",
-      "name": "Boa Hancock",
-      "profile": "profiles/one_piece--characters--boa_hancock.yaml"
-    },
-    "nefertari vivi": {
-      "game": "航海王",
-      "id": "one_piece--characters--nefertari_vivi",
-      "name": "Nefertari Vivi",
-      "profile": "profiles/one_piece--characters--nefertari_vivi.yaml"
-    },
-    "vivi": {
-      "game": "航海王",
-      "id": "one_piece--characters--nefertari_vivi",
-      "name": "Nefertari Vivi",
-      "profile": "profiles/one_piece--characters--nefertari_vivi.yaml"
-    },
-    "miss wednesday": {
-      "game": "航海王",
-      "id": "one_piece--characters--nefertari_vivi",
-      "name": "Nefertari Vivi",
-      "profile": "profiles/one_piece--characters--nefertari_vivi.yaml"
-    },
-    "vivi (one piece)": {
-      "game": "航海王",
-      "id": "one_piece--characters--nefertari_vivi",
-      "name": "Nefertari Vivi",
-      "profile": "profiles/one_piece--characters--nefertari_vivi.yaml"
-    },
-    "奈菲特·薇薇": {
-      "game": "航海王",
-      "id": "one_piece--characters--nefertari_vivi",
-      "name": "Nefertari Vivi",
-      "profile": "profiles/one_piece--characters--nefertari_vivi.yaml"
-    },
-    "carrot": {
-      "game": "航海王",
-      "id": "one_piece--characters--carrot",
-      "name": "Carrot",
-      "profile": "profiles/one_piece--characters--carrot.yaml"
-    },
-    "carrot (one piece)": {
-      "game": "航海王",
-      "id": "one_piece--characters--carrot",
-      "name": "Carrot",
-      "profile": "profiles/one_piece--characters--carrot.yaml"
-    },
-    "加洛特": {
-      "game": "航海王",
-      "id": "one_piece--characters--carrot",
-      "name": "Carrot",
-      "profile": "profiles/one_piece--characters--carrot.yaml"
-    },
-    "bulma": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--bulma",
-      "name": "Bulma",
-      "profile": "profiles/dragon_ball_z--characters--bulma.yaml"
-    },
-    "bulma (dragon ball)": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--bulma",
-      "name": "Bulma",
-      "profile": "profiles/dragon_ball_z--characters--bulma.yaml"
-    },
-    "bulma briefs": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--bulma",
-      "name": "Bulma",
-      "profile": "profiles/dragon_ball_z--characters--bulma.yaml"
-    },
-    "布瑪": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--bulma",
-      "name": "Bulma",
-      "profile": "profiles/dragon_ball_z--characters--bulma.yaml"
-    },
-    "布瑪 (七龍珠)": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--bulma",
-      "name": "Bulma",
-      "profile": "profiles/dragon_ball_z--characters--bulma.yaml"
-    },
-    "android 18": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--android_18",
-      "name": "Android 18",
-      "profile": "profiles/dragon_ball_z--characters--android_18.yaml"
-    },
-    "android 18 (dragon ball)": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--android_18",
-      "name": "Android 18",
-      "profile": "profiles/dragon_ball_z--characters--android_18.yaml"
-    },
-    "人造人18號": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--android_18",
-      "name": "Android 18",
-      "profile": "profiles/dragon_ball_z--characters--android_18.yaml"
-    },
-    "18號": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--android_18",
-      "name": "Android 18",
-      "profile": "profiles/dragon_ball_z--characters--android_18.yaml"
-    },
-    "chi chi": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--chi_chi",
-      "name": "Chi-Chi",
-      "profile": "profiles/dragon_ball_z--characters--chi_chi.yaml"
-    },
-    "chi-chi": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--chi_chi",
-      "name": "Chi-Chi",
-      "profile": "profiles/dragon_ball_z--characters--chi_chi.yaml"
-    },
-    "chi chi (dragon ball)": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--chi_chi",
-      "name": "Chi-Chi",
-      "profile": "profiles/dragon_ball_z--characters--chi_chi.yaml"
-    },
-    "琪琪": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--chi_chi",
-      "name": "Chi-Chi",
-      "profile": "profiles/dragon_ball_z--characters--chi_chi.yaml"
-    },
-    "琪琪 (七龍珠)": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--chi_chi",
-      "name": "Chi-Chi",
-      "profile": "profiles/dragon_ball_z--characters--chi_chi.yaml"
-    },
-    "videl": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--videl",
-      "name": "Videl",
-      "profile": "profiles/dragon_ball_z--characters--videl.yaml"
-    },
-    "videl (dragon ball)": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--videl",
-      "name": "Videl",
-      "profile": "profiles/dragon_ball_z--characters--videl.yaml"
-    },
-    "videl satan": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--videl",
-      "name": "Videl",
-      "profile": "profiles/dragon_ball_z--characters--videl.yaml"
-    },
-    "比黛兒": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--videl",
-      "name": "Videl",
-      "profile": "profiles/dragon_ball_z--characters--videl.yaml"
-    },
-    "比黛兒 (七龍珠)": {
-      "game": "Dragon Ball Z",
-      "id": "dragon_ball_z--characters--videl",
-      "name": "Videl",
-      "profile": "profiles/dragon_ball_z--characters--videl.yaml"
-    },
-    "rei ayanami": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--rei_ayanami",
-      "name": "Rei Ayanami",
-      "profile": "profiles/evangelion--characters--rei_ayanami.yaml"
-    },
-    "rei": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--rei_ayanami",
-      "name": "Rei Ayanami",
-      "profile": "profiles/evangelion--characters--rei_ayanami.yaml"
-    },
-    "rei ayanami (evangelion)": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--rei_ayanami",
-      "name": "Rei Ayanami",
-      "profile": "profiles/evangelion--characters--rei_ayanami.yaml"
-    },
-    "綾波零": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--rei_ayanami",
-      "name": "Rei Ayanami",
-      "profile": "profiles/evangelion--characters--rei_ayanami.yaml"
-    },
-    "綾波零 (福音戰士)": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--rei_ayanami",
-      "name": "Rei Ayanami",
-      "profile": "profiles/evangelion--characters--rei_ayanami.yaml"
-    },
-    "asuka langley soryu": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--asuka_langley",
-      "name": "Asuka Langley Soryu",
-      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
-    },
-    "asuka": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--asuka_langley",
-      "name": "Asuka Langley Soryu",
-      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
-    },
-    "asuka langley": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--asuka_langley",
-      "name": "Asuka Langley Soryu",
-      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
-    },
-    "asuka (evangelion)": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--asuka_langley",
-      "name": "Asuka Langley Soryu",
-      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
-    },
-    "式波·明日香·蘭格雷": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--asuka_langley",
-      "name": "Asuka Langley Soryu",
-      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
-    },
-    "明日香": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--asuka_langley",
-      "name": "Asuka Langley Soryu",
-      "profile": "profiles/evangelion--characters--asuka_langley.yaml"
-    },
-    "misato katsuragi": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--misato_katsuragi",
-      "name": "Misato Katsuragi",
-      "profile": "profiles/evangelion--characters--misato_katsuragi.yaml"
-    },
-    "misato": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--misato_katsuragi",
-      "name": "Misato Katsuragi",
-      "profile": "profiles/evangelion--characters--misato_katsuragi.yaml"
-    },
-    "misato (evangelion)": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--misato_katsuragi",
-      "name": "Misato Katsuragi",
-      "profile": "profiles/evangelion--characters--misato_katsuragi.yaml"
-    },
-    "葛城美里": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--misato_katsuragi",
-      "name": "Misato Katsuragi",
-      "profile": "profiles/evangelion--characters--misato_katsuragi.yaml"
-    },
-    "葛城美里 (福音戰士)": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--misato_katsuragi",
-      "name": "Misato Katsuragi",
-      "profile": "profiles/evangelion--characters--misato_katsuragi.yaml"
-    },
-    "ritsuko akagi": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--ritsuko_akagi",
-      "name": "Ritsuko Akagi",
-      "profile": "profiles/evangelion--characters--ritsuko_akagi.yaml"
-    },
-    "ritsuko": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--ritsuko_akagi",
-      "name": "Ritsuko Akagi",
-      "profile": "profiles/evangelion--characters--ritsuko_akagi.yaml"
-    },
-    "ritsuko (evangelion)": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--ritsuko_akagi",
-      "name": "Ritsuko Akagi",
-      "profile": "profiles/evangelion--characters--ritsuko_akagi.yaml"
-    },
-    "赤木律子": {
-      "game": "Evangelion",
-      "id": "evangelion--characters--ritsuko_akagi",
-      "name": "Ritsuko Akagi",
-      "profile": "profiles/evangelion--characters--ritsuko_akagi.yaml"
-    },
-    "usagi tsukino": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--usagi_tsukino",
-      "name": "Usagi Tsukino",
-      "profile": "profiles/sailormoon--characters--usagi_tsukino.yaml"
-    },
-    "sailor moon": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--usagi_tsukino",
-      "name": "Usagi Tsukino",
-      "profile": "profiles/sailormoon--characters--usagi_tsukino.yaml"
-    },
-    "月野兔": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--usagi_tsukino",
-      "name": "Usagi Tsukino",
-      "profile": "profiles/sailormoon--characters--usagi_tsukino.yaml"
-    },
-    "sailor moon (美少女戰士)": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--usagi_tsukino",
-      "name": "Usagi Tsukino",
-      "profile": "profiles/sailormoon--characters--usagi_tsukino.yaml"
-    },
-    "ami mizuno": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--ami_mizuno",
-      "name": "Ami Mizuno",
-      "profile": "profiles/sailormoon--characters--ami_mizuno.yaml"
-    },
-    "sailor mercury": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--ami_mizuno",
-      "name": "Ami Mizuno",
-      "profile": "profiles/sailormoon--characters--ami_mizuno.yaml"
-    },
-    "水野亞美": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--ami_mizuno",
-      "name": "Ami Mizuno",
-      "profile": "profiles/sailormoon--characters--ami_mizuno.yaml"
-    },
-    "rei hino": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--rei_hino",
-      "name": "Rei Hino",
-      "profile": "profiles/sailormoon--characters--rei_hino.yaml"
-    },
-    "sailor mars": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--rei_hino",
-      "name": "Rei Hino",
-      "profile": "profiles/sailormoon--characters--rei_hino.yaml"
-    },
-    "火野麗": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--rei_hino",
-      "name": "Rei Hino",
-      "profile": "profiles/sailormoon--characters--rei_hino.yaml"
-    },
-    "makoto kino": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--makoto_kino",
-      "name": "Makoto Kino",
-      "profile": "profiles/sailormoon--characters--makoto_kino.yaml"
-    },
-    "sailor jupiter": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--makoto_kino",
-      "name": "Makoto Kino",
-      "profile": "profiles/sailormoon--characters--makoto_kino.yaml"
-    },
-    "木野真琴": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--makoto_kino",
-      "name": "Makoto Kino",
-      "profile": "profiles/sailormoon--characters--makoto_kino.yaml"
-    },
-    "minako aino": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--minako_aino",
-      "name": "Minako Aino",
-      "profile": "profiles/sailormoon--characters--minako_aino.yaml"
-    },
-    "sailor venus": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--minako_aino",
-      "name": "Minako Aino",
-      "profile": "profiles/sailormoon--characters--minako_aino.yaml"
-    },
-    "愛野美奈子": {
-      "game": "Sailor Moon",
-      "id": "sailormoon--characters--minako_aino",
-      "name": "Minako Aino",
-      "profile": "profiles/sailormoon--characters--minako_aino.yaml"
-    },
-    "botan": {
-      "game": "Yu Yu Hakusho",
-      "id": "yu_yu_hakusho--characters--botan",
-      "name": "Botan",
-      "profile": "profiles/yu_yu_hakusho--characters--botan.yaml"
-    },
-    "botan (yu yu hakusho)": {
-      "game": "Yu Yu Hakusho",
-      "id": "yu_yu_hakusho--characters--botan",
-      "name": "Botan",
-      "profile": "profiles/yu_yu_hakusho--characters--botan.yaml"
-    },
-    "牡丹": {
-      "game": "Yu Yu Hakusho",
-      "id": "yu_yu_hakusho--characters--botan",
-      "name": "Botan",
-      "profile": "profiles/yu_yu_hakusho--characters--botan.yaml"
-    },
-    "keiko yukimura": {
-      "game": "Yu Yu Hakusho",
-      "id": "yu_yu_hakusho--characters--keiko_yukimura",
-      "name": "Keiko Yukimura",
-      "profile": "profiles/yu_yu_hakusho--characters--keiko_yukimura.yaml"
-    },
-    "keiko": {
-      "game": "Yu Yu Hakusho",
-      "id": "yu_yu_hakusho--characters--keiko_yukimura",
-      "name": "Keiko Yukimura",
-      "profile": "profiles/yu_yu_hakusho--characters--keiko_yukimura.yaml"
-    },
-    "雪村螢子": {
-      "game": "Yu Yu Hakusho",
-      "id": "yu_yu_hakusho--characters--keiko_yukimura",
-      "name": "Keiko Yukimura",
-      "profile": "profiles/yu_yu_hakusho--characters--keiko_yukimura.yaml"
-    },
-    "shizuru kuwabara": {
-      "game": "Yu Yu Hakusho",
-      "id": "yu_yu_hakusho--characters--shizuru_kuwabara",
-      "name": "Shizuru Kuwabara",
-      "profile": "profiles/yu_yu_hakusho--characters--shizuru_kuwabara.yaml"
-    },
-    "shizuru": {
-      "game": "Yu Yu Hakusho",
-      "id": "yu_yu_hakusho--characters--shizuru_kuwabara",
-      "name": "Shizuru Kuwabara",
-      "profile": "profiles/yu_yu_hakusho--characters--shizuru_kuwabara.yaml"
-    },
-    "桑原靜流": {
-      "game": "Yu Yu Hakusho",
-      "id": "yu_yu_hakusho--characters--shizuru_kuwabara",
-      "name": "Shizuru Kuwabara",
-      "profile": "profiles/yu_yu_hakusho--characters--shizuru_kuwabara.yaml"
-    },
-    "tatsumaki": {
+    "龍卷": {
       "game": "One Punch Man",
       "id": "one_punch_man--characters--tatsumaki",
       "name": "Tatsumaki",
       "profile": "profiles/one_punch_man--characters--tatsumaki.yaml"
-    },
-    "tatsumaki (one punch man)": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--tatsumaki",
-      "name": "Tatsumaki",
-      "profile": "profiles/one_punch_man--characters--tatsumaki.yaml"
-    },
-    "tornado of terror": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--tatsumaki",
-      "name": "Tatsumaki",
-      "profile": "profiles/one_punch_man--characters--tatsumaki.yaml"
-    },
-    "tornado": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--tatsumaki",
-      "name": "Tatsumaki",
-      "profile": "profiles/one_punch_man--characters--tatsumaki.yaml"
-    },
-    "戰慄的龍卷": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--tatsumaki",
-      "name": "Tatsumaki",
-      "profile": "profiles/one_punch_man--characters--tatsumaki.yaml"
-    },
-    "fubuki": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--fubuki",
-      "name": "Fubuki",
-      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
-    },
-    "fubuki (one punch man)": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--fubuki",
-      "name": "Fubuki",
-      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
-    },
-    "blizzard of breeze": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--fubuki",
-      "name": "Fubuki",
-      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
-    },
-    "blizzard": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--fubuki",
-      "name": "Fubuki",
-      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
-    },
-    "地獄的吹雪": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--fubuki",
-      "name": "Fubuki",
-      "profile": "profiles/one_punch_man--characters--fubuki.yaml"
-    },
-    "mosquito girl": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--mosquito_girl",
-      "name": "Mosquito Girl",
-      "profile": "profiles/one_punch_man--characters--mosquito_girl.yaml"
-    },
-    "mosquito girl (one punch man)": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--mosquito_girl",
-      "name": "Mosquito Girl",
-      "profile": "profiles/one_punch_man--characters--mosquito_girl.yaml"
-    },
-    "蚊少女": {
-      "game": "One Punch Man",
-      "id": "one_punch_man--characters--mosquito_girl",
-      "name": "Mosquito Girl",
-      "profile": "profiles/one_punch_man--characters--mosquito_girl.yaml"
     }
   },
   "name": "adult-character-runtime-alias-resolver",
