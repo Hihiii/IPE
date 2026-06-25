@@ -121,6 +121,11 @@ def test_catalog_covers_active_rules_and_compiles_complete_semantic_closure() ->
     assert {"visible_adult_exposure", "exposure_evidence_target", "garment_transformation_action", "camera_visibility_guard", "exposure_action_plan", "exposure_action_compatibility", "exposure_geometry_plan", "exposure_feasibility_review", "exposure_recomposition"}.issubset(adult_packet["required_claims"])
     assert "visible_adult_exposure_contract" in {node["id"] for node in adult_packet["selected_nodes"]}
     assert "exposure_action_and_feasibility" in {node["id"] for node in adult_packet["selected_nodes"]}
+    idol_packet = compile_execution_packet("25 year old jpop idol lying on sofa")
+    assert "adult_human_scene" in idol_packet["features"]
+    assert "visible_adult_exposure_contract" in {node["id"] for node in idol_packet["selected_nodes"]}
+    assert "exposure_action_and_feasibility" in {node["id"] for node in idol_packet["selected_nodes"]}
+    assert {"visible_adult_exposure", "exposure_action_plan", "exposure_geometry_plan"}.issubset(idol_packet["required_claims"])
     nonhuman_packet = compile_execution_packet("misty mountain landscape at sunrise with a lake")
     assert "visible_adult_exposure" not in nonhuman_packet["required_claims"]
     assert adult_packet["metrics"]["initial_context_reduction_percent"] >= 25

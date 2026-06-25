@@ -249,8 +249,8 @@ def phase_4_2_renderer(prompt_pkg: dict, packet: dict, phase1: dict) -> dict[str
     """Render the one supported delivery target: Z-Image."""
     model_target = "z_image"
     profile = "dense_visual_phrase_chain"
-    positive = _render_positive(prompt_pkg, model_target)
-    negative = _render_negative(prompt_pkg, model_target)
+    positive = _render_positive(prompt_pkg, model_target, phase1)
+    negative = _render_negative(prompt_pkg, model_target, phase1)
 
     return {
         "model_target": model_target,
@@ -261,9 +261,13 @@ def phase_4_2_renderer(prompt_pkg: dict, packet: dict, phase1: dict) -> dict[str
     }
 
 
-def _render_positive(pkg: dict, target: str) -> str:
+def _render_positive(pkg: dict, target: str, phase1: dict | None = None) -> str:
     parts = []
     subj = pkg.get("subject", "")
+    exposure_prefix = _render_exposure_prefix(subj, phase1 or {})
+    if exposure_prefix:
+        parts.append(exposure_prefix)
+        subj = ""
     if subj:
         parts.append(subj)
 
@@ -298,8 +302,63 @@ def _render_positive(pkg: dict, target: str) -> str:
     return ". ".join(p for p in parts if p)
 
 
-def _render_negative(pkg: dict, target: str) -> str:
-    return ", ".join(pkg.get("avoid", [])) if pkg.get("avoid") else "(not specified)"
+def _render_negative(pkg: dict, target: str, phase1: dict | None = None) -> str:
+    avoid = list(pkg.get("avoid", []))
+    contract = (phase1 or {}).get("visible_exposure_contract") or (phase1 or {}).get("exposure_contract") or {}
+    evidence_target = contract.get("evidence_target")
+    if evidence_target == "nipple":
+        avoid.extend(["fully clothed", "intact opaque coverage", "obscured nipple", "cropped nipple"])
+    elif evidence_target == "vulva":
+        avoid.extend(["fully clothed", "intact opaque coverage", "obscured vulva", "cropped vulva"])
+    if contract:
+        avoid.extend(["underage", "minor", "childlike", "youthful appearance", "blurred anatomy", "bad anatomy", "cropped body"])
+    return ", ".join(_dedup_ordered(avoid)) if avoid else "(not specified)"
+
+
+def _render_exposure_prefix(subject: str, phase1: dict) -> str:
+    contract = phase1.get("visible_exposure_contract") or phase1.get("exposure_contract") or {}
+    action = phase1.get("exposure_action_plan") or {}
+    if not contract:
+        return ""
+    evidence_target = contract.get("evidence_target")
+    base_subject = _strip_adult_delivery_prefix(subject or phase1.get("hero_element") or "adult subject")
+    if evidence_target == "nipple":
+        return (
+            f"clearly adult nude {base_subject}, nude direct bare presentation, visible nipple unobscured in frame, "
+            "nipple in frame on bare skin, relaxed supported adult reclining pose"
+        )
+    if evidence_target == "vulva":
+        return (
+            f"clearly adult nude {base_subject}, nude direct bare presentation, visible vulva unobscured in frame, "
+            "vulva in frame on bare skin, relaxed supported adult reclining pose"
+        )
+    if action.get("end_state") == "adult_bare_anatomy_visible":
+        return (
+            f"clearly adult nude {base_subject}, nude adult body with bare adult anatomy visible, "
+            "unobscured in frame, relaxed supported adult reclining pose"
+        )
+    return f"clearly adult nude {base_subject}, unobscured adult NSFW presentation in frame"
+
+
+def _strip_adult_delivery_prefix(subject: str) -> str:
+    prefixes = (
+        "clearly adult nude ",
+        "clearly adult nsfw ",
+        "clearly adult ",
+        "adult nsfw ",
+    )
+    cleaned = subject.strip()
+    lowered = cleaned.lower()
+    changed = True
+    while changed:
+        changed = False
+        for prefix in prefixes:
+            if lowered.startswith(prefix):
+                cleaned = cleaned[len(prefix):].strip()
+                lowered = cleaned.lower()
+                changed = True
+                break
+    return cleaned or "adult subject"
 
 
 def _resolve_resolution(pkg: dict) -> str:

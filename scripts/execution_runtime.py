@@ -202,7 +202,7 @@ def load_catalog(path: Path = DEFAULT_CATALOG) -> dict[str, Any]:
 FEATURE_PATTERNS: dict[str, tuple[str, ...]] = {
     "image_edit": ("edit", "revise", "repair", "replace", "change only", "reference image", "source image", "修改", "修復"),
     "named_character": ("whitelist", "named character", "canonical character", "character profile"),
-    "adult_human_scene": ("adult", "woman", "man", "human", "humanoid", "character", "person", "nude", "nsfw"),
+    "adult_human_scene": ("adult", "woman", "man", "human", "humanoid", "character", "person", "idol", "model", "nude", "nsfw"),
     "dynamic_action_or_interaction": ("motion", "dynamic", "turning", "impact", "peak", "action", "interaction", "pose", "movement", "duo", "pov", "bdsm"),
     "material_or_environment_response": ("wet", "damp", "water", "steam", "rain", "silk", "latex", "fabric", "bedding", "glass", "reflective", "moisture"),
     "scene_and_visual_enrichment": ("scene", "interior", "exterior", "street", "room", "balcony", "bathroom", "shower", "bedroom", "environment"),
@@ -249,6 +249,9 @@ def infer_features(request: str, provided_features: Iterable[str] = ()) -> list[
             continue
         if any(marker in text for marker in markers):
             features.add(feature)
+    if "adult_human_scene" not in features and re.search(r"\b(?:1[89]|[2-9]\d)\s*(?:year old|years old|yo|y/o)\b", text):
+        if any(marker in text for marker in ("idol", "model", "woman", "man", "person", "character", "human")):
+            features.add("adult_human_scene")
     return sorted(features)
 
 
