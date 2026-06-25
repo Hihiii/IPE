@@ -144,11 +144,11 @@ characters:
 - name: Kainé
   game: NieR Replicant
 - name: 2B
-  game: 尼爾：自動人形
+  game: 'NieR: Automata'
 - name: A2
-  game: 尼爾：自動人形
+  game: 'NieR: Automata'
 - name: Eve
-  game: 尼爾：自動人形
+  game: 'NieR: Automata'
 - name: March 7th
   game: 'Honkai: Star Rail'
 - name: Himeko
@@ -186,31 +186,31 @@ characters:
 - name: Rappa
   game: 'Honkai: Star Rail'
 - name: Cammy
-  game: 快打旋風
+  game: 'Street Fighter'
 - name: Chun-Li
-  game: 快打旋風
+  game: 'Street Fighter'
 - name: Juri
-  game: 快打旋風
+  game: 'Street Fighter'
 - name: Laura
-  game: 快打旋風
+  game: 'Street Fighter'
 - name: Poison
-  game: 快打旋風
+  game: 'Street Fighter'
 - name: R. Mika
-  game: 快打旋風
+  game: 'Street Fighter'
 - name: Rose
-  game: 快打旋風
+  game: 'Street Fighter'
 - name: Blue Mary
-  game: 格鬥天王
+  game: 'King of Fighters'
 - name: King
-  game: 格鬥天王
+  game: 'King of Fighters'
 - name: Leona Heidern
-  game: 格鬥天王
+  game: 'King of Fighters'
 - name: Mai Shiranui
-  game: 格鬥天王
+  game: 'King of Fighters'
 - name: Shermie
-  game: 格鬥天王
+  game: 'King of Fighters'
 - name: Vanessa
-  game: 格鬥天王
+  game: 'King of Fighters'
 - name: Jett
   game: VALORANT
 - name: Sage
@@ -228,9 +228,9 @@ characters:
 - name: Astra
   game: VALORANT
 - name: Nami
-  game: 航海王
+  game: 'One Piece'
 - name: Nico Robin
-  game: 航海王
+  game: 'One Piece'
 - name: Ahri
   game: League of Legends
 - name: Jinx
@@ -254,6 +254,6 @@ characters:
 - name: Vayne
   game: League of Legends
 - name: Makima
-  game: 鏈鋸人
+  game: 'Chainsaw Man'
 - name: Power
-  game: 鏈鋸人
+  game: 'Chainsaw Man'

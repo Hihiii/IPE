@@ -1,0 +1,387 @@
+schema_version: "1.0.0"
+name: sexy-outfit-catalog
+description: "Catalog of 52 sexy female outfits for random selection when raw prompt specifies no clothing for a generic (non-IP) character."
+
+sexy_outfit_catalog:
+  selection_rule: "Select one outfit at random when wardrobe is unspecified and subject is generic non-IP. Apply exposure_action_controller transformation to expose evidence target after outfit selection."
+
+  outfits:
+    # ── Lingerie (10) ──
+    - id: "001"
+      name: "Black Lace Babydoll"
+      category: lingerie
+      upper_body: "black lace babydoll with sheer mesh bodice, scalloped hem"
+      lower_body: "matching black lace thong"
+      footwear: "black stiletto heels"
+      tags: [sheer, lace, babydoll, black, classic_lingerie]
+    - id: "002"
+      name: "Red Corset Set"
+      category: lingerie
+      upper_body: "scarlet satin corset with lace-up back, underwired cups pushing breasts up"
+      lower_body: "red lace garter belt and black thigh-high stockings"
+      footwear: "red platform pumps"
+      tags: [corset, lace-up, satin, red, push_up]
+    - id: "003"
+      name: "Sheer White Teddy"
+      category: lingerie
+      upper_body: "semi-transparent white mesh teddy with floral embroidery, deep V neckline"
+      lower_body: "integrated snap-crotch gusset"
+      footwear: "barefoot"
+      tags: [teddy, sheer, white, mesh, embroidered]
+    - id: "004"
+      name: "Black Bra and Thong Set"
+      category: lingerie
+      upper_body: "black push-up bra with lace cups, center clasp"
+      lower_body: "matching black lace thong"
+      footwear: "black ankle-strap heels"
+      tags: [bra, thong, push-up, lace, black]
+    - id: "005"
+      name: "Purple Open-Cup Bra Set"
+      category: lingerie
+      upper_body: "purple satin open-cup bra with nipple openings, adjustable straps"
+      lower_body: "matching purple g-string"
+      footwear: "purple heels"
+      tags: [open-cup, satin, purple, bdsm_style]
+    - id: "006"
+      name: "Crotchless Black Bodysuit"
+      category: lingerie
+      upper_body: "black mesh bodysuit with open cups, plunging neckline"
+      lower_body: "crotchless gusset, open back"
+      footwear: "black knee-high boots"
+      tags: [bodysuit, crotchless, mesh, black, open]
+    - id: "007"
+      name: "Gold Sequin Chemise"
+      category: lingerie
+      upper_body: "gold sequin chemise with thin spaghetti straps, low-cut front"
+      lower_body: "matching gold thong"
+      footwear: "gold strappy sandals"
+      tags: [chemise, sequin, gold, sparkly, nightwear]
+    - id: "008"
+      name: "Pink Satin Nightie"
+      category: lingerie
+      upper_body: "baby pink satin nightie with lace trim, adjustable bow at center"
+      lower_body: "matching pink satin panty"
+      footwear: "pink feather mules"
+      tags: [nightie, satin, pink, lace, sweet]
+    - id: "009"
+      name: "Black Lace Garter Belt Set"
+      category: lingerie
+      upper_body: "black underwire demi bra with lace cups"
+      lower_body: "black lace garter belt, waist-high stockings, matching thong"
+      footwear: "black stilettos"
+      tags: [garter_belt, stockings, demi_bra, lace, classic_pinup]
+    - id: "010"
+      name: "Nude Mesh Bodysuit"
+      category: lingerie
+      upper_body: "nude-toned transparent mesh bodysuit with high neck, long sleeves"
+      lower_body: "thong back, snap closure"
+      footwear: "nude pumps"
+      tags: [bodysuit, nude, mesh, transparent, sleek]
+
+    # ── Swimwear (6) ──
+    - id: "011"
+      name: "Micro Bikini"
+      category: swimwear
+      upper_body: "black micro triangle bikini top, barely covering nipples, thin strings"
+      lower_body: "matching black micro bikini bottom with side ties"
+      footwear: "barefoot"
+      tags: [bikini, micro, string, black, minimal]
+    - id: "012"
+      name: "Thong Bikini"
+      category: swimwear
+      upper_body: "white triangle bikini top with gold ring center"
+      lower_body: "white thong bikini bottom"
+      footwear: "barefoot"
+      tags: [bikini, thong, white, gold_ring, beach]
+    - id: "013"
+      name: "Red Monokini"
+      category: swimwear
+      upper_body: "red one-shoulder monokini with deep cutout at sternum"
+      lower_body: "high-cut leg openings, continuous fabric to waist"
+      footwear: "barefoot"
+      tags: [monokini, red, one-shoulder, cutout, plunge]
+    - id: "014"
+      name: "Tropical String Bikini"
+      category: swimwear
+      upper_body: "tropical print triangle top, string tie closure"
+      lower_body: "matching string side-tie bottom"
+      footwear: "barefoot"
+      tags: [bikini, string, tropical, print, colorful]
+    - id: "015"
+      name: "Black Crochet Bikini"
+      category: swimwear
+      upper_body: "black crocheted halter bikini top with gaps"
+      lower_body: "matching crochet bikini bottom"
+      footwear: "barefoot"
+      tags: [bikini, crochet, black, halter, see-through]
+    - id: "016"
+      name: "Wet-Look One-Piece"
+      category: swimwear
+      upper_body: "glossy black wet-look high-neck one-piece, zipped front"
+      lower_body: "high-cut legs, thong back"
+      footwear: "barefoot"
+      tags: [one-piece, wet-look, latex_shine, black, high-cut]
+
+    # ── Club / Dresses (8) ──
+    - id: "017"
+      name: "Black Bodycon Mini Dress"
+      category: club_dress
+      upper_body: "black ribbed bodycon mini dress, high neck, sleeveless"
+      lower_body: "hemline at upper thigh"
+      footwear: "black pointed stilettos"
+      tags: [bodycon, mini_dress, black, tight, club]
+    - id: "018"
+      name: "Silver Slip Dress"
+      category: club_dress
+      upper_body: "silver satin slip dress with thin spaghetti straps, cowl neck"
+      lower_body: "slip hem at mid-thigh"
+      footwear: "silver strappy heels"
+      tags: [slip_dress, satin, silver, cowl_neck, sleek]
+    - id: "019"
+      name: "Red Latex Dress"
+      category: club_dress
+      upper_body: "shiny red latex mini dress with high collar, back zipper"
+      lower_body: "skin-tight latex skirt to upper thigh"
+      footwear: "red patent leather pumps"
+      tags: [latex, dress, red, shiny, tight]
+    - id: "020"
+      name: "Black Backless Dress"
+      category: club_dress
+      upper_body: "black backless dress plunging to lower back, front V-neck"
+      lower_body: "body-hugging skirt to mid-thigh"
+      footwear: "black open-toe heels"
+      tags: [backless, dress, black, plunging, sexy]
+    - id: "021"
+      name: "Blue Cut-Out Dress"
+      category: club_dress
+      upper_body: "electric blue dress with asymmetric cutouts at waist and sides"
+      lower_body: "fitted mini skirt"
+      footwear: "blue suede pumps"
+      tags: [cutout, dress, blue, asymmetric, club]
+    - id: "022"
+      name: "Black Mesh Dress"
+      category: club_dress
+      upper_body: "sheer black mesh long-sleeve dress with visible bra underneath"
+      lower_body: "sheer mesh skirt to mid-thigh"
+      footwear: "black heels"
+      tags: [mesh, sheer, dress, black, transparent]
+    - id: "023"
+      name: "White Bandage Dress"
+      category: club_dress
+      upper_body: "white bandage mini dress with wrapped panel construction"
+      lower_body: "bandage wrapped skirt"
+      footwear: "white pumps"
+      tags: [bandage_dress, white, wrapped, tight, herve_leger_style]
+    - id: "024"
+      name: "One-Shoulder Asymmetric Dress"
+      category: club_dress
+      upper_body: "black one-shoulder asymmetric mini dress with ruching at waist"
+      lower_body: "asymmetrical hemline"
+      footwear: "black strappy sandals"
+      tags: [one-shoulder, asymmetric, mini_dress, black, ruched]
+
+    # ── Tops (6) ──
+    - id: "025"
+      name: "Black Crop Top"
+      category: tops
+      upper_body: "black cropped tank top, hem above navel, thin straps"
+      lower_body: "high-waisted black mini skirt"
+      footwear: "black chunky sneakers"
+      tags: [crop_top, tank, black, casual, midriff]
+    - id: "026"
+      name: "White Tube Top"
+      category: tops
+      upper_body: "white stretch tube top, bandeau style"
+      lower_body: "low-rise denim mini skirt"
+      footwear: "white sandals"
+      tags: [tube_top, bandeau, white, casual, summery]
+    - id: "027"
+      name: "Red Halter Top"
+      category: tops
+      upper_body: "red halterneck crop top with tie closure at nape"
+      lower_body: "black leather mini skirt"
+      footwear: "red heels"
+      tags: [halter_top, red, crop, tie_neck, date_night]
+    - id: "028"
+      name: "Black Lace Camisole"
+      category: tops
+      upper_body: "black lace-trimmed silk camisole, adjustable straps"
+      lower_body: "black pencil skirt"
+      footwear: "black pumps"
+      tags: [camisole, lace, silk, black, elegant]
+    - id: "029"
+      name: "Off-Shoulder Blouse"
+      category: tops
+      upper_body: "white off-shoulder ruffled blouse, elasticized neckline"
+      lower_body: "light blue denim hot pants"
+      footwear: "white espadrilles"
+      tags: [off-shoulder, blouse, white, ruffled, romantic]
+    - id: "030"
+      name: "Sheer Blouse"
+      category: tops
+      upper_body: "transparent black sheer blouse with French cuffs, visible bra beneath"
+      lower_body: "black trousers"
+      footwear: "black oxford heels"
+      tags: [sheer, blouse, transparent, black, office_siren]
+
+    # ── Bottoms (6) ──
+    - id: "031"
+      name: "Black Hot Pants"
+      category: bottoms
+      upper_body: "fitted black tank top"
+      lower_body: "black denim hot pants, hem high on thigh"
+      footwear: "black combat boots"
+      tags: [hot_pants, denim, black, shorts, casual]
+    - id: "032"
+      name: "Black Micro Mini Skirt"
+      category: bottoms
+      upper_body: "black sleeveless mock neck top"
+      lower_body: "black micro mini skirt, barely covering hips"
+      footwear: "black stiletto pumps"
+      tags: [mini_skirt, micro, black, club, daring]
+    - id: "033"
+      name: "Black Leather Pants"
+      category: bottoms
+      upper_body: "black lace bodysuit"
+      lower_body: "black high-waisted leather pants, skin-tight"
+      footwear: "black stiletto boots"
+      tags: [leather_pants, black, tight, edgy, rocker]
+    - id: "034"
+      name: "Black High-Cut Shorts"
+      category: bottoms
+      upper_body: "cropped red t-shirt"
+      lower_body: "black high-cut shorts with side zippers"
+      footwear: "black sneakers"
+      tags: [shorts, high-cut, black, sporty, casual]
+    - id: "035"
+      name: "Black Pencil Skirt"
+      category: bottoms
+      upper_body: "white silk blouse, partly unbuttoned"
+      lower_body: "black high-waisted stretch pencil skirt"
+      footwear: "black pointed pumps"
+      tags: [pencil_skirt, black, office, tight, professional]
+    - id: "036"
+      name: "Black Yoga Leggings"
+      category: bottoms
+      upper_body: "black sports bra"
+      lower_body: "black high-waisted yoga leggings, second-skin fit"
+      footwear: "barefoot"
+      tags: [leggings, yoga, black, skin-tight, athletic]
+
+    # ── Roleplay / Costume (6) ──
+    - id: "037"
+      name: "French Maid Costume"
+      category: roleplay
+      upper_body: "black and white French maid dress with short puff sleeves, white lace apron, deep V neck"
+      lower_body: "extremely short skirt, matching white lace thong"
+      footwear: "black Mary Jane heels"
+      tags: [maid, costume, french, lace, roleplay]
+    - id: "038"
+      name: "Sexy Nurse Uniform"
+      category: roleplay
+      upper_body: "white cropped nurse top with red cross emblem, sheer cardigan"
+      lower_body: "white micro mini skirt"
+      footwear: "white platform heels"
+      tags: [nurse, uniform, white, roleplay, medical]
+    - id: "039"
+      name: "Schoolgirl Uniform"
+      category: roleplay
+      upper_body: "white button-up shirt, loosened, red tie, plaid blazer"
+      lower_body: "extremely short plaid miniskirt"
+      footwear: "white knee-high socks, black loafers"
+      tags: [schoolgirl, uniform, plaid, preppy, roleplay]
+    - id: "040"
+      name: "Cheerleader Outfit"
+      category: roleplay
+      upper_body: "cropped red and white sleeveless sweater with letter"
+      lower_body: "red micro pleated skirt, matching white panty"
+      footwear: "white sneakers, pom-poms"
+      tags: [cheerleader, uniform, red, crop, pom_poms]
+    - id: "041"
+      name: "Police Costume"
+      category: roleplay
+      upper_body: "dark blue cropped police shirt with badge, tie"
+      lower_body: "dark blue micro mini skirt, utility belt"
+      footwear: "black patent leather boots"
+      tags: [police, costume, uniform, blue, authority]
+    - id: "042"
+      name: "Pink Bunny Suit"
+      category: roleplay
+      upper_body: "pink satin corset bunny top with rabbit ears headband"
+      lower_body: "pink bunny tail panty, fishnet stockings"
+      footwear: "pink stiletto pumps"
+      tags: [bunny, costume, pink, satin, playboy]
+
+    # ── Loungewear (4) ──
+    - id: "043"
+      name: "Black Silk Robe"
+      category: loungewear
+      upper_body: "black silk robe loosely tied at waist, open front revealing bare skin"
+      lower_body: "matching black silk panty"
+      footwear: "barefoot"
+      tags: [robe, silk, black, open, lounging]
+    - id: "044"
+      name: "Oversized White Shirt"
+      category: loungewear
+      upper_body: "men's oversized white button-up shirt, half-buttoned"
+      lower_body: "bare legs, shirt hem at upper thigh"
+      footwear: "barefoot"
+      tags: [oversized_shirt, white, casual, no_pants, sleepy]
+    - id: "045"
+      name: "Satin Nightie"
+      category: loungewear
+      upper_body: "ivory satin spaghetti strap nightie with lace trim"
+      lower_body: "matching ivory panty"
+      footwear: "barefoot"
+      tags: [nightie, satin, ivory, lace, sleepwear]
+    - id: "046"
+      name: "Lace Boy Shorts Set"
+      category: loungewear
+      upper_body: "black lace-trimmed cami top"
+      lower_body: "matching black lace boy shorts"
+      footwear: "barefoot"
+      tags: [boy_shorts, cami, lace, black, sleep_set]
+
+    # ── Specialty (6) ──
+    - id: "047"
+      name: "Black Full Body Harness"
+      category: specialty
+      upper_body: "black leather harness wrapping across chest, over shoulders"
+      lower_body: "matching leather thong"
+      footwear: "black stiletto boots"
+      tags: [harness, leather, black, bdsm, strappy]
+    - id: "048"
+      name: "Gold Body Chain"
+      category: specialty
+      upper_body: "gold chain body jewelry draping across collarbone, between breasts"
+      lower_body: "gold chain belt at hips"
+      footwear: "barefoot"
+      tags: [body_chain, gold, jewelry, festival, barely_there]
+    - id: "049"
+      name: "Red Pasties and G-String"
+      category: specialty
+      upper_body: "red heart-shaped pasties covering nipples only"
+      lower_body: "matching red g-string"
+      footwear: "red platform heels"
+      tags: [pasties, g-string, red, burlesque, minimal]
+    - id: "050"
+      name: "White Wet T-Shirt"
+      category: specialty
+      upper_body: "white wet cotton t-shirt clinging to skin, transparent, bra visible underneath"
+      lower_body: "blue denim mini skirt"
+      footwear: "barefoot"
+      tags: [wet_t-shirt, white, clingy, transparent, wet]
+    - id: "051"
+      name: "Black Latex Bodysuit"
+      category: specialty
+      upper_body: "glossy black latex bodysuit with high collar, front zipper half-open"
+      lower_body: "thong back, integrated"
+      footwear: "black thigh-high latex boots"
+      tags: [latex, bodysuit, glossy, black, skin-tight]
+    - id: "052"
+      name: "Zentai Latex Catsuit"
+      category: specialty
+      upper_body: "shiny black liquid latex full catsuit covering entire body, zipped front"
+      lower_body: "integrated full coverage"
+      footwear: "integrated latex booties"
+      tags: [catsuit, latex, zentai, full_body, shiny]

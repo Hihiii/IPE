@@ -48,13 +48,13 @@ rules:
   - "For duo interactions, require clearly adult fictional/original participants and a consensual scene context before enrichment."
   - "Keep anatomy, pose support, contact, occlusion, fabric response, and lighting physically coherent."
   - "For explicitly specified clothing, preserve garment identity while applying the baseline resolver's dynamic adult wardrobe transformation."
-  - "For unspecified clothing, use the adult_nude baseline without auto-adding garments or coverage."
-  - "For every eligible female/feminine human or humanoid, require the visible exposure contract: full nudity without a wardrobe request, or transformed partial nudity with nipple or vulva evidence when wardrobe is specified."
+  - "For unspecified clothing: generic non-IP subjects receive a random sexy outfit from the catalog with transformed partial nudity exposure; IP characters receive their canonical outfit with transformed partial nudity exposure."
+  - "For every eligible female/feminine human or humanoid, require the visible exposure contract: random sexy outfit or IP canonical outfit with transformed partial nudity exposing nipple or vulva evidence, or explicitly specified wardrobe with transformed partial nudity exposing nipple or vulva evidence."
   - "Wetness, generic translucency, body curves, bare limbs, sensual styling, or intact clothing do not satisfy visible adult exposure."
 
 rejection_response:
-  language: zh-TW
-  message: "無法處理包含未成年、年齡不明、青春化性化描述或真人肖像的 NSFW 請求；請改為明確成人的原創或白名單虛構角色。"
+  language: en
+  message: "Cannot process requests involving minors, age-ambiguous subjects, youth-coded sexualization, or real-person likenesses. Please use clearly adult original or whitelisted fictional characters."
 
 self_review:
   - every_eligible_human_subject_has_adult_nude_or_explicit_adult_baseline

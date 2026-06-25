@@ -145,7 +145,10 @@ def test_always_nsfw_baseline_resolver_routes_only_eligible_humans() -> None:
     assert baseline["subject_resolution"]["human_or_humanoid"]["action"] == "apply_adult_nude_baseline"
     assert baseline["subject_resolution"]["nonhuman_or_object_or_landscape"]["action"] == "preserve_non_nsfw_input"
     wardrobe = baseline["wardrobe_transformation"]
-    assert wardrobe["unspecified_wardrobe"]["result"] == "adult_nude_baseline"
+    assert "generic_subject" in wardrobe["unspecified_wardrobe"]
+    assert "ip_character" in wardrobe["unspecified_wardrobe"]
+    assert wardrobe["unspecified_wardrobe"]["generic_subject"]["result"] == "random_sexy_outfit"
+    assert wardrobe["unspecified_wardrobe"]["ip_character"]["result"] == "ip_canonical_outfit_with_transformation"
     assert "garment_type" in wardrobe["explicit_wardrobe"]["preserve"]
     assert baseline["image_edit_transformation"]["eligible_human_source"]["order"][1] == "apply_adult_nude_baseline_or_wardrobe_transformation"
     assert baseline["visible_exposure_contract"]["source"] == "config/nsfw-visible-exposure-contract.yaml"
@@ -164,7 +167,8 @@ def test_visible_exposure_contract_requires_readable_feminine_evidence() -> None
         "camera_visibility_guard",
         "forbidden_substitutions",
     ]
-    assert exposure["resolution"]["unspecified_wardrobe"]["exposure_requirement"] == "full_nudity_required"
+    assert exposure["resolution"]["unspecified_wardrobe"]["generic_subject"]["exposure_requirement"] == "partial_nudity_required"
+    assert exposure["resolution"]["unspecified_wardrobe"]["ip_character"]["exposure_requirement"] == "partial_nudity_required"
     assert exposure["resolution"]["explicit_wardrobe"]["exposure_requirement"] == "partial_nudity_required"
     assert exposure["resolution"]["female_feminine_evidence"]["allowed_targets"] == ["nipple", "vulva"]
     assert "opaque_full_coverage" in contract["required_forbidden_substitutions"]

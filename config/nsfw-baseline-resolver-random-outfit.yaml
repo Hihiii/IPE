@@ -1,0 +1,24 @@
+schema_version: "1.0.0"
+name: nsfw-baseline-resolver-random-outfit
+purpose: >
+  Route the unspecified-wardrobe + generic-subject case to a random sexy outfit
+  from the catalog, then apply exposure transformation to satisfy the visible
+  exposure contract.
+
+random_outfit_routing:
+  selection_method: "random"
+  source: config/character-identity/sexy-outfit-catalog.yaml
+  selection_rule: "Select exactly one outfit at random from the catalog. The selection is pseudo-random based on a deterministic hash of the request combined with the outfit count."
+  slot_assignment:
+    upper_body: "Use the selected outfit's upper_body field."
+    lower_body: "Use the selected outfit's lower_body field."
+    footwear: "Use the selected outfit's footwear field."
+  rule: "The selected outfit is treated as explicit_wardrobe for exposure transformation purposes. The outfit must be present in the prompt, but the exposure action controller will define a garment transformation action to expose the selected evidence target."
+
+exposure_action_integration:
+  rule: "After selecting the random outfit, apply the exposure action controller's direct_garment_action route as if the outfit were an explicitly specified wardrobe item. The garment transformation action (pulled_aside, partially_removed, slipped_or_lowered, etc.) must expose nipple or vulva evidence target."
+  wardrobe_state: "The outfit is classified as random_outfit_selected for tracking, but treated as explicit_wardrobe for exposure routing."
+  allowed_routes: [direct_garment_action]
+  forbidden_routes: [direct_bare_no_wardrobe]
+  compatibility: "Upper-body garments use upper_body garment zone routes. Lower-body garments use lower_body garment zone routes. Full-body garments use adult_bare_anatomy routes."
+  escalation: "If the selected outfit cannot physically support the required exposure action (e.g., pasties + g-string with no garment to pull aside), escalate to a more revealing outfit selection or use pose/crop/occlusion to maintain exposure."

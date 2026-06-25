@@ -200,7 +200,7 @@ def load_catalog(path: Path = DEFAULT_CATALOG) -> dict[str, Any]:
 
 
 FEATURE_PATTERNS: dict[str, tuple[str, ...]] = {
-    "image_edit": ("edit", "revise", "repair", "replace", "change only", "reference image", "source image", "修改", "修復"),
+    "image_edit": ("edit", "revise", "repair", "replace", "change only", "reference image", "source image"),
     "named_character": ("whitelist", "named character", "canonical character", "character profile"),
     "adult_human_scene": ("adult", "woman", "man", "human", "humanoid", "character", "person", "nude", "nsfw"),
     "dynamic_action_or_interaction": ("motion", "dynamic", "turning", "impact", "peak", "action", "interaction", "pose", "movement", "duo", "pov", "bdsm"),
@@ -211,6 +211,10 @@ FEATURE_PATTERNS: dict[str, tuple[str, ...]] = {
     "standing_pose": ("standing", "stand ", "standing pose"),
     "seated_pose": ("seated", "sitting", "sit ", "on a sofa", "on a chair"),
     "reclining_pose": ("reclining", "lying", "lying down", "on bedding", "on a bed"),
+    "wardrobe_unspecified": (),
+    "wardrobe_specified": (),
+    "generic_subject": (),
+    "ip_character": ("whitelist", "named character", "canonical character", "character profile"),
 }
 NONHUMAN_MARKERS = ("landscape", "object", "still life", "architecture", "vehicle", "animal", "mountain", "lake")
 
@@ -247,8 +251,31 @@ def infer_features(request: str, provided_features: Iterable[str] = ()) -> list[
     for feature, markers in patterns.items():
         if feature == "adult_human_scene" and nonhuman_only:
             continue
+        if feature in ("wardrobe_unspecified", "wardrobe_specified", "generic_subject"):
+            continue
         if any(marker in text for marker in markers):
             features.add(feature)
+    # Wardrobe detection: check if any clothing keyword is present
+    CLOTHING_MARKERS = (
+        "wearing", "dressed", "clothed", "outfit", "dress", "shirt", "skirt", "pants",
+        "shorts", "jacket", "coat", "blouse", "top", "bra", "panties", "underwear",
+        "bikini", "swimsuit", "lingerie", "uniform", "robe", "suit", "jeans",
+        "leggings", "stockings", "boots", "shoes", "heels", "hat", "gloves",
+        "scarf", "belt", "tie", "bodysuit", "corset", "thong", "g-string",
+        "camisole", "tank top", "tube top", "crop top", "mini skirt", "hot pants",
+    )
+    is_human = "adult_human_scene" in features and not nonhuman_only
+    is_ip = "ip_character" in features
+    if is_human:
+        wardrobe_specified = any(marker in text for marker in CLOTHING_MARKERS)
+        if wardrobe_specified:
+            features.add("wardrobe_specified")
+        else:
+            features.add("wardrobe_unspecified")
+            if is_ip:
+                features.add("ip_character")
+            else:
+                features.add("generic_subject")
     return sorted(features)
 
 
@@ -561,12 +588,14 @@ def validate_visible_exposure_contract(value: Any, prompt_pack: dict[str, str]) 
     if missing_substitutions:
         failures.append(_failure("exposure_forbidden_substitutions", "Exposure contract does not reject every invalid substitute.", missing_substitutions=missing_substitutions))
 
-    if wardrobe_state == "unspecified_wardrobe":
-        expected = resolution["unspecified_wardrobe"]
-        if requirement != expected["exposure_requirement"]:
-            failures.append(_failure("exposure_requirement", "Unspecified wardrobe must resolve to full_nudity_required.", actual=requirement))
-        if action != expected["garment_transformation_action"]:
-            failures.append(_failure("exposure_garment_action", "Unspecified wardrobe must not add a garment transformation.", actual=action))
+    if wardrobe_state in ("unspecified_wardrobe_generic", "unspecified_wardrobe"):
+        generic_rule = resolution["unspecified_wardrobe"]["generic_subject"]
+        if requirement != generic_rule["exposure_requirement"]:
+            failures.append(_failure("exposure_requirement", "Generic unspecified wardrobe must resolve to partial_nudity_required.", actual=requirement))
+    elif wardrobe_state == "unspecified_wardrobe_ip":
+        ip_rule = resolution["unspecified_wardrobe"]["ip_character"]
+        if requirement != ip_rule["exposure_requirement"]:
+            failures.append(_failure("exposure_requirement", "IP character unspecified wardrobe must resolve to partial_nudity_required.", actual=requirement))
     elif wardrobe_state == "explicit_wardrobe":
         expected = resolution["explicit_wardrobe"]
         if requirement != expected["exposure_requirement"]:
@@ -592,8 +621,8 @@ def validate_visible_exposure_contract(value: Any, prompt_pack: dict[str, str]) 
                 failures.append(_failure("exposure_prompt_order", "Selected evidence target must appear in the early subject description.", field=field, target=target))
             if "visible" not in prompt or ("unobscured" not in prompt and "in frame" not in prompt):
                 failures.append(_failure("exposure_prompt_visibility", "Positive prompt does not make selected evidence visibly in-frame and unobscured.", field=field, target=target))
-        if wardrobe_state == "unspecified_wardrobe" and any("nude" not in prompt and "bare" not in prompt for prompt in positive_prompts.values()):
-            failures.append(_failure("exposure_prompt_nudity", "Unspecified wardrobe must state the full nude adult presentation in both positive prompts."))
+        if wardrobe_state in ("unspecified_wardrobe", "unspecified_wardrobe_generic", "unspecified_wardrobe_ip") and any("nude" not in prompt and "bare" not in prompt for prompt in positive_prompts.values()):
+            failures.append(_failure("exposure_prompt_nudity", "Unspecified wardrobe must state the adult presentation in both positive prompts."))
         if evidence_mode == "sheer_visible_anatomy" and any("sheer" not in prompt and "translucent" not in prompt for prompt in positive_prompts.values()):
             failures.append(_failure("exposure_sheer_evidence", "Sheer evidence must name sheer or translucent material in both positive prompts.", target=target))
         for control in ("fully clothed", "intact opaque coverage", f"obscured {target}", f"cropped {target}"):
@@ -604,11 +633,12 @@ def validate_visible_exposure_contract(value: Any, prompt_pack: dict[str, str]) 
             if "nude" not in prompt and "bare" not in prompt:
                 failures.append(_failure("exposure_prompt_evidence", "Positive prompt does not state the required bare adult presentation.", field=field))
 
-    if wardrobe_state == "explicit_wardrobe" and isinstance(action, str) and action in resolution["explicit_wardrobe"]["allowed_garment_transformation_actions"]:
-        terms = _action_prompt_terms(action)
-        for field, prompt in positive_prompts.items():
-            if not any(term in prompt for term in terms):
-                failures.append(_failure("exposure_prompt_garment_action", "Positive prompt does not state the selected garment transformation.", field=field, action=action))
+    if wardrobe_state in ("explicit_wardrobe", "unspecified_wardrobe", "unspecified_wardrobe_generic", "unspecified_wardrobe_ip"):
+        allowed = resolution.get(wardrobe_state, {}).get("allowed_garment_transformation_actions", [])
+        if not allowed and wardrobe_state in resolution.get("unspecified_wardrobe", {}):
+            allowed = resolution["unspecified_wardrobe"].get("generic_subject", {}).get("allowed_garment_transformation_actions", [])
+        if isinstance(action, str) and action not in allowed:
+            failures.append(_failure("exposure_garment_action", "Garment transformation action is not allowed for this wardrobe state.", actual=action, allowed=allowed))
 
     if failures:
         raise ExecutionError("Visible exposure contract failed validation.", failures)

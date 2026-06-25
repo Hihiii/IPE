@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nsfw-comfyui-prompt-enhancer"
-version = "3.3.0"
+version = "3.5.0"
 description = "Adult-only fictional/original character prompt enhancement rules for ComfyUI Flux and Z-Image."
 requires-python = ">=3.11"
 dependencies = ["PyYAML>=6.0"]

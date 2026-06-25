@@ -613,7 +613,7 @@ mood_conflict_resolution:
   purpose: "Resolve incompatible emotional or style directions before final prompt assembly."
   general_rules:
     - "Use one dominant mood. Secondary mood may modify lighting or color only."
-    - "If the user uses correction language such as 'but', 'instead', '不要', '更接近', 'rather than', the later corrective mood overrides earlier mood references."
+    - "If the user uses correction language such as 'but', 'instead', 'don't', 'closer to', 'rather than', the later corrective mood overrides earlier mood references."
     - "Medium-defining style beats mood. For example, photorealistic photography must not become painterly just because the mood is dreamy."
     - "Readability beats mood for text, product labels, UI, educational content, and hidden-object scenes."
     - "Natural subject color beats mood color for skin, brand colors, food, animals, and architecture materials."

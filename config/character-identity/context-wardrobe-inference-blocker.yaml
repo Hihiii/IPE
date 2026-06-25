@@ -167,5 +167,14 @@ context_wardrobe_inference_blocker:
       must_not_infer:
         - underwear  # subject may be fully dressed while in fitting room
         - fitting_room_outfit
+  random_outfit_exception: >
+    When the random_sexy_outfit route is active (unspecified wardrobe + generic non-IP subject),
+    the system selects a concrete outfit from sexy-outfit-catalog.yaml. This is explicit wardrobe
+    selection by the system, not context-based inference. The outfit is treated as explicit_wardrobe
+    for exposure transformation purposes.
+  ip_canonical_outfit_exception: >
+    When the ip_canonical_outfit_with_transformation route is active (unspecified wardrobe + IP character),
+    the system uses the character's canonical outfit from their identity profile. This is identity-based
+    wardrobe resolution, not context-based inference.
   rule: "Context sets location, lighting, weather, or mood; it never grants wardrobe permission."
   overlap_protection: "When multiple contexts overlap (e.g., beach + hot_weather + pool_party), union all must_not_infer lists."

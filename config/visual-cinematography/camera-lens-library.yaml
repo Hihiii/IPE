@@ -420,14 +420,14 @@ lens_filters:
 # =============================================================================
 lens_filters_expansion:
   streak_filter_blue_orange:
-    description: "拉絲/條紋濾鏡。在圓形球面鏡頭前強行製造出類似 Anamorphic（變形鏡頭）的水平線條高光拉絲。"
-    effect_on_image: "將點光源（如車燈、路燈）轉化為向兩側延伸的科幻藍色或溫暖橙色水平光芒。"
+    description: "Streak/stripe filter. Forces horizontal anamorphic-style streak flares on spherical lenses."
+    effect_on_image: "Turns point light sources (car headlights, street lamps) into horizontally stretching sci-fi blue or warm orange beams."
     best_for: "Cyberpunk nightscapes, sci-fi cinematography, fake anamorphic flares"
     prompt_keywords: "horizontal blue streak flare, anamorphic flare simulator, sci-fi night anamorphic streak"
 
   hollywood_black_magic:
-    description: "結合了 Black Pro Mist 的柔化與剪刀差擴散（1/4 BPM + HD Classic Soft）。"
-    effect_on_image: "在保持眼睛、睫毛絕對銳利的同時，讓面部皮膚如同抹了豬油般順滑，高光處有非常優雅的擴散，但暗部（Black crush）依然扎實。"
+    description: "Combines Black Pro Mist softening with diffusion (1/4 BPM + HD Classic Soft)."
+    effect_on_image: "Keeps eyes and lashes perfectly sharp while giving skin an ultra-smooth finish. Highlights have elegant bloom while blacks remain solid."
     best_for: "High-end commercial beauty, luxury car interiors with specular highlights"
     prompt_keywords: "hollywood black magic filter glow, sharp core with bloomed skin tones, premium commercial diffusion"
 
@@ -492,21 +492,21 @@ lens_selection_guide:
 # =============================================================================
 cinema_optical_characteristics:
   lens_breathing:
-    characteristic: "鏡頭呼吸效應 (Lens Breathing)"
-    description: "在切換對焦點（Rack Focus）時，畫面邊緣因光學結構移動而產生類似變焦（Zoom）的視角縮放現象。"
-    cinematic_importance: "電影鏡頭（Cine Lenses）極度追求『零呼吸效應』，以確保觀眾的注意力完全留在演員角色的情緒轉變上，而不是被忽大忽小的畫面邊緣分心。"
+    characteristic: "Lens Breathing"
+    description: "When rack focusing, the image edges shift due to optical element movement, creating a subtle zoom-like perspective change."
+    cinematic_importance: "Cinema lenses pursue zero breathing to keep viewer attention on the actor's emotional performance rather than distracting edge shifts."
     prompt_keywords: "zero lens breathing, stable rack focus, optical cinematic focus pull, premium cinema prime"
 
   t_stop_vs_f_stop:
-    characteristic: "光傳導率 T-Stop (Transmission Stop)"
-    description: "F-stop 是幾何光圈（焦距/孔徑），而 T-stop 是扣除鏡片玻璃反射、吸收損耗後，實際到達感光元件的真實光量。"
-    cinematic_importance: "電影拍攝更換鏡頭時，必須依據 T-stop 確保曝光完全一致。高階變焦鏡（如 Angénieux）即便 F-stop 標示 f/2.8，其 T-stop 可能是 T3.0。"
+    characteristic: "T-Stop (Transmission Stop)"
+    description: "F-stop is geometric aperture (focal length/aperture diameter). T-stop is the actual light reaching the sensor after lens glass reflection and absorption losses."
+    cinematic_importance: "When changing cinema lenses, T-stop ensures consistent exposure. High-end zooms (e.g., Angénieux) marked f/2.8 may be T3.0."
     prompt_keywords: "calibrated T-stop exposure, consistent cinema light transmission"
 
   parfocal_vs_varifocal:
-    characteristic: "同焦 (Parfocal) 與 變焦 (Varifocal)"
-    description: "同焦鏡頭在改變焦距（Zoom in/out）時，對焦點會絕對鎖定不變；變焦鏡頭則會在變焦時失焦，必須重新對焦。"
-    cinematic_importance: "商業與紀錄片中的動態推拉推焦（Zoom-and-Focus）必須依賴 Parfocal 設計。"
+    characteristic: "Parfocal vs Varifocal"
+    description: "Parfocal lenses maintain focus when changing focal length. Varifocal lenses lose focus during zoom and must be refocused."
+    cinematic_importance: "Dynamic zoom-and-focus in commercials and documentaries requires parfocal design."
     prompt_keywords: "true parfocal zoom, continuous focal locking, snap zoom cinematography"
 
 
@@ -521,26 +521,26 @@ lens_examples_expansion:
     aperture_range: "f/14 - f/40 (Requires extreme lighting)"
     compression: "expansive_macro"
     working_distance: "20mm_from_front_element (Bug-eye perspective)"
-    perspective_effect: "極致的『蟲眼視角』。擁有微距鏡頭的超近對焦能力，同時保有廣角鏡頭的宏大背景空間感。"
+    perspective_effect: "Extreme bug-eye perspective. Macro-level close focus with wide-angle background expansiveness."
     best_for:
-      - "food_commercial_interior (穿梭於漢堡、飲料冰塊縫隙)"
-      - "tabletop_tech_hero (穿梭於伺服器主機板、晶片電路)"
-      - "miniature_architecture_walkthrough (模型建築內部透視)"
+      - "food_commercial_interior (sliding between burgers, ice cubes)"
+      - "tabletop_tech_hero (weaving through server motherboards, circuits)"
+      - "miniature_architecture_walkthrough (interior model perspective)"
     prompt_keywords: "24mm probe lens, laowa probe perspective, bug-eye macro view, sliding through tight spaces, internal component macro photography"
-    notes: "前段為細長防水槍管設計。因為進光量極小（f/14起跳），實戰中必須搭配極高功率的 LED 條燈或高感光度。"
+    notes: "Front section is a narrow waterproof barrel design. Due to tiny light intake (f/14+), requires very high-power LED light bars or high ISO in practice."
 
   vintage_rehoused_cine:
     category: "specialty_character_lens"
     typical_focal_lengths: "35mm, 50mm, 58mm (e.g., Helios 44-2, Canon K35)"
     compression: "organic_classic"
     distortion: "swirly_bokeh_and_edge_falloff"
-    perspective_effect: "帶有強烈個性的老鏡靈魂。邊緣失光（Vignetting）、旋渦狀焦外（Swirly Bokeh）、迷人的色散與低對比度。"
+    perspective_effect: "Strong character lens soul. Vignetting, swirly bokeh, charming chromatic aberration, and low contrast."
     best_for:
-      - "period_drama (時代劇/復古電影)"
-      - "dreamy_fashion_editorial (夢幻時尚大片)"
-      - "breaking_digital_clinical_look (消除數位感，增加生動故事感)"
+      - "period_drama (period/retro film)"
+      - "dreamy_fashion_editorial (dreamy fashion editorial)"
+      - "breaking_digital_clinical_look (remove digital feel, add storytelling warmth)"
     prompt_keywords: "vintage rehoused cinema lens, helios 44-2 swirly bokeh, organic flares, vintage canon k35 rendering, soft contrast filmic texture"
-    notes: "現代電影（如《沙丘》、《蝙蝠俠》）大量使用改裝老鏡（Rehousing），利用物理瑕疵來打破現代數位感光元件過於銳利、呆板的『塑膠感』。"
+    notes: "Modern films (Dune, The Batman) extensively use rehoused vintage lenses, leveraging optical imperfections to break the overly sharp, plastic digital sensor look."
 
 # =============================================================================
 # AUTOREVISE EXTENSION — generator-visible lens translation and decision support

@@ -50,7 +50,7 @@ style_realism_control:
 # =============================================================================
 style_conflict_resolution:
   photorealistic_vs_anime:
-    if_user_says: ["photorealistic", "真人", "real-life"]
+    if_user_says: ["photorealistic", "real person", "real-life"]
     remove_or_downweight:
       - "anime"
       - "cel shading"
@@ -61,7 +61,7 @@ style_conflict_resolution:
       - "recognizable hairstyle influence"
 
   anime_realism_vs_cartoon:
-    if_user_says: ["anime realism", "高端日系", "半寫實日漫"]
+    if_user_says: ["anime realism", "high-end Japanese", "semi-realistic anime"]
     keep:
       - "stylized facial design"
       - "cinematic lighting"
@@ -123,8 +123,8 @@ style_mode_router:
         - "photorealistic"
         - "realistic photo"
         - "real camera"
-        - "真人"
-        - "真實攝影"
+        - "real person"
+        - "real photography"
         - "real-life"
         - "live-action"
         - "cosplay photo"
@@ -135,7 +135,7 @@ style_mode_router:
     cinematic_film_still:
       strong_triggers:
         - "cinematic film still"
-        - "電影劇照"
+        - "movie still"
         - "movie still"
         - "film frame"
         - "cinematography"
@@ -145,9 +145,9 @@ style_mode_router:
     anime_realism:
       strong_triggers:
         - "anime realism"
-        - "動畫寫實"
-        - "二次元寫實"
-        - "半寫實日漫"
+        - "anime realistic"
+        - "anime realistic"
+        - "semi-realistic anime"
         - "realistic anime"
         - "AAA anime game art"
       output_mode: "stylized_illustration"
@@ -156,9 +156,9 @@ style_mode_router:
     cel_shaded_anime:
       strong_triggers:
         - "anime style"
-        - "日漫風"
+        - "anime style"
         - "cel shading"
-        - "賽璐璐"
+        - "cel shading"
         - "clean anime illustration"
       output_mode: "anime_illustration"
       default_realism_level: "stylized"
@@ -169,8 +169,8 @@ style_mode_router:
         - "concept art"
         - "painterly"
         - "illustrative design"
-        - "角色設定"
-        - "遊戲原畫"
+        - "character design"
+        - "game concept art"
       output_mode: "illustration"
       default_realism_level: "painterly_stylized"
 
@@ -180,7 +180,7 @@ style_mode_router:
         - "industrial design render"
         - "CMF render"
         - "studio product render"
-        - "產品設計圖"
+        - "product design drawing"
       output_mode: "3d_or_photographic_product_render"
       default_realism_level: "precise_material_render"
 
@@ -188,8 +188,8 @@ style_mode_router:
       strong_triggers:
         - "architectural visualization"
         - "archviz"
-        - "室內設計圖"
-        - "建築外觀圖"
+        - "interior design drawing"
+        - "architectural exterior drawing"
         - "rendered interior"
       output_mode: "architectural_render"
       default_realism_level: "physically_plausible_space"
@@ -197,7 +197,7 @@ style_mode_router:
     pixel_art:
       strong_triggers:
         - "pixel art"
-        - "像素圖"
+        - "pixel art"
         - "64x64"
         - "sprite"
       output_mode: "pixel_art"
@@ -208,7 +208,7 @@ style_mode_router:
         - "vector UI"
         - "flat vector"
         - "educational game UI"
-        - "兒童遊戲畫面"
+        - "children's game screen"
         - "icon set"
       output_mode: "vector_or_ui_illustration"
       default_realism_level: "readable_simplified"
@@ -220,11 +220,11 @@ style_mode_router:
         - "instead"
         - "rather than"
         - "not"
-        - "不要"
-        - "不是"
-        - "更接近"
-        - "改成"
-        - "不像"
+        - "don't"
+        - "not"
+        - "closer to"
+        - "change to"
+        - "unlike"
       rule: "Later corrective style overrides earlier loose style mentions."
     medium_terms_outrank_aesthetic_terms:
       rule: "Words defining the image medium outrank vibe words. 'Photorealistic cosplay' outranks 'anime character reference'."
@@ -553,12 +553,12 @@ style_conflict_resolution_v2:
       - "instead"
       - "rather than"
       - "not"
-      - "不是"
-      - "不要"
-      - "更接近"
-      - "改成"
-      - "像真人"
-      - "不是二次元"
+      - "not"
+      - "don't"
+      - "closer to"
+      - "change to"
+      - "looks real"
+      - "not anime"
     rule: "Later corrective style terms override earlier loose style terms."
     example:
       input: "anime character, but photorealistic real-life cosplay"

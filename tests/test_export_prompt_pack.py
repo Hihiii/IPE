@@ -22,7 +22,7 @@ def test_exporter_requires_all_and_only_contract_fields() -> None:
     with pytest.raises(ValueError, match="forbidden Flux syntax"):
         validate_prompt_pack({**VALID_PACK, "flux_final_prompt": "A portrait. [AVOID] bad anatomy"})
     with pytest.raises(ValueError, match="English prompt text"):
-        validate_prompt_pack({**VALID_PACK, "z_image_positive_prompt": "成人角色"})
+        validate_prompt_pack({**VALID_PACK, "z_image_positive_prompt": "成年角色"})
     with pytest.raises(ValueError, match="WIDTHxHEIGHT"):
         validate_prompt_pack({**VALID_PACK, "suggest_resolution": "portrait"})
 

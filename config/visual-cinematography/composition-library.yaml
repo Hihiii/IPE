@@ -381,9 +381,9 @@ genre_composition:
   selfie_perspective_default:
     trigger_terms:
       - "selfie"
-      - "自拍"
+      - "selfie"
       - "group selfie"
-      - "自拍視角"
+      - "selfie perspective"
     interpretation: "selfie perspective shot, not an automatic visible phone or selfie stick"
     subject_placement: "face and upper torso close to the camera; one near-side forearm enters from the lower or side frame edge toward the lens"
     camera_height: "front-camera feel, slightly above or near face height unless user specifies another angle"
@@ -409,12 +409,12 @@ genre_composition:
   visible_selfie_device_explicit:
     trigger_terms:
       - "phone visible"
-      - "手機入鏡"
-      - "拿手機自拍"
+      - "phone visible"
+      - "taking selfie with phone"
       - "mirror selfie"
-      - "鏡子自拍"
+      - "mirror selfie"
       - "selfie stick"
-      - "自拍棒"
+      - "selfie stick"
       - "GoPro"
       - "vlog camera"
     interpretation: "visible selfie device is allowed only because the user explicitly requested it"
@@ -630,7 +630,7 @@ motion_composition:
     technique: "When the subject leans into a turn (motorcycle, runner, skater), tilt the camera in the OPPOSITE direction. This exaggerates the perceived G-force and instability. Keeping the horizon level would neutralize the speed sensation."
     best_for: "motorcycle cornering, car drifting, runner banking around a curve, skater carving, horse turning at gallop"
     prompt_keywords: "kinetic Dutch angle, 15 degree motion tilt, anti-direction camera lean, G-force visual exaggeration, speed instability framing, subconscious lean composition"
-    notes: "The amount of tilt maps to perceived speed — 5° for moderate speed, 15° for极限. Beyond 15° it becomes disorienting rather than thrilling."
+    notes: "The amount of tilt maps to perceived speed — 5° for moderate speed, 15° for extreme. Beyond 15° it becomes disorienting rather than thrilling."
 
 
 # =============================================================================
@@ -643,30 +643,30 @@ motion_composition:
 camera_angles_and_heights:
   low_angle_hero:
     category: "power_dynamics"
-    description: "低角度仰拍。相機置於主體視線下方向上拍攝。"
-    visual_effect: "權威、宏大、英雄主義、具有壓迫感或崇高感。"
+    description: "Low-angle upward shot. Camera placed below subject's eye level pointing upward."
+    visual_effect: "Authority, grandeur, heroic, imposing or sublime feeling."
     best_for:
-      - "商業產品的 Hero Shot（如汽車、巨型伺服器機櫃）"
-      - "展現建築框架的拔地而起感"
-      - "強化電影反派或英雄登場的氣勢"
+      - "commercial product hero shot (cars, giant server racks)"
+      - "emphasizing vertical building lines rising from ground"
+      - "enhancing film villain or hero entrance presence"
     prompt_keywords: "low-angle shot, heroic perspective, worm's eye tilt, looking up at subject, imposing scale"
-    notes: "要注意背景的雜亂度，仰拍會將天花板或天空引入作為主要背景。"
+    notes: "Watch background clutter; low angle brings ceiling or sky into the frame as primary background."
 
   high_angle_vulnerability:
     category: "power_dynamics"
-    description: "高角度俯拍。相機置於主體視線上方向下拍攝。"
-    visual_effect: "渺小、無助、被窺視感、或展現環境整體的秩序感。"
+    description: "High-angle downward shot. Camera placed above subject's eye level looking down."
+    visual_effect: "Smallness, helplessness, observed feeling, or showing the overall order of the environment."
     best_for:
-      - "劇情片中角色陷入絕境的心理刻畫"
-      - "商業攝影中展現複雜桌面配置（Tabletop Grid）"
+      - "character psychological portrayal at a desperate moment in drama"
+      - "commercial photography showing complex tabletop grid arrangement"
     prompt_keywords: "high-angle shot, vulnerable perspective, looking down, bird's-eye tilt, submissive framing"
 
   gods_eye_view:
     category: "spatial_planar"
-    description: "上帝視角/正鳥瞰（Top-down Overhead）。相機與地面呈絕對 90° 垂直向下。"
-    visual_effect: "絕對的客觀、神聖、地圖般的平面幾何秩序、抽離現實感。"
+    description: "God's eye view / top-down overhead. Camera at absolute 90° perpendicular to ground."
+    visual_effect: "Absolute objectivity, sacred, map-like planar geometric order, detached from reality."
     best_for:
-      - "美食攝影的高級平鋪（Flat Lay）"
+      - "food photography premium flat lay"
       - "建築空間的標準層平面圖（Floor Plan）視覺化呈現"
       - "電影中表現命運掌控或宏大戰局的開場"
     prompt_keywords: "90-degree top-down view, god's eye perspective, perfect flat lay overhead, planar geometric layout"

@@ -212,7 +212,7 @@ rule_nodes:
       - path: config/character-identity/reclining-pose-physics.yaml
 
   - id: named_character_identity
-    triggers: [named_character]
+    triggers: [named_character, ip_character]
     phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_4_self_review]
     requires: [adult_policy_and_delivery]
     conflicts: []
@@ -316,3 +316,17 @@ rule_nodes:
     sources:
       - path: config/visual-cinematography/style-realism-control.yaml
         sections: [style_realism_control, style_mode_router, generator_visible_style_translation, style_intent_selector, subject_specific_style_guardrails, style_quality_rubric, prompt_assembly_hooks]
+
+  - id: wardrobe_routing
+    triggers: [wardrobe_unspecified]
+    phases: [phase_1_intent_analysis, phase_2_composition_and_cinematography, phase_3_scene_blueprint, phase_3_1_prompt_package]
+    requires: [adult_policy_and_delivery]
+    conflicts: []
+    cost_class: low
+    claims: [wardrobe_routing, outfit_exposure_transformation]
+    sources:
+      - path: config/character-identity/sexy-outfit-catalog.yaml
+      - path: config/nsfw-baseline-resolver-random-outfit.yaml
+        sections: [random_outfit_routing, exposure_action_integration]
+      - path: config/nsfw-baseline-resolver-ip-outfit.yaml
+        sections: [ip_outfit_routing, canonical_outfit_preservation, exposure_action_integration]

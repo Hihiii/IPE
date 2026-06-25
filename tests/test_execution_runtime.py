@@ -42,22 +42,22 @@ def complete_record(packet: dict) -> dict:
     if "visible_adult_exposure" in packet["required_claims"]:
         record["exposure_contract"] = {
             "subject_presentation": "female_feminine",
-            "wardrobe_state": "unspecified_wardrobe",
-            "exposure_requirement": "full_nudity_required",
-            "evidence_mode": "direct_bare",
+            "wardrobe_state": "explicit_wardrobe",
+            "exposure_requirement": "partial_nudity_required",
+            "evidence_mode": "direct_garment_action",
             "evidence_target": "nipple",
-            "garment_transformation_action": "no_garment_added",
+            "garment_transformation_action": "pulled_aside",
             "camera_visibility_guard": ["evidence_target_in_frame", "evidence_target_unoccluded", "evidence_target_readable"],
             "forbidden_substitutions": ["silhouette_only", "wetness_only", "body_curve_only", "opaque_full_coverage", "cropped_or_occluded_evidence"],
         }
     if "exposure_action_plan" in packet["required_claims"]:
         record["exposure_action_plan"] = {
             "primary_target": "nipple",
-            "route": "direct_bare_no_wardrobe",
-            "garment_zone": "none",
-            "action": "no_garment_direct_bare",
-            "action_anchor": "not_applicable",
-            "end_state": "nipple_visible_on_bare_skin",
+            "route": "direct_garment_action",
+            "garment_zone": "upper_body",
+            "action": "pull_aside_upper_garment",
+            "action_anchor": "hand_gripping_garment_edge",
+            "end_state": "nipple_fully_uncovered",
             "material_cause_when_relevant": "not_applicable",
             "camera_proof": ["target_in_frame", "target_unoccluded", "target_on_focal_plane"],
             "fallback_route": "block_delivery",
@@ -85,8 +85,8 @@ def complete_record(packet: dict) -> dict:
         }
         record["exposure_geometry_result"] = check_exposure_geometry(packet, record)
     record["prompt_pack"] = {
-        "flux_final_prompt": "A clearly adult fictional nude woman with a clearly visible nipple, unobscured in the frame, in a coherent cinematic scene.",
-        "z_image_positive_prompt": "clearly adult fictional nude woman, clearly visible nipple unobscured in the frame, coherent cinematic scene",
+        "flux_final_prompt": "A clearly adult fictional woman pulling aside her upper garment, nipple fully uncovered and clearly visible unobscured in the frame, in a coherent cinematic scene.",
+        "z_image_positive_prompt": "clearly adult fictional woman pulling aside upper garment, nipple fully uncovered clearly visible unobscured in the frame, coherent cinematic scene",
         "z_image_negative_prompt": "underage, minor, childlike, youthful appearance, fully clothed, intact opaque coverage, obscured nipple, cropped nipple",
         "suggest_resolution": "1024x1536 (2:3)",
     }

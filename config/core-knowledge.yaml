@@ -82,63 +82,63 @@ priority_chain:
   order:
     - tier: 1
       priority: 100
-      name: "使用者意圖 (user_explicit_constraints)"
+      name: "user_explicit_constraints"
       rule: "Never overwrite explicit user intent with aesthetic enrichment."
     - tier: 2
       priority: 99
-      name: "安全邊界 (safety / age_safety_boundary)"
+      name: "safety / age_safety_boundary"
       rule: "Only block underage/childlike sexual framing. Preserve adult content."
     - tier: 3
       priority: 98
-      name: "任務模式 / 編輯鎖 (task_mode / identity_and_edit_locks)"
+      name: "task_mode / identity_and_edit_locks"
       rule: "For edit/reference tasks, change only requested attributes."
     - tier: 4
       priority: 97
-      name: "主體核心定義 (subject_identity)"
+      name: "subject_identity"
       rule: "The named subject is the primary anchor — action, framing, and scene serve it."
     - tier: 5a
       priority: 96
-      name: "明確動作 (explicit_user_action)"
+      name: "explicit_user_action"
       rule: "Preserve requested action and required hand/prop/food visibility."
     - tier: 5b
       priority: 95
-      name: "明確鏡頭 / 構圖 / 裁切 (explicit_camera_or_framing)"
+      name: "explicit_camera_or_framing"
       rule: "Preserve crop, selfie, close-up. Never widen for costume completion."
     - tier: 5c
       priority: 94
-      name: "明確場景 (explicit_scene_context)"
+      name: "explicit_scene_context"
       rule: "Preserve location, furniture, table setting, interaction objects."
     - tier: 6
       priority: 93
-      name: "姿勢設計 / 防僵硬 (pose_design / anti_boring)"
+      name: "pose_design / anti_boring"
       rule: "Every pose needs a reason — weight shift, asymmetry, hand purpose, gaze intention. Fix stiff symmetry before adding identity or clothing details."
     - tier: 7
       priority: 92
-      name: "角色身分 / 外觀 / 服裝 (character_ip / outfit)"
+      name: "character_ip / outfit"
       rule: "Preserve silhouette, hair, palette, costume markers, signature props."
     - tier: 8
       priority: 91
-      name: "解剖 / 結構 / 物理一致性 (anatomy / physical_structure)"
+      name: "anatomy / physical_structure"
       rule: "Joint logic, balance, hands, product geometry, architecture perspective."
     - tier: 9
       priority: 90
-      name: "畫面文字 / 標示內容 (exact_text / brand_copy)"
+      name: "exact_text / brand_copy"
       rule: "Preserve spelling, capitalization, punctuation, brand marks."
     - tier: 10
       priority: 88
-      name: "構圖可讀性 / 視覺層級 (composition / visual_hierarchy)"
+      name: "composition / visual_hierarchy"
       rule: "Hero-first hierarchy, title-safe area, unobstructed face."
     - tier: 11
       priority: 85
-      name: "畫面豐富度 / 敘事層次 (visual_richness / narrative_depth)"
+      name: "visual_richness / narrative_depth"
       rule: "Controlled foreground/midground/background layering supports subject; do not add unrelated props, text, or characters."
     - tier: 12
       priority: 82
-      name: "燈光 / 材質 (lighting / material)"
+      name: "lighting / material"
       rule: "Professional photography supports subject; avoid equipment jargon."
     - tier: 13
       priority: 70
-      name: "風格 / 氛圍 (style / mood)"
+      name: "style / mood"
       rule: "Applied last; remove/soften when conflicting with higher priorities."
 
   conflict_prevention_stack:
@@ -537,7 +537,7 @@ selfie_rules:
 
   default_mapping:
     "selfie": selfie_perspective
-    "自拍": selfie_perspective
+    "selfie": selfie_perspective
 
   selfie_perspective:
     phone_visible: false
@@ -548,13 +548,13 @@ selfie_rules:
 
   explicit_triggers:
     phone_selfie:
-      triggers: [holding_phone, visible_phone, phone_in_hand, taking_selfie_with_phone, "拿手機自拍", "手機入鏡"]
+      triggers: [holding_phone, visible_phone, phone_in_hand, taking_selfie_with_phone, "taking phone selfie", "phone in frame"]
       require: [phone_visible, hand_phone_contact, finger_grip]
     mirror_selfie:
-      triggers: [mirror_selfie, bathroom_mirror_selfie, "對鏡自拍", "鏡中自拍"]
+      triggers: [mirror_selfie, bathroom_mirror_selfie, "mirror selfie", "mirror reflection"]
       require: [mirror_visible, phone_visible, reflection_logic]
     selfie_stick:
-      triggers: [selfie_stick, "自拍棒"]
+      triggers: [selfie_stick, "selfie stick"]
       require: [selfie_stick_visible, hand_stick_contact]
 
   cleanup_rule: "If selfie without explicit prop trigger: remove phone, mirror, selfie_stick. Keep camera relationship only."
@@ -673,9 +673,9 @@ semantic_priority_rules:
   requested_change_only:
     priority: 98
     triggers:
-      - "只改"
-      - "保持不變"
-      - "不要改"
+      - "change only"
+      - "keep unchanged"
+      - "don't change"
       - "same face"
       - "same outfit"
     rule: "Only modify the requested attributes. Preserve all other described features."
@@ -704,7 +704,7 @@ semantic_priority_rules:
     priority: 95
     rule: "Selfie is camera relationship first and prop action only after an explicit phone, mirror, or selfie-stick trigger."
     priority_order: [explicit_mirror_selfie_trigger, explicit_phone_selfie_trigger, explicit_selfie_stick_trigger, selfie_perspective_default]
-    default: { selfie: selfie_perspective, "自拍": selfie_perspective }
+    default: { selfie: selfie_perspective, "selfie": selfie_perspective }
     phone_or_prop_requires_explicit_trigger: true
 
   explicit_wardrobe_priority:

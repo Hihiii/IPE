@@ -3,7 +3,7 @@ name: image-edit-policy
 purpose: "Adultize eligible human image sources, then apply the requested edit without post-baseline global drift."
 
 mode_detection:
-  edit_triggers: ["edit", "revise", "change only", "replace", "repair", "preserve", "修改", "只改", "修復"]
+  edit_triggers: ["edit", "revise", "change only", "replace", "repair", "preserve"]
   default_mode: generate
 
 edit_contract:

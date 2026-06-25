@@ -29,7 +29,7 @@ execution_leaf:
   applies_to: [clearly_adult_human, clearly_adult_humanoid]
   excluded_subjects: [minor, age_ambiguous, youth_coded_sexualized, identifiable_real_person, nonhuman_only]
   required_fields: [subject_presentation, wardrobe_state, exposure_requirement, evidence_mode, evidence_target, garment_transformation_action, camera_visibility_guard, forbidden_substitutions]
-  baseline: "No wardrobe: full_nudity_required/no_garment_added. Explicit wardrobe: partial_nudity_required plus a compatible direct or sheer reveal action."
+  baseline: "No wardrobe + generic: random_sexy_outfit/partial_nudity_required with garment exposure action. No wardrobe + IP: canonical_outfit/partial_nudity_required with garment exposure action. Explicit wardrobe: partial_nudity_required plus a compatible direct or sheer reveal action."
   female_feminine_evidence: "Select nipple or vulva. A sheer/wet route works only when that target is clearly discernible."
   camera_and_material: "Keep the target in frame, unobscured, readable, and physically coherent. Opaque fabric, vague contour, wetness, curves, steam, darkness, blur, or crop cannot replace it."
   renderer: "Name exposure, target, and garment action early in both positives. For female/feminine scenes, add Z controls for fully clothed, intact opaque coverage, obscured target, and cropped target."
@@ -46,16 +46,23 @@ visible_exposure_contract:
     - camera_visibility_guard
     - forbidden_substitutions
   subject_presentations: [female_feminine, male_masculine, unspecified_gender]
-  wardrobe_states: [unspecified_wardrobe, explicit_wardrobe]
-  evidence_modes: [direct_bare, sheer_visible_anatomy]
+  wardrobe_states: [unspecified_wardrobe, unspecified_wardrobe_generic, unspecified_wardrobe_ip, explicit_wardrobe]
+  evidence_modes: [direct_bare, direct_garment_action, sheer_visible_anatomy]
   required_camera_visibility_guards: [evidence_target_in_frame, evidence_target_unoccluded, evidence_target_readable]
   required_forbidden_substitutions: [silhouette_only, wetness_only, body_curve_only, opaque_full_coverage, cropped_or_occluded_evidence]
 
 resolution:
   unspecified_wardrobe:
-    exposure_requirement: full_nudity_required
-    garment_transformation_action: no_garment_added
-    rule: "Do not add garments, wraps, props, hands, or framing that conceal the selected evidence target."
+    generic_subject:
+      exposure_requirement: partial_nudity_required
+      garment_transformation_action: random_outfit_with_exposure
+      rule: "Select a random sexy outfit from sexy-outfit-catalog.yaml. Apply a concrete garment transformation action (pulled aside, partially removed, lifted, lowered) that exposes the selected evidence target. The outfit must be worn but the target must remain readable through the transformation."
+      allowed_garment_transformation_actions: [partially_removed, pulled_aside, unbuttoned_or_opened, slipped_or_lowered, displaced_by_pose_or_grip]
+    ip_character:
+      exposure_requirement: partial_nudity_required
+      garment_transformation_action: ip_canonical_outfit_with_exposure
+      rule: "Use the IP character's canonical outfit. Apply a concrete garment transformation that exposes the selected evidence target while preserving the canonical garment identity, color, silhouette, and signature design elements."
+      allowed_garment_transformation_actions: [partially_removed, pulled_aside, unbuttoned_or_opened, slipped_or_lowered, displaced_by_pose_or_grip]
   explicit_wardrobe:
     exposure_requirement: partial_nudity_required
     allowed_garment_transformation_actions: [partially_removed, pulled_aside, unbuttoned_or_opened, slipped_or_lowered, displaced_by_pose_or_grip, wet_translucent_cling]

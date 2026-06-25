@@ -304,7 +304,7 @@ failures:
       signature prop, face identity drift, costume drift'
   selfie_semantic_drift:
     symptoms:
-    - plain selfie or 自拍 prompt adds a visible phone, selfie stick, mirror, or camera rig that the user did not request
+    - plain selfie prompt adds a visible phone, selfie stick, mirror, or camera rig that the user did not request
     - visible phone covers the face, eyes, mouth, outfit, product, or other important detail
     - selfie becomes mirror selfie without a requested mirror
     - foreground arm or hand becomes oversized, duplicated, or fused with an imaginary device

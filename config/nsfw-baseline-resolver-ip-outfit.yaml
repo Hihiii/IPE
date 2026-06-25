@@ -1,0 +1,40 @@
+schema_version: "1.0.0"
+name: nsfw-baseline-resolver-ip-outfit
+purpose: >
+  Route the unspecified-wardrobe + IP-character case to the character's canonical
+  outfit from their identity profile, then apply exposure transformation to satisfy
+  the visible exposure contract.
+
+ip_outfit_routing:
+  identity_source: "character-ip-identity-system.yaml identity_costume_required mode"
+  costume_resolution:
+    mode: identity_costume_required
+    rule: "Use the character IP profile's costume field as the canonical outfit. This includes upper_body, lower_body, shoulder_design, waist_design, sleeve_or_glove, footwear, cape_or_outerwear, emblem, accessory, material_language, and color_blocking fields."
+  character_ip_identity_system:
+    source: config/character-identity/character-ip-identity-system.yaml
+    rules:
+      - "Preserve silhouette, hair identity, face impression, color palette hierarchy, and signature props."
+      - "The canonical costume is determined by the character reference resolution order: direct character reference mode > cosplay reinterpretation mode > inspired reinterpretation mode."
+      - "If no exact canonical costume is defined for the character, use the character's signature color blocking, silhouette family, and archetype-appropriate garment structure from the IP identity profile."
+
+canonical_outfit_preservation:
+  rule: "The character's canonical outfit identity must remain recognizable. Garment type, color blocking, emblem, silhouette, and signature design markers are preserved. However, the outfit is subject to exposure transformation (pulled aside, lowered, partially removed) to expose the selected evidence target."
+  preservation_fields:
+    - garment_type_and_structure
+    - color_blocking_and_palette
+    - emblem_and_signature_markers
+    - silhouette_and_outline
+    - accessory_and_props
+  transformation_limits:
+    - "The garment can be partially removed, pulled aside, unbuttoned, unzipped, lowered, or displaced."
+    - "The garment cannot be replaced with a different garment type."
+    - "The garment's recognizable color and design markers must remain visible even in the transformed state."
+
+exposure_action_integration:
+  rule: "After resolving the canonical outfit, apply the exposure action controller's direct_garment_action route. The garment transformation action must be compatible with the canonical garment type and expose nipple or vulva evidence target."
+  wardrobe_state: "The outfit is classified as ip_canonical_outfit for tracking, but treated as explicit_wardrobe for exposure routing."
+  allowed_routes: [direct_garment_action]
+  forbidden_routes: [direct_bare_no_wardrobe]
+  upper_body_actions: "For upper-body canonical garments (shirt, dress, corset, bodice), use pull_aside, unbuttoned_or_opened, slipped_or_lowered, or partially_removed actions. Preserve shoulder design, emblem, and sleeve markers."
+  lower_body_actions: "For lower-body canonical garments (skirt, pants, shorts), use lift, pull_aside, lower, or partially_remove actions. Preserve waist design, color blocking, and footwear markers."
+  fallback: "If no canonical costume is defined for the character, default to random_outfit_selection from the sexy-outfit-catalog.yaml instead."

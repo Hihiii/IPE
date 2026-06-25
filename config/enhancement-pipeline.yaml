@@ -9,7 +9,7 @@ pipeline:
   - id: phase_0_config_resolution
     action: "Read the core, NSFW overrides, prompt-pack contract, and only the domain modules triggered by the request."
   - id: phase_1_intent_analysis
-    action: "Classify subject kind, resolve always-NSFW baseline, visible exposure contract, and one exposure action target/route for eligible human/humanoid subjects, then extract hard locks, task mode, adult tier, character identity, wardrobe transformation, edit scope, visual goal, aspect ratio, risk flags, dynamic_scene_plan, visual_focus_plan, and local_anatomy_surface activation."
+    action: "Classify subject kind (generic vs IP character), detect wardrobe state (specified/unspecified), resolve always-NSFW baseline, visible exposure contract, subject classification for wardrobe routing (generic → random outfit / IP → canonical outfit / specified → explicit wardrobe), and one exposure action target/route for eligible human/humanoid subjects, then extract hard locks, task mode, adult tier, character identity, wardrobe transformation, edit scope, visual goal, aspect ratio, risk flags, dynamic_scene_plan, visual_focus_plan, and local_anatomy_surface activation."
   - id: phase_2_composition_and_cinematography
     action: "Resolve visual focus, visible exposure target, compatible garment/material action, exposed end state, and dynamic pose/action timing first, then run the composition decision order, camera relationship, shot scale, crop safety, depth, lighting, exposure, local anatomy surface, material, style mode, and visual hierarchy analysis."
   - id: phase_3_scene_blueprint
@@ -25,7 +25,7 @@ pipeline:
   - id: phase_4_3_delivery_package
     action: "Normalize the four required Flux/Z-Image fields and resolution recommendation."
   - id: phase_5_final_output
-    action: "Return the Chinese-labelled, English prompt pack. Export only on explicit user request."
+    action: "Return the validated prompt pack in English. Export only on explicit user request."
 
 composition_decision_order:
   - story_goal

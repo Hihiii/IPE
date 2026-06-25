@@ -67,10 +67,10 @@ skill_phase:
     - For weaker text models, keep text simple: large masthead, short cover lines, clear spacing, simple sans-serif or editorial type.
 
     Trigger examples:
-    - "汽車雜誌封面" → `magazine_cover` + `implied_cover_text_mode`
-    - "海報大片" → `poster` + `implied_cover_text_mode`
-    - "標題寫 SUPRA STYLE" → `exact_text_mode`
-    - "留上方空白讓我後製文字" → `text_safe_layout_only_mode`
+    - "car magazine cover" → `magazine_cover` + `implied_cover_text_mode`
+    - "poster shot" → `poster` + `implied_cover_text_mode`
+    - "title text SUPRA STYLE" → `exact_text_mode`
+    - "leave top space for text overlay" → `text_safe_layout_only_mode`
 
     ```yaml
     publication_layout:
@@ -558,7 +558,7 @@ skill_phase:
     | `forbidden_changes` | hard rules from the user — things the enhancement pipeline must never do regardless of aesthetic judgment |
 
     Extract these from the user's language:
-    - "same face" / "keep the same" / "不變" / "一樣" → locked
+    - "same face" / "keep the same" / "unchanged" / "same" → locked
     - "only change..." / "just adjust..." → locked everything else, edit only specified
     - Unspecified attributes are implicitly editable unless context suggests otherwise
 

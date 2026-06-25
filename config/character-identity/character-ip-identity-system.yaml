@@ -299,7 +299,7 @@ direct_vs_inspired_modes:
 character_ip_costume_policy:
   modes:
     identity_costume_required:
-      use_when: [canonical_outfit, cosplay, "原作服裝", "角色準確服裝", character_accurate]
+      use_when: [canonical_outfit, cosplay, "canonical_outfit", "character_accurate_outfit", character_accurate]
       allow_canonical_costume: true
     identity_face_only:
       use_when: [portrait, face_focus, hairstyle_focus, unspecified_wardrobe]

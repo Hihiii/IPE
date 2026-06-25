@@ -7,6 +7,8 @@ wardrobe_slot_occupancy:
     worn: "explicitly requested in original prompt"
     absent: "explicitly stated as not worn"
     unspecified_absent_by_default: "not specified; enhancer must not add an item"
+    random_outfit_selected: "selected randomly from sexy-outfit-catalog.yaml for generic non-IP subjects with unspecified wardrobe"
+    ip_canonical_outfit: "resolved from character-ip-identity-system.yaml canonical outfit for IP characters with unspecified wardrobe"
     covered_by_pose: "coverage is body pose, not clothing"
     covered_by_object: "coverage is object occlusion, not clothing"
     covered_by_camera_crop: "coverage is framing, not clothing"

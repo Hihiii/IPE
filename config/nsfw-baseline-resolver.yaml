@@ -37,8 +37,12 @@ tier_resolution:
 
 wardrobe_transformation:
   unspecified_wardrobe:
-    result: adult_nude_baseline
-    rule: "Do not auto-add garments, wraps, or coverage objects; resolve full_nudity_required through nsfw-visible-exposure-contract.yaml."
+    generic_subject:
+      result: random_sexy_outfit
+      rule: "Select one random outfit from sexy-outfit-catalog.yaml for generic non-IP characters. Apply exposure action controller transformation to expose evidence target after outfit selection. The outfit is selected at random from the catalog and then subject to the same exposure transformation as explicit wardrobe."
+    ip_character:
+      result: ip_canonical_outfit_with_transformation
+      rule: "Use the IP character's canonical outfit from character-ip-identity-system.yaml identity_costume_required mode. Apply exposure action controller transformation to expose evidence target. The canonical outfit identity is preserved but must be transformed (pulled aside, lowered, partially removed) to satisfy the visible exposure contract."
   explicit_wardrobe:
     preserve: [garment_type, color, signature_design, character_markers]
     presentation:
@@ -74,7 +78,7 @@ visible_exposure_contract:
   source: config/nsfw-visible-exposure-contract.yaml
   rule: "Every eligible human or humanoid scene resolves a visible exposure contract after eligibility and before pose, material, camera, or renderer decisions."
   female_feminine_rule: "Use nipple or vulva as the selected evidence target; wetness, translucency, body curves, or sensual styling alone do not satisfy the contract."
-  wardrobe_rule: "Unspecified wardrobe resolves full_nudity_required. Explicit wardrobe resolves partial_nudity_required with a concrete transformation action and a readable evidence target."
+  wardrobe_rule: "Unspecified wardrobe: generic subject resolves random_sexy_outfit with partial_nudity_required; IP character resolves ip_canonical_outfit_with_transformation with partial_nudity_required. Explicit wardrobe resolves partial_nudity_required with a concrete transformation action and a readable evidence target."
 
 exposure_action_controller:
   source: config/nsfw-exposure-action-controller.yaml

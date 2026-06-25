@@ -109,6 +109,37 @@ compatibility_matrix:
           action_terms: [unwrapping, unbinding, unwrapping fabric from chest, loosening wrap]
           end_state_terms: [nipple fully uncovered, exposed nipple, fabric falling away]
           escalation_priority: medium
+        # --- Extreme aggressive actions for maximum upper-body exposure ---
+        hand_grabbing_and_lifting_breast:
+          end_state: nipple_lifted_and_forward
+          contract_transformation_action: pulled_aside
+          action_terms: [hand cupping breast from below, lifting upward, palm supporting, fingers spreading]
+          end_state_terms: [nipple pointing forward, lifted breast, hand holding and presenting, nipple fully erect]
+          escalation_priority: extreme
+        both_hands_pulling_shirt_open_breasts_spilling:
+          end_state: both_nipples_exposed_spilling
+          contract_transformation_action: pulled_aside
+          action_terms: [both hands gripping shirt front, pulling apart, tearing open, fabric splitting]
+          end_state_terms: [both breasts spilling out, nipples exposed, shirt hanging open on shoulders]
+          escalation_priority: extreme
+        arching_back_pushing_chest_forward:
+          end_state: nipples_presented_forward
+          contract_transformation_action: displaced_by_pose_or_grip
+          action_terms: [back arched, chest pushed forward, breasts thrust upward]
+          end_state_terms: [nipples presented forward, breasts jutting out, prominent erect nipples]
+          escalation_priority: extreme
+        pulling_garment_straps_down_off_shoulders:
+          end_state: upper_body_bare_except_loose_straps
+          contract_transformation_action: slipped_or_lowered
+          action_terms: [hooking fingers under straps, pulling down off shoulders, straps sliding down arms]
+          end_state_terms: [garment sliding down, breasts uncovered, straps dangling, nipples exposed]
+          escalation_priority: extreme
+        hands_crossed_pulling_shirt_up_from_hem:
+          end_state: nipples_exposed_shirt_bunched_above
+          contract_transformation_action: slipped_or_lowered
+          action_terms: [hands crossed grabbing shirt hem, pulling upward, bunching fabric above breasts]
+          end_state_terms: [shirt bunched above chest, both breasts fully exposed, nipples visible]
+          escalation_priority: extreme
     vulva:
       garment_zone: lower_body
       actions:
@@ -157,6 +188,43 @@ compatibility_matrix:
           action_terms: [unwrapping, unbinding, unwrapping fabric from hips, loosening wrap]
           end_state_terms: [vulva fully uncovered, exposed vulva, fabric falling away]
           escalation_priority: medium
+        # --- Extreme aggressive actions for maximum exposure ---
+        spread_legs_open_exposing_vulva:
+          end_state: vulva_fully_exposed_legs_spread
+          contract_transformation_action: pulled_aside
+          action_terms: [legs spread wide open, thighs pulled apart, open legs]
+          end_state_terms: [vulva fully exposed between spread legs, pussy visible, open wet slit]
+          escalation_priority: extreme
+        hand_pulling_panties_aside_revealing_vulva:
+          end_state: vulva_uncovered_by_hand
+          contract_transformation_action: pulled_aside
+          action_terms: [fingers hooking panties, pulling fabric aside, hand tugging gusset aside]
+          end_state_terms: [vulva exposed by fingers, pulled aside panties, wet exposed pussy]
+          escalation_priority: extreme
+        fingers_spreading_labia_apart:
+          end_state: vulva_spread_open
+          contract_transformation_action: pulled_aside
+          action_terms: [fingers parting labia, spreading open, fingers spreading lips apart]
+          end_state_terms: [labia spread open, pink inner flesh visible, wet exposed vulva]
+          escalation_priority: extreme
+        hands_on_knees_pushing_legs_apart:
+          end_state: vulva_exposed_crouching
+          contract_transformation_action: pulled_aside
+          action_terms: [hands on knees pushing legs apart, squatting with thighs wide, open leg pose from below]
+          end_state_terms: [vulva fully visible from below, spread legs reveal pussy, exposed crotch]
+          escalation_priority: extreme
+        lying_back_knees_to_chest:
+          end_state: vulva_exposed_lying_back
+          contract_transformation_action: slipped_or_lowered
+          action_terms: [lying on back, knees pulled to chest, legs folded back, widespread thighs]
+          end_state_terms: [vulva fully exposed from between raised legs, open pussy, visible slit]
+          escalation_priority: extreme
+        thumb_hooking_waistband_pulling_down:
+          end_state: vulva_exposed_panties_down
+          contract_transformation_action: slipped_or_lowered
+          action_terms: [thumb hooked inside waistband, pulling down, pushing panties down thighs]
+          end_state_terms: [vulva revealed as panties slide down, pubic mound exposed, pussy visible]
+          escalation_priority: extreme
     adult_bare_anatomy:
       garment_zone: any_body
       actions:

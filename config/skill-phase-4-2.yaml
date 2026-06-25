@@ -62,10 +62,10 @@ skill_phase:
           triggers: ["Flux", "FLUX.1", "schnell", "dev"]
           final_format: "subject_first_clean_natural_language"
         image_edit:
-          triggers: ["edit", "modify", "only change", "只改", "保持不變"]
+          triggers: ["edit", "modify", "only change", "change only", "keep unchanged"]
           final_format: "change_only_with_must_preserve_and_forbidden_changes"
         video_prompt:
-          triggers: ["i2v", "t2v", "video", "first frame", "影片"]
+          triggers: ["i2v", "t2v", "video", "first frame", "video"]
           final_format: "stable_first_frame_plus_motion_and_camera_movement"
     ```
 

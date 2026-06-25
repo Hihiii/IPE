@@ -16,7 +16,7 @@ skill_routing:
     ```yaml
     style_conflict_resolution:
       photorealistic_vs_anime:
-        if_user_says: ["photorealistic", "真人", "real-life"]
+        if_user_says: ["photorealistic", "real person", "real-life"]
         remove_or_downweight:
           - "anime"
           - "cel shading"
@@ -27,7 +27,7 @@ skill_routing:
           - "recognizable hairstyle influence"
 
       anime_realism_vs_cartoon:
-        if_user_says: ["anime realism", "高端日系", "半寫實日漫"]
+        if_user_says: ["anime realism", "high-end Japanese", "semi-realistic anime"]
         keep:
           - "stylized facial design"
           - "cinematic lighting"
@@ -39,7 +39,7 @@ skill_routing:
 
       general_rule: >
         When style terms conflict, medium-defining terms outrank loose aesthetic references.
-        Correction language such as "but", "instead", "rather than", "不要", "更接近", "不是...而是..."
+        Correction language such as "but", "instead", "rather than", "don't", "closer to", "not...but..."
         overrides earlier style terms. A named anime/game character reference is a subject or design cue,
         not automatically the rendering medium. Never preserve incompatible medium terms as equal-weight style modes.
     ```
