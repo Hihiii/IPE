@@ -33,9 +33,14 @@ semantic_exposure_visibility_plan:
   target_readability: "The selected target is visible, unobscured, in frame, and on the focal plane."
   hair_clearance: "Hair is tied back, swept behind the shoulder, held to the side, cropped away from the target zone, or otherwise clear of the selected target."
   hand_clearance: "Hands have a visible support, framing, or garment-action role and do not sit between camera and target; action hands hold garment edges aside rather than covering the target."
-  garment_edge_clearance: "Garment edges, folds, seams, straps, sheets, and displaced fabric are anchored away from the target after the reveal action."
-  atmosphere_light_focus_clearance: "Steam, darkness, glare, foreground particles, depth of field, and crop support readability rather than hiding the selected target."
+  garment_edge_clearance: "Garment edges, folds, seams, straps, sheets, and displaced fabric are anchored away from the target after the reveal action. For lower-body exposure, fabric edges must stay outside the vulva/pussy line."
+  atmosphere_light_focus_clearance: "Steam, darkness, glare, foreground particles, depth of field, and crop support readability rather than hiding the selected target; focal plane and crop must include the target and garment-action anchor."
   positive_prompt_guards: "Positive phrases that must survive renderer cleanup in every delivered positive prompt."
+  pose_wardrobe_specific_guards:
+    - "Leg and hip orientation must face the selected target toward the camera."
+    - "Hands must stay outside the target line unless they are visibly holding fabric away."
+    - "Fabric edges, folds, sheets, and straps must be pinned outside the target sightline."
+    - "Crop and focal plane must include both the selected target and the action anchor."
 
 high_risk_semantic_occluders:
   hair:
@@ -46,10 +51,13 @@ high_risk_semantic_occluders:
     positive_repairs: [hand gripping garment edge to the side, fingers pulling fabric outward, palm outside target line, hands framing without covering]
   garment_edges:
     failure_examples: [fold covering target, sheet over target, strap across target, intact opaque fabric, bunched cloth over target]
-    positive_repairs: [garment edge pulled aside, fabric pinned away, fold below target line, strap lowered off target, cloth gathered at side]
+    positive_repairs: [garment edge pulled aside, fabric pinned away, fold below target line, strap lowered off target, cloth gathered at side, fabric edge held outside the vulva line]
   atmosphere_light_focus:
     failure_examples: [steam hiding target, deep shadow over target, foreground blur across target, shallow focus losing target, cropped target]
     positive_repairs: [target on focal plane, clear local light on target, steam behind subject, foreground kept away, crop includes target and action anchor]
+  pose_wardrobe:
+    failure_examples: [hips turned away from target, thighs crossing target, hand resting over crotch, fabric wrinkle covering target]
+    positive_repairs: [hips turned toward the camera, thighs separated outside the target sightline, hands outside the vulva sightline, crop includes the vulva and garment action anchor]
 
 phase_hooks:
   phase_1_intent_analysis: "Create semantic_exposure_visibility_plan after selecting the evidence target and route."

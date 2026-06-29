@@ -30,7 +30,7 @@ execution_leaf:
   excluded_subjects: [minor, age_ambiguous, youth_coded_sexualized, identifiable_real_person, nonhuman_only]
   required_fields: [subject_presentation, wardrobe_state, exposure_requirement, evidence_mode, evidence_target, garment_transformation_action, camera_visibility_guard, forbidden_substitutions]
   baseline: "No wardrobe + generic: random_sexy_outfit/partial_nudity_required with garment exposure action. No wardrobe + IP: canonical_outfit/partial_nudity_required with garment exposure action. Explicit wardrobe: partial_nudity_required plus a compatible direct or sheer reveal action."
-  female_feminine_evidence: "Select nipple or vulva. A sheer/wet route works only when that target is clearly discernible."
+  female_feminine_evidence: "Select nipple or canonical vulva. Pussy may appear only as a renderer/output synonym for vulva; do not add it as a schema target. A sheer/wet route works only when that target is clearly discernible."
   camera_and_material: "Keep the target in frame, unobscured, readable, and physically coherent. Opaque fabric, vague contour, wetness, curves, steam, darkness, blur, or crop cannot replace it."
   renderer: "Name exposure, target, garment action, and semantic clearance early in every delivered positive prompt."
   validation: "Reject missing data, wrong wardrobe route, invalid target, no reveal action, vague transparency, absent target, or hidden/cropped evidence."
@@ -69,7 +69,7 @@ resolution:
     rule: "Preserve garment identity, color, and signature design, but require a concrete physical transformation that exposes the selected evidence target. An intact covering outfit fails."
   female_feminine_evidence:
     allowed_targets: [nipple, vulva]
-    rule: "At least one selected target must be clearly readable in the camera frame. Direct bare visibility is valid; a sheer route is valid only when the selected target itself is clearly discernible."
+    rule: "At least one selected target must be clearly readable in the camera frame. Vulva is the canonical lower-body target; pussy is an accepted positive-prompt synonym only when evidence_target remains vulva. Direct bare visibility is valid; a sheer route is valid only when the selected target itself is clearly discernible."
   other_presentations:
     allowed_targets: [adult_bare_anatomy]
     rule: "Maintain the partial/full nude baseline without imposing a gender-specific anatomical target in this release."
@@ -84,7 +84,7 @@ material_and_camera_rules:
 renderer_contract:
   z_image_positive: "State the exposure state, evidence target, garment action, camera readability, and semantic clearance in visible English detail."
   krea2_positive: "State the same exposure state, evidence target, garment action, camera readability, and semantic clearance in fluent natural positive language."
-  prompt_evidence_rule: "The selected female/feminine evidence target must appear by name in every positive prompt. A sheer route must also name sheer or translucent material."
+  prompt_evidence_rule: "The selected female/feminine evidence target must appear by name in every positive prompt; when evidence_target is vulva, pussy is accepted as an output synonym. A sheer route must also name sheer or translucent material."
 
 phase_hooks:
   phase_1_intent_analysis: "Resolve wardrobe state, exposure requirement, evidence mode, evidence target, and forbidden substitutes immediately after adult eligibility."

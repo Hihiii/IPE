@@ -23,6 +23,7 @@ DEFAULT_CATALOG = ROOT / "config" / "execution-catalog.yaml"
 DEFAULT_QUALITY_CONTRACT = ROOT / "config" / "quality-contract.yaml"
 DEFAULT_VISIBLE_EXPOSURE_CONTRACT = ROOT / "config" / "nsfw-visible-exposure-contract.yaml"
 DEFAULT_EXPOSURE_ACTION_CONTROLLER = ROOT / "config" / "nsfw-exposure-action-controller.yaml"
+DEFAULT_EXPOSURE_STAGING = ROOT / "config" / "nsfw-default-exposure-staging.yaml"
 DEFAULT_SEMANTIC_EXPOSURE_VISIBILITY = ROOT / "config" / "nsfw-semantic-exposure-visibility.yaml"
 _ADULT_WHITELIST_INDEX = ROOT / "config" / "adult-character-whitelist" / "index.yaml"
 _CATALOG_CACHE: dict[Path, tuple[tuple[tuple[str, int, int], ...], dict[str, Any]]] = {}
@@ -574,6 +575,8 @@ def execution_record_template(packet: dict[str, Any]) -> dict[str, Any]:
         "claims": [],
         "provenance": [],
         "exposure_contract": None,
+        "default_exposure_staging_plan": None,
+        "default_exposure_staging_result": None,
         "exposure_action_plan": None,
         "exposure_geometry_plan": None,
         "exposure_geometry_result": None,
@@ -621,6 +624,18 @@ def _action_prompt_terms(action: str) -> tuple[str, ...]:
         "displaced_by_pose_or_grip": ("displaced", "pulled", "grip"),
         "wet_translucent_cling": ("wet", "sheer", "translucent"),
     }[action]
+
+
+def _target_prompt_terms(target: str) -> tuple[str, ...]:
+    if target == "vulva":
+        return ("vulva", "pussy")
+    return (target,)
+
+
+def _target_prompt_position(prompt: str, target: str) -> int:
+    positions = [prompt.find(term.casefold()) for term in _target_prompt_terms(target)]
+    positions = [position for position in positions if position >= 0]
+    return min(positions) if positions else -1
 
 
 def validate_visible_exposure_contract(value: Any, prompt_pack: dict[str, str]) -> None:
@@ -691,9 +706,10 @@ def validate_visible_exposure_contract(value: Any, prompt_pack: dict[str, str]) 
     positive_prompts = _positive_prompt_fields(prompt_pack)
     if subject == "female_feminine" and isinstance(target, str):
         for field, prompt in positive_prompts.items():
-            if target.casefold() not in prompt:
+            target_position = _target_prompt_position(prompt, target)
+            if target_position < 0:
                 failures.append(_failure("exposure_prompt_evidence", "Positive prompt does not name the selected evidence target.", field=field, target=target))
-            elif prompt.find(target.casefold()) > 320:
+            elif target_position > 320:
                 failures.append(_failure("exposure_prompt_order", "Selected evidence target must appear in the early subject description.", field=field, target=target))
             if "visible" not in prompt or ("unobscured" not in prompt and "in frame" not in prompt):
                 failures.append(_failure("exposure_prompt_visibility", "Positive prompt does not make selected evidence visibly in-frame and unobscured.", field=field, target=target))
@@ -708,8 +724,10 @@ def validate_visible_exposure_contract(value: Any, prompt_pack: dict[str, str]) 
 
     if wardrobe_state in ("explicit_wardrobe", "unspecified_wardrobe", "unspecified_wardrobe_generic", "unspecified_wardrobe_ip"):
         allowed = resolution.get(wardrobe_state, {}).get("allowed_garment_transformation_actions", [])
-        if not allowed and wardrobe_state in resolution.get("unspecified_wardrobe", {}):
+        if not allowed and wardrobe_state in {"unspecified_wardrobe", "unspecified_wardrobe_generic"}:
             allowed = resolution["unspecified_wardrobe"].get("generic_subject", {}).get("allowed_garment_transformation_actions", [])
+        if not allowed and wardrobe_state == "unspecified_wardrobe_ip":
+            allowed = resolution["unspecified_wardrobe"].get("ip_character", {}).get("allowed_garment_transformation_actions", [])
         if isinstance(action, str) and action not in allowed:
             failures.append(_failure("exposure_garment_action", "Garment transformation action is not allowed for this wardrobe state.", actual=action, allowed=allowed))
 
@@ -989,6 +1007,16 @@ def _geometry_result_receipt_failures(receipt: Any, result: dict[str, Any]) -> l
     return failures
 
 
+def _default_staging_result_receipt_failures(receipt: Any, result: dict[str, Any]) -> list[dict[str, Any]]:
+    if not isinstance(receipt, dict):
+        return [_failure("default_exposure_staging_result_missing", "Execution record must retain the deterministic default exposure staging result.")]
+    failures: list[dict[str, Any]] = []
+    for field in ("valid", "required", "checks", "failure_taxonomy"):
+        if receipt.get(field) != result.get(field):
+            failures.append(_failure("default_exposure_staging_result_mismatch", "Execution default exposure staging result does not match deterministic validation.", field=field, expected=result.get(field), actual=receipt.get(field)))
+    return failures
+
+
 def _semantic_visibility_result_receipt_failures(receipt: Any, result: dict[str, Any]) -> list[dict[str, Any]]:
     if not isinstance(receipt, dict):
         return [_failure("semantic_visibility_result_missing", "Execution record must retain the deterministic semantic visibility result.")]
@@ -1080,6 +1108,19 @@ def validate_execution_record(packet: dict[str, Any], record: dict[str, Any]) ->
             failures.append(_failure("visible_exposure_prompt_unavailable", "Visible exposure cannot be validated until the prompt pack is valid."))
 
     if "exposure_action_plan" in packet["required_claims"]:
+        if "default_exposure_staging_plan" in packet["required_claims"]:
+            try:
+                try:
+                    from scripts.check_default_exposure_staging import check_default_exposure_staging
+                except ModuleNotFoundError:  # pragma: no cover - direct script execution path
+                    from check_default_exposure_staging import check_default_exposure_staging
+
+                staging_result = check_default_exposure_staging(packet, record)
+                failures.extend(_default_staging_result_receipt_failures(record.get("default_exposure_staging_result"), staging_result))
+                if not staging_result["valid"]:
+                    failures.extend(staging_result["failures"])
+            except (ExecutionError, ValueError) as error:
+                failures.append(_failure("default_exposure_staging_unavailable", "Default exposure staging validator could not run.", detail=str(error)))
         try:
             try:
                 from scripts.check_exposure_geometry import check_exposure_geometry

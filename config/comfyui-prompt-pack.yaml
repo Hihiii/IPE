@@ -25,6 +25,7 @@ internal_scene_contract:
     - nsfw_baseline_tier
     - nsfw_baseline_application_reason
     - visible_exposure_contract
+    - default_exposure_staging_plan
     - exposure_action_plan
     - exposure_geometry_plan
     - semantic_exposure_visibility_plan
@@ -95,6 +96,10 @@ always_nsfw_baseline_rendering:
   visible_exposure_contract:
     z_image: "Name the same visible evidence target, garment action, and in-frame readability before pose, camera, and material detail."
     krea2: "Name the same visible evidence target, garment action, and in-frame readability in natural positive language before atmosphere or style."
+  default_exposure_staging_plan:
+    z_image: "Within the early subject block, state the selected target, exposure-first pose template, wardrobe mode or action, ray-readable camera proof, and semantic clearance guards."
+    krea2: "Use a fluent first sentence that binds the selected target, pose, wardrobe/action, camera proof, and clearance guards before atmosphere or style."
+    rule: "Missing pose or wardrobe intent must resolve to exposure-first staging; female/feminine unspecified targets use canonical vulva with pussy allowed only as a prompt synonym."
   exposure_action_plan:
     z_image: "Keep the target, action, end state, and camera proof together; do not separate target anatomy from the garment/material cause that reveals it."
     krea2: "Keep the target, action, end state, and camera proof in one readable sentence."
@@ -144,6 +149,7 @@ validation:
     - lighting_and_material_cause_effect
     - face_action_and_critical_structure_readability
     - visible_adult_exposure_contract_with_readable_evidence_target
+    - default_exposure_staging_target_pose_wardrobe_camera_and_semantic_clearance
     - concrete_garment_transformation_when_wardrobe_is_explicit
     - evidence_target_in_frame_unoccluded_and_readable
     - exposure_action_target_garment_zone_and_end_state_are_compatible

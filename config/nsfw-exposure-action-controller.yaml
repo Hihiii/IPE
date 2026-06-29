@@ -51,7 +51,7 @@ compatibility_matrix:
           end_state: vulva_visible_on_bare_skin
           contract_transformation_action: no_garment_added
           action_terms: [nude]
-          end_state_terms: [visible vulva, vulva in frame]
+          end_state_terms: [visible vulva, vulva in frame, pussy visible]
     adult_bare_anatomy:
       garment_zone: none
       actions:
@@ -147,46 +147,46 @@ compatibility_matrix:
           end_state: vulva_fully_uncovered
           contract_transformation_action: slipped_or_lowered
           action_terms: [lifting, above the vulva]
-          end_state_terms: [vulva fully uncovered, exposed vulva]
+          end_state_terms: [vulva fully uncovered, exposed vulva, pussy visible]
         pull_aside_lower_garment:
           end_state: vulva_fully_uncovered
           contract_transformation_action: pulled_aside
           action_terms: [pulling aside, lower garment]
-          end_state_terms: [vulva fully uncovered, exposed vulva]
+          end_state_terms: [vulva fully uncovered, exposed vulva, pussy visible]
         lower_lower_garment_below_target:
           end_state: vulva_fully_uncovered
           contract_transformation_action: slipped_or_lowered
           action_terms: [lowering, below the vulva]
-          end_state_terms: [vulva fully uncovered, exposed vulva]
+          end_state_terms: [vulva fully uncovered, exposed vulva, pussy visible]
         partially_remove_lower_garment:
           end_state: vulva_fully_uncovered
           contract_transformation_action: partially_removed
           action_terms: [partially removed, lower garment]
-          end_state_terms: [vulva fully uncovered, exposed vulva]
+          end_state_terms: [vulva fully uncovered, exposed vulva, pussy visible]
         # --- Aggressive actions: default escalation targets ---
         pull_completely_off_lower_body:
           end_state: vulva_fully_uncovered
           contract_transformation_action: pulled_aside
           action_terms: [pulling completely off, lower body, stripping off]
-          end_state_terms: [vulva fully uncovered, exposed vulva, bare lower body]
+          end_state_terms: [vulva fully uncovered, exposed vulva, bare lower body, pussy visible]
           escalation_priority: high
         tear_or_rip_open_lower_garment:
           end_state: vulva_fully_uncovered
           contract_transformation_action: pulled_aside
           action_terms: [tearing open, ripping open, lower garment, fabric ripping apart]
-          end_state_terms: [vulva fully uncovered, exposed vulva, torn garment hanging open]
+          end_state_terms: [vulva fully uncovered, exposed vulva, torn garment hanging open, pussy visible]
           escalation_priority: high
         push_garment_down_to_ankles:
           end_state: vulva_fully_uncovered
           contract_transformation_action: slipped_or_lowered
           action_terms: [pushing down to ankles, garment bunched at feet, pulled down completely]
-          end_state_terms: [vulva fully uncovered, exposed vulva, bare legs and hips]
+          end_state_terms: [vulva fully uncovered, exposed vulva, bare legs and hips, pussy visible]
           escalation_priority: medium
         unwrap_or_unbind_lower_body:
           end_state: vulva_fully_uncovered
           contract_transformation_action: pulled_aside
           action_terms: [unwrapping, unbinding, unwrapping fabric from hips, loosening wrap]
-          end_state_terms: [vulva fully uncovered, exposed vulva, fabric falling away]
+          end_state_terms: [vulva fully uncovered, exposed vulva, fabric falling away, pussy visible]
           escalation_priority: medium
         # --- Extreme aggressive actions for maximum exposure ---
         spread_legs_open_exposing_vulva:
@@ -261,18 +261,18 @@ compatibility_matrix:
           end_state: vulva_discernible_through_sheer_material
           contract_transformation_action: wet_translucent_cling
           action_terms: [wet translucent, clinging lower garment]
-          end_state_terms: [discernible vulva, visible vulva]
+          end_state_terms: [discernible vulva, visible vulva, pussy visible]
         soaked_translucent_lower_garment:
           end_state: vulva_discernible_through_sheer_material
           contract_transformation_action: wet_translucent_cling
           action_terms: [soaked through, clinging wet fabric, water-logged lower garment]
-          end_state_terms: [vulva visible through wet fabric, discernible vulva]
+          end_state_terms: [vulva visible through wet fabric, discernible vulva, pussy visible through wet fabric]
           escalation_priority: high
         backlit_sheer_lower_garment:
           end_state: vulva_discernible_through_sheer_material
           contract_transformation_action: wet_translucent_cling
           action_terms: [backlit sheer, light passing through, translucent lower garment]
-          end_state_terms: [vulva silhouetted through sheer, discernible vulva]
+          end_state_terms: [vulva silhouetted through sheer, discernible vulva, pussy readable through sheer]
           escalation_priority: medium
     adult_bare_anatomy:
       garment_zone: any_body
@@ -339,7 +339,7 @@ exposure_geometry_plan:
 
 phase_hooks:
   phase_1_intent_analysis: "Resolve one primary target and candidate route after visible exposure contract resolution."
-  phase_2_cinematic_enrichment: "Bind target, garment zone, action anchor, end state, material path, pose, hand placement, focal plane, and crop into one exposure_action_plan. When an exposure_action_plan exists, set dynamic_scene_plan.primary_action and dynamic_scene_plan.force_direction to reflect the exposure action and its physical cause; do not keep an independent pose label that omits the garment or material reveal."
+  phase_2_cinematic_enrichment: "Bind target, garment zone, action anchor, end state, material path, pose, hand placement, focal plane, and crop into one exposure_action_plan. For clothed scenes, posture and garment action must jointly serve the target: lower-body garments must be lowered, pulled aside, or removed with camera/crop synchronized to the selected target. When an exposure_action_plan exists, set dynamic_scene_plan.primary_action and dynamic_scene_plan.force_direction to reflect the exposure action and its physical cause; do not keep an independent pose label that omits the garment or material reveal."
   phase_3_scene_blueprint: "Record exposure_action_plan and exposure_geometry_plan with the exact target-action-end-state-camera relationship."
   phase_3_1_prompt_package: "Render the physical action and its exposed/discernible end state; do not render target words independently from the action."
   phase_4_self_review: "Trace the camera-subject-target relationship: draw a line from camera through the shot to the target zone. Verify the target's body surface faces the camera, no limb/garment/prop sits on that line, the garment action's range physically reaches the target, and the crop boundaries include it. A claim of 'nipple visible' without geometric support fails. Run deterministic geometry validation, then recompose up to two times before blocking delivery."

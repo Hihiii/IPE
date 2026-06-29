@@ -1,0 +1,164 @@
+schema_version: "1.0.0"
+name: nsfw-default-exposure-staging
+purpose: >
+  Resolve missing pose and wardrobe intent into an exposure-first staging plan
+  before cinematic enrichment. The selected evidence target, pose family,
+  wardrobe mode or garment action, camera proof, and semantic clearance must
+  be bound together before final prompt rendering.
+
+execution_leaf:
+  applies_to: [clearly_adult_human, clearly_adult_humanoid]
+  required_fields:
+    - default_reason
+    - target_priority
+    - pose_template_id
+    - pose_family
+    - wardrobe_mode
+    - exposure_route
+    - action_id
+    - camera_proof
+    - semantic_clearance_guards
+  default_reason: "Required whenever clothing, pose, or both are unspecified or incomplete."
+  target_priority: "Female/feminine subjects default to canonical vulva first; pussy is an output synonym only. Nipple is fallback only after a recorded lower-body route failure."
+  pose_template_id: "Choose a pose template that makes the target ray-readable and semantically unobstructed."
+  pose_family: "Preserve an explicit user pose family when present; otherwise choose the most stable exposure-first family."
+  wardrobe_mode: "Choose direct bare, semi-nude garment action, or preserved explicit wardrobe with exposure action."
+  exposure_route: "Must match exposure_action_plan.route."
+  action_id: "Must match exposure_action_plan.action."
+  camera_proof: "Must include target_in_frame, target_unoccluded, and target_on_focal_plane."
+  semantic_clearance_guards: "Positive guard phrases that also appear in semantic_exposure_visibility_plan.positive_prompt_guards and every final positive prompt."
+
+default_exposure_staging_plan:
+  required_fields:
+    - default_reason
+    - target_priority
+    - pose_template_id
+    - pose_family
+    - wardrobe_mode
+    - exposure_route
+    - action_id
+    - camera_proof
+    - semantic_clearance_guards
+  default_reasons:
+    - unspecified_wardrobe_and_pose
+    - wardrobe_specified_pose_unspecified
+    - pose_specified_wardrobe_unspecified
+    - explicit_user_pose_and_wardrobe
+  target_priority_defaults:
+    female_feminine: [vulva, nipple]
+    male_masculine: [adult_bare_anatomy]
+    unspecified_gender: [adult_bare_anatomy]
+  canonical_target_aliases:
+    vulva:
+      output_synonyms: [pussy]
+      schema_rule: "Do not add pussy as a third schema target; prompt aliases are accepted only when exposure_contract.evidence_target remains vulva."
+  pose_families: [standing, seated, reclining, kneeling, floor_supported, dynamic_transition]
+  wardrobe_modes:
+    direct_bare_no_wardrobe:
+      exposure_route: direct_bare_no_wardrobe
+      action_ids: [no_garment_direct_bare]
+      rule: "Use when no user wardrobe identity must be preserved and the pose can expose the target without garment obstruction."
+    semi_nude_lower_body_garment_action:
+      exposure_route: direct_garment_action
+      action_ids:
+        - pull_aside_lower_garment
+        - lower_lower_garment_below_target
+        - partially_remove_lower_garment
+        - pull_completely_off_lower_body
+        - hand_pulling_panties_aside_revealing_vulva
+      rule: "Use for generated or preserved lower-body garments; garment edge must end outside the vulva/pussy sightline."
+    semi_nude_upper_body_garment_action:
+      exposure_route: direct_garment_action
+      action_ids:
+        - pull_open_front_panels_below_target
+        - pull_aside_upper_garment
+        - lower_upper_garment_below_target
+        - partially_remove_upper_garment
+        - pull_completely_off_upper_body
+      rule: "Fallback route when lower-body exposure fails recorded feasibility."
+    preserve_explicit_wardrobe_with_sheer_exposure:
+      exposure_route: sheer_material_action
+      action_ids:
+        - wet_translucent_upper_garment
+        - soaked_translucent_upper_garment
+        - backlit_sheer_upper_garment
+        - wet_translucent_lower_garment
+        - soaked_translucent_lower_garment
+        - backlit_sheer_lower_garment
+      rule: "Preserve explicit wardrobe identity only when material, moisture, light, focus, and target readability are all recorded as feasible."
+    preserve_explicit_wardrobe_with_exposure:
+      exposure_route: direct_garment_action
+      action_ids:
+        - pull_aside_lower_garment
+        - lower_lower_garment_below_target
+        - pull_aside_upper_garment
+        - lower_upper_garment_below_target
+      rule: "Retain garment identity, color, and silhouette while forcing a concrete action that exposes the selected target."
+  routing_cases:
+    unspecified_wardrobe_and_pose:
+      rule: "Try vulva lower-body readable presets first; choose direct bare no wardrobe when stable, otherwise use a semi-nude lower-body garment action."
+      target_priority: [vulva, nipple]
+      preferred_pose_templates:
+        - reclining_knees_raised_lower_body_open
+        - seated_edge_legs_open_lower_body_clear
+        - standing_three_quarter_lower_garment_pulled_aside
+      preferred_wardrobe_modes: [direct_bare_no_wardrobe, semi_nude_lower_body_garment_action]
+    wardrobe_specified_pose_unspecified:
+      rule: "Preserve wardrobe identity but reject ordinary standing or seated labels unless the pose template includes the action and target exposure."
+      target_priority: [vulva, nipple]
+      preferred_pose_templates:
+        - seated_edge_legs_open_lower_body_clear
+        - standing_three_quarter_lower_garment_pulled_aside
+        - reclining_knees_raised_lower_body_open
+      preferred_wardrobe_modes: [preserve_explicit_wardrobe_with_exposure, semi_nude_lower_body_garment_action]
+      forbidden_pose_templates: [ordinary_standing, ordinary_seated, generic_portrait_pose]
+    pose_specified_wardrobe_unspecified:
+      rule: "Preserve the user's pose family; choose direct bare or semi-nude wardrobe mode that passes ray and semantic checks for that pose."
+      target_priority: [vulva, nipple]
+      preferred_wardrobe_modes: [direct_bare_no_wardrobe, semi_nude_lower_body_garment_action]
+  lower_body_readable_presets:
+    reclining_knees_raised_lower_body_open:
+      pose_family: reclining
+      prompt_terms: [reclining knees raised lower-body open pose, hips turned toward the camera]
+      semantic_guards:
+        - hips turned toward the camera
+        - knees raised with thighs separated outside the target sightline
+        - hands outside the vulva sightline
+        - crop includes the vulva and garment action anchor
+    seated_edge_legs_open_lower_body_clear:
+      pose_family: seated
+      prompt_terms: [seated at the edge with legs open, hips square to the camera]
+      semantic_guards:
+        - hips square to the camera
+        - thighs separated outside the target sightline
+        - hands hold fabric away from the vulva
+        - crop includes the vulva and garment action anchor
+    standing_three_quarter_lower_garment_pulled_aside:
+      pose_family: standing
+      prompt_terms: [standing three-quarter hips turned, lower garment pulled aside]
+      semantic_guards:
+        - hips turned toward the camera
+        - lower garment edge held outside the vulva line
+        - hands do not cover the target
+        - crop includes the vulva and garment action anchor
+  semantic_clearance_guards:
+    required_categories:
+      - target_readability
+      - pose_orientation
+      - hand_clearance
+      - garment_edge_clearance
+      - focal_plane_and_crop
+    rules:
+      - "Leg and hip orientation must face the camera enough for the selected target to be readable."
+      - "Hands must hold fabric or support the pose outside the target sightline."
+      - "Hair, sheets, folds, and garment edges must be fixed outside the target line."
+      - "The focal plane and crop must include both the selected target and the action anchor."
+      - "If any semantic guard fails, recompose before falling back to nipple."
+
+phase_hooks:
+  phase_1_intent_analysis: "Create default_exposure_staging_plan immediately after resolving adult eligibility, wardrobe intent, pose intent, and visible exposure target."
+  phase_2_composition_and_cinematography: "Bind pose template, wardrobe mode, exposure route, action, and semantic guards into one exposure-first staging decision."
+  phase_3_scene_blueprint: "Record default_exposure_staging_plan next to exposure_contract, exposure_action_plan, exposure_geometry_plan, and semantic_exposure_visibility_plan."
+  phase_3_1_prompt_package: "Render target, pose, wardrobe mode or action, camera proof, and semantic clearance early in both positive prompts."
+  phase_4_self_review: "Fail staging when it conflicts with geometry, action, semantic visibility, target fallback receipts, or final positive prompt ordering."
+  phase_4_2_comfyui_renderer: "Keep staging evidence early in Z-Image Base+Turbo and Krea2 positive prompts."

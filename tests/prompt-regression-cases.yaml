@@ -103,6 +103,21 @@ cases:
     expected: [adult_nude_baseline, visible_exposure_contract, exposure_action_plan, exposure_geometry_plan, semantic_exposure_visibility_plan, one_primary_target, target_action_garment_zone_compatibility, exposed_or_discernible_end_state, phase_4_feasibility_review, camera_ray_clear, target_in_crop, semantic_occlusion_clearance, no_cleavage_only_substitute]
     requires_dynamic_scene_plan: true
     must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
+  - id: unspecified_pose_wardrobe_exposure_first
+    input: "clearly adult original fictional woman, cinematic private interior portrait"
+    expected: [adult_nude_baseline, default_exposure_staging_plan, vulva_canonical_target, pussy_output_synonym_allowed, exposure_first_pose_template, direct_bare_or_semi_nude_wardrobe_mode, ray_readable_camera_proof, semantic_clearance_guards]
+    requires_dynamic_scene_plan: true
+    must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
+  - id: wardrobe_without_pose_forces_exposure_pose
+    input: "clearly adult original fictional woman wearing black shorts and a cropped jacket"
+    expected: [adult_nude_baseline, default_exposure_staging_plan, garment_identity_preserved, no_ordinary_standing_or_seated_pose, lower_body_garment_lowered_or_pulled_aside, vulva_or_recorded_nipple_fallback, ray_readable_camera_proof, semantic_clearance_guards]
+    requires_dynamic_scene_plan: true
+    must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
+  - id: pose_without_wardrobe_preserves_pose_family
+    input: "clearly adult original fictional woman reclining on a sofa, cinematic side light"
+    expected: [adult_nude_baseline, default_exposure_staging_plan, pose_family_preserved, naked_or_semi_nude_wardrobe_mode, vulva_canonical_target, ray_readable_camera_proof, semantic_clearance_guards, target_in_crop]
+    requires_dynamic_scene_plan: true
+    must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
   - id: unspecified_wardrobe_nude_baseline
     input: "clearly adult original fictional man on a balcony at night"
     expected: [adult_nude_baseline, no_auto_added_garments, adult_pose_lighting]
