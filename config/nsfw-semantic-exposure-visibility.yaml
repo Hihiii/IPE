@@ -1,0 +1,60 @@
+schema_version: "1.0.0"
+name: nsfw-semantic-exposure-visibility
+purpose: >
+  Add a positive-only semantic visibility layer on top of exposure geometry.
+  Geometry proves that a camera ray can reach the selected target; this contract
+  proves that prompt semantics do not invite hair, hands, garment folds,
+  atmosphere, darkness, shallow focus, or crop language to hide that target.
+
+execution_leaf:
+  applies_to: [clearly_adult_human, clearly_adult_humanoid]
+  required_fields:
+    - target
+    - target_readability
+    - hair_clearance
+    - hand_clearance
+    - garment_edge_clearance
+    - atmosphere_light_focus_clearance
+    - positive_prompt_guards
+  rule: "All semantic clearance fields must be clear, controlled, or not_applicable before delivery."
+  positive_only_rule: "Since no negative prompt is delivered, every occlusion control must be expressed as a constructive visible state in every positive prompt."
+
+semantic_exposure_visibility_plan:
+  required_fields:
+    - target
+    - target_readability
+    - hair_clearance
+    - hand_clearance
+    - garment_edge_clearance
+    - atmosphere_light_focus_clearance
+    - positive_prompt_guards
+  allowed_statuses: [clear, controlled, not_applicable]
+  target: "Must match exposure_contract.evidence_target and exposure_action_plan.primary_target."
+  target_readability: "The selected target is visible, unobscured, in frame, and on the focal plane."
+  hair_clearance: "Hair is tied back, swept behind the shoulder, held to the side, cropped away from the target zone, or otherwise clear of the selected target."
+  hand_clearance: "Hands have a visible support, framing, or garment-action role and do not sit between camera and target; action hands hold garment edges aside rather than covering the target."
+  garment_edge_clearance: "Garment edges, folds, seams, straps, sheets, and displaced fabric are anchored away from the target after the reveal action."
+  atmosphere_light_focus_clearance: "Steam, darkness, glare, foreground particles, depth of field, and crop support readability rather than hiding the selected target."
+  positive_prompt_guards: "Positive phrases that must survive renderer cleanup in every delivered positive prompt."
+
+high_risk_semantic_occluders:
+  hair:
+    failure_examples: [hair covering target, hair falling over target, long hair across chest, bangs obscuring body]
+    positive_repairs: [hair swept behind shoulders, hair held to one side, damp strands clear of target, tied-back hair]
+  hands:
+    failure_examples: [hand covering target, hand over target, hand between camera and target, fingers hiding target]
+    positive_repairs: [hand gripping garment edge to the side, fingers pulling fabric outward, palm outside target line, hands framing without covering]
+  garment_edges:
+    failure_examples: [fold covering target, sheet over target, strap across target, intact opaque fabric, bunched cloth over target]
+    positive_repairs: [garment edge pulled aside, fabric pinned away, fold below target line, strap lowered off target, cloth gathered at side]
+  atmosphere_light_focus:
+    failure_examples: [steam hiding target, deep shadow over target, foreground blur across target, shallow focus losing target, cropped target]
+    positive_repairs: [target on focal plane, clear local light on target, steam behind subject, foreground kept away, crop includes target and action anchor]
+
+phase_hooks:
+  phase_1_intent_analysis: "Create semantic_exposure_visibility_plan after selecting the evidence target and route."
+  phase_2_composition_and_cinematography: "Choose hair placement, hand task, garment-edge position, focus, light, atmosphere, and crop that keep the selected target semantically readable."
+  phase_3_scene_blueprint: "Record semantic clearance decisions next to exposure_geometry_plan."
+  phase_3_1_prompt_package: "Render clearance as positive visible staging in every positive prompt."
+  phase_4_self_review: "Fail if the prompt can plausibly invite hair, hands, garment folds, atmosphere, darkness, shallow focus, or crop to hide the selected target."
+  phase_4_2_comfyui_renderer: "Keep semantic clearance phrases in Z-Image and Krea2 positive prompts."

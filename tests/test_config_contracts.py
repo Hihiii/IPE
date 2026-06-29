@@ -32,6 +32,7 @@ def test_manifest_routes_cinematic_enhancement_through_nsfw_delivery() -> None:
     assert runtime["quality_contract"] == "config/quality-contract.yaml"
     assert runtime["phase_materializer"] == "scripts/materialize_execution_phase.py"
     assert runtime["geometry_validator"] == "scripts/check_exposure_geometry.py"
+    assert runtime["semantic_visibility_validator"] == "scripts/check_semantic_exposure_visibility.py"
     assert runtime["character_resolver"] == "scripts/resolve_adult_character.py"
     assert manifest["always_load"] == [
         "config/core-knowledge.yaml",
@@ -51,6 +52,7 @@ def test_manifest_routes_cinematic_enhancement_through_nsfw_delivery() -> None:
     assert "adult_human_scene" in manifest["conditional_load"]
     assert manifest["conditional_load"]["visible_adult_exposure"]["path"] == "config/nsfw-visible-exposure-contract.yaml"
     assert manifest["conditional_load"]["exposure_action"]["path"] == "config/nsfw-exposure-action-controller.yaml"
+    assert manifest["conditional_load"]["semantic_exposure_visibility"]["path"] == "config/nsfw-semantic-exposure-visibility.yaml"
     assert manifest["conditional_load"]["named_character"]["resolver_sidecar"] == "config/adult-character-whitelist/runtime-alias-resolver.json"
     assert "scene_and_visual_enrichment" in manifest["conditional_load"]
 
@@ -199,6 +201,26 @@ def test_exposure_action_controller_binds_target_to_physical_end_state() -> None
     assert "Trace the camera-subject-target relationship" in action["phase_hooks"]["phase_4_self_review"]
 
 
+def test_semantic_exposure_visibility_contract_adds_positive_only_clearance() -> None:
+    semantic = load("config/nsfw-semantic-exposure-visibility.yaml")
+    plan = semantic["semantic_exposure_visibility_plan"]
+    assert plan["required_fields"] == [
+        "target",
+        "target_readability",
+        "hair_clearance",
+        "hand_clearance",
+        "garment_edge_clearance",
+        "atmosphere_light_focus_clearance",
+        "positive_prompt_guards",
+    ]
+    assert plan["allowed_statuses"] == ["clear", "controlled", "not_applicable"]
+    assert "hair" in semantic["high_risk_semantic_occluders"]
+    catalog = load("config/execution-catalog.yaml")
+    action_node = next(node for node in catalog["rule_nodes"] if node["id"] == "exposure_action_and_feasibility")
+    assert "semantic_exposure_visibility_plan" in action_node["claims"]
+    assert any(source["path"] == "config/nsfw-semantic-exposure-visibility.yaml" for source in action_node["sources"])
+
+
 def test_core_pre_filter_and_reference_only_contracts_are_declared() -> None:
     core = load("config/core-knowledge.yaml")
     catalog = load("config/execution-catalog.yaml")
@@ -215,17 +237,9 @@ def test_comfyui_output_contract_is_complete() -> None:
     renderer = load("config/comfyui-prompt-pack.yaml")
     fields = renderer["output_contract"]["fields"]
     assert fields == [
-        "flux_final_prompt",
         "z_image_positive_prompt",
-        "z_image_negative_prompt",
+        "krea2_positive_prompt",
         "suggest_resolution",
-    ]
-    assert renderer["flux"]["forbidden"] == [
-        "negative prompt syntax",
-        "avoid lists",
-        "section headers",
-        "workflow instructions",
-        "model-specific command flags",
     ]
     assert renderer["resolution_policy"]["buckets"] == {
         "square": "1024x1024 (1:1)",
@@ -233,15 +247,16 @@ def test_comfyui_output_contract_is_complete() -> None:
         "landscape": "1536x1024 (3:2)",
     }
     assert renderer["style_translation"]["default"] == "cinematic_photoreal"
-    assert len(renderer["internal_scene_contract"]["required_when_human_subject_present"]) == 18
+    assert len(renderer["internal_scene_contract"]["required_when_human_subject_present"]) == 19
     assert "eligible_human_subject" in renderer["always_nsfw_baseline_rendering"]
     assert "nonhuman_only_subject" in renderer["always_nsfw_baseline_rendering"]
     assert "visual_focus_plan" in renderer["adult_visual_direction_rendering"]
     assert "local_anatomy_surface_when_active" in renderer["adult_visual_direction_rendering"]
-    assert renderer["flux"]["required_order"][1] == "visible_adult_exposure_evidence"
     assert renderer["z_image"]["positive_required_order"][1] == "visible_adult_exposure_evidence"
+    assert renderer["krea2"]["positive_required_order"][2] == "semantic_visibility_clearance"
     assert "exposure_geometry_plan" in renderer["always_nsfw_baseline_rendering"]
-    assert any("decal-like" in rule for rule in renderer["z_image"]["negative_policy"])
+    assert "semantic_exposure_visibility_plan" in renderer["always_nsfw_baseline_rendering"]
+    assert any("constructive positive controls" in rule for rule in renderer["z_image"]["positive_only_policy"])
     overrides = load("config/nsfw-comfyui-overrides.yaml")
     assert "chatgpt_image" in overrides["disabled_delivery_targets"]
     assert "stable_diffusion" in overrides["disabled_delivery_targets"]

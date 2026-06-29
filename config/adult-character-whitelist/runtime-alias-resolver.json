@@ -2660,6 +2660,6 @@
     }
   },
   "name": "adult-character-runtime-alias-resolver",
-  "resolver_mode": "exact_normalized_alias_only",
+  "resolver_mode": "exact_and_prefix_with_hint",
   "schema_version": "1.0.0"
 }

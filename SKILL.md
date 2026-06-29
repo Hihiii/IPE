@@ -1,6 +1,6 @@
 ---
 name: nsfw-comfyui-cinematic-prompt-enhancer
-description: "Always-NSFW cinematic prompt enhancement for eligible adult fictional/original human subjects, rendered for ComfyUI Flux and Z-Image."
+description: "Always-NSFW cinematic prompt enhancement for eligible adult fictional/original human subjects, rendered as positive-only ComfyUI Z-Image and Krea2 prompts."
 version: 3.5.0
 license: MIT
 category: creative
@@ -12,7 +12,7 @@ platforms: [linux, windows]
 This skill keeps the original prompt enhancer's cinematic reasoning—composition,
 camera, crop, depth, lighting, exposure, materials, anatomy, contact physics,
 scene construction, prompt packaging, and self-review—while specializing subject
-eligibility and final output for adult NSFW Flux/Z-Image use.
+eligibility and final output for adult NSFW Z-Image/Krea2 positive-only use.
 
 ## Scope
 
@@ -21,8 +21,8 @@ eligibility and final output for adult NSFW Flux/Z-Image use.
   subject, including prompts with no NSFW wording.
 - Preserves an explicit-adult request when it raises the requested content tier.
 - Leaves nonhuman-only, object-only, and landscape-only prompts non-NSFW.
-- Outputs only a Flux Final Prompt, Z-Image Final Positive Prompt, Z-Image Final
-  Negative Prompt, and Suggested Resolution.
+- Outputs only a Z-Image Base+Turbo Positive Prompt, Krea2 Positive Prompt,
+  and Suggested Resolution.
 - Does not output workflow JSON, API calls, sampler settings, or final prompts
   for other image/video models.
 - Does not process minors, age-ambiguous or youth-coded sexualized subjects, or
@@ -42,14 +42,14 @@ supported execution route is the fixed-complete runtime declared in
 3. Complete every phase in `execution_record_template`, recording applied node
    IDs, claims, and provenance.
 4. Validate the completed record with `scripts/validate_execution_record.py`
-   before returning the four-field prompt pack.
+   before returning the three-field prompt pack.
 
 The packet is a complete semantic closure: every relevant RuleNode and its
 dependencies must be used. Large phase-specific leaves are reference-only at
 Phase 0, then materialize automatically at their declared phase with a hash
 receipt. A missing phase, node, claim, provenance entry, reference receipt, or
 packet-hash mismatch is a delivery failure. Successful runs return only the
-four prompt fields; failure traces are persisted only by the validator.
+three prompt fields; failure traces are persisted only by the validator.
 
 For a named fictional character, use
 `scripts/resolve_adult_character.py --query <name>` only. The minimal index
@@ -71,7 +71,7 @@ existing categories. Local anatomy and focus/camera scores must be at least
 ## Enhancement Pipeline
 
 Follow `config/enhancement-pipeline.yaml` in order. Do not skip phases because
-the request is NSFW or because Flux/Z-Image uses a different syntax.
+the request is NSFW or because Z-Image/Krea2 uses a different syntax.
 For every request, classify the subject kind and resolve the always-NSFW
 baseline before neutral intent, wardrobe preservation, or edit locks are
 interpreted.
@@ -93,8 +93,9 @@ interpreted.
    meaningful composition, crop, identity, action, wardrobe, or adult-content
    lock merely to shorten the prompt.
 7. **ComfyUI rendering** — render through `config/comfyui-prompt-pack.yaml`.
-8. **Delivery validation** — validate the four output fields, adult boundary,
-   English prompt text, Flux syntax, preservation locks, and resolution.
+8. **Delivery validation** — validate the three output fields, adult boundary,
+   English positive prompt text, semantic visibility, preservation locks, and
+   resolution.
 
 ### Authoritative Phase Ledger
 
@@ -146,8 +147,9 @@ contour, translucency, or body curve.
 
 Keep the target in frame, unobscured, and readable. Hands, intact opaque
 coverage, darkness, steam, shallow focus, or crop cannot hide the only target.
-State the resolved exposure, evidence target, and garment action early in both
-positive prompts. Add only the corresponding targeted Z-Image negative controls.
+State the resolved exposure, evidence target, garment action, and semantic
+visibility clearance early in every positive prompt. Do not emit a negative
+prompt.
 The validator rejects missing evidence, full coverage, vague transparency, or a
 camera plan that loses the target. Nonhuman-only packets do not create this
 contract.
@@ -178,6 +180,13 @@ action must reach the target, and projection must remain inside crop. This
 checks the recorded scene plan—not final pixels. Store its structured result in
 `exposure_geometry_result`; any failure requires up to two Phase-2
 recompositions before delivery is blocked.
+
+Also record `semantic_exposure_visibility_plan` and run
+`scripts/check_semantic_exposure_visibility.py --packet ... --record ...`.
+This verifies that hair, hands, garment edges, atmosphere, light, focus, and
+crop are written as positive clearance controls in every delivered positive
+prompt. A clear camera ray alone is not enough when prompt semantics could
+still invite visible obstruction.
 
 ## Dynamic Scene and Surface Quality
 
@@ -229,26 +238,22 @@ for Suggested Resolution when known.
 Return exactly this shape unless the user asks for a rationale:
 
 ```text
-## Flux Final Prompt
-<English, positive-only Flux prompt with the complete enhanced scene>
+## Z-Image Base+Turbo Positive Prompt
+<English, detailed positive-only Z-Image prompt with the complete enhanced scene>
 
-## Z-Image Final Positive Prompt
-<English, detailed Z-Image prompt with the same enhanced scene>
-
-## Z-Image Final Negative Prompt
-<English, targeted failure controls that do not negate requested content>
+## Krea2 Positive Prompt
+<English, natural positive-only Krea2 prompt with the same enhanced scene>
 
 ## Suggested Resolution
 <width>x<height> (<aspect ratio>)
 ```
 
-For eligible human scenes, Flux and the Z-Image positive prompt must begin with
-the resolved clearly-adult nude or transformed-wardrobe baseline. Flux must
-never contain negative-prompt syntax, `[AVOID]`, `--no`, section headers,
-workflow instructions, or model flags. Z-Image receives targeted negative terms
-only and must not negate the resolved adult baseline. Use explicit size first,
-then explicit aspect ratio, then source image size/aspect ratio for edits, then
-composition orientation.
+For eligible human scenes, every positive prompt must begin with the resolved
+clearly-adult nude or transformed-wardrobe baseline and preserve semantic
+visibility clearance. Positive prompts must never contain negative-prompt
+syntax, `[AVOID]`, `--no`, section headers used as failure lists, or model
+flags. Use explicit size first, then explicit aspect ratio, then source image
+size/aspect ratio for edits, then composition orientation.
 
 ## Agent-Driven Synthesis (When Scripts Aren't Enough)
 
@@ -295,4 +300,4 @@ not a bug.
 
 Do not write files by default. Only when the user explicitly requests a file and
 provides an absolute path, use `scripts/export_prompt_pack.py` with the strict
-four-field JSON schema.
+three-field JSON schema.

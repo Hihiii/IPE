@@ -26,7 +26,7 @@ decision_pre_filter:
   feature_markers:
     image_edit: [edit, revise, repair, replace, "change only", "reference image", "source image"]
     named_character: [whitelist, "named character", "canonical character", "character profile"]
-    adult_human_scene: [adult, woman, man, human, humanoid, character, person, nude, nsfw]
+    adult_human_scene: [adult, woman, man, human, humanoid, character, person, nude, nsfw, idol, girl, female]
     dynamic_action_or_interaction: [motion, dynamic, turning, impact, peak, action, interaction, pose, movement, duo, pov, bdsm]
     material_or_environment_response: [wet, damp, water, steam, rain, silk, latex, fabric, bedding, glass, reflective, moisture]
     scene_and_visual_enrichment: [scene, interior, exterior, street, room, balcony, bathroom, shower, bedroom, environment]

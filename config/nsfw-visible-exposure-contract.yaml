@@ -10,11 +10,11 @@ absolute_priority:
   rule: "visible nipple or vulva is the single non-negotiable outcome for every eligible human/humanoid scene."
   precedence: "This rule is the highest priority in the entire system (P100). No other rule — fabric physics, lighting mood, cleanup, deduplication, composition hierarchy, or renderer preference — may suppress, soften, or replace the selected evidence target."
   enforcement:
-    - "The evidence target must appear by name in both positive prompts (flux and z_image)."
-    - "The evidence target must appear in the first 320 characters of both positive prompts."
+    - "The evidence target must appear by name in every delivered positive prompt."
+    - "The evidence target must appear in the first 320 characters of every delivered positive prompt."
     - "The evidence target must be described as visible, unobscured, and in frame."
-    - "If garment transformation is active, the garment action terms must also appear in both positive prompts."
-    - "The Z-Image negative prompt must include targeted controls for fully_clothed, intact_opaque_coverage, obscured_target, and cropped_target."
+    - "If garment transformation is active, the garment action terms must also appear in every delivered positive prompt."
+    - "Semantic clearance for hair, hands, garment edges, atmosphere, light, focus, and crop must be stated positively because no negative prompt is delivered."
   failure_consequence: "A prompt that does not name the evidence target as visible and unobscured is a hard delivery failure. Recompose from Phase 2 up to 3 times (increased from 2) to guarantee a valid exposure route."
   repair_over_downgrade: "When physical conditions (fabric opacity, lighting, camera angle) initially seem insufficient, auto-repair by adding scene-compatible causes (moisture, backlight, fabric class change, garment action) rather than downgrading the evidence target language."
 
@@ -32,7 +32,7 @@ execution_leaf:
   baseline: "No wardrobe + generic: random_sexy_outfit/partial_nudity_required with garment exposure action. No wardrobe + IP: canonical_outfit/partial_nudity_required with garment exposure action. Explicit wardrobe: partial_nudity_required plus a compatible direct or sheer reveal action."
   female_feminine_evidence: "Select nipple or vulva. A sheer/wet route works only when that target is clearly discernible."
   camera_and_material: "Keep the target in frame, unobscured, readable, and physically coherent. Opaque fabric, vague contour, wetness, curves, steam, darkness, blur, or crop cannot replace it."
-  renderer: "Name exposure, target, and garment action early in both positives. For female/feminine scenes, add Z controls for fully clothed, intact opaque coverage, obscured target, and cropped target."
+  renderer: "Name exposure, target, garment action, and semantic clearance early in every delivered positive prompt."
   validation: "Reject missing data, wrong wardrobe route, invalid target, no reveal action, vague transparency, absent target, or hidden/cropped evidence."
 
 visible_exposure_contract:
@@ -82,10 +82,9 @@ material_and_camera_rules:
   physical_integrity: "Garment movement, folds, seams, moisture, support, contact, local anatomy, and light must remain physically coherent."
 
 renderer_contract:
-  flux: "State the resolved nude or transformed-wardrobe state and the selected visible evidence target in the opening subject description using fluent positive English."
-  z_image_positive: "State the same exposure state, evidence target, garment action, and camera readability in visible English detail."
-  z_image_negative: "For a female/feminine target, include targeted controls for fully clothed presentation, intact opaque coverage, an obscured selected target, and a cropped selected target; never negate the resolved adult content."
-  prompt_evidence_rule: "The selected female/feminine evidence target must appear by name in both positive prompts. A sheer route must also name sheer or translucent material."
+  z_image_positive: "State the exposure state, evidence target, garment action, camera readability, and semantic clearance in visible English detail."
+  krea2_positive: "State the same exposure state, evidence target, garment action, camera readability, and semantic clearance in fluent natural positive language."
+  prompt_evidence_rule: "The selected female/feminine evidence target must appear by name in every positive prompt. A sheer route must also name sheer or translucent material."
 
 phase_hooks:
   phase_1_intent_analysis: "Resolve wardrobe state, exposure requirement, evidence mode, evidence target, and forbidden substitutes immediately after adult eligibility."
@@ -93,7 +92,7 @@ phase_hooks:
   phase_3_scene_blueprint: "Record the full visible_exposure_contract with the dynamic, material, local-surface, and visual-focus plans."
   phase_3_1_prompt_package: "Carry every visible exposure decision into renderer-ready English evidence."
   phase_4_self_review: "Reject sensual-but-covered results, vague translucency, intact clothing, hidden evidence, or evidence lost to crop or occlusion."
-  phase_4_2_comfyui_renderer: "Require Flux and Z-Image positive prompt evidence before delivery."
+  phase_4_2_comfyui_renderer: "Require Z-Image and Krea2 positive prompt evidence and semantic clearance before delivery."
 
 validation:
   hard_failure_conditions:

@@ -9,21 +9,21 @@ pipeline:
   - id: phase_0_config_resolution
     action: "Read the core, NSFW overrides, prompt-pack contract, and only the domain modules triggered by the request."
   - id: phase_1_intent_analysis
-    action: "Classify subject kind (generic vs IP character), detect wardrobe state (specified/unspecified), resolve always-NSFW baseline, visible exposure contract, subject classification for wardrobe routing (generic → random outfit / IP → canonical outfit / specified → explicit wardrobe), and one exposure action target/route for eligible human/humanoid subjects, then extract hard locks, task mode, adult tier, character identity, wardrobe transformation, edit scope, visual goal, aspect ratio, risk flags, dynamic_scene_plan, visual_focus_plan, and local_anatomy_surface activation."
+    action: "Classify subject kind (generic vs IP character), detect wardrobe state (specified/unspecified), resolve always-NSFW baseline, visible exposure contract, subject classification for wardrobe routing (generic → random outfit / IP → canonical outfit / specified → explicit wardrobe), one exposure action target/route, and semantic_exposure_visibility_plan for eligible human/humanoid subjects, then extract hard locks, task mode, adult tier, character identity, wardrobe transformation, edit scope, visual goal, aspect ratio, risk flags, dynamic_scene_plan, visual_focus_plan, and local_anatomy_surface activation."
   - id: phase_2_composition_and_cinematography
     action: "Resolve visual focus, visible exposure target, compatible garment/material action, exposed end state, and dynamic pose/action timing first, then run the composition decision order, camera relationship, shot scale, crop safety, depth, lighting, exposure, local anatomy surface, material, style mode, and visual hierarchy analysis."
   - id: phase_3_scene_blueprint
-    action: "Build a model-neutral blueprint covering adult baseline tier, visible exposure contract, exposure action plan, wardrobe transformation, subject, visual focus, pose support, contact anchors, force direction, occlusion, gaze/reaction, secondary motion, scene depth, lighting behavior, local anatomy surface, material response, environment coupling, and constraints."
+    action: "Build a model-neutral blueprint covering adult baseline tier, visible exposure contract, exposure action plan, exposure geometry plan, semantic exposure visibility plan, wardrobe transformation, subject, visual focus, pose support, contact anchors, force direction, occlusion, gaze/reaction, secondary motion, scene depth, lighting behavior, local anatomy surface, material response, environment coupling, and constraints."
   - id: phase_3_1_prompt_package
     action: "Compile the blueprint into categorized prompt fields with provenance, hard locks, dynamic_scene_plan, visual_focus_plan, local_anatomy_surface_contract when active, material_environment_plan, and lighting_environment_plan."
   - id: phase_4_self_review
-    action: "Evaluate intent preservation, exposure target-action-end-state feasibility, composition readability, anatomy, support, contact, timing, occlusion, motion, adult eligibility, material plausibility, lighting/environment coupling, style consistency, and failure risks; recompose from Phase 2 at most twice before blocking delivery."
+    action: "Evaluate intent preservation, exposure target-action-end-state feasibility, geometry feasibility, semantic occlusion risk, composition readability, anatomy, support, contact, timing, occlusion, motion, adult eligibility, material plausibility, lighting/environment coupling, style consistency, and failure risks; recompose from Phase 2 at most twice before blocking delivery."
   - id: phase_4_1_cleanup
     action: "Remove redundancy and contradictions while retaining every meaningful composition, identity, action, and adult-content lock."
   - id: phase_4_2_comfyui_renderer
     action: "Apply only config/comfyui-prompt-pack.yaml; do not invoke any legacy renderer target."
   - id: phase_4_3_delivery_package
-    action: "Normalize the four required Flux/Z-Image fields and resolution recommendation."
+    action: "Normalize the positive-only Z-Image, Krea2, and resolution fields."
   - id: phase_5_final_output
     action: "Return the validated prompt pack in English. Export only on explicit user request."
 
@@ -59,6 +59,7 @@ module_routing:
     - config/nsfw-material-environment-controller.yaml
     - config/nsfw-composition-lighting-controller.yaml
     - config/nsfw-baseline-resolver.yaml
+    - config/nsfw-semantic-exposure-visibility.yaml
     - config/nsfw-local-anatomy-surface-controller.yaml
     - config/nsfw-visual-director.yaml
   adult_human:

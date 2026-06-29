@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Explicitly export one validated Flux/Z-Image prompt pack as UTF-8 text."""
+"""Explicitly export one validated positive-only prompt pack as UTF-8 text."""
 
 from __future__ import annotations
 
@@ -11,12 +11,11 @@ from typing import Any
 
 
 REQUIRED_FIELDS = (
-    "flux_final_prompt",
     "z_image_positive_prompt",
-    "z_image_negative_prompt",
+    "krea2_positive_prompt",
     "suggest_resolution",
 )
-FLUX_FORBIDDEN = ("[avoid]", "negative prompt", "--no")
+POSITIVE_FORBIDDEN = ("[avoid]", "negative prompt", "--no", "avoid ", "no ")
 RESOLUTION_PATTERN = re.compile(r"^\d{2,5}x\d{2,5} \(\d{1,2}:\d{1,2}\)$")
 
 
@@ -44,13 +43,13 @@ def validate_prompt_pack(payload: Any) -> dict[str, str]:
         if not isinstance(value, str) or not value.strip():
             raise ValueError(f"{field} must be a non-empty string.")
         result[field] = value.strip()
-    for field in REQUIRED_FIELDS[:3]:
+    for field in REQUIRED_FIELDS[:2]:
         if contains_cjk(result[field]):
             raise ValueError(f"{field} must be English prompt text.")
-    flux_lower = result["flux_final_prompt"].casefold()
-    forbidden = [term for term in FLUX_FORBIDDEN if term in flux_lower]
-    if forbidden:
-        raise ValueError(f"flux_final_prompt contains forbidden Flux syntax: {', '.join(forbidden)}")
+        lower = result[field].casefold()
+        forbidden = [term for term in POSITIVE_FORBIDDEN if term in lower]
+        if forbidden:
+            raise ValueError(f"{field} contains forbidden positive-only syntax: {', '.join(forbidden)}")
     if not RESOLUTION_PATTERN.fullmatch(result["suggest_resolution"]):
         raise ValueError("suggest_resolution must use WIDTHxHEIGHT (RATIO), for example 1024x1536 (2:3).")
     return result
@@ -59,14 +58,11 @@ def validate_prompt_pack(payload: Any) -> dict[str, str]:
 def render_prompt_pack(pack: dict[str, str]) -> str:
     return "\n".join(
         [
-            "## Flux Final Prompt",
-            pack["flux_final_prompt"],
-            "",
-            "## Z-Image Final Positive Prompt",
+            "## Z-Image Base+Turbo Positive Prompt",
             pack["z_image_positive_prompt"],
             "",
-            "## Z-Image Final Negative Prompt",
-            pack["z_image_negative_prompt"],
+            "## Krea2 Positive Prompt",
+            pack["krea2_positive_prompt"],
             "",
             "## Suggested Resolution",
             pack["suggest_resolution"],

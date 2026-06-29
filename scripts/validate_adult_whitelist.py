@@ -83,7 +83,7 @@ def validate_whitelist(root: Path) -> list[str]:
             errors.append(f"Invalid runtime alias resolver sidecar: {error}")
             sidecar = {}
     aliases = sidecar.get("aliases") if isinstance(sidecar, dict) else None
-    if sidecar.get("schema_version") != "1.0.0" or sidecar.get("resolver_mode") != "exact_normalized_alias_only" or not isinstance(aliases, dict):
+    if sidecar.get("schema_version") != "1.0.0" or sidecar.get("resolver_mode") not in ("exact_normalized_alias_only", "exact_and_prefix_with_hint") or not isinstance(aliases, dict):
         errors.append("runtime alias resolver sidecar has an invalid schema")
         aliases = {}
 

@@ -8,6 +8,7 @@ execution_runtime:
   phase_materializer: scripts/materialize_execution_phase.py
   validator: scripts/validate_execution_record.py
   geometry_validator: scripts/check_exposure_geometry.py
+  semantic_visibility_validator: scripts/check_semantic_exposure_visibility.py
   character_resolver: scripts/resolve_adult_character.py
   quality_gate: scripts/validate_quality_gate.py
   rule: "The agent must execute only the compiled packet and validate its phase ledger before returning a prompt pack."
@@ -58,6 +59,9 @@ conditional_load:
   exposure_action:
     when: "An eligible adult human or humanoid scene needs a target-compatible garment/material exposure action, camera proof, and Phase 4 feasibility recovery."
     path: config/nsfw-exposure-action-controller.yaml
+  semantic_exposure_visibility:
+    when: "An eligible adult human or humanoid scene needs positive-only semantic clearance for hair, hands, garment folds, atmosphere, light, focus, and crop."
+    path: config/nsfw-semantic-exposure-visibility.yaml
   dynamic_action_or_interaction:
     when: "The request contains movement, a transition, an impact moment, water or particle motion, a single adult action, or a consenting-adult duo interaction."
     paths:
@@ -96,6 +100,7 @@ loading_rules:
   - Resolve nsfw-baseline-resolver.yaml for every request before selecting a neutral adult tier or interpreting wardrobe preservation.
   - Resolve nsfw-visible-exposure-contract.yaml for every eligible human/humanoid scene; an adult-nude semantic label, wet clothing, or a sensual contour is not a delivery substitute for visible exposure evidence.
   - Resolve nsfw-exposure-action-controller.yaml for every eligible human/humanoid scene; bind each selected target to a compatible action, end state, and camera proof, then recompose rather than deliver a covered result.
+  - Resolve nsfw-semantic-exposure-visibility.yaml for every eligible human/humanoid scene; positive prompts must state semantic clearance for hair, hands, garment edges, atmosphere, light, focus, and crop because no negative prompt is delivered.
   - Resolve nsfw-visual-director.yaml before generic visual hierarchy rules; it applies sensory-first focus unless the user specifies another focus or camera target.
   - Activate nsfw-local-anatomy-surface-controller.yaml only for a visible, relevant adult surface; it must not force a chest close-up into another composition.
   - Default style is cinematic photoreal; only switch to anime-realism, cel-shaded anime, or illustration when the user explicitly asks.

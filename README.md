@@ -3,7 +3,7 @@
 An AI-agent skill that retains the original Cinematic Prompt Enhancer's
 composition, camera, lighting, material, scene, anatomy, and quality-review
 architecture while applying an always-NSFW adult baseline to eligible human
-subjects for Flux and Z-Image workflows in ComfyUI.
+subjects for Z-Image Base+Turbo and Krea2 positive-only workflows in ComfyUI.
 
 ## What Is Preserved
 
@@ -30,13 +30,13 @@ The active pipeline is defined in
   when the input has no NSFW language.
 - Explicit adult intent is preserved when requested.
 - Nonhuman-only, object-only, and landscape-only requests remain non-NSFW.
-- Flux Final Prompt, Z-Image Final Positive Prompt, Z-Image Final Negative
-  Prompt, and Suggested Resolution.
+- Z-Image Base+Turbo Positive Prompt, Krea2 Positive Prompt, and Suggested
+  Resolution.
 
 The skill rejects minors, age-ambiguous subjects, youth-coded sexualization, and
 identifiable real-person likenesses. Named characters must resolve uniquely in
 the adult whitelist. It does not create a ComfyUI workflow JSON or output final
-prompts for non-Flux/Z-Image models.
+prompts for other image/video models.
 
 ## Pipeline
 
@@ -65,12 +65,12 @@ Phase 4 — Self-Review → Cleanup → Render → Delivery
 Evaluate intent preservation, exposure target–action–end-state
 feasibility, and composition readability; recompose from Phase 2 at
 most twice if needed. Remove redundancy and contradictions, format
-for the Flux / Z-Image output contract, and deliver the validated
-four-field prompt pack.
+for the positive-only Z-Image / Krea2 output contract, and deliver the
+validated three-field prompt pack.
 
 Phase 5 — Final Output  
-Return Flux Final Prompt, Z-Image Final Positive Prompt, Z-Image Final
-Negative Prompt, and Suggested Resolution.
+Return Z-Image Base+Turbo Positive Prompt, Krea2 Positive Prompt, and
+Suggested Resolution.
 
 ## Example
 
@@ -80,7 +80,7 @@ Raw request:
 a mid 20s jpop idol just woke up with a lazy expression
 ```
 
-Result — Flux Final Prompt (after running through the pipeline above):
+Result — Z-Image Base+Turbo Positive Prompt (after running through the pipeline above):
 
 ```
 clearly adult female J-pop idol, mid 20s, short tousled bed hair,

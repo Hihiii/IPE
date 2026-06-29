@@ -38,25 +38,27 @@ Check `deferred_references` in the packet for items with `activate_when: ["adult
 - nsfw-composition-lighting-controller.yaml
 - nsfw-local-anatomy-surface-controller.yaml
 - nsfw-visual-director.yaml
+- nsfw-semantic-exposure-visibility.yaml
 
 ### 4. Synthesize the Prompt Pack
 
 Read the loaded configs and produce output following `comfyui-prompt-pack.yaml` rules:
 
-**Flux prompt order:**
+**Z-Image Base+Turbo positive order:**
 1. Resolved adult NSFW baseline (clearly adult + nude/wardrobe state)
 2. Visible exposure evidence (target name, garment action)
-3. Visual focus & camera intent
-4. Adult subject identity
-5. Action & scene context
-6. Pose, support, contact
-7. Composition & camera
-8. Lighting, material, environment
-9. Style
+3. Semantic visibility clearance (hair, hands, garment edge, light/focus/crop)
+4. Visual focus & camera intent
+5. Adult subject identity
+6. Action & scene context
+7. Pose, support, contact
+8. Composition & camera
+9. Lighting, material, environment
+10. Style
 
-**Z-Image positive:** Same content, denser comma-separated format.
+**Z-Image positive:** Same content, denser comma-separated format, with constructive semantic visibility clearance instead of negative prompt controls.
 
-**Z-Image negative:** Targeted failures only — never negate the resolved NSFW baseline. Include: fully_clothed, intact_opaque_coverage, obscured_target, cropped_target for female subjects.
+**Krea2 positive:** Same content in a more natural paragraph, with fewer internal labels and the same positive semantic visibility clearance.
 
 ### 5. Resolution Policy
 
@@ -67,4 +69,4 @@ Default to `1024x1536 (2:3 portrait)` unless user specifies otherwise or source 
 - **Character resolution failure is normal**: Many character names aren't in the whitelist. Fall back to generic adult female/male classification and preserve identity anchors from the prompt itself.
 - **Empty sources ≠ error**: Most phases return `{"sources": [], "reference_access": []}` because data lives in compiled_context. Only phase 2 and phase 3.1 load deferred configs.
 - **adult_human_scene trigger**: FEATURE_PATTERNS only fires when input contains "adult", "woman", "man", "human", "humanoid", "character", "person", "nude", or "nsfw". Terms like "tifa" alone may not trigger it — prefix with "clearly adult female..." if needed.
-- **Never negate NSFW baseline in negative prompt**: The Z-Image negative must include failure controls but must NOT contain terms that contradict the resolved nude/wardrobe state.
+- **Positive-only delivery**: The final pack has no negative prompt. Hair, hand, garment-edge, atmosphere, light, focus, crop, anatomy, and material safeguards must be written as constructive positive states.

@@ -23,9 +23,12 @@ DEFAULT_CATALOG = ROOT / "config" / "execution-catalog.yaml"
 DEFAULT_QUALITY_CONTRACT = ROOT / "config" / "quality-contract.yaml"
 DEFAULT_VISIBLE_EXPOSURE_CONTRACT = ROOT / "config" / "nsfw-visible-exposure-contract.yaml"
 DEFAULT_EXPOSURE_ACTION_CONTROLLER = ROOT / "config" / "nsfw-exposure-action-controller.yaml"
+DEFAULT_SEMANTIC_EXPOSURE_VISIBILITY = ROOT / "config" / "nsfw-semantic-exposure-visibility.yaml"
+_ADULT_WHITELIST_INDEX = ROOT / "config" / "adult-character-whitelist" / "index.yaml"
 _CATALOG_CACHE: dict[Path, tuple[tuple[tuple[str, int, int], ...], dict[str, Any]]] = {}
 _PACKET_CACHE: dict[tuple[str, str, tuple[str, ...]], dict[str, Any]] = {}
 _PRE_FILTER_CACHE: tuple[int, int, dict[str, Any]] | None = None
+_WHITELIST_NAMES_CACHE: tuple[int, int, frozenset[str], frozenset[str], frozenset[str]] | None = None
 
 
 class ExecutionError(ValueError):
@@ -234,6 +237,64 @@ def decision_pre_filter() -> dict[str, Any]:
     return value
 
 
+def _load_whitelist_name_tokens() -> tuple[frozenset[str], frozenset[str], frozenset[str]]:
+    """Return (full_names, first_name_tokens, single_names) from the adult whitelist index.
+
+    Results are cached by file mtime+size to avoid repeated reads.
+    """
+    global _WHITELIST_NAMES_CACHE
+    path = _ADULT_WHITELIST_INDEX
+    stat = path.stat()
+    if _WHITELIST_NAMES_CACHE and _WHITELIST_NAMES_CACHE[:2] == (stat.st_mtime_ns, stat.st_size):
+        return _WHITELIST_NAMES_CACHE[2:]
+
+    index = load_yaml(path)
+    characters = index.get("characters") if isinstance(index, dict) else []
+    full_names: set[str] = set()
+    first_tokens: set[str] = set()
+    single_names: set[str] = set()
+
+    for entry in characters if isinstance(characters, list) else []:
+        name = str(entry.get("name", "")).casefold().strip()
+        if not name:
+            continue
+        full_names.add(name)
+        parts = name.split()
+        if len(parts) == 1:
+            if len(parts[0]) >= 4:
+                single_names.add(parts[0])
+        else:
+            if len(parts[0]) >= 3:
+                first_tokens.add(parts[0])
+
+    frozen_full = frozenset(full_names)
+    frozen_first = frozenset(first_tokens)
+    frozen_single = frozenset(single_names)
+    _WHITELIST_NAMES_CACHE = (stat.st_mtime_ns, stat.st_size, frozen_full, frozen_first, frozen_single)
+    return frozen_full, frozen_first, frozen_single
+
+
+def _whitelisted_character_in_request(text: str) -> bool:
+    """Return True when the request (casefolded) references a whitelisted adult character."""
+    full_names, first_tokens, single_names = _load_whitelist_name_tokens()
+    tokens = set(text.split())
+
+    # 1. Full name as substring (handles "Aerith Gainsborough", "Cloud Strife")
+    for name in full_names:
+        if name in text:
+            return True
+
+    # 2. First-name token from multi-word names (handles "Aerith", "Tifa", "Cloud")
+    if tokens & first_tokens:
+        return True
+
+    # 3. Single-word names >= 4 chars (handles "Sephiroth", "Lightning", "Beatrix")
+    if tokens & single_names:
+        return True
+
+    return False
+
+
 def infer_features(request: str, provided_features: Iterable[str] = ()) -> list[str]:
     text = request.casefold()
     features = {"always", *[str(feature) for feature in provided_features]}
@@ -245,9 +306,10 @@ def infer_features(request: str, provided_features: Iterable[str] = ()) -> list[
         feature: tuple(str(marker).casefold() for marker in configured_patterns.get(feature, FEATURE_PATTERNS[feature]))
         for feature in FEATURE_PATTERNS
     }
+    _whitelist_hit = _whitelisted_character_in_request(text)
     nonhuman_only = any(marker in text for marker in NONHUMAN_MARKERS) and not any(
         marker in text for marker in patterns["adult_human_scene"]
-    )
+    ) and not _whitelist_hit
     for feature, markers in patterns.items():
         if feature == "adult_human_scene" and nonhuman_only:
             continue
@@ -255,6 +317,13 @@ def infer_features(request: str, provided_features: Iterable[str] = ()) -> list[
             continue
         if any(marker in text for marker in markers):
             features.add(feature)
+    # Whitelisted character detection: if the request names a confirmed-adult
+    # character, auto-trigger adult_human_scene even when no explicit keyword
+    # like "adult" or "character" appears in the raw prompt.
+    if _whitelist_hit and not nonhuman_only:
+        features.add("adult_human_scene")
+        features.add("ip_character")
+        features.add("named_character")
     # Wardrobe detection: check if any clothing keyword is present
     CLOTHING_MARKERS = (
         "wearing", "dressed", "clothed", "outfit", "dress", "shirt", "skirt", "pants",
@@ -508,6 +577,8 @@ def execution_record_template(packet: dict[str, Any]) -> dict[str, Any]:
         "exposure_action_plan": None,
         "exposure_geometry_plan": None,
         "exposure_geometry_result": None,
+        "semantic_exposure_visibility_plan": None,
+        "semantic_exposure_visibility_result": None,
         "exposure_feasibility_review": None,
         "recomposition_attempts": [],
         "reference_access": [],
@@ -517,6 +588,14 @@ def execution_record_template(packet: dict[str, Any]) -> dict[str, Any]:
 
 def _failure(code: str, message: str, **details: Any) -> dict[str, Any]:
     return {"code": code, "message": message, **details}
+
+
+def _positive_prompt_fields(prompt_pack: dict[str, str]) -> dict[str, str]:
+    return {
+        field: value.casefold()
+        for field, value in prompt_pack.items()
+        if field.endswith("_positive_prompt") and isinstance(value, str)
+    }
 
 
 def visible_exposure_policy(path: Path = DEFAULT_VISIBLE_EXPOSURE_CONTRACT) -> dict[str, Any]:
@@ -609,10 +688,7 @@ def validate_visible_exposure_contract(value: Any, prompt_pack: dict[str, str]) 
     elif subject in {"male_masculine", "unspecified_gender"} and target != "adult_bare_anatomy":
         failures.append(_failure("exposure_evidence_target", "Non-feminine exposure uses adult_bare_anatomy in this release.", actual=target))
 
-    flux = prompt_pack.get("flux_final_prompt", "").casefold()
-    z_positive = prompt_pack.get("z_image_positive_prompt", "").casefold()
-    z_negative = prompt_pack.get("z_image_negative_prompt", "").casefold()
-    positive_prompts = {"flux_final_prompt": flux, "z_image_positive_prompt": z_positive}
+    positive_prompts = _positive_prompt_fields(prompt_pack)
     if subject == "female_feminine" and isinstance(target, str):
         for field, prompt in positive_prompts.items():
             if target.casefold() not in prompt:
@@ -622,12 +698,9 @@ def validate_visible_exposure_contract(value: Any, prompt_pack: dict[str, str]) 
             if "visible" not in prompt or ("unobscured" not in prompt and "in frame" not in prompt):
                 failures.append(_failure("exposure_prompt_visibility", "Positive prompt does not make selected evidence visibly in-frame and unobscured.", field=field, target=target))
         if wardrobe_state in ("unspecified_wardrobe", "unspecified_wardrobe_generic", "unspecified_wardrobe_ip") and any("nude" not in prompt and "bare" not in prompt for prompt in positive_prompts.values()):
-            failures.append(_failure("exposure_prompt_nudity", "Unspecified wardrobe must state the adult presentation in both positive prompts."))
+            failures.append(_failure("exposure_prompt_nudity", "Unspecified wardrobe must state the adult presentation in every positive prompt."))
         if evidence_mode == "sheer_visible_anatomy" and any("sheer" not in prompt and "translucent" not in prompt for prompt in positive_prompts.values()):
-            failures.append(_failure("exposure_sheer_evidence", "Sheer evidence must name sheer or translucent material in both positive prompts.", target=target))
-        for control in ("fully clothed", "intact opaque coverage", f"obscured {target}", f"cropped {target}"):
-            if control not in z_negative:
-                failures.append(_failure("exposure_negative_control", "Z-Image negative prompt is missing a targeted exposure failure control.", control=control))
+            failures.append(_failure("exposure_sheer_evidence", "Sheer evidence must name sheer or translucent material in every positive prompt.", target=target))
     elif subject in {"male_masculine", "unspecified_gender"}:
         for field, prompt in positive_prompts.items():
             if "nude" not in prompt and "bare" not in prompt:
@@ -787,10 +860,7 @@ def validate_exposure_action_plan(
         if action_anchor == "not_applicable":
             failures.append(_failure("exposure_action_anchor", "Sheer route needs a physical fabric adhesion, stretch, or pose anchor."))
 
-    positive_prompts = {
-        "flux_final_prompt": prompt_pack.get("flux_final_prompt", "").casefold(),
-        "z_image_positive_prompt": prompt_pack.get("z_image_positive_prompt", "").casefold(),
-    }
+    positive_prompts = _positive_prompt_fields(prompt_pack)
     if action_definition is not None:
         for field, prompt in positive_prompts.items():
             if not _prompt_contains_all(prompt, action_definition["action_terms"]):
@@ -919,6 +989,16 @@ def _geometry_result_receipt_failures(receipt: Any, result: dict[str, Any]) -> l
     return failures
 
 
+def _semantic_visibility_result_receipt_failures(receipt: Any, result: dict[str, Any]) -> list[dict[str, Any]]:
+    if not isinstance(receipt, dict):
+        return [_failure("semantic_visibility_result_missing", "Execution record must retain the deterministic semantic visibility result.")]
+    failures: list[dict[str, Any]] = []
+    for field in ("valid", "required", "checks", "failure_taxonomy"):
+        if receipt.get(field) != result.get(field):
+            failures.append(_failure("semantic_visibility_result_mismatch", "Execution semantic visibility result does not match deterministic validation.", field=field, expected=result.get(field), actual=receipt.get(field)))
+    return failures
+
+
 def validate_execution_record(packet: dict[str, Any], record: dict[str, Any]) -> dict[str, Any]:
     failures = _packet_integrity_failures(packet)
     failures.extend(_reference_access_failures(packet, record))
@@ -1012,6 +1092,18 @@ def validate_execution_record(packet: dict[str, Any], record: dict[str, Any]) ->
                 failures.extend(geometry_result["failures"])
         except (ExecutionError, ValueError) as error:
             failures.append(_failure("exposure_geometry_unavailable", "Exposure geometry validator could not run.", detail=str(error)))
+        try:
+            try:
+                from scripts.check_semantic_exposure_visibility import check_semantic_exposure_visibility
+            except ModuleNotFoundError:  # pragma: no cover - direct script execution path
+                from check_semantic_exposure_visibility import check_semantic_exposure_visibility
+
+            semantic_result = check_semantic_exposure_visibility(packet, record)
+            failures.extend(_semantic_visibility_result_receipt_failures(record.get("semantic_exposure_visibility_result"), semantic_result))
+            if not semantic_result["valid"]:
+                failures.extend(semantic_result["failures"])
+        except (ExecutionError, ValueError) as error:
+            failures.append(_failure("semantic_visibility_unavailable", "Semantic exposure visibility validator could not run.", detail=str(error)))
         if validated_prompt_pack is not None:
             try:
                 validate_exposure_action_plan(

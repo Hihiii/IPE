@@ -202,7 +202,7 @@ def build_whitelist(output_dir: Path) -> int:
     sidecar = {
         "schema_version": "1.0.0",
         "name": "adult-character-runtime-alias-resolver",
-        "resolver_mode": "exact_normalized_alias_only",
+        "resolver_mode": "exact_and_prefix_with_hint",
         "aliases": {
             normalize_alias(alias): {
                 "id": profile["character"]["id"],

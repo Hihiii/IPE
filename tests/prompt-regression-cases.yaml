@@ -1,8 +1,7 @@
 schema_version: "2.0.0"
 required_output_fields:
-  - flux_final_prompt
   - z_image_positive_prompt
-  - z_image_negative_prompt
+  - krea2_positive_prompt
   - suggest_resolution
 dynamic_scene_required_fields:
   - subject_count
@@ -19,7 +18,7 @@ dynamic_scene_required_fields:
 cases:
   - id: original_adult_portrait
     input: "clearly adult original fictional woman, sensual studio portrait"
-    expected: [eligible_adult_subject, adult_nude_baseline, flux_positive_only, z_image_positive_negative, portrait_resolution]
+    expected: [eligible_adult_subject, adult_nude_baseline, z_image_positive_only, krea2_positive_only, portrait_resolution]
     requires_dynamic_scene_plan: true
     must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
   - id: standing_photoreal
@@ -101,7 +100,7 @@ cases:
     must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
   - id: office_formal_exposure_action
     input: "mid-20s clearly adult original fictional woman with short pink hair in formal office clothes, cinematic office portrait"
-    expected: [adult_nude_baseline, visible_exposure_contract, exposure_action_plan, exposure_geometry_plan, one_primary_target, target_action_garment_zone_compatibility, exposed_or_discernible_end_state, phase_4_feasibility_review, camera_ray_clear, target_in_crop, no_cleavage_only_substitute]
+    expected: [adult_nude_baseline, visible_exposure_contract, exposure_action_plan, exposure_geometry_plan, semantic_exposure_visibility_plan, one_primary_target, target_action_garment_zone_compatibility, exposed_or_discernible_end_state, phase_4_feasibility_review, camera_ray_clear, target_in_crop, semantic_occlusion_clearance, no_cleavage_only_substitute]
     requires_dynamic_scene_plan: true
     must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
   - id: unspecified_wardrobe_nude_baseline

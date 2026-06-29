@@ -11,15 +11,15 @@ override_rules:
   - nsfw-local-anatomy-surface-controller.yaml governs visible relevant adult local surface detail and must not be used to force a chest close-up or bypass fabric-physics rules.
   - Legacy renderer targets are not selectable for this skill, even if their config files remain available as historical enhancement references.
   - The only delivery renderer is config/comfyui-prompt-pack.yaml.
-  - The only final fields are flux_final_prompt, z_image_positive_prompt, z_image_negative_prompt, and suggest_resolution.
+  - The only final fields are z_image_positive_prompt, krea2_positive_prompt, and suggest_resolution.
+  - Delivery is positive-only; do not emit Flux output or any Z-Image negative prompt.
   - Do not automatically export files. A TXT export requires an explicit absolute path from the user.
   - For an eligible human image edit, adultize the source before applying the requested edit, then preserve all unrequested source attributes after adultization in both final positive prompts.
 
 disabled_delivery_targets:
   - chatgpt_image
   - chatgpt_image_2
-  - z_image_base
-  - z_image_turbo
+  - flux
   - comfyui_flux2_zimage_3stage
   - stable_diffusion
   - midjourney

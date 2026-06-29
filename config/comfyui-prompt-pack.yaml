@@ -1,25 +1,21 @@
 schema_version: "1.0.0"
 name: comfyui-prompt-pack
-purpose: "Render one NSFW-ready prompt pack for Flux and generic Z-Image ComfyUI nodes."
+purpose: "Render one NSFW-ready positive-only prompt pack for Z-Image Base+Turbo and Krea2 ComfyUI nodes."
 
 output_contract:
   language:
     prompt: en
     labels: zh-TW
   fields:
-    - flux_final_prompt
     - z_image_positive_prompt
-    - z_image_negative_prompt
+    - krea2_positive_prompt
     - suggest_resolution
   user_facing_template: |
-    ## Flux Final Prompt
-    {flux_final_prompt}
-
-    ## Z-Image Final Positive Prompt
+    ## Z-Image Base+Turbo Positive Prompt
     {z_image_positive_prompt}
 
-    ## Z-Image Final Negative Prompt
-    {z_image_negative_prompt}
+    ## Krea2 Positive Prompt
+    {krea2_positive_prompt}
 
     ## Suggested Resolution
     {suggest_resolution}
@@ -31,6 +27,7 @@ internal_scene_contract:
     - visible_exposure_contract
     - exposure_action_plan
     - exposure_geometry_plan
+    - semantic_exposure_visibility_plan
     - exposure_feasibility_review
     - dynamic_scene_plan.pose_family
     - dynamic_scene_plan.motion_state
@@ -46,32 +43,14 @@ internal_scene_contract:
     - lighting_environment_plan
   renderer_rule: "Translate these plans into visible English decisions; do not expose their internal field names."
 
-flux:
-  field: flux_final_prompt
-  syntax: "Clear English natural language, subject-first, positive-only."
-  required_order:
-    - resolved_adult_nsfw_baseline
-    - visible_adult_exposure_evidence
-    - visual_focus_and_camera_intent
-    - adult_subject_and_identity
-    - requested_adult_content_and_action
-    - pose_support_contact_and_motion_state
-    - composition_and_camera
-    - lighting_material_environment_and_secondary_motion
-    - edit_preservation_locks_when_relevant
-  forbidden:
-    - negative prompt syntax
-    - avoid lists
-    - section headers
-    - workflow instructions
-    - model-specific command flags
-
 z_image:
-  fields: [z_image_positive_prompt, z_image_negative_prompt]
-  positive_syntax: "Dense English visual language, subject-first, with only visible details."
+  fields: [z_image_positive_prompt]
+  target: "Z-Image Base+Turbo shared positive input."
+  positive_syntax: "Dense English visual language, subject-first, with visible details and constructive guardrails only."
   positive_required_order:
     - resolved_adult_nsfw_baseline
     - visible_adult_exposure_evidence
+    - semantic_visibility_clearance
     - visual_focus_and_camera_intent
     - adult_subject_and_identity
     - requested_adult_content_and_action
@@ -79,13 +58,25 @@ z_image:
     - composition_camera_and_crop
     - lighting_skin_fabric_material_and_environment_response
     - edit_preservation_locks_when_relevant
-  negative_policy:
-    - Include targeted anatomy, contact, identity, material, crop, and watermark failure controls only when relevant.
-    - For every mature request include: underage, minor, childlike, youthful appearance.
-    - Never negate requested adult content, anatomy, wardrobe absence, action, or explicitly requested style.
-    - Do not include generic quality spam such as worst quality, lowres, or masterpiece.
-    - For dynamic scenes, add only relevant controls for floating support, merged silhouettes, impossible contact, wrong motion direction, global motion smear, and missing material response.
-    - For visible local anatomy or translucent/wet garment interfaces, add only relevant controls for decal-like detail, mirror symmetry, floating projection, cutout transparency, and contradictory local light.
+  positive_only_policy:
+    - Use constructive positive controls instead of negative prompt terms.
+    - Convert failure controls into desired visible states: clearly adult, stable anatomy, readable hands, clean crop, clear target visibility, coherent fabric physics, and watermark-free clean image area.
+    - For dynamic scenes, state support, action axis, hand role, material response, and silhouette separation positively.
+    - For visible local anatomy or translucent/wet garment interfaces, state local light, material thickness, adhesion/stretch, and target readability positively.
+
+krea2:
+  field: krea2_positive_prompt
+  target: "Krea2 positive input."
+  positive_syntax: "Natural-language subject-first visual paragraph with no section headers, negative syntax, or model command flags."
+  positive_required_order:
+    - resolved_adult_nsfw_baseline
+    - visible_adult_exposure_evidence
+    - semantic_visibility_clearance
+    - subject_identity_and_action
+    - camera_crop_and_focus
+    - lighting_material_environment
+    - edit_preservation_locks_when_relevant
+  translation_rule: "Compress internal plans into fluent positive visible states; use fewer technical labels than Z-Image while preserving target/action/camera readability."
 
 style_translation:
   default: cinematic_photoreal
@@ -95,32 +86,35 @@ style_translation:
 
 always_nsfw_baseline_rendering:
   eligible_human_subject:
-    flux: "Begin with clearly adult status and the resolved adult-nude or transformed-wardrobe presentation before other scene details."
     z_image: "Begin with clearly adult status and the resolved adult-nude or transformed-wardrobe presentation before pose, camera, and material detail."
+    krea2: "Begin with clearly adult status and the resolved adult-nude or transformed-wardrobe presentation in a natural first sentence."
   nonhuman_only_subject:
     rule: "Do not inject adult subject or NSFW language."
   transformed_wardrobe:
     rule: "Retain garment identity, color, and key design while rendering a concrete physically caused opening, partial removal, lowering, pull-aside, or displacement that exposes the selected evidence target."
   visible_exposure_contract:
-    flux: "Name the resolved full/partial nude state, the selected visible evidence target, and any garment transformation before camera or material detail."
     z_image: "Name the same visible evidence target, garment action, and in-frame readability before pose, camera, and material detail."
-    negative: "For female/feminine scenes, target fully clothed presentation, intact opaque coverage, obscured selected anatomy, and cropped selected anatomy without negating the resolved adult content."
+    krea2: "Name the same visible evidence target, garment action, and in-frame readability in natural positive language before atmosphere or style."
   exposure_action_plan:
-    flux: "Describe the compatible physical garment or material action, its anchor, and the exposed or discernible end state before generic pose or styling detail."
     z_image: "Keep the target, action, end state, and camera proof together; do not separate target anatomy from the garment/material cause that reveals it."
+    krea2: "Keep the target, action, end state, and camera proof in one readable sentence."
     rule: "Cleavage, unbuttoned clothing, wetness, or fabric tension alone cannot stand in for the selected target's final visible state."
   exposure_geometry_plan:
-    flux: "Preserve the validated camera-facing target, clear line of sight, reachable garment action, and in-crop composition as natural visible camera and action language."
     z_image: "Keep the validated target/action/camera relationship coherent; do not add an occluding hand, garment, prop, shallow-focus loss, or crop that contradicts it."
+    krea2: "Keep the validated target/action/camera relationship coherent with concise positive wording."
     rule: "Do not expose coordinate fields; translate only their visible camera, action, and crop consequences."
+  semantic_exposure_visibility_plan:
+    z_image: "State hair, hands, garment edges, atmosphere, light, and focus as constructive clearance controls around the selected evidence target."
+    krea2: "State the same clearance controls as natural readable staging rather than as an avoid list."
+    rule: "A positive-only prompt must not rely on a removed negative prompt to prevent semantic occlusion."
 
 adult_visual_direction_rendering:
   visual_focus_plan:
-    flux: "State one dominant sensory or readable interaction focus, one supporting emotional cue, and the camera/depth choice that makes the hierarchy visible."
     z_image: "Express primary and secondary focus through placement, sharpness, contrast, occlusion, and camera angle rather than internal field names."
+    krea2: "Express primary and secondary focus as a natural camera and focus description."
   local_anatomy_surface_when_active:
     positive: "Translate local surface geometry, individual variation, pose/gravity, material interface, and key-light response into visible natural English detail."
-    negative: "Use targeted controls against sticker-like local anatomy, mirror symmetry, sharp anatomy through opaque fabric, cutout transparency, floating projection, and contradictory highlights."
+    positive_only_guard: "Use constructive phrasing for integrated local anatomy, asymmetric natural detail, coherent material interface, and consistent highlights."
   focus_conflict: "Do not let generic face-first language override a declared sensory primary focus; follow explicit user focus when supplied."
 
 resolution_policy:
@@ -137,8 +131,8 @@ resolution_policy:
   edit_rule: "When source dimensions are known, preserve them; otherwise preserve the source aspect ratio using the nearest bucket."
 
 validation:
-  required_nonempty_fields: [flux_final_prompt, z_image_positive_prompt, z_image_negative_prompt, suggest_resolution]
-  flux_must_not_contain: ["[AVOID]", "negative prompt", "--no"]
+  required_nonempty_fields: [z_image_positive_prompt, krea2_positive_prompt, suggest_resolution]
+  positive_must_not_contain: ["[AVOID]", "negative prompt", "--no", "avoid ", "no "]
   prompt_language: english
   human_scene_retention:
     - resolved_adult_nsfw_baseline_for_eligible_humans
