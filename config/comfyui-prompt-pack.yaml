@@ -29,6 +29,7 @@ internal_scene_contract:
     - exposure_action_plan
     - exposure_geometry_plan
     - semantic_exposure_visibility_plan
+    - exposure_light_readability_plan
     - exposure_feasibility_review
     - dynamic_scene_plan.pose_family
     - dynamic_scene_plan.motion_state
@@ -112,6 +113,10 @@ always_nsfw_baseline_rendering:
     z_image: "State hair, hands, garment edges, atmosphere, light, and focus as constructive clearance controls around the selected evidence target."
     krea2: "State the same clearance controls as natural readable staging rather than as an avoid list."
     rule: "A positive-only prompt must not rely on a removed negative prompt to prevent semantic occlusion."
+  exposure_light_readability_plan:
+    z_image: "Keep target-local fill, open shadow detail on the target zone, readable skin midtones, and contrast separation near the selected target in the early subject block."
+    krea2: "State the same target-readable lighting as natural positive staging before mood, background darkness, or style."
+    rule: "Cinematic low-key lighting may describe the background, edges, or room mood only after the selected target remains locally lit and readable."
 
 adult_visual_direction_rendering:
   visual_focus_plan:
@@ -154,4 +159,5 @@ validation:
     - evidence_target_in_frame_unoccluded_and_readable
     - exposure_action_target_garment_zone_and_end_state_are_compatible
     - exposure_geometry_camera_ray_surface_facing_action_reach_and_crop_passed
+    - exposure_light_readability_target_local_fill_open_shadow_and_skin_midtones
     - phase_4_exposure_feasibility_review_passed

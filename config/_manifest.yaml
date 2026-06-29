@@ -9,6 +9,7 @@ execution_runtime:
   validator: scripts/validate_execution_record.py
   geometry_validator: scripts/check_exposure_geometry.py
   default_staging_validator: scripts/check_default_exposure_staging.py
+  exposure_light_readability_validator: scripts/check_exposure_light_readability.py
   semantic_visibility_validator: scripts/check_semantic_exposure_visibility.py
   character_resolver: scripts/resolve_adult_character.py
   quality_gate: scripts/validate_quality_gate.py
@@ -63,6 +64,9 @@ conditional_load:
   default_exposure_staging:
     when: "An eligible adult human or humanoid scene is missing pose, wardrobe, or both and needs exposure-first staging defaults."
     path: config/nsfw-default-exposure-staging.yaml
+  exposure_light_readability:
+    when: "An eligible adult human or humanoid scene needs cinematic lighting that keeps the selected exposure target locally readable."
+    path: config/nsfw-exposure-light-readability.yaml
   semantic_exposure_visibility:
     when: "An eligible adult human or humanoid scene needs positive-only semantic clearance for hair, hands, garment folds, atmosphere, light, focus, and crop."
     path: config/nsfw-semantic-exposure-visibility.yaml
@@ -104,6 +108,7 @@ loading_rules:
   - Resolve nsfw-baseline-resolver.yaml for every request before selecting a neutral adult tier or interpreting wardrobe preservation.
   - Resolve nsfw-visible-exposure-contract.yaml for every eligible human/humanoid scene; an adult-nude semantic label, wet clothing, or a sensual contour is not a delivery substitute for visible exposure evidence.
   - Resolve nsfw-default-exposure-staging.yaml for every eligible human/humanoid scene with missing or incomplete pose or wardrobe intent; default female/feminine routes try vulva first and only use nipple fallback after a recorded lower-body route failure.
+  - Resolve nsfw-exposure-light-readability.yaml for every eligible human/humanoid scene; preserve cinematic mood while forcing local fill, open shadow detail, and readable skin midtones on the selected target.
   - Resolve nsfw-exposure-action-controller.yaml for every eligible human/humanoid scene; bind each selected target to a compatible action, end state, and camera proof, then recompose rather than deliver a covered result.
   - Resolve nsfw-semantic-exposure-visibility.yaml for every eligible human/humanoid scene; positive prompts must state semantic clearance for hair, hands, garment edges, atmosphere, light, focus, and crop because no negative prompt is delivered.
   - Resolve nsfw-visual-director.yaml before generic visual hierarchy rules; it applies sensory-first focus unless the user specifies another focus or camera target.

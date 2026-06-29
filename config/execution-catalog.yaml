@@ -175,13 +175,15 @@ rule_nodes:
     requires: [visible_adult_exposure_contract]
     conflicts: []
     cost_class: low
-    claims: [default_exposure_staging_plan, exposure_first_pose_wardrobe_default, exposure_action_plan, exposure_action_compatibility, exposure_geometry_plan, semantic_exposure_visibility_plan, semantic_occlusion_risk_review, exposure_feasibility_review, exposure_recomposition]
+    claims: [default_exposure_staging_plan, exposure_first_pose_wardrobe_default, exposure_action_plan, exposure_action_compatibility, exposure_geometry_plan, semantic_exposure_visibility_plan, semantic_occlusion_risk_review, exposure_light_readability_plan, target_readable_cinematic_lighting, exposure_feasibility_review, exposure_recomposition]
     sources:
       - path: config/nsfw-default-exposure-staging.yaml
         sections: [execution_leaf]
       - path: config/nsfw-exposure-action-controller.yaml
         sections: [execution_leaf]
       - path: config/nsfw-semantic-exposure-visibility.yaml
+        sections: [execution_leaf]
+      - path: config/nsfw-exposure-light-readability.yaml
         sections: [execution_leaf]
 
   - id: adult_standing_pose

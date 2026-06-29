@@ -33,6 +33,7 @@ def test_manifest_routes_cinematic_enhancement_through_nsfw_delivery() -> None:
     assert runtime["phase_materializer"] == "scripts/materialize_execution_phase.py"
     assert runtime["geometry_validator"] == "scripts/check_exposure_geometry.py"
     assert runtime["default_staging_validator"] == "scripts/check_default_exposure_staging.py"
+    assert runtime["exposure_light_readability_validator"] == "scripts/check_exposure_light_readability.py"
     assert runtime["semantic_visibility_validator"] == "scripts/check_semantic_exposure_visibility.py"
     assert runtime["character_resolver"] == "scripts/resolve_adult_character.py"
     assert manifest["always_load"] == [
@@ -54,6 +55,7 @@ def test_manifest_routes_cinematic_enhancement_through_nsfw_delivery() -> None:
     assert manifest["conditional_load"]["visible_adult_exposure"]["path"] == "config/nsfw-visible-exposure-contract.yaml"
     assert manifest["conditional_load"]["exposure_action"]["path"] == "config/nsfw-exposure-action-controller.yaml"
     assert manifest["conditional_load"]["default_exposure_staging"]["path"] == "config/nsfw-default-exposure-staging.yaml"
+    assert manifest["conditional_load"]["exposure_light_readability"]["path"] == "config/nsfw-exposure-light-readability.yaml"
     assert manifest["conditional_load"]["semantic_exposure_visibility"]["path"] == "config/nsfw-semantic-exposure-visibility.yaml"
     assert manifest["conditional_load"]["named_character"]["resolver_sidecar"] == "config/adult-character-whitelist/runtime-alias-resolver.json"
     assert "scene_and_visual_enrichment" in manifest["conditional_load"]
@@ -248,6 +250,28 @@ def test_default_exposure_staging_contract_resolves_missing_pose_and_wardrobe() 
     assert any(source["path"] == "config/nsfw-default-exposure-staging.yaml" for source in action_node["sources"])
 
 
+def test_exposure_light_readability_contract_protects_target_local_brightness() -> None:
+    lighting = load("config/nsfw-exposure-light-readability.yaml")
+    plan = lighting["exposure_light_readability_plan"]
+    assert plan["required_fields"] == [
+        "target",
+        "target_zone_light_role",
+        "local_fill_strategy",
+        "shadow_floor",
+        "skin_midtone_policy",
+        "contrast_separation",
+        "prompt_lighting_guards",
+    ]
+    assert plan["shadow_floor_allowed"] == ["open", "controlled_readable"]
+    assert "deep_shadow" in plan["shadow_floor_forbidden"]
+    assert "target lost in darkness" in plan["darkness_risk_phrases"]
+    catalog = load("config/execution-catalog.yaml")
+    action_node = next(node for node in catalog["rule_nodes"] if node["id"] == "exposure_action_and_feasibility")
+    assert "exposure_light_readability_plan" in action_node["claims"]
+    assert "target_readable_cinematic_lighting" in action_node["claims"]
+    assert any(source["path"] == "config/nsfw-exposure-light-readability.yaml" for source in action_node["sources"])
+
+
 def test_core_pre_filter_and_reference_only_contracts_are_declared() -> None:
     core = load("config/core-knowledge.yaml")
     catalog = load("config/execution-catalog.yaml")
@@ -274,7 +298,7 @@ def test_comfyui_output_contract_is_complete() -> None:
         "landscape": "1536x1024 (3:2)",
     }
     assert renderer["style_translation"]["default"] == "cinematic_photoreal"
-    assert len(renderer["internal_scene_contract"]["required_when_human_subject_present"]) == 20
+    assert len(renderer["internal_scene_contract"]["required_when_human_subject_present"]) == 21
     assert "eligible_human_subject" in renderer["always_nsfw_baseline_rendering"]
     assert "nonhuman_only_subject" in renderer["always_nsfw_baseline_rendering"]
     assert "visual_focus_plan" in renderer["adult_visual_direction_rendering"]
@@ -284,6 +308,7 @@ def test_comfyui_output_contract_is_complete() -> None:
     assert "exposure_geometry_plan" in renderer["always_nsfw_baseline_rendering"]
     assert "default_exposure_staging_plan" in renderer["always_nsfw_baseline_rendering"]
     assert "semantic_exposure_visibility_plan" in renderer["always_nsfw_baseline_rendering"]
+    assert "exposure_light_readability_plan" in renderer["always_nsfw_baseline_rendering"]
     assert any("constructive positive controls" in rule for rule in renderer["z_image"]["positive_only_policy"])
     overrides = load("config/nsfw-comfyui-overrides.yaml")
     assert "chatgpt_image" in overrides["disabled_delivery_targets"]
@@ -302,7 +327,7 @@ def test_regression_cases_match_output_contract() -> None:
     assert {"age_unverified_character", "youth_coded_subject", "real_person_likeness"}.issubset(ids)
     assert {"standing_photoreal", "seated_soft_surface", "reclining_material_response", "duo_peak_action", "anime_realism_dynamic"}.issubset(ids)
     assert {"plain_human_always_nsfw", "clothed_human_transformation", "unspecified_wardrobe_nude_baseline", "human_edit_auto_adultization", "nonhuman_no_nsfw_injection"}.issubset(ids)
-    assert {"wet_silk_local_surface", "wet_button_shirt_local_surface", "nude_outdoor_surface_continuity", "single_sensory_focus_wide", "duo_sensory_focus_medium", "pov_camera_relationship", "consensual_bdsm_anchor_readability", "group_scene_rejected", "afterglow_focus_hierarchy", "local_surface_image_edit", "anime_realism_local_surface", "sports_bra_shorts_visible_exposure", "wet_tshirt_visible_evidence", "office_formal_exposure_action", "unspecified_pose_wardrobe_exposure_first", "wardrobe_without_pose_forces_exposure_pose", "pose_without_wardrobe_preserves_pose_family"}.issubset(ids)
+    assert {"wet_silk_local_surface", "wet_button_shirt_local_surface", "nude_outdoor_surface_continuity", "single_sensory_focus_wide", "duo_sensory_focus_medium", "pov_camera_relationship", "consensual_bdsm_anchor_readability", "group_scene_rejected", "afterglow_focus_hierarchy", "local_surface_image_edit", "anime_realism_local_surface", "sports_bra_shorts_visible_exposure", "wet_tshirt_visible_evidence", "office_formal_exposure_action", "unspecified_pose_wardrobe_exposure_first", "wardrobe_without_pose_forces_exposure_pose", "pose_without_wardrobe_preserves_pose_family", "bedroom_low_key_target_readable", "office_window_light_target_readable", "dark_target_light_failure"}.issubset(ids)
     dynamic_fields = cases["dynamic_scene_required_fields"]
     assert dynamic_fields == dynamic["dynamic_scene_plan"]["required_fields"]
     for case in cases["cases"]:

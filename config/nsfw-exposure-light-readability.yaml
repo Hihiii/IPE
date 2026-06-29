@@ -1,0 +1,86 @@
+schema_version: "1.0.0"
+name: nsfw-exposure-light-readability
+purpose: >
+  Preserve cinematic lighting while making the selected exposure target,
+  face, and relevant skin midtones readable. Backgrounds may remain low-key,
+  but the selected target cannot be hidden by black crush, deep shadow, or
+  silhouette-only lighting.
+
+execution_leaf:
+  applies_to: [clearly_adult_human, clearly_adult_humanoid]
+  required_fields:
+    - target
+    - target_zone_light_role
+    - local_fill_strategy
+    - shadow_floor
+    - skin_midtone_policy
+    - contrast_separation
+    - prompt_lighting_guards
+  target: "Must match exposure_contract.evidence_target, exposure_action_plan.primary_target, and semantic_exposure_visibility_plan.target."
+  target_zone_light_role: "A motivated local key or fill keeps the selected target readable while preserving cinematic mood."
+  local_fill_strategy: "Use soft local fill, bounced window fill, warm practical fill, or another scene-motivated fill source."
+  shadow_floor: "The selected target zone must use open or controlled_readable shadow detail; deep shadow, black crush, and silhouette-only target lighting fail."
+  skin_midtone_policy: "Skin midtones on the target zone and adjacent body planes stay readable without overexposing highlights."
+  contrast_separation: "Separate the target/action anchor from surrounding garment, limb, bedding, chair, or background values."
+  prompt_lighting_guards: "Positive lighting phrases that must also appear in semantic_exposure_visibility_plan.positive_prompt_guards and every final positive prompt."
+
+exposure_light_readability_plan:
+  required_fields:
+    - target
+    - target_zone_light_role
+    - local_fill_strategy
+    - shadow_floor
+    - skin_midtone_policy
+    - contrast_separation
+    - prompt_lighting_guards
+  target_zone_light_roles:
+    - soft_local_key
+    - soft_local_fill
+    - bounced_window_fill
+    - warm_practical_fill
+    - balanced_key_and_fill
+  local_fill_strategies:
+    - soft local fill
+    - bounced window fill
+    - warm practical fill
+    - diffused key fill
+    - reflected sheet fill
+  shadow_floor_allowed: [open, controlled_readable]
+  shadow_floor_forbidden: [deep_shadow, black_crush, silhouette_only]
+  skin_midtone_policies:
+    - readable_skin_midtones
+    - exposed_for_skin_midtones
+    - lifted_skin_midtones
+  contrast_separation:
+    allowed: [clear, controlled]
+    rule: "Target/action anchor must remain value-separated from adjacent garment, limb, prop, bedding, chair, or background."
+  positive_prompt_requirements:
+    - "selected target or accepted target alias appears early"
+    - "pose and exposure action appear early"
+    - "unobscured in frame on the focal plane"
+    - "local fill phrase"
+    - "open shadow detail on the target zone"
+    - "readable skin midtones"
+  darkness_risk_phrases:
+    - deep shadow over the target
+    - black-crushed target
+    - black crushed target
+    - target lost in darkness
+    - dim unreadable exposure target
+    - silhouette-only exposure
+    - target hidden in darkness
+    - unreadable shadow on the target
+
+lighting_scene_defaults:
+  bedroom_low_key: "Keep the room low-key but add soft local fill and open shadow detail on the selected target zone."
+  office_window_light: "Window light may shape the face and shirt, but bounced window fill must keep the target/action anchor readable."
+  night_scene: "Practical lights may preserve dark ambience, but warm practical fill must lift target-zone shadows above black crush."
+  cinematic_portrait: "Mood contrast is allowed only after target readability, face readability, and skin midtones are protected."
+
+phase_hooks:
+  phase_1_intent_analysis: "Create exposure_light_readability_plan after selecting the exposure target and route."
+  phase_2_composition_and_cinematography: "Choose local fill, shadow floor, skin midtones, and contrast separation before decorative darkness."
+  phase_3_scene_blueprint: "Record the target-local lighting plan next to semantic and geometry exposure plans."
+  phase_3_1_prompt_package: "Render target-local fill, open shadow detail, and readable skin midtones in every positive prompt."
+  phase_4_self_review: "Fail when the selected target is semantically visible but too dark, black-crushed, or silhouette-only."
+  phase_4_2_comfyui_renderer: "Keep target-readable lighting guards early in Z-Image Base+Turbo and Krea2 positive prompts."

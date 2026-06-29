@@ -25,6 +25,7 @@ DEFAULT_VISIBLE_EXPOSURE_CONTRACT = ROOT / "config" / "nsfw-visible-exposure-con
 DEFAULT_EXPOSURE_ACTION_CONTROLLER = ROOT / "config" / "nsfw-exposure-action-controller.yaml"
 DEFAULT_EXPOSURE_STAGING = ROOT / "config" / "nsfw-default-exposure-staging.yaml"
 DEFAULT_SEMANTIC_EXPOSURE_VISIBILITY = ROOT / "config" / "nsfw-semantic-exposure-visibility.yaml"
+DEFAULT_EXPOSURE_LIGHT_READABILITY = ROOT / "config" / "nsfw-exposure-light-readability.yaml"
 _ADULT_WHITELIST_INDEX = ROOT / "config" / "adult-character-whitelist" / "index.yaml"
 _CATALOG_CACHE: dict[Path, tuple[tuple[tuple[str, int, int], ...], dict[str, Any]]] = {}
 _PACKET_CACHE: dict[tuple[str, str, tuple[str, ...]], dict[str, Any]] = {}
@@ -582,6 +583,8 @@ def execution_record_template(packet: dict[str, Any]) -> dict[str, Any]:
         "exposure_geometry_result": None,
         "semantic_exposure_visibility_plan": None,
         "semantic_exposure_visibility_result": None,
+        "exposure_light_readability_plan": None,
+        "exposure_light_readability_result": None,
         "exposure_feasibility_review": None,
         "recomposition_attempts": [],
         "reference_access": [],
@@ -1027,6 +1030,16 @@ def _semantic_visibility_result_receipt_failures(receipt: Any, result: dict[str,
     return failures
 
 
+def _light_readability_result_receipt_failures(receipt: Any, result: dict[str, Any]) -> list[dict[str, Any]]:
+    if not isinstance(receipt, dict):
+        return [_failure("exposure_light_readability_result_missing", "Execution record must retain the deterministic exposure light readability result.")]
+    failures: list[dict[str, Any]] = []
+    for field in ("valid", "required", "checks", "failure_taxonomy"):
+        if receipt.get(field) != result.get(field):
+            failures.append(_failure("exposure_light_readability_result_mismatch", "Execution exposure light readability result does not match deterministic validation.", field=field, expected=result.get(field), actual=receipt.get(field)))
+    return failures
+
+
 def validate_execution_record(packet: dict[str, Any], record: dict[str, Any]) -> dict[str, Any]:
     failures = _packet_integrity_failures(packet)
     failures.extend(_reference_access_failures(packet, record))
@@ -1145,6 +1158,19 @@ def validate_execution_record(packet: dict[str, Any], record: dict[str, Any]) ->
                 failures.extend(semantic_result["failures"])
         except (ExecutionError, ValueError) as error:
             failures.append(_failure("semantic_visibility_unavailable", "Semantic exposure visibility validator could not run.", detail=str(error)))
+        if "exposure_light_readability_plan" in packet["required_claims"]:
+            try:
+                try:
+                    from scripts.check_exposure_light_readability import check_exposure_light_readability
+                except ModuleNotFoundError:  # pragma: no cover - direct script execution path
+                    from check_exposure_light_readability import check_exposure_light_readability
+
+                light_result = check_exposure_light_readability(packet, record)
+                failures.extend(_light_readability_result_receipt_failures(record.get("exposure_light_readability_result"), light_result))
+                if not light_result["valid"]:
+                    failures.extend(light_result["failures"])
+            except (ExecutionError, ValueError) as error:
+                failures.append(_failure("exposure_light_readability_unavailable", "Exposure light readability validator could not run.", detail=str(error)))
         if validated_prompt_pack is not None:
             try:
                 validate_exposure_action_plan(
