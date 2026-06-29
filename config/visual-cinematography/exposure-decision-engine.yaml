@@ -41,5 +41,5 @@ conflict_rules:
   - "Face, product label, and required costume markers outrank decorative highlight bloom."
   - "Protect highlight detail on white fabric, windows, paint, chrome, and screens when they carry requested information."
   - "Never use a shadow policy that makes a critical subject unreadable."
-  - "When visible adult exposure is active, selected target readability outranks cinematic darkness and background mood."
-  - "Low-key scenes must use local fill and open shadow detail on the selected target zone; deep shadow is allowed only in background or non-critical edges."
+  - "When visible adult exposure is active, selected target readability and whole-subject readability outrank cinematic darkness and background mood."
+  - "Low-key scenes must use readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, local fill on the selected target zone, and open shadow detail on the selected target zone; deep shadow is allowed only in background or non-critical edges."

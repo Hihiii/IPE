@@ -19,6 +19,7 @@ from scripts.execution_runtime import (
 from scripts.check_exposure_geometry import check_exposure_geometry
 from scripts.check_default_exposure_staging import check_default_exposure_staging
 from scripts.check_exposure_light_readability import check_exposure_light_readability
+from scripts.check_random_outfit_selection import check_random_outfit_selection, selected_outfit_for_packet
 from scripts.check_semantic_exposure_visibility import check_semantic_exposure_visibility
 
 
@@ -36,6 +37,8 @@ def refresh_exposure_results(packet: dict, record: dict) -> None:
         record["semantic_exposure_visibility_result"] = check_semantic_exposure_visibility(packet, record)
     if "default_exposure_staging_plan" in packet["required_claims"]:
         record["default_exposure_staging_result"] = check_default_exposure_staging(packet, record)
+    if "random_outfit_selection_plan" in packet["required_claims"]:
+        record["random_outfit_selection_result"] = check_random_outfit_selection(packet, record)
     if "exposure_light_readability_plan" in packet["required_claims"]:
         record["exposure_light_readability_result"] = check_exposure_light_readability(packet, record)
 
@@ -57,7 +60,7 @@ def complete_record(packet: dict) -> dict:
     if "visible_adult_exposure" in packet["required_claims"]:
         record["exposure_contract"] = {
             "subject_presentation": "female_feminine",
-            "wardrobe_state": "unspecified_wardrobe_generic",
+            "wardrobe_state": "explicit_wardrobe",
             "exposure_requirement": "partial_nudity_required",
             "evidence_mode": "direct_garment_action",
             "evidence_target": "vulva",
@@ -65,13 +68,28 @@ def complete_record(packet: dict) -> dict:
             "camera_visibility_guard": ["evidence_target_in_frame", "evidence_target_unoccluded", "evidence_target_readable"],
             "forbidden_substitutions": ["silhouette_only", "wetness_only", "body_curve_only", "opaque_full_coverage", "cropped_or_occluded_evidence"],
         }
+    outfit_text = ""
+    if "random_outfit_selection_plan" in packet["required_claims"]:
+        selected = selected_outfit_for_packet(packet)
+        record["random_outfit_selection_plan"] = {
+            "selection_method": "deterministic_request_hash",
+            "selection_seed": selected["selection_seed"],
+            "selected_outfit_id": str(selected["id"]),
+            "selected_outfit_name": str(selected["name"]),
+            "upper_body": str(selected["upper_body"]),
+            "lower_body": str(selected["lower_body"]),
+            "footwear": str(selected["footwear"]),
+            "effective_wardrobe_state": "explicit_wardrobe",
+            "exposure_transform_required": True,
+        }
+        outfit_text = f", wearing {selected['upper_body']}, {selected['lower_body']}, {selected['footwear']}"
     if "default_exposure_staging_plan" in packet["required_claims"]:
         record["default_exposure_staging_plan"] = {
             "default_reason": "unspecified_wardrobe_and_pose",
             "target_priority": ["vulva", "nipple"],
             "pose_template_id": "reclining_knees_raised_lower_body_open",
             "pose_family": "reclining",
-            "wardrobe_mode": "semi_nude_lower_body_garment_action",
+            "wardrobe_mode": "random_outfit_with_exposure_action" if "random_outfit_selection_plan" in packet["required_claims"] else "semi_nude_lower_body_garment_action",
             "exposure_route": "direct_garment_action",
             "action_id": "pull_aside_lower_garment",
             "camera_proof": ["target_in_frame", "target_unoccluded", "target_on_focal_plane"],
@@ -134,6 +152,10 @@ def complete_record(packet: dict) -> dict:
                 "soft local fill on the target zone",
                 "open shadow detail on the target zone",
                 "readable skin midtones around the target",
+                "readable face",
+                "soft fill across the subject",
+                "readable body skin midtones",
+                "open shadow detail across the body",
             ],
         }
     if "exposure_light_readability_plan" in packet["required_claims"]:
@@ -149,10 +171,86 @@ def complete_record(packet: dict) -> dict:
                 "open shadow detail on the target zone",
                 "readable skin midtones around the target",
             ],
+            "subject_light_role": "soft_subject_fill",
+            "face_readability": "clear",
+            "body_midtone_policy": "readable_body_skin_midtones",
+            "subject_shadow_floor": "controlled_readable",
+            "background_mood_role": "low_key_background",
+            "prompt_subject_lighting_guards": [
+                "readable face",
+                "soft fill across the subject",
+                "readable body skin midtones",
+                "open shadow detail across the body",
+            ],
         }
     record["prompt_pack"] = {
-        "z_image_positive_prompt": "clearly adult fictional semi-nude woman, pussy visible and vulva fully uncovered, reclining knees raised lower body open pose, pulling aside lower garment, unobscured in frame on the focal plane, soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, hair swept behind shoulders, hips turned toward the camera, hand pulling lower garment aside, fabric edge held outside the vulva line, clear local light keeps the pussy on the focal plane, crop includes the vulva and garment action anchor, coherent cinematic low-key background",
-        "krea2_positive_prompt": "A clearly adult fictional semi-nude woman with pussy visible and the vulva fully uncovered, reclining knees raised lower body open pose, pulling aside a lower garment so the target is unobscured, in frame, and on the focal plane; soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, hair swept behind shoulders, hips turned toward the camera, hand pulling lower garment aside, fabric edge held outside the vulva line, clear local light keeps the pussy on the focal plane, crop includes the vulva and garment action anchor in a coherent cinematic low-key background.",
+        "z_image_positive_prompt": f"clearly adult fictional semi-nude woman{outfit_text}, pussy visible and vulva fully uncovered, reclining knees raised lower body open pose, pulling aside lower garment, unobscured in frame on the focal plane, soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, hair swept behind shoulders, hips turned toward the camera, hand pulling lower garment aside, fabric edge held outside the vulva line, clear local light keeps the pussy on the focal plane, crop includes the vulva and garment action anchor, coherent cinematic low-key background",
+        "krea2_positive_prompt": f"A clearly adult fictional semi-nude woman{outfit_text} with pussy visible and the vulva fully uncovered, reclining knees raised lower body open pose, pulling aside a lower garment so the target is unobscured, in frame, and on the focal plane; soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, hair swept behind shoulders, hips turned toward the camera, hand pulling lower garment aside, fabric edge held outside the vulva line, clear local light keeps the pussy on the focal plane, crop includes the vulva and garment action anchor in a coherent cinematic low-key background.",
+        "suggest_resolution": "1024x1536 (2:3)",
+    }
+    refresh_exposure_results(packet, record)
+    return record
+
+
+def explicit_nude_direct_bare_record(packet: dict) -> dict:
+    record = complete_record(packet)
+    record["exposure_contract"].update(
+        {
+            "wardrobe_state": "explicit_wardrobe",
+            "exposure_requirement": "partial_nudity_required",
+            "evidence_mode": "direct_bare",
+            "evidence_target": "vulva",
+            "garment_transformation_action": "no_garment_added",
+        }
+    )
+    record["default_exposure_staging_plan"].update(
+        {
+            "default_reason": "unspecified_wardrobe_and_pose",
+            "wardrobe_mode": "direct_bare_no_wardrobe",
+            "exposure_route": "direct_bare_no_wardrobe",
+            "action_id": "no_garment_direct_bare",
+            "semantic_clearance_guards": [
+                "hips turned toward the camera",
+                "hair swept behind shoulders",
+                "hands kept outside the vulva line",
+                "clear local light keeps the pussy on the focal plane",
+                "crop includes the vulva and bare-body exposure",
+            ],
+        }
+    )
+    record["exposure_action_plan"] = {
+        "primary_target": "vulva",
+        "route": "direct_bare_no_wardrobe",
+        "garment_zone": "none",
+        "action": "no_garment_direct_bare",
+        "action_anchor": "not_applicable",
+        "end_state": "vulva_visible_on_bare_skin",
+        "material_cause_when_relevant": "not_applicable",
+        "camera_proof": ["target_in_frame", "target_unoccluded", "target_on_focal_plane"],
+        "fallback_route": "block_delivery",
+    }
+    record["semantic_exposure_visibility_plan"].update(
+        {
+            "target": "vulva",
+            "positive_prompt_guards": [
+                "hair swept behind shoulders",
+                "hips turned toward the camera",
+                "hands kept outside the vulva line",
+                "clear local light keeps the pussy on the focal plane",
+                "crop includes the vulva and bare-body exposure",
+                "soft local fill on the target zone",
+                "open shadow detail on the target zone",
+                "readable skin midtones around the target",
+                "readable face",
+                "soft fill across the subject",
+                "readable body skin midtones",
+                "open shadow detail across the body",
+            ],
+        }
+    )
+    record["prompt_pack"] = {
+        "z_image_positive_prompt": "clearly adult fictional nude woman, pussy visible and vulva in frame on bare skin, reclining knees raised lower body open pose, nude direct bare exposure, unobscured in frame on the focal plane, soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, hips turned toward the camera, hair swept behind shoulders, hands kept outside the vulva line, clear local light keeps the pussy on the focal plane, crop includes the vulva and bare-body exposure, coherent cinematic low-key background",
+        "krea2_positive_prompt": "A clearly adult fictional nude woman with pussy visible and the vulva in frame on bare skin, reclining knees raised lower body open pose, nude direct bare exposure so the target is unobscured, in frame, and on the focal plane; soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, hips turned toward the camera, hair swept behind shoulders, hands kept outside the vulva line, clear local light keeps the pussy on the focal plane, crop includes the vulva and bare-body exposure in a coherent cinematic low-key background.",
         "suggest_resolution": "1024x1536 (2:3)",
     }
     refresh_exposure_results(packet, record)
@@ -185,7 +283,7 @@ def test_catalog_covers_active_rules_and_compiles_complete_semantic_closure() ->
         {node["id"] for node in wet_packet["selected_nodes"]}
     )
     adult_packet = compile_execution_packet("clearly adult original fictional woman, cinematic portrait")
-    assert {"visible_adult_exposure", "exposure_evidence_target", "garment_transformation_action", "camera_visibility_guard", "default_exposure_staging_plan", "exposure_first_pose_wardrobe_default", "exposure_action_plan", "exposure_action_compatibility", "exposure_geometry_plan", "semantic_exposure_visibility_plan", "semantic_occlusion_risk_review", "exposure_light_readability_plan", "target_readable_cinematic_lighting", "exposure_feasibility_review", "exposure_recomposition"}.issubset(adult_packet["required_claims"])
+    assert {"visible_adult_exposure", "exposure_evidence_target", "garment_transformation_action", "camera_visibility_guard", "random_outfit_selection_plan", "default_exposure_staging_plan", "exposure_first_pose_wardrobe_default", "exposure_action_plan", "exposure_action_compatibility", "exposure_geometry_plan", "semantic_exposure_visibility_plan", "semantic_occlusion_risk_review", "exposure_light_readability_plan", "target_readable_cinematic_lighting", "exposure_feasibility_review", "exposure_recomposition"}.issubset(adult_packet["required_claims"])
     assert "visible_adult_exposure_contract" in {node["id"] for node in adult_packet["selected_nodes"]}
     assert "exposure_action_and_feasibility" in {node["id"] for node in adult_packet["selected_nodes"]}
     nonhuman_packet = compile_execution_packet("misty mountain landscape at sunrise with a lake")
@@ -349,6 +447,8 @@ def test_default_exposure_staging_validator_rejects_missing_mismatch_and_accepts
     assert any(failure["code"] == "default_exposure_staging_action_mismatch" for failure in mismatch_error.value.failures)
 
     alias_only = deepcopy(record)
+    selected = selected_outfit_for_packet(packet)
+    outfit_text = f", wearing {selected['upper_body']}, {selected['lower_body']}, {selected['footwear']}"
     alias_guards = [
         "hips turned toward the camera",
         "hand pulling lower garment aside",
@@ -361,12 +461,67 @@ def test_default_exposure_staging_validator_rejects_missing_mismatch_and_accepts
         "soft local fill on the target zone",
         "open shadow detail on the target zone",
         "readable skin midtones around the target",
+        "readable face",
+        "soft fill across the subject",
+        "readable body skin midtones",
+        "open shadow detail across the body",
     ]
     alias_only["semantic_exposure_visibility_plan"]["positive_prompt_guards"] = ["hair swept behind shoulders", *alias_guards, *lighting_guards]
-    alias_only["prompt_pack"]["z_image_positive_prompt"] = "clearly adult fictional semi-nude woman, pussy visible and fully uncovered, reclining knees raised lower body open pose, pulling aside lower garment, unobscured in frame on the focal plane, soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, hair swept behind shoulders, hips turned toward the camera, hand pulling lower garment aside, fabric edge held outside the pussy line, clear local light keeps the pussy on the focal plane, crop includes the pussy and garment action anchor, coherent cinematic scene"
-    alias_only["prompt_pack"]["krea2_positive_prompt"] = "A clearly adult fictional semi-nude woman with pussy visible and fully uncovered, reclining knees raised lower body open pose, pulling aside a lower garment so the target is unobscured, in frame, and on the focal plane; soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, hair swept behind shoulders, hips turned toward the camera, hand pulling lower garment aside, fabric edge held outside the pussy line, clear local light keeps the pussy on the focal plane, crop includes the pussy and garment action anchor in a coherent cinematic scene."
+    alias_only["prompt_pack"]["z_image_positive_prompt"] = f"clearly adult fictional semi-nude woman{outfit_text}, pussy visible and fully uncovered, reclining knees raised lower body open pose, pulling aside lower garment, unobscured in frame on the focal plane, soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, hair swept behind shoulders, hips turned toward the camera, hand pulling lower garment aside, fabric edge held outside the pussy line, clear local light keeps the pussy on the focal plane, crop includes the pussy and garment action anchor, coherent cinematic scene"
+    alias_only["prompt_pack"]["krea2_positive_prompt"] = f"A clearly adult fictional semi-nude woman{outfit_text} with pussy visible and fully uncovered, reclining knees raised lower body open pose, pulling aside a lower garment so the target is unobscured, in frame, and on the focal plane; soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, hair swept behind shoulders, hips turned toward the camera, hand pulling lower garment aside, fabric edge held outside the pussy line, clear local light keeps the pussy on the focal plane, crop includes the pussy and garment action anchor in a coherent cinematic scene."
     refresh_exposure_results(packet, alias_only)
     assert validate_execution_record(packet, alias_only)["valid"] is True
+
+
+def test_random_outfit_selection_validator_enforces_generic_unspecified_wardrobe_route() -> None:
+    packet = compile_execution_packet("clearly adult original fictional woman, cinematic portrait")
+    record = complete_record(packet)
+    selected = selected_outfit_for_packet(packet)
+    assert "random_outfit_selection_plan" in packet["required_claims"]
+    assert record["random_outfit_selection_plan"]["selected_outfit_id"] == str(selected["id"])
+    assert validate_execution_record(packet, record)["valid"] is True
+
+    missing_result = deepcopy(record)
+    missing_result["random_outfit_selection_result"] = None
+    with pytest.raises(ExecutionError, match="failed validation") as missing_result_error:
+        validate_execution_record(packet, missing_result)
+    assert any(failure["code"] == "random_outfit_selection_result_missing" for failure in missing_result_error.value.failures)
+
+    mismatched = deepcopy(record)
+    mismatched["random_outfit_selection_plan"]["selected_outfit_id"] = "wrong-outfit"
+    mismatched["random_outfit_selection_result"] = check_random_outfit_selection(packet, mismatched)
+    with pytest.raises(ExecutionError, match="failed validation") as mismatch_error:
+        validate_execution_record(packet, mismatched)
+    assert any(failure["code"] == "random_outfit_selection_mismatch" for failure in mismatch_error.value.failures)
+
+    forbidden_route = deepcopy(record)
+    forbidden_route["exposure_action_plan"]["route"] = "direct_bare_no_wardrobe"
+    forbidden_route["random_outfit_selection_result"] = check_random_outfit_selection(packet, forbidden_route)
+    with pytest.raises(ExecutionError, match="failed validation") as route_error:
+        validate_execution_record(packet, forbidden_route)
+    assert any(failure["code"] == "random_outfit_forbidden_route" for failure in route_error.value.failures)
+
+    prompt_missing_outfit = deepcopy(record)
+    prompt_missing_outfit["prompt_pack"]["z_image_positive_prompt"] = prompt_missing_outfit["prompt_pack"]["z_image_positive_prompt"].replace(
+        str(selected["lower_body"]),
+        "lower garment",
+    )
+    prompt_missing_outfit["random_outfit_selection_result"] = check_random_outfit_selection(packet, prompt_missing_outfit)
+    with pytest.raises(ExecutionError, match="failed validation") as prompt_error:
+        validate_execution_record(packet, prompt_missing_outfit)
+    assert any(failure["code"] == "random_outfit_prompt_terms" for failure in prompt_error.value.failures)
+
+
+def test_explicit_nude_skips_random_outfit_and_allows_direct_bare_route() -> None:
+    packet = compile_execution_packet("clearly adult original fictional nude woman reclining in a private bedroom")
+    assert "random_outfit_selection_plan" not in packet["required_claims"]
+    assert "wardrobe_unspecified" not in packet["features"]
+    assert "generic_subject" not in packet["features"]
+
+    record = explicit_nude_direct_bare_record(packet)
+    assert record["random_outfit_selection_plan"] is None
+    assert record["default_exposure_staging_plan"]["wardrobe_mode"] == "direct_bare_no_wardrobe"
+    assert validate_execution_record(packet, record)["valid"] is True
 
 
 def test_exposure_light_readability_validator_rejects_dark_or_missing_target_light() -> None:
@@ -401,6 +556,20 @@ def test_exposure_light_readability_validator_rejects_dark_or_missing_target_lig
         validate_execution_record(packet, darkness_phrase)
     assert any(failure["code"] == "exposure_light_darkness_risk_phrase" for failure in darkness_error.value.failures)
 
+    subject_shadow = deepcopy(record)
+    subject_shadow["exposure_light_readability_plan"]["subject_shadow_floor"] = "black_crushed"
+    subject_shadow["exposure_light_readability_result"] = check_exposure_light_readability(packet, subject_shadow)
+    with pytest.raises(ExecutionError, match="failed validation") as subject_shadow_error:
+        validate_execution_record(packet, subject_shadow)
+    assert any(failure["code"] in {"exposure_light_subject_shadow_floor", "exposure_light_subject_shadow_floor_forbidden"} for failure in subject_shadow_error.value.failures)
+
+    subject_darkness_phrase = deepcopy(record)
+    subject_darkness_phrase["prompt_pack"]["krea2_positive_prompt"] += " face lost in darkness"
+    subject_darkness_phrase["exposure_light_readability_result"] = check_exposure_light_readability(packet, subject_darkness_phrase)
+    with pytest.raises(ExecutionError, match="failed validation") as subject_darkness_error:
+        validate_execution_record(packet, subject_darkness_phrase)
+    assert any(failure["code"] == "exposure_light_subject_darkness_risk_phrase" for failure in subject_darkness_error.value.failures)
+
     missing_guard = deepcopy(record)
     missing_guard["prompt_pack"]["krea2_positive_prompt"] = missing_guard["prompt_pack"]["krea2_positive_prompt"].replace("soft local fill on the target zone, ", "")
     missing_guard["semantic_exposure_visibility_result"] = check_semantic_exposure_visibility(packet, missing_guard)
@@ -408,6 +577,14 @@ def test_exposure_light_readability_validator_rejects_dark_or_missing_target_lig
     with pytest.raises(ExecutionError, match="failed validation") as guard_error:
         validate_execution_record(packet, missing_guard)
     assert any(failure["code"] in {"exposure_light_prompt_readability", "exposure_light_prompt_guard_missing"} for failure in guard_error.value.failures)
+
+    missing_subject_guard = deepcopy(record)
+    missing_subject_guard["prompt_pack"]["z_image_positive_prompt"] = missing_subject_guard["prompt_pack"]["z_image_positive_prompt"].replace("readable face, ", "")
+    missing_subject_guard["exposure_light_readability_result"] = check_exposure_light_readability(packet, missing_subject_guard)
+    with pytest.raises(ExecutionError, match="failed validation") as subject_guard_error:
+        validate_execution_record(packet, missing_subject_guard)
+    assert any(failure["code"] in {"exposure_light_prompt_subject_readability", "exposure_light_prompt_guard_missing"} for failure in subject_guard_error.value.failures)
+
 
 
 def test_visible_exposure_contract_rejects_covered_or_unverifiable_human_delivery() -> None:
@@ -488,12 +665,16 @@ def test_visible_exposure_contract_rejects_covered_or_unverifiable_human_deliver
                 "soft local fill on the target zone",
                 "open shadow detail on the target zone",
                 "readable skin midtones around the target",
+                "readable face",
+                "soft fill across the subject",
+                "readable body skin midtones",
+                "open shadow detail across the body",
             ],
         }
     )
     transformed["exposure_light_readability_plan"].update({"target": "nipple"})
-    transformed["prompt_pack"]["z_image_positive_prompt"] = "clearly adult fictional woman, visible nipple fully uncovered, standing three quarter upper garment pulled open, pulling open white shirt front panels below the nipple line, unobscured in frame on the focal plane, soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, hair swept behind shoulders, hand gripping garment edge to the side, fabric pulled aside below the nipple line, clear local light keeps the nipple on the focal plane, coherent cinematic lighting"
-    transformed["prompt_pack"]["krea2_positive_prompt"] = "A clearly adult fictional woman with one visible nipple fully uncovered, standing three quarter upper garment pulled open, pulling open the white shirt front panels below the nipple line so the target is unobscured, in frame, and on the focal plane; soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, hair swept behind shoulders, hand gripping garment edge to the side, fabric pulled aside below the nipple line, clear local light keeps the nipple on the focal plane with coherent cinematic lighting."
+    transformed["prompt_pack"]["z_image_positive_prompt"] = "clearly adult fictional woman, visible nipple fully uncovered, standing three quarter upper garment pulled open, pulling open white shirt front panels below the nipple line, unobscured in frame on the focal plane, soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, hair swept behind shoulders, hand gripping garment edge to the side, fabric pulled aside below the nipple line, clear local light keeps the nipple on the focal plane, coherent cinematic lighting"
+    transformed["prompt_pack"]["krea2_positive_prompt"] = "A clearly adult fictional woman with one visible nipple fully uncovered, standing three quarter upper garment pulled open, pulling open the white shirt front panels below the nipple line so the target is unobscured, in frame, and on the focal plane; soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, hair swept behind shoulders, hand gripping garment edge to the side, fabric pulled aside below the nipple line, clear local light keeps the nipple on the focal plane with coherent cinematic lighting."
     refresh_exposure_results(packet, transformed)
     assert validate_execution_record(packet, transformed)["valid"] is True
 
@@ -543,8 +724,8 @@ def test_visible_exposure_contract_rejects_covered_or_unverifiable_human_deliver
         "camera_proof": ["target_in_frame", "target_unoccluded", "target_on_focal_plane"],
         "fallback_route": "direct_garment_action",
     }
-    sheer["prompt_pack"]["z_image_positive_prompt"] = "clearly adult fictional woman, discernible nipple visible, standing three quarter upper garment pulled open, wet translucent clinging upper garment, unobscured in frame on the focal plane, soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, hair swept behind shoulders, hand gripping garment edge to the side, fabric pulled aside below the nipple line, clear local light keeps the nipple on the focal plane, window side light revealing the water-soaked fabric interface"
-    sheer["prompt_pack"]["krea2_positive_prompt"] = "A clearly adult fictional woman with a discernible nipple visible, standing three quarter upper garment pulled open, in a wet translucent clinging upper garment, unobscured, in frame, and on the focal plane; soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, hair swept behind shoulders, hand gripping garment edge to the side, fabric pulled aside below the nipple line, clear local light keeps the nipple on the focal plane while window side light reveals the water-soaked fabric interface."
+    sheer["prompt_pack"]["z_image_positive_prompt"] = "clearly adult fictional woman, discernible nipple visible, standing three quarter upper garment pulled open, wet translucent clinging upper garment, unobscured in frame on the focal plane, soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, hair swept behind shoulders, hand gripping garment edge to the side, fabric pulled aside below the nipple line, clear local light keeps the nipple on the focal plane, window side light revealing the water-soaked fabric interface"
+    sheer["prompt_pack"]["krea2_positive_prompt"] = "A clearly adult fictional woman with a discernible nipple visible, standing three quarter upper garment pulled open, in a wet translucent clinging upper garment, unobscured, in frame, and on the focal plane; soft local fill on the target zone, open shadow detail on the target zone, readable skin midtones around the target, readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, hair swept behind shoulders, hand gripping garment edge to the side, fabric pulled aside below the nipple line, clear local light keeps the nipple on the focal plane while window side light reveals the water-soaked fabric interface."
     refresh_exposure_results(packet, sheer)
     assert validate_execution_record(packet, sheer)["valid"] is True
 

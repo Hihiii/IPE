@@ -26,6 +26,7 @@ DEFAULT_EXPOSURE_ACTION_CONTROLLER = ROOT / "config" / "nsfw-exposure-action-con
 DEFAULT_EXPOSURE_STAGING = ROOT / "config" / "nsfw-default-exposure-staging.yaml"
 DEFAULT_SEMANTIC_EXPOSURE_VISIBILITY = ROOT / "config" / "nsfw-semantic-exposure-visibility.yaml"
 DEFAULT_EXPOSURE_LIGHT_READABILITY = ROOT / "config" / "nsfw-exposure-light-readability.yaml"
+DEFAULT_RANDOM_OUTFIT_SELECTION = ROOT / "config" / "nsfw-random-outfit-selection.yaml"
 _ADULT_WHITELIST_INDEX = ROOT / "config" / "adult-character-whitelist" / "index.yaml"
 _CATALOG_CACHE: dict[Path, tuple[tuple[tuple[str, int, int], ...], dict[str, Any]]] = {}
 _PACKET_CACHE: dict[tuple[str, str, tuple[str, ...]], dict[str, Any]] = {}
@@ -338,10 +339,11 @@ def infer_features(request: str, provided_features: Iterable[str] = ()) -> list[
     is_human = "adult_human_scene" in features and not nonhuman_only
     is_ip = "ip_character" in features
     if is_human:
+        explicit_nude_requested = any(marker in text for marker in ("fully nude", "no clothes", "bare body", "nude"))
         wardrobe_specified = any(marker in text for marker in CLOTHING_MARKERS)
         if wardrobe_specified:
             features.add("wardrobe_specified")
-        else:
+        elif not explicit_nude_requested:
             features.add("wardrobe_unspecified")
             if is_ip:
                 features.add("ip_character")
@@ -576,6 +578,8 @@ def execution_record_template(packet: dict[str, Any]) -> dict[str, Any]:
         "claims": [],
         "provenance": [],
         "exposure_contract": None,
+        "random_outfit_selection_plan": None,
+        "random_outfit_selection_result": None,
         "default_exposure_staging_plan": None,
         "default_exposure_staging_result": None,
         "exposure_action_plan": None,
@@ -1020,6 +1024,16 @@ def _default_staging_result_receipt_failures(receipt: Any, result: dict[str, Any
     return failures
 
 
+def _random_outfit_result_receipt_failures(receipt: Any, result: dict[str, Any]) -> list[dict[str, Any]]:
+    if not isinstance(receipt, dict):
+        return [_failure("random_outfit_selection_result_missing", "Execution record must retain the deterministic random outfit selection result.")]
+    failures: list[dict[str, Any]] = []
+    for field in ("valid", "required", "checks", "failure_taxonomy"):
+        if receipt.get(field) != result.get(field):
+            failures.append(_failure("random_outfit_selection_result_mismatch", "Execution random outfit selection result does not match deterministic validation.", field=field, expected=result.get(field), actual=receipt.get(field)))
+    return failures
+
+
 def _semantic_visibility_result_receipt_failures(receipt: Any, result: dict[str, Any]) -> list[dict[str, Any]]:
     if not isinstance(receipt, dict):
         return [_failure("semantic_visibility_result_missing", "Execution record must retain the deterministic semantic visibility result.")]
@@ -1121,6 +1135,19 @@ def validate_execution_record(packet: dict[str, Any], record: dict[str, Any]) ->
             failures.append(_failure("visible_exposure_prompt_unavailable", "Visible exposure cannot be validated until the prompt pack is valid."))
 
     if "exposure_action_plan" in packet["required_claims"]:
+        if "random_outfit_selection_plan" in packet["required_claims"]:
+            try:
+                try:
+                    from scripts.check_random_outfit_selection import check_random_outfit_selection
+                except ModuleNotFoundError:  # pragma: no cover - direct script execution path
+                    from check_random_outfit_selection import check_random_outfit_selection
+
+                outfit_result = check_random_outfit_selection(packet, record)
+                failures.extend(_random_outfit_result_receipt_failures(record.get("random_outfit_selection_result"), outfit_result))
+                if not outfit_result["valid"]:
+                    failures.extend(outfit_result["failures"])
+            except (ExecutionError, ValueError) as error:
+                failures.append(_failure("random_outfit_selection_unavailable", "Random outfit selection validator could not run.", detail=str(error)))
         if "default_exposure_staging_plan" in packet["required_claims"]:
             try:
                 try:

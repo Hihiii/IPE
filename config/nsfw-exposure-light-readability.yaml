@@ -16,6 +16,12 @@ execution_leaf:
     - skin_midtone_policy
     - contrast_separation
     - prompt_lighting_guards
+    - subject_light_role
+    - face_readability
+    - body_midtone_policy
+    - subject_shadow_floor
+    - background_mood_role
+    - prompt_subject_lighting_guards
   target: "Must match exposure_contract.evidence_target, exposure_action_plan.primary_target, and semantic_exposure_visibility_plan.target."
   target_zone_light_role: "A motivated local key or fill keeps the selected target readable while preserving cinematic mood."
   local_fill_strategy: "Use soft local fill, bounced window fill, warm practical fill, or another scene-motivated fill source."
@@ -23,6 +29,12 @@ execution_leaf:
   skin_midtone_policy: "Skin midtones on the target zone and adjacent body planes stay readable without overexposing highlights."
   contrast_separation: "Separate the target/action anchor from surrounding garment, limb, bedding, chair, or background values."
   prompt_lighting_guards: "Positive lighting phrases that must also appear in semantic_exposure_visibility_plan.positive_prompt_guards and every final positive prompt."
+  subject_light_role: "A motivated key or fill keeps the whole person readable without flattening the cinematic background."
+  face_readability: "The face stays readable when it is inside the intended crop."
+  body_midtone_policy: "Torso, limbs, and primary skin planes retain readable midtones."
+  subject_shadow_floor: "The person uses open or controlled_readable shadow detail; underexposed, near-black, or black-crushed subject lighting fails."
+  background_mood_role: "Background may remain low-key or dark only after subject readability is protected."
+  prompt_subject_lighting_guards: "Positive subject-level lighting phrases that must also appear in semantic_exposure_visibility_plan.positive_prompt_guards and every final positive prompt."
 
 exposure_light_readability_plan:
   required_fields:
@@ -33,6 +45,12 @@ exposure_light_readability_plan:
     - skin_midtone_policy
     - contrast_separation
     - prompt_lighting_guards
+    - subject_light_role
+    - face_readability
+    - body_midtone_policy
+    - subject_shadow_floor
+    - background_mood_role
+    - prompt_subject_lighting_guards
   target_zone_light_roles:
     - soft_local_key
     - soft_local_fill
@@ -54,6 +72,12 @@ exposure_light_readability_plan:
   contrast_separation:
     allowed: [clear, controlled]
     rule: "Target/action anchor must remain value-separated from adjacent garment, limb, prop, bedding, chair, or background."
+  subject_light_roles: [soft_subject_fill, balanced_subject_key_and_fill, bounced_subject_fill, warm_practical_subject_fill]
+  face_readability_allowed: [clear, controlled_readable]
+  body_midtone_policies: [readable_body_skin_midtones, lifted_body_skin_midtones, exposed_for_body_skin]
+  subject_shadow_floor_allowed: [open, controlled_readable]
+  subject_shadow_floor_forbidden: [underexposed, near_black, black_crushed]
+  background_mood_roles: [low_key_background, cinematic_dark_background, secondary_background]
   positive_prompt_requirements:
     - "selected target or accepted target alias appears early"
     - "pose and exposure action appear early"
@@ -61,6 +85,10 @@ exposure_light_readability_plan:
     - "local fill phrase"
     - "open shadow detail on the target zone"
     - "readable skin midtones"
+    - "readable face"
+    - "soft fill across the subject"
+    - "readable body skin midtones"
+    - "open shadow detail across the body"
   darkness_risk_phrases:
     - deep shadow over the target
     - black-crushed target
@@ -70,6 +98,14 @@ exposure_light_readability_plan:
     - silhouette-only exposure
     - target hidden in darkness
     - unreadable shadow on the target
+  subject_darkness_risk_phrases:
+    - face lost in darkness
+    - subject underexposed
+    - body lost in shadow
+    - near-black subject
+    - person hard to see
+    - face underexposed
+    - subject interior completely black
 
 lighting_scene_defaults:
   bedroom_low_key: "Keep the room low-key but add soft local fill and open shadow detail on the selected target zone."

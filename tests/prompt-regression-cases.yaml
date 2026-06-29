@@ -133,6 +133,21 @@ cases:
     expected: [reject_or_recompose, exposure_light_readability_plan, no_deep_shadow_over_target, no_black_crushed_target, no_silhouette_only_exposure, require_local_fill_before_delivery]
     requires_dynamic_scene_plan: true
     must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
+  - id: generic_unspecified_random_outfit_enforced
+    input: "clearly adult original fictional woman, cinematic portrait"
+    expected: [adult_nude_baseline, random_outfit_selection_plan, deterministic_outfit_id, selected_upper_lower_footwear_in_prompt, random_outfit_treated_as_explicit_wardrobe, garment_exposure_action, no_direct_bare_no_wardrobe]
+    requires_dynamic_scene_plan: true
+    must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
+  - id: explicit_nude_skips_random_outfit
+    input: "clearly adult original fictional nude woman reclining in a private bedroom"
+    expected: [adult_nude_baseline, explicit_nude_route, no_random_outfit_selection_plan, direct_bare_no_wardrobe_allowed, visible_exposure_contract]
+    requires_dynamic_scene_plan: true
+    must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
+  - id: low_key_subject_readable
+    input: "clearly adult original fictional woman in a low-key cinematic bedroom"
+    expected: [exposure_light_readability_plan, readable_face, soft_fill_across_subject, readable_body_skin_midtones, open_shadow_detail_across_body, low_key_background_only, no_near_black_subject]
+    requires_dynamic_scene_plan: true
+    must_plan: [subject_count, pose_family, motion_state, primary_action, support_points, contact_anchors, force_direction, occlusion_order, gaze_reaction, secondary_motion, camera_readability]
   - id: unspecified_wardrobe_nude_baseline
     input: "clearly adult original fictional man on a balcony at night"
     expected: [adult_nude_baseline, no_auto_added_garments, adult_pose_lighting]

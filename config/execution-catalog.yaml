@@ -329,10 +329,12 @@ rule_nodes:
     requires: [adult_policy_and_delivery]
     conflicts: []
     cost_class: low
-    claims: [wardrobe_routing, outfit_exposure_transformation]
+    claims: [wardrobe_routing, random_outfit_selection_plan, outfit_exposure_transformation]
     sources:
       - path: config/character-identity/sexy-outfit-catalog.yaml
       - path: config/nsfw-baseline-resolver-random-outfit.yaml
         sections: [random_outfit_routing, exposure_action_integration]
+      - path: config/nsfw-random-outfit-selection.yaml
+        sections: [execution_leaf]
       - path: config/nsfw-baseline-resolver-ip-outfit.yaml
         sections: [ip_outfit_routing, canonical_outfit_preservation, exposure_action_integration]

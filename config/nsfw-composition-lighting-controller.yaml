@@ -13,7 +13,7 @@ visual_priority_plan:
     - support_and_body_structure
     - environment_context
   baseline_rule: "For eligible human subjects, make the visual director's primary sensory or readable interaction zone clear before decorative atmosphere; face and gaze remain a supporting emotional read unless explicitly requested as primary."
-  adult_visible_exposure_priority: "When visible adult exposure is active, selected target readability outranks cinematic darkness, background mood, and decorative low-key contrast."
+  adult_visible_exposure_priority: "When visible adult exposure is active, selected target readability and whole-subject readability outrank cinematic darkness, background mood, and decorative low-key contrast."
   user_override: "An explicit user-requested face, action, camera, crop, or focus target overrides sensory-first priority."
   visual_director_rule: "nsfw-visual-director.yaml resolves primary and secondary focus before generic face-priority rules are applied."
   crop_rules:
@@ -40,16 +40,16 @@ lighting_environment_plan:
     - exposure_light_readability_when_active
   photoreal_default:
     key_light_role: "motivated directional key revealing facial planes, body form, and material texture"
-    fill_or_shadow_policy: "controlled shadow detail; do not bury the action, contact zone, or selected exposure target"
+    fill_or_shadow_policy: "controlled shadow detail; do not bury the face, body skin midtones, action, contact zone, or selected exposure target"
     separation_or_rim_role: "subtle rim or background separation only when needed for silhouette clarity"
-    exposure_priority: "primary sensory or interaction zone, skin midtones, relevant material highlights, then face/gaze readability"
-    exposure_light_readability_when_active: "Backgrounds may stay low-key, but the selected target needs soft local fill, open shadow detail on the target zone, readable skin midtones, and clear value separation from nearby garment, limb, bedding, chair, or background."
+    exposure_priority: "readable face, soft fill across the subject, readable body skin midtones, primary sensory or interaction zone, relevant material highlights, then background mood"
+    exposure_light_readability_when_active: "Backgrounds may stay low-key, but the person needs a readable face, soft fill across the subject, readable body skin midtones, open shadow detail across the body, and the selected target needs soft local fill plus open shadow detail on the target zone."
   anime_realism:
     key_light_role: "intentional main value direction with clean readable plane separation"
     fill_or_shadow_policy: "controlled shadow groups rather than accidental black crush"
     separation_or_rim_role: "stylized rim accents that reinforce silhouette without breaking light direction"
-    exposure_priority: "primary sensory or interaction zone, gesture silhouette, material class readability, then face/gaze readability"
-    exposure_light_readability_when_active: "Use clean value grouping that keeps the selected target and adjacent skin midtones readable before preserving dark atmosphere."
+    exposure_priority: "readable face, readable body skin midtones, primary sensory or interaction zone, gesture silhouette, material class readability, then background mood"
+    exposure_light_readability_when_active: "Use clean value grouping that keeps the face, body skin midtones, selected target, and adjacent skin midtones readable before preserving dark atmosphere."
 
 negative_guardrails:
   - "no unintentionally unreadable face when the face is within the intended crop or selected as a secondary focus"
@@ -58,6 +58,8 @@ negative_guardrails:
   - "no backlight-only scene that removes support or contact evidence"
   - "no low-key cinematic darkness that hides the selected exposure target"
   - "no black-crushed target zone when visible adult exposure is active"
+  - "no subject underexposed, near-black, or hard to see when visible adult exposure is active"
+  - "no face lost in darkness or body lost in shadow in eligible adult-human scenes"
   - "no contradictory multi-directional key lights"
 
 prompt_assembly_hooks:

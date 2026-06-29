@@ -22,7 +22,7 @@ execution_leaf:
   target_priority: "Female/feminine subjects default to canonical vulva first; pussy is an output synonym only. Nipple is fallback only after a recorded lower-body route failure."
   pose_template_id: "Choose a pose template that makes the target ray-readable and semantically unobstructed."
   pose_family: "Preserve an explicit user pose family when present; otherwise choose the most stable exposure-first family."
-  wardrobe_mode: "Choose direct bare, semi-nude garment action, or preserved explicit wardrobe with exposure action."
+  wardrobe_mode: "Choose random outfit with exposure action, direct bare explicit nude, semi-nude garment action, or preserved explicit wardrobe with exposure action."
   exposure_route: "Must match exposure_action_plan.route."
   action_id: "Must match exposure_action_plan.action."
   camera_proof: "Must include target_in_frame, target_unoccluded, and target_on_focal_plane."
@@ -54,6 +54,16 @@ default_exposure_staging_plan:
       schema_rule: "Do not add pussy as a third schema target; prompt aliases are accepted only when exposure_contract.evidence_target remains vulva."
   pose_families: [standing, seated, reclining, kneeling, floor_supported, dynamic_transition]
   wardrobe_modes:
+    random_outfit_with_exposure_action:
+      exposure_route: direct_garment_action
+      action_ids:
+        - pull_aside_lower_garment
+        - lower_lower_garment_below_target
+        - partially_remove_lower_garment
+        - pull_aside_upper_garment
+        - lower_upper_garment_below_target
+        - pull_open_front_panels_below_target
+      rule: "Use for generic unspecified wardrobe after random_outfit_selection_plan selects an outfit; direct bare no-wardrobe is forbidden unless the user explicitly asked for nude/no-clothes/bare-body presentation."
     direct_bare_no_wardrobe:
       exposure_route: direct_bare_no_wardrobe
       action_ids: [no_garment_direct_bare]
@@ -96,13 +106,13 @@ default_exposure_staging_plan:
       rule: "Retain garment identity, color, and silhouette while forcing a concrete action that exposes the selected target."
   routing_cases:
     unspecified_wardrobe_and_pose:
-      rule: "Try vulva lower-body readable presets first; choose direct bare no wardrobe when stable, otherwise use a semi-nude lower-body garment action."
+      rule: "Try vulva lower-body readable presets first; for generic unspecified wardrobe select a random outfit and transform it with a garment exposure action. Direct bare no wardrobe is allowed only when the user explicitly asks for nude/no-clothes/bare-body presentation."
       target_priority: [vulva, nipple]
       preferred_pose_templates:
         - reclining_knees_raised_lower_body_open
         - seated_edge_legs_open_lower_body_clear
         - standing_three_quarter_lower_garment_pulled_aside
-      preferred_wardrobe_modes: [direct_bare_no_wardrobe, semi_nude_lower_body_garment_action]
+      preferred_wardrobe_modes: [random_outfit_with_exposure_action, semi_nude_lower_body_garment_action]
     wardrobe_specified_pose_unspecified:
       rule: "Preserve wardrobe identity but reject ordinary standing or seated labels unless the pose template includes the action and target exposure."
       target_priority: [vulva, nipple]

@@ -25,6 +25,7 @@ internal_scene_contract:
     - nsfw_baseline_tier
     - nsfw_baseline_application_reason
     - visible_exposure_contract
+    - random_outfit_selection_plan_when_active
     - default_exposure_staging_plan
     - exposure_action_plan
     - exposure_geometry_plan
@@ -94,6 +95,10 @@ always_nsfw_baseline_rendering:
     rule: "Do not inject adult subject or NSFW language."
   transformed_wardrobe:
     rule: "Retain garment identity, color, and key design while rendering a concrete physically caused opening, partial removal, lowering, pull-aside, or displacement that exposes the selected evidence target."
+  random_outfit_selection_plan:
+    z_image: "When active, name the selected random outfit's upper_body, lower_body, and footwear before the exposure action."
+    krea2: "When active, preserve the selected outfit identity in natural language before describing the garment transformation."
+    rule: "Generic unspecified wardrobe must not collapse to direct nude unless the request explicitly asks for nude/no-clothes/bare-body presentation."
   visible_exposure_contract:
     z_image: "Name the same visible evidence target, garment action, and in-frame readability before pose, camera, and material detail."
     krea2: "Name the same visible evidence target, garment action, and in-frame readability in natural positive language before atmosphere or style."
@@ -114,9 +119,9 @@ always_nsfw_baseline_rendering:
     krea2: "State the same clearance controls as natural readable staging rather than as an avoid list."
     rule: "A positive-only prompt must not rely on a removed negative prompt to prevent semantic occlusion."
   exposure_light_readability_plan:
-    z_image: "Keep target-local fill, open shadow detail on the target zone, readable skin midtones, and contrast separation near the selected target in the early subject block."
-    krea2: "State the same target-readable lighting as natural positive staging before mood, background darkness, or style."
-    rule: "Cinematic low-key lighting may describe the background, edges, or room mood only after the selected target remains locally lit and readable."
+    z_image: "Keep target-local fill, open shadow detail on the target zone, readable skin midtones, readable face, soft fill across the subject, readable body skin midtones, and open shadow detail across the body in the early subject block."
+    krea2: "State the same target-readable and subject-readable lighting as natural positive staging before mood, background darkness, or style."
+    rule: "Cinematic low-key lighting may describe the background, edges, or room mood only after the selected target and whole person remain locally lit and readable."
 
 adult_visual_direction_rendering:
   visual_focus_plan:
@@ -154,10 +159,11 @@ validation:
     - lighting_and_material_cause_effect
     - face_action_and_critical_structure_readability
     - visible_adult_exposure_contract_with_readable_evidence_target
+    - random_outfit_selection_identity_when_active
     - default_exposure_staging_target_pose_wardrobe_camera_and_semantic_clearance
     - concrete_garment_transformation_when_wardrobe_is_explicit
     - evidence_target_in_frame_unoccluded_and_readable
     - exposure_action_target_garment_zone_and_end_state_are_compatible
     - exposure_geometry_camera_ray_surface_facing_action_reach_and_crop_passed
-    - exposure_light_readability_target_local_fill_open_shadow_and_skin_midtones
+    - exposure_light_readability_target_local_fill_open_shadow_skin_midtones_and_subject_readability
     - phase_4_exposure_feasibility_review_passed

@@ -57,15 +57,15 @@ resolution:
       exposure_requirement: partial_nudity_required
       garment_transformation_action: random_outfit_with_exposure
       rule: "Select a random sexy outfit from sexy-outfit-catalog.yaml. Apply a concrete garment transformation action (pulled aside, partially removed, lifted, lowered) that exposes the selected evidence target. The outfit must be worn but the target must remain readable through the transformation."
-      allowed_garment_transformation_actions: [partially_removed, pulled_aside, unbuttoned_or_opened, slipped_or_lowered, displaced_by_pose_or_grip]
+      allowed_garment_transformation_actions: [no_garment_added, partially_removed, pulled_aside, unbuttoned_or_opened, slipped_or_lowered, displaced_by_pose_or_grip]
     ip_character:
       exposure_requirement: partial_nudity_required
       garment_transformation_action: ip_canonical_outfit_with_exposure
       rule: "Use the IP character's canonical outfit. Apply a concrete garment transformation that exposes the selected evidence target while preserving the canonical garment identity, color, silhouette, and signature design elements."
-      allowed_garment_transformation_actions: [partially_removed, pulled_aside, unbuttoned_or_opened, slipped_or_lowered, displaced_by_pose_or_grip]
+      allowed_garment_transformation_actions: [no_garment_added, partially_removed, pulled_aside, unbuttoned_or_opened, slipped_or_lowered, displaced_by_pose_or_grip]
   explicit_wardrobe:
     exposure_requirement: partial_nudity_required
-    allowed_garment_transformation_actions: [partially_removed, pulled_aside, unbuttoned_or_opened, slipped_or_lowered, displaced_by_pose_or_grip, wet_translucent_cling]
+    allowed_garment_transformation_actions: [no_garment_added, partially_removed, pulled_aside, unbuttoned_or_opened, slipped_or_lowered, displaced_by_pose_or_grip, wet_translucent_cling]
     rule: "Preserve garment identity, color, and signature design, but require a concrete physical transformation that exposes the selected evidence target. An intact covering outfit fails."
   female_feminine_evidence:
     allowed_targets: [nipple, vulva]

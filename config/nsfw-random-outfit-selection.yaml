@@ -1,0 +1,48 @@
+schema_version: "1.0.0"
+name: nsfw-random-outfit-selection
+purpose: >
+  Make generic unspecified-wardrobe routing auditable by recording the
+  deterministic random outfit selection before exposure transformation.
+
+execution_leaf:
+  applies_to: [clearly_adult_human, clearly_adult_humanoid]
+  required_fields:
+    - selection_method
+    - selection_seed
+    - selected_outfit_id
+    - selected_outfit_name
+    - upper_body
+    - lower_body
+    - footwear
+    - effective_wardrobe_state
+    - exposure_transform_required
+  trigger: "Required when packet features include wardrobe_unspecified and generic_subject, unless the raw request explicitly asks for nude/no-clothes/bare-body presentation."
+  selection: "Use sha256(packet.request) modulo sexy_outfit_catalog outfit count."
+  routing: "The selected outfit is treated as explicit_wardrobe for exposure routing; direct_bare_no_wardrobe is forbidden for this route."
+
+random_outfit_selection_plan:
+  required_fields:
+    - selection_method
+    - selection_seed
+    - selected_outfit_id
+    - selected_outfit_name
+    - upper_body
+    - lower_body
+    - footwear
+    - effective_wardrobe_state
+    - exposure_transform_required
+  selection_method: deterministic_request_hash
+  selection_seed: "sha256(packet.request with surrounding whitespace trimmed)"
+  outfit_source: config/character-identity/sexy-outfit-catalog.yaml
+  effective_wardrobe_state_allowed: [explicit_wardrobe]
+  exposure_transform_required_allowed: [true]
+  forbidden_routes: [direct_bare_no_wardrobe]
+  explicit_nude_request_markers: [nude, fully nude, no clothes, bare body]
+  positive_prompt_rule: "Every delivered positive prompt must name the selected outfit's upper_body, lower_body, and footwear terms early enough to preserve the random outfit identity before describing the exposure action."
+
+phase_hooks:
+  phase_1_intent_analysis: "When generic wardrobe is unspecified, select and record exactly one random outfit unless the request explicitly asks for nude/no-clothes/bare-body presentation."
+  phase_2_composition_and_cinematography: "Treat the selected outfit as explicit wardrobe and bind it to an exposure action."
+  phase_3_scene_blueprint: "Record random_outfit_selection_plan next to visible_exposure_contract and default_exposure_staging_plan."
+  phase_3_1_prompt_package: "Render upper_body, lower_body, footwear, and exposure transformation in every positive prompt."
+  phase_4_self_review: "Fail if the random outfit selection receipt, prompt outfit terms, or exposure action route are missing or mismatched."
